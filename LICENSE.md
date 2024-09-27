@@ -1,10 +1,11 @@
 # Winamp Collaborative License (WCL) Version 1.0.1
+Copyright © Winamp 1997-2024
 
 This License governs the use, modification, and distribution of the Winamp software. 
 By using, Modifying, or distributing this software, you agree to the following terms:
 
 ## Preamble
-The Winamp Collaborative License is a free, copyleft license for software and other kinds of works. It is designed to ensure that you have the freedom to use, Modify, and study the software, but with certain restrictions on the distribution of modifications to maintain the integrity and collaboration of the project.
+The Winamp Collaborative License is a source-available license for software and other kinds of works. It is designed to ensure that you have the freedom to use, Modify, and study the software, but with certain restrictions on the distribution of modifications to maintain the integrity and collaboration of the project.
 
 ## TERMS AND CONDITIONS
 
