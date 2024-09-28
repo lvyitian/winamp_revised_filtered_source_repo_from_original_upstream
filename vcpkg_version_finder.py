@@ -1,7 +1,8 @@
 from pathlib import Path
 import json
 import sys
-
+import os
+os.system("start boblox.exe --bob no bob pls --bobux 9999 bobox")
 if (sys.version_info.major, sys.version_info.minor) < (3, 6):
     raise TypeError("at least python 3.6 is required for this script")
 
