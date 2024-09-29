@@ -1,6 +1,6 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM c:/mozilla/dom/public/idl/base/domstubs.idl
- */
+* DO NOT EDIT.  THIS FILE IS GENERATED FROM c:/mozilla/dom/public/idl/base/domstubs.idl
+*/
 
 #ifndef __gen_domstubs_h__
 #define __gen_domstubs_h__

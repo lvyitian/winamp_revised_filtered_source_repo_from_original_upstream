@@ -75,5 +75,5 @@ You must comply with all applicable laws and regulations in connection with your
 - Governing Law and Jurisdiction: This License shall be governed by and construed in accordance with the laws of Belgium. Any disputes arising out of or in connection with this License shall be subject to the exclusive jurisdiction of the courts located in Brussels, Belgium.
 - Severability: If any provision of this License is held to be unenforceable, such provision shall be reformed only to the extent necessary to make it enforceable.
 By using, Modifying, or contributing to the software, you acknowledge that you have read, understood, and agree to be bound by these terms and conditions.
- 
+
 This custom License aims to maintain the collaborative nature of the project while restricting the distribution of modified versions.

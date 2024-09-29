@@ -8,38 +8,38 @@
 #define C_BUTTON_PARENT C_GuiObject
 
 class C_Button : public C_BUTTON_PARENT {
-  public:
+public:
 
-  C_Button(ScriptObject *object);
-  C_Button();
-  virtual ~C_Button();
+C_Button(ScriptObject *object);
+C_Button();
+virtual ~C_Button();
 
-  virtual void C_hook(ScriptObject *o);
+virtual void C_hook(ScriptObject *o);
 
-  ScriptObject *getScriptObject();
+ScriptObject *getScriptObject();
 
-  virtual void onActivate(int activated);
-  virtual void onLeftClick();
-  virtual void onRightClick();
-  virtual void setActivated(int onoff);
-  virtual void setActivatedNoCallback(int onoff);
-  virtual int getActivated();
-  virtual void leftClick();
-  virtual void rightClick();
+virtual void onActivate(int activated);
+virtual void onLeftClick();
+virtual void onRightClick();
+virtual void setActivated(int onoff);
+virtual void setActivatedNoCallback(int onoff);
+virtual int getActivated();
+virtual void leftClick();
+virtual void rightClick();
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onactivate_id;
-  static int onleftclick_id;
-  static int onrightclick_id;
-  static int setactivated_id;
-  static int setactivatednocallback_id;
-  static int getactivated_id;
-  static int leftclick_id;
-  static int rightclick_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onactivate_id;
+static int onleftclick_id;
+static int onrightclick_id;
+static int setactivated_id;
+static int setactivatednocallback_id;
+static int getactivated_id;
+static int leftclick_id;
+static int rightclick_id;
 };
 
 #endif

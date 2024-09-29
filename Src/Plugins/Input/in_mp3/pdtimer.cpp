@@ -2,23 +2,23 @@
 
 __int64 pdReadResolution(void)
 {
-  __int64 myfeq;
-  LARGE_INTEGER feq;
+__int64 myfeq;
+LARGE_INTEGER feq;
 
-  QueryPerformanceFrequency( &feq);
-  myfeq = feq.QuadPart;
+QueryPerformanceFrequency( &feq);
+myfeq = feq.QuadPart;
 
-  return myfeq;
+return myfeq;
 }
 
 __int64 pdReadTimer(void)
 {
-  __int64 mynow;
+__int64 mynow;
 
-  LARGE_INTEGER now;
-  
-  QueryPerformanceCounter( &now );
-  mynow = now.QuadPart;  
+LARGE_INTEGER now;
 
-  return mynow;
+QueryPerformanceCounter( &now );
+mynow = now.QuadPart;  
+
+return mynow;
 }

@@ -12,8 +12,8 @@
 time_t getDateSecs(char *date);
 
 /* returns a string that represents the given UTC Calendar time value as an
-   RFC 822 format string.  The buffer is user-supplied and must be at least 
-   30 bytes in size. */
+RFC 822 format string.  The buffer is user-supplied and must be at least 
+30 bytes in size. */
 char *getDateStr(time_t tmval, char *buffer, int gmt);
 
 #endif /*_OD_DATE_*/

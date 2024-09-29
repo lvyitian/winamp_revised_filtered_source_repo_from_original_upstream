@@ -8,32 +8,32 @@
 #define C_CHECKBOX_PARENT C_GuiObject
 
 class C_CheckBox : public C_CHECKBOX_PARENT {
-  public:
+public:
 
-  C_CheckBox(ScriptObject *object);
-  C_CheckBox();
-  virtual ~C_CheckBox();
+C_CheckBox(ScriptObject *object);
+C_CheckBox();
+virtual ~C_CheckBox();
 
-  virtual void C_hook(ScriptObject *o);
+virtual void C_hook(ScriptObject *o);
 
-  ScriptObject *getScriptObject();
+ScriptObject *getScriptObject();
 
-  virtual void onToggle(int newstate);
-  virtual void setChecked(int checked);
-  virtual int isChecked();
-  virtual void setText(const wchar_t *txt);
-  virtual const wchar_t *getText();
+virtual void onToggle(int newstate);
+virtual void setChecked(int checked);
+virtual int isChecked();
+virtual void setText(const wchar_t *txt);
+virtual const wchar_t *getText();
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int ontoggle_id;
-  static int setchecked_id;
-  static int ischecked_id;
-  static int settext_id;
-  static int gettext_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int ontoggle_id;
+static int setchecked_id;
+static int ischecked_id;
+static int settext_id;
+static int gettext_id;
 };
 
 #endif

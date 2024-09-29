@@ -1,31 +1,31 @@
-#ifndef _VIRTUALWND_H
-#define _VIRTUALWND_H
-
-#include <api/wnd/basewnd.h>
-
-#define VIRTUALWND_PARENT BaseWnd
-#define AUTOWH 0xFFFE
-#define NOCHANGE 0xFFFD
-
-class NOVTABLE VirtualWnd : public VIRTUALWND_PARENT
-{
-protected:
+		#ifndef _VIRTUALWND_H
+		#define _VIRTUALWND_H
+		
+		#include <api/wnd/basewnd.h>
+		
+		#define VIRTUALWND_PARENT BaseWnd
+		#define AUTOWH 0xFFFE
+		#define NOCHANGE 0xFFFD
+		
+		class NOVTABLE VirtualWnd : public VIRTUALWND_PARENT
+		{
+		protected:
 	VirtualWnd();
 	virtual ~VirtualWnd();
-public:
+		public:
 	virtual int init( ifc_window *parent, int nochild = FALSE );
 	virtual int init( OSMODULEHANDLE moduleHandle, OSWINDOWHANDLE parent, int nochild = FALSE );
-
+		
 	virtual void bringToFront();
 	virtual void bringToBack();
 	virtual void bringAbove( BaseWnd *w );
 	virtual void bringBelow( BaseWnd *w );
-
+		
 	//NONPORTABLE--avoid prolonged use
 	virtual HWND getOsWindowHandle();
 	virtual HINSTANCE getOsModuleHandle();
-
-public:
+		
+		public:
 	virtual void resize( int x, int y, int w, int h, int wantcb = 1 ) override;
 	virtual void resize( RECT *r, int wantcb = 1 );
 	virtual void move( int x, int y ) override;
@@ -62,23 +62,24 @@ public:
 	virtual void setVirtualChildFocus( ifc_window *child ) override;
 	virtual int wantFocus() override
 	{
-		return 0;
+return 0;
 	}
 	virtual void setAllowDeactivation( int allow ) override;
 	virtual int allowDeactivation() override;
-
-public:
+		
+		public:
 	virtual int isVirtual() override
 	{
-		return !bypassvirtual;
+return !bypassvirtual;
 	}
-
-protected:
+		
+		protected:
 	int virtualX, virtualY, virtualH, virtualW;
 	int bypassvirtual;
 	int focus;
 	int resizecount;
 	double lastratio;
-};
-
-#endif
+		};
+		
+		#endif
+		

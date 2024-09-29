@@ -15,12 +15,12 @@
 #define __IPPVM_H__
 
 #if defined (_WIN32_WCE) && defined (_M_IX86) && defined (__stdcall)
-  #define _IPP_STDCALL_CDECL
-  #undef __stdcall
+#define _IPP_STDCALL_CDECL
+#undef __stdcall
 #endif
 
 #ifndef __IPPDEFS_H__
-  #include "ippdefs.h"
+#include "ippdefs.h"
 #endif
 
 #ifdef __cplusplus
@@ -527,8 +527,8 @@ IPPAPI( IppStatus, ippsModf_64f, (const Ipp64f a[],Ipp64f r1[],Ipp64f r2[],Ipp32
 #endif
 
 #if defined (_IPP_STDCALL_CDECL)
-  #undef  _IPP_STDCALL_CDECL
-  #define __stdcall __cdecl
+#undef  _IPP_STDCALL_CDECL
+#define __stdcall __cdecl
 #endif
 
 #endif /* __IPPVM_H__ */

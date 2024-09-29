@@ -1,15 +1,15 @@
-/* Copyright (C) Teemu Suutari */
-
-#include <cstdint>
-
-#include "Buffer.hpp"
-#include "OverflowCheck.hpp"
-
-
-namespace ancient::internal
-{
-
-static const uint32_t CRC32Table[256]={
+		/* Copyright (C) Teemu Suutari */
+		
+		#include <cstdint>
+		
+		#include "Buffer.hpp"
+		#include "OverflowCheck.hpp"
+		
+		
+		namespace ancient::internal
+		{
+		
+		static const uint32_t CRC32Table[256]={
 	0x00000000U,0x77073096U,0xee0e612cU,0x990951baU,0x076dc419U,0x706af48fU,0xe963a535U,0x9e6495a3U,
 	0x0edb8832U,0x79dcb8a4U,0xe0d5e91eU,0x97d2d988U,0x09b64c2bU,0x7eb17cbdU,0xe7b82d07U,0x90bf1d91U,
 	0x1db71064U,0x6ab020f2U,0xf3b97148U,0x84be41deU,0x1adad47dU,0x6ddde4ebU,0xf4d4b551U,0x83d385c7U,
@@ -42,27 +42,27 @@ static const uint32_t CRC32Table[256]={
 	0xaed16a4aU,0xd9d65adcU,0x40df0b66U,0x37d83bf0U,0xa9bcae53U,0xdebb9ec5U,0x47b2cf7fU,0x30b5ffe9U,
 	0xbdbdf21cU,0xcabac28aU,0x53b39330U,0x24b4a3a6U,0xbad03605U,0xcdd70693U,0x54de5729U,0x23d967bfU,
 	0xb3667a2eU,0xc4614ab8U,0x5d681b02U,0x2a6f2b94U,0xb40bbe37U,0xc30c8ea1U,0x5a05df1bU,0x2d02ef8dU};
-
-uint32_t CRC32(const Buffer &buffer,size_t offset,size_t len,uint32_t accumulator)
-{
-
+		
+		uint32_t CRC32(const Buffer &buffer,size_t offset,size_t len,uint32_t accumulator)
+		{
+		
 	if (!len || OverflowCheck::sum(offset,len)>buffer.size()) throw Buffer::OutOfBoundsError();
 	const uint8_t *ptr=buffer.data()+offset;
 	accumulator=~accumulator;
 	for (size_t i=0;i<len;i++)
-		accumulator=(accumulator>>8)^CRC32Table[(accumulator&0xff)^ptr[i]];
+accumulator=(accumulator>>8)^CRC32Table[(accumulator&0xff)^ptr[i]];
 	return ~accumulator;
-}
-
-uint32_t CRC32Byte(uint8_t ch,uint32_t accumulator) noexcept
-{
+		}
+		
+		uint32_t CRC32Byte(uint8_t ch,uint32_t accumulator) noexcept
+		{
 	return ~((~accumulator>>8)^CRC32Table[(~accumulator&0xff)^ch]);
-}
-
-// instead of bit-twiddling lets have a separate implementation for reverse
-
-// same table as the previous one, but reflected
-static const uint32_t CRC32RevTable[256]={
+		}
+		
+		// instead of bit-twiddling lets have a separate implementation for reverse
+		
+		// same table as the previous one, but reflected
+		static const uint32_t CRC32RevTable[256]={
 	0x00000000U,0x04c11db7U,0x09823b6eU,0x0d4326d9U,0x130476dcU,0x17c56b6bU,0x1a864db2U,0x1e475005U,
 	0x2608edb8U,0x22c9f00fU,0x2f8ad6d6U,0x2b4bcb61U,0x350c9b64U,0x31cd86d3U,0x3c8ea00aU,0x384fbdbdU,
 	0x4c11db70U,0x48d0c6c7U,0x4593e01eU,0x4152fda9U,0x5f15adacU,0x5bd4b01bU,0x569796c2U,0x52568b75U,
@@ -95,21 +95,22 @@ static const uint32_t CRC32RevTable[256]={
 	0xe3a1cbc1U,0xe760d676U,0xea23f0afU,0xeee2ed18U,0xf0a5bd1dU,0xf464a0aaU,0xf9278673U,0xfde69bc4U,
 	0x89b8fd09U,0x8d79e0beU,0x803ac667U,0x84fbdbd0U,0x9abc8bd5U,0x9e7d9662U,0x933eb0bbU,0x97ffad0cU,
 	0xafb010b1U,0xab710d06U,0xa6322bdfU,0xa2f33668U,0xbcb4666dU,0xb8757bdaU,0xb5365d03U,0xb1f740b4U};
-
-uint32_t CRC32Rev(const Buffer &buffer,size_t offset,size_t len,uint32_t accumulator)
-{
-
+		
+		uint32_t CRC32Rev(const Buffer &buffer,size_t offset,size_t len,uint32_t accumulator)
+		{
+		
 	if (!len || OverflowCheck::sum(offset,len)>buffer.size()) throw Buffer::OutOfBoundsError();
 	const uint8_t *ptr=buffer.data()+offset;
 	accumulator=~accumulator;
 	for (size_t i=0;i<len;i++)
-		accumulator=(accumulator<<8)^CRC32RevTable[(accumulator>>24)^ptr[i]];
+accumulator=(accumulator<<8)^CRC32RevTable[(accumulator>>24)^ptr[i]];
 	return ~accumulator;
-}
-
-uint32_t CRC32RevByte(uint8_t ch,uint32_t &accumulator) noexcept
-{
+		}
+		
+		uint32_t CRC32RevByte(uint8_t ch,uint32_t &accumulator) noexcept
+		{
 	return ~((~accumulator<<8)^CRC32RevTable[(~accumulator>>24)^ch]);
-}
-
-}
+		}
+		
+		}
+		

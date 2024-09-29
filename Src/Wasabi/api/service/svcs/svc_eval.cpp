@@ -4,8 +4,8 @@
 
 #define CBCLASS svc_evaluatorI
 START_DISPATCH
-  CB(GETEVALTYPE, getEvalType);
-  CB(SETEVALSTRING, setEvalString);
-  CB(EVALUATE, evaluate);
+CB(GETEVALTYPE, getEvalType);
+CB(SETEVALSTRING, setEvalString);
+CB(EVALUATE, evaluate);
 END_DISPATCH
 #undef CBCLASS

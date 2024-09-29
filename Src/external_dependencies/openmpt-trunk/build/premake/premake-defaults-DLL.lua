@@ -1,3 +1,3 @@
 
-  filter {}
-   kind "SharedLib"
+filter {}
+kind "SharedLib"

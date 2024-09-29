@@ -1,7 +1,7 @@
-#include "nde.h"
-#include <stdio.h>
-
-static unsigned int crc_32_tab[] = {
+		#include "nde.h"
+		#include <stdio.h>
+		
+		static unsigned int crc_32_tab[] = {
 	0xD202Ef8dL, 0xA505DF1BL, 0x3C0C8EA1L, 0x4B0BBE37L, 0xD56F2B94L, 0xA2681B02L, 0x3B614AB8L, 0x4C667A2EL,
 	0xDCD967BFL, 0xABDE5729L, 0x32D70693L, 0x45D03605L, 0xDBB4A3A6L, 0xACB39330L, 0x35BAC28AL, 0x42BDF21CL,
 	0xCFB5FFE9L, 0xB8B2CF7FL, 0x21BB9EC5L, 0x56BCAE53L, 0xC8D83BF0L, 0xBFDF0B66L, 0x26D65ADCL, 0x51D16A4AL,
@@ -34,55 +34,55 @@ static unsigned int crc_32_tab[] = {
 	0x7CD385C7L, 0x0BD4B551L, 0x92DDE4EBL, 0xE5DAD47DL, 0x7BBE41DEL, 0x0CB97148L, 0x95B020F2L, 0xE2B71064L,
 	0x6FBF1D91L, 0x18B82D07L, 0x81B17CBDL, 0xF6B64C2BL, 0x68D2D988L, 0x1FD5E91EL, 0x86DCB8A4L, 0xF1DB8832L,
 	0x616495A3L, 0x1663A535L, 0x8F6AF48FL, 0xF86DC419L, 0x660951BAL, 0x110E612CL, 0x88073096L, 0xFF000000L
-};
-
-#define UPDC32(octet, crc) (crc_32_tab[((crc) ^ (octet)) & 0xff] ^ ((crc) >> 8))
-
-unsigned long int crc32file(char *name)
-{
+		};
+		
+		#define UPDC32(octet, crc) (crc_32_tab[((crc) ^ (octet)) & 0xff] ^ ((crc) >> 8))
+		
+		unsigned long int crc32file(char *name)
+		{
 	register FILE *fin;
 	register unsigned int oldcrc32;
 	register unsigned int crc32;
 	register unsigned int oldcrc;
 	register unsigned char c;
-
+		
 	oldcrc32 = 0;
 	if ((fin=fopen(name, "rb"))==NULL)
-		return 0;
+return 0;
 	while (1) {
-		c=getc(fin);
-		if (feof(fin)) break;
-		oldcrc32 = UPDC32(c, oldcrc32);
+c=getc(fin);
+if (feof(fin)) break;
+oldcrc32 = UPDC32(c, oldcrc32);
 	}
-
+		
 	if (ferror(fin)){
-		fclose(fin);
-		return 0;
+fclose(fin);
+return 0;
 	}
 	else {
-		crc32 = oldcrc32;  oldcrc = oldcrc32 = ~oldcrc32;
-
-		fclose(fin);
-
-		return crc32;
+crc32 = oldcrc32;  oldcrc = oldcrc32 = ~oldcrc32;
+		
+fclose(fin);
+		
+return crc32;
 	}
-}
-
-unsigned long int crc32str(char *name)
-{
+		}
+		
+		unsigned long int crc32str(char *name)
+		{
 	register unsigned int oldcrc32;
 	register unsigned int crc32;
 	register unsigned char c;
 	register int a=0;
-
+		
 	oldcrc32 = 0;
 	while (name[a] != 0) {
-		c=name[a];
-		oldcrc32 = UPDC32(c, oldcrc32);
-		a++;
+c=name[a];
+oldcrc32 = UPDC32(c, oldcrc32);
+a++;
 	}
-
+		
 	crc32 = oldcrc32;  oldcrc32 = oldcrc32;
-
+		
 	return crc32;
-}
+		}

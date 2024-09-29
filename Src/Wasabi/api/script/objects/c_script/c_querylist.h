@@ -8,24 +8,24 @@
 #define C_QUERYLIST_PARENT C_GuiObject
 
 class C_QueryList : public C_QUERYLIST_PARENT {
-  public:
+public:
 
-  C_QueryList(ScriptObject *object);
-  C_QueryList();
-  virtual ~C_QueryList();
+C_QueryList(ScriptObject *object);
+C_QueryList();
+virtual ~C_QueryList();
 
-  virtual void C_hook(ScriptObject *o);
+virtual void C_hook(ScriptObject *o);
 
-  ScriptObject *getScriptObject();
+ScriptObject *getScriptObject();
 
-  virtual void onResetQuery();
+virtual void onResetQuery();
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onresetquery_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onresetquery_id;
 };
 
 #endif

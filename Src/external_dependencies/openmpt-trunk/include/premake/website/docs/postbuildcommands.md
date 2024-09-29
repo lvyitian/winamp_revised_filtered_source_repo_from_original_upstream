@@ -20,14 +20,14 @@ Premake 4.4 or later.
 
 ```lua
 filter { "system:windows" }
-   postbuildcommands { "copy default.config bin\\project.config" }
+postbuildcommands { "copy default.config bin\\project.config" }
 
 filter { "not system:windows" }
-   postbuildcommands { "cp default.config bin/project.config" }
+postbuildcommands { "cp default.config bin/project.config" }
 ```
 
 ### See Also ###
- * [Custom Build Commands](Custom-Build-Commands.md)
- * [Tokens](Tokens.md)
- * [prebuildcommands](prebuildcommands.md)
- * [prelinkcommands](prelinkcommands.md)
+* [Custom Build Commands](Custom-Build-Commands.md)
+* [Tokens](Tokens.md)
+* [prebuildcommands](prebuildcommands.md)
+* [prelinkcommands](prelinkcommands.md)

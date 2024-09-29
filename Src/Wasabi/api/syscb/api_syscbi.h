@@ -10,9 +10,9 @@ class SysCallback;
 
 class api_syscbI : public api_syscbX {
 public:
-  DISPATCH(20) int syscb_registerCallback(SysCallback *cb, void *param = NULL);
-  DISPATCH(10) int syscb_deregisterCallback(SysCallback *cb);
-  DISPATCH(30) int syscb_issueCallback(int eventtype, int msg, intptr_t p1=0, intptr_t p2=0);
+DISPATCH(20) int syscb_registerCallback(SysCallback *cb, void *param = NULL);
+DISPATCH(10) int syscb_deregisterCallback(SysCallback *cb);
+DISPATCH(30) int syscb_issueCallback(int eventtype, int msg, intptr_t p1=0, intptr_t p2=0);
 };
 
 /*[interface.footer.h]

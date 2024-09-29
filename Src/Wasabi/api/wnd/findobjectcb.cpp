@@ -3,6 +3,6 @@
 
 #define CBCLASS _FindObjectCallback
 START_DISPATCH;
-  CB(FINDOBJECTCB_MATCHOBJECT, findobjectcb_matchObject);
+CB(FINDOBJECTCB_MATCHOBJECT, findobjectcb_matchObject);
 END_DISPATCH;
 

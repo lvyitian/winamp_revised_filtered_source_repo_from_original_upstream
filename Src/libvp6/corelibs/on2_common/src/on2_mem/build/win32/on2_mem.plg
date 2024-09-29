@@ -47,27 +47,27 @@ Performing Custom Build Step on .\Win32\VerifyXMMReg.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\VerifyXMMReg.asm
+Assembling: .\Win32\VerifyXMMReg.asm
 Performing Custom Build Step on .\Win32\TrashXMMreg.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\TrashXMMreg.asm
+Assembling: .\Win32\TrashXMMreg.asm
 Performing Custom Build Step on .\Win32\InitXMMReg.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\InitXMMReg.asm
+Assembling: .\Win32\InitXMMReg.asm
 Performing Custom Build Step on .\Win32\D9xOSSupXMM.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\D9xOSSupXMM.asm
+Assembling: .\Win32\D9xOSSupXMM.asm
 Performing Custom Build Step on .\Win32\cpuid.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\cpuid.asm
+Assembling: .\Win32\cpuid.asm
 Creating temporary file "C:\tmp\RSPB07.tmp" with contents
 [
 /nologo /out:"..\..\lib\win32\Release\s_cpuid.lib" 
@@ -138,27 +138,27 @@ Performing Custom Build Step on .\Win32\VerifyXMMReg.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\VerifyXMMReg.asm
+Assembling: .\Win32\VerifyXMMReg.asm
 Performing Custom Build Step on .\Win32\TrashXMMreg.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\TrashXMMreg.asm
+Assembling: .\Win32\TrashXMMreg.asm
 Performing Custom Build Step on .\Win32\InitXMMReg.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\InitXMMReg.asm
+Assembling: .\Win32\InitXMMReg.asm
 Performing Custom Build Step on .\Win32\D9xOSSupXMM.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\D9xOSSupXMM.asm
+Assembling: .\Win32\D9xOSSupXMM.asm
 Performing Custom Build Step on .\Win32\cpuid.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\cpuid.asm
+Assembling: .\Win32\cpuid.asm
 Creating temporary file "C:\tmp\RSPB0E.tmp" with contents
 [
 /nologo /out:"..\..\lib\win32\debug\s_cpuid.lib" 
@@ -241,22 +241,22 @@ Performing Custom Build Step on .\Win32\rgb32toyv12_xmm.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\rgb32toyv12_xmm.asm
+Assembling: .\Win32\rgb32toyv12_xmm.asm
 Performing Custom Build Step on .\Win32\rgb32toyv12_mmx.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\rgb32toyv12_mmx.asm
+Assembling: .\Win32\rgb32toyv12_mmx.asm
 Performing Custom Build Step on .\Win32\rgb24toyv12_xmm.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\rgb24toyv12_xmm.asm
+Assembling: .\Win32\rgb24toyv12_xmm.asm
 Performing Custom Build Step on .\Win32\rgb24toyv12_mmx.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\rgb24toyv12_mmx.asm
+Assembling: .\Win32\rgb24toyv12_mmx.asm
 Creating temporary file "C:\tmp\RSPB14.tmp" with contents
 [
 /nologo /out:"..\..\lib\win32\release\s_cconv.lib" 
@@ -380,22 +380,22 @@ Performing Custom Build Step on .\Win32\rgb32toyv12_xmm.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\rgb32toyv12_xmm.asm
+Assembling: .\Win32\rgb32toyv12_xmm.asm
 Performing Custom Build Step on .\Win32\rgb32toyv12_mmx.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\rgb32toyv12_mmx.asm
+Assembling: .\Win32\rgb32toyv12_mmx.asm
 Performing Custom Build Step on .\Win32\rgb24toyv12_xmm.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\rgb24toyv12_xmm.asm
+Assembling: .\Win32\rgb24toyv12_xmm.asm
 Performing Custom Build Step on .\Win32\rgb24toyv12_mmx.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\Win32\rgb24toyv12_mmx.asm
+Assembling: .\Win32\rgb24toyv12_mmx.asm
 Creating temporary file "C:\tmp\RSPB1A.tmp" with contents
 [
 /nologo /out:"..\..\lib\win32\debug\s_cconv.lib" 
@@ -856,22 +856,22 @@ Performing Custom Build Step on .\cx\Win32\XmmSAD.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\cx\Win32\XmmSAD.asm
+Assembling: .\cx\Win32\XmmSAD.asm
 Performing Custom Build Step on .\CX\Win32\XmmGetSAD8.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\CX\Win32\XmmGetSAD8.asm
+Assembling: .\CX\Win32\XmmGetSAD8.asm
 Performing Custom Build Step on .\cx\Win32\XmmGetError.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\cx\Win32\XmmGetError.asm
+Assembling: .\cx\Win32\XmmGetError.asm
 Performing Custom Build Step on .\cx\Win32\MmxEncodeMath.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\cx\Win32\MmxEncodeMath.asm
+Assembling: .\cx\Win32\MmxEncodeMath.asm
 Creating temporary file "C:\tmp\RSPB2C.tmp" with contents
 [
 /nologo /out:"..\..\..\..\Lib\Win32\Release\s_vp60e.lib" 
@@ -987,22 +987,22 @@ Performing Custom Build Step on .\cx\Win32\XmmSAD.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\cx\Win32\XmmSAD.asm
+Assembling: .\cx\Win32\XmmSAD.asm
 Performing Custom Build Step on .\CX\Win32\XmmGetSAD8.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\CX\Win32\XmmGetSAD8.asm
+Assembling: .\CX\Win32\XmmGetSAD8.asm
 Performing Custom Build Step on .\cx\Win32\XmmGetError.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\cx\Win32\XmmGetError.asm
+Assembling: .\cx\Win32\XmmGetError.asm
 Performing Custom Build Step on .\cx\Win32\MmxEncodeMath.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\cx\Win32\MmxEncodeMath.asm
+Assembling: .\cx\Win32\MmxEncodeMath.asm
 Creating temporary file "C:\tmp\RSPB32.tmp" with contents
 [
 /nologo /out:"..\..\..\..\Lib\Win32\Debug\s_vp60e.lib" 
@@ -1465,62 +1465,62 @@ Performing Custom Build Step on .\wx86\const.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\const.asm
+Assembling: .\wx86\const.asm
 Performing Custom Build Step on .\wx86\bcy00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcy00.asm
+Assembling: .\wx86\bcy00.asm
 Performing Custom Build Step on .\wx86\bcu00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcu00.asm
+Assembling: .\wx86\bcu00.asm
 Performing Custom Build Step on .\wx86\bct10.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bct10.asm
+Assembling: .\wx86\bct10.asm
 Performing Custom Build Step on .\wx86\bct00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bct00.asm
+Assembling: .\wx86\bct00.asm
 Performing Custom Build Step on .\wx86\bcs10.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcs10.asm
+Assembling: .\wx86\bcs10.asm
 Performing Custom Build Step on .\wx86\bcs00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcs00.asm
+Assembling: .\wx86\bcs00.asm
 Performing Custom Build Step on .\wx86\bcf10.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcf10.asm
+Assembling: .\wx86\bcf10.asm
 Performing Custom Build Step on .\wx86\bcf00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcf00.asm
+Assembling: .\wx86\bcf00.asm
 Performing Custom Build Step on .\wx86\bcd00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcd00.asm
+Assembling: .\wx86\bcd00.asm
 Performing Custom Build Step on .\wx86\bcc10.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcc10.asm
+Assembling: .\wx86\bcc10.asm
 Performing Custom Build Step on .\wx86\bcc00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcc00.asm
+Assembling: .\wx86\bcc00.asm
 Creating temporary file "C:\tmp\RSPB49.tmp" with contents
 [
 /nologo /out:"..\..\..\Lib\Win32\Release\s_vpxblit.lib" 
@@ -1675,62 +1675,62 @@ Performing Custom Build Step on .\wx86\const.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\const.asm
+Assembling: .\wx86\const.asm
 Performing Custom Build Step on .\wx86\bcy00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcy00.asm
+Assembling: .\wx86\bcy00.asm
 Performing Custom Build Step on .\wx86\bcu00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcu00.asm
+Assembling: .\wx86\bcu00.asm
 Performing Custom Build Step on .\wx86\bct10.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bct10.asm
+Assembling: .\wx86\bct10.asm
 Performing Custom Build Step on .\wx86\bct00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bct00.asm
+Assembling: .\wx86\bct00.asm
 Performing Custom Build Step on .\wx86\bcs10.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcs10.asm
+Assembling: .\wx86\bcs10.asm
 Performing Custom Build Step on .\wx86\bcs00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcs00.asm
+Assembling: .\wx86\bcs00.asm
 Performing Custom Build Step on .\wx86\bcf10.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcf10.asm
+Assembling: .\wx86\bcf10.asm
 Performing Custom Build Step on .\wx86\bcf00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcf00.asm
+Assembling: .\wx86\bcf00.asm
 Performing Custom Build Step on .\wx86\bcd00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcd00.asm
+Assembling: .\wx86\bcd00.asm
 Performing Custom Build Step on .\wx86\bcc10.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcc10.asm
+Assembling: .\wx86\bcc10.asm
 Performing Custom Build Step on .\wx86\bcc00.asm
 Microsoft (R) Macro Assembler Version 6.15.8803
 Copyright (C) Microsoft Corp 1981-2000.  All rights reserved.
 
- Assembling: .\wx86\bcc00.asm
+Assembling: .\wx86\bcc00.asm
 Creating temporary file "C:\tmp\RSPB58.tmp" with contents
 [
 /nologo /out:"..\..\..\Lib\Win32\Debug\s_vpxblit.lib" 

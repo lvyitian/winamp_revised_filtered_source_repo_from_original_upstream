@@ -4,7 +4,7 @@
 
 #define CBCLASS svc_xmlProviderI
 START_DISPATCH;
-  CB(TESTDESC, testDesc);
-  CB(GETXMLDATA, getXmlData);
+CB(TESTDESC, testDesc);
+CB(GETXMLDATA, getXmlData);
 END_DISPATCH;
 #undef CBCLASS

@@ -1,48 +1,48 @@
-/*
- * ITTools.h
- * ---------
- * Purpose: Definition of IT file structures and helper functions
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-
-#pragma once
-
-#include "openmpt/all/BuildSettings.hpp"
-
-#include "../soundlib/ModInstrument.h"
-#include "../soundlib/ModSample.h"
-#include "../soundlib/SampleIO.h"
-
-OPENMPT_NAMESPACE_BEGIN
-
-struct ITFileHeader
-{
+		/*
+        * ITTools.h
+        * ---------
+        * Purpose: Definition of IT file structures and helper functions
+        * Notes  : (currently none)
+        * Authors: OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		
+		#pragma once
+		
+		#include "openmpt/all/BuildSettings.hpp"
+		
+		#include "../soundlib/ModInstrument.h"
+		#include "../soundlib/ModSample.h"
+		#include "../soundlib/SampleIO.h"
+		
+		OPENMPT_NAMESPACE_BEGIN
+		
+		struct ITFileHeader
+		{
 	// Header Flags
 	enum ITHeaderFlags
 	{
-		useStereoPlayback		= 0x01,
-		vol0Optimisations		= 0x02,
-		instrumentMode			= 0x04,
-		linearSlides			= 0x08,
-		itOldEffects			= 0x10,
-		itCompatGxx				= 0x20,
-		useMIDIPitchController	= 0x40,
-		reqEmbeddedMIDIConfig	= 0x80,
-		extendedFilterRange		= 0x1000,
+useStereoPlayback		= 0x01,
+vol0Optimisations		= 0x02,
+instrumentMode			= 0x04,
+linearSlides			= 0x08,
+itOldEffects			= 0x10,
+itCompatGxx				= 0x20,
+useMIDIPitchController	= 0x40,
+reqEmbeddedMIDIConfig	= 0x80,
+extendedFilterRange		= 0x1000,
 	};
-
+		
 	// Special Flags
 	enum ITHeaderSpecialFlags
 	{
-		embedSongMessage		= 0x01,
-		embedEditHistory		= 0x02,
-		embedPatternHighlights	= 0x04,
-		embedMIDIConfiguration	= 0x08,
+embedSongMessage		= 0x01,
+embedEditHistory		= 0x02,
+embedPatternHighlights	= 0x04,
+embedMIDIConfiguration	= 0x08,
 	};
-
+		
 	char     id[4];				// Magic Bytes (IMPM)
 	char     songname[26];		// Song Name, null-terminated (but may also contain nulls)
 	uint8le  highlight_minor;	// Rows per Beat highlight
@@ -66,29 +66,29 @@ struct ITFileHeader
 	uint32le reserved;			// Some IT versions save an edit timer here. ChibiTracker writes "CHBI" here. OpenMPT and Schism Tracker save extended version information here.
 	uint8le  chnpan[64];		// Initial Channel Panning
 	uint8le  chnvol[64];		// Initial Channel Volume
-};
-
-MPT_BINARY_STRUCT(ITFileHeader, 192)
-
-
-struct ITEnvelope
-{
+		};
+		
+		MPT_BINARY_STRUCT(ITFileHeader, 192)
+		
+		
+		struct ITEnvelope
+		{
 	// Envelope Flags
 	enum ITEnvelopeFlags
 	{
-		envEnabled	= 0x01,
-		envLoop		= 0x02,
-		envSustain	= 0x04,
-		envCarry	= 0x08,
-		envFilter	= 0x80,
+envEnabled	= 0x01,
+envLoop		= 0x02,
+envSustain	= 0x04,
+envCarry	= 0x08,
+envFilter	= 0x80,
 	};
-
+		
 	struct Node
 	{
-		int8le   value;
-		uint16le tick;
+int8le   value;
+uint16le tick;
 	};
-
+		
 	uint8 flags;	// Envelope Flags
 	uint8 num;		// Number of Envelope Nodes
 	uint8 lpb;		// Loop Start
@@ -97,27 +97,27 @@ struct ITEnvelope
 	uint8 sle;		// Sustain End
 	Node  data[25];	// Envelope Node Positions / Values
 	uint8 reserved;	// Reserved
-
+		
 	// Convert OpenMPT's internal envelope format to an IT/MPTM envelope.
 	void ConvertToIT(const InstrumentEnvelope &mptEnv, uint8 envOffset, uint8 envDefault);
 	// Convert IT/MPTM envelope data into OpenMPT's internal envelope format - To be used by ITInstrToMPT()
 	void ConvertToMPT(InstrumentEnvelope &mptEnv, uint8 envOffset, uint8 maxNodes) const;
-};
-
-MPT_BINARY_STRUCT(ITEnvelope::Node, 3)
-MPT_BINARY_STRUCT(ITEnvelope, 82)
-
-
-// Old Impulse Instrument Format (cmwt < 0x200)
-struct ITOldInstrument
-{
+		};
+		
+		MPT_BINARY_STRUCT(ITEnvelope::Node, 3)
+		MPT_BINARY_STRUCT(ITEnvelope, 82)
+		
+		
+		// Old Impulse Instrument Format (cmwt < 0x200)
+		struct ITOldInstrument
+		{
 	enum ITOldInstrFlags
 	{
-		envEnabled	= 0x01,
-		envLoop		= 0x02,
-		envSustain	= 0x04,
+envEnabled	= 0x01,
+envLoop		= 0x02,
+envSustain	= 0x04,
 	};
-
+		
 	char     id[4];			// Magic Bytes (IMPI)
 	char     filename[13];	// DOS Filename, null-terminated
 	uint8le  flags;			// Volume Envelope Flags
@@ -137,24 +137,24 @@ struct ITOldInstrument
 	uint8le  keyboard[240];	// Sample / Transpose map
 	uint8le  volenv[200];	// This appears to be a pre-computed (interpolated) version of the volume envelope data found below.
 	uint8le  nodes[25 * 2];	// Volume Envelope Node Positions / Values
-
+		
 	// Convert an ITOldInstrument to OpenMPT's internal instrument representation.
 	void ConvertToMPT(ModInstrument &mptIns) const;
-};
-
-MPT_BINARY_STRUCT(ITOldInstrument, 554)
-
-
-// Impulse Instrument Format
-struct ITInstrument
-{
+		};
+		
+		MPT_BINARY_STRUCT(ITOldInstrument, 554)
+		
+		
+		// Impulse Instrument Format
+		struct ITInstrument
+		{
 	enum ITInstrumentFlags
 	{
-		ignorePanning	= 0x80,
-		enableCutoff	= 0x80,
-		enableResonance	= 0x80,
+ignorePanning	= 0x80,
+enableCutoff	= 0x80,
+enableResonance	= 0x80,
 	};
-
+		
 	char     id[4];			// Magic Bytes (IMPI)
 	char     filename[13];	// DOS Filename, null-terminated
 	uint8le  nna;			// New Note Action
@@ -181,19 +181,19 @@ struct ITInstrument
 	ITEnvelope panenv;		// Pan Envelope
 	ITEnvelope pitchenv;	// Pitch / Filter Envelope
 	char       dummy[4];	// IT saves some additional padding bytes to match the size of the old instrument format for simplified loading. We use them for some hacks.
-
+		
 	// Convert OpenMPT's internal instrument representation to an ITInstrument. Returns amount of bytes that need to be written.
 	uint32 ConvertToIT(const ModInstrument &mptIns, bool compatExport, const CSoundFile &sndFile);
 	// Convert an ITInstrument to OpenMPT's internal instrument representation. Returns size of the instrument data that has been read.
 	uint32 ConvertToMPT(ModInstrument &mptIns, MODTYPE fromType) const;
-};
-
-MPT_BINARY_STRUCT(ITInstrument, 554)
-
-
-// MPT IT Instrument Extension
-struct ITInstrumentEx
-{
+		};
+		
+		MPT_BINARY_STRUCT(ITInstrument, 554)
+		
+		
+		// MPT IT Instrument Extension
+		struct ITInstrumentEx
+		{
 	ITInstrument iti;		// Normal IT Instrument
 	uint8 keyboardhi[120];	// High Byte of Sample map
 	
@@ -201,44 +201,44 @@ struct ITInstrumentEx
 	uint32 ConvertToIT(const ModInstrument &mptIns, bool compatExport, const CSoundFile &sndFile);
 	// Convert an ITInstrumentEx to OpenMPT's internal instrument representation. Returns size of the instrument data that has been read.
 	uint32 ConvertToMPT(ModInstrument &mptIns, MODTYPE fromType) const;
-};
-
-MPT_BINARY_STRUCT(ITInstrumentEx, sizeof(ITInstrument) + 120)
-
-
-// IT Sample Format
-struct ITSample
-{
+		};
+		
+		MPT_BINARY_STRUCT(ITInstrumentEx, sizeof(ITInstrument) + 120)
+		
+		
+		// IT Sample Format
+		struct ITSample
+		{
 	// Magic Bytes
 	enum Magic
 	{
-		magic = 0x53504D49,	// "IMPS" IT Sample Header Magic Bytes
+magic = 0x53504D49,	// "IMPS" IT Sample Header Magic Bytes
 	};
-
+		
 	enum ITSampleFlags
 	{
-		sampleDataPresent	= 0x01,
-		sample16Bit			= 0x02,
-		sampleStereo		= 0x04,
-		sampleCompressed	= 0x08,
-		sampleLoop			= 0x10,
-		sampleSustain		= 0x20,
-		sampleBidiLoop		= 0x40,
-		sampleBidiSustain	= 0x80,
-
-		enablePanning		= 0x80,
-
-		cvtSignedSample		= 0x01,
-		cvtOPLInstrument	= 0x40,		// FM instrument in MPTM
-		cvtExternalSample	= 0x80,		// Keep MPTM sample on disk
-		cvtADPCMSample		= 0xFF,		// MODPlugin :(
-
-		// ITTECH.TXT says these convert flags are "safe to ignore". IT doesn't ignore them, though, so why should we? :)
-		cvtBigEndian		= 0x02,
-		cvtDelta			= 0x04,
-		cvtPTM8to16			= 0x08,
+sampleDataPresent	= 0x01,
+sample16Bit			= 0x02,
+sampleStereo		= 0x04,
+sampleCompressed	= 0x08,
+sampleLoop			= 0x10,
+sampleSustain		= 0x20,
+sampleBidiLoop		= 0x40,
+sampleBidiSustain	= 0x80,
+		
+enablePanning		= 0x80,
+		
+cvtSignedSample		= 0x01,
+cvtOPLInstrument	= 0x40,		// FM instrument in MPTM
+cvtExternalSample	= 0x80,		// Keep MPTM sample on disk
+cvtADPCMSample		= 0xFF,		// MODPlugin :(
+		
+// ITTECH.TXT says these convert flags are "safe to ignore". IT doesn't ignore them, though, so why should we? :)
+cvtBigEndian		= 0x02,
+cvtDelta			= 0x04,
+cvtPTM8to16			= 0x08,
 	};
-
+		
 	char     id[4];			// Magic Bytes (IMPS)
 	char     filename[13];	// DOS Filename, null-terminated
 	uint8le  gvl;			// Global Volume
@@ -258,66 +258,67 @@ struct ITSample
 	uint8le  vid;			// Auto-Vibrato Depth
 	uint8le  vir;			// Auto-Vibrato Sweep (called Rate in IT)
 	uint8le  vit;			// Auto-Vibrato Type
-
+		
 	// Convert OpenMPT's internal sample representation to an ITSample.
 	void ConvertToIT(const ModSample &mptSmp, MODTYPE fromType, bool compress, bool compressIT215, bool allowExternal);
 	// Convert an ITSample to OpenMPT's internal sample representation.
 	uint32 ConvertToMPT(ModSample &mptSmp) const;
 	// Retrieve the internal sample format flags for this instrument.
 	SampleIO GetSampleFormat(uint16 cwtv = 0x214) const;
-};
-
-MPT_BINARY_STRUCT(ITSample, 80)
-
-
-struct FileHistory;
-
-// IT Header extension: Save history
-struct ITHistoryStruct
-{
+		};
+		
+		MPT_BINARY_STRUCT(ITSample, 80)
+		
+		
+		struct FileHistory;
+		
+		// IT Header extension: Save history
+		struct ITHistoryStruct
+		{
 	uint16le fatdate;  // DOS / FAT date when the file was opened / created in the editor. For details, read https://docs.microsoft.com/de-de/windows/win32/api/winbase/nf-winbase-dosdatetimetofiletime
 	uint16le fattime;  // DOS / FAT time when the file was opened / created in the editor.
 	uint32le runtime;  // The time how long the file was open in the editor, in 1/18.2th seconds. (= ticks of the DOS timer)
-
+		
 	// Convert an ITHistoryStruct to OpenMPT's internal edit history representation
 	void ConvertToMPT(FileHistory &mptHistory) const;
 	// Convert OpenMPT's internal edit history representation to an ITHistoryStruct
 	void ConvertToIT(const FileHistory &mptHistory);
-
-};
-
-MPT_BINARY_STRUCT(ITHistoryStruct, 8)
-
-
-enum IT_ReaderBitMasks
-{
+		
+		};
+		
+		MPT_BINARY_STRUCT(ITHistoryStruct, 8)
+		
+		
+		enum IT_ReaderBitMasks
+		{
 	// pattern row parsing, the channel data is read to obtain
 	// number of channels active in the pattern. These bit masks are
 	// to blank out sections of the byte of data being read.
-
+		
 	IT_bitmask_patternChanField_c   = 0x7f,
 	IT_bitmask_patternChanMask_c    = 0x3f,
 	IT_bitmask_patternChanEnabled_c = 0x80,
 	IT_bitmask_patternChanUsed_c    = 0x0f
-};
-
-
-// Calculate Schism Tracker version field for IT / S3M header based on specified release date
-// Date calculation derived from https://alcor.concordia.ca/~gpkatch/gdate-algorithm.html
-template<int32 y, int32 m, int32 d>
-struct SchismVersionFromDate
-{
-private:
+		};
+		
+		
+		// Calculate Schism Tracker version field for IT / S3M header based on specified release date
+		// Date calculation derived from https://alcor.concordia.ca/~gpkatch/gdate-algorithm.html
+		template<int32 y, int32 m, int32 d>
+		struct SchismVersionFromDate
+		{
+		private:
 	static constexpr int32 mm = (m + 9) % 12;
 	static constexpr int32 yy = y - mm / 10;
-
-public:
+		
+		public:
 	static constexpr int32 date = yy * 365 + yy / 4 - yy / 100 + yy / 400 + (mm * 306 + 5) / 10 + (d - 1);
-};
-
-inline constexpr int32 SchismTrackerEpoch = SchismVersionFromDate<2009, 10, 31>::date;
-
-
-uint32 DecodeITEditTimer(uint16 cwtv, uint32 editTime);
-
-OPENMPT_NAMESPACE_END
+		};
+		
+		inline constexpr int32 SchismTrackerEpoch = SchismVersionFromDate<2009, 10, 31>::date;
+		
+		
+		uint32 DecodeITEditTimer(uint16 cwtv, uint32 editTime);
+		
+		OPENMPT_NAMESPACE_END
+		

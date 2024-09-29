@@ -8,11 +8,11 @@ class ifc_xmlreaderparams;
 class SkinVersionXmlReader : public ifc_xmlreadercallbackI
 {
 public:
-  SkinVersionXmlReader(const wchar_t *skinname);
-  void xmlReaderOnStartElementCallback(const wchar_t *xmlpath, const wchar_t *xmltag, ifc_xmlreaderparams *params);
-  const wchar_t *getWalVersion();
+SkinVersionXmlReader(const wchar_t *skinname);
+void xmlReaderOnStartElementCallback(const wchar_t *xmlpath, const wchar_t *xmltag, ifc_xmlreaderparams *params);
+const wchar_t *getWalVersion();
 private:
-  StringW walversion;
+StringW walversion;
 };
 
 #endif

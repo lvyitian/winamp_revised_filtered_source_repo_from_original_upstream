@@ -6,17 +6,17 @@
 #define SEEKER_PARENT SliderWnd
 class Seeker : public SliderWnd {
 public:
-  Seeker();
-  virtual ~Seeker();
+Seeker();
+virtual ~Seeker();
 
-  virtual int onInit();
-  virtual int onResize();
+virtual int onInit();
+virtual int onResize();
 
 protected:
-  virtual int onSetFinalPosition();
+virtual int onSetFinalPosition();
 
-  // from BaseWnd
-  virtual void timerCallback(int id);
+// from BaseWnd
+virtual void timerCallback(int id);
 };
 
 #endif

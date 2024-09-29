@@ -11,10 +11,10 @@
 #include <memory.h>
 #include <string.h>
 static __inline int operator ==(const GUID &a, const GUID &b) {
-  return !memcmp(&a, &b, sizeof(GUID));
+return !memcmp(&a, &b, sizeof(GUID));
 }
 static __inline int operator !=(const GUID &a, const GUID &b) {
-  return !!memcmp(&a, &b, sizeof(GUID));
+return !!memcmp(&a, &b, sizeof(GUID));
 }
 #endif	//GUID_EQUALS_DEFINED
 #endif	//__cplusplus
@@ -24,7 +24,7 @@ static __inline int operator !=(const GUID &a, const GUID &b) {
 
 #ifdef __cplusplus
 static __inline int operator <(const GUID &a, const GUID &b) {
-  return memcmp(&a, &b, sizeof(GUID)) < 0;
+return memcmp(&a, &b, sizeof(GUID)) < 0;
 }
 #endif
 

@@ -21,12 +21,12 @@ Premake 4.0 or later.
 ```lua
 -- Add "-d" to debug versions of files
 filter { "configurations:Debug" }
-   targetsuffix "-d"
+targetsuffix "-d"
 ```
 
 ### See Also ###
 
- * [targetname](targetname.md)
- * [targetdir](targetdir.md)
- * [targetextension](targetextension.md)
- * [targetprefix](targetprefix.md)
+* [targetname](targetname.md)
+* [targetdir](targetdir.md)
+* [targetextension](targetextension.md)
+* [targetprefix](targetprefix.md)

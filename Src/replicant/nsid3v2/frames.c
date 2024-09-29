@@ -1,11 +1,11 @@
-#include "frames.h"
-
-/* this is a .c file to shut up GCC which doesn't like to convert from int8_t to char */
-
-/* order needs to match the enum in nsid3v2.h */
-
-const FrameID frame_ids[] =
-{
+		#include "frames.h"
+		
+		/* this is a .c file to shut up GCC which doesn't like to convert from int8_t to char */
+		
+		/* order needs to match the enum in nsid3v2.h */
+		
+		const FrameID frame_ids[] =
+		{
 	{FRAMEID("PIC"), FRAMEID("APIC"), FRAMEID("APIC")},
 	{FRAMEID("COM"), FRAMEID("COMM"), FRAMEID("COMM")},
 	{FRAMEID("POP"), FRAMEID("POPM"), FRAMEID("POPM")},
@@ -30,9 +30,9 @@ const FrameID frame_ids[] =
 	{FRAMEID("TMT"), FRAMEID("TMED"), FRAMEID("TMED")},
 	{FRAMEID(0), FRAMEID(0), FRAMEID("TMOO")},
 	{FRAMEID(0), FRAMEID("TOAL"), FRAMEID("TOAL")},
-
+		
 	{FRAMEID("TOA"), FRAMEID("TOPE"), FRAMEID("TOPE")},
-
+		
 	{FRAMEID("TP1"), FRAMEID("TPE1"), FRAMEID("TPE1")},
 	{FRAMEID("TP2"), FRAMEID("TPE2"), FRAMEID("TPE2")},
 	{FRAMEID("TP3"), FRAMEID("TPE3"), FRAMEID("TPE3")},
@@ -41,21 +41,22 @@ const FrameID frame_ids[] =
 	{FRAMEID("TPB"), FRAMEID("TPUB"), FRAMEID("TPUB")},
 	{FRAMEID("TRK"), FRAMEID("TRCK"), FRAMEID("TRCK")},
 	{FRAMEID("TRD"), FRAMEID("TRDA"), FRAMEID("TRDA")},
-
+		
 	{FRAMEID("TRC"), FRAMEID("TSRC"), FRAMEID("TSRC")},
 	{FRAMEID("TSS"), FRAMEID("TSSE"), FRAMEID("TSSE")},
 	{FRAMEID("TYE"), FRAMEID("TYER"), FRAMEID("TYER")},
-
+		
 	{FRAMEID("TXX"), FRAMEID("TXXX"), FRAMEID("TXXX")},
 	{FRAMEID("UFI"), FRAMEID("UFID"), FRAMEID("UFID")},
-
-};
-
-int ValidFrameID(int id)
-{
+		
+		};
+		
+		int ValidFrameID(int id)
+		{
 	if (id < 0)
-		return 0;
+return 0;
 	if (id >= (sizeof(frame_ids) / sizeof(*frame_ids)))
-		return 0;
+return 0;
 	return 1;
-}
+		}
+		

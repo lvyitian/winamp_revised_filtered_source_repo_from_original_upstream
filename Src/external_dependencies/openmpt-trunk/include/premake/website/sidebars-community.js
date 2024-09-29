@@ -1,7 +1,8 @@
-module.exports = {
+		module.exports = {
 	community: [
-		'support',
-		'showcase',
-		'modules'
+'support',
+'showcase',
+'modules'
 	]
-};
+		};
+		

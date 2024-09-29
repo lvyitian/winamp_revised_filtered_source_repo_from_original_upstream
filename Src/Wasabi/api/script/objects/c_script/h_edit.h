@@ -11,27 +11,27 @@ class H_Edit : public H_EDIT_PARENT {
 
 public:
 
-  H_Edit(ScriptObject *o);
-  H_Edit();
-  virtual ~H_Edit();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_Edit(ScriptObject *o);
+H_Edit();
+virtual ~H_Edit();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onEnter() {  }
-  virtual void hook_onAbort() {  }
-  virtual void hook_onIdleEditUpdate() {  }
-  virtual void hook_onEditUpdate() {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onEnter() {  }
+virtual void hook_onAbort() {  }
+virtual void hook_onIdleEditUpdate() {  }
+virtual void hook_onEditUpdate() {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onenter_id;
-  static int onabort_id;
-  static int onidleeditupdate_id;
-  static int oneditupdate_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onenter_id;
+static int onabort_id;
+static int onidleeditupdate_id;
+static int oneditupdate_id;
 };
 
 #endif

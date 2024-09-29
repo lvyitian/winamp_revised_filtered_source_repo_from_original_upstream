@@ -1,56 +1,56 @@
-/*
- * CleanupSong.h
- * ---------------
- * Purpose: Dialog for cleaning up modules (rearranging, removing unused items).
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-
-#pragma once
-
-#include "openmpt/all/BuildSettings.hpp"
-
-OPENMPT_NAMESPACE_BEGIN
-
-class CModCleanupDlg: public CDialog
-{
-private:
+		/*
+        * CleanupSong.h
+        * ---------------
+        * Purpose: Dialog for cleaning up modules (rearranging, removing unused items).
+        * Notes  : (currently none)
+        * Authors: OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		
+		#pragma once
+		
+		#include "openmpt/all/BuildSettings.hpp"
+		
+		OPENMPT_NAMESPACE_BEGIN
+		
+		class CModCleanupDlg: public CDialog
+		{
+		private:
 	enum CleanupOptions
 	{
-		// patterns
-		kCleanupPatterns = 0,
-		kRemovePatterns,
-		kRearrangePatterns,
-		kRemoveDuplicatePatterns,
-		// orders
-		kMergeSequences,
-		kRemoveOrders,
-		// samples
-		kCleanupSamples,
-		kRemoveSamples,
-		kRearrangeSamples,
-		kOptimizeSamples,
-		// instruments
-		kCleanupInstruments,
-		kRemoveAllInstruments,
-		// plugins
-		kCleanupPlugins,
-		kRemoveAllPlugins,
-		// misc
-		kResetVariables,
-		kCleanupChannels,
-
-		kNone,
-		kMaxCleanupOptions = kNone
+// patterns
+kCleanupPatterns = 0,
+kRemovePatterns,
+kRearrangePatterns,
+kRemoveDuplicatePatterns,
+// orders
+kMergeSequences,
+kRemoveOrders,
+// samples
+kCleanupSamples,
+kRemoveSamples,
+kRearrangeSamples,
+kOptimizeSamples,
+// instruments
+kCleanupInstruments,
+kRemoveAllInstruments,
+// plugins
+kCleanupPlugins,
+kRemoveAllPlugins,
+// misc
+kResetVariables,
+kCleanupChannels,
+		
+kNone,
+kMaxCleanupOptions = kNone
 	};
-
+		
 	CModDoc &modDoc;
 	static bool m_CheckBoxes[kMaxCleanupOptions]; // Checkbox state
 	static const WORD m_CleanupIDtoDlgID[kMaxCleanupOptions]; // Checkbox -> Control ID LUT
 	static const CleanupOptions m_MutuallyExclusive[kMaxCleanupOptions]; // Options that are mutually exclusive to each other.
-
+		
 	// Actual cleanup implementations:
 	// Patterns
 	bool RemoveDuplicatePatterns();
@@ -74,24 +74,25 @@ private:
 	// Misc
 	bool ResetVariables(); // Turn module into samplepack (convert to IT, remove patterns, etc.)
 	bool RemoveUnusedChannels();
-
-public:
+		
+		public:
 	CModCleanupDlg(CModDoc &modParent, CWnd *parent) : CDialog(IDD_CLEANUP_SONG, parent), modDoc(modParent) { }
-
-protected:
+		
+		protected:
 	//{{AFX_VIRTUAL(CModCleanupDlg)
 	virtual BOOL OnInitDialog();
 	virtual void OnOK();
 	//}}AFX_VIRTUAL
-
+		
 	BOOL OnToolTipNotify(UINT id, NMHDR* pNMHDR, LRESULT* pResult);
-
+		
 	//{{AFX_MSG(CModCleanupDlg)
 	afx_msg void OnPresetCleanupSong();
 	afx_msg void OnPresetCompoCleanup();
 	afx_msg void OnVerifyMutualExclusive();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
-};
-
-OPENMPT_NAMESPACE_END
+		};
+		
+		OPENMPT_NAMESPACE_END
+		

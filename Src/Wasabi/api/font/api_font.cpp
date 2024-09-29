@@ -6,6 +6,6 @@
 #endif
 #define CBCLASS api_fontI
 START_DISPATCH;
-  VCB(API_FONT_FONT_TEXTOUT, font_textOut);
-  CB(API_FONT_FONT_GETINFO, font_getInfo);
+VCB(API_FONT_FONT_TEXTOUT, font_textOut);
+CB(API_FONT_FONT_GETINFO, font_getInfo);
 END_DISPATCH;

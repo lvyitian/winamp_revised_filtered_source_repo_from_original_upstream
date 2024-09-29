@@ -9,32 +9,32 @@
 
 class C_Text : public C_TEXT_PARENT 
 {
-  public:
+public:
 
-  C_Text(ScriptObject *object);
-  C_Text();
-  virtual ~C_Text();
+C_Text(ScriptObject *object);
+C_Text();
+virtual ~C_Text();
 
-  virtual void C_hook(ScriptObject *o);
+virtual void C_hook(ScriptObject *o);
 
-  ScriptObject *getScriptObject();
+ScriptObject *getScriptObject();
 
-  virtual void setText(const wchar_t *txt);
-  virtual void setAlternateText(const wchar_t *txt);
-  virtual const wchar_t *getText();
-  virtual int getTextWidth();
-  virtual void onTextChanged(const wchar_t *newtxt);
+virtual void setText(const wchar_t *txt);
+virtual void setAlternateText(const wchar_t *txt);
+virtual const wchar_t *getText();
+virtual int getTextWidth();
+virtual void onTextChanged(const wchar_t *newtxt);
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int settext_id;
-  static int setalternatetext_id;
-  static int gettext_id;
-  static int gettextwidth_id;
-  static int ontextchanged_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int settext_id;
+static int setalternatetext_id;
+static int gettext_id;
+static int gettextwidth_id;
+static int ontextchanged_id;
 };
 
 #endif

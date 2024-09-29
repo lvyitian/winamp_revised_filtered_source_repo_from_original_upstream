@@ -1,5 +1,5 @@
 /* Copyright (c) INRIA and Microsoft Corporation. All rights reserved.
-   Licensed under the Apache 2.0 License. */
+Licensed under the Apache 2.0 License. */
 
 #ifndef KRML_TYPES_H
 #define KRML_TYPES_H
@@ -9,8 +9,8 @@
 #include <stdlib.h>
 
 /* Types which are either abstract, meaning that have to be implemented in C, or
- * which are models, meaning that they are swapped out at compile-time for
- * hand-written C types (in which case they're marked as noextract). */
+* which are models, meaning that they are swapped out at compile-time for
+* hand-written C types (in which case they're marked as noextract). */
 
 typedef uint64_t FStar_UInt64_t, FStar_UInt64_t_;
 typedef int64_t FStar_Int64_t, FStar_Int64_t_;
@@ -22,7 +22,7 @@ typedef uint8_t FStar_UInt8_t, FStar_UInt8_t_;
 typedef int8_t FStar_Int8_t, FStar_Int8_t_;
 
 /* Only useful when building Kremlib, because it's in the dependency graph of
- * FStar.Int.Cast. */
+* FStar.Int.Cast. */
 typedef uint64_t FStar_UInt63_t, FStar_UInt63_t_;
 typedef int64_t FStar_Int63_t, FStar_Int63_t_;
 
@@ -42,8 +42,8 @@ typedef unsigned long long TestLib_cycles;
 typedef uint64_t FStar_Date_dateTime, FStar_Date_timeSpan;
 
 /* The uint128 type is a special case since we offer several implementations of
- * it, depending on the compiler and whether the user wants the verified
- * implementation or not. */
+* it, depending on the compiler and whether the user wants the verified
+* implementation or not. */
 #if !defined(KRML_VERIFIED_UINT128) && defined(_MSC_VER) && defined(_M_X64)
 #  include <emmintrin.h>
 typedef __m128i FStar_UInt128_uint128;
@@ -51,8 +51,8 @@ typedef __m128i FStar_UInt128_uint128;
 typedef unsigned __int128 FStar_UInt128_uint128;
 #else
 typedef struct FStar_UInt128_uint128_s {
-  uint64_t low;
-  uint64_t high;
+uint64_t low;
+uint64_t high;
 } FStar_UInt128_uint128;
 #endif
 

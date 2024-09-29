@@ -22,7 +22,7 @@ Specify `MSVCRT.lib` as a default library to ignore.
 
 ```lua
 project "MyProject"
-  ignoredefaultlibraries { "MSVCRT" }
+ignoredefaultlibraries { "MSVCRT" }
 ```
 
 ## See Also ##

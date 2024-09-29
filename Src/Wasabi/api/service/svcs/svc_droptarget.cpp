@@ -4,8 +4,8 @@
 
 #define CBCLASS svc_dropTargetI
 START_DISPATCH;
-  CB(TESTTARGET, testTarget);
-  CB(GETDRAGINTERFACEFORTYPE, getDragInterfaceForType);
-  CB(RELEASEDRAGINTERFACE, releaseDragInterface);
+CB(TESTTARGET, testTarget);
+CB(GETDRAGINTERFACEFORTYPE, getDragInterfaceForType);
+CB(RELEASEDRAGINTERFACE, releaseDragInterface);
 END_DISPATCH;
 #undef CBCLASS

@@ -30,7 +30,7 @@ You may also specify multiple file patterns using the table syntax.
 
 ```lua
 vpaths {
-   ["Headers"] = { "**.h", "**.hxx", "**.hpp" }
+["Headers"] = { "**.h", "**.hxx", "**.hpp" }
 }
 ```
 
@@ -56,8 +56,8 @@ And of course, you can specify more than one rule at a time.
 
 ```lua
 vpaths {
-   ["Headers"] = "**.h",
-   ["Sources/*"] = {"**.c", "**.cpp"},
-   ["Docs"] = "**.txt"
+["Headers"] = "**.h",
+["Sources/*"] = {"**.c", "**.cpp"},
+["Docs"] = "**.txt"
 }
 ```

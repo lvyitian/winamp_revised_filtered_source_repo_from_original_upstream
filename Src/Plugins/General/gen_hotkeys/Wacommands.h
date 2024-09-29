@@ -27,14 +27,14 @@ typedef void (*pfnWAC)();
 
 struct WACommand
 {
-  wchar_t *id;
-  char *name;
-  DWORD dwFlags;
-  UINT uMsg;
-  WPARAM wParam;
-  LPARAM lParam;
-  BOOL bEnabled;
-  HWND wnd;
+wchar_t *id;
+char *name;
+DWORD dwFlags;
+UINT uMsg;
+WPARAM wParam;
+LPARAM lParam;
+BOOL bEnabled;
+HWND wnd;
 };
 
 extern WACommand *WACommands;

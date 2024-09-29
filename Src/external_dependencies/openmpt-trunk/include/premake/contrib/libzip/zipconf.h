@@ -2,11 +2,11 @@
 #define _HAD_ZIPCONF_H
 
 /*
-   zipconf.h -- platform specific include file
+zipconf.h -- platform specific include file
 
-   This file was generated automatically by CMake
-   based on ../cmake-zipconf.h.in.
- */
+This file was generated automatically by CMake
+based on ../cmake-zipconf.h.in.
+*/
 
 /* #undef HAVE_INTTYPES_H_LIBZIP */
 #define HAVE_STDINT_H_LIBZIP

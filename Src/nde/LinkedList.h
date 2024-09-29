@@ -1,73 +1,73 @@
-/* ---------------------------------------------------------------------------
- Nullsoft Database Engine
- --------------------
- codename: Near Death Experience
- --------------------------------------------------------------------------- */
-
-/* ---------------------------------------------------------------------------
- 
- Double-Linked List Class Prototypes
- 
- --------------------------------------------------------------------------- */
-
-#ifndef __LINKEDLIST_H
-#define __LINKEDLIST_H
-
-class LinkedListEntry
-{
-public:
+		/* ---------------------------------------------------------------------------
+        Nullsoft Database Engine
+        --------------------
+        codename: Near Death Experience
+        --------------------------------------------------------------------------- */
+		
+		/* ---------------------------------------------------------------------------
+        
+        Double-Linked List Class Prototypes
+        
+        --------------------------------------------------------------------------- */
+		
+		#ifndef __LINKEDLIST_H
+		#define __LINKEDLIST_H
+		
+		class LinkedListEntry
+		{
+		public:
 	LinkedListEntry *Next;
 	LinkedListEntry *Previous;
-public:
+		public:
 	LinkedListEntry *GetNext() const;
 	LinkedListEntry *GetPrevious() const;
 	LinkedListEntry();
 	virtual ~LinkedListEntry();
-};
-
-template <class T> class VListEntry : public LinkedListEntry 
-{
-public:
+		};
+		
+		template <class T> class VListEntry : public LinkedListEntry 
+		{
+		public:
 	void SetVal(T val) 
 	{
-		Val = val;
+Val = val;
 	}
 	T GetVal(void) 
 	{
-		return Val;
+return Val;
 	}
 	
-private:
+		private:
 	T Val;
-};
-
-template <class T> class PListEntry : public LinkedListEntry 
-{
-public:
+		};
+		
+		template <class T> class PListEntry : public LinkedListEntry 
+		{
+		public:
 	void SetVal(T *val) 
 	{
-		Val = val;
+Val = val;
 	}
 	T *GetVal(void) 
 	{
-		return Val;
+return Val;
 	}
 	
-private:
+		private:
 	T *Val;
-};
-
-
-typedef bool (*WalkListProc)(LinkedListEntry *Entry, int, void*, void*);
-
-class LinkedList
-{
-protected:
+		};
+		
+		
+		typedef bool (*WalkListProc)(LinkedListEntry *Entry, int, void*, void*);
+		
+		class LinkedList
+		{
+		protected:
 	int NElements;
 	LinkedListEntry *Head;
 	LinkedListEntry *Foot;
 	
-public:
+		public:
 	LinkedList();
 	~LinkedList();
 	void AddEntry(LinkedListEntry *Entry, bool Cat);
@@ -77,6 +77,6 @@ public:
 	int GetNElements(void) { return NElements; }
 	LinkedListEntry *GetHead(void) { return Head; }
 	LinkedListEntry *GetFoot(void) { return Foot; }
-};
-
-#endif
+		};
+		
+		#endif

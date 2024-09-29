@@ -15,8 +15,8 @@
 
 #define CBCLASS api_syscbX
 START_DISPATCH;
-  CB(API_SYSCB_SYSCB_REGISTERCALLBACK, syscb_registerCallback);
-  CB(API_SYSCB_SYSCB_DEREGISTERCALLBACK, syscb_deregisterCallback);
-  CB(API_SYSCB_SYSCB_ISSUECALLBACK, syscb_issueCallback);
+CB(API_SYSCB_SYSCB_REGISTERCALLBACK, syscb_registerCallback);
+CB(API_SYSCB_SYSCB_DEREGISTERCALLBACK, syscb_deregisterCallback);
+CB(API_SYSCB_SYSCB_ISSUECALLBACK, syscb_issueCallback);
 END_DISPATCH;
 #undef CBCLASS

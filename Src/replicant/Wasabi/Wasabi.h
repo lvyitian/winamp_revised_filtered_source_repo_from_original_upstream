@@ -1,10 +1,11 @@
-#pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
-    
-int Wasabi_Init();
+	#pragma once
+	#ifdef __cplusplus
+	extern "C" {
+	#endif
 
-#ifdef __cplusplus
-}
-#endif
+	int Wasabi_Init();
+	
+	#ifdef __cplusplus
+	}
+	#endif
+	

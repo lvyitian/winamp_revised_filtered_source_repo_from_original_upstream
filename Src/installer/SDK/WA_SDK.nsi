@@ -5,64 +5,64 @@
 ;------------------------
 
 !ifndef VERSION
-  !define VERSION "5.9"
+!define VERSION "5.9"
 !endif
 
 !define PRODUCT_NAME "Winamp ${VERSION} SDK"
 
 ; This is where all projects live.  Ensure this is the correct relative path.  
 !ifndef PROJECTS
-  !define PROJECTS "..\.."
+!define PROJECTS "..\.."
 !endif
 
 ; Hinterland repo
 !ifndef Hinterland
-  !define Hinterland "..\..\..\..\Hinterland"
+!define Hinterland "..\..\..\..\Hinterland"
 !endif
 
 ; Path to SDK Plugins
 !ifndef SDKPlugins
-  !define SDKPlugins "..\..\Plugins\SDK"
+!define SDKPlugins "..\..\Plugins\SDK"
 !endif
 
 ; Path to Gen Plugins
 !ifndef GenPlugins
-  !define GenPlugins "..\..\Plugins\General"
+!define GenPlugins "..\..\Plugins\General"
 !endif
 
 ; Path to Input Plugins
 !ifndef InPlugins
-  !define InPlugins "..\..\Plugins\Input"
+!define InPlugins "..\..\Plugins\Input"
 !endif
 
 ; Path to Enc Plugins
 !ifndef EncPlugins
-  !define EncPlugins "..\..\Plugins\Encoder"
+!define EncPlugins "..\..\Plugins\Encoder"
 !endif
 
 ; Path to Library Plugins
 !ifndef LibPlugins
-  !define LibPlugins "..\..\Plugins\Library"
+!define LibPlugins "..\..\Plugins\Library"
 !endif
 
 ; Path to Output Plugins
 !ifndef OutPlugins
-  !define OutPlugins "..\..\Plugins\Output"
+!define OutPlugins "..\..\Plugins\Output"
 !endif
 
 ; Path to DSP Plugins
 !ifndef DSPPlugins
-  !define DSPPlugins "..\..\Plugins\DSP"
+!define DSPPlugins "..\..\Plugins\DSP"
 !endif
 
 ; Path to Portable Plugins
 !ifndef PortablePlugins
-  !define PortablePlugins "..\..\Plugins\Portable"
+!define PortablePlugins "..\..\Plugins\Portable"
 !endif
 
 ; Path to Vis Plugins
 !ifndef VisPlugins
-  !define VisPlugins "..\..\Plugins\Visualization"
+!define VisPlugins "..\..\Plugins\Visualization"
 !endif
 
 !define old_stuff_for_reference

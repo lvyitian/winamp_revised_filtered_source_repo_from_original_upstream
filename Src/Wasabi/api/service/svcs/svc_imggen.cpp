@@ -4,8 +4,8 @@
 
 #define CBCLASS svc_imageGeneratorI
 START_DISPATCH;
-  CB(TESTDESC, testDesc);
-  CB(GENIMAGE, genImage);
-  CB(OUTPUTCACHEABLE, outputCacheable);
+CB(TESTDESC, testDesc);
+CB(GENIMAGE, genImage);
+CB(OUTPUTCACHEABLE, outputCacheable);
 END_DISPATCH;
 #undef CBCLASS

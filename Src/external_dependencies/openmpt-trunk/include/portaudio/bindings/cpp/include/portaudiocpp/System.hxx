@@ -1,27 +1,27 @@
-#ifndef INCLUDED_PORTAUDIO_SYSTEM_HXX
-#define INCLUDED_PORTAUDIO_SYSTEM_HXX
-
-// ---------------------------------------------------------------------------------------
-
-#include "portaudio.h"
-
-// ---------------------------------------------------------------------------------------
-
-// Forward declaration(s):
-namespace portaudio
-{
+		#ifndef INCLUDED_PORTAUDIO_SYSTEM_HXX
+		#define INCLUDED_PORTAUDIO_SYSTEM_HXX
+		
+		// ---------------------------------------------------------------------------------------
+		
+		#include "portaudio.h"
+		
+		// ---------------------------------------------------------------------------------------
+		
+		// Forward declaration(s):
+		namespace portaudio
+		{
 	class Device;
 	class Stream;
 	class HostApi;
-}
-
-// ---------------------------------------------------------------------------------------
-
-// Declaration(s):
-namespace portaudio
-{
-
-
+		}
+		
+		// ---------------------------------------------------------------------------------------
+		
+		// Declaration(s):
+		namespace portaudio
+		{
+		
+		
 	//////
 	/// @brief System singleton which represents the PortAudio system.
 	///
@@ -38,70 +38,71 @@ namespace portaudio
 	class System
 	{
 	public:
-		class HostApiIterator; // forward declaration
-		class DeviceIterator; // forward declaration
-
-		// -------------------------------------------------------------------------------
-
-		static int version();
-		static const char *versionText();
-
-		static void initialize();
-		static void terminate();
-
-		static System &instance();
-		static bool exists();
-
-		// -------------------------------------------------------------------------------
-
-		// host apis:
-		HostApiIterator hostApisBegin();
-		HostApiIterator hostApisEnd();
-
-		HostApi &defaultHostApi();
-
-		HostApi &hostApiByTypeId(PaHostApiTypeId type);
-		HostApi &hostApiByIndex(PaHostApiIndex index);
-
-		int hostApiCount();
-
-		// -------------------------------------------------------------------------------
-
-		// devices:
-		DeviceIterator devicesBegin();
-		DeviceIterator devicesEnd();
-
-		Device &defaultInputDevice();
-		Device &defaultOutputDevice();
-
-		Device &deviceByIndex(PaDeviceIndex index);
-
-		int deviceCount();
-
-		static Device &nullDevice();
-
-		// -------------------------------------------------------------------------------
-
-		// misc:
-		void sleep(long msec);
-		int sizeOfSample(PaSampleFormat format);
-
+class HostApiIterator; // forward declaration
+class DeviceIterator; // forward declaration
+		
+// -------------------------------------------------------------------------------
+		
+static int version();
+static const char *versionText();
+		
+static void initialize();
+static void terminate();
+		
+static System &instance();
+static bool exists();
+		
+// -------------------------------------------------------------------------------
+		
+// host apis:
+HostApiIterator hostApisBegin();
+HostApiIterator hostApisEnd();
+		
+HostApi &defaultHostApi();
+		
+HostApi &hostApiByTypeId(PaHostApiTypeId type);
+HostApi &hostApiByIndex(PaHostApiIndex index);
+		
+int hostApiCount();
+		
+// -------------------------------------------------------------------------------
+		
+// devices:
+DeviceIterator devicesBegin();
+DeviceIterator devicesEnd();
+		
+Device &defaultInputDevice();
+Device &defaultOutputDevice();
+		
+Device &deviceByIndex(PaDeviceIndex index);
+		
+int deviceCount();
+		
+static Device &nullDevice();
+		
+// -------------------------------------------------------------------------------
+		
+// misc:
+void sleep(long msec);
+int sizeOfSample(PaSampleFormat format);
+		
 	private:
-		System();
-		~System();
-
-		static System *instance_;
-		static int initCount_;
-
-		static HostApi **hostApis_;
-		static Device **devices_;
-
-		static Device *nullDevice_;
+System();
+~System();
+		
+static System *instance_;
+static int initCount_;
+		
+static HostApi **hostApis_;
+static Device **devices_;
+		
+static Device *nullDevice_;
 	};
-
-
-} // namespace portaudio
-
-
-#endif // INCLUDED_PORTAUDIO_SYSTEM_HXX
-
+		
+		
+		} // namespace portaudio
+		
+		
+		#endif // INCLUDED_PORTAUDIO_SYSTEM_HXX
+		
+		

@@ -17,14 +17,14 @@ This distribution of RtAudio contains the following:
 
 RtAudio is a set of C++ classes that provides a common API (Application Programming Interface) for realtime audio input/output across Linux (native ALSA, JACK, PulseAudio and OSS), Macintosh OS X and Windows (DirectSound, ASIO and WASAPI) operating systems.  RtAudio significantly simplifies the process of interacting with computer audio hardware.  It was designed with the following objectives:
 
-  - object-oriented C++ design
-  - simple, common API across all supported platforms
-  - only one source and one header file for easy inclusion in programming projects
-  - allow simultaneous multi-api support
-  - support dynamic connection of devices
-  - provide extensive audio device parameter control
-  - allow audio device capability probing
-  - automatic internal conversion for data format, channel number compensation, (de)interleaving, and byte-swapping
+- object-oriented C++ design
+- simple, common API across all supported platforms
+- only one source and one header file for easy inclusion in programming projects
+- allow simultaneous multi-api support
+- support dynamic connection of devices
+- provide extensive audio device parameter control
+- allow audio device capability probing
+- automatic internal conversion for data format, channel number compensation, (de)interleaving, and byte-swapping
 
 RtAudio incorporates the concept of audio streams, which represent audio output (playback) and/or input (recording).  Available audio devices and their capabilities can be enumerated and then specified when opening a stream.  Where applicable, multiple API support can be compiled and a particular API specified when creating an RtAudio instance.  See the \ref apinotes section for information specific to each of the supported audio APIs.
 
@@ -32,9 +32,9 @@ RtAudio incorporates the concept of audio streams, which represent audio output 
 
 Several build systems are available.  These are:
 
-  - autotools (`./autogen.sh; make` from git, or `./configure; make` from tarball release)
-  - CMake (`mkdir build; cd build; ../cmake; make`)
-  - meson (`meson build; cd build; ninja`)
+- autotools (`./autogen.sh; make` from git, or `./configure; make` from tarball release)
+- CMake (`mkdir build; cd build; ../cmake; make`)
+- meson (`meson build; cd build; ninja`)
 
 See `install.txt` for more instructions about how to select the audio backend API.  By
 default all detected APIs will be enabled.

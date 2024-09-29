@@ -25,15 +25,15 @@ static const GUID XuiMenuScriptGuid =
 
 class XuiMenuScriptObject : public XUIMENU_SCRIPTPARENT {
 protected:
-  XuiMenuScriptObject();
-  virtual ~XuiMenuScriptObject();
-  
-public:
-  void xuiMenuScriptObject_init();
+XuiMenuScriptObject();
+virtual ~XuiMenuScriptObject();
 
 public:
-  virtual void script_onOpenMenu();
-  virtual void script_onCloseMenu();
+void xuiMenuScriptObject_init();
+
+public:
+virtual void script_onOpenMenu();
+virtual void script_onCloseMenu();
 private:
 };
 
@@ -41,32 +41,32 @@ private:
 class XuiMenuScriptController : public ScriptObjectControllerI {
 public:
 
-  virtual const wchar_t *getClassName();
-  virtual const wchar_t *getAncestorClassName();
-  virtual ScriptObjectController *getAncestorController();
-  virtual int getNumFunctions();
-  virtual const function_descriptor_struct *getExportedFunctions();
-  virtual GUID getClassGuid();
-  virtual ScriptObject *instantiate();
-  virtual void destroy(ScriptObject *o);
-  virtual void *encapsulate(ScriptObject *o);
-  virtual void deencapsulate(void *o);
+virtual const wchar_t *getClassName();
+virtual const wchar_t *getAncestorClassName();
+virtual ScriptObjectController *getAncestorController();
+virtual int getNumFunctions();
+virtual const function_descriptor_struct *getExportedFunctions();
+virtual GUID getClassGuid();
+virtual ScriptObject *instantiate();
+virtual void destroy(ScriptObject *o);
+virtual void *encapsulate(ScriptObject *o);
+virtual void deencapsulate(void *o);
 
 public:
-  static scriptVar script_setMenuGroup(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar mg);
-  static scriptVar script_getMenuGroup(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
-  static scriptVar script_setMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar m);
-  static scriptVar script_getMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
-  static scriptVar script_spawnMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar monitor);
-  static scriptVar script_cancelMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
-  static scriptVar script_setNormalId(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar id);
-  static scriptVar script_setDownId(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar id);
-  static scriptVar script_setHoverId(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar id);
-  static scriptVar script_onOpenMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
-  static scriptVar script_onCloseMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
-  static scriptVar script_nextMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
-  static scriptVar script_previousMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
-  
+static scriptVar script_setMenuGroup(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar mg);
+static scriptVar script_getMenuGroup(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
+static scriptVar script_setMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar m);
+static scriptVar script_getMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
+static scriptVar script_spawnMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar monitor);
+static scriptVar script_cancelMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
+static scriptVar script_setNormalId(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar id);
+static scriptVar script_setDownId(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar id);
+static scriptVar script_setHoverId(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar id);
+static scriptVar script_onOpenMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
+static scriptVar script_onCloseMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
+static scriptVar script_nextMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
+static scriptVar script_previousMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
+
 private:static function_descriptor_struct exportedFunctions[];
 };
 

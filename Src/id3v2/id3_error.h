@@ -18,34 +18,34 @@
 
 enum ID3_Err
 {
-  ID3E_NoMemory = 0,
-  ID3E_NoData,
-  ID3E_NoBuffer,
-  ID3E_InvalidFrameID,
-  ID3E_FieldNotFound,
-  ID3E_UnknownFieldType,
-  ID3E_TagAlreadyAttached,
-  ID3E_InvalidTagVersion,
-  ID3E_NoFile,
-  ID3E_zlibError
+ID3E_NoMemory = 0,
+ID3E_NoData,
+ID3E_NoBuffer,
+ID3E_InvalidFrameID,
+ID3E_FieldNotFound,
+ID3E_UnknownFieldType,
+ID3E_TagAlreadyAttached,
+ID3E_InvalidTagVersion,
+ID3E_NoFile,
+ID3E_zlibError
 };
 
 
 class ID3_Error
 {
 public:
-  ID3_Err GetErrorID(void);
-  //char *GetErrorDesc(void);
-  char *GetErrorFile(void);
-  luint GetErrorLine(void);
+ID3_Err GetErrorID(void);
+//char *GetErrorDesc(void);
+char *GetErrorFile(void);
+luint GetErrorLine(void);
 
-  // *** PRIVATE INTERNAL DATA - DO NOT USE *** PRIVATE INTERNAL DATA - DO NOT USE ***
+// *** PRIVATE INTERNAL DATA - DO NOT USE *** PRIVATE INTERNAL DATA - DO NOT USE ***
 
-  ID3_Error(ID3_Err id, char *file, luint lineNum);
+ID3_Error(ID3_Err id, char *file, luint lineNum);
 protected:
-  ID3_Err error;
-  luint errLine;
-  char errFile[256];
+ID3_Err error;
+luint errLine;
+char errFile[256];
 };
 
 #ifdef _DEBUG

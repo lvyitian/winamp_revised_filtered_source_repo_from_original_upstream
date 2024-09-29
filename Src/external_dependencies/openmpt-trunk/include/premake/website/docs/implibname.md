@@ -26,7 +26,7 @@ implibname "mytarget"
 
 ### See Also ###
 
- * [implibdir](implibdir.md)
- * [implibextension](implibextension.md)
- * [implibprefix](implibprefix.md)
- * [implibsuffix](implibsuffix.md)
+* [implibdir](implibdir.md)
+* [implibextension](implibextension.md)
+* [implibprefix](implibprefix.md)
+* [implibsuffix](implibsuffix.md)

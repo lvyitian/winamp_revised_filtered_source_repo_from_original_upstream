@@ -1,6 +1,6 @@
 /*
- * DO NOT EDIT.  THIS FILE IS GENERATED FROM c:/mozilla/xpcom/base/nsrootidl.idl
- */
+* DO NOT EDIT.  THIS FILE IS GENERATED FROM c:/mozilla/xpcom/base/nsrootidl.idl
+*/
 
 #ifndef __gen_nsrootidl_h__
 #define __gen_nsrootidl_h__
@@ -11,18 +11,18 @@
 #include "nscore.h"
 #include "prtime.h"
 /*
- * Forward declarations for new string types
- */
+* Forward declarations for new string types
+*/
 class nsAString;
 class nsACString;
 /* 
- * Start commenting out the C++ versions of the below in the output header
- */
+* Start commenting out the C++ versions of the below in the output header
+*/
 #if 0
 /**
- * Root idl declarations to be used by all.
- * @status FROZEN
- */
+* Root idl declarations to be used by all.
+* @status FROZEN
+*/
 typedef PRBool PRBool;
 
 typedef PRUint8 PRUint8;
@@ -50,8 +50,8 @@ typedef PRUint32 nsresult;
 typedef PRUint32 size_t;
 
 /* 
- * End commenting out the C++ versions of the above in the output header
- */
+* End commenting out the C++ versions of the above in the output header
+*/
 #endif
 
 #endif /* __gen_nsrootidl_h__ */

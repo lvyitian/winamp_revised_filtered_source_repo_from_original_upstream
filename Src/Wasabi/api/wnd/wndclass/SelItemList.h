@@ -11,21 +11,21 @@ class ListWnd;
 class SelItemList
 {
 public:
-  SelItemList(ListWnd *parent);
+SelItemList(ListWnd *parent);
 
-  void setSelected(int pos, int selected, int cb=1);
-  int isSelected(int pos);
-  int getNumSelected();
+void setSelected(int pos, int selected, int cb=1);
+int isSelected(int pos);
+int getNumSelected();
 
-  void deleteByPos(int pos);
+void deleteByPos(int pos);
 protected:
 friend ListWnd;
-  void deselectAll();
+void deselectAll();
 
 private:
-  ListWnd *listwnd;
-  MemBlock<char> list;
-  int num_selected;
+ListWnd *listwnd;
+MemBlock<char> list;
+int num_selected;
 };
 
 #endif

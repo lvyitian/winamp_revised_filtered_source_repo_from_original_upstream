@@ -5,54 +5,54 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}")
 FIND_PACKAGE(Ogg REQUIRED)
 
 file(GLOB HEADERS
-  "include/theora/codec.h"
-  "include/theora/theora.h"
-  "include/theora/theoradec.h"
-  "include/theora/theoraenc.h"
+"include/theora/codec.h"
+"include/theora/theora.h"
+"include/theora/theoradec.h"
+"include/theora/theoraenc.h"
 )
 
 set(LIBTHEORA_COMMON
-  "lib/apiwrapper.c"
-  "lib/bitpack.c"
-  "lib/dequant.c"
-  "lib/fragment.c"
-  "lib/idct.c"
-  "lib/info.c"
-  "lib/internal.c"
-  "lib/state.c"
-  "lib/quant.c"
+"lib/apiwrapper.c"
+"lib/bitpack.c"
+"lib/dequant.c"
+"lib/fragment.c"
+"lib/idct.c"
+"lib/info.c"
+"lib/internal.c"
+"lib/state.c"
+"lib/quant.c"
 
-  "lib/x86_vc/mmxfrag.c"
-  "lib/x86_vc/mmxidct.c"
-  "lib/x86_vc/mmxstate.c"
-  "lib/x86_vc/x86cpu.c"
-  "lib/x86_vc/x86state.c"
+"lib/x86_vc/mmxfrag.c"
+"lib/x86_vc/mmxidct.c"
+"lib/x86_vc/mmxstate.c"
+"lib/x86_vc/x86cpu.c"
+"lib/x86_vc/x86state.c"
 )
 
 set(LIBTHEORA_ENC
-  "lib/analyze.c"
-  "lib/encapiwrapper.c"
-  "lib/encfrag.c"
-  "lib/encinfo.c"
-  "lib/encode.c"
-  "lib/enquant.c"
-  "lib/fdct.c"
-  "lib/huffenc.c"
-  "lib/mathops.c"
-  "lib/mcenc.c"
-  "lib/rate.c"
-  "lib/tokenize.c"
+"lib/analyze.c"
+"lib/encapiwrapper.c"
+"lib/encfrag.c"
+"lib/encinfo.c"
+"lib/encode.c"
+"lib/enquant.c"
+"lib/fdct.c"
+"lib/huffenc.c"
+"lib/mathops.c"
+"lib/mcenc.c"
+"lib/rate.c"
+"lib/tokenize.c"
 
-  "lib/x86_vc/mmxencfrag.c"
-  "lib/x86_vc/mmxfdct.c"
-  "lib/x86_vc/x86enc.c"
+"lib/x86_vc/mmxencfrag.c"
+"lib/x86_vc/mmxfdct.c"
+"lib/x86_vc/x86enc.c"
 )
 
 set(LIBTHEORA_DEC
-  "lib/decapiwrapper.c"
-  "lib/decinfo.c"
-  "lib/decode.c"
-  "lib/huffdec.c"
+"lib/decapiwrapper.c"
+"lib/decinfo.c"
+"lib/decode.c"
+"lib/huffdec.c"
 )
 
 add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
@@ -60,11 +60,11 @@ add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
 
 option(USE_X86 "Use x86 optimization" OFF)
 if(USE_X86)
-  add_definitions(-DOC_X86_ASM)
+add_definitions(-DOC_X86_ASM)
 endif()
 
 if (BUILD_SHARED_LIBS)
-  add_definitions(-DLIBTHEORA_EXPORTS)
+add_definitions(-DLIBTHEORA_EXPORTS)
 endif()
 
 add_library(theora-common OBJECT ${LIBTHEORA_COMMON} ${HEADERS})
@@ -92,23 +92,23 @@ target_include_directories(theoradec PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_D
 include(CMakePackageConfigHelpers)
 
 configure_package_config_file(unofficial-theora-config.cmake.in unofficial-theora-config.cmake
-  INSTALL_DESTINATION "lib/unofficial-theora")
+INSTALL_DESTINATION "lib/unofficial-theora")
 
 install(FILES ${HEADERS} DESTINATION include/theora)
 
 install(
-  FILES "${CMAKE_CURRENT_BINARY_DIR}/unofficial-theora-config.cmake"
-  DESTINATION "lib/unofficial-theora"
+FILES "${CMAKE_CURRENT_BINARY_DIR}/unofficial-theora-config.cmake"
+DESTINATION "lib/unofficial-theora"
 )
 
 install(TARGETS theora theoraenc theoradec
-  EXPORT unofficial-theora-targets
-  RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-  LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-  ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+EXPORT unofficial-theora-targets
+RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
 )
 
 install(EXPORT unofficial-theora-targets
-  NAMESPACE unofficial::theora::
-  DESTINATION "lib/unofficial-theora"
+NAMESPACE unofficial::theora::
+DESTINATION "lib/unofficial-theora"
 )

@@ -1,11 +1,11 @@
 /*
- * Mixer.h
- * -------
- * Purpose: Basic mixer constants
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* Mixer.h
+* -------
+* Purpose: Basic mixer constants
+* Notes  : (currently none)
+* Authors: OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 
 #pragma once

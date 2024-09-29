@@ -1,3 +1,3 @@
 
 configuration {}
-   kind "StaticLib"
+kind "StaticLib"

@@ -16,7 +16,7 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,
 NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
 CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
- */
+*/
 
 #ifndef LHASA_LHA_INPUT_STREAM_H
 #define LHASA_LHA_INPUT_STREAM_H
@@ -25,25 +25,25 @@ CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "public/lha_input_stream.h"
 
 /**
- * Read a block of data from the LHA stream, of the specified number
- * of bytes.
- *
- * @param stream       The input stream.
- * @param buf          Pointer to buffer in which to store read data.
- * @param buf_len      Size of buffer, in bytes.
- * @return             Non-zero if buffer was filled, or zero if an
- *                     error occurred, or end of file was reached.
- */
+* Read a block of data from the LHA stream, of the specified number
+* of bytes.
+*
+* @param stream       The input stream.
+* @param buf          Pointer to buffer in which to store read data.
+* @param buf_len      Size of buffer, in bytes.
+* @return             Non-zero if buffer was filled, or zero if an
+*                     error occurred, or end of file was reached.
+*/
 
 int lha_input_stream_read(LHAInputStream *stream, void *buf, size_t buf_len);
 
 /**
- * Skip over the specified number of bytes.
- *
- * @param stream       The input stream.
- * @param bytes        Number of bytes to skip.
- * @return             Non-zero for success, zero for failure.
- */
+* Skip over the specified number of bytes.
+*
+* @param stream       The input stream.
+* @param bytes        Number of bytes to skip.
+* @return             Non-zero for success, zero for failure.
+*/
 
 int lha_input_stream_skip(LHAInputStream *stream, size_t bytes);
 

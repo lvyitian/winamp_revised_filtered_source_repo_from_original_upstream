@@ -1,11 +1,11 @@
 /*
- * libopenmpt_config.h
- * -------------------
- * Purpose: libopenmpt public interface configuration
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* libopenmpt_config.h
+* -------------------
+* Purpose: libopenmpt public interface configuration
+* Notes  : (currently none)
+* Authors: OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 #ifndef LIBOPENMPT_CONFIG_H
 #define LIBOPENMPT_CONFIG_H
@@ -15,7 +15,7 @@
 /*! \defgroup libopenmpt libopenmpt */
 
 /*! \addtogroup libopenmpt
-  @{
+@{
 */
 
 /* provoke warnings if already defined */
@@ -25,48 +25,48 @@
 #undef LIBOPENMPT_CXX_API
 
 /*!
-  @}
+@}
 */
 
 /*! \addtogroup libopenmpt_c
-  @{
+@{
 */
 
 /*! \brief Defined if libopenmpt/libopenmpt_stream_callbacks_buffer.h exists. */
 #define LIBOPENMPT_STREAM_CALLBACKS_BUFFER
 
 /*! \brief Defined if libopenmpt/libopenmpt_stream_callbacks_fd.h exists.
- * \since 0.3
- * \remarks
- *   Use the following to check for availability:
- *   \code
- *   #include <libopenmpt/libopenmpt.h>
- *   #if defined(LIBOPENMPT_STREAM_CALLBACKS_FD) || ((OPENMPT_API_VERSION_MAJOR == 0) && ((OPENMPT_API_VERSION_MINOR == 2) || (OPENMPT_API_VERSION_MINOR == 1)))
- *   #include <libopenmpt/libopenmpt_stream_callbacks_fd.h>
- *   #endif
- *   \endcode
- */
+* \since 0.3
+* \remarks
+*   Use the following to check for availability:
+*   \code
+*   #include <libopenmpt/libopenmpt.h>
+*   #if defined(LIBOPENMPT_STREAM_CALLBACKS_FD) || ((OPENMPT_API_VERSION_MAJOR == 0) && ((OPENMPT_API_VERSION_MINOR == 2) || (OPENMPT_API_VERSION_MINOR == 1)))
+*   #include <libopenmpt/libopenmpt_stream_callbacks_fd.h>
+*   #endif
+*   \endcode
+*/
 #define LIBOPENMPT_STREAM_CALLBACKS_FD
 
 /*! \brief Defined if libopenmpt/libopenmpt_stream_callbacks_file.h exists.
- * \since 0.3
- * \remarks
- *   Use the following to check for availability:
- *   \code
- *   #include <libopenmpt/libopenmpt.h>
- *   #if defined(LIBOPENMPT_STREAM_CALLBACKS_FILE) || ((OPENMPT_API_VERSION_MAJOR == 0) && ((OPENMPT_API_VERSION_MINOR == 2) || (OPENMPT_API_VERSION_MINOR == 1)))
- *   #include <libopenmpt/libopenmpt_stream_callbacks_file.h>
- *   #endif
- *   \endcode
- */
+* \since 0.3
+* \remarks
+*   Use the following to check for availability:
+*   \code
+*   #include <libopenmpt/libopenmpt.h>
+*   #if defined(LIBOPENMPT_STREAM_CALLBACKS_FILE) || ((OPENMPT_API_VERSION_MAJOR == 0) && ((OPENMPT_API_VERSION_MINOR == 2) || (OPENMPT_API_VERSION_MINOR == 1)))
+*   #include <libopenmpt/libopenmpt_stream_callbacks_file.h>
+*   #endif
+*   \endcode
+*/
 #define LIBOPENMPT_STREAM_CALLBACKS_FILE
 
 /*!
-  @}
+@}
 */
 
 /*! \addtogroup libopenmpt
-  @{
+@{
 */
 
 #if defined(__DOXYGEN__)
@@ -150,7 +150,7 @@
 #endif
 
 /*!
-  @}
+@}
 */
 
 

@@ -1,11 +1,11 @@
 /*
- * mptAssert.h
- * -----------
- * Purpose: assert and static_assert
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* mptAssert.h
+* -----------
+* Purpose: assert and static_assert
+* Notes  : (currently none)
+* Authors: OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 
 #pragma once
@@ -64,9 +64,9 @@ OPENMPT_NAMESPACE_BEGIN
 #define MPT_FRAMEWORK_ASSERT_IS_DEFINED
 
 #if defined(_DEBUG)
- #define MPT_FRAMEWORK_ASSERT_IS_ACTIVE 1
+#define MPT_FRAMEWORK_ASSERT_IS_ACTIVE 1
 #else // !_DEBUG
- #define MPT_FRAMEWORK_ASSERT_IS_ACTIVE 0
+#define MPT_FRAMEWORK_ASSERT_IS_ACTIVE 0
 #endif // _DEBUG
 
 // let MFC handle our asserts
@@ -77,9 +77,9 @@ OPENMPT_NAMESPACE_BEGIN
 #if defined(ASSERT)
 #define MPT_FRAMEWORK_ASSERT_IS_DEFINED
 #if defined(_DEBUG)
- #define MPT_FRAMEWORK_ASSERT_IS_ACTIVE 1
+#define MPT_FRAMEWORK_ASSERT_IS_ACTIVE 1
 #else // !_DEBUG
- #define MPT_FRAMEWORK_ASSERT_IS_ACTIVE 0
+#define MPT_FRAMEWORK_ASSERT_IS_ACTIVE 0
 #endif // _DEBUG
 #endif // !defined(ASERRT)
 

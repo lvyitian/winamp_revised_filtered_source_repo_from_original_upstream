@@ -25,7 +25,7 @@ Premake 4.0 or later.
 Create a new workspace named "MyWorkspace", with debug and release build configurations.
 ```lua
 workspace "MyWorkspace"
-   configurations { "Debug", "Release" }
+configurations { "Debug", "Release" }
 ```
 
 ### See Also ###

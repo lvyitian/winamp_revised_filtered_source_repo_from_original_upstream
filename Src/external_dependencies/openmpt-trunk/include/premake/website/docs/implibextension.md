@@ -26,8 +26,8 @@ implibextension ".mpi"
 
 ### See Also ###
 
- * [implibname](implibname.md)
- * [implibdir](implibdir.md)
- * [implibprefix](implibprefix.md)
- * [implibsuffix](implibsuffix.md)
+* [implibname](implibname.md)
+* [implibdir](implibdir.md)
+* [implibprefix](implibprefix.md)
+* [implibsuffix](implibsuffix.md)
 

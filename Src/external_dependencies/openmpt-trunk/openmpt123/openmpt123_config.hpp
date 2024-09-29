@@ -1,11 +1,11 @@
 /*
- * openmpt123_config.hpp
- * ---------------------
- * Purpose: libopenmpt command line player
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* openmpt123_config.hpp
+* ---------------------
+* Purpose: libopenmpt command line player
+* Notes  : (currently none)
+* Authors: OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 #ifndef OPENMPT123_CONFIG_HPP
 #define OPENMPT123_CONFIG_HPP

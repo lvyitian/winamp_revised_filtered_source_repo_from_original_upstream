@@ -1,24 +1,24 @@
 /**
- * \file certs.h
- *
- * \brief Sample certificates and DHM parameters for testing
- */
+* \file certs.h
+*
+* \brief Sample certificates and DHM parameters for testing
+*/
 /*
- *  Copyright The Mbed TLS Contributors
- *  SPDX-License-Identifier: Apache-2.0
- *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may
- *  not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *  http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
+*  Copyright The Mbed TLS Contributors
+*  SPDX-License-Identifier: Apache-2.0
+*
+*  Licensed under the Apache License, Version 2.0 (the "License"); you may
+*  not use this file except in compliance with the License.
+*  You may obtain a copy of the License at
+*
+*  http://www.apache.org/licenses/LICENSE-2.0
+*
+*  Unless required by applicable law or agreed to in writing, software
+*  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+*  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*  See the License for the specific language governing permissions and
+*  limitations under the License.
+*/
 #ifndef MBEDTLS_CERTS_H
 #define MBEDTLS_CERTS_H
 
@@ -35,8 +35,8 @@ extern "C" {
 #endif
 
 /* List of all PEM-encoded CA certificates, terminated by NULL;
- * PEM encoded if MBEDTLS_PEM_PARSE_C is enabled, DER encoded
- * otherwise. */
+* PEM encoded if MBEDTLS_PEM_PARSE_C is enabled, DER encoded
+* otherwise. */
 extern const char * mbedtls_test_cas[];
 extern const size_t mbedtls_test_cas_len[];
 
@@ -51,8 +51,8 @@ extern const size_t mbedtls_test_cas_pem_len;
 #endif /* MBEDTLS_PEM_PARSE_C */
 
 /*
- * CA test certificates
- */
+* CA test certificates
+*/
 
 extern const char mbedtls_test_ca_crt_ec_pem[];
 extern const char mbedtls_test_ca_key_ec_pem[];
@@ -85,7 +85,7 @@ extern const size_t mbedtls_test_ca_crt_rsa_sha1_der_len;
 extern const size_t mbedtls_test_ca_crt_rsa_sha256_der_len;
 
 /* Config-dependent dispatch between PEM and DER encoding
- * (PEM if enabled, otherwise DER) */
+* (PEM if enabled, otherwise DER) */
 
 extern const char mbedtls_test_ca_crt_ec[];
 extern const char mbedtls_test_ca_key_ec[];
@@ -104,13 +104,13 @@ extern const size_t mbedtls_test_ca_crt_rsa_sha1_len;
 extern const size_t mbedtls_test_ca_crt_rsa_sha256_len;
 
 /* Config-dependent dispatch between SHA-1 and SHA-256
- * (SHA-256 if enabled, otherwise SHA-1) */
+* (SHA-256 if enabled, otherwise SHA-1) */
 
 extern const char mbedtls_test_ca_crt_rsa[];
 extern const size_t mbedtls_test_ca_crt_rsa_len;
 
 /* Config-dependent dispatch between EC and RSA
- * (RSA if enabled, otherwise EC) */
+* (RSA if enabled, otherwise EC) */
 
 extern const char * mbedtls_test_ca_crt;
 extern const char * mbedtls_test_ca_key;
@@ -120,8 +120,8 @@ extern const size_t mbedtls_test_ca_key_len;
 extern const size_t mbedtls_test_ca_pwd_len;
 
 /*
- * Server test certificates
- */
+* Server test certificates
+*/
 
 extern const char mbedtls_test_srv_crt_ec_pem[];
 extern const char mbedtls_test_srv_key_ec_pem[];
@@ -154,7 +154,7 @@ extern const size_t mbedtls_test_srv_crt_rsa_sha1_der_len;
 extern const size_t mbedtls_test_srv_crt_rsa_sha256_der_len;
 
 /* Config-dependent dispatch between PEM and DER encoding
- * (PEM if enabled, otherwise DER) */
+* (PEM if enabled, otherwise DER) */
 
 extern const char mbedtls_test_srv_crt_ec[];
 extern const char mbedtls_test_srv_key_ec[];
@@ -173,13 +173,13 @@ extern const size_t mbedtls_test_srv_crt_rsa_sha1_len;
 extern const size_t mbedtls_test_srv_crt_rsa_sha256_len;
 
 /* Config-dependent dispatch between SHA-1 and SHA-256
- * (SHA-256 if enabled, otherwise SHA-1) */
+* (SHA-256 if enabled, otherwise SHA-1) */
 
 extern const char mbedtls_test_srv_crt_rsa[];
 extern const size_t mbedtls_test_srv_crt_rsa_len;
 
 /* Config-dependent dispatch between EC and RSA
- * (RSA if enabled, otherwise EC) */
+* (RSA if enabled, otherwise EC) */
 
 extern const char * mbedtls_test_srv_crt;
 extern const char * mbedtls_test_srv_key;
@@ -189,8 +189,8 @@ extern const size_t mbedtls_test_srv_key_len;
 extern const size_t mbedtls_test_srv_pwd_len;
 
 /*
- * Client test certificates
- */
+* Client test certificates
+*/
 
 extern const char mbedtls_test_cli_crt_ec_pem[];
 extern const char mbedtls_test_cli_key_ec_pem[];
@@ -217,7 +217,7 @@ extern const size_t mbedtls_test_cli_key_rsa_der_len;
 extern const size_t mbedtls_test_cli_crt_rsa_der_len;
 
 /* Config-dependent dispatch between PEM and DER encoding
- * (PEM if enabled, otherwise DER) */
+* (PEM if enabled, otherwise DER) */
 
 extern const char mbedtls_test_cli_crt_ec[];
 extern const char mbedtls_test_cli_key_ec[];
@@ -234,7 +234,7 @@ extern const size_t mbedtls_test_cli_pwd_rsa_len;
 extern const size_t mbedtls_test_cli_crt_rsa_len;
 
 /* Config-dependent dispatch between EC and RSA
- * (RSA if enabled, otherwise EC) */
+* (RSA if enabled, otherwise EC) */
 
 extern const char * mbedtls_test_cli_crt;
 extern const char * mbedtls_test_cli_key;

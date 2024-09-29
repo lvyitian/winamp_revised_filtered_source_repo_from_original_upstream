@@ -28,5 +28,5 @@ Premake 5.0 or later.
 
 ```lua
 project "MyProject"
-   namespace "MyCompany.MyProject"
+namespace "MyCompany.MyProject"
 ```

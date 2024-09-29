@@ -1,20 +1,21 @@
-project "luashim-lib"
+		project "luashim-lib"
 	language    "C"
 	kind        "StaticLib"
 	warnings    "extra"
 	pic         "on"
-
+		
 	includedirs { "../lua/src" }
-
+		
 	files
 	{
-		"*.c",
-		"*.h",
-		"*.lua"
+"*.c",
+"*.h",
+"*.lua"
 	}
-
+		
 	filter "system:linux or bsd or hurd or aix or haiku"
-		defines      { "LUA_USE_POSIX", "LUA_USE_DLOPEN" }
-
+defines      { "LUA_USE_POSIX", "LUA_USE_DLOPEN" }
+		
 	filter "system:macosx"
-		defines      { "LUA_USE_MACOSX" }
+defines      { "LUA_USE_MACOSX" }
+		

@@ -1,26 +1,26 @@
 #ifndef HEADER_CURL_CONFIG_OS400_H
 #define HEADER_CURL_CONFIG_OS400_H
 /***************************************************************************
- *                                  _   _ ____  _
- *  Project                     ___| | | |  _ \| |
- *                             / __| | | | |_) | |
- *                            | (__| |_| |  _ <| |___
- *                             \___|\___/|_| \_\_____|
- *
- * Copyright (C) 1998 - 2014, Daniel Stenberg, <daniel@haxx.se>, et al.
- *
- * This software is licensed as described in the file COPYING, which
- * you should have received as part of this distribution. The terms
- * are also available at https://curl.haxx.se/docs/copyright.html.
- *
- * You may opt to use, copy, modify, merge, publish, distribute and/or sell
- * copies of the Software, and permit persons to whom the Software is
- * furnished to do so, under the terms of the COPYING file.
- *
- * This software is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
- * KIND, either express or implied.
- *
- ***************************************************************************/
+*                                  _   _ ____  _
+*  Project                     ___| | | |  _ \| |
+*                             / __| | | | |_) | |
+*                            | (__| |_| |  _ <| |___
+*                             \___|\___/|_| \_\_____|
+*
+* Copyright (C) 1998 - 2014, Daniel Stenberg, <daniel@haxx.se>, et al.
+*
+* This software is licensed as described in the file COPYING, which
+* you should have received as part of this distribution. The terms
+* are also available at https://curl.haxx.se/docs/copyright.html.
+*
+* You may opt to use, copy, modify, merge, publish, distribute and/or sell
+* copies of the Software, and permit persons to whom the Software is
+* furnished to do so, under the terms of the COPYING file.
+*
+* This software is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
+* KIND, either express or implied.
+*
+***************************************************************************/
 
 /* ================================================================ */
 /*                Hand crafted config file for OS/400               */
@@ -49,11 +49,11 @@
 #undef HAVE_GETHOSTBYADDR_R_8
 
 /* OS400 supports a 3-argument ASCII version of gethostbyaddr_r(), but its
- *  prototype is incompatible with the "standard" one (1st argument is not
- *  const). However, getaddrinfo() is supported (ASCII version defined as
- *  a local wrapper in setup-os400.h) in a threadsafe way: we can then
- *  configure getaddrinfo() as such and get rid of gethostbyname_r() without
- *  loss of threadsafeness. */
+*  prototype is incompatible with the "standard" one (1st argument is not
+*  const). However, getaddrinfo() is supported (ASCII version defined as
+*  a local wrapper in setup-os400.h) in a threadsafe way: we can then
+*  configure getaddrinfo() as such and get rid of gethostbyname_r() without
+*  loss of threadsafeness. */
 #undef HAVE_GETHOSTBYNAME_R
 #undef HAVE_GETHOSTBYNAME_R_3
 #undef HAVE_GETHOSTBYNAME_R_5
@@ -288,7 +288,7 @@
 
 
 /* The following define is needed on OS400 to enable strcmpi(), stricmp() and
-   strdup(). */
+strdup(). */
 #define __cplusplus__strings__
 
 /* Define if you have the `strcasecmp' function. */

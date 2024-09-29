@@ -1,59 +1,59 @@
-/*
- * View_smp.h
- * ----------
- * Purpose: Sample tab, lower panel.
- * Notes  : (currently none)
- * Authors: Olivier Lapicque
- *          OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-
-#pragma once
-
-#include "openmpt/all/BuildSettings.hpp"
-#include "Globals.h"
-#include "../soundlib/modsmp_ctrl.h"
-
-
-OPENMPT_NAMESPACE_BEGIN
-
-#define SMP_LEFTBAR_BUTTONS		8
-class OPLInstrDlg;
-
-class CViewSample: public CModScrollView
-{
-public:
+		/*
+        * View_smp.h
+        * ----------
+        * Purpose: Sample tab, lower panel.
+        * Notes  : (currently none)
+        * Authors: Olivier Lapicque
+        *          OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		
+		#pragma once
+		
+		#include "openmpt/all/BuildSettings.hpp"
+		#include "Globals.h"
+		#include "../soundlib/modsmp_ctrl.h"
+		
+		
+		OPENMPT_NAMESPACE_BEGIN
+		
+		#define SMP_LEFTBAR_BUTTONS		8
+		class OPLInstrDlg;
+		
+		class CViewSample: public CModScrollView
+		{
+		public:
 	enum Flags
 	{
-		SMPSTATUS_MOUSEDRAG		= 0x01,
-		SMPSTATUS_KEYDOWN		= 0x02,
-		SMPSTATUS_NCLBTNDOWN	= 0x04,
-		SMPSTATUS_DRAWING		= 0x08,
+SMPSTATUS_MOUSEDRAG		= 0x01,
+SMPSTATUS_KEYDOWN		= 0x02,
+SMPSTATUS_NCLBTNDOWN	= 0x04,
+SMPSTATUS_DRAWING		= 0x08,
 	};
-
-protected:
+		
+		protected:
 	enum class PasteMode
 	{
-		Replace,
-		MixPaste,
-		Insert
+Replace,
+MixPaste,
+Insert
 	};
-
+		
 	enum class HitTestItem
 	{
-		Nothing,
-		SampleData,
-		SelectionStart,
-		SelectionEnd,
-		LoopStart,
-		LoopEnd,
-		SustainStart,
-		SustainEnd,
-		CuePointFirst,
-		CuePointLast = CuePointFirst + mpt::array_size<decltype(ModSample::cues)>::size - 1,
+Nothing,
+SampleData,
+SelectionStart,
+SelectionEnd,
+LoopStart,
+LoopEnd,
+SustainStart,
+SustainEnd,
+CuePointFirst,
+CuePointLast = CuePointFirst + mpt::array_size<decltype(ModSample::cues)>::size - 1,
 	};
-
+		
 	std::unique_ptr<OPLInstrDlg> m_oplEditor;
 	CImageList m_bmpEnvBar;
 	CRect m_rcClient;
@@ -76,27 +76,27 @@ protected:
 	CPoint m_startDragPoint;
 	SmpLength m_startDragValue = MAX_SAMPLE_LENGTH;
 	bool m_dragPreparedUndo = false, m_fineDrag = false, m_forceRedrawWaveform = true;
-
+		
 	// Sample drawing
 	CPoint m_lastDrawPoint;		// For drawing horizontal lines
 	int m_drawChannel;			// Which sample channel are we drawing on?
-
+		
 	// Note-off event buffer for MIDI sustain pedal
 	std::array<std::vector<uint32>, 16> m_midiSustainBuffer;
 	std::bitset<16> m_midiSustainActive;
-
+		
 	DWORD m_NcButtonState[SMP_LEFTBAR_BUTTONS];
 	std::array<SmpLength, MAX_CHANNELS> m_dwNotifyPos;
 	CModDoc::NoteToChannelMap m_noteChannel;	// Note -> Preview channel assignment
-
-public:
+		
+		public:
 	CViewSample();
 	DECLARE_SERIAL(CViewSample)
-
+		
 	static std::pair<int, int> FindMinMax(const int8 *p, SmpLength numSamples, int numChannels);
 	static std::pair<int, int> FindMinMax(const int16 *p, SmpLength numSamples, int numChannels);
-
-protected:
+		
+		protected:
 	MPT_NOINLINE void SetModified(SampleHint hint, bool updateAll, bool waveformModified);
 	void UpdateScrollSize() { UpdateScrollSize(m_nZoom, true); }
 	void UpdateScrollSize(int newZoom, bool forceRefresh, SmpLength centeredSample = SmpLength(-1));
@@ -123,35 +123,35 @@ protected:
 	UINT GetNcButtonAtPoint(CPoint point, CRect *outRect = nullptr) const;
 	void UpdateNcButtonState();
 	void DoPaste(PasteMode pasteMode);
-
+		
 	// Sets sample data on sample draw.
 	template<class T, class uT>
 	void SetSampleData(ModSample &smp, const CPoint &point, const SmpLength old);
-
+		
 	// Sets initial draw point on sample draw.
 	template<class T, class uT>
 	void SetInitialDrawPoint(ModSample &smp, const CPoint &point);
-
+		
 	// Returns sample value corresponding given point in the sample view.
 	template<class T, class uT>
 	T GetSampleValueFromPoint(const ModSample &smp, const CPoint &point) const;
-
+		
 	int GetZoomLevel(SmpLength length) const;
 	void DoZoom(int direction, const CPoint &zoomPoint = CPoint(-1, -1));
 	bool CanZoomSelection() const;
 	void ScrollToSample(SmpLength centeredSample, bool refresh = true);
-
+		
 	SmpLength ScrollPosToSamplePos() const {return ScrollPosToSamplePos(m_nZoom);}
 	SmpLength ScrollPosToSamplePos(int nZoom) const;
-
+		
 	void OnMonoConvert(ctrlSmp::StereoToMonoMode convert);
 	void TrimSample(bool trimToLoopEnd);
-
+		
 	int CalcScroll(int &currentPos, int amount, int style, int bar);
-
+		
 	SmpLength SnapToGrid(const SmpLength pos) const;
-
-public:
+		
+		public:
 	//{{AFX_VIRTUAL(CViewSample)
 	void OnDraw(CDC *) override;
 	void OnInitialUpdate() override;
@@ -163,8 +163,8 @@ public:
 	BOOL OnScrollBy(CSize sizeScroll, BOOL bDoScroll = TRUE) override;
 	INT_PTR OnToolHitTest(CPoint point, TOOLINFO *pTI) const override;
 	//}}AFX_VIRTUAL
-
-protected:
+		
+		protected:
 	//{{AFX_MSG(CViewSample)
 	afx_msg BOOL OnEraseBkgnd(CDC *) { return TRUE; }
 	afx_msg void OnSetFocus(CWnd *pOldWnd);
@@ -233,18 +233,19 @@ protected:
 	void SetTimelineFormat(TimelineFormat fmt);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
-
+		
 	BOOL OnGestureZoom(CPoint ptCenter, long lDelta) override
 	{
-		DoZoom(lDelta / 10, ptCenter);
-		return TRUE;
+DoZoom(lDelta / 10, ptCenter);
+return TRUE;
 	}
-
+		
 	static bool IsCuePoint(HitTestItem item) { return item >= HitTestItem::CuePointFirst && item <= HitTestItem::CuePointLast; }
 	static int CuePointFromItem(HitTestItem item) { return static_cast<int>(item) - static_cast<int>(HitTestItem::CuePointFirst); }
-};
-
-DECLARE_FLAGSET(CViewSample::Flags)
-
-
-OPENMPT_NAMESPACE_END
+		};
+		
+		DECLARE_FLAGSET(CViewSample::Flags)
+		
+		
+		OPENMPT_NAMESPACE_END
+		

@@ -1,63 +1,63 @@
-/*
- * KeyConfigDlg.h
- * --------------
- * Purpose: Implementation of OpenMPT's keyboard configuration dialog.
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-
-#pragma once
-
-#include "openmpt/all/BuildSettings.hpp"
-#include "Mainfrm.h"
-#include "InputHandler.h"
-
-OPENMPT_NAMESPACE_BEGIN
-
-class COptionsKeyboard;
-
-// Might promote to class so we can add rules
-// (eg automatically do note off stuff, generate chord keybindings from notes based just on modifier.
-// Would need GUI rules too as options would be different for each category
-class CommandCategory
-{
-public:
+		/*
+        * KeyConfigDlg.h
+        * --------------
+        * Purpose: Implementation of OpenMPT's keyboard configuration dialog.
+        * Notes  : (currently none)
+        * Authors: OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		
+		#pragma once
+		
+		#include "openmpt/all/BuildSettings.hpp"
+		#include "Mainfrm.h"
+		#include "InputHandler.h"
+		
+		OPENMPT_NAMESPACE_BEGIN
+		
+		class COptionsKeyboard;
+		
+		// Might promote to class so we can add rules
+		// (eg automatically do note off stuff, generate chord keybindings from notes based just on modifier.
+		// Would need GUI rules too as options would be different for each category
+		class CommandCategory
+		{
+		public:
 	CommandCategory(const TCHAR *n, InputTargetContext d) : name(n), id(d) { }
-
+		
 	bool SeparatorAt(CommandID c) const
 	{
-		return mpt::contains(separators, c);
+return mpt::contains(separators, c);
 	}
-
+		
 	void AddCommands(CommandID first, CommandID last, bool addSeparatorAtEnd = false);
-
+		
 	CString name;
 	InputTargetContext id;
 	std::vector<CommandID> separators;
 	std::vector<CommandID> commands;
-};
-
-
-class CCustEdit: public CEdit
-{
-protected:
+		};
+		
+		
+		class CCustEdit: public CEdit
+		{
+		protected:
 	COptionsKeyboard *m_pOptKeyDlg;
 	HWND m_hParent = nullptr;
 	UINT m_nCtrlId = 0;
 	bool m_isFocussed = false, m_isDummy = false;
-
-public:
+		
+		public:
 	FlagSet<Modifiers> mod = ModNone;
 	UINT code = 0;
-
+		
 	CCustEdit(bool dummyField) : m_isDummy(dummyField) { }
 	void SetParent(HWND h, UINT nID, COptionsKeyboard *pOKD)
 	{
-		m_hParent = h;
-		m_nCtrlId = nID;
-		m_pOptKeyDlg = pOKD;
+m_hParent = h;
+m_nCtrlId = nID;
+m_pOptKeyDlg = pOKD;
 	}
 	void SetKey(FlagSet<Modifiers> mod, UINT code);
 	
@@ -68,11 +68,11 @@ public:
 	afx_msg LRESULT OnMidiMsg(WPARAM, LPARAM);
 	
 	DECLARE_MESSAGE_MAP()
-};
-
-class COptionsKeyboard: public CPropertyPage
-{
-protected:
+		};
+		
+		class COptionsKeyboard: public CPropertyPage
+		{
+		protected:
 	CListBox m_lbnHotKeys;
 	CListBox m_lbnCommandKeys;
 	CComboBox m_cmbKeyChoice;
@@ -87,25 +87,25 @@ protected:
 	mpt::PathString m_fullPathName;
 	std::unique_ptr<CCommandSet> m_localCmdSet;
 	bool m_forceUpdate = false;
-
+		
 	void ForceUpdateGUI();
 	void UpdateShortcutList(int category = -1);
 	void UpdateCategory();
 	int GetCategoryFromCommandID(CommandID command) const;
-
-public:
+		
+		public:
 	COptionsKeyboard() : CPropertyPage(IDD_OPTIONS_KEYBOARD), m_eCustHotKey(false), m_eFindHotKey(true) { }
 	std::vector<CommandCategory> commandCategories;
 	void DefineCommandCategories();
-
+		
 	void OnSetKeyChoice();
-
-protected:
+		
+		protected:
 	BOOL OnInitDialog() override;
 	void OnOK() override;
 	BOOL OnSetActive() override;
 	void DoDataExchange(CDataExchange* pDX) override;
-
+		
 	afx_msg void UpdateDialog();
 	afx_msg void OnKeyboardChanged();
 	afx_msg void OnKeyChoiceSelect();
@@ -126,8 +126,9 @@ protected:
 	afx_msg void OnClearHotKey();
 	afx_msg void OnFindHotKey();
 	afx_msg void OnDestroy();
-
+		
 	DECLARE_MESSAGE_MAP()
-};
-
-OPENMPT_NAMESPACE_END
+		};
+		
+		OPENMPT_NAMESPACE_END
+		

@@ -4,7 +4,7 @@
 
 #define CBCLASS svc_debuggerUII
 START_DISPATCH;
-  CB(CREATEUI, createUI);
-  VCB(DESTROYUI, destroyUI);
+CB(CREATEUI, createUI);
+VCB(DESTROYUI, destroyUI);
 END_DISPATCH;
 #undef CBCLASS

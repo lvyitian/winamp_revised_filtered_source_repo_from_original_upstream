@@ -1,19 +1,19 @@
-#pragma once
-#include "audio/ifc_audioout.h"
-#include "foundation/error.h"
-#include "foundation/dispatch.h"
-#include "metadata/ifc_metadata.h"
-#include "player/types.h"
-#include "nx/nxfile.h"
-
-class ifc_fileplayback_parent : public Wasabi2::Dispatchable
-{
-protected:
+		#pragma once
+		#include "audio/ifc_audioout.h"
+		#include "foundation/error.h"
+		#include "foundation/dispatch.h"
+		#include "metadata/ifc_metadata.h"
+		#include "player/types.h"
+		#include "nx/nxfile.h"
+		
+		class ifc_fileplayback_parent : public Wasabi2::Dispatchable
+		{
+		protected:
 	ifc_fileplayback_parent() : Wasabi2::Dispatchable(DISPATCHABLE_VERSION) {}
 	~ifc_fileplayback_parent() {}
-public:
+		public:
 	// only call these functions during DecodeStep! 
-
+		
 	// if any of these return an error, return it from DecodeStep().
 	// these return NErr_Aborted if there's a seek pending, and NErr_Interrupted if there is an interrupt pending
 	ns_error_t OpenOutput(const ifc_audioout::Parameters *parameters) { return FilePlaybackParent_OpenOutput(parameters); }
@@ -23,21 +23,21 @@ public:
 	ns_error_t OnMetadata(ifc_metadata *new_metadata) { return FilePlaybackParent_OnMetadata(new_metadata); }
 	enum
 	{
-		DISPATCHABLE_VERSION=0,
+DISPATCHABLE_VERSION=0,
 	};
-protected:
+		protected:
 	virtual ns_error_t WASABICALL FilePlaybackParent_OpenOutput(const ifc_audioout::Parameters *parameters)=0;
 	virtual ns_error_t WASABICALL FilePlaybackParent_Output(const void *audio_data, size_t audio_data_length, size_t *frames_consumed, double begin_position_seconds)=0;
 	virtual ns_error_t WASABICALL FilePlaybackParent_OutputNonInterleaved(const void *audio_data, size_t audio_data_length, size_t *frames_consumed, double begin_position_seconds)=0;
 	virtual ns_error_t WASABICALL FilePlaybackParent_OnMetadata(ifc_metadata *new_metadata)=0;
-};
-
-class ifc_fileplayback : public Wasabi2::Dispatchable
-{
-protected:
+		};
+		
+		class ifc_fileplayback : public Wasabi2::Dispatchable
+		{
+		protected:
 	ifc_fileplayback() : Wasabi2::Dispatchable(DISPATCHABLE_VERSION) {}
 	~ifc_fileplayback() {}
-public:
+		public:
 	void Close() { FilePlayback_Close(); }
 	ns_error_t Seekable() { return FilePlayback_Seekable(); }
 	ns_error_t GetMetadata(ifc_metadata **metadata) { return FilePlayback_GetMetadata(metadata); }
@@ -47,12 +47,12 @@ public:
 	ns_error_t DecodeStep() { return FilePlayback_DecodeStep(); }
 	ns_error_t Interrupt(Agave_Seek *resume_information) { return FilePlayback_Interrupt(resume_information); }
 	ns_error_t Resume(Agave_Seek *resume_information, nx_file_t file, ifc_metadata *parent_metadata) { return FilePlayback_Resume(resume_information, file, parent_metadata); }
-
+		
 	enum
 	{
-		DISPATCHABLE_VERSION=0,
+DISPATCHABLE_VERSION=0,
 	};
-protected:
+		protected:
 	/* you need to handle the possibility that Close gets called more than one time */
 	virtual void WASABICALL FilePlayback_Close()=0;
 	virtual ns_error_t WASABICALL FilePlayback_Seekable()=0;
@@ -74,4 +74,5 @@ protected:
 	virtual ns_error_t WASABICALL FilePlayback_Interrupt(Agave_Seek *resume_information)=0;
 	/* During resume, be sure to call player->SetMetadata again */
 	virtual ns_error_t WASABICALL FilePlayback_Resume(Agave_Seek *resume_information, nx_file_t file, ifc_metadata *parent_metadata)=0;
-};
+		};
+		

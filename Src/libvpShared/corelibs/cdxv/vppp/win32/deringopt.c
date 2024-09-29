@@ -1,101 +1,101 @@
-/****************************************************************************
- *
- *   Module Title :     DeRingingOpt.c
- *
- *   Description  :     Optimized functions for PostProcessor
- *
- ***************************************************************************/
-#define STRICT              /* Strict type checking */
-
-/****************************************************************************
-*  Header Files
-****************************************************************************/
-#include <stdio.h>
-#include <stdlib.h>
-#include "postp.h"
-
-/****************************************************************************
-*  Macros
-****************************************************************************/
-#pragma warning(disable:4799)
-#pragma warning(disable:4731)
-#pragma warning(disable:4305)
-
-/****************************************************************************
-*  Module constants.
-****************************************************************************/        
-#if defined(_WIN32_WCE)
-#pragma pack(16)
-static unsigned short FourOnes[] = {  1,   1,   1,   1 };
-static unsigned short Four128s[] = { 128, 128, 128, 128 };
-static unsigned short Four64s[]  = { 64,  64,  64,  64};
-
-static char eight64s [] = { 64, 64, 64, 64, 64, 64, 64, 64 };
-static char eight32s [] = { 32, 32, 32, 32, 32, 32, 32, 32 };
-static char eight127s []= { 127, 127, 127, 127, 127, 127, 127, 127 };
-static char eight128s []= { 128, 128, 128, 128, 128, 128, 128, 128 };
-static unsigned char eight223s[] = { 223, 223, 223, 223, 223, 223, 223, 223 };
-static unsigned char eight231s[] = { 231, 231, 231, 231, 231, 231, 231, 231 };
-#pragma pack()
-#else
-
-__declspec(align(16)) static unsigned short FourOnes[] = {  1,   1,   1,   1 };
-__declspec(align(16)) static unsigned short Four128s[] = { 128, 128, 128, 128 };
-__declspec(align(16)) static unsigned short Four64s[]  = { 64,  64,  64,  64};
-
-__declspec(align(16)) static char eight64s [] = { 64, 64, 64, 64, 64, 64, 64, 64 };
-__declspec(align(16)) static char eight32s [] = { 32, 32, 32, 32, 32, 32, 32, 32 };
-__declspec(align(16)) static char eight127s []= { 127, 127, 127, 127, 127, 127, 127, 127 };
-__declspec(align(16)) static char eight128s []= { 128, 128, 128, 128, 128, 128, 128, 128 };
-__declspec(align(16)) static unsigned char eight223s[] = { 223, 223, 223, 223, 223, 223, 223, 223 };
-__declspec(align(16)) static unsigned char eight231s[] = { 231, 231, 231, 231, 231, 231, 231, 231 };
-
-#endif
-/****************************************************************************
-*  Imports
-****************************************************************************/              
-extern UINT32 SharpenModifier[];
-
-/****************************************************************************
- * 
- *  ROUTINE       : DeRingBlockStrong_MMX
- *
- *  INPUTS        : const POSTPROC_INSTANCE *pbi : Pointer to post-processor instance.
- *                  const UINT8 *SrcPtr          : Pointer to input image.
- *                  UINT8 *DstPtr                : Pointer to output image.
- *                  const INT32 Pitch            : Image stride.
- *                  UINT32 FragQIndex            : Q-index block encoded with.
- *                  UINT32 *QuantScale           : Array of quantization scale factors.
- *                               
- *  OUTPUTS       : None.
- *
- *  RETURNS       : void
- *
- *  FUNCTION      : Filtering a block for de-ringing purpose.
- *
- *  SPECIAL NOTES : None.
- *
- ****************************************************************************/
-void DeringBlockStrong_MMX
-( 
+		/****************************************************************************
+        *
+        *   Module Title :     DeRingingOpt.c
+        *
+        *   Description  :     Optimized functions for PostProcessor
+        *
+        ***************************************************************************/
+		#define STRICT              /* Strict type checking */
+		
+		/****************************************************************************
+		*  Header Files
+		****************************************************************************/
+		#include <stdio.h>
+		#include <stdlib.h>
+		#include "postp.h"
+		
+		/****************************************************************************
+		*  Macros
+		****************************************************************************/
+		#pragma warning(disable:4799)
+		#pragma warning(disable:4731)
+		#pragma warning(disable:4305)
+		
+		/****************************************************************************
+		*  Module constants.
+		****************************************************************************/        
+		#if defined(_WIN32_WCE)
+		#pragma pack(16)
+		static unsigned short FourOnes[] = {  1,   1,   1,   1 };
+		static unsigned short Four128s[] = { 128, 128, 128, 128 };
+		static unsigned short Four64s[]  = { 64,  64,  64,  64};
+		
+		static char eight64s [] = { 64, 64, 64, 64, 64, 64, 64, 64 };
+		static char eight32s [] = { 32, 32, 32, 32, 32, 32, 32, 32 };
+		static char eight127s []= { 127, 127, 127, 127, 127, 127, 127, 127 };
+		static char eight128s []= { 128, 128, 128, 128, 128, 128, 128, 128 };
+		static unsigned char eight223s[] = { 223, 223, 223, 223, 223, 223, 223, 223 };
+		static unsigned char eight231s[] = { 231, 231, 231, 231, 231, 231, 231, 231 };
+		#pragma pack()
+		#else
+		
+		__declspec(align(16)) static unsigned short FourOnes[] = {  1,   1,   1,   1 };
+		__declspec(align(16)) static unsigned short Four128s[] = { 128, 128, 128, 128 };
+		__declspec(align(16)) static unsigned short Four64s[]  = { 64,  64,  64,  64};
+		
+		__declspec(align(16)) static char eight64s [] = { 64, 64, 64, 64, 64, 64, 64, 64 };
+		__declspec(align(16)) static char eight32s [] = { 32, 32, 32, 32, 32, 32, 32, 32 };
+		__declspec(align(16)) static char eight127s []= { 127, 127, 127, 127, 127, 127, 127, 127 };
+		__declspec(align(16)) static char eight128s []= { 128, 128, 128, 128, 128, 128, 128, 128 };
+		__declspec(align(16)) static unsigned char eight223s[] = { 223, 223, 223, 223, 223, 223, 223, 223 };
+		__declspec(align(16)) static unsigned char eight231s[] = { 231, 231, 231, 231, 231, 231, 231, 231 };
+		
+		#endif
+		/****************************************************************************
+		*  Imports
+		****************************************************************************/              
+		extern UINT32 SharpenModifier[];
+		
+		/****************************************************************************
+        * 
+        *  ROUTINE       : DeRingBlockStrong_MMX
+        *
+        *  INPUTS        : const POSTPROC_INSTANCE *pbi : Pointer to post-processor instance.
+        *                  const UINT8 *SrcPtr          : Pointer to input image.
+        *                  UINT8 *DstPtr                : Pointer to output image.
+        *                  const INT32 Pitch            : Image stride.
+        *                  UINT32 FragQIndex            : Q-index block encoded with.
+        *                  UINT32 *QuantScale           : Array of quantization scale factors.
+        *                               
+        *  OUTPUTS       : None.
+        *
+        *  RETURNS       : void
+        *
+        *  FUNCTION      : Filtering a block for de-ringing purpose.
+        *
+        *  SPECIAL NOTES : None.
+        *
+        ****************************************************************************/
+		void DeringBlockStrong_MMX
+		( 
     const POSTPROC_INSTANCE *pbi, 
     const UINT8 *SrcPtr,
     UINT8 *DstPtr,
     const INT32 Pitch,
     UINT32 FragQIndex,
     UINT32 *QuantScale
-)
-{
-
-#if defined(_WIN32_WCE)
+		)
+		{
+		
+		#if defined(_WIN32_WCE)
 	#pragma pack(16)
 	short UDMod[72];
 	short	LRMod[128];
 	#pragma pack()
-#else
+		#else
 	__declspec(align(16)) short UDMod[72];
 	__declspec(align(16)) short	LRMod[128];
-#endif
+		#endif
 	unsigned int PlaneLineStep = Pitch;
 	const unsigned char *Src = SrcPtr;
 	unsigned char *Des       = DstPtr;
@@ -106,1229 +106,1229 @@ void DeringBlockStrong_MMX
     UINT32 QStep  = QuantScale[FragQIndex];
 	INT32 Sharpen = SharpenModifier[FragQIndex];
 	(void) pbi;
-
+		
 	__asm 
 	{
-		push		esi
-		push		edi
-		
-		mov			esi,	Src						/* Source Pointer */
-		mov			edi,	UDPointer				/* UD modifier pointer */
-
-		push		ecx
-		push		edx
-
-		mov			ecx,	PlaneLineStep			/* Pitch Step */
-        xor         edx,    edx
-
-		push		eax
-		push		ebx
-
-		mov			eax,	QStep					/* QValue */
-		mov			ebx,	Sharpen					/* Sharpen */
-
-		movd		mm0,	eax						/* QValue */
-		movd		mm2,	ebx						/* sharpen */
-
-		punpcklbw	mm0,	mm0						/* 00 00 00 QQ */
-        sub         edx,    ecx                     /* Negative Pitch */
+push		esi
+push		edi
 
-		punpcklbw	mm2,	mm2						/* 00 00 00 SS */
-        pxor        mm7,    mm7                     /* clear mm7 for unpacks */
-
-		punpcklbw	mm0,	mm0						/* 00 00 qq qq */
-		mov			eax,	LRPointer				/* Left and Right Modifier */                
-
-		punpcklbw	mm2,	mm2						/* 00 00 ss ss */
-		lea         ebx,    [esi+ecx*8]             /* Source Pointer of last row */        
-
-		punpcklbw	mm0,	mm0						/* qq qq qq qq */
-		movq        mm1,    mm0;                    /* make a copy */
+mov			esi,	Src						/* Source Pointer */
+mov			edi,	UDPointer				/* UD modifier pointer */
 		
-		punpcklbw	mm2,	mm2						/* ss ss ss ss */
-		paddb		mm1,	mm0						/* QValue * 2 */
-
-        paddb       mm1,    mm0                     /* High = 3 * Qvalue */
-        paddusb		mm1,	eight223s				/* clamping high to 32 */	
-
-		paddb       mm0,    eight32s                /* 32+QValues */
-		psubusb		mm1,	eight223s				/* Get the real value back */
-
-        movq		mm3,	eight127s				/* 7f 7f 7f 7f 7f 7f 7f 7f */
-        pandn       mm1,    mm3                     /* ClampHigh */
-
-        /* mm0,mm1,mm2,mm7 are in use  */
-        /* mm0---> QValue+32           */
-        /* mm1---> ClampHigh		   */
-		/* mm2---> Sharpen             */
-		/* mm7---> Cleared for unpack  */
-
-FillModLoop1:
-        movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
-        movq        mm4,    QWORD PTR [esi+edx]     /* Pixels on top pu */
-
-        movq        mm5,    mm3                     /* make a copy of p */
-        psubusb     mm3,    mm4                     /* p-pu */
-        
-        psubusb     mm4,    mm5                     /* pu-p */
-        por         mm3,    mm4                     /* abs(p-pu) */
-
-        movq        mm6,    mm0                     /* 32+QValues */
-
-        movq		mm4,	mm0						/* 32+QValues */
-		psubusb		mm6,    mm3                     /* zero clampled TmpMod */
-
-		movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
-		paddb		mm4,	eight64s				/* 32+QValues + 64 */
-
-		pxor		mm4,	mm5						/* convert to a sign number */
-		pxor		mm3,	mm5						/* convert to a sign number */
-
-		pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
-		pand		mm3,	mm2						/* use sharpen */
-
-        paddsb		mm6,    mm1						/* clamping to high */
-		psubsb		mm6,	mm1						/* offset back */
-
-		por			mm6,	mm3						/* Mod value to be stored */
-		pxor		mm5,	mm5						/* clear mm5 */
-
-		pxor		mm4,	mm4						/* clear mm4 */
-   		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
-
-		psraw		mm5,	8						/* sign extended */
-		movq        QWORD PTR [edi], mm5            /* writeout UDmod, low four */
+push		ecx
+push		edx
 		
-		punpckhbw	mm4,	mm6
-		psraw		mm4,	8
-
-        movq        QWORD PTR [edi+8], mm4          /* writeout UDmod, high four */
-
-        
-        /* left Mod */
-        movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
-        movq        mm4,    QWORD PTR [esi-1]     /* Pixels on top pu */
-
-        movq        mm5,    mm3                     /* make a copy of p */
-        psubusb     mm3,    mm4                     /* p-pu */
-        
-        psubusb     mm4,    mm5                     /* pu-p */
-        por         mm3,    mm4                     /* abs(p-pu) */
-
-        movq        mm6,    mm0                     /* 32+QValues */
-
-        movq		mm4,	mm0						/* 32+QValues */
-		psubusb		mm6,    mm3                     /* zero clampled TmpMod */
-
-		movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
-		paddb		mm4,	eight64s				/* 32+QValues + 64 */
-
-		pxor		mm4,	mm5						/* convert to a sign number */
-		pxor		mm3,	mm5						/* convert to a sign number */
-
-		pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
-		pand		mm3,	mm2						/* use sharpen */
-
-        paddsb		mm6,    mm1						/* clamping to high */
-		psubsb		mm6,	mm1						/* offset back */
-
-		por			mm6,	mm3						/* Mod value to be stored */
-		pxor		mm5,	mm5						/* clear mm5 */
-
-		pxor		mm4,	mm4						/* clear mm4 */
-   		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
-
-		psraw		mm5,	8						/* sign extended */
-		movq        QWORD PTR [eax], mm5            /* writeout UDmod, low four */
+mov			ecx,	PlaneLineStep			/* Pitch Step */
+xor         edx,    edx
+		
+push		eax
+push		ebx
+		
+mov			eax,	QStep					/* QValue */
+mov			ebx,	Sharpen					/* Sharpen */
+		
+movd		mm0,	eax						/* QValue */
+movd		mm2,	ebx						/* sharpen */
+		
+punpcklbw	mm0,	mm0						/* 00 00 00 QQ */
+sub         edx,    ecx                     /* Negative Pitch */
+		
+punpcklbw	mm2,	mm2						/* 00 00 00 SS */
+pxor        mm7,    mm7                     /* clear mm7 for unpacks */
+		
+punpcklbw	mm0,	mm0						/* 00 00 qq qq */
+mov			eax,	LRPointer				/* Left and Right Modifier */                
+		
+punpcklbw	mm2,	mm2						/* 00 00 ss ss */
+lea         ebx,    [esi+ecx*8]             /* Source Pointer of last row */        
 		
-		punpckhbw	mm4,	mm6
-		psraw		mm4,	8
+punpcklbw	mm0,	mm0						/* qq qq qq qq */
+movq        mm1,    mm0;                    /* make a copy */
 
-        movq        QWORD PTR [eax+8], mm4          /* writeout UDmod, high four */
+punpcklbw	mm2,	mm2						/* ss ss ss ss */
+paddb		mm1,	mm0						/* QValue * 2 */
+		
+paddb       mm1,    mm0                     /* High = 3 * Qvalue */
+paddusb		mm1,	eight223s				/* clamping high to 32 */	
+		
+paddb       mm0,    eight32s                /* 32+QValues */
+psubusb		mm1,	eight223s				/* Get the real value back */
+		
+movq		mm3,	eight127s				/* 7f 7f 7f 7f 7f 7f 7f 7f */
+pandn       mm1,    mm3                     /* ClampHigh */
+		
+/* mm0,mm1,mm2,mm7 are in use  */
+/* mm0---> QValue+32           */
+/* mm1---> ClampHigh		   */
+/* mm2---> Sharpen             */
+/* mm7---> Cleared for unpack  */
+		
+		FillModLoop1:
+movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
+movq        mm4,    QWORD PTR [esi+edx]     /* Pixels on top pu */
+		
+movq        mm5,    mm3                     /* make a copy of p */
+psubusb     mm3,    mm4                     /* p-pu */
 
+psubusb     mm4,    mm5                     /* pu-p */
+por         mm3,    mm4                     /* abs(p-pu) */
+		
+movq        mm6,    mm0                     /* 32+QValues */
+		
+movq		mm4,	mm0						/* 32+QValues */
+psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+		
+movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
+paddb		mm4,	eight64s				/* 32+QValues + 64 */
+		
+pxor		mm4,	mm5						/* convert to a sign number */
+pxor		mm3,	mm5						/* convert to a sign number */
+		
+pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
+pand		mm3,	mm2						/* use sharpen */
+		
+paddsb		mm6,    mm1						/* clamping to high */
+psubsb		mm6,	mm1						/* offset back */
+		
+por			mm6,	mm3						/* Mod value to be stored */
+pxor		mm5,	mm5						/* clear mm5 */
+		
+pxor		mm4,	mm4						/* clear mm4 */
+        		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+		
+psraw		mm5,	8						/* sign extended */
+movq        QWORD PTR [edi], mm5            /* writeout UDmod, low four */
 
+punpckhbw	mm4,	mm6
+psraw		mm4,	8
+		
+movq        QWORD PTR [edi+8], mm4          /* writeout UDmod, high four */
+		
 
-        /* Right Mod */
-        movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
-        movq        mm4,    QWORD PTR [esi+1]       /* Pixels on top pu */
+/* left Mod */
+movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
+movq        mm4,    QWORD PTR [esi-1]     /* Pixels on top pu */
+		
+movq        mm5,    mm3                     /* make a copy of p */
+psubusb     mm3,    mm4                     /* p-pu */
 
-        movq        mm5,    mm3                     /* make a copy of p */
-        psubusb     mm3,    mm4                     /* p-pu */
-        
-        psubusb     mm4,    mm5                     /* pu-p */
-        por         mm3,    mm4                     /* abs(p-pu) */
+psubusb     mm4,    mm5                     /* pu-p */
+por         mm3,    mm4                     /* abs(p-pu) */
+		
+movq        mm6,    mm0                     /* 32+QValues */
+		
+movq		mm4,	mm0						/* 32+QValues */
+psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+		
+movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
+paddb		mm4,	eight64s				/* 32+QValues + 64 */
+		
+pxor		mm4,	mm5						/* convert to a sign number */
+pxor		mm3,	mm5						/* convert to a sign number */
+		
+pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
+pand		mm3,	mm2						/* use sharpen */
+		
+paddsb		mm6,    mm1						/* clamping to high */
+psubsb		mm6,	mm1						/* offset back */
+		
+por			mm6,	mm3						/* Mod value to be stored */
+pxor		mm5,	mm5						/* clear mm5 */
+		
+pxor		mm4,	mm4						/* clear mm4 */
+        		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+		
+psraw		mm5,	8						/* sign extended */
+movq        QWORD PTR [eax], mm5            /* writeout UDmod, low four */
 
-        movq        mm6,    mm0                     /* 32+QValues */
+punpckhbw	mm4,	mm6
+psraw		mm4,	8
+		
+movq        QWORD PTR [eax+8], mm4          /* writeout UDmod, high four */
+		
+		
+		
+/* Right Mod */
+movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
+movq        mm4,    QWORD PTR [esi+1]       /* Pixels on top pu */
+		
+movq        mm5,    mm3                     /* make a copy of p */
+psubusb     mm3,    mm4                     /* p-pu */
 
-        movq		mm4,	mm0						/* 32+QValues */
-		psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+psubusb     mm4,    mm5                     /* pu-p */
+por         mm3,    mm4                     /* abs(p-pu) */
+		
+movq        mm6,    mm0                     /* 32+QValues */
+		
+movq		mm4,	mm0						/* 32+QValues */
+psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+		
+movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
+paddb		mm4,	eight64s				/* 32+QValues + 64 */
+		
+pxor		mm4,	mm5						/* convert to a sign number */
+pxor		mm3,	mm5						/* convert to a sign number */
+		
+pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
+pand		mm3,	mm2						/* use sharpen */
+		
+paddsb		mm6,    mm1						/* clamping to high */
+psubsb		mm6,	mm1						/* offset back */
+		
+por			mm6,	mm3						/* Mod value to be stored */
+pxor		mm5,	mm5						/* clear mm5 */
+		
+pxor		mm4,	mm4						/* clear mm4 */
+        		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+		
+psraw		mm5,	8						/* sign extended */
+movq        QWORD PTR [eax+128], mm5            /* writeout UDmod, low four */
 
-		movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
-		paddb		mm4,	eight64s				/* 32+QValues + 64 */
+punpckhbw	mm4,	mm6
+psraw		mm4,	8
+		
+movq        QWORD PTR [eax+136], mm4          /* writeout UDmod, high four */
+add         esi,    ecx
 
-		pxor		mm4,	mm5						/* convert to a sign number */
-		pxor		mm3,	mm5						/* convert to a sign number */
 
-		pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
-		pand		mm3,	mm2						/* use sharpen */
+add         edi,    16                  
+add         eax,    16      
+		
+cmp         esi,    ebx
+jne         FillModLoop1
 
-        paddsb		mm6,    mm1						/* clamping to high */
-		psubsb		mm6,	mm1						/* offset back */
+/* last UDMod */
+		
+movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
+movq        mm4,    QWORD PTR [esi+edx]     /* Pixels on top pu */
+		
+movq        mm5,    mm3                     /* make a copy of p */
+psubusb     mm3,    mm4                     /* p-pu */
 
-		por			mm6,	mm3						/* Mod value to be stored */
-		pxor		mm5,	mm5						/* clear mm5 */
+psubusb     mm4,    mm5                     /* pu-p */
+por         mm3,    mm4                     /* abs(p-pu) */
+		
+movq        mm6,    mm0                     /* 32+QValues */
+		
+movq		mm4,	mm0						/* 32+QValues */
+psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+		
+movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
+paddb		mm4,	eight64s				/* 32+QValues + 64 */
+		
+pxor		mm4,	mm5						/* convert to a sign number */
+pxor		mm3,	mm5						/* convert to a sign number */
+		
+pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
+pand		mm3,	mm2						/* use sharpen */
+		
+paddsb		mm6,    mm1						/* clamping to high */
+psubsb		mm6,	mm1						/* offset back */
+		
+por			mm6,	mm3						/* Mod value to be stored */
+pxor		mm5,	mm5						/* clear mm5 */
+		
+pxor		mm4,	mm4						/* clear mm4 */
+        		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+		
+psraw		mm5,	8						/* sign extended */
+movq        QWORD PTR [edi], mm5            /* writeout UDmod, low four */
 
-		pxor		mm4,	mm4						/* clear mm4 */
-   		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+punpckhbw	mm4,	mm6
+psraw		mm4,	8
+		
+movq        QWORD PTR [edi+8], mm4          /* writeout UDmod, high four */
+		
+mov			esi,	Src
+mov			edi,	Des
 
-		psraw		mm5,	8						/* sign extended */
-		movq        QWORD PTR [eax+128], mm5            /* writeout UDmod, low four */
+mov			eax,	UDPointer
+mov			ebx,	LRPointer
+		
+/* First Row */
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
 		
-		punpckhbw	mm4,	mm6
-		psraw		mm4,	8
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-        movq        QWORD PTR [eax+136], mm4          /* writeout UDmod, high four */
-        add         esi,    ecx
-        
-        
-        add         edi,    16                  
-        add         eax,    16      
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-        cmp         esi,    ebx
-        jne         FillModLoop1
-        
-        /* last UDMod */
+movq		mm5,	[eax+8]			/* au */
 
-        movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
-        movq        mm4,    QWORD PTR [esi+edx]     /* Pixels on top pu */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-        movq        mm5,    mm3                     /* make a copy of p */
-        psubusb     mm3,    mm4                     /* p-pu */
-        
-        psubusb     mm4,    mm5                     /* pu-p */
-        por         mm3,    mm4                     /* abs(p-pu) */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-        movq        mm6,    mm0                     /* 32+QValues */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
+		
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-        movq		mm4,	mm0						/* 32+QValues */
-		psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
+		
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
-		paddb		mm4,	eight64s				/* 32+QValues + 64 */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
+		
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		pxor		mm4,	mm5						/* convert to a sign number */
-		pxor		mm3,	mm5						/* convert to a sign number */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
+		
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
-		pand		mm3,	mm2						/* use sharpen */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-        paddsb		mm6,    mm1						/* clamping to high */
-		psubsb		mm6,	mm1						/* offset back */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
+		
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		por			mm6,	mm3						/* Mod value to be stored */
-		pxor		mm5,	mm5						/* clear mm5 */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
+		
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		pxor		mm4,	mm4						/* clear mm4 */
-   		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		psraw		mm5,	8						/* sign extended */
-		movq        QWORD PTR [edi], mm5            /* writeout UDmod, low four */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpckhbw	mm4,	mm6
-		psraw		mm4,	8
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-        movq        QWORD PTR [edi+8], mm4          /* writeout UDmod, high four */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
 
-		mov			esi,	Src
-		mov			edi,	Des
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		mov			eax,	UDPointer
-		mov			ebx,	LRPointer
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		/* First Row */
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+		
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		movq		mm5,	[eax+8]			/* au */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
 		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
-
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+movq		[edi],	mm0				/* write to destination */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
-
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
-
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+/* Second Row */
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
-		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
-		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
-		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
+
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
+		
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
+		
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
+		
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		movq		[edi],	mm0				/* write to destination */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
 
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		/* Second Row */
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+		
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		movq		mm5,	[eax+8]			/* au */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
 		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
-
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+movq		[edi],	mm0				/* write to destination */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
-
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
-
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+/* Third Row */
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
-		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
-		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
-		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
-		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
-
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
+		
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
+		
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
+		
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		movq		[edi],	mm0				/* write to destination */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-        /* Third Row */
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
 
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		movq		mm5,	[eax+8]			/* au */
-		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
-		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
-
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
-
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
-
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
-
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
-
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+movq		[edi],	mm0				/* write to destination */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
+		
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+/* Fourth Row */
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
-
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		movq		[edi],	mm0				/* write to destination */
-
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-
-
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-        /* Fourth Row */
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
-
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
-		
-		movq		mm5,	[eax+8]			/* au */
-		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
+
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
+		
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
+		
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
+		
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+movq		[edi],	mm0				/* write to destination */
+		
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+		
+/* Fifth Row */
+		
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
+		
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		movq		[edi],	mm0				/* write to destination */
-
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-        /* Fifth Row */
-
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
-
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
-		
-		movq		mm5,	[eax+8]			/* au */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
-		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
+
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
+		
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
+		
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
+		
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+movq		[edi],	mm0				/* write to destination */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
+		
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+		
+/* Sixth Row */
+		
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
+		
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		movq		[edi],	mm0				/* write to destination */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
-
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-
-        /* Sixth Row */
-
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
-		
-		movq		mm5,	[eax+8]			/* au */
-		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
-		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
+
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
+		
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
+		
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
+		
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+movq		[edi],	mm0				/* write to destination */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
+		
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+		
+/* Seventh Row */
+		
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
+		
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		movq		[edi],	mm0				/* write to destination */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
-
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-
-        /* Seventh Row */
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
-
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
-		
-		movq		mm5,	[eax+8]			/* au */
-		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
+
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
+		
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
+		
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
+		
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+movq		[edi],	mm0				/* write to destination */
+		
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+/* Eighth Row */
+		
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
+		
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		movq		[edi],	mm0				/* write to destination */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
-
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-        /* Eighth Row */
-
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
-		
-		movq		mm5,	[eax+8]			/* au */
-		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
-		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
+
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
-
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
-
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
-
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
-
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
-
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
-
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
 		
-		movq		[edi],	mm0				/* write to destination */
-
-        pop         ebx
-        pop         eax
-
-        pop         edx
-        pop         ecx
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
+		
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-        pop         edi
-        pop         esi
+movq		[edi],	mm0				/* write to destination */
+		
+pop         ebx
+pop         eax
+		
+pop         edx
+pop         ecx
+		
+pop         edi
+pop         esi
     }
-}
-
-/****************************************************************************
- * 
- *  ROUTINE       : DeRingBlockWeak_MMX
- *
- *  INPUTS        : const POSTPROC_INSTANCE *pbi : Pointer to post-processor instance.
- *                  const UINT8 *SrcPtr          : Pointer to input image.
- *                  UINT8 *DstPtr                : Pointer to output image.
- *                  const INT32 Pitch            : Image stride.
- *                  UINT32 FragQIndex            : Q-index block encoded with.
- *                  UINT32 *QuantScale           : Array of quantization scale factors.
- *                               
- *  OUTPUTS       : None.
- *
- *  RETURNS       : void
- *
- *  FUNCTION      : Filters a block for de-ringing purpose.
- *
- *  SPECIAL NOTES : None.
- *
- ****************************************************************************/
-void DeringBlockWeak_MMX
-( 
+		}
+		
+		/****************************************************************************
+        * 
+        *  ROUTINE       : DeRingBlockWeak_MMX
+        *
+        *  INPUTS        : const POSTPROC_INSTANCE *pbi : Pointer to post-processor instance.
+        *                  const UINT8 *SrcPtr          : Pointer to input image.
+        *                  UINT8 *DstPtr                : Pointer to output image.
+        *                  const INT32 Pitch            : Image stride.
+        *                  UINT32 FragQIndex            : Q-index block encoded with.
+        *                  UINT32 *QuantScale           : Array of quantization scale factors.
+        *                               
+        *  OUTPUTS       : None.
+        *
+        *  RETURNS       : void
+        *
+        *  FUNCTION      : Filters a block for de-ringing purpose.
+        *
+        *  SPECIAL NOTES : None.
+        *
+        ****************************************************************************/
+		void DeringBlockWeak_MMX
+		( 
     const POSTPROC_INSTANCE *pbi, 
     const UINT8 *SrcPtr,
     UINT8 *DstPtr,
     const INT32 Pitch,
     UINT32 FragQIndex,
     UINT32 *QuantScale
-)
-{
-#if defined(_WIN32_WCE)
+		)
+		{
+		#if defined(_WIN32_WCE)
 	#pragma pack(16)
 	short UDMod[72];
 	short	LRMod[128];
 	#pragma pack()
-#else
+		#else
 	__declspec(align(16)) short UDMod[72];
 	__declspec(align(16)) short	LRMod[128];
-#endif
+		#endif
     
 	unsigned int PlaneLineStep = Pitch;
 	const unsigned char *Src   = SrcPtr;
@@ -1340,1190 +1340,1191 @@ void DeringBlockWeak_MMX
     UINT32 QStep  = QuantScale[FragQIndex];
 	INT32 Sharpen = SharpenModifier[FragQIndex];
 	(void) pbi;
-
+		
 	__asm 
 	{
-		push		esi
-		push		edi
-		
-		mov			esi,	Src						/* Source Pointer */
-		mov			edi,	UDPointer				/* UD modifier pointer */
-
-		push		ecx
-		push		edx
-
-		mov			ecx,	PlaneLineStep			/* Pitch Step */
-        xor         edx,    edx
-
-		push		eax
-		push		ebx
-
-		mov			eax,	QStep					/* QValue */
-		mov			ebx,	Sharpen					/* Sharpen */
-
-		movd		mm0,	eax						/* QValue */
-		movd		mm2,	ebx						/* sharpen */
-
-		punpcklbw	mm0,	mm0						/* 00 00 00 QQ */
-        sub         edx,    ecx                     /* Negative Pitch */
+push		esi
+push		edi
 
-		punpcklbw	mm2,	mm2						/* 00 00 00 SS */
-        pxor        mm7,    mm7                     /* clear mm7 for unpacks */
-
-		punpcklbw	mm0,	mm0						/* 00 00 qq qq */
-		mov			eax,	LRPointer				/* Left and Right Modifier */                
-
-		punpcklbw	mm2,	mm2						/* 00 00 ss ss */
-		lea         ebx,    [esi+ecx*8]             /* Source Pointer of last row */        
-
-		punpcklbw	mm0,	mm0						/* qq qq qq qq */
-		movq        mm1,    mm0;                    /* make a copy */
+mov			esi,	Src						/* Source Pointer */
+mov			edi,	UDPointer				/* UD modifier pointer */
 		
-		punpcklbw	mm2,	mm2						/* ss ss ss ss */
-		paddb		mm1,	mm0						/* QValue * 2 */
-
-        paddb       mm1,    mm0                     /* High = 3 * Qvalue */
-        paddusb		mm1,	eight231s				/* clamping high to 24 */	
-
-		paddb       mm0,    eight32s                /* 32+QValues */
-		psubusb		mm1,	eight231s				/* Get the real value back */
-
-        movq		mm3,	eight127s				/* 7f 7f 7f 7f 7f 7f 7f 7f */
-        pandn       mm1,    mm3                     /* ClampHigh */
-
-        /* mm0,mm1,mm2,mm7 are in use  */
-        /* mm0---> QValue+32           */
-        /* mm1---> ClampHigh		   */
-		/* mm2---> Sharpen             */
-		/* mm7---> Cleared for unpack  */
-
-FillModLoop1:
-        movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
-        movq        mm4,    QWORD PTR [esi+edx]     /* Pixels on top pu */
-
-        movq        mm5,    mm3                     /* make a copy of p */
-        psubusb     mm3,    mm4                     /* p-pu */
-        
-        psubusb     mm4,    mm5                     /* pu-p */
-        por         mm3,    mm4                     /* abs(p-pu) */
-
-        movq        mm6,    mm0                     /* 32+QValues */
-		paddusb		mm3,	mm3						/* 2*abs(p-pu) */
-
-        movq		mm4,	mm0						/* 32+QValues */
-		psubusb		mm6,    mm3                     /* zero clampled TmpMod */
-
-		movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
-		paddb		mm4,	eight64s				/* 32+QValues + 64 */
-
-		pxor		mm4,	mm5						/* convert to a sign number */
-		pxor		mm3,	mm5						/* convert to a sign number */
-
-		pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
-		pand		mm3,	mm2						/* use sharpen */
-
-        paddsb		mm6,    mm1						/* clamping to high */
-		psubsb		mm6,	mm1						/* offset back */
-
-		por			mm6,	mm3						/* Mod value to be stored */
-		pxor		mm5,	mm5						/* clear mm5 */
-
-		pxor		mm4,	mm4						/* clear mm4 */
-   		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
-
-		psraw		mm5,	8						/* sign extended */
-		movq        QWORD PTR [edi], mm5            /* writeout UDmod, low four */
+push		ecx
+push		edx
 		
-		punpckhbw	mm4,	mm6
-		psraw		mm4,	8
-
-        movq        QWORD PTR [edi+8], mm4          /* writeout UDmod, high four */
-
-        
-        /* left Mod */
-        movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
-        movq        mm4,    QWORD PTR [esi-1]     /* Pixels on top pu */
-
-        movq        mm5,    mm3                     /* make a copy of p */
-        psubusb     mm3,    mm4                     /* p-pu */
-        
-        psubusb     mm4,    mm5                     /* pu-p */
-        por         mm3,    mm4                     /* abs(p-pu) */
-
-        movq        mm6,    mm0                     /* 32+QValues */
-		paddusb		mm3,	mm3						/* 2*abs(p-pu) */
-
-        movq		mm4,	mm0						/* 32+QValues */
-		psubusb		mm6,    mm3                     /* zero clampled TmpMod */
-
-		movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
-		paddb		mm4,	eight64s				/* 32+QValues + 64 */
-
-		pxor		mm4,	mm5						/* convert to a sign number */
-		pxor		mm3,	mm5						/* convert to a sign number */
-
-		pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
-		pand		mm3,	mm2						/* use sharpen */
-
-        paddsb		mm6,    mm1						/* clamping to high */
-		psubsb		mm6,	mm1						/* offset back */
-
-		por			mm6,	mm3						/* Mod value to be stored */
-		pxor		mm5,	mm5						/* clear mm5 */
-
-		pxor		mm4,	mm4						/* clear mm4 */
-   		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
-
-		psraw		mm5,	8						/* sign extended */
-		movq        QWORD PTR [eax], mm5            /* writeout UDmod, low four */
+mov			ecx,	PlaneLineStep			/* Pitch Step */
+xor         edx,    edx
+		
+push		eax
+push		ebx
+		
+mov			eax,	QStep					/* QValue */
+mov			ebx,	Sharpen					/* Sharpen */
+		
+movd		mm0,	eax						/* QValue */
+movd		mm2,	ebx						/* sharpen */
+		
+punpcklbw	mm0,	mm0						/* 00 00 00 QQ */
+sub         edx,    ecx                     /* Negative Pitch */
+		
+punpcklbw	mm2,	mm2						/* 00 00 00 SS */
+pxor        mm7,    mm7                     /* clear mm7 for unpacks */
+		
+punpcklbw	mm0,	mm0						/* 00 00 qq qq */
+mov			eax,	LRPointer				/* Left and Right Modifier */                
+		
+punpcklbw	mm2,	mm2						/* 00 00 ss ss */
+lea         ebx,    [esi+ecx*8]             /* Source Pointer of last row */        
 		
-		punpckhbw	mm4,	mm6
-		psraw		mm4,	8
+punpcklbw	mm0,	mm0						/* qq qq qq qq */
+movq        mm1,    mm0;                    /* make a copy */
 
-        movq        QWORD PTR [eax+8], mm4          /* writeout UDmod, high four */
+punpcklbw	mm2,	mm2						/* ss ss ss ss */
+paddb		mm1,	mm0						/* QValue * 2 */
+		
+paddb       mm1,    mm0                     /* High = 3 * Qvalue */
+paddusb		mm1,	eight231s				/* clamping high to 24 */	
+		
+paddb       mm0,    eight32s                /* 32+QValues */
+psubusb		mm1,	eight231s				/* Get the real value back */
+		
+movq		mm3,	eight127s				/* 7f 7f 7f 7f 7f 7f 7f 7f */
+pandn       mm1,    mm3                     /* ClampHigh */
+		
+/* mm0,mm1,mm2,mm7 are in use  */
+/* mm0---> QValue+32           */
+/* mm1---> ClampHigh		   */
+/* mm2---> Sharpen             */
+/* mm7---> Cleared for unpack  */
+		
+		FillModLoop1:
+movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
+movq        mm4,    QWORD PTR [esi+edx]     /* Pixels on top pu */
+		
+movq        mm5,    mm3                     /* make a copy of p */
+psubusb     mm3,    mm4                     /* p-pu */
 
+psubusb     mm4,    mm5                     /* pu-p */
+por         mm3,    mm4                     /* abs(p-pu) */
+		
+movq        mm6,    mm0                     /* 32+QValues */
+paddusb		mm3,	mm3						/* 2*abs(p-pu) */
+		
+movq		mm4,	mm0						/* 32+QValues */
+psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+		
+movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
+paddb		mm4,	eight64s				/* 32+QValues + 64 */
+		
+pxor		mm4,	mm5						/* convert to a sign number */
+pxor		mm3,	mm5						/* convert to a sign number */
+		
+pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
+pand		mm3,	mm2						/* use sharpen */
+		
+paddsb		mm6,    mm1						/* clamping to high */
+psubsb		mm6,	mm1						/* offset back */
+		
+por			mm6,	mm3						/* Mod value to be stored */
+pxor		mm5,	mm5						/* clear mm5 */
+		
+pxor		mm4,	mm4						/* clear mm4 */
+        		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+		
+psraw		mm5,	8						/* sign extended */
+movq        QWORD PTR [edi], mm5            /* writeout UDmod, low four */
 
+punpckhbw	mm4,	mm6
+psraw		mm4,	8
+		
+movq        QWORD PTR [edi+8], mm4          /* writeout UDmod, high four */
+		
 
-        /* Right Mod */
-        movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
-        movq        mm4,    QWORD PTR [esi+1]       /* Pixels on top pu */
+/* left Mod */
+movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
+movq        mm4,    QWORD PTR [esi-1]     /* Pixels on top pu */
+		
+movq        mm5,    mm3                     /* make a copy of p */
+psubusb     mm3,    mm4                     /* p-pu */
 
-        movq        mm5,    mm3                     /* make a copy of p */
-        psubusb     mm3,    mm4                     /* p-pu */
-        
-        psubusb     mm4,    mm5                     /* pu-p */
-        por         mm3,    mm4                     /* abs(p-pu) */
+psubusb     mm4,    mm5                     /* pu-p */
+por         mm3,    mm4                     /* abs(p-pu) */
+		
+movq        mm6,    mm0                     /* 32+QValues */
+paddusb		mm3,	mm3						/* 2*abs(p-pu) */
+		
+movq		mm4,	mm0						/* 32+QValues */
+psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+		
+movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
+paddb		mm4,	eight64s				/* 32+QValues + 64 */
+		
+pxor		mm4,	mm5						/* convert to a sign number */
+pxor		mm3,	mm5						/* convert to a sign number */
+		
+pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
+pand		mm3,	mm2						/* use sharpen */
+		
+paddsb		mm6,    mm1						/* clamping to high */
+psubsb		mm6,	mm1						/* offset back */
+		
+por			mm6,	mm3						/* Mod value to be stored */
+pxor		mm5,	mm5						/* clear mm5 */
+		
+pxor		mm4,	mm4						/* clear mm4 */
+        		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+		
+psraw		mm5,	8						/* sign extended */
+movq        QWORD PTR [eax], mm5            /* writeout UDmod, low four */
 
-        movq        mm6,    mm0                     /* 32+QValues */
-		paddusb		mm3,	mm3						/* 2*abs(p-pu) */
+punpckhbw	mm4,	mm6
+psraw		mm4,	8
+		
+movq        QWORD PTR [eax+8], mm4          /* writeout UDmod, high four */
+		
+		
+		
+/* Right Mod */
+movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
+movq        mm4,    QWORD PTR [esi+1]       /* Pixels on top pu */
+		
+movq        mm5,    mm3                     /* make a copy of p */
+psubusb     mm3,    mm4                     /* p-pu */
 
-        movq		mm4,	mm0						/* 32+QValues */
-		psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+psubusb     mm4,    mm5                     /* pu-p */
+por         mm3,    mm4                     /* abs(p-pu) */
+		
+movq        mm6,    mm0                     /* 32+QValues */
+paddusb		mm3,	mm3						/* 2*abs(p-pu) */
+		
+movq		mm4,	mm0						/* 32+QValues */
+psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+		
+movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
+paddb		mm4,	eight64s				/* 32+QValues + 64 */
+		
+pxor		mm4,	mm5						/* convert to a sign number */
+pxor		mm3,	mm5						/* convert to a sign number */
+		
+pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
+pand		mm3,	mm2						/* use sharpen */
+		
+paddsb		mm6,    mm1						/* clamping to high */
+psubsb		mm6,	mm1						/* offset back */
+		
+por			mm6,	mm3						/* Mod value to be stored */
+pxor		mm5,	mm5						/* clear mm5 */
+		
+pxor		mm4,	mm4						/* clear mm4 */
+        		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+		
+psraw		mm5,	8						/* sign extended */
+movq        QWORD PTR [eax+128], mm5            /* writeout UDmod, low four */
 
-		movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
-		paddb		mm4,	eight64s				/* 32+QValues + 64 */
+punpckhbw	mm4,	mm6
+psraw		mm4,	8
+		
+movq        QWORD PTR [eax+136], mm4          /* writeout UDmod, high four */
+add         esi,    ecx
 
-		pxor		mm4,	mm5						/* convert to a sign number */
-		pxor		mm3,	mm5						/* convert to a sign number */
 
-		pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
-		pand		mm3,	mm2						/* use sharpen */
+add         edi,    16                  
+add         eax,    16      
+		
+cmp         esi,    ebx
+jne         FillModLoop1
 
-        paddsb		mm6,    mm1						/* clamping to high */
-		psubsb		mm6,	mm1						/* offset back */
+/* last UDMod */
+		
+movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
+movq        mm4,    QWORD PTR [esi+edx]     /* Pixels on top pu */
+		
+movq        mm5,    mm3                     /* make a copy of p */
+psubusb     mm3,    mm4                     /* p-pu */
 
-		por			mm6,	mm3						/* Mod value to be stored */
-		pxor		mm5,	mm5						/* clear mm5 */
+psubusb     mm4,    mm5                     /* pu-p */
+por         mm3,    mm4                     /* abs(p-pu) */
+		
+movq        mm6,    mm0                     /* 32+QValues */
+paddusb		mm3,	mm3						/* 2*abs(p-pu) */
+		
+movq		mm4,	mm0						/* 32+QValues */
+psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+		
+movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
+paddb		mm4,	eight64s				/* 32+QValues + 64 */
+		
+pxor		mm4,	mm5						/* convert to a sign number */
+pxor		mm3,	mm5						/* convert to a sign number */
+		
+pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
+pand		mm3,	mm2						/* use sharpen */
+		
+paddsb		mm6,    mm1						/* clamping to high */
+psubsb		mm6,	mm1						/* offset back */
+		
+por			mm6,	mm3						/* Mod value to be stored */
+pxor		mm5,	mm5						/* clear mm5 */
+		
+pxor		mm4,	mm4						/* clear mm4 */
+        		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+		
+psraw		mm5,	8						/* sign extended */
+movq        QWORD PTR [edi], mm5            /* writeout UDmod, low four */
 
-		pxor		mm4,	mm4						/* clear mm4 */
-   		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+punpckhbw	mm4,	mm6
+psraw		mm4,	8
+		
+movq        QWORD PTR [edi+8], mm4          /* writeout UDmod, high four */
+		
+mov			esi,	Src
+mov			edi,	Des
 
-		psraw		mm5,	8						/* sign extended */
-		movq        QWORD PTR [eax+128], mm5            /* writeout UDmod, low four */
+mov			eax,	UDPointer
+mov			ebx,	LRPointer
+		
+/* First Row */
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
 		
-		punpckhbw	mm4,	mm6
-		psraw		mm4,	8
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-        movq        QWORD PTR [eax+136], mm4          /* writeout UDmod, high four */
-        add         esi,    ecx
-        
-        
-        add         edi,    16                  
-        add         eax,    16      
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-        cmp         esi,    ebx
-        jne         FillModLoop1
-        
-        /* last UDMod */
+movq		mm5,	[eax+8]			/* au */
 
-        movq        mm3,    QWORD PTR [esi]         /* read 8 pixels p  */
-        movq        mm4,    QWORD PTR [esi+edx]     /* Pixels on top pu */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-        movq        mm5,    mm3                     /* make a copy of p */
-        psubusb     mm3,    mm4                     /* p-pu */
-        
-        psubusb     mm4,    mm5                     /* pu-p */
-        por         mm3,    mm4                     /* abs(p-pu) */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-        movq        mm6,    mm0                     /* 32+QValues */
-		paddusb		mm3,	mm3						/* 2*abs(p-pu) */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
+		
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-        movq		mm4,	mm0						/* 32+QValues */
-		psubusb		mm6,    mm3                     /* zero clampled TmpMod */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
+		
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		movq		mm5,	eight128s				/* 80 80 80 80 80 80 80 80 */
-		paddb		mm4,	eight64s				/* 32+QValues + 64 */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
+		
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		pxor		mm4,	mm5						/* convert to a sign number */
-		pxor		mm3,	mm5						/* convert to a sign number */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
+		
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		pcmpgtb		mm3,	mm4						/* 32+QValue- 2*abs(p-pu) <-64 ? */
-		pand		mm3,	mm2						/* use sharpen */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-        paddsb		mm6,    mm1						/* clamping to high */
-		psubsb		mm6,	mm1						/* offset back */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
+		
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		por			mm6,	mm3						/* Mod value to be stored */
-		pxor		mm5,	mm5						/* clear mm5 */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
+		
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		pxor		mm4,	mm4						/* clear mm4 */
-   		punpcklbw	mm5,	mm6						/* 03 xx 02 xx 01 xx 00 xx */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		psraw		mm5,	8						/* sign extended */
-		movq        QWORD PTR [edi], mm5            /* writeout UDmod, low four */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpckhbw	mm4,	mm6
-		psraw		mm4,	8
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-        movq        QWORD PTR [edi+8], mm4          /* writeout UDmod, high four */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
 
-		mov			esi,	Src
-		mov			edi,	Des
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		mov			eax,	UDPointer
-		mov			ebx,	LRPointer
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		/* First Row */
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+		
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		movq		mm5,	[eax+8]			/* au */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
 		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
-
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+movq		[edi],	mm0				/* write to destination */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
-
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
-
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+/* Second Row */
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
-		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
-		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
-		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
+
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
+		
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
+		
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
+		
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		movq		[edi],	mm0				/* write to destination */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
 
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		/* Second Row */
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+		
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		movq		mm5,	[eax+8]			/* au */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
 		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
-
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+movq		[edi],	mm0				/* write to destination */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
-
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
-
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+/* Third Row */
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
-		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
-		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
-		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
-		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
-
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
+		
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
+		
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
+		
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		movq		[edi],	mm0				/* write to destination */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
+		
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-        /* Third Row */
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
 
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		movq		mm5,	[eax+8]			/* au */
-		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
-		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
-
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
-
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
-
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
-
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
-
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+movq		[edi],	mm0				/* write to destination */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
+		
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+/* Fourth Row */
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
-
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		movq		[edi],	mm0				/* write to destination */
-
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-
-
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-        /* Fourth Row */
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
-
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
-		
-		movq		mm5,	[eax+8]			/* au */
-		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
+
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
+		
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
+		
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
+		
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+movq		[edi],	mm0				/* write to destination */
+		
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+		
+/* Fifth Row */
+		
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
+		
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		movq		[edi],	mm0				/* write to destination */
-
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-        /* Fifth Row */
-
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
-
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
-		
-		movq		mm5,	[eax+8]			/* au */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
-		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
+
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
+		
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
+		
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
+		
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+movq		[edi],	mm0				/* write to destination */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
+		
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+		
+/* Sixth Row */
+		
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
+		
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		movq		[edi],	mm0				/* write to destination */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
-
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-
-        /* Sixth Row */
-
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
-		
-		movq		mm5,	[eax+8]			/* au */
-		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
-		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
+
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
+		
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
+		
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
+		
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+movq		[edi],	mm0				/* write to destination */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
+		
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+		
+/* Seventh Row */
+		
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
+		
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		movq		[edi],	mm0				/* write to destination */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
-
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-
-        /* Seventh Row */
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
-
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
-		
-		movq		mm5,	[eax+8]			/* au */
-		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
-		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
+
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
+		
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
+		
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
+		
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+movq		[edi],	mm0				/* write to destination */
+		
+add			esi,	ecx				/* Src += Pitch */
+add			edi,	ecx				/* Des += Pitch */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
+add			eax,	16				/* UDPointer += 8 */
+add         ebx,    16              /* LPointer +=8 */
 
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
+/* Eighth Row */
+		
+movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
+pxor		mm7,	mm7				/* clear mm7 */
+		
+movq		mm1,	mm0				/* make a copy of mm0 */			
+punpcklbw	mm0,	mm7				/* lower four pixels */
 
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
+movq		mm4,	[eax]			/* au */
+punpckhbw	mm1,	mm7				/* high four pixels */
 
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
+movq		mm5,	[eax+8]			/* au */
 
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
+pmullw		mm0,	mm4				/* pu*au */
+movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
 
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
+pmullw		mm1,	mm5				/* pu*au */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+punpcklbw	mm2,	mm7				/* lower four */
+movq		mm6,	[eax+16]		/* ad */
 		
-		movq		[edi],	mm0				/* write to destination */
+punpckhbw	mm3,	mm7				/* higher four */			
+paddw		mm4,	mm6				/* au+ad */
 
-		add			esi,	ecx				/* Src += Pitch */
-		add			edi,	ecx				/* Des += Pitch */
-
-		add			eax,	16				/* UDPointer += 8 */
-        add         ebx,    16              /* LPointer +=8 */
+pmullw		mm2,	mm6				/* au*pu+ad*pd */
+movq		mm6,	[eax+24]		/* ad */
 		
-        /* Eighth Row */
-
-		movq		mm0,	[esi+edx]		/* mm0 = Pixels above */
-		pxor		mm7,	mm7				/* clear mm7 */
+paddw		mm0,	mm2			
+paddw		mm5,	mm6				/* au+ad */
 
-		movq		mm1,	mm0				/* make a copy of mm0 */			
-		punpcklbw	mm0,	mm7				/* lower four pixels */
-		
-		movq		mm4,	[eax]			/* au */
-		punpckhbw	mm1,	mm7				/* high four pixels */
-		
-		movq		mm5,	[eax+8]			/* au */
-		
-		pmullw		mm0,	mm4				/* pu*au */
-		movq		mm2,	[esi+ecx]		/* mm2 = pixels below */
-		
-		pmullw		mm1,	mm5				/* pu*au */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ad*pd */
+movq		mm2,	[esi-1]			/* pixel to the left */
 		
-		punpcklbw	mm2,	mm7				/* lower four */
-		movq		mm6,	[eax+16]		/* ad */
+paddw		mm1,	mm3				/* au*pu+ad*pd */
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* higher four */			
-		paddw		mm4,	mm6				/* au+ad */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx]			/* al */
 		
-		pmullw		mm2,	mm6				/* au*pu+ad*pd */
-		movq		mm6,	[eax+24]		/* ad */
+punpckhbw	mm3,	mm7				/* four right pixels */
+paddw		mm4,	mm6				/* au + ad + al */
 
-		paddw		mm0,	mm2			
-		paddw		mm5,	mm6				/* au+ad */
+pmullw		mm2,	mm6				/* pl * al */
+movq		mm6,	[ebx+8]			/* al */
 		
-		pmullw		mm3,	mm6				/* ad*pd */
-		movq		mm2,	[esi-1]			/* pixel to the left */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
+paddw		mm5,	mm6				/* au+ad+al */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd */
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* al*pl */
+movq		mm2,	[esi+1]			/* pixel to the right */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx]			/* al */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
+movq		mm3,	mm2				/* make a copy of mm2 */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */
-		paddw		mm4,	mm6				/* au + ad + al */
+punpcklbw	mm2,	mm7				/* four left pixels */
+movq		mm6,	[ebx+128]			/* ar */
 		
-		pmullw		mm2,	mm6				/* pl * al */
-		movq		mm6,	[ebx+8]			/* al */
+punpckhbw	mm3,	mm7				/* four right pixels */			
+paddw		mm4,	mm6				/* au + ad + al + ar */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl */
-		paddw		mm5,	mm6				/* au+ad+al */
+pmullw		mm2,	mm6				/* pr * ar */
+movq		mm6,	[ebx+136]		/* ar */
 		
-		pmullw		mm3,	mm6				/* al*pl */
-		movq		mm2,	[esi+1]			/* pixel to the right */
+paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
+paddw		mm5,	mm6				/* au+ad+al+ar */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl */			
-		movq		mm3,	mm2				/* make a copy of mm2 */
+pmullw		mm3,	mm6				/* ar*pr */
+movq		mm2,	[esi]			/* p */
 		
-		punpcklbw	mm2,	mm7				/* four left pixels */
-		movq		mm6,	[ebx+128]			/* ar */
+paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
+movq		mm3,	mm2				/* make a copy of the pixel */
 
-		punpckhbw	mm3,	mm7				/* four right pixels */			
-		paddw		mm4,	mm6				/* au + ad + al + ar */
+/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
+/* mm4, mm5	---	 au + ad + al + ar */
+
+punpcklbw	mm2,	mm7				/* left four pixels */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm2,	mm6				/* pr * ar */
-		movq		mm6,	[ebx+136]		/* ar */
+punpckhbw	mm3,	mm7				/* right four pixels */
+psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
 
-		paddw		mm0,	mm2				/* au*pu+ad*pd+al*pl+pr*ar */
-		paddw		mm5,	mm6				/* au+ad+al+ar */
+pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
+movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
 		
-		pmullw		mm3,	mm6				/* ar*pr */
-		movq		mm2,	[esi]			/* p */
+paddw		mm0,	mm2				/* sum */
+psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
 
-		paddw		mm1,	mm3				/* au*pu+ad*pd+al*pl+ar*pr */
-		movq		mm3,	mm2				/* make a copy of the pixel */
+pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
+movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
 		
-		/* mm0, mm1 ---  au*pu+ad*pd+al*pl+ar*pr */
-		/* mm4, mm5	---	 au + ad + al + ar */
+movq		mm7,	mm6				/* {64, 64, 64, 64} */
+paddw		mm0,	mm6				/* sum+B */
 		
-		punpcklbw	mm2,	mm7				/* left four pixels */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		punpckhbw	mm3,	mm7				/* right four pixels */
-		psubw		mm6,	mm4				/* 128-(au+ad+al+ar) */
+paddw		mm1,	mm3				/* sum */
+psllw		mm7,	8				/* {16384, .. } */
 		
-		pmullw		mm2,	mm6				/* p*(128-(au+ad+al+ar)) */
-		movq		mm6,	Four128s		/* 0080  0080 0080 0080 */
-
-		paddw		mm0,	mm2				/* sum */
-		psubw		mm6,	mm5				/* 128-(au+ad+al+ar) */
+paddw		mm0,	mm7				/* clamping */
+paddw		mm1,	mm6				/* sum+B */
 		
-		pmullw		mm3,	mm6				/* p*(128-(au+ad+al+ar)) */ 
-		movq		mm6,	Four64s			/* {64, 64, 64, 64 } */
-
-		movq		mm7,	mm6				/* {64, 64, 64, 64} */
-		paddw		mm0,	mm6				/* sum+B */
-
-		paddw		mm1,	mm3				/* sum */
-		psllw		mm7,	8				/* {16384, .. } */
-
-		paddw		mm0,	mm7				/* clamping */
-		paddw		mm1,	mm6				/* sum+B */
-
-		paddw		mm1,	mm7				/* clamping */
-		psubusw		mm0,	mm7				/* clamping */
-
-		psubusw		mm1,	mm7				/* clamping */
-		psrlw		mm0,	7				/* (sum+B)>>7 */
-
-		psrlw		mm1,	7				/* (sum+B)>>7 */
-		packuswb	mm0,	mm1				/* pack to 8 bytes */
+paddw		mm1,	mm7				/* clamping */
+psubusw		mm0,	mm7				/* clamping */
 		
-		movq		[edi],	mm0				/* write to destination */
-
-        pop         ebx
-        pop         eax
-
-        pop         edx
-        pop         ecx
+psubusw		mm1,	mm7				/* clamping */
+psrlw		mm0,	7				/* (sum+B)>>7 */
+		
+psrlw		mm1,	7				/* (sum+B)>>7 */
+packuswb	mm0,	mm1				/* pack to 8 bytes */
 
-        pop         edi
-        pop         esi
+movq		[edi],	mm0				/* write to destination */
+		
+pop         ebx
+pop         eax
+		
+pop         edx
+pop         ecx
+		
+pop         edi
+pop         esi
     }
-}
+		}
+		

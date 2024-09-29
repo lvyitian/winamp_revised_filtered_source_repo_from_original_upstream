@@ -31,11 +31,11 @@ std::string urlEncode(const std::string& s);
 std::string urlDecode(const std::string& s);
 
 /**
- * Override the content of the provided string to hide sensitive data. The
- * string content after invocation is undefined. The string size is reset to zero.
- * impl. based on:
- * https://github.com/ojeda/secure_clear/blob/master/example-implementation/secure_clear.h
- **/
+* Override the content of the provided string to hide sensitive data. The
+* string content after invocation is undefined. The string size is reset to zero.
+* impl. based on:
+* https://github.com/ojeda/secure_clear/blob/master/example-implementation/secure_clear.h
+**/
 void secureStringClear(std::string& s);
 bool isTrue(const std::string& s);
 

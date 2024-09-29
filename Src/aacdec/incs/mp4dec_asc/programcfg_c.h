@@ -1,18 +1,18 @@
 /***************************************************************************\ 
- *
- *               (C) copyright Fraunhofer - IIS (2002)
- *                        All Rights Reserved
- *
- *   $Header: /cvs/root/winamp/aacdec/incs/mp4dec_asc/programcfg_c.h,v 1.3 2012/05/08 20:16:50 audiodsp Exp $
- *   project : MPEG-4 Audio Decoder
- *   contents/description: program config specific description
- *
- *   This software and/or program is protected by copyright law and
- *   international treaties. Any reproduction or distribution of this 
- *   software and/or program, or any portion of it, may result in severe 
- *   civil and criminal penalties, and will be prosecuted to the maximum 
- *   extent possible under law.
- *
+*
+*               (C) copyright Fraunhofer - IIS (2002)
+*                        All Rights Reserved
+*
+*   $Header: /cvs/root/winamp/aacdec/incs/mp4dec_asc/programcfg_c.h,v 1.3 2012/05/08 20:16:50 audiodsp Exp $
+*   project : MPEG-4 Audio Decoder
+*   contents/description: program config specific description
+*
+*   This software and/or program is protected by copyright law and
+*   international treaties. Any reproduction or distribution of this 
+*   software and/or program, or any portion of it, may result in severe 
+*   civil and criminal penalties, and will be prosecuted to the maximum 
+*   extent possible under law.
+*
 \***************************************************************************/
 
 
@@ -29,69 +29,69 @@ struct CSBitStream;
 
 enum
 {
-  /* PCE settings */
-  CSProgramConfig_FrontRow             = 0,
-  CSProgramConfig_SideRow              = 1,
-  CSProgramConfig_BackRow              = 2,
-  CSProgramConfig_SpeakerRows          = 3,
+/* PCE settings */
+CSProgramConfig_FrontRow             = 0,
+CSProgramConfig_SideRow              = 1,
+CSProgramConfig_BackRow              = 2,
+CSProgramConfig_SpeakerRows          = 3,
 
-  CSProgramConfig_MaximumChannels      = 16,
-  CSProgramConfig_MaximumCommentLength = 256,
+CSProgramConfig_MaximumChannels      = 16,
+CSProgramConfig_MaximumCommentLength = 256,
 
-  /* aac profile definitions */
-  CAAC_ProfileMain = 0,
-  CAAC_ProfileLowComplexity,
-  CAAC_ProfileSSR,
-  CAAC_ProfileLTP,
-  CAAC_ProfileScalable,
-  CAAC_ProfileReserved
+/* aac profile definitions */
+CAAC_ProfileMain = 0,
+CAAC_ProfileLowComplexity,
+CAAC_ProfileSSR,
+CAAC_ProfileLTP,
+CAAC_ProfileScalable,
+CAAC_ProfileReserved
 };
 
 
 typedef struct CSProgramConfig
 {
-  /* non-multichannel configuration */
+/* non-multichannel configuration */
 
-  int           m_NonMC_ConfigSet;
-  int           m_NonMC_IsCPE;
+int           m_NonMC_ConfigSet;
+int           m_NonMC_IsCPE;
 
-  int           m_NonMC_Tag;
+int           m_NonMC_Tag;
 
-  /* */
+/* */
 
-  int           m_ExplicitMapping;
+int           m_ExplicitMapping;
 
-  int           m_Profile;
-  int           m_SamplingFrequencyIndex;
+int           m_Profile;
+int           m_SamplingFrequencyIndex;
 
-  int           m_NumLfeChannelElements;
-  int           m_NumAssocDataElements;
-  int           m_NumValidCcElements;
+int           m_NumLfeChannelElements;
+int           m_NumAssocDataElements;
+int           m_NumValidCcElements;
 
-  int           m_MonoMixdownPresent;
-  int           m_MonoMixdownElementNumber;
+int           m_MonoMixdownPresent;
+int           m_MonoMixdownElementNumber;
 
-  int           m_StereoMixdownPresent;
-  int           m_StereoMixdownElementNumber;
+int           m_StereoMixdownPresent;
+int           m_StereoMixdownElementNumber;
 
-  int           m_MatrixMixdownIndexPresent;
-  int           m_MatrixMixdownIndex;
-  int           m_PseudoSurroundEnable;
+int           m_MatrixMixdownIndexPresent;
+int           m_MatrixMixdownIndex;
+int           m_PseudoSurroundEnable;
 
-  unsigned int  m_NumberOfChannels[CSProgramConfig_SpeakerRows];
-  int           m_NumberOfChannelElements[CSProgramConfig_SpeakerRows];
+unsigned int  m_NumberOfChannels[CSProgramConfig_SpeakerRows];
+int           m_NumberOfChannelElements[CSProgramConfig_SpeakerRows];
 
-  int           m_ChannelElementIsCpe[CSProgramConfig_SpeakerRows][CSProgramConfig_MaximumChannels];
-  unsigned int  m_ChannelElementTagSelect[CSProgramConfig_SpeakerRows][CSProgramConfig_MaximumChannels];
+int           m_ChannelElementIsCpe[CSProgramConfig_SpeakerRows][CSProgramConfig_MaximumChannels];
+unsigned int  m_ChannelElementTagSelect[CSProgramConfig_SpeakerRows][CSProgramConfig_MaximumChannels];
 
-  unsigned int  m_LfeElementTagSelect[CSProgramConfig_MaximumChannels];
-  unsigned int  m_AssocDataElementTagSelect[CSProgramConfig_MaximumChannels];
+unsigned int  m_LfeElementTagSelect[CSProgramConfig_MaximumChannels];
+unsigned int  m_AssocDataElementTagSelect[CSProgramConfig_MaximumChannels];
 
-  int           m_CcElementIsIndSw[CSProgramConfig_MaximumChannels];
-  unsigned int  m_ValidCcElementTagSelect[CSProgramConfig_MaximumChannels];
+int           m_CcElementIsIndSw[CSProgramConfig_MaximumChannels];
+unsigned int  m_ValidCcElementTagSelect[CSProgramConfig_MaximumChannels];
 
-  int           m_CommentFieldBytes;
-  unsigned char m_Comment[CSProgramConfig_MaximumCommentLength];
+int           m_CommentFieldBytes;
+unsigned char m_Comment[CSProgramConfig_MaximumCommentLength];
 
 } CSProgramConfig, *CSProgramConfigPtr;
 

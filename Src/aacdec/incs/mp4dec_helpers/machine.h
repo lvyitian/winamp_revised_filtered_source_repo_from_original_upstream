@@ -1,18 +1,18 @@
 /***************************************************************************\ 
- *
- *               (C) copyright Fraunhofer - IIS (1998)
- *                        All Rights Reserved
- *
- *   $Header: /cvs/root/winamp/aacdec/incs/mp4dec_helpers/machine.h,v 1.3 2012/05/08 20:16:50 audiodsp Exp $
- *   project : MPEG-4 Audio Decoder
- *   contents/description: machine dependent type definitions
- *
- *   This software and/or program is protected by copyright law and
- *   international treaties. Any reproduction or distribution of this 
- *   software and/or program, or any portion of it, may result in severe 
- *   civil and criminal penalties, and will be prosecuted to the maximum 
- *   extent possible under law.
- *
+*
+*               (C) copyright Fraunhofer - IIS (1998)
+*                        All Rights Reserved
+*
+*   $Header: /cvs/root/winamp/aacdec/incs/mp4dec_helpers/machine.h,v 1.3 2012/05/08 20:16:50 audiodsp Exp $
+*   project : MPEG-4 Audio Decoder
+*   contents/description: machine dependent type definitions
+*
+*   This software and/or program is protected by copyright law and
+*   international treaties. Any reproduction or distribution of this 
+*   software and/or program, or any portion of it, may result in severe 
+*   civil and criminal penalties, and will be prosecuted to the maximum 
+*   extent possible under law.
+*
 \***************************************************************************/
 
 #ifndef __MACHINE_H
@@ -64,34 +64,34 @@ typedef  unsigned int   UINT32;
 
 
 static inline double FhgSqrt(DOUBLE a){
-  return(sqrt(a));
+return(sqrt(a));
 }
 static inline double FhgExp(DOUBLE a){
-  return(exp((double) a));
+return(exp((double) a));
 }
 static inline double FhgPow(DOUBLE a, DOUBLE b){
-  return(pow((double) a, (double) b));
+return(pow((double) a, (double) b));
 }
 static inline double FhgSin(DOUBLE a){
-  return(sin((double) a));
+return(sin((double) a));
 }
 static inline double FhgFloor(DOUBLE a){
-  return(floor((double) a));
+return(floor((double) a));
 }
 static inline double FhgCos(DOUBLE a){
-  return(cos((double) a));
+return(cos((double) a));
 }
 static inline double FhgFabs(DOUBLE a){
-  return(fabs((double) a));
+return(fabs((double) a));
 }
 static inline double FhgTan(DOUBLE a){
-  return(tan((double) a));
+return(tan((double) a));
 }
 static inline double FhgCeil(DOUBLE a){
-  return(ceil((double) a));
+return(ceil((double) a));
 }
 static inline double FhgLog(DOUBLE a){
-  return(log((double) a));
+return(log((double) a));
 }
 
 #ifdef __cplusplus

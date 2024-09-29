@@ -1,106 +1,106 @@
-/*
-  LICENSE
-  -------
-Copyright 2005-2013 Nullsoft, Inc.
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, 
-are permitted provided that the following conditions are met:
-
-  * Redistributions of source code must retain the above copyright notice,
+		/*
+        LICENSE
+        -------
+		Copyright 2005-2013 Nullsoft, Inc.
+		All rights reserved.
+		
+		Redistribution and use in source and binary forms, with or without modification, 
+		are permitted provided that the following conditions are met:
+		
+        * Redistributions of source code must retain the above copyright notice,
     this list of conditions and the following disclaimer. 
-
-  * Redistributions in binary form must reproduce the above copyright notice,
+		
+        * Redistributions in binary form must reproduce the above copyright notice,
     this list of conditions and the following disclaimer in the documentation
     and/or other materials provided with the distribution. 
-
-  * Neither the name of Nullsoft nor the names of its contributors may be used to 
+		
+        * Neither the name of Nullsoft nor the names of its contributors may be used to 
     endorse or promote products derived from this software without specific prior written permission. 
- 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR 
-IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
-FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR 
-CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-#ifndef _MILKDROP_STATE_
-#define _MILKDROP_STATE_ 1
-
-#include <memory.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "gstring.h"
-#include "texmgr.h"
-
-#include <d3dx9math.h> // for D3DXVECTOR3
-
-//#include "evallib/eval.h"
-#include "ns-eel2/ns-eel.h"
-#include "md_defines.h"
-
-// flags for CState::RecompileExpressions():
-#define RECOMPILE_PRESET_CODE  1
-#define RECOMPILE_WAVE_CODE    2
-#define RECOMPILE_SHAPE_CODE   4
-
-#define NUM_Q_VAR 32
-#define NUM_T_VAR 8
-
-#define MAX_BIGSTRING_LEN    32768
-
-class CBlendableFloat
-{
-public:
+        
+		THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR 
+		IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
+		FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR 
+		CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+		DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+		DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+		IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+		OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		*/
+		
+		#ifndef _MILKDROP_STATE_
+		#define _MILKDROP_STATE_ 1
+		
+		#include <memory.h>
+		#include <stdlib.h>
+		#include <stdio.h>
+		#include "gstring.h"
+		#include "texmgr.h"
+		
+		#include <d3dx9math.h> // for D3DXVECTOR3
+		
+		//#include "evallib/eval.h"
+		#include "ns-eel2/ns-eel.h"
+		#include "md_defines.h"
+		
+		// flags for CState::RecompileExpressions():
+		#define RECOMPILE_PRESET_CODE  1
+		#define RECOMPILE_WAVE_CODE    2
+		#define RECOMPILE_SHAPE_CODE   4
+		
+		#define NUM_Q_VAR 32
+		#define NUM_T_VAR 8
+		
+		#define MAX_BIGSTRING_LEN    32768
+		
+		class CBlendableFloat
+		{
+		public:
 	CBlendableFloat();
 	~CBlendableFloat();
-
+		
 	float operator = (float f) { 
-		val = f; 
-		m_bBlending = false; 
-        return val;
+val = f; 
+m_bBlending = false; 
+return val;
 	};
 	float operator *= (float f) { 
-		val *= f; 
-		m_bBlending = false; 
-        return val;
+val *= f; 
+m_bBlending = false; 
+return val;
 	};
 	float operator /= (float f) { 
-		val /= f; 
-		m_bBlending = false; 
-        return val;
+val /= f; 
+m_bBlending = false; 
+return val;
 	};
 	float operator -= (float f) { 
-		val -= f; 
-		m_bBlending = false; 
-        return val;
+val -= f; 
+m_bBlending = false; 
+return val;
 	};
 	float operator += (float f) { 
-		val += f; 
-		m_bBlending = false; 
-        return val;
+val += f; 
+m_bBlending = false; 
+return val;
 	};
-
+		
 	float eval(float fTime);	// call this from animation code.  if fTime < 0, it will return unblended 'val'.
 	void  StartBlendFrom(CBlendableFloat *f_from, float fAnimTime, float fDuration);
-
-protected:
+		
+		protected:
 	float val;
 	bool  m_bBlending;
 	float m_fBlendStartTime;
 	float m_fBlendDuration;
 	float m_fBlendFrom;
-};
-
-class CShape
-{
-public:
+		};
+		
+		class CShape
+		{
+		public:
     int  Import(FILE* f, const wchar_t* szFile, int i);
     int  Export(FILE* f, const wchar_t* szFile, int i);
-
+		
     int   enabled;
     int   sides;
     int   additive;
@@ -112,16 +112,16 @@ public:
     float r2,g2,b2,a2;
     float border_r,border_g,border_b,border_a;
     float tex_ang, tex_zoom;
-
+		
     char  m_szInit[MAX_BIGSTRING_LEN]; // note: only executed once -> don't need to save codehandle
     char  m_szPerFrame[MAX_BIGSTRING_LEN];
     //char  m_szPerPoint[MAX_BIGSTRING_LEN];
     NSEEL_CODEHANDLE m_pf_codehandle;
     //int   m_pp_codehandle;
-
 		
+
 	// for per-frame expression evaluation:
-		NSEEL_VMCTX m_pf_eel;
+NSEEL_VMCTX m_pf_eel;
 	double *var_pf_time, *var_pf_fps;
 	double *var_pf_frame;
 	double *var_pf_progress;
@@ -136,10 +136,10 @@ public:
     double *var_pf_x, *var_pf_y, *var_pf_rad, *var_pf_ang;
     double *var_pf_sides, *var_pf_textured, *var_pf_additive, *var_pf_thick, *var_pf_instances, *var_pf_instance;
     double *var_pf_tex_zoom, *var_pf_tex_ang;
-
+		
 	// for per-point expression evaluation:
     /*
-		NSEEL_VMCTX m_pp_eel;
+NSEEL_VMCTX m_pp_eel;
 	double *var_pp_time, *var_pp_fps;
 	double *var_pp_frame;
 	double *var_pp_progress;
@@ -151,16 +151,16 @@ public:
 	double *var_pp_border_r, *var_pp_border_g, *var_pp_border_b, *var_pp_border_a;
     double *var_pp_x, *var_pp_y, *var_pp_rad, *var_pp_ang, *var_pp_sides;
     */
-
+		
 	double t_values_after_init_code[NUM_T_VAR];  
-};
-
-class CWave
-{
-public:
+		};
+		
+		class CWave
+		{
+		public:
     int  Import(FILE* f, const wchar_t *szFile, int i);
     int  Export(FILE* f, const wchar_t* szFile, int i);
-
+		
     int   enabled;
     int   samples;
     int   sep;
@@ -171,15 +171,15 @@ public:
     int   bUseDots;
     int   bDrawThick;
     int   bAdditive;
-
+		
     char  m_szInit[MAX_BIGSTRING_LEN]; // note: only executed once -> don't need to save codehandle
     char  m_szPerFrame[MAX_BIGSTRING_LEN];
     char  m_szPerPoint[MAX_BIGSTRING_LEN];
     NSEEL_CODEHANDLE   m_pf_codehandle;
     NSEEL_CODEHANDLE   m_pp_codehandle;
-
+		
 	// for per-frame expression evaluation:
-		NSEEL_VMCTX m_pf_eel;
+NSEEL_VMCTX m_pf_eel;
 	double *var_pf_time, *var_pf_fps;
 	double *var_pf_frame;
 	double *var_pf_progress;
@@ -190,9 +190,9 @@ public:
 	double *var_pf_bass, *var_pf_mid, *var_pf_treb, *var_pf_bass_att, *var_pf_mid_att, *var_pf_treb_att;
 	double *var_pf_r, *var_pf_g, *var_pf_b, *var_pf_a;
     double *var_pf_samples;
-
+		
 	// for per-point expression evaluation:
-		NSEEL_VMCTX m_pp_eel;
+NSEEL_VMCTX m_pp_eel;
 	double *var_pp_time, *var_pp_fps;
 	double *var_pp_frame;
 	double *var_pp_progress;
@@ -203,12 +203,12 @@ public:
 	double *var_pp_bass, *var_pp_mid, *var_pp_treb, *var_pp_bass_att, *var_pp_mid_att, *var_pp_treb_att;
     double *var_pp_sample, *var_pp_value1, *var_pp_value2;
 	double *var_pp_x, *var_pp_y, *var_pp_r, *var_pp_g, *var_pp_b, *var_pp_a;
-
+		
 	double t_values_after_init_code[NUM_T_VAR];  
-};
-
-typedef struct 
-{
+		};
+		
+		typedef struct 
+		{
 	int   type;		
 	int   in_var;	
 	int   out_var;	
@@ -221,29 +221,29 @@ typedef struct
 	float freq2;	// for sine functions
 	float phase;	// for sine functions
 	float phase2;	// for sine functions
-} td_modifier;
-
-//#define MAX_EVALS 8
-
-#define INVALID_PRESET_DESC L"<no description>"  // this should contain invalid filename chars, so there is never a conflict...
-
-#define STATE_GENERAL 1  // and postproc (old presets) or blur, etc. (new presets)
-#define STATE_MOTION  2  // and equations
-#define STATE_WAVE    4  // waves, shapes, motion vectors
-#define STATE_WARP    8
-#define STATE_COMP   16
-#define STATE_ALL   (32-1)
-
-#define CUR_MILKDROP_PRESET_VERSION 201
-// 200: milkdrop 2
-// 201: instead of just 1 variable for shader version, it tracks 2 (comp and warp) separately.
-
-class CState
-{
-public:
+		} td_modifier;
+		
+		//#define MAX_EVALS 8
+		
+		#define INVALID_PRESET_DESC L"<no description>"  // this should contain invalid filename chars, so there is never a conflict...
+		
+		#define STATE_GENERAL 1  // and postproc (old presets) or blur, etc. (new presets)
+		#define STATE_MOTION  2  // and equations
+		#define STATE_WAVE    4  // waves, shapes, motion vectors
+		#define STATE_WARP    8
+		#define STATE_COMP   16
+		#define STATE_ALL   (32-1)
+		
+		#define CUR_MILKDROP_PRESET_VERSION 201
+		// 200: milkdrop 2
+		// 201: instead of just 1 variable for shader version, it tracks 2 (comp and warp) separately.
+		
+		class CState
+		{
+		public:
 	CState();
 	~CState();
-
+		
 	void Default(DWORD ApplyFlags=STATE_ALL);
 	void Randomize(int nMode);
 	void StartBlendFrom(CState *s_from, float fAnimTime, float fTimespan);
@@ -252,10 +252,10 @@ public:
 	void RecompileExpressions(int flags=0xFFFFFFFF, int bReInit=1);
     void GenDefaultWarpShader();
     void GenDefaultCompShader();
-
+		
 	wchar_t m_szDesc[512];		// this is just the filename, without a path or extension.
 	//char m_szSection[256];
-
+		
     int                 m_nMinPSVersion;  // the min of the warp & comp values...
     int                 m_nMaxPSVersion;  // the max of the warp & comp values...
 	int                 m_nWarpPSVersion;  // 0 = milkdrop 1 era (no PS), 2 = ps_2_0, 3 = ps_3_0
@@ -268,10 +268,10 @@ public:
 	float				m_fVideoEchoAlphaOld;
 	int					m_nVideoEchoOrientation;
 	int					m_nVideoEchoOrientationOld;
-
+		
 	// fps-dependant:
 	CBlendableFloat		m_fDecay;			// 1.0 = none, 0.95 = heavy decay
-
+		
 	// other:
 	int					m_nWaveMode;
 	int					m_nOldWaveMode;
@@ -309,7 +309,7 @@ public:
 	float				m_fPlateSpeed;		// 1.0=normal, 2.0=double, etc.
 	bool				m_bPlatesAdditive;
 	*/
-
+		
 	// map controls:
 	CBlendableFloat		m_fZoom;
 	CBlendableFloat		m_fRot;	
@@ -351,7 +351,7 @@ public:
 	CBlendableFloat		m_fBlur2Max;
 	CBlendableFloat		m_fBlur3Max;
 	CBlendableFloat		m_fBlur1EdgeDarken;
-
+		
     CShape              m_shape[MAX_CUSTOM_SHAPES];
     CWave               m_wave[MAX_CUSTOM_WAVES];
 	
@@ -361,13 +361,13 @@ public:
     D3DXVECTOR3  m_xlate[20];
     D3DXVECTOR3  m_rot_base[20];
     D3DXVECTOR3  m_rot_speed[20];
-
+		
 	//COscillator			m_waveR;
 	//COscillator			m_waveG;
 	//COscillator			m_waveB;
 	//COscillator			m_wavePosX;		// 0 = centered
 	//COscillator			m_wavePosY;		// 0 = centered
-
+		
 	// for arbitrary function evaluation:
     NSEEL_CODEHANDLE				m_pf_codehandle;			
     NSEEL_CODEHANDLE				m_pp_codehandle;	
@@ -379,14 +379,14 @@ public:
 	void			FreeVarsAndCode(bool bFree = true);
 	void			RegisterBuiltInVariables(int flags);
 	void			StripLinefeedCharsAndComments(char *src, char *dest);
-
+		
 	bool  m_bBlending;
 	float m_fBlendStartTime;
 	float m_fBlendDuration;
 	float m_fBlendProgress;	// 0..1; updated every frame based on StartTime and Duration.
-
+		
 	// for once-per-frame expression evaluation: [although, these vars are also shared w/preset init expr eval]
-		NSEEL_VMCTX m_pf_eel;
+NSEEL_VMCTX m_pf_eel;
     double *var_pf_zoom, *var_pf_zoomexp, *var_pf_rot, *var_pf_warp, *var_pf_cx, *var_pf_cy, *var_pf_dx, *var_pf_dy, *var_pf_sx, *var_pf_sy;
 	double *var_pf_time, *var_pf_fps;
 	double *var_pf_bass, *var_pf_mid, *var_pf_treb, *var_pf_bass_att, *var_pf_mid_att, *var_pf_treb_att;
@@ -425,7 +425,7 @@ public:
     double *var_pf_blur1_edge_darken;
     
 	// for per-vertex expression evaluation:
-		NSEEL_VMCTX m_pv_eel;
+NSEEL_VMCTX m_pv_eel;
     double *var_pv_zoom, *var_pv_zoomexp, *var_pv_rot, *var_pv_warp, *var_pv_cx, *var_pv_cy, *var_pv_dx, *var_pv_dy, *var_pv_sx, *var_pv_sy;
 	double *var_pv_time, *var_pv_fps;
 	double *var_pv_bass, *var_pv_mid, *var_pv_treb, *var_pv_bass_att, *var_pv_mid_att, *var_pv_treb_att;
@@ -437,12 +437,12 @@ public:
     double *var_pv_meshx, *var_pv_meshy;
     double *var_pv_pixelsx, *var_pv_pixelsy;
     double *var_pv_aspectx, *var_pv_aspecty;
-
+		
 	double q_values_after_init_code[NUM_Q_VAR];  
     double monitor_after_init_code;
-
+		
     float GetPresetStartTime() { return m_fPresetStartTime; }
     float m_fPresetStartTime;
-};
-
-#endif
+		};
+		
+		#endif

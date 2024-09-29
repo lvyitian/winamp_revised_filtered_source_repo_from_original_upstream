@@ -8,32 +8,32 @@
 #define C_MENUBUTTON_PARENT C_GuiObject
 
 class C_MenuButton : public C_MENUBUTTON_PARENT {
-  public:
+public:
 
-  C_MenuButton(ScriptObject *object);
-  C_MenuButton();
-  virtual ~C_MenuButton();
+C_MenuButton(ScriptObject *object);
+C_MenuButton();
+virtual ~C_MenuButton();
 
-  virtual void C_hook(ScriptObject *o);
+virtual void C_hook(ScriptObject *o);
 
-  ScriptObject *getScriptObject();
+ScriptObject *getScriptObject();
 
-  virtual void onOpenMenu();
-  virtual void onCloseMenu();
-  virtual void onSelectItem(const wchar_t *item);
-  virtual void openMenu();
-  virtual void closeMenu();
+virtual void onOpenMenu();
+virtual void onCloseMenu();
+virtual void onSelectItem(const wchar_t *item);
+virtual void openMenu();
+virtual void closeMenu();
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onopenmenu_id;
-  static int onclosemenu_id;
-  static int onselectitem_id;
-  static int openmenu_id;
-  static int closemenu_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onopenmenu_id;
+static int onclosemenu_id;
+static int onselectitem_id;
+static int openmenu_id;
+static int closemenu_id;
 };
 
 #endif

@@ -1,75 +1,75 @@
-/*
- * Snd_Defs.h
- * ----------
- * Purpose: Basic definitions of data types, enums, etc. for the playback engine core.
- * Notes  : (currently none)
- * Authors: Olivier Lapicque
- *          OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-
-#pragma once
-
-#include "openmpt/all/BuildSettings.hpp"
-
-#include "openmpt/base/FlagSet.hpp"
-
-
-OPENMPT_NAMESPACE_BEGIN
-
-
-using ROWINDEX = uint32;
-inline constexpr ROWINDEX ROWINDEX_INVALID = uint32_max;
-using CHANNELINDEX = uint16;
-inline constexpr CHANNELINDEX CHANNELINDEX_INVALID = uint16_max;
-using ORDERINDEX = uint16;
-inline constexpr ORDERINDEX ORDERINDEX_INVALID = uint16_max;
-inline constexpr ORDERINDEX ORDERINDEX_MAX = uint16_max - 1;
-using PATTERNINDEX = uint16;
-inline constexpr PATTERNINDEX PATTERNINDEX_INVALID = uint16_max;
-using PLUGINDEX = uint8;
-inline constexpr PLUGINDEX PLUGINDEX_INVALID = uint8_max;
-using SAMPLEINDEX = uint16;
-inline constexpr SAMPLEINDEX SAMPLEINDEX_INVALID = uint16_max;
-using INSTRUMENTINDEX = uint16;
-inline constexpr INSTRUMENTINDEX INSTRUMENTINDEX_INVALID = uint16_max;
-using SEQUENCEINDEX = uint8;
-inline constexpr SEQUENCEINDEX SEQUENCEINDEX_INVALID = uint8_max;
-
-using SmpLength = uint32;
-
-
-inline constexpr SmpLength MAX_SAMPLE_LENGTH = 0x10000000; // Sample length in frames. Sample size in bytes can be more than this (= 256 MB).
-
-inline constexpr ROWINDEX MAX_PATTERN_ROWS       = 1024;
-inline constexpr ROWINDEX MAX_ROWS_PER_BEAT      = 65536;
-inline constexpr ORDERINDEX MAX_ORDERS           = ORDERINDEX_MAX + 1;
-inline constexpr PATTERNINDEX MAX_PATTERNS       = 4000;
-inline constexpr SAMPLEINDEX MAX_SAMPLES         = 4000;
-inline constexpr INSTRUMENTINDEX MAX_INSTRUMENTS = 256;
-inline constexpr PLUGINDEX MAX_MIXPLUGINS        = 250;
-
-inline constexpr SEQUENCEINDEX MAX_SEQUENCES     = 50;
-
-inline constexpr CHANNELINDEX MAX_BASECHANNELS   = 127; // Maximum pattern channels.
-inline constexpr CHANNELINDEX MAX_CHANNELS       = 256; // Maximum number of mixing channels.
-
-enum { FREQ_FRACBITS = 4 }; // Number of fractional bits in return value of CSoundFile::GetFreqFromPeriod()
-
-// String lengths (including trailing null char)
-enum
-{
+		/*
+        * Snd_Defs.h
+        * ----------
+        * Purpose: Basic definitions of data types, enums, etc. for the playback engine core.
+        * Notes  : (currently none)
+        * Authors: Olivier Lapicque
+        *          OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		
+		#pragma once
+		
+		#include "openmpt/all/BuildSettings.hpp"
+		
+		#include "openmpt/base/FlagSet.hpp"
+		
+		
+		OPENMPT_NAMESPACE_BEGIN
+		
+		
+		using ROWINDEX = uint32;
+		inline constexpr ROWINDEX ROWINDEX_INVALID = uint32_max;
+		using CHANNELINDEX = uint16;
+		inline constexpr CHANNELINDEX CHANNELINDEX_INVALID = uint16_max;
+		using ORDERINDEX = uint16;
+		inline constexpr ORDERINDEX ORDERINDEX_INVALID = uint16_max;
+		inline constexpr ORDERINDEX ORDERINDEX_MAX = uint16_max - 1;
+		using PATTERNINDEX = uint16;
+		inline constexpr PATTERNINDEX PATTERNINDEX_INVALID = uint16_max;
+		using PLUGINDEX = uint8;
+		inline constexpr PLUGINDEX PLUGINDEX_INVALID = uint8_max;
+		using SAMPLEINDEX = uint16;
+		inline constexpr SAMPLEINDEX SAMPLEINDEX_INVALID = uint16_max;
+		using INSTRUMENTINDEX = uint16;
+		inline constexpr INSTRUMENTINDEX INSTRUMENTINDEX_INVALID = uint16_max;
+		using SEQUENCEINDEX = uint8;
+		inline constexpr SEQUENCEINDEX SEQUENCEINDEX_INVALID = uint8_max;
+		
+		using SmpLength = uint32;
+		
+		
+		inline constexpr SmpLength MAX_SAMPLE_LENGTH = 0x10000000; // Sample length in frames. Sample size in bytes can be more than this (= 256 MB).
+		
+		inline constexpr ROWINDEX MAX_PATTERN_ROWS       = 1024;
+		inline constexpr ROWINDEX MAX_ROWS_PER_BEAT      = 65536;
+		inline constexpr ORDERINDEX MAX_ORDERS           = ORDERINDEX_MAX + 1;
+		inline constexpr PATTERNINDEX MAX_PATTERNS       = 4000;
+		inline constexpr SAMPLEINDEX MAX_SAMPLES         = 4000;
+		inline constexpr INSTRUMENTINDEX MAX_INSTRUMENTS = 256;
+		inline constexpr PLUGINDEX MAX_MIXPLUGINS        = 250;
+		
+		inline constexpr SEQUENCEINDEX MAX_SEQUENCES     = 50;
+		
+		inline constexpr CHANNELINDEX MAX_BASECHANNELS   = 127; // Maximum pattern channels.
+		inline constexpr CHANNELINDEX MAX_CHANNELS       = 256; // Maximum number of mixing channels.
+		
+		enum { FREQ_FRACBITS = 4 }; // Number of fractional bits in return value of CSoundFile::GetFreqFromPeriod()
+		
+		// String lengths (including trailing null char)
+		enum
+		{
 	MAX_SAMPLENAME         = 32,
 	MAX_SAMPLEFILENAME     = 22,
 	MAX_INSTRUMENTNAME     = 32,
 	MAX_INSTRUMENTFILENAME = 32,
 	MAX_PATTERNNAME        = 32,
 	MAX_CHANNELNAME        = 20,
-};
-
-enum MODTYPE
-{
+		};
+		
+		enum MODTYPE
+		{
 	MOD_TYPE_NONE = 0x00,
 	MOD_TYPE_MOD  = 0x01,
 	MOD_TYPE_S3M  = 0x02,
@@ -101,12 +101,12 @@ enum MODTYPE
 	MOD_TYPE_STP  = 0x8000000,
 	MOD_TYPE_PLM  = 0x10000000,
 	MOD_TYPE_SFX  = 0x20000000,
-};
-DECLARE_FLAGSET(MODTYPE)
-
-
-enum MODCONTAINERTYPE
-{
+		};
+		DECLARE_FLAGSET(MODTYPE)
+		
+		
+		enum MODCONTAINERTYPE
+		{
 	MOD_CONTAINERTYPE_NONE = 0x0,
 	MOD_CONTAINERTYPE_UMX  = 0x3,
 	MOD_CONTAINERTYPE_XPK  = 0x4,
@@ -114,12 +114,12 @@ enum MODCONTAINERTYPE
 	MOD_CONTAINERTYPE_MMCMP= 0x6,
 	MOD_CONTAINERTYPE_WAV  = 0x7, // WAV as module
 	MOD_CONTAINERTYPE_UAX  = 0x8, // Unreal sample set as module
-};
-
-
-// Module channel / sample flags
-enum ChannelFlags
-{
+		};
+		
+		
+		// Module channel / sample flags
+		enum ChannelFlags
+		{
 	// Sample Flags
 	CHN_16BIT           = 0x01,        // 16-bit sample
 	CHN_LOOP            = 0x02,        // Looped sample
@@ -131,7 +131,7 @@ enum ChannelFlags
 	CHN_REVERSE         = 0x80,        // Start sample playback from sample / loop end (Velvet Studio feature)
 	CHN_SURROUND        = 0x100,       // Use surround channel
 	CHN_ADLIB           = 0x200,       // Adlib / OPL instrument is active on this channel
-
+		
 	// Channel Flags
 	CHN_PINGPONGFLAG    = 0x80,        // When flag is on, sample is processed backwards - this is intentionally the same flag as CHN_REVERSE.
 	CHN_MUTE            = 0x400,       // Muted channel
@@ -152,99 +152,99 @@ enum ChannelFlags
 	CHN_SOLO            = 0x2000000,   // Solo channel
 	CHN_NOFX            = 0x4000000,   // Dry channel (no plugins)
 	CHN_SYNCMUTE        = 0x8000000,   // Keep sample sync on mute
-
+		
 	// Sample flags (only present in ModSample::uFlags, may overlap with CHN_CHANNELFLAGS)
 	SMP_MODIFIED        = 0x2000,      // Sample data has been edited in the tracker
 	SMP_KEEPONDISK      = 0x4000,      // Sample is not saved to file, data is restored from original sample file
 	SMP_NODEFAULTVOLUME = 0x8000,      // Ignore default volume setting
-};
-DECLARE_FLAGSET(ChannelFlags)
-
-#define CHN_SAMPLEFLAGS (CHN_16BIT | CHN_LOOP | CHN_PINGPONGLOOP | CHN_SUSTAINLOOP | CHN_PINGPONGSUSTAIN | CHN_PANNING | CHN_STEREO | CHN_PINGPONGFLAG | CHN_REVERSE | CHN_SURROUND | CHN_ADLIB)
-#define CHN_CHANNELFLAGS (~CHN_SAMPLEFLAGS | CHN_SURROUND)
-
-// Sample flags fit into the first 16 bits, and with the current memory layout, storing them as a 16-bit integer packs struct ModSample nicely.
-using SampleFlags = FlagSet<ChannelFlags, uint16>;
-
-
-// Instrument envelope-specific flags
-enum EnvelopeFlags : uint8
-{
+		};
+		DECLARE_FLAGSET(ChannelFlags)
+		
+		#define CHN_SAMPLEFLAGS (CHN_16BIT | CHN_LOOP | CHN_PINGPONGLOOP | CHN_SUSTAINLOOP | CHN_PINGPONGSUSTAIN | CHN_PANNING | CHN_STEREO | CHN_PINGPONGFLAG | CHN_REVERSE | CHN_SURROUND | CHN_ADLIB)
+		#define CHN_CHANNELFLAGS (~CHN_SAMPLEFLAGS | CHN_SURROUND)
+		
+		// Sample flags fit into the first 16 bits, and with the current memory layout, storing them as a 16-bit integer packs struct ModSample nicely.
+		using SampleFlags = FlagSet<ChannelFlags, uint16>;
+		
+		
+		// Instrument envelope-specific flags
+		enum EnvelopeFlags : uint8
+		{
 	ENV_ENABLED = 0x01, // env is enabled
 	ENV_LOOP    = 0x02, // env loop
 	ENV_SUSTAIN = 0x04, // env sustain
 	ENV_CARRY   = 0x08, // env carry
 	ENV_FILTER  = 0x10, // filter env enabled (this has to be combined with ENV_ENABLED in the pitch envelope's flags)
-};
-DECLARE_FLAGSET(EnvelopeFlags)
-
-
-// Envelope value boundaries
-#define ENVELOPE_MIN   0   // Vertical min value of a point
-#define ENVELOPE_MID   32  // Vertical middle line
-#define ENVELOPE_MAX   64  // Vertical max value of a point
-#define MAX_ENVPOINTS  240 // Maximum length of each instrument envelope
-
-
-// Instrument-specific flags
-enum InstrumentFlags : uint8
-{
+		};
+		DECLARE_FLAGSET(EnvelopeFlags)
+		
+		
+		// Envelope value boundaries
+		#define ENVELOPE_MIN   0   // Vertical min value of a point
+		#define ENVELOPE_MID   32  // Vertical middle line
+		#define ENVELOPE_MAX   64  // Vertical max value of a point
+		#define MAX_ENVPOINTS  240 // Maximum length of each instrument envelope
+		
+		
+		// Instrument-specific flags
+		enum InstrumentFlags : uint8
+		{
 	INS_SETPANNING = 0x01, // Panning enabled
 	INS_MUTE       = 0x02, // Instrument is muted
-};
-DECLARE_FLAGSET(InstrumentFlags)
-
-
-// envelope types in instrument editor
-enum EnvelopeType : uint8
-{
+		};
+		DECLARE_FLAGSET(InstrumentFlags)
+		
+		
+		// envelope types in instrument editor
+		enum EnvelopeType : uint8
+		{
 	ENV_VOLUME = 0,
 	ENV_PANNING,
 	ENV_PITCH,
-
+		
 	ENV_MAXTYPES
-};
-
-// Filter Modes
-enum class FilterMode : uint8
-{
+		};
+		
+		// Filter Modes
+		enum class FilterMode : uint8
+		{
 	Unchanged = 0xFF,
 	LowPass   = 0,
 	HighPass  = 1,
-};
-
-
-// NNA types (New Note Action)
-enum class NewNoteAction : uint8
-{
+		};
+		
+		
+		// NNA types (New Note Action)
+		enum class NewNoteAction : uint8
+		{
 	NoteCut  = 0,
 	Continue = 1,
 	NoteOff  = 2,
 	NoteFade = 3,
-};
-
-// DCT types (Duplicate Check Types)
-enum class DuplicateCheckType : uint8
-{
+		};
+		
+		// DCT types (Duplicate Check Types)
+		enum class DuplicateCheckType : uint8
+		{
 	None       = 0,
 	Note       = 1,
 	Sample     = 2,
 	Instrument = 3,
 	Plugin     = 4,
-};
-
-// DNA types (Duplicate Note Action)
-enum class DuplicateNoteAction : uint8
-{
+		};
+		
+		// DNA types (Duplicate Note Action)
+		enum class DuplicateNoteAction : uint8
+		{
 	NoteCut  = 0,
 	NoteOff  = 1,
 	NoteFade = 2,
-};
-
-
-// Module flags - contains both song configuration and playback state... Use SONG_FILE_FLAGS and SONG_PLAY_FLAGS distinguish between the two.
-enum SongFlags
-{
+		};
+		
+		
+		// Module flags - contains both song configuration and playback state... Use SONG_FILE_FLAGS and SONG_PLAY_FLAGS distinguish between the two.
+		enum SongFlags
+		{
 	SONG_FASTVOLSLIDES =       0x02,  // Old Scream Tracker 3.0 volume slides
 	SONG_ITOLDEFFECTS  =       0x04,  // Old Impulse Tracker effect implementations
 	SONG_ITCOMPATGXX   =       0x08,  // IT "Compatible Gxx" (IT's flag to behave more like other trackers w/r/t portamento effects)
@@ -266,40 +266,40 @@ enum SongFlags
 	SONG_PLAYALLSONGS  =  0x40'0000,  // Play all subsongs consecutively (libopenmpt)
 	SONG_ISAMIGA       =  0x80'0000,  // Is an Amiga module and thus qualifies to be played using the Paula BLEP resampler
 	SONG_IMPORTED      = 0x100'0000,  // Song type does not represent actual module format / was imported from a different format (OpenMPT)
-};
-DECLARE_FLAGSET(SongFlags)
-
-#define SONG_FILE_FLAGS (SONG_FASTVOLSLIDES|SONG_ITOLDEFFECTS|SONG_ITCOMPATGXX|SONG_LINEARSLIDES|SONG_EXFILTERRANGE|SONG_AMIGALIMITS|SONG_S3MOLDVIBRATO|SONG_PT_MODE|SONG_ISAMIGA|SONG_IMPORTED)
-#define SONG_PLAY_FLAGS (~SONG_FILE_FLAGS)
-
-// Global Options (Renderer)
-#ifndef NO_AGC
-#define SNDDSP_AGC            0x40     // Automatic gain control
-#endif // ~NO_AGC
-#ifndef NO_DSP
-#define SNDDSP_MEGABASS       0x02     // Bass expansion
-#define SNDDSP_SURROUND       0x08     // Surround mix
-#define SNDDSP_BITCRUSH       0x01
-#endif // NO_DSP
-#ifndef NO_REVERB
-#define SNDDSP_REVERB         0x20     // Apply reverb
-#endif // NO_REVERB
-#ifndef NO_EQ
-#define SNDDSP_EQ             0x80     // Apply EQ
-#endif // NO_EQ
-
-#define SNDMIX_SOFTPANNING    0x10     // Soft panning mode (this is forced with mixmode RC3 and later)
-
-// Misc Flags (can safely be turned on or off)
-#define SNDMIX_MAXDEFAULTPAN  0x80000  // Currently unused (should be used by Amiga MOD loaders)
-#define SNDMIX_MUTECHNMODE    0x100000 // Notes are not played on muted channels
-
-
-#define MAX_GLOBAL_VOLUME 256u
-
-// Resampling modes
-enum ResamplingMode : uint8
-{
+		};
+		DECLARE_FLAGSET(SongFlags)
+		
+		#define SONG_FILE_FLAGS (SONG_FASTVOLSLIDES|SONG_ITOLDEFFECTS|SONG_ITCOMPATGXX|SONG_LINEARSLIDES|SONG_EXFILTERRANGE|SONG_AMIGALIMITS|SONG_S3MOLDVIBRATO|SONG_PT_MODE|SONG_ISAMIGA|SONG_IMPORTED)
+		#define SONG_PLAY_FLAGS (~SONG_FILE_FLAGS)
+		
+		// Global Options (Renderer)
+		#ifndef NO_AGC
+		#define SNDDSP_AGC            0x40     // Automatic gain control
+		#endif // ~NO_AGC
+		#ifndef NO_DSP
+		#define SNDDSP_MEGABASS       0x02     // Bass expansion
+		#define SNDDSP_SURROUND       0x08     // Surround mix
+		#define SNDDSP_BITCRUSH       0x01
+		#endif // NO_DSP
+		#ifndef NO_REVERB
+		#define SNDDSP_REVERB         0x20     // Apply reverb
+		#endif // NO_REVERB
+		#ifndef NO_EQ
+		#define SNDDSP_EQ             0x80     // Apply EQ
+		#endif // NO_EQ
+		
+		#define SNDMIX_SOFTPANNING    0x10     // Soft panning mode (this is forced with mixmode RC3 and later)
+		
+		// Misc Flags (can safely be turned on or off)
+		#define SNDMIX_MAXDEFAULTPAN  0x80000  // Currently unused (should be used by Amiga MOD loaders)
+		#define SNDMIX_MUTECHNMODE    0x100000 // Notes are not played on muted channels
+		
+		
+		#define MAX_GLOBAL_VOLUME 256u
+		
+		// Resampling modes
+		enum ResamplingMode : uint8
+		{
 	// ATTENTION: Do not change ANY of these values, as they get written out to files in per instrument interpolation settings
 	// and old files have these exact values in them which should not change meaning.
 	SRCMODE_NEAREST   = 0,  // 1 tap, no AA
@@ -307,119 +307,119 @@ enum ResamplingMode : uint8
 	SRCMODE_CUBIC     = 2,  // 4 tap, no AA
 	SRCMODE_SINC8     = 4,  // 8 tap, no AA   (yes, index 4) (XMMS-ModPlug)
 	SRCMODE_SINC8LP   = 3,  // 8 tap, with AA (yes, index 3) (Polyphase)
-
+		
 	SRCMODE_DEFAULT   = 5,  // Only used for instrument settings, not used inside the mixer
-
+		
 	SRCMODE_AMIGA  = 0xFF,  // Not explicitely user-selectable
-};
-
-namespace Resampling
-{
-
-enum class AmigaFilter
-{
+		};
+		
+		namespace Resampling
+		{
+		
+		enum class AmigaFilter
+		{
 	Off        = 0,
 	A500       = 1,
 	A1200      = 2,
 	Unfiltered = 3,
-};
-
-inline std::array<ResamplingMode, 5> AllModes() noexcept { return { { SRCMODE_NEAREST, SRCMODE_LINEAR, SRCMODE_CUBIC, SRCMODE_SINC8, SRCMODE_SINC8LP } }; }
-
-inline std::array<ResamplingMode, 6> AllModesWithDefault() noexcept { return { { SRCMODE_NEAREST, SRCMODE_LINEAR, SRCMODE_CUBIC, SRCMODE_SINC8, SRCMODE_SINC8LP, SRCMODE_DEFAULT } }; }
-
-constexpr ResamplingMode Default() noexcept { return SRCMODE_SINC8LP; }
-
-constexpr bool IsKnownMode(int mode) noexcept { return (mode >= 0) && (mode < SRCMODE_DEFAULT); }
-
-constexpr ResamplingMode ToKnownMode(int mode) noexcept
-{
+		};
+		
+		inline std::array<ResamplingMode, 5> AllModes() noexcept { return { { SRCMODE_NEAREST, SRCMODE_LINEAR, SRCMODE_CUBIC, SRCMODE_SINC8, SRCMODE_SINC8LP } }; }
+		
+		inline std::array<ResamplingMode, 6> AllModesWithDefault() noexcept { return { { SRCMODE_NEAREST, SRCMODE_LINEAR, SRCMODE_CUBIC, SRCMODE_SINC8, SRCMODE_SINC8LP, SRCMODE_DEFAULT } }; }
+		
+		constexpr ResamplingMode Default() noexcept { return SRCMODE_SINC8LP; }
+		
+		constexpr bool IsKnownMode(int mode) noexcept { return (mode >= 0) && (mode < SRCMODE_DEFAULT); }
+		
+		constexpr ResamplingMode ToKnownMode(int mode) noexcept
+		{
 	return Resampling::IsKnownMode(mode) ? static_cast<ResamplingMode>(mode)
-		: (mode == SRCMODE_AMIGA) ? SRCMODE_LINEAR
-		: Resampling::Default();
-}
-
-constexpr int Length(ResamplingMode mode) noexcept
-{
+: (mode == SRCMODE_AMIGA) ? SRCMODE_LINEAR
+: Resampling::Default();
+		}
+		
+		constexpr int Length(ResamplingMode mode) noexcept
+		{
 	return mode == SRCMODE_NEAREST ? 1
-		: mode == SRCMODE_LINEAR ? 2
-		: mode == SRCMODE_CUBIC ? 4
-		: mode == SRCMODE_SINC8 ? 8
-		: mode == SRCMODE_SINC8LP ? 8
-		: 0;
-}
-
-constexpr bool HasAA(ResamplingMode mode) noexcept { return (mode == SRCMODE_SINC8LP); }
-
-constexpr ResamplingMode AddAA(ResamplingMode mode) noexcept { return (mode == SRCMODE_SINC8) ? SRCMODE_SINC8LP : mode; }
-
-constexpr ResamplingMode RemoveAA(ResamplingMode mode) noexcept { return (mode == SRCMODE_SINC8LP) ? SRCMODE_SINC8 : mode; }
-
-}
-
-
-
-// Release node defines
-#define ENV_RELEASE_NODE_UNSET	0xFF
-#define NOT_YET_RELEASED		(-1)
-static_assert(ENV_RELEASE_NODE_UNSET > MAX_ENVPOINTS);
-
-
-enum PluginPriority
-{
+: mode == SRCMODE_LINEAR ? 2
+: mode == SRCMODE_CUBIC ? 4
+: mode == SRCMODE_SINC8 ? 8
+: mode == SRCMODE_SINC8LP ? 8
+: 0;
+		}
+		
+		constexpr bool HasAA(ResamplingMode mode) noexcept { return (mode == SRCMODE_SINC8LP); }
+		
+		constexpr ResamplingMode AddAA(ResamplingMode mode) noexcept { return (mode == SRCMODE_SINC8) ? SRCMODE_SINC8LP : mode; }
+		
+		constexpr ResamplingMode RemoveAA(ResamplingMode mode) noexcept { return (mode == SRCMODE_SINC8LP) ? SRCMODE_SINC8 : mode; }
+		
+		}
+		
+		
+		
+		// Release node defines
+		#define ENV_RELEASE_NODE_UNSET	0xFF
+		#define NOT_YET_RELEASED		(-1)
+		static_assert(ENV_RELEASE_NODE_UNSET > MAX_ENVPOINTS);
+		
+		
+		enum PluginPriority
+		{
 	ChannelOnly,
 	InstrumentOnly,
 	PrioritiseInstrument,
 	PrioritiseChannel,
-};
-
-enum PluginMutePriority
-{
+		};
+		
+		enum PluginMutePriority
+		{
 	EvenIfMuted,
 	RespectMutes,
-};
-
-// Plugin velocity handling options
-enum PlugVelocityHandling : uint8
-{
+		};
+		
+		// Plugin velocity handling options
+		enum PlugVelocityHandling : uint8
+		{
 	PLUGIN_VELOCITYHANDLING_CHANNEL = 0,
 	PLUGIN_VELOCITYHANDLING_VOLUME
-};
-
-// Plugin volumecommand handling options
-enum PlugVolumeHandling : uint8
-{
+		};
+		
+		// Plugin volumecommand handling options
+		enum PlugVolumeHandling : uint8
+		{
 	PLUGIN_VOLUMEHANDLING_MIDI = 0,
 	PLUGIN_VOLUMEHANDLING_DRYWET,
 	PLUGIN_VOLUMEHANDLING_IGNORE,
 	PLUGIN_VOLUMEHANDLING_CUSTOM,
 	PLUGIN_VOLUMEHANDLING_MAX,
-};
-
-enum MidiChannel : uint8
-{
+		};
+		
+		enum MidiChannel : uint8
+		{
 	MidiNoChannel		= 0,
 	MidiFirstChannel	= 1,
 	MidiLastChannel		= 16,
 	MidiMappedChannel	= 17,
-};
-
-
-// Vibrato Types
-enum VibratoType : uint8
-{
+		};
+		
+		
+		// Vibrato Types
+		enum VibratoType : uint8
+		{
 	VIB_SINE = 0,
 	VIB_SQUARE,
 	VIB_RAMP_UP,
 	VIB_RAMP_DOWN,
 	VIB_RANDOM
-};
-
-
-// Tracker-specific playback behaviour
-// Note: The index of every flag has to be fixed, so do not remove flags. Always add new flags at the end!
-enum PlayBehaviour
-{
+		};
+		
+		
+		// Tracker-specific playback behaviour
+		// Note: The index of every flag has to be fixed, so do not remove flags. Always add new flags at the end!
+		enum PlayBehaviour
+		{
 	MSF_COMPATIBLE_PLAY,            // No-op - only used during loading (Old general compatibility flag for IT/MPT/XM)
 	kMPTOldSwingBehaviour,          // MPT 1.16 swing behaviour (IT/MPT, deprecated)
 	kMIDICCBugEmulation,            // Emulate broken volume MIDI CC behaviour (IT/MPT/XM, deprecated)
@@ -431,7 +431,7 @@ enum PlayBehaviour
 	kTempoClamp,                    // Clamp tempo to 32-255 range.
 	kPerChannelGlobalVolSlide,      // Global volume slide memory is per-channel
 	kPanOverride,                   // Panning commands override surround and random pan variation
-
+		
 	kITInstrWithoutNote,            // Avoid instrument handling if there is no note
 	kITVolColFinePortamento,        // Volume column portamento never does fine portamento
 	kITArpeggio,                    // IT arpeggio algorithm
@@ -472,7 +472,7 @@ enum PlayBehaviour
 	kITPanningReset,                // Sample and instrument panning is only applied on note change, not instrument change
 	kITPatternLoopWithJumpsOld,     // Bxx on the same row as SBx terminates the loop in IT (old implementation of kITPatternLoopWithJumps)
 	kITInstrWithNoteOff,            // Instrument number with note-off recalls default volume
-
+		
 	kFT2Arpeggio,                   // FT2 arpeggio algorithm
 	kFT2Retrigger,                  // Rxx behaves like in FT2
 	kFT2VolColVibrato,              // Vibrato depth in volume column does not actually execute the vibrato effect
@@ -499,27 +499,27 @@ enum PlayBehaviour
 	kFT2PanWithDelayedNoteOff,      // Pan command with delayed note-off
 	kFT2VolColDelay,                // FT2-style volume column handling if there is a note delay
 	kFT2FinetunePrecision,          // Only take the upper 4 bits of sample finetune.
-
+		
 	kST3NoMutedChannels,            // Don't process any effects on muted S3M channels
 	kST3EffectMemory,               // Most effects share the same memory in ST3
 	kST3PortaSampleChange,          // Portamento plus instrument number applies the volume settings of the new sample, but not the new sample itself (GUS behaviour).
 	kST3VibratoMemory,              // Do not remember vibrato type in effect memory
 	kST3LimitPeriod,                // Cut note instead of limiting  final period (ModPlug Tracker style)
 	KST3PortaAfterArpeggio,         // Portamento after arpeggio continues at the note where the arpeggio left off
-
+		
 	kMODOneShotLoops,               // Allow ProTracker-like oneshot loops
 	kMODIgnorePanning,              // Do not process any panning commands
 	kMODSampleSwap,                 // On-the-fly sample swapping
-
+		
 	kFT2NoteOffFlags,               // Set and reset the correct fade/key-off flags with note-off and instrument number after note-off
 	kITMultiSampleInstrumentNumber, // After portamento to different sample within multi-sampled instrument, lone instrument numbers in patterns always recall the new sample's default settings
 	kRowDelayWithNoteDelay,         // Retrigger note delays on every reptition of a row
 	kFT2MODTremoloRampWaveform,     // FT2-/ProTracker-compatible tremolo ramp down / triangle waveform
 	kFT2PortaUpDownMemory,          // Portamento up and down have separate memory
-
+		
 	kMODOutOfRangeNoteDelay,        // ProTracker behaviour for out-of-range note delays
 	kMODTempoOnSecondTick,          // ProTracker sets tempo after the first tick
-
+		
 	kFT2PanSustainRelease,          // If the sustain point of a panning envelope is reached before key-off, FT2 does not escape it anymore
 	kLegacyReleaseNode,             // Legacy release node volume processing
 	kOPLBeatingOscillators,         // Emulate beating FM oscillators from CDFM / Composer 670
@@ -544,46 +544,46 @@ enum PlayBehaviour
 	kApplyOffsetWithoutNote,        // Offset commands even work when there's no note next to them (e.g. DMF, MDL, PLM formats)
 	kITPitchPanSeparation,          // Pitch/Pan Separation can be overridden by panning commands (this also fixes a bug where any "special" notes affect PPS)
 	kImprecisePingPongLoops,        // Use old (less precise) ping-pong overshoot calculation
-
+		
 	// Add new play behaviours here.
-
+		
 	kMaxPlayBehaviours,
-};
-
-
-// Tempo swing determines how much every row in modern tempo mode contributes to a beat.
-class TempoSwing : public std::vector<uint32>
-{
-public:
+		};
+		
+		
+		// Tempo swing determines how much every row in modern tempo mode contributes to a beat.
+		class TempoSwing : public std::vector<uint32>
+		{
+		public:
 	static constexpr uint32 Unity = 1u << 24;
 	// Normalize the tempo swing coefficients so that they add up to exactly the specified tempo again
 	void Normalize();
 	void resize(size_type newSize, value_type val = Unity) { std::vector<uint32>::resize(newSize, val); Normalize(); }
-
+		
 	static void Serialize(std::ostream &oStrm, const TempoSwing &swing);
 	static void Deserialize(std::istream &iStrm, TempoSwing &swing, const size_t);
-};
-
-
-// Sample position and sample position increment value
-struct SamplePosition
-{
+		};
+		
+		
+		// Sample position and sample position increment value
+		struct SamplePosition
+		{
 	using value_t = int64;
 	using unsigned_value_t = uint64;
-
-protected:
+		
+		protected:
 	value_t v = 0;
-
-public:
+		
+		public:
 	static constexpr uint32 fractMax = 0xFFFFFFFFu;
-
+		
 	MPT_CONSTEXPRINLINE SamplePosition() { }
 	MPT_CONSTEXPRINLINE explicit SamplePosition(value_t pos) : v(pos) { }
 	MPT_CONSTEXPRINLINE SamplePosition(int32 intPart, uint32 fractPart) : v((static_cast<value_t>(intPart) * (1ll << 32)) | fractPart) { }
 	static SamplePosition Ratio(uint32 dividend, uint32 divisor) { return SamplePosition((static_cast<int64>(dividend) << 32) / divisor); }
 	static SamplePosition FromDouble(double pos) { return SamplePosition(static_cast<value_t>(pos * 4294967296.0)); }
 	double ToDouble() const { return v / 4294967296.0; }
-
+		
 	// Set integer and fractional part
 	MPT_CONSTEXPRINLINE SamplePosition &Set(int32 intPart, uint32 fractPart = 0) { v = (static_cast<int64>(intPart) << 32) | fractPart; return *this; }
 	// Set integer part, keep fractional part
@@ -612,54 +612,54 @@ public:
 	MPT_CONSTEXPRINLINE bool IsPositive() const { return v > 0; }
 	// Check if value is < 0
 	MPT_CONSTEXPRINLINE bool IsNegative() const { return v < 0; }
-
+		
 	// Addition / subtraction of another fixed-point number
 	SamplePosition operator+ (const SamplePosition &other) const { return SamplePosition(v + other.v); }
 	SamplePosition operator- (const SamplePosition &other) const { return SamplePosition(v - other.v); }
 	void operator+= (const SamplePosition &other) { v += other.v; }
 	void operator-= (const SamplePosition &other) { v -= other.v; }
-
+		
 	// Multiplication with integer scalar
 	template<typename T>
 	SamplePosition operator* (T other) const { return SamplePosition(static_cast<value_t>(v * other)); }
 	template<typename T>
 	void operator*= (T other) { v = static_cast<value_t>(v *other); }
-
+		
 	// Division by other fractional point number; returns scalar
 	value_t operator/ (SamplePosition other) const { return v / other.v; }
 	// Division by scalar; returns fractional point number
 	SamplePosition operator/ (int div) const { return SamplePosition(v / div); }
-
+		
 	MPT_CONSTEXPRINLINE bool operator==(const SamplePosition &other) const { return v == other.v; }
 	MPT_CONSTEXPRINLINE bool operator!=(const SamplePosition &other) const { return v != other.v; }
 	MPT_CONSTEXPRINLINE bool operator<=(const SamplePosition &other) const { return v <= other.v; }
 	MPT_CONSTEXPRINLINE bool operator>=(const SamplePosition &other) const { return v >= other.v; }
 	MPT_CONSTEXPRINLINE bool operator<(const SamplePosition &other) const { return v < other.v; }
 	MPT_CONSTEXPRINLINE bool operator>(const SamplePosition &other) const { return v > other.v; }
-};
-
-
-// Aaaand another fixed-point type, e.g. used for fractional tempos
-// Note that this doesn't use classical bit shifting for the fixed point part.
-// This is mostly for the clarity of stored values and to be able to represent any value .0000 to .9999 properly.
-// For easier debugging, use the Debugger Visualizers available in build/vs/debug/
-// to easily display the stored values.
-template<size_t FFact, typename T>
-struct FPInt
-{
-protected:
+		};
+		
+		
+		// Aaaand another fixed-point type, e.g. used for fractional tempos
+		// Note that this doesn't use classical bit shifting for the fixed point part.
+		// This is mostly for the clarity of stored values and to be able to represent any value .0000 to .9999 properly.
+		// For easier debugging, use the Debugger Visualizers available in build/vs/debug/
+		// to easily display the stored values.
+		template<size_t FFact, typename T>
+		struct FPInt
+		{
+		protected:
 	T v;
 	MPT_CONSTEXPRINLINE FPInt(T rawValue) : v(rawValue) { }
-
-public:
+		
+		public:
 	enum : size_t { fractFact = FFact };
 	using store_t = T;
-
+		
 	MPT_CONSTEXPRINLINE FPInt() : v(0) { }
 	MPT_CONSTEXPRINLINE FPInt(T intPart, T fractPart) : v((intPart * fractFact) + (fractPart % fractFact)) { }
 	explicit MPT_CONSTEXPRINLINE FPInt(float f) : v(mpt::saturate_round<T>(f * float(fractFact))) { }
 	explicit MPT_CONSTEXPRINLINE FPInt(double f) : v(mpt::saturate_round<T>(f * double(fractFact))) { }
-
+		
 	// Set integer and fractional part
 	MPT_CONSTEXPRINLINE FPInt<fractFact, T> &Set(T intPart, T fractPart = 0) { v = (intPart * fractFact) + (fractPart % fractFact); return *this; }
 	// Set raw internal representation directly
@@ -672,22 +672,23 @@ public:
 	MPT_CONSTEXPRINLINE T GetRaw() const { return v; }
 	// Formats the stored value as a floating-point value
 	MPT_CONSTEXPRINLINE double ToDouble() const { return v / double(fractFact); }
-
+		
 	MPT_CONSTEXPRINLINE friend FPInt<fractFact, T> operator+ (const FPInt<fractFact, T> &a, const FPInt<fractFact, T> &b) noexcept { return FPInt<fractFact, T>(a.v + b.v); }
 	MPT_CONSTEXPRINLINE friend FPInt<fractFact, T> operator- (const FPInt<fractFact, T> &a, const FPInt<fractFact, T> &b) noexcept { return FPInt<fractFact, T>(a.v - b.v); }
 	MPT_CONSTEXPRINLINE FPInt<fractFact, T> operator+= (const FPInt<fractFact, T> &other) noexcept { v += other.v; return *this; }
 	MPT_CONSTEXPRINLINE FPInt<fractFact, T> operator-= (const FPInt<fractFact, T> &other) noexcept { v -= other.v; return *this; }
-
+		
 	MPT_CONSTEXPRINLINE friend bool operator== (const FPInt<fractFact, T> &a, const FPInt<fractFact, T> &b) noexcept { return a.v == b.v; }
 	MPT_CONSTEXPRINLINE friend bool operator!= (const FPInt<fractFact, T> &a, const FPInt<fractFact, T> &b) noexcept { return a.v != b.v; }
 	MPT_CONSTEXPRINLINE friend bool operator<= (const FPInt<fractFact, T> &a, const FPInt<fractFact, T> &b) noexcept { return a.v <= b.v; }
 	MPT_CONSTEXPRINLINE friend bool operator>= (const FPInt<fractFact, T> &a, const FPInt<fractFact, T> &b) noexcept { return a.v >= b.v; }
 	MPT_CONSTEXPRINLINE friend bool operator< (const FPInt<fractFact, T> &a, const FPInt<fractFact, T> &b) noexcept { return a.v < b.v; }
 	MPT_CONSTEXPRINLINE friend bool operator> (const FPInt<fractFact, T> &a, const FPInt<fractFact, T> &b) noexcept { return a.v > b.v; }
-};
-
-using TEMPO = FPInt<10000, uint32>;
-
-using OPLPatch = std::array<uint8, 12>;
-
-OPENMPT_NAMESPACE_END
+		};
+		
+		using TEMPO = FPInt<10000, uint32>;
+		
+		using OPLPatch = std::array<uint8, 12>;
+		
+		OPENMPT_NAMESPACE_END
+		

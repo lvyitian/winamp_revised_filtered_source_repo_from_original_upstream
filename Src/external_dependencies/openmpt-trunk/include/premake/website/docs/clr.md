@@ -34,16 +34,16 @@ Set up a managed C++ project.
 
 ```lua
 project "MyProject"
-  kind "ConsoleApp"
-  language "C++"
-  clr "On"
+kind "ConsoleApp"
+language "C++"
+clr "On"
 ```
 
 Enable unsafe code in a C# project.
 
 ```lua
 project "MyProject"
-  kind "ConsoleApp"
-  language "C#"
-  clr "Unsafe"
+kind "ConsoleApp"
+language "C#"
+clr "Unsafe"
 ```

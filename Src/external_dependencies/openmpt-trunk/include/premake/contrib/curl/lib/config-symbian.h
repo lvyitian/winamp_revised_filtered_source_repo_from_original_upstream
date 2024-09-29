@@ -1,26 +1,26 @@
 #ifndef HEADER_CURL_CONFIG_SYMBIAN_H
 #define HEADER_CURL_CONFIG_SYMBIAN_H
 /***************************************************************************
- *                                  _   _ ____  _
- *  Project                     ___| | | |  _ \| |
- *                             / __| | | | |_) | |
- *                            | (__| |_| |  _ <| |___
- *                             \___|\___/|_| \_\_____|
- *
- * Copyright (C) 1998 - 2016, Daniel Stenberg, <daniel@haxx.se>, et al.
- *
- * This software is licensed as described in the file COPYING, which
- * you should have received as part of this distribution. The terms
- * are also available at https://curl.haxx.se/docs/copyright.html.
- *
- * You may opt to use, copy, modify, merge, publish, distribute and/or sell
- * copies of the Software, and permit persons to whom the Software is
- * furnished to do so, under the terms of the COPYING file.
- *
- * This software is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
- * KIND, either express or implied.
- *
- ***************************************************************************/
+*                                  _   _ ____  _
+*  Project                     ___| | | |  _ \| |
+*                             / __| | | | |_) | |
+*                            | (__| |_| |  _ <| |___
+*                             \___|\___/|_| \_\_____|
+*
+* Copyright (C) 1998 - 2016, Daniel Stenberg, <daniel@haxx.se>, et al.
+*
+* This software is licensed as described in the file COPYING, which
+* you should have received as part of this distribution. The terms
+* are also available at https://curl.haxx.se/docs/copyright.html.
+*
+* You may opt to use, copy, modify, merge, publish, distribute and/or sell
+* copies of the Software, and permit persons to whom the Software is
+* furnished to do so, under the terms of the COPYING file.
+*
+* This software is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
+* KIND, either express or implied.
+*
+***************************************************************************/
 
 /* ================================================================ */
 /*               Hand crafted config file for Symbian               */
@@ -261,7 +261,7 @@
 /* #undef HAVE_IOCTLSOCKET_CAMEL */
 
 /* Define to 1 if you have a working IoctlSocket camel case FIONBIO
-   function. */
+function. */
 /* #undef HAVE_IOCTLSOCKET_CAMEL_FIONBIO */
 
 /* Define to 1 if you have the <io.h> header file. */
@@ -361,7 +361,7 @@
 /* #undef HAVE_NO_STRERROR_R_DECL */
 
 /* if you have an old MIT gssapi library, lacking GSS_C_NT_HOSTBASED_SERVICE
-   */
+*/
 /* #undef HAVE_OLD_GSSMIT */
 
 /* Define to 1 if you have the <openssl/crypto.h> header file. */
@@ -658,7 +658,7 @@
 
 /* Define to the address where bug reports for this package should be sent. */
 /*#define PACKAGE_BUGREPORT \
-  "a suitable curl mailing list => https://curl.haxx.se/mail/"*/
+"a suitable curl mailing list => https://curl.haxx.se/mail/"*/
 
 /* Define to the full name of this package. */
 /*#define PACKAGE_NAME "curl"*/
@@ -762,8 +762,8 @@
 /* #undef WIN32_LEAN_AND_MEAN */
 
 /* Define to 1 if on AIX 3.
-   System headers sometimes define this.
-   We just want to avoid a redefinition error message.  */
+System headers sometimes define this.
+We just want to avoid a redefinition error message.  */
 #ifndef _ALL_SOURCE
 /* # undef _ALL_SOURCE */
 #endif
@@ -781,7 +781,7 @@
 /* #undef in_addr_t */
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
-   calls it, or to nothing if 'inline' is not supported under any name.  */
+calls it, or to nothing if 'inline' is not supported under any name.  */
 #ifndef __cplusplus
 /* #undef inline */
 #endif

@@ -20,9 +20,9 @@
 #define _CHILDWND_H_
 
 typedef struct {
-  int id;
-  int type;			// 0xLTRB
-  RECT rinfo;
+int id;
+int type;			// 0xLTRB
+RECT rinfo;
 } ChildWndResizeItem;
 
 /* If you are including this file from a plugin, you can't call these functions directly.  they are here to help you create the function pointer typedefs */

@@ -3,7 +3,7 @@
 
 #define CBCLASS svc_toolTipsRendererI
 START_DISPATCH;
-  CB(SPAWNTOOLTIP,   spawnTooltip);
+CB(SPAWNTOOLTIP,   spawnTooltip);
 END_DISPATCH;
 #undef CBCLASS
 

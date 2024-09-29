@@ -1,12 +1,12 @@
-#ifdef __cplusplus
-extern "C" {
-#endif
+		#ifdef __cplusplus
+		extern "C" {
+		#endif
 	void __cdecl __security_error_handler(
-		int code,
-		void *data)
+int code,
+void *data)
 	{
-		_exit(3);
+_exit(3);
 	}
-#ifdef __cplusplus
-}
-#endif
+		#ifdef __cplusplus
+		}
+		#endif

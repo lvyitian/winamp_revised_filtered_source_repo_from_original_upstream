@@ -21,20 +21,20 @@ unsigned long COMEXP BSWAP_C(unsigned long input);
 template<class T> inline T MAX(T a, T b) { return a > b ? a : b; }
 template<class T> inline T MIN(T a, T b) { return a > b ? b : a; }
 template<class T> inline T MINMAX(T a, T minval, T maxval) {
-  return (a < minval) ? minval : ( (a > maxval) ? maxval : a );
+return (a < minval) ? minval : ( (a > maxval) ? maxval : a );
 }
 
 // and a couple of my own neat tricks :) BU
 template<class T> inline T ABS(T a) { return a < 0 ? -a : a; }
 template<class T> inline T SQR(T a) { return a * a; }
 template<class T> inline int CMP3(T a, T b) {
-  if (a < b) return -1;
-  if (a == b) return 0;
-  return 1;
+if (a < b) return -1;
+if (a == b) return 0;
+return 1;
 }
 
 static inline RGB24 RGBTOBGR(RGB24 col) {
-  return ((col & 0xFF00FF00) | ((col & 0xFF0000) >> 16) | ((col & 0xFF) << 16));
+return ((col & 0xFF00FF00) | ((col & 0xFF0000) >> 16) | ((col & 0xFF) << 16));
 }
 static inline RGB24 BGRTORGB(RGB24 col) { return RGBTOBGR(col); }
 static inline ARGB32 BGRATOARGB(ARGB32 col) { return RGBTOBGR(col); }

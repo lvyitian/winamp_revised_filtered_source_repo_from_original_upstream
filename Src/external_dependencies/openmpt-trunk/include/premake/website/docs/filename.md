@@ -23,14 +23,14 @@ Change the workspace name to "Master".
 
 ```lua
 workspace "MyWorkspace"
-  filename "Master"
+filename "Master"
 ```
 
 If you plan to build with multiple tools from the same source tree you might want to split up the project files by toolset. The _ACTION global variable contains the current toolset identifier, as specified on the command line.
 
 ```lua
 workspace "MyWorkspace"
-   filename "MyWorkspace_%{_ACTION or ''}"
+filename "MyWorkspace_%{_ACTION or ''}"
 ```
 
 ### See Also ###

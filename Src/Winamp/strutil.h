@@ -1,10 +1,10 @@
 /** (c) Nullsoft, Inc.         C O N F I D E N T I A L
- ** Filename: 
- ** Project:
- ** Description:
- ** Author: Ben Allison benski@nullsoft.com
- ** Created:
- **/
+** Filename: 
+** Project:
+** Description:
+** Author: Ben Allison benski@nullsoft.com
+** Created:
+**/
 
 #ifndef NULLSOFT_STRUTILH
 #define NULLSOFT_STRUTILH

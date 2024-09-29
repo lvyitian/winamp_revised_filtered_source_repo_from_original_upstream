@@ -1,3 +1,3 @@
 
-  filter {}
-   kind "WindowedApp"
+filter {}
+kind "WindowedApp"

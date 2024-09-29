@@ -1,3 +1,3 @@
 
 configuration {}
-   kind "SharedLib"
+kind "SharedLib"

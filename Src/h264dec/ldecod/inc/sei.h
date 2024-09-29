@@ -1,43 +1,43 @@
 
 /*!
- *************************************************************************************
- * \file sei.h
- *
- * \brief
- *    Prototypes for sei.c
- *************************************************************************************
- */
+*************************************************************************************
+* \file sei.h
+*
+* \brief
+*    Prototypes for sei.c
+*************************************************************************************
+*/
 
 #ifndef SEI_H
 #define SEI_H
 
 typedef enum {
-  SEI_BUFFERING_PERIOD = 0,
-  SEI_PIC_TIMING,
-  SEI_PAN_SCAN_RECT,
-  SEI_FILLER_PAYLOAD,
-  SEI_USER_DATA_REGISTERED_ITU_T_T35,
-  SEI_USER_DATA_UNREGISTERED,
-  SEI_RECOVERY_POINT,
-  SEI_DEC_REF_PIC_MARKING_REPETITION,
-  SEI_SPARE_PIC,
-  SEI_SCENE_INFO,
-  SEI_SUB_SEQ_INFO,
-  SEI_SUB_SEQ_LAYER_CHARACTERISTICS,
-  SEI_SUB_SEQ_CHARACTERISTICS,
-  SEI_FULL_FRAME_FREEZE,
-  SEI_FULL_FRAME_FREEZE_RELEASE,
-  SEI_FULL_FRAME_SNAPSHOT,
-  SEI_PROGRESSIVE_REFINEMENT_SEGMENT_START,
-  SEI_PROGRESSIVE_REFINEMENT_SEGMENT_END,
-  SEI_MOTION_CONSTRAINED_SLICE_GROUP_SET,
-  SEI_FILM_GRAIN_CHARACTERISTICS,
-  SEI_DEBLOCKING_FILTER_DISPLAY_PREFERENCE,
-  SEI_STEREO_VIDEO_INFO,
-  SEI_POST_FILTER_HINTS,
-  SEI_TONE_MAPPING,
+SEI_BUFFERING_PERIOD = 0,
+SEI_PIC_TIMING,
+SEI_PAN_SCAN_RECT,
+SEI_FILLER_PAYLOAD,
+SEI_USER_DATA_REGISTERED_ITU_T_T35,
+SEI_USER_DATA_UNREGISTERED,
+SEI_RECOVERY_POINT,
+SEI_DEC_REF_PIC_MARKING_REPETITION,
+SEI_SPARE_PIC,
+SEI_SCENE_INFO,
+SEI_SUB_SEQ_INFO,
+SEI_SUB_SEQ_LAYER_CHARACTERISTICS,
+SEI_SUB_SEQ_CHARACTERISTICS,
+SEI_FULL_FRAME_FREEZE,
+SEI_FULL_FRAME_FREEZE_RELEASE,
+SEI_FULL_FRAME_SNAPSHOT,
+SEI_PROGRESSIVE_REFINEMENT_SEGMENT_START,
+SEI_PROGRESSIVE_REFINEMENT_SEGMENT_END,
+SEI_MOTION_CONSTRAINED_SLICE_GROUP_SET,
+SEI_FILM_GRAIN_CHARACTERISTICS,
+SEI_DEBLOCKING_FILTER_DISPLAY_PREFERENCE,
+SEI_STEREO_VIDEO_INFO,
+SEI_POST_FILTER_HINTS,
+SEI_TONE_MAPPING,
 
-  SEI_MAX_ELEMENTS  //!< number of maximum syntax elements
+SEI_MAX_ELEMENTS  //!< number of maximum syntax elements
 } SEI_type;
 
 #define MAX_FN 256
@@ -49,17 +49,17 @@ typedef enum {
 #if (ENABLE_OUTPUT_TONEMAPPING)
 typedef struct tone_mapping_struct_s
 {
-  Boolean seiHasTone_mapping;
-  unsigned int  tone_map_repetition_period;
-  unsigned char coded_data_bit_depth;
-  unsigned char sei_bit_depth;
-  unsigned int  model_id;
-  unsigned int count;
-  
-  imgpel lut[1<<MAX_CODED_BIT_DEPTH];                 //<! look up table for mapping the coded data value to output data value
+Boolean seiHasTone_mapping;
+unsigned int  tone_map_repetition_period;
+unsigned char coded_data_bit_depth;
+unsigned char sei_bit_depth;
+unsigned int  model_id;
+unsigned int count;
 
-  Bitstream *data;
-  int payloadSize;
+imgpel lut[1<<MAX_CODED_BIT_DEPTH];                 //<! look up table for mapping the coded data value to output data value
+
+Bitstream *data;
+int payloadSize;
 } ToneMappingSEI;
 
 #endif

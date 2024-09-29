@@ -16,16 +16,16 @@
 
 #ifndef LONGX86
 #ifdef _WIN64
-  #define LONGX86	LONG_PTR
+#define LONGX86	LONG_PTR
 #else /*_WIN64*/
-  #define LONGX86	 LONG	
+#define LONGX86	 LONG	
 #endif  /*_WIN64*/
 #endif // LONGX86
 
 #ifdef __cplusplus
-  #define SENDMSG(__hwnd, __msgId, __wParam, __lParam) ::SendMessageW((__hwnd), (__msgId), (__wParam), (__lParam))
+#define SENDMSG(__hwnd, __msgId, __wParam, __lParam) ::SendMessageW((__hwnd), (__msgId), (__wParam), (__lParam))
 #else
- #define SENDMSG(__hwnd, __msgId, __wParam, __lParam) SendMessageW((__hwnd), (__msgId), (__wParam), (__lParam))
+#define SENDMSG(__hwnd, __msgId, __wParam, __lParam) SendMessageW((__hwnd), (__msgId), (__wParam), (__lParam))
 #endif // __cplusplus
 
 #define SENDMLIPC(__hwndML, __ipcMsgId, __param) SENDMSG((__hwndML), WM_ML_IPC, (WPARAM)(__param), (LPARAM)(__ipcMsgId))

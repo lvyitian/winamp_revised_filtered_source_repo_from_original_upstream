@@ -1,14 +1,14 @@
 /********************************************************************
- *                                                                  *
- * THIS FILE IS PART OF THE libopusfile SOFTWARE CODEC SOURCE CODE. *
- * USE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS     *
- * GOVERNED BY A BSD-STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE *
- * IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.       *
- *                                                                  *
- * THE libopusfile SOURCE CODE IS (C) COPYRIGHT 2012-2013           *
- * by the Xiph.Org Foundation and contributors https://xiph.org/    *
- *                                                                  *
- ********************************************************************/
+*                                                                  *
+* THIS FILE IS PART OF THE libopusfile SOFTWARE CODEC SOURCE CODE. *
+* USE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS     *
+* GOVERNED BY A BSD-STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE *
+* IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.       *
+*                                                                  *
+* THE libopusfile SOURCE CODE IS (C) COPYRIGHT 2012-2013           *
+* by the Xiph.Org Foundation and contributors https://xiph.org/    *
+*                                                                  *
+********************************************************************/
 #if !defined(_opusfile_winerrno_h)
 # define _opusfile_winerrno_h (1)
 
@@ -16,11 +16,11 @@
 # include <winerror.h>
 
 /*These conflict with the MSVC errno.h definitions, but we don't need to use
-   the original ones in any file that deals with sockets.
-  We could map the WSA errors to the errno.h ones (most of which are only
-   available on sufficiently new versions of MSVC), but they aren't ordered the
-   same, and given how rarely we actually look at the values, I don't think
-   it's worth a lookup table.*/
+the original ones in any file that deals with sockets.
+We could map the WSA errors to the errno.h ones (most of which are only
+available on sufficiently new versions of MSVC), but they aren't ordered the
+same, and given how rarely we actually look at the values, I don't think
+it's worth a lookup table.*/
 # undef EWOULDBLOCK
 # undef EINPROGRESS
 # undef EALREADY

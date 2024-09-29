@@ -1,93 +1,93 @@
 /* -*- Mode: C++; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 1.1/GPL 2.0/LGPL 2.1
- *
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * http://www.mozilla.org/MPL/
- *
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
- * for the specific language governing rights and limitations under the
- * License.
- *
- * The Original Code is mozilla.org code.
- *
- * The Initial Developer of the Original Code is
- * Netscape Communications Corporation.
- * Portions created by the Initial Developer are Copyright (C) 1998
- * the Initial Developer. All Rights Reserved.
- *
- * Contributor(s):
- *
- * Alternatively, the contents of this file may be used under the terms of
- * either of the GNU General Public License Version 2 or later (the "GPL"),
- * or the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
- * in which case the provisions of the GPL or the LGPL are applicable instead
- * of those above. If you wish to allow use of your version of this file only
- * under the terms of either the GPL or the LGPL, and not to allow others to
- * use your version of this file under the terms of the MPL, indicate your
- * decision by deleting the provisions above and replace them with the notice
- * and other provisions required by the GPL or the LGPL. If you do not delete
- * the provisions above, a recipient may use your version of this file under
- * the terms of any one of the MPL, the GPL or the LGPL.
- *
- * ***** END LICENSE BLOCK ***** */
+* Version: MPL 1.1/GPL 2.0/LGPL 2.1
+*
+* The contents of this file are subject to the Mozilla Public License Version
+* 1.1 (the "License"); you may not use this file except in compliance with
+* the License. You may obtain a copy of the License at
+* http://www.mozilla.org/MPL/
+*
+* Software distributed under the License is distributed on an "AS IS" basis,
+* WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+* for the specific language governing rights and limitations under the
+* License.
+*
+* The Original Code is mozilla.org code.
+*
+* The Initial Developer of the Original Code is
+* Netscape Communications Corporation.
+* Portions created by the Initial Developer are Copyright (C) 1998
+* the Initial Developer. All Rights Reserved.
+*
+* Contributor(s):
+*
+* Alternatively, the contents of this file may be used under the terms of
+* either of the GNU General Public License Version 2 or later (the "GPL"),
+* or the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+* in which case the provisions of the GPL or the LGPL are applicable instead
+* of those above. If you wish to allow use of your version of this file only
+* under the terms of either the GPL or the LGPL, and not to allow others to
+* use your version of this file under the terms of the MPL, indicate your
+* decision by deleting the provisions above and replace them with the notice
+* and other provisions required by the GPL or the LGPL. If you do not delete
+* the provisions above, a recipient may use your version of this file under
+* the terms of any one of the MPL, the GPL or the LGPL.
+*
+* ***** END LICENSE BLOCK ***** */
 
 #ifndef nsXPCOMCID_h__
 #define nsXPCOMCID_h__
 
 /**
- * XPCOM Directory Service Contract ID
- *   The directory service provides ways to obtain file system locations. The 
- *   directory service is a singleton.
- *
- *   This contract supports the nsIDirectoryService and the nsIProperties
- *   interfaces.
- *
- */
+* XPCOM Directory Service Contract ID
+*   The directory service provides ways to obtain file system locations. The 
+*   directory service is a singleton.
+*
+*   This contract supports the nsIDirectoryService and the nsIProperties
+*   interfaces.
+*
+*/
 #define NS_DIRECTORY_SERVICE_CONTRACTID "@mozilla.org/file/directory_service;1"
 
 /**
- * XPCOM File
- *   The file abstraction provides ways to obtain and access files and 
- *   directories located on the local system. 
- *
- *   This contract supports the nsIFile interface and the nsILocalFile interface.
- *   This contract may also support platform specific interfaces such as 
- *   nsILocalFileMac on platforms where additional interfaces are required.
- *
- */
+* XPCOM File
+*   The file abstraction provides ways to obtain and access files and 
+*   directories located on the local system. 
+*
+*   This contract supports the nsIFile interface and the nsILocalFile interface.
+*   This contract may also support platform specific interfaces such as 
+*   nsILocalFileMac on platforms where additional interfaces are required.
+*
+*/
 #define NS_LOCAL_FILE_CONTRACTID "@mozilla.org/file/local;1"
 
 /**
- * XPCOM Category Manager Contract ID
- *   The contract supports the nsICategoryManager interface. The 
- *   category manager is a singleton.
- * The "enumerateCategory" method of nsICategoryManager will return an object
- * that implements nsIUTF8StringEnumerator. In addition, the enumerator will
- * return the entries in sorted order (sorted by byte comparison).
- */
+* XPCOM Category Manager Contract ID
+*   The contract supports the nsICategoryManager interface. The 
+*   category manager is a singleton.
+* The "enumerateCategory" method of nsICategoryManager will return an object
+* that implements nsIUTF8StringEnumerator. In addition, the enumerator will
+* return the entries in sorted order (sorted by byte comparison).
+*/
 #define NS_CATEGORYMANAGER_CONTRACTID   "@mozilla.org/categorymanager;1"
 
 /**
- * XPCOM Properties Object Contract ID
- *   Simple mapping object which supports the nsIProperties interface.
- */
+* XPCOM Properties Object Contract ID
+*   Simple mapping object which supports the nsIProperties interface.
+*/
 #define NS_PROPERTIES_CONTRACTID "@mozilla.org/properties;1"
 
 /**
- * XPCOM Array Object ContractID
- * Simple array implementation which supports the nsIArray and
- * nsIMutableArray interfaces.
- */
+* XPCOM Array Object ContractID
+* Simple array implementation which supports the nsIArray and
+* nsIMutableArray interfaces.
+*/
 #define NS_ARRAY_CONTRACTID  "@mozilla.org/array;1"
 
 /**
- * The following are the CIDs and Contract IDs of the nsISupports wrappers for 
- * primative types.  
- */
+* The following are the CIDs and Contract IDs of the nsISupports wrappers for 
+* primative types.  
+*/
 #define NS_SUPPORTS_ID_CID \
 { 0xacf8dc40, 0x4a25, 0x11d3, \
 { 0x98, 0x90, 0x0, 0x60, 0x8, 0x96, 0x24, 0x22 } }
@@ -174,8 +174,8 @@
 #define NS_SUPPORTS_INTERFACE_POINTER_CONTRACTID "@mozilla.org/supports-interface-pointer;1"
 
 /**
- * nsHashPropertyBag impl of nsIWritablePropertyBag
- */
+* nsHashPropertyBag impl of nsIWritablePropertyBag
+*/
 #define NS_HASH_PROPERTY_BAG_CID \
 { 0x678c50b8, 0x6bcb, 0x4ad0, \
 { 0xb9, 0xb8, 0xc8, 0x11, 0x75, 0x95, 0x51, 0x99 } }

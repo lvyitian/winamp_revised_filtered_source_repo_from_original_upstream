@@ -8,36 +8,36 @@
 #define C_GROUP_PARENT C_GuiObject
 
 class C_Group : public C_GROUP_PARENT {
-  public:
+public:
 
-  C_Group(ScriptObject *object);
-  C_Group();
-  virtual ~C_Group();
+C_Group(ScriptObject *object);
+C_Group();
+virtual ~C_Group();
 
-  virtual void C_hook(ScriptObject *o);
+virtual void C_hook(ScriptObject *o);
 
-  ScriptObject *getScriptObject();
+ScriptObject *getScriptObject();
 
-  virtual ScriptObject *getObject(const wchar_t *object_id);
-  virtual int getNumObjects();
-  virtual ScriptObject *enumObject(int num);
-  virtual void onCreateObject(ScriptObject *newobj);
-  virtual int getMousePosX();
-  virtual int getMousePosY();
-  virtual int isLayout();
+virtual ScriptObject *getObject(const wchar_t *object_id);
+virtual int getNumObjects();
+virtual ScriptObject *enumObject(int num);
+virtual void onCreateObject(ScriptObject *newobj);
+virtual int getMousePosX();
+virtual int getMousePosY();
+virtual int isLayout();
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int getobject_id;
-  static int getnumobjects_id;
-  static int enumobject_id;
-  static int oncreateobject_id;
-  static int getmouseposx_id;
-  static int getmouseposy_id;
-  static int islayout_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int getobject_id;
+static int getnumobjects_id;
+static int enumobject_id;
+static int oncreateobject_id;
+static int getmouseposx_id;
+static int getmouseposy_id;
+static int islayout_id;
 };
 
 #endif

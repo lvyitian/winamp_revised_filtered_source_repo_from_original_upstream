@@ -1,11 +1,11 @@
 /*
- * libopenmpt_plugin_gui.hpp
- * -------------------------
- * Purpose: libopenmpt plugin GUI
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* libopenmpt_plugin_gui.hpp
+* -------------------------
+* Purpose: libopenmpt plugin GUI
+* Notes  : (currently none)
+* Authors: OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 #ifndef LIBOPENMPT_PLUGIN_GUI_HPP
 #define LIBOPENMPT_PLUGIN_GUI_HPP

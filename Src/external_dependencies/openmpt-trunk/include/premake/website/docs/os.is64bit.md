@@ -23,8 +23,8 @@ Premake 4.4 or later.
 
 ```lua
 if os.is64bit() then
-   print("This is a 64-bit system")
+print("This is a 64-bit system")
 else
-   print("This is NOT a 64-bit system")
+print("This is NOT a 64-bit system")
 end
 ```

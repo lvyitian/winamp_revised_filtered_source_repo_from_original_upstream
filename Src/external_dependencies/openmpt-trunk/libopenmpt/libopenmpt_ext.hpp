@@ -1,48 +1,48 @@
-/*
- * libopenmpt_ext.hpp
- * ------------------
- * Purpose: libopenmpt public c++ interface for libopenmpt extensions
- * Notes  :
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-#ifndef LIBOPENMPT_EXT_HPP
-#define LIBOPENMPT_EXT_HPP
-
-#include "libopenmpt_config.h"
-#include "libopenmpt.hpp"
-
-/*!
- * \page libopenmpt_ext_cpp_overview libopenmpt_ext C++ API
- *
- * libopenmpt_ext is now included in all builds by default.
- *
- * \section libopenmpt-ext-cpp-detailed Detailed documentation
- *
- * \ref libopenmpt_ext_cpp
- *
- */
-
-/*! \defgroup libopenmpt_ext_cpp libopenmpt_ext C++ */
-
-namespace openmpt {
-
-/*! \addtogroup libopenmpt_ext_cpp
-  @{
-*/
-
-class module_ext_impl;
-
-class LIBOPENMPT_CXX_API module_ext : public module {
+		/*
+        * libopenmpt_ext.hpp
+        * ------------------
+        * Purpose: libopenmpt public c++ interface for libopenmpt extensions
+        * Notes  :
+        * Authors: OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		#ifndef LIBOPENMPT_EXT_HPP
+		#define LIBOPENMPT_EXT_HPP
+		
+		#include "libopenmpt_config.h"
+		#include "libopenmpt.hpp"
+		
+		/*!
+        * \page libopenmpt_ext_cpp_overview libopenmpt_ext C++ API
+        *
+        * libopenmpt_ext is now included in all builds by default.
+        *
+        * \section libopenmpt-ext-cpp-detailed Detailed documentation
+        *
+        * \ref libopenmpt_ext_cpp
+        *
+        */
+		
+		/*! \defgroup libopenmpt_ext_cpp libopenmpt_ext C++ */
+		
+		namespace openmpt {
+		
+		/*! \addtogroup libopenmpt_ext_cpp
+        @{
+		*/
+		
+		class module_ext_impl;
+		
+		class LIBOPENMPT_CXX_API module_ext : public module {
 	
-private:
+		private:
 	module_ext_impl * ext_impl;
-private:
+		private:
 	// non-copyable
 	module_ext( const module_ext & );
 	void operator = ( const module_ext & );
-public:
+		public:
 	module_ext( std::istream & stream, std::ostream & log = std::clog, const std::map< std::string, std::string > & ctls = detail::initial_ctls_map() );
 	module_ext( const std::vector<std::byte> & data, std::ostream & log = std::clog, const std::map< std::string, std::string > & ctls = detail::initial_ctls_map() );
 	module_ext( const std::vector<std::uint8_t> & data, std::ostream & log = std::clog, const std::map< std::string, std::string > & ctls = detail::initial_ctls_map() );
@@ -52,9 +52,9 @@ public:
 	module_ext( const char * data, std::size_t size, std::ostream & log = std::clog, const std::map< std::string, std::string > & ctls = detail::initial_ctls_map() );
 	module_ext( const void * data, std::size_t size, std::ostream & log = std::clog, const std::map< std::string, std::string > & ctls = detail::initial_ctls_map() );
 	virtual ~module_ext();
-
-public:
-
+		
+		public:
+		
 	//! Retrieve a libopenmpt extension.
 	/*! Example: Retrieving the interactive extension to change the tempo of a module:
 	  \code{.cpp}
@@ -74,54 +74,54 @@ public:
 	  \return The interface object. This may be a nullptr if the extension was not found.
 	*/
 	void * get_interface( const std::string & interface_id );
-
-}; // class module_ext
-
-/*!
-  @}
-*/
-
-namespace ext {
-
-/*! \addtogroup libopenmpt_ext_cpp
-  @{
-*/
-
-#define LIBOPENMPT_DECLARE_EXT_CXX_INTERFACE(name) \
+		
+		}; // class module_ext
+		
+		/*!
+        @}
+		*/
+		
+		namespace ext {
+		
+		/*! \addtogroup libopenmpt_ext_cpp
+        @{
+		*/
+		
+		#define LIBOPENMPT_DECLARE_EXT_CXX_INTERFACE(name) \
 	static const char name ## _id [] = # name ; \
 	class name; \
-/**/
-
-#define LIBOPENMPT_EXT_CXX_INTERFACE(name) \
+		/**/
+		
+		#define LIBOPENMPT_EXT_CXX_INTERFACE(name) \
 	protected: \
-		name () {} \
-		virtual ~ name () {} \
+name () {} \
+virtual ~ name () {} \
 	public: \
-/**/
-
-
-#ifndef LIBOPENMPT_EXT_INTERFACE_PATTERN_VIS
-#define LIBOPENMPT_EXT_INTERFACE_PATTERN_VIS
-#endif
-
-LIBOPENMPT_DECLARE_EXT_CXX_INTERFACE(pattern_vis)
-
-class pattern_vis {
-
+		/**/
+		
+		
+		#ifndef LIBOPENMPT_EXT_INTERFACE_PATTERN_VIS
+		#define LIBOPENMPT_EXT_INTERFACE_PATTERN_VIS
+		#endif
+		
+		LIBOPENMPT_DECLARE_EXT_CXX_INTERFACE(pattern_vis)
+		
+		class pattern_vis {
+		
 	LIBOPENMPT_EXT_CXX_INTERFACE(pattern_vis)
-
+		
 	//! Pattern command type
 	enum effect_type {
-
-		effect_unknown = 0,
-		effect_general = 1,
-		effect_global = 2,
-		effect_volume = 3,
-		effect_panning = 4,
-		effect_pitch = 5
-
+		
+effect_unknown = 0,
+effect_general = 1,
+effect_global = 2,
+effect_volume = 3,
+effect_panning = 4,
+effect_pitch = 5
+		
 	}; // enum effect_type
-
+		
 	//! Get pattern command type for pattern highlighting
 	/*!
 	  \param pattern The pattern whose data should be retrieved.
@@ -131,7 +131,7 @@ class pattern_vis {
 	  \sa openmpt::ext::pattern_vis::get_pattern_row_channel_effect_type
 	*/
 	virtual effect_type get_pattern_row_channel_volume_effect_type( std::int32_t pattern, std::int32_t row, std::int32_t channel ) const = 0;
-
+		
 	//! Get pattern command type for pattern highlighting
 	/*!
 	  \param pattern The pattern whose data should be retrieved.
@@ -141,20 +141,20 @@ class pattern_vis {
 	  \sa openmpt::ext::pattern_vis::get_pattern_row_channel_volume_effect_type
 	*/
 	virtual effect_type get_pattern_row_channel_effect_type( std::int32_t pattern, std::int32_t row, std::int32_t channel ) const = 0;
-
-}; // class pattern_vis
-
-
-#ifndef LIBOPENMPT_EXT_INTERFACE_INTERACTIVE
-#define LIBOPENMPT_EXT_INTERFACE_INTERACTIVE
-#endif
-
-LIBOPENMPT_DECLARE_EXT_CXX_INTERFACE(interactive)
-
-class interactive {
-
+		
+		}; // class pattern_vis
+		
+		
+		#ifndef LIBOPENMPT_EXT_INTERFACE_INTERACTIVE
+		#define LIBOPENMPT_EXT_INTERFACE_INTERACTIVE
+		#endif
+		
+		LIBOPENMPT_DECLARE_EXT_CXX_INTERFACE(interactive)
+		
+		class interactive {
+		
 	LIBOPENMPT_EXT_CXX_INTERFACE(interactive)
-
+		
 	//! Set the current ticks per row (speed)
 	/*!
 	  \param speed The new tick count in range [1, 65535].
@@ -163,7 +163,7 @@ class interactive {
 	  \sa openmpt::module::get_current_speed
 	*/
 	virtual void set_current_speed( std::int32_t speed ) = 0;
-
+		
 	//! Set the current module tempo
 	/*!
 	  \param tempo The new tempo in range [32, 512]. The exact meaning of the value depends on the tempo mode used by the module.
@@ -172,7 +172,7 @@ class interactive {
 	  \sa openmpt::module::get_current_tempo
 	*/
 	virtual void set_current_tempo( std::int32_t tempo ) = 0;
-
+		
 	//! Set the current module tempo factor without affecting playback pitch
 	/*!
 	  \param factor The new tempo factor in range ]0.0, 4.0] - 1.0 means unmodified tempo.
@@ -181,7 +181,7 @@ class interactive {
 	  \sa openmpt::ext::interactive::get_tempo_factor
 	*/
 	virtual void set_tempo_factor( double factor ) = 0;
-
+		
 	//! Gets the current module tempo factor
 	/*!
 	  \return The current tempo factor.
@@ -198,7 +198,7 @@ class interactive {
 	  \sa openmpt::ext::interactive::get_pitch_factor
 	*/
 	virtual void set_pitch_factor( double factor ) = 0;
-
+		
 	//! Gets the current module pitch factor
 	/*!
 	  \return The current pitch factor.
@@ -206,7 +206,7 @@ class interactive {
 	  \sa openmpt::ext::interactive::set_pitch_factor
 	*/
 	virtual double get_pitch_factor( ) const = 0;
-
+		
 	//! Set the current global volume
 	/*!
 	  \param volume The new global volume in range [0.0, 1.0]
@@ -215,7 +215,7 @@ class interactive {
 	  \sa openmpt::ext::interactive::get_global_volume
 	*/
 	virtual void set_global_volume( double volume ) = 0;
-
+		
 	//! Get the current global volume
 	/*!
 	  \return The current global volume in range [0.0, 1.0]
@@ -232,7 +232,7 @@ class interactive {
 	  \sa openmpt::ext::interactive::get_channel_volume
 	*/
 	virtual void set_channel_volume( std::int32_t channel, double volume ) = 0;
-
+		
 	//! Get the current channel volume for a channel
 	/*!
 	  \param channel The channel whose volume should be retrieved, in range [0, openmpt::module::get_num_channels()[
@@ -241,7 +241,7 @@ class interactive {
 	  \sa openmpt::ext::interactive::set_channel_volume
 	*/
 	virtual double get_channel_volume( std::int32_t channel ) const = 0;
-
+		
 	//! Set the current mute status for a channel
 	/*!
 	  \param channel The channel whose mute status should be set, in range [0, openmpt::module::get_num_channels()[
@@ -250,7 +250,7 @@ class interactive {
 	  \sa openmpt::ext::interactive::get_channel_mute_status
 	*/
 	virtual void set_channel_mute_status( std::int32_t channel, bool mute ) = 0;
-
+		
 	//! Get the current mute status for a channel
 	/*!
 	  \param channel The channel whose mute status should be retrieved, in range [0, openmpt::module::get_num_channels()[
@@ -268,7 +268,7 @@ class interactive {
 	  \sa openmpt::ext::interactive::get_instrument_mute_status
 	*/
 	virtual void set_instrument_mute_status( std::int32_t instrument, bool mute ) = 0;
-
+		
 	//! Get the current mute status for an instrument
 	/*!
 	  \param instrument The instrument whose mute status should be retrieved, in range [0, openmpt::module::get_num_instruments()[ if openmpt::module::get_num_instruments is not 0, otherwise in [0, openmpt::module::get_num_samples()[
@@ -277,7 +277,7 @@ class interactive {
 	  \sa openmpt::ext::interactive::set_instrument_mute_status
 	*/
 	virtual bool get_instrument_mute_status( std::int32_t instrument ) const = 0;
-
+		
 	//! Play a note using the specified instrument
 	/*!
 	  \param instrument The instrument that should be played, in range [0, openmpt::module::get_num_instruments()[ if openmpt::module::get_num_instruments is not 0, otherwise in [0, openmpt::module::get_num_samples()[
@@ -291,7 +291,7 @@ class interactive {
 	  \sa openmpt::ext::interactive2::note_fade
 	*/
 	virtual std::int32_t play_note( std::int32_t instrument, std::int32_t note, double volume, double panning ) = 0;
-
+		
 	//! Stop the note playing on the specified channel
 	/*!
 	  \param channel The channel on which the note should be stopped. This is the value returned by a previous play_note call.
@@ -301,20 +301,20 @@ class interactive {
 	  \sa openmpt::ext::interactive2::note_fade
 	*/
 	virtual void stop_note( std::int32_t channel ) = 0;
-
-}; // class interactive
-
-
-#ifndef LIBOPENMPT_EXT_INTERFACE_INTERACTIVE2
-#define LIBOPENMPT_EXT_INTERFACE_INTERACTIVE2
-#endif
-
-LIBOPENMPT_DECLARE_EXT_CXX_INTERFACE(interactive2)
-
-class interactive2 {
-
+		
+		}; // class interactive
+		
+		
+		#ifndef LIBOPENMPT_EXT_INTERFACE_INTERACTIVE2
+		#define LIBOPENMPT_EXT_INTERFACE_INTERACTIVE2
+		#endif
+		
+		LIBOPENMPT_DECLARE_EXT_CXX_INTERFACE(interactive2)
+		
+		class interactive2 {
+		
 	LIBOPENMPT_EXT_CXX_INTERFACE(interactive2)
-
+		
 	//! Sends a key-off command for the note playing on the specified channel
 	/*!
 	  \param channel The channel on which the key-off event should be triggered. This is the value returned by a previous play_note call.
@@ -326,7 +326,7 @@ class interactive2 {
 	  \since 0.6.0
 	*/
 	virtual void note_off(int32_t channel ) = 0;
-
+		
 	//! Sends a note fade command for the note playing on the specified channel
 	/*!
 	  \param channel The channel on which the note should be faded. This is the value returned by a previous play_note call.
@@ -338,7 +338,7 @@ class interactive2 {
 	  \since 0.6.0
 	*/
 	virtual void note_fade(int32_t channel) = 0;
-
+		
 	//! Set the current panning position for a channel
 	/*!
 	  \param channel The channel whose panning will be changed, in range [0, openmpt::module::get_num_channels()[
@@ -349,7 +349,7 @@ class interactive2 {
 	  \since 0.6.0
 	*/
 	virtual void set_channel_panning(int32_t channel, double panning ) = 0;
-
+		
 	//! Get the current panning position for a channel
 	/*!
 	  \param channel The channel whose panning should be retrieved, in range [0, openmpt::module::get_num_channels()[
@@ -371,7 +371,7 @@ class interactive2 {
 	  \since 0.6.0
 	*/
 	virtual void set_note_finetune(int32_t channel, double finetune ) = 0;
-
+		
 	//! Get the finetune for the currently playing note on a channel
 	/*!
 	  \param channel The channel whose finetune should be retrieved, in range [0, openmpt::module::get_num_channels()[
@@ -382,23 +382,24 @@ class interactive2 {
 	  \since 0.6.0
 	*/
 	virtual double get_note_finetune( int32_t channel ) = 0;
-
-}; // class interactive
-
-
-/* add stuff here */
-
-
-
-#undef LIBOPENMPT_DECLARE_EXT_CXX_INTERFACE
-#undef LIBOPENMPT_EXT_CXX_INTERFACE
-
-/*!
-  @}
-*/
-
-} // namespace ext
-
-} // namespace openmpt
-
-#endif // LIBOPENMPT_EXT_HPP
+		
+		}; // class interactive
+		
+		
+		/* add stuff here */
+		
+		
+		
+		#undef LIBOPENMPT_DECLARE_EXT_CXX_INTERFACE
+		#undef LIBOPENMPT_EXT_CXX_INTERFACE
+		
+		/*!
+        @}
+		*/
+		
+		} // namespace ext
+		
+		} // namespace openmpt
+		
+		#endif // LIBOPENMPT_EXT_HPP
+		

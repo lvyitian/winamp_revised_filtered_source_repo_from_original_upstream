@@ -14,16 +14,16 @@ extern char AddParamsXuiSvcName[];
 class AddParams: public ADDPARAMS_PARENT {
 public:
 
-  AddParams();
-  virtual ~AddParams();
+AddParams();
+virtual ~AddParams();
 
-  virtual int setXmlParam(const wchar_t *param, const wchar_t *value);
-  virtual void actuator_onPerform(GuiObject *target);
-  virtual const wchar_t *getActuatorTag() { return AddParamsXuiObjectStr; } // for error msgs purposes
+virtual int setXmlParam(const wchar_t *param, const wchar_t *value);
+virtual void actuator_onPerform(GuiObject *target);
+virtual const wchar_t *getActuatorTag() { return AddParamsXuiObjectStr; } // for error msgs purposes
 
 private:
-  int myxuihandle;
-  PtrList< Pair<StringW, StringW> > pastlist;
+int myxuihandle;
+PtrList< Pair<StringW, StringW> > pastlist;
 };
 
 // -----------------------------------------------------------------------

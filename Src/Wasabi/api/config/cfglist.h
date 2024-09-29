@@ -7,17 +7,17 @@
 
 class CfgList : public DependentViewerTPtr<CfgItem> {
 public:
-  void addItem(CfgItem *cfgitem);
-  void delItem(CfgItem *cfgitem);
+void addItem(CfgItem *cfgitem);
+void delItem(CfgItem *cfgitem);
 
-  int getNumItems();
-  CfgItem *enumItem(int n);
-  CfgItem *getByGuid(GUID g);
+int getNumItems();
+CfgItem *enumItem(int n);
+CfgItem *getByGuid(GUID g);
 
-  virtual int viewer_onItemDeleted(CfgItem *item);
+virtual int viewer_onItemDeleted(CfgItem *item);
 
 private:
-  PtrList<CfgItem> list;
+PtrList<CfgItem> list;
 };
 
 #endif

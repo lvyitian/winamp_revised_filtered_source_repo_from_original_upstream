@@ -14,13 +14,13 @@ static const GUID guid =
 { 0x181be599, 0x2249, 0x4a1c, { 0x82, 0x83, 0x4e, 0xe8, 0x5f, 0xe8, 0xec, 0x86 } };
 
 WACNAME::WACNAME() {
-  registerService(new waServiceFactoryT<svc_miniBrowser, MbSvc>);
+registerService(new waServiceFactoryT<svc_miniBrowser, MbSvc>);
 }
 
 WACNAME::~WACNAME() {
 }
 
 GUID WACNAME::getGUID() {
-  return guid;
+return guid;
 }
 

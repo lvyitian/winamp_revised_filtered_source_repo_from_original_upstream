@@ -1,27 +1,27 @@
-#include "main.h"
-#include "cvt.h"
-
-bool is_cmf(const BYTE* buf,size_t s)
-{
+		#include "main.h"
+		#include "cvt.h"
+		
+		bool is_cmf(const BYTE* buf,size_t s)
+		{
 	return s>0x20 && *(DWORD*)buf == _rv('CTMF');
-}
-
-static BYTE tempodat[7]={0,0xFF,0x51,0x03,0,0,0};
-
-bool load_cmf(MIDI_file * mf,const BYTE* ptr,size_t sz)
-{
+		}
+		
+		static BYTE tempodat[7]={0,0xFF,0x51,0x03,0,0,0};
+		
+		bool load_cmf(MIDI_file * mf,const BYTE* ptr,size_t sz)
+		{
 	if (sz < 14)
-		return 0;
-
+return 0;
+		
 	WORD music_offset = *(WORD*)(ptr+8);
 	if ((size_t)music_offset > sz)
-		return 0;
+return 0;
 	const BYTE* _t=ptr+music_offset;
 	size_t total_size=sz - music_offset;
 	mf->size=14+8+7+total_size;
 	BYTE* _pt=(BYTE*)malloc(mf->size);
 	if (!_pt) return 0;
-
+		
 	mf->data=_pt;
 	*(DWORD*)_pt=_rv('MThd');
 	_pt+=4;
@@ -45,4 +45,4 @@ bool load_cmf(MIDI_file * mf,const BYTE* ptr,size_t sz)
 	_pt+=7;
 	memcpy(_pt,_t,total_size);
 	return 1;
-}
+		}

@@ -25,7 +25,7 @@ Premake 4.0 or later.
 
 ```lua
 if os.get() == "windows" then
-   -- do something Windows-specific
+-- do something Windows-specific
 end
 ```
 

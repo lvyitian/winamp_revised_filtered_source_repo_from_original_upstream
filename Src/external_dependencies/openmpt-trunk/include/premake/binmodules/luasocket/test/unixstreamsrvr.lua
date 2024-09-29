@@ -5,5 +5,6 @@
     assert(u:listen())
     c = assert(u:accept())
     while 1 do
-        print(assert(c:receive()))
+print(assert(c:receive()))
     end
+		

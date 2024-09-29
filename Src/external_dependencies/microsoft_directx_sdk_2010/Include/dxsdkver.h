@@ -1,10 +1,10 @@
 /*==========================================================================;
- *
- *
- *  File:   dxsdkver.h
- *  Content:    DirectX SDK Version Include File
- *
- ****************************************************************************/
+*
+*
+*  File:   dxsdkver.h
+*  Content:    DirectX SDK Version Include File
+*
+****************************************************************************/
 
 #ifndef _DXSDKVER_H_
 #define _DXSDKVER_H_

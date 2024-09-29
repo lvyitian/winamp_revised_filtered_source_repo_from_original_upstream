@@ -25,7 +25,7 @@ Create a new rule named "luac". For a more complete example, see [Custom Rules](
 
 ```lua
 rule "luac"
-  fileExtension ".lua"
+fileExtension ".lua"
 ```
 
 ### See Also ###

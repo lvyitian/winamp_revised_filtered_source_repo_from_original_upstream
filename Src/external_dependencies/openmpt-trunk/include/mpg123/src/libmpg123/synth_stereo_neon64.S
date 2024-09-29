@@ -1,29 +1,29 @@
-/*
+		/*
 	synth_stereo_neon64: NEON optimized synth for AArch64 (stereo specific version)
-
+		
 	copyright 1995-2014 by the mpg123 project - free software under the terms of the LGPL 2.1
 	see COPYING and AUTHORS files in distribution or http://mpg123.org
 	initially written by Taihei Monma
-*/
-
-#include "mangle.h"
-
-#ifndef __APPLE__
+		*/
+		
+		#include "mangle.h"
+		
+		#ifndef __APPLE__
 	.section	.rodata
-#else
+		#else
 	.data
-#endif
+		#endif
 	ALIGN16
-maxmin_s16:
+		maxmin_s16:
 	.word   32767
 	.word   -32768
 	.text
 	ALIGN4
 	.globl ASM_NAME(synth_1to1_s_neon64_asm)
-#ifdef __ELF__
+		#ifdef __ELF__
 	.type ASM_NAME(synth_1to1_s_neon64_asm), %function
-#endif
-ASM_NAME(synth_1to1_s_neon64_asm):
+		#endif
+		ASM_NAME(synth_1to1_s_neon64_asm):
 	add		x0, x0, #32
 	sub		x0, x0, x4, lsl #1
 	eor		v30.16b, v30.16b, v30.16b
@@ -33,7 +33,7 @@ ASM_NAME(synth_1to1_s_neon64_asm):
 	
 	mov		w4, #4
 	mov		x5, #64
-1:
+		1:
 	ld1		{v0.8h,v1.8h}, [x0], x5
 	ld1		{v2.8h,v3.8h}, [x0], x5
 	ld1		{v4.8h,v5.8h,v6.8h,v7.8h}, [x1], #64
@@ -55,7 +55,7 @@ ASM_NAME(synth_1to1_s_neon64_asm):
 	smlal2	v25.4s, v1.8h, v17.8h
 	smlal2	v26.4s, v3.8h, v7.8h
 	smlal2	v27.4s, v3.8h, v19.8h
-		
+
 	addp	v0.4s, v24.4s, v25.4s
 	addp	v1.4s, v26.4s, v27.4s
 	addp	v0.4s, v0.4s, v1.4s
@@ -102,7 +102,7 @@ ASM_NAME(synth_1to1_s_neon64_asm):
 	
 	mov		w4, #4
 	mov		x6, #-32
-2:
+		2:
 	ld1		{v0.8h,v1.8h}, [x0], x5
 	ld1		{v2.8h,v3.8h}, [x0], x5
 	ld1		{v4.8h,v5.8h}, [x1], x6
@@ -181,5 +181,6 @@ ASM_NAME(synth_1to1_s_neon64_asm):
 	neg		w0, w0
 	
 	ret
-
-NONEXEC_STACK
+		
+		NONEXEC_STACK
+		

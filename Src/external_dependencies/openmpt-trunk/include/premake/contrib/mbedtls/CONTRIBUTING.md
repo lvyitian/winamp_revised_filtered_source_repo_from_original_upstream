@@ -2,8 +2,8 @@ Contributing
 ============
 We gratefully accept bug reports and contributions from the community. There are some requirements we need to fulfill in order to be able to integrate contributions:
 
- - As with any open source project, contributions will be reviewed by the project team and community and may need some modifications to be accepted.
- - The contribution should not break API or ABI, unless there is a real justification for that. If there is an API change, the contribution, if accepted, will be merged only when there will be a major release.
+- As with any open source project, contributions will be reviewed by the project team and community and may need some modifications to be accepted.
+- The contribution should not break API or ABI, unless there is a real justification for that. If there is an API change, the contribution, if accepted, will be merged only when there will be a major release.
 
 Coding Standards
 ----------------

@@ -32,7 +32,7 @@ targetprefix ""
 
 ### See Also ###
 
- * [targetname](targetname.md)
- * [targetdir](targetdir.md)
- * [targetextension](targetextension.md)
- * [targetsuffix](targetsuffix.md)
+* [targetname](targetname.md)
+* [targetdir](targetdir.md)
+* [targetextension](targetextension.md)
+* [targetsuffix](targetsuffix.md)

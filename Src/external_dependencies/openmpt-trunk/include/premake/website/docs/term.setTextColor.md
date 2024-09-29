@@ -6,28 +6,28 @@ term.setTextColor(color)
 
 ### Parameters ###
 `color` - One of:
-  * `nil` (default color)
-  * term.black
-  * term.blue
-  * term.green
-  * term.cyan
-  * term.red
-  * term.purple
-  * term.brown
-  * term.lightGray
-  * term.gray
-  * term.lightBlue
-  * term.lightGreen
-  * term.lightCyan
-  * term.lightRed
-  * term.magenta
-  * term.yellow
-  * term.white
+* `nil` (default color)
+* term.black
+* term.blue
+* term.green
+* term.cyan
+* term.red
+* term.purple
+* term.brown
+* term.lightGray
+* term.gray
+* term.lightBlue
+* term.lightGreen
+* term.lightCyan
+* term.lightRed
+* term.magenta
+* term.yellow
+* term.white
 
 For specific purposes the following can be used/overridden:
-  * term.warningColor
-  * term.errorColor
-  * term.infoColor
+* term.warningColor
+* term.errorColor
+* term.infoColor
 
 ### Examples ###
 

@@ -22,5 +22,5 @@ Use `pkg-config` style configuration when building on Linux with GCC. Build opti
 
 ```lua
 filter { "system:linux", "action:gmake" }
-  resoptions { "`wx-config --cxxflags`", "-ansi", "-pedantic" }
+resoptions { "`wx-config --cxxflags`", "-ansi", "-pedantic" }
 ```

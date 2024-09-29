@@ -1,3 +1,3 @@
 
-  filter {}
-   kind "ConsoleApp"
+filter {}
+kind "ConsoleApp"

@@ -11,14 +11,14 @@ Scopes have a hierarchy: a *global* scope containing workspaces, which in turn c
 defines { "GLOBAL" }
 
 workspace "MyWorkspaces"
-  -- workspace scope inherits the global scope; the list value
-  -- will now be { "GLOBAL", "WORKSPACE" }
-  defines { "WORKSPACE" }
+-- workspace scope inherits the global scope; the list value
+-- will now be { "GLOBAL", "WORKSPACE" }
+defines { "WORKSPACE" }
 
 project "MyProject"
-  -- project scope inherits from its workspace; the list value
-  -- will now be { "GLOBAL", "WORKSPACE", "PROJECT" }
-  defines { "PROJECT" }
+-- project scope inherits from its workspace; the list value
+-- will now be { "GLOBAL", "WORKSPACE", "PROJECT" }
+defines { "PROJECT" }
 ```
 
 Sometimes it can be helpful to go back and add values to a previously declared scope. You can do this the same way you declared it in the first place: by calling [`workspace`](workspace.md) or [`project`](project.md), using the same name.
@@ -26,16 +26,16 @@ Sometimes it can be helpful to go back and add values to a previously declared s
 ```lua
 -- declare my workspace
 workspace "MyWorkspace"
-  defines { "WORKSPACE1" }
+defines { "WORKSPACE1" }
 
 -- declare a project or two
 project "MyProject"
-  defines { "PROJECT" }
+defines { "PROJECT" }
 
 -- re-select my workspace to add more settings, which will be inherited
 -- by all projects in the workspace
 workspace "MyWorkspace"
-  defines { "WORKSPACE2" }  -- value is now { "WORKSPACE1", "WORKSPACE2" }
+defines { "WORKSPACE2" }  -- value is now { "WORKSPACE1", "WORKSPACE2" }
 ```
 
 You can also select the parent or container of the current scope without having to know its name by using the special "*" name.
@@ -43,15 +43,15 @@ You can also select the parent or container of the current scope without having 
 ```lua
 -- declare my workspace
 workspace "MyWorkspace"
-  defines { "WORKSPACE1" }
+defines { "WORKSPACE1" }
 
 -- declare a project or two
 project "MyProject"
-  defines { "PROJECT" }
+defines { "PROJECT" }
 
 -- re-select my workspace to add more settings
 project "*"
-  defines { "WORKSPACE2" }  -- value is now { "WORKSPACE1", "WORKSPACE2" }
+defines { "WORKSPACE2" }  -- value is now { "WORKSPACE1", "WORKSPACE2" }
 
 -- re-select the global scope
 workspace "*"

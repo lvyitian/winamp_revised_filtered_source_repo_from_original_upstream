@@ -1,7 +1,7 @@
 /**
- * This file has no copyright assigned and is placed in the Public Domain.
- * This file is part of the PortAudio library.
- */
+* This file has no copyright assigned and is placed in the Public Domain.
+* This file is part of the PortAudio library.
+*/
 #ifndef _INC_PROPIDL_PA
 #define _INC_PROPIDL_PA
 

@@ -6,9 +6,9 @@
 class HeaderAsf : public Header
 {
 public:
-  HeaderAsf();
+HeaderAsf();
 
-  int getInfos(const wchar_t *filename, bool checkMetadata=false);
+int getInfos(const wchar_t *filename, bool checkMetadata=false);
 };
 
 #endif

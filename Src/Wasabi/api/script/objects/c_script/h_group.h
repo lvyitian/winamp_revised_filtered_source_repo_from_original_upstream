@@ -11,21 +11,21 @@ class H_Group : public H_GROUP_PARENT {
 
 public:
 
-  H_Group(ScriptObject *o);
-  H_Group();
-  virtual ~H_Group();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_Group(ScriptObject *o);
+H_Group();
+virtual ~H_Group();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onCreateObject(ScriptObject *newobj) {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onCreateObject(ScriptObject *newobj) {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int oncreateobject_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int oncreateobject_id;
 };
 
 #endif

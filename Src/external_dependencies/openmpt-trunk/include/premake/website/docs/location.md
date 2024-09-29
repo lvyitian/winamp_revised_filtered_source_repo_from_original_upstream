@@ -26,7 +26,7 @@ Set the destination directory for a workspace. Setting the location for a projec
 
 ```lua
 workspace "MyWorkspace"
-  location "../build"
+location "../build"
 ```
 
 If you plan to build with multiple tools from the same source tree you might want to split up the project files by toolset. The [_ACTION](premake_ACTION.md) global variable contains the current toolset identifier, as specified on the command line. Note that Lua syntax requires parenthesis around the function parameters in this case.

@@ -28,11 +28,11 @@ Create a new project named "MyProject". Note that a workspace must exist to cont
 
 ```lua
 workspace "MyWorkspace"
-   configurations { "Debug", "Release" }
+configurations { "Debug", "Release" }
 
 project "MyProject"
-   kind "ConsoleApp"
-   language "C++"
+kind "ConsoleApp"
+language "C++"
 ```
 
 ### See Also ###

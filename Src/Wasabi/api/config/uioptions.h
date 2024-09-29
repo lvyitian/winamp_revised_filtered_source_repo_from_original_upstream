@@ -6,8 +6,8 @@
 #define UIOPTIONS_PARENT CfgItemI
 class UIOptions : public UIOPTIONS_PARENT {
 public:
-  UIOptions(const wchar_t *name=NULL);
-  static void onTimerRefreshRate(int rate);
+UIOptions(const wchar_t *name=NULL);
+static void onTimerRefreshRate(int rate);
 };
 
 #endif

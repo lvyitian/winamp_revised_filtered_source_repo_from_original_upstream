@@ -1,10 +1,10 @@
-#include "res_wa2/resource.h"
-#include "Config.h"
-#include "../Winamp/out.h"
-#include <api.h>
-
-DS2config::DS2config()
-{
+		#include "res_wa2/resource.h"
+		#include "Config.h"
+		#include "../Winamp/out.h"
+		#include <api.h>
+		
+		DS2config::DS2config()
+		{
 	sr = 44100;
 	bps = 16;
 	nch = 2;
@@ -26,25 +26,25 @@ DS2config::DS2config()
 	use_cpu_management = 0;
 	refresh = 10;
 	coop = 1;
-#ifdef DS2_HAVE_PITCH
+		#ifdef DS2_HAVE_PITCH
 	have_pitch = 0;
-#endif
-}
-
-extern HINSTANCE cfg_orig_dll;
-void DS2config::SetErrorCodeMsgA(const TCHAR *msg, DWORD code)
-{
+		#endif
+		}
+		
+		extern HINSTANCE cfg_orig_dll;
+		void DS2config::SetErrorCodeMsgA(const TCHAR *msg, DWORD code)
+		{
 	if (code)
 	{
-		TCHAR boo[512] = {0}, buf[512] = {0};
-#ifdef UNICODE
-		wsprintf(boo, WASABI_API_LNGSTRINGW_BUF(IDS_ERROR_CODE_08X,buf,512),msg,code);
-#else
-		wsprintf(boo,WASABI_API_LNGSTRING_BUF(/*cfg_orig_dll,*/IDS_ERROR_CODE_08X,buf,512),msg,code);
-#endif
-		SetError(boo);
+TCHAR boo[512] = {0}, buf[512] = {0};
+		#ifdef UNICODE
+wsprintf(boo, WASABI_API_LNGSTRINGW_BUF(IDS_ERROR_CODE_08X,buf,512),msg,code);
+		#else
+wsprintf(boo,WASABI_API_LNGSTRING_BUF(/*cfg_orig_dll,*/IDS_ERROR_CODE_08X,buf,512),msg,code);
+		#endif
+SetError(boo);
 	}
 	else SetError(msg);
-}
-
-void DS2config::SetError(LPCTSTR n_error) {lstrcpyn(error, n_error, 255);}
+		}
+		
+		void DS2config::SetError(LPCTSTR n_error) {lstrcpyn(error, n_error, 255);}

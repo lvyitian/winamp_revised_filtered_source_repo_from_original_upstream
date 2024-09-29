@@ -1,15 +1,15 @@
 
 /*!
- **************************************************************************************
- * \file
- *    output.h
- * \brief
- *    Picture writing routine headers
- * \author
- *    Main contributors (see contributors.h for copyright, address and affiliation details)
- *      - Karsten Suehring        <suehring@hhi.de>
- ***************************************************************************************
- */
+**************************************************************************************
+* \file
+*    output.h
+* \brief
+*    Picture writing routine headers
+* \author
+*    Main contributors (see contributors.h for copyright, address and affiliation details)
+*      - Karsten Suehring        <suehring@hhi.de>
+***************************************************************************************
+*/
 
 #ifndef _OUTPUT_H_
 #define _OUTPUT_H_

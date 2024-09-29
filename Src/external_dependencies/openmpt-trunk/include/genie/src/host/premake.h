@@ -1,8 +1,8 @@
 /**
- * \file   premake.h
- * \brief  Program-wide constants and definitions.
- * \author Copyright (c) 2002-2011 Jason Perkins and the Premake project
- */
+* \file   premake.h
+* \brief  Program-wide constants and definitions.
+* \author Copyright (c) 2002-2011 Jason Perkins and the Premake project
+*/
 
 #define lua_c
 #include "lua.h"
@@ -11,7 +11,7 @@
 
 
 /* Identify the current platform I'm not sure how to reliably detect
- * Windows but since it is the most common I use it as the default */
+* Windows but since it is the most common I use it as the default */
 #if defined(__linux__) || defined(__GNU__)
 #define PLATFORM_LINUX    (1)
 #define PLATFORM_STRING   "linux"

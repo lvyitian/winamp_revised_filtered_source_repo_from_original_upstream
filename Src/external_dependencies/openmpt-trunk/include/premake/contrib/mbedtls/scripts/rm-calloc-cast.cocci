@@ -2,6 +2,6 @@
 expression x, n, m;
 type T;
 @@
-  x =
+x =
 - (T *)
-  mbedtls_calloc(n, m)
+mbedtls_calloc(n, m)

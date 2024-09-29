@@ -1,21 +1,21 @@
-/* copyright 2006 Ben Allison */
-#ifndef NULLSOFT_ALAC_DECODER_H
-#define NULLSOFT_ALAC_DECODER_H
-
-#include "alac/ALACDecoder.h"
-#include "../Plugins/Input/in_mp4/mpeg4audio.h"
-#include "decomp.h"
-
-class ALACMP4Decoder : public MP4AudioDecoder
-{
-public:
+		/* copyright 2006 Ben Allison */
+		#ifndef NULLSOFT_ALAC_DECODER_H
+		#define NULLSOFT_ALAC_DECODER_H
+		
+		#include "alac/ALACDecoder.h"
+		#include "../Plugins/Input/in_mp4/mpeg4audio.h"
+		#include "decomp.h"
+		
+		class ALACMP4Decoder : public MP4AudioDecoder
+		{
+		public:
 	ALACMP4Decoder() 
-		: mpAlacDecoder(0), 
-		  channels(0), 
-		  bps(0), 
-		  output_bits(0), 
-		  use_rg(0), 
-		  rg(0.0)
+: mpAlacDecoder(0), 
+  channels(0), 
+  bps(0), 
+  output_bits(0), 
+  use_rg(0), 
+  rg(0.0)
 	{
 	}
 	int OpenMP4(MP4FileHandle mp4_file, MP4TrackId mp4_track, size_t output_bits, size_t maxChannels, bool useFloat);
@@ -30,14 +30,14 @@ public:
 	int CanHandleCodec(const char *codecName);
 	int SetGain(float gain);
 	unsigned char setinfo_sample_size = 0x10;
-private:
+		private:
 	ALACDecoder *mpAlacDecoder;
 	int channels;
 	int bps;
 	int output_bits;
 	bool use_rg;
 	float rg;
-protected:
+		protected:
 	RECVS_DISPATCH;
-};
-#endif
+		};
+		#endif

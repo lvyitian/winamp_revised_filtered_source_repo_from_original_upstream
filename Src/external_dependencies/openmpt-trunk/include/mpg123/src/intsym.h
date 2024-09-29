@@ -1,7 +1,7 @@
 #ifndef MPG123_INTSYM_H
 #define MPG123_INTSYM_H
 /* Mapping of internal mpg123 symbols to something that is less likely to
-   conflict in case of static linking. */
+conflict in case of static linking. */
 #include "config.h"
 #define COS9 INT123_COS9
 #define tfcos36 INT123_tfcos36

@@ -6,11 +6,11 @@
 class NOVTABLE svc_loadLib 
 {
 public:
-  int isMine(const char *filename);
+int isMine(const char *filename);
 
-  int load(const char *filename);
-  void unload();
-  void *getProcAddress(const char *name);
+int load(const char *filename);
+void unload();
+void *getProcAddress(const char *name);
 };
 
 #endif

@@ -11,25 +11,25 @@ class H_MenuButton : public H_MENUBUTTON_PARENT {
 
 public:
 
-  H_MenuButton(ScriptObject *o);
-  H_MenuButton();
-  virtual ~H_MenuButton();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_MenuButton(ScriptObject *o);
+H_MenuButton();
+virtual ~H_MenuButton();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onOpenMenu() {  }
-  virtual void hook_onCloseMenu() {  }
-  virtual void hook_onSelectItem(const wchar_t *item) {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onOpenMenu() {  }
+virtual void hook_onCloseMenu() {  }
+virtual void hook_onSelectItem(const wchar_t *item) {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onopenmenu_id;
-  static int onclosemenu_id;
-  static int onselectitem_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onopenmenu_id;
+static int onclosemenu_id;
+static int onselectitem_id;
 };
 
 #endif

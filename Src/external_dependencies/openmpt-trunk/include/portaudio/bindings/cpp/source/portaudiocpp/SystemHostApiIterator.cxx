@@ -1,59 +1,60 @@
-#include "portaudiocpp/SystemHostApiIterator.hxx"
-
-namespace portaudio
-{
+		#include "portaudiocpp/SystemHostApiIterator.hxx"
+		
+		namespace portaudio
+		{
 	// -----------------------------------------------------------------------------------
-
+		
 	HostApi &System::HostApiIterator::operator*() const
 	{
-		return **ptr_;
+return **ptr_;
 	}
-
+		
 	HostApi *System::HostApiIterator::operator->() const
 	{
-		return &**this;
+return &**this;
 	}
-
+		
 	// -----------------------------------------------------------------------------------
-
+		
 	System::HostApiIterator &System::HostApiIterator::operator++()
 	{
-		++ptr_;
-		return *this;
+++ptr_;
+return *this;
 	}
-
+		
 	System::HostApiIterator System::HostApiIterator::operator++(int)
 	{
-		System::HostApiIterator prev = *this;
-		++*this;
-		return prev;
+System::HostApiIterator prev = *this;
+++*this;
+return prev;
 	}
-
+		
 	System::HostApiIterator &System::HostApiIterator::operator--()
 	{
-		--ptr_;
-		return *this;
+--ptr_;
+return *this;
 	}
-
+		
 	System::HostApiIterator System::HostApiIterator::operator--(int)
 	{
-		System::HostApiIterator prev = *this;
-		--*this;
-		return prev;
+System::HostApiIterator prev = *this;
+--*this;
+return prev;
 	}
-
+		
 	// -----------------------------------------------------------------------------------
-
+		
 	bool System::HostApiIterator::operator==(const System::HostApiIterator &rhs) const
 	{
-		return (ptr_ == rhs.ptr_);
+return (ptr_ == rhs.ptr_);
 	}
-
+		
 	bool System::HostApiIterator::operator!=(const System::HostApiIterator &rhs) const
 	{
-		return !(*this == rhs);
+return !(*this == rhs);
 	}
-
+		
 	// -----------------------------------------------------------------------------------
-} // namespace portaudio
-
+		} // namespace portaudio
+		
+		

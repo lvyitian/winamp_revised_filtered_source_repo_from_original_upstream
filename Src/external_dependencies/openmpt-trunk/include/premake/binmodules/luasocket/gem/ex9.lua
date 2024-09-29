@@ -1,3 +1,3 @@
 for chunk in source.file(io.stdin) do
-  io.write(chunk)
+io.write(chunk)
 end

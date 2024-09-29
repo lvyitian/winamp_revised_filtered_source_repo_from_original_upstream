@@ -1,103 +1,104 @@
---
--- tests/actions/vstudio/vc2010/test_files.lua
--- Validate generation of files block in Visual Studio 2010 C/C++ projects.
--- Copyright (c) 2011 Jason Perkins and the Premake project
---
-
+		--
+		-- tests/actions/vstudio/vc2010/test_files.lua
+		-- Validate generation of files block in Visual Studio 2010 C/C++ projects.
+		-- Copyright (c) 2011 Jason Perkins and the Premake project
+		--
+		
 	T.vstudio_vs2010_files = { }
 	local suite = T.vstudio_vs2010_files
 	local vc2010 = premake.vstudio.vc2010
-
-
---
--- Setup 
---
-
+		
+		
+		--
+		-- Setup 
+		--
+		
 	local sln, prj
 	
 	function suite.setup()
-		sln = test.createsolution()
+sln = test.createsolution()
 	end
 	
 	local function prepare()
-		premake.bake.buildconfigs()
-		prj = premake.solution.getproject(sln, 1)
-		sln.vstudio_configs = premake.vstudio.buildconfigs(sln)
-		vc2010.files(prj)
+premake.bake.buildconfigs()
+prj = premake.solution.getproject(sln, 1)
+sln.vstudio_configs = premake.vstudio.buildconfigs(sln)
+vc2010.files(prj)
 	end
-
-
---
--- Test file groups
---
-
+		
+		
+		--
+		-- Test file groups
+		--
+		
 	function suite.SimpleHeaderFile()
-		files { "include/hello.h" }
-		prepare()
-		test.capture [[
+files { "include/hello.h" }
+prepare()
+test.capture [[
 	<ItemGroup>
-		<ClInclude Include="include\hello.h" />
+<ClInclude Include="include\hello.h" />
 	</ItemGroup>
-		]]
+]]
 	end
 	
 	
 	function suite.SimpleSourceFile()
-		files { "hello.c" }
-		prepare()
-		test.capture [[
+files { "hello.c" }
+prepare()
+test.capture [[
 	<ItemGroup>
-		<ClCompile Include="hello.c">
-		</ClCompile>
+<ClCompile Include="hello.c">
+</ClCompile>
 	</ItemGroup>
-		]]
+]]
 	end
 	
 	
 	function suite.SimpleObjectFile()
-		files { "hello.obj" }
-		prepare()
-		test.capture [[
+files { "hello.obj" }
+prepare()
+test.capture [[
 	<ItemGroup>
-		<Object Include="hello.obj" />
+<Object Include="hello.obj" />
 	</ItemGroup>
-		]]
+]]
 	end
-
-
+		
+		
 	function suite.SimpleNoneFile()
-		files { "docs/hello.txt" }
-		prepare()
-		test.capture [[
+files { "docs/hello.txt" }
+prepare()
+test.capture [[
 	<ItemGroup>
-		<None Include="docs\hello.txt" />
+<None Include="docs\hello.txt" />
 	</ItemGroup>
-		]]
+]]
 	end
 	
 	
 	function suite.SimpleResourceFile()
-		files { "resources/hello.rc" }
-		prepare()
-		test.capture [[
+files { "resources/hello.rc" }
+prepare()
+test.capture [[
 	<ItemGroup>
-		<ResourceCompile Include="resources\hello.rc" />
+<ResourceCompile Include="resources\hello.rc" />
 	</ItemGroup>
-		]]
+]]
 	end
-
-
---
--- Test path handling
---
-
+		
+		
+		--
+		-- Test path handling
+		--
+		
 	function suite.MultipleFolderLevels()
-		files { "src/greetings/hello.c" }
-		prepare()
-		test.capture [[
+files { "src/greetings/hello.c" }
+prepare()
+test.capture [[
 	<ItemGroup>
-		<ClCompile Include="src\greetings\hello.c">
-		</ClCompile>
+<ClCompile Include="src\greetings\hello.c">
+</ClCompile>
 	</ItemGroup>
-		]]
+]]
 	end
+		

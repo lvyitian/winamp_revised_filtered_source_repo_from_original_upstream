@@ -165,116 +165,116 @@
 
 <!-- Build -->
 <Build>
-   Mastering/VerCtrl/verctrl.exe
-  <Parameters>="BETA $ENV{BRANDING}"</Parameters> 
-  <Filter>dggenericOutputParser</Filter>
+Mastering/VerCtrl/verctrl.exe
+<Parameters>="BETA $ENV{BRANDING}"</Parameters> 
+<Filter>dggenericOutputParser</Filter>
 </Build>
 
 <!-- Add Win32 Projects Here (begin) -->
 <Build>winampAll/ippAll.sln
-  <Param>/useenv</Param>
+<Param>/useenv</Param>
 </Build>
 
 <Build>winampAll/winampAll.sln
-  <Param>/useenv</Param>
+<Param>/useenv</Param>
 </Build>
 
 
 <!-- code signing certain executables -->
 <Build>
-   cmd.exe
-   <Parameters>=$versionString=~/([0-9]*).([0-9]*)\.([0-9]*)/;"/E:ON /V:ON /C .\\Mastering\\Winamp\\simple_sign.cmd \"Nullsoft Winamp ".$1.".".$2.$3."\" \"$options{Sandbox}\\output\\winamp\\winamp.exe\"";</Parameters> 
-   <Filter>dggenericOutputParser</Filter>
-   <ifNoErrors>1</ifNoErrors>
-   <ProjectName>Signing winamp.exe</ProjectName>
+cmd.exe
+<Parameters>=$versionString=~/([0-9]*).([0-9]*)\.([0-9]*)/;"/E:ON /V:ON /C .\\Mastering\\Winamp\\simple_sign.cmd \"Nullsoft Winamp ".$1.".".$2.$3."\" \"$options{Sandbox}\\output\\winamp\\winamp.exe\"";</Parameters> 
+<Filter>dggenericOutputParser</Filter>
+<ifNoErrors>1</ifNoErrors>
+<ProjectName>Signing winamp.exe</ProjectName>
 <ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
 </Build>
 
 <Build>
-   cmd.exe
-   <Parameters>=$versionString=~/([0-9]*).([0-9]*)\.([0-9]*)/;"/E:ON /V:ON /C .\\Mastering\\Winamp\\simple_sign.cmd \"Nullsoft Winamp ".$1.".".$2.$3."\" \"$options{Sandbox}\\output\\winamp\\elevator.exe\"";</Parameters> 
-   <Filter>dggenericOutputParser</Filter>
-   <ifNoErrors>1</ifNoErrors>
-   <ProjectName>Signing elevator.exe</ProjectName>
+cmd.exe
+<Parameters>=$versionString=~/([0-9]*).([0-9]*)\.([0-9]*)/;"/E:ON /V:ON /C .\\Mastering\\Winamp\\simple_sign.cmd \"Nullsoft Winamp ".$1.".".$2.$3."\" \"$options{Sandbox}\\output\\winamp\\elevator.exe\"";</Parameters> 
+<Filter>dggenericOutputParser</Filter>
+<ifNoErrors>1</ifNoErrors>
+<ProjectName>Signing elevator.exe</ProjectName>
 <ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
 </Build>
 
 <Build>
-   cmd.exe
-   <Parameters>=$versionString=~/([0-9]*).([0-9]*)\.([0-9]*)/;"/E:ON /V:ON /C .\\Mastering\\Winamp\\simple_sign.cmd \"Nullsoft Winamp ".$1.".".$2.$3."\" \"$options{Sandbox}\\output\\winamp\\winampa.exe\"";</Parameters> 
-   <Filter>dggenericOutputParser</Filter>
-   <ifNoErrors>1</ifNoErrors>
-   <ProjectName>Signing winampa.exe</ProjectName>
+cmd.exe
+<Parameters>=$versionString=~/([0-9]*).([0-9]*)\.([0-9]*)/;"/E:ON /V:ON /C .\\Mastering\\Winamp\\simple_sign.cmd \"Nullsoft Winamp ".$1.".".$2.$3."\" \"$options{Sandbox}\\output\\winamp\\winampa.exe\"";</Parameters> 
+<Filter>dggenericOutputParser</Filter>
+<ifNoErrors>1</ifNoErrors>
+<ProjectName>Signing winampa.exe</ProjectName>
 <ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
 </Build>
 
 
 <!--  WBM Generation -->
 <Build>
-   cmd.exe
-   <Parameters>/E:ON /V:ON /C ".\Mastering\Winamp\build_wbm.cmd"</Parameters> 
-   <ifNoErrors>1</ifNoErrors>
-   <ProjectName>Building Lazy-Load Wasabi Manifests (WBM)</ProjectName>
-   <ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
-   <Filter>dggenericOutputParser</Filter>
+cmd.exe
+<Parameters>/E:ON /V:ON /C ".\Mastering\Winamp\build_wbm.cmd"</Parameters> 
+<ifNoErrors>1</ifNoErrors>
+<ProjectName>Building Lazy-Load Wasabi Manifests (WBM)</ProjectName>
+<ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
+<Filter>dggenericOutputParser</Filter>
 </Build>
 
 <!--  Image Rebasing -->
 <Build>
-   cmd.exe
-   <Parameters>/E:ON /V:ON /C ".\Mastering\Winamp\rebase.cmd"</Parameters> 
-   <ifNoErrors>1</ifNoErrors>
-   <ProjectName>Rebasing Plugins and Libraries</ProjectName>
-   <ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
-   <Filter>dggenericOutputParser</Filter>
+cmd.exe
+<Parameters>/E:ON /V:ON /C ".\Mastering\Winamp\rebase.cmd"</Parameters> 
+<ifNoErrors>1</ifNoErrors>
+<ProjectName>Rebasing Plugins and Libraries</ProjectName>
+<ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
+<Filter>dggenericOutputParser</Filter>
 </Build>
 
 <!--  Installer -->
 <Build>
-  cmd.exe
-  <Parameters>/E:ON /V:ON /C ".\Mastering\Winamp\build_installer.cmd"</Parameters> 
-  <ifNoErrors>1</ifNoErrors>
-  <ProjectName>Generating Installers</ProjectName>
-  <ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
-  <Filter>dggenericOutputParser</Filter>
+cmd.exe
+<Parameters>/E:ON /V:ON /C ".\Mastering\Winamp\build_installer.cmd"</Parameters> 
+<ifNoErrors>1</ifNoErrors>
+<ProjectName>Generating Installers</ProjectName>
+<ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
+<Filter>dggenericOutputParser</Filter>
 </Build>
 
 <Build>
-   cmd.exe
-   <Parameters>/E:ON /V:ON /C ".\Mastering\Winamp\build_wadetect.cmd"</Parameters> 
-   <ifNoErrors>1</ifNoErrors>
-   <ProjectName>Generating Installers</ProjectName>
-   <ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
-   <Filter>dggenericOutputParser</Filter>
+cmd.exe
+<Parameters>/E:ON /V:ON /C ".\Mastering\Winamp\build_wadetect.cmd"</Parameters> 
+<ifNoErrors>1</ifNoErrors>
+<ProjectName>Generating Installers</ProjectName>
+<ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
+<Filter>dggenericOutputParser</Filter>
 </Build>
 
 <Build>
-   cmd.exe
-   <Parameters>/E:ON /V:ON /C ".\Mastering\Winamp\build_webdev.cmd"</Parameters> 
-   <ifNoErrors>1</ifNoErrors>
-   <ProjectName>Generating Web Dev SDK</ProjectName>
-   <ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
-   <Filter>dggenericOutputParser</Filter>
+cmd.exe
+<Parameters>/E:ON /V:ON /C ".\Mastering\Winamp\build_webdev.cmd"</Parameters> 
+<ifNoErrors>1</ifNoErrors>
+<ProjectName>Generating Web Dev SDK</ProjectName>
+<ScriptIsOutsideSandbox>1</ScriptIsOutsideSandbox>
+<Filter>dggenericOutputParser</Filter>
 </Build>
 
 <!--  Package up the results -->
 
 <Link>
-   <Name>Download Winamp Distributive!!!</Name>
-   <Href> = $versionString=~/([0-9]*).([0-9]*)\.([0-9]*) (.*)/;"http://nulldev.stream.aol.com/binaries/".$options{WebSubdir}."/".$options{BuildModule}."_".$1."_".$2.$3."_".$buildNumber."_".$4; </Href>
-   <Configuration>Win32 Release|Win32</Configuration>
+<Name>Download Winamp Distributive!!!</Name>
+<Href> = $versionString=~/([0-9]*).([0-9]*)\.([0-9]*) (.*)/;"http://nulldev.stream.aol.com/binaries/".$options{WebSubdir}."/".$options{BuildModule}."_".$1."_".$2.$3."_".$buildNumber."_".$4; </Href>
+<Configuration>Win32 Release|Win32</Configuration>
 </Link>
 
 <Link>
-   <Name>Versions History</Name>
-   <Href> = $versionString=~/([0-9]*).([0-9]*)\.([0-9]*) (.*)/;"http://nulldev.stream.aol.com/binaries/".$options{WebSubdir}."/".$options{BuildModule}."_".$1."_".$2.$3."_".$buildNumber."_".$4."/whatsnew.txt"; </Href>
-   <Configuration>Win32 Release|Win32</Configuration>
+<Name>Versions History</Name>
+<Href> = $versionString=~/([0-9]*).([0-9]*)\.([0-9]*) (.*)/;"http://nulldev.stream.aol.com/binaries/".$options{WebSubdir}."/".$options{BuildModule}."_".$1."_".$2.$3."_".$buildNumber."_".$4."/whatsnew.txt"; </Href>
+<Configuration>Win32 Release|Win32</Configuration>
 </Link>
 
 <Package>Mastering/Winamp/package_vc.xml
-   <Configuration>Win32 Release|Win32</Configuration>
-   <Destination>=$versionString=~/([0-9]*).([0-9]*)\.([0-9]*) (.*)/;"d:/bin/".$options{WebSubdir}."/".$options{BuildModule}."_".$1."_".$2.$3."_".$buildNumber."_".$4;</Destination>
-   <Copy>1</Copy>
-   <LinkName>Winamp</LinkName>
+<Configuration>Win32 Release|Win32</Configuration>
+<Destination>=$versionString=~/([0-9]*).([0-9]*)\.([0-9]*) (.*)/;"d:/bin/".$options{WebSubdir}."/".$options{BuildModule}."_".$1."_".$2.$3."_".$buildNumber."_".$4;</Destination>
+<Copy>1</Copy>
+<LinkName>Winamp</LinkName>
 </Package>
 </Build-Doc>

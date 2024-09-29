@@ -3,9 +3,9 @@
 #include <windows.h>
 
 #ifdef BURNLIB_EXPORTS
- #define BURNLIB_API //__declspec(dllexport)
+#define BURNLIB_API //__declspec(dllexport)
 #else
- #define BURNLIB_API //__declspec(dllimport)
+#define BURNLIB_API //__declspec(dllimport)
 #endif
 
 extern HINSTANCE	dllInstance;

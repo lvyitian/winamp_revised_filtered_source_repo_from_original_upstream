@@ -1,11 +1,11 @@
-#ifndef NULLSOFT_ML_LOCAL_ALBUMFILTER_H
-#define NULLSOFT_ML_LOCAL_ALBUMFILTER_H
-
-#include "ViewFilter.h"
-
-class AlbumFilter : public ViewFilter
-{
-public:
+		#ifndef NULLSOFT_ML_LOCAL_ALBUMFILTER_H
+		#define NULLSOFT_ML_LOCAL_ALBUMFILTER_H
+		
+		#include "ViewFilter.h"
+		
+		class AlbumFilter : public ViewFilter
+		{
+		public:
 	static int AlbumSortFunc(const void *elem1, const void *elem2);
 	void SortResults(C_Config *viewconf, int which=0, int isfirst=0);
 	void Fill(itemRecordW *items, int numitems, int *killswitch, int numitems2);
@@ -27,23 +27,23 @@ public:
 	wchar_t name[64];
 	wchar_t sing_name[64];
 	wchar_t sing_name_alt[64];
-protected:
+		protected:
 	queryListObject albumList;
-
+		
 	enum
 	{
-		ALBUMFILTER_COLUMN_NAME = 0,
-		ALBUMFILTER_COLUMN_YEAR = 1,
-		ALBUMFILTER_COLUMN_ALBUMS = 2,
-		ALBUMFILTER_COLUMN_TRACKS = 3,
-		ALBUMFILTER_COLUMN_REPLAYGAIN = 4,
-		ALBUMFILTER_COLUMN_SIZE = 5,
-		ALBUMFILTER_COLUMN_LENGTH = 6,
-		ALBUMFILTER_COLUMN_ARTIST = 7,
-		ALBUMFILTER_COLUMN_GENRE = 8,
-		ALBUMFILTER_COLUMN_RATING = 9,
-		ALBUMFILTER_COLUMN_LASTUPD = 10,
+ALBUMFILTER_COLUMN_NAME = 0,
+ALBUMFILTER_COLUMN_YEAR = 1,
+ALBUMFILTER_COLUMN_ALBUMS = 2,
+ALBUMFILTER_COLUMN_TRACKS = 3,
+ALBUMFILTER_COLUMN_REPLAYGAIN = 4,
+ALBUMFILTER_COLUMN_SIZE = 5,
+ALBUMFILTER_COLUMN_LENGTH = 6,
+ALBUMFILTER_COLUMN_ARTIST = 7,
+ALBUMFILTER_COLUMN_GENRE = 8,
+ALBUMFILTER_COLUMN_RATING = 9,
+ALBUMFILTER_COLUMN_LASTUPD = 10,
 	};
-};
-
-#endif
+		};
+		
+		#endif

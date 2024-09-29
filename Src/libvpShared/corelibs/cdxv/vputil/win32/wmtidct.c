@@ -1,42 +1,42 @@
-/****************************************************************************
- *
- *   Module Title :     wmtidct.c
- *
- *   Description  :     IDct functions optimized specifically for willamette 
- *						processor
- *					
- *	 Special Notes:		
- *
- *   AUTHOR       :     YaoWu Xu
- *
- ***************************************************************************** 
- *   Revision History
- *		
- *   1.02 YWX   07-dec-00 Removed code not in use and added push pop ebx
- *	 1.01 YWX	29/06/00  Added Wmt_IDCT_Dx and Wmt_IDCT10_Dx
- *   1.00 YWX	31/05/00  Configuration baseline
- *
- *****************************************************************************
- */
-
-
-/*******************************************************************************
- * Module Constants
- *******************************************************************************
- */
+		/****************************************************************************
+        *
+        *   Module Title :     wmtidct.c
+        *
+        *   Description  :     IDct functions optimized specifically for willamette 
+        *						processor
+        *					
+        *	 Special Notes:		
+        *
+        *   AUTHOR       :     YaoWu Xu
+        *
+        ***************************************************************************** 
+        *   Revision History
+        *		
+        *   1.02 YWX   07-dec-00 Removed code not in use and added push pop ebx
+        *	 1.01 YWX	29/06/00  Added Wmt_IDCT_Dx and Wmt_IDCT10_Dx
+        *   1.00 YWX	31/05/00  Configuration baseline
+        *
+        *****************************************************************************
+        */
+		
+		
+		/*******************************************************************************
+        * Module Constants
+        *******************************************************************************
+        */
 	
-
-/* constants for rounding */
-__declspec(align(32)) static unsigned int Eight[]=
-{ 
+		
+		/* constants for rounding */
+		__declspec(align(32)) static unsigned int Eight[]=
+		{ 
 	0x00080008, 
 	0x00080008,
 	0x00080008, 
 	0x00080008 
-}; 
-/* cosine constants, cosine ( i * pi / 8 ) */
-__declspec(align(32)) static unsigned short WmtIdctConst[7 * 8]=
-{
+		}; 
+		/* cosine constants, cosine ( i * pi / 8 ) */
+		__declspec(align(32)) static unsigned short WmtIdctConst[7 * 8]=
+		{
 	64277,64277,64277,64277,64277,64277,64277,64277, 
 	60547,60547,60547,60547,60547,60547,60547,60547, 
 	54491,54491,54491,54491,54491,54491,54491,54491, 
@@ -44,10 +44,10 @@ __declspec(align(32)) static unsigned short WmtIdctConst[7 * 8]=
 	36410,36410,36410,36410,36410,36410,36410,36410, 
 	25080,25080,25080,25080,25080,25080,25080,25080, 
 	12785,12785,12785,12785,12785,12785,12785,12785
-};
-/* Mask constant for dequantization */
-__declspec(align(32)) static unsigned short WmtDequantConst[]=
-{
+		};
+		/* Mask constant for dequantization */
+		__declspec(align(32)) static unsigned short WmtDequantConst[]=
+		{
 	0,65535,65535,0,0,0,0,0,	//0x0000 0000 0000 0000 0000 FFFF FFFF 0000
 	0,0,0,0,65535,65535,0,0,	//0x0000 0000 FFFF FFFF 0000 0000 0000 0000
 	65535,65535,65535,0,0,0,0,0,//0x0000 0000 0000 0000 0000 FFFF FFFF FFFF
@@ -55,184 +55,184 @@ __declspec(align(32)) static unsigned short WmtDequantConst[]=
 	0,0,0,65535,65535,0,0,0,	//0x0000 0000 0000 FFFF FFFF 0000 0000 0000
 	65535,0,0,0,0,65535,0,0,	//0x0000 0000 FFFF 0000 0000 0000 0000 FFFF
 	0,0,65535,65535, 0,0,0,0	//0x0000 0000 0000 0000 FFFF FFFF 0000 0000
-};
-
-
-/*******************************************************************************
- * Forward Reference
- *******************************************************************************
- */
-
-/********************************************************************************
- *	Description of Inverse DCT algorithm.
- ********************************************************************************
- *
-
-   Dequantization multiplies user's 16-bit signed indices (range -512 to +511)
-   by unsigned 16-bit quantization table entries.
-   These table entries are upscaled by 4, max is 30 * 128 * 4 < 2^14.
-   Result is scaled signed DCT coefficients (abs value < 2^15).
-
-   In the data stream, the coefficients are sent in order of increasing
-   total (horizontal + vertical) frequency.  The exact picture is as follows:
-
+		};
+		
+		
+		/*******************************************************************************
+        * Forward Reference
+        *******************************************************************************
+        */
+		
+		/********************************************************************************
+        *	Description of Inverse DCT algorithm.
+        ********************************************************************************
+        *
+		
+        Dequantization multiplies user's 16-bit signed indices (range -512 to +511)
+        by unsigned 16-bit quantization table entries.
+        These table entries are upscaled by 4, max is 30 * 128 * 4 < 2^14.
+        Result is scaled signed DCT coefficients (abs value < 2^15).
+		
+        In the data stream, the coefficients are sent in order of increasing
+        total (horizontal + vertical) frequency.  The exact picture is as follows:
+		
 	00 01 05 06  16 17 33 34
 	02 04 07 15  20 32 35 52
 	03 10 14 21  31 36 51 53
 	11 13 22 30  37 50 54 65
-
+		
 	12 23 27 40  47 55 64 66
 	24 26 41 46	 56 63 67 74
 	25 42 45 57  62 70 73 75
 	43 44 60 61  71 72 76 77
-
-   Here the position in the matrix corresponds to the (horiz,vert)
-   freqency indices and the octal entry in the matrix is the position
-   of the coefficient in the data stream.  Thus the coefficients are sent
-   in sort of a diagonal "snake".
-
-   The dequantization stage "uncurls the snake" and stores the expanded
-   coefficients in more convenient positions.  These are not exactly the
-   natural positions given above but take into account our implementation
-   of the idct, which basically requires two one-dimensional idcts and
-   two transposes.
-
-
-   Transposing the 8x8 matrix above gives
-
+		
+        Here the position in the matrix corresponds to the (horiz,vert)
+        freqency indices and the octal entry in the matrix is the position
+        of the coefficient in the data stream.  Thus the coefficients are sent
+        in sort of a diagonal "snake".
+		
+        The dequantization stage "uncurls the snake" and stores the expanded
+        coefficients in more convenient positions.  These are not exactly the
+        natural positions given above but take into account our implementation
+        of the idct, which basically requires two one-dimensional idcts and
+        two transposes.
+		
+		
+        Transposing the 8x8 matrix above gives
+		
 	00 02 03 11  12 24 25 43  
 	01 04 10 13  23 26 42 44  
 	05 07 14 22  27 41 45 60  
 	06 15 21 30  40 46 57 61  
-
+		
 	16 20 31 37  47 56 62 71
 	17 32 36 50  55 63 70 72
 	33 35 51 54  64 67 73 76
 	34 52 53 65  66 74 75 77
-
-
-   The idct itself is more interesting.  Since the two-dimensional dct
-   basis functions are products of the one-dimesional dct basis functions,
-   we can compute an inverse (or forward) dct via two 1-D transforms,
-   on rows then on columns.  To exploit MMX parallelism, we actually do
-   both operations on columns, interposing a (partial) transpose between
-   the two 1-D transforms, the first transpose being done by the expansion
-   described above.
-
-   The 8-sample one-dimensional DCT is a standard orthogonal expansion using
-   the (unnormalized) basis functions
-
+		
+		
+        The idct itself is more interesting.  Since the two-dimensional dct
+        basis functions are products of the one-dimesional dct basis functions,
+        we can compute an inverse (or forward) dct via two 1-D transforms,
+        on rows then on columns.  To exploit MMX parallelism, we actually do
+        both operations on columns, interposing a (partial) transpose between
+        the two 1-D transforms, the first transpose being done by the expansion
+        described above.
+		
+        The 8-sample one-dimensional DCT is a standard orthogonal expansion using
+        the (unnormalized) basis functions
+		
 	b[k]( i) = cos( pi * k * (2i + 1) / 16);
-
-   here k = 0 ... 7 is the frequency and i = 0 ... 7 is the spatial coordinate.
-   To normalize, b[0] should be multiplied by 1/sqrt( 8) and the other b[k]
-   should be multiplied by 1/2.
-
-   The 8x8 two-dimensional DCT is just the product of one-dimensional DCTs
-   in each direction.  The (unnormalized) basis functions are
-
+		
+        here k = 0 ... 7 is the frequency and i = 0 ... 7 is the spatial coordinate.
+        To normalize, b[0] should be multiplied by 1/sqrt( 8) and the other b[k]
+        should be multiplied by 1/2.
+		
+        The 8x8 two-dimensional DCT is just the product of one-dimensional DCTs
+        in each direction.  The (unnormalized) basis functions are
+		
 	B[k,l]( i, j) = b[k]( i) * b[l]( j);
-
-   this time k and l are the horizontal and vertical frequencies,
-   i and j are the horizontal and vertical spatial coordinates;
-   all indices vary from 0 ... 7 (as above)
-   and there are now 4 cases of normalization.
-  
-   Our 1-D idct expansion uses constants C1 ... C7 given by
-
-   	(*)  Ck = C(-k) = cos( pi * k/16) = S(8-k) = -S(k-8) = sin( pi * (8-k)/16) 
-
-   and the following 1-D algorithm transforming I0 ... I7  to  R0 ... R7 :
-  
-   A = (C1 * I1) + (C7 * I7)		B = (C7 * I1) - (C1 * I7)
-   C = (C3 * I3) + (C5 * I5)		D = (C3 * I5) - (C5 * I3)
-   A. = C4 * (A - C)				B. = C4 * (B - D)
-   C. = A + C						D. = B + D
-   
-   E = C4 * (I0 + I4)				F = C4 * (I0 - I4)
-   G = (C2 * I2) + (C6 * I6)		H = (C6 * I2) - (C2 * I6)
-   E. = E - G
-   G. = E + G
-   
-   A.. = F + A.					B.. = B. - H
-   F.  = F - A. 				H.  = B. + H
-   
-   R0 = G. + C.	R1 = A.. + H.	R3 = E. + D.	R5 = F. + B..
-   R7 = G. - C.	R2 = A.. - H.	R4 = E. - D.	R6 = F. - B..
-
-   This algorithm was also used by Paul Wilkins in his C implementation;
-   it is due to Vetterli and Lightenberg and may be found in the JPEG
-   reference book by Pennebaker and Mitchell.
-
-   Correctness of the algorithm follows from (*) together with the
-   addition formulas for sine and cosine:
-
+		
+        this time k and l are the horizontal and vertical frequencies,
+        i and j are the horizontal and vertical spatial coordinates;
+        all indices vary from 0 ... 7 (as above)
+        and there are now 4 cases of normalization.
+        
+        Our 1-D idct expansion uses constants C1 ... C7 given by
+		
+        	(*)  Ck = C(-k) = cos( pi * k/16) = S(8-k) = -S(k-8) = sin( pi * (8-k)/16) 
+		
+        and the following 1-D algorithm transforming I0 ... I7  to  R0 ... R7 :
+        
+        A = (C1 * I1) + (C7 * I7)		B = (C7 * I1) - (C1 * I7)
+        C = (C3 * I3) + (C5 * I5)		D = (C3 * I5) - (C5 * I3)
+        A. = C4 * (A - C)				B. = C4 * (B - D)
+        C. = A + C						D. = B + D
+        
+        E = C4 * (I0 + I4)				F = C4 * (I0 - I4)
+        G = (C2 * I2) + (C6 * I6)		H = (C6 * I2) - (C2 * I6)
+        E. = E - G
+        G. = E + G
+        
+        A.. = F + A.					B.. = B. - H
+        F.  = F - A. 				H.  = B. + H
+        
+        R0 = G. + C.	R1 = A.. + H.	R3 = E. + D.	R5 = F. + B..
+        R7 = G. - C.	R2 = A.. - H.	R4 = E. - D.	R6 = F. - B..
+		
+        This algorithm was also used by Paul Wilkins in his C implementation;
+        it is due to Vetterli and Lightenberg and may be found in the JPEG
+        reference book by Pennebaker and Mitchell.
+		
+        Correctness of the algorithm follows from (*) together with the
+        addition formulas for sine and cosine:
+		
 	cos( A + B) = cos( A) * cos( B)  -  sin( A) * sin( B)
 	sin( A + B) = sin( A) * cos( B)  +  cos( A) * sin( B)
-
-   Note that this implementation absorbs the difference in normalization
-   between the 0th and higher frequencies, although the results produced
-   are actually twice as big as they should be.  Since we do this for each
-   dimension, the 2-D idct results are 4x the desired results.  Finally,
-   taking into account that the dequantization multiplies by 4 as well,
-   our actual results are 16x too big.  We fix this by shifting the final
-   results right by 4 bits.
-
-   High precision version approximates C1 ... C7 to 16 bits.
-   Since there is not multiply taking one unsigned and one signed,
-   we have to use the signed multiplay, therefore C1 ... C5 appear to be
-   negative and multiplies involving them must be adjusted to compensate
-   for this.  C6 and C7 do not require this adjustment since
-   they are < 1/2 and are correctly treated as positive numbers.
-
-   Following macro does Eight 8-sample one-dimensional idcts in parallel.
-   This is actually not such a difficult program to write once you
-   make a couple of observations (I of course was unable to make these
-   observations until I'd half-written a couple of other versions).
-
+		
+        Note that this implementation absorbs the difference in normalization
+        between the 0th and higher frequencies, although the results produced
+        are actually twice as big as they should be.  Since we do this for each
+        dimension, the 2-D idct results are 4x the desired results.  Finally,
+        taking into account that the dequantization multiplies by 4 as well,
+        our actual results are 16x too big.  We fix this by shifting the final
+        results right by 4 bits.
+		
+        High precision version approximates C1 ... C7 to 16 bits.
+        Since there is not multiply taking one unsigned and one signed,
+        we have to use the signed multiplay, therefore C1 ... C5 appear to be
+        negative and multiplies involving them must be adjusted to compensate
+        for this.  C6 and C7 do not require this adjustment since
+        they are < 1/2 and are correctly treated as positive numbers.
+		
+        Following macro does Eight 8-sample one-dimensional idcts in parallel.
+        This is actually not such a difficult program to write once you
+        make a couple of observations (I of course was unable to make these
+        observations until I'd half-written a couple of other versions).
+		
 	1. Everything is easy once you are done with the multiplies.
 	   This is because, given X and Y in registers, one may easily
 	   calculate X+Y and X-Y using just those 2 registers.
-
+		
 	2. You always need at least 2 extra registers to calculate products,
 	   so storing 2 temporaries is inevitable.  C. and D. seem to be
 	   the best candidates.   
-
+		
 	3. The products should be calculated in decreasing order of complexity
 	   (which translates into register pressure).  Since C1 ... C5 require
 	   adjustment (and C6, C7 do not), we begin by calculating C and D.
-
-********************************************************************************/
-
-
-/**************************************************************************************
- *
- *		Macro:			Wmt_Column_IDCT
- *		
- *		Description:	The Macro does 1-D IDct on 8 columns. 
- *
- *		Input:			None
- *
- *		Output:			None
- *		
- *		Return:			None			
- *
- *		Special Note:	None
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-
-/*	
+		
+		********************************************************************************/
+		
+		
+		/**************************************************************************************
+        *
+        *		Macro:			Wmt_Column_IDCT
+        *		
+        *		Description:	The Macro does 1-D IDct on 8 columns. 
+        *
+        *		Input:			None
+        *
+        *		Output:			None
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	None
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		
+		/*	
 	The major difference between Willamette processor and other IA32 processors is that 
 	all of the simd integer instructions now support the 128 bit xmm registers instead 
 	of 64 bit mmx registers. By using these instructions, we can do 8 1-D coloumn idcts 
 	that takes shorts as input and outputs shorts at once
-
-*/
-
-#define Wmt_Column_IDCT __asm {		\
+		
+		*/
+		
+		#define Wmt_Column_IDCT __asm {		\
 	\
 	__asm	movdqa	xmm2, I(3)		/* xmm2 = i3 */				\
 	__asm	movdqa	xmm6, C(3)		/* xmm6 = c3 */				\
@@ -401,36 +401,36 @@ __declspec(align(32)) static unsigned short WmtDequantConst[]=
 	__asm	movdqa	O(0), xmm0		/* Write out op0 */			\
 	\
 	} /* End of Wmt_Column_IDCT macro */
-
-
-/**************************************************************************************
- *
- *		Macro:			Wmt_Row_IDCT
- *		
- *		Description:	The Macro does 1-D IDct on 8 columns. 
- *
- *		Input:			None
- *
- *		Output:			None
- *		
- *		Return:			None			
- *
- *		Special Note:	None
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-
-/*	
+		
+		
+		/**************************************************************************************
+        *
+        *		Macro:			Wmt_Row_IDCT
+        *		
+        *		Description:	The Macro does 1-D IDct on 8 columns. 
+        *
+        *		Input:			None
+        *
+        *		Output:			None
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	None
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		
+		/*	
 	The major difference between Willamette processor and other IA32 processors is that 
 	all of the simd integer instructions now support the 128 bit xmm registers instead 
 	of 64 bit mmx registers. By using these instructions, we can do 8 1-D coloumn idcts 
 	that takes shorts as input and outputs shorts at once
-
-*/
-
-#define Wmt_Row_IDCT __asm {		\
+		
+		*/
+		
+		#define Wmt_Row_IDCT __asm {		\
 	\
 	__asm	movdqa	xmm2, I(3)		/* xmm2 = i3 */		\
 	__asm	movdqa	xmm6, C(3)		/* xmm6 = c3 */		\
@@ -586,28 +586,28 @@ __declspec(align(32)) static unsigned short WmtDequantConst[]=
 	__asm	movdqa	I(0), xmm0		/* Write out op0 */		\
 	\
 	} /* End of Wmt_Row_IDCT macro */
-
-/**************************************************************************************
- *
- *		Macro:			Transpose
- *		
- *		Description:	The Macro does 8x8 transpose
- *
- *		Input:			None
- *
- *		Output:			None
- *		
- *		Return:			None			
- *
- *		Special Note:	None
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-
-
-#define Transpose __asm {	\
+		
+		/**************************************************************************************
+        *
+        *		Macro:			Transpose
+        *		
+        *		Description:	The Macro does 8x8 transpose
+        *
+        *		Input:			None
+        *
+        *		Output:			None
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	None
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		
+		
+		#define Transpose __asm {	\
 	\
 	__asm	movdqa		xmm4, I(4)		/* xmm4=e7e6e5e4e3e2e1e0 */	\
 	__asm	movdqa		xmm0, I(5)		/* xmm4=f7f6f5f4f3f2f1f0 */	\
@@ -691,29 +691,29 @@ __declspec(align(32)) static unsigned short WmtDequantConst[]=
 	__asm	movdqa		I(7), xmm7		/* save I(7) */				\
 	\
 	}/* End of Transpose Macro */
-
-
-/**************************************************************************************
- *
- *		Macro:			Wmt_Dequant
- *		
- *		Description:	The Macro does dequantzation and reorder the coefficents to avoid 
- *						the first transpose before Wmt_Row_IDCT
- *
- *		Input:			[eax], quantized input, 
- *						[ebx], quantizaiton table,
- *
- *		Output:			[eax]
- *		
- *		Return:			None			
- *
- *		Special Note:	None
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-#define Wmt_Dequant __asm {		\
+		
+		
+		/**************************************************************************************
+        *
+        *		Macro:			Wmt_Dequant
+        *		
+        *		Description:	The Macro does dequantzation and reorder the coefficents to avoid 
+        *						the first transpose before Wmt_Row_IDCT
+        *
+        *		Input:			[eax], quantized input, 
+        *						[ebx], quantizaiton table,
+        *
+        *		Output:			[eax]
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	None
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		#define Wmt_Dequant __asm {		\
 	__asm	lea		ecx, WmtDequantConst										\
 	__asm	movdqa	xmm0, [eax]													\
 	\
@@ -756,7 +756,7 @@ __declspec(align(32)) static unsigned short WmtDequantConst[]=
 	__asm	por		xmm0, xmm7			/* xmm0 = -- 25 24 12 11 03 02 00 */	\
 	__asm	pslldq	xmm6, 8			    /* xmm6 = 43 -- -- -- -- -- -- -- */	\
 	\
- 	__asm	por		xmm0, xmm6		/* O0 =xmm0 = 43 25 24 12 11 03 02 00 */	\
+        	__asm	por		xmm0, xmm6		/* O0 =xmm0 = 43 25 24 12 11 03 02 00 */	\
 	/* 02345 in use */ \
 	\
 	__asm	movdqa	xmm1, [ecx + 64 ]	/* xmm1 = -- -- -- FF FF -- -- -- */	\
@@ -1038,28 +1038,28 @@ __declspec(align(32)) static unsigned short WmtDequantConst[]=
 	__asm	movdqa	[eax+112], xmm3		/* write  77 75 74 66 65 53 52 34 */	\
 	\
 	}/* end of Wmt_Dequant Macro */
-
-
-/**************************************************************************************
- *
- *		Macro:			Wmt_Dequant_Dx
- *		
- *		Description:	The Macro does dequantzation 
- *
- *		Input:			[eax], quantized input, 
- *						[ebx], quantizaiton table,
- *
- *		Output:			[eax]
- *		
- *		Return:			None			
- *
- *		Special Note:	None
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-#define Wmt_Dequant_Dx __asm {		\
+		
+		
+		/**************************************************************************************
+        *
+        *		Macro:			Wmt_Dequant_Dx
+        *		
+        *		Description:	The Macro does dequantzation 
+        *
+        *		Input:			[eax], quantized input, 
+        *						[ebx], quantizaiton table,
+        *
+        *		Output:			[eax]
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	None
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		#define Wmt_Dequant_Dx __asm {		\
 	__asm	movdqa	xmm0, [eax]													\
 	__asm	movdqa	xmm1, [eax + 16]											\
 	\
@@ -1097,71 +1097,71 @@ __declspec(align(32)) static unsigned short WmtDequantConst[]=
 	__asm	movdqa	[edx+112], xmm7		/* write  77 75 74 66 65 53 52 34 */	\
 	\
 	}/* end of Wmt_Dequant Macro */
-
-
-
-
-/**************************************************************************************
- *
- *		Routine:		Wmt_IDct_Dx
- *		
- *		Description:	Perform IDCT on a 8x8 block
- *
- *		Input:			Pointer to input and output buffer				
- *
- *		Output:			None
- *		
- *		Return:			None			
- *
- *		Special Note:	The input coefficients are in raster order
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-
-void  Wmt_IDct_Dx(short *InputData, short *QuantizationTable, short *OutputData)
-{
-
+		
+		
+		
+		
+		/**************************************************************************************
+        *
+        *		Routine:		Wmt_IDct_Dx
+        *		
+        *		Description:	Perform IDCT on a 8x8 block
+        *
+        *		Input:			Pointer to input and output buffer				
+        *
+        *		Output:			None
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	The input coefficients are in raster order
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		
+		void  Wmt_IDct_Dx(short *InputData, short *QuantizationTable, short *OutputData)
+		{
+		
 	
 	__asm 
 	{
-
-        push    ebx
-
-        mov		eax, InputData
-		mov		ebx, QuantizationTable
-		mov		edx, OutputData
-		lea		ecx, WmtIdctConst
 		
-		Wmt_Dequant_Dx
-
-#undef	I
-#undef	O
-#undef	C
-#define I(i) [edx + 16 * i ]
-#define O(i) [edx + 16 * i ]
-#define C(i) [ecx + 16 * (i-1) ]
-
+push    ebx
 		
-		/* Transpose - absorbed by the Wmt_dequant */
+mov		eax, InputData
+mov		ebx, QuantizationTable
+mov		edx, OutputData
+lea		ecx, WmtIdctConst
 
-		Wmt_Row_IDCT
-
-		Transpose
+Wmt_Dequant_Dx
 		
-		Wmt_Column_IDCT
+		#undef	I
+		#undef	O
+		#undef	C
+		#define I(i) [edx + 16 * i ]
+		#define O(i) [edx + 16 * i ]
+		#define C(i) [ecx + 16 * (i-1) ]
+		
 
-        pop     ebx
+/* Transpose - absorbed by the Wmt_dequant */
+		
+Wmt_Row_IDCT
+		
+Transpose
+
+Wmt_Column_IDCT
+		
+pop     ebx
 	}
-
-}
-
-/**************************************************************************************
- **************  Wmt_IDCT10_Dx   ******************************************************
- **************************************************************************************
- 
-
+		
+		}
+		
+		/**************************************************************************************
+        **************  Wmt_IDCT10_Dx   ******************************************************
+        **************************************************************************************
+        
+		
 	In IDCT10, we are dealing with only ten Non-Zero coefficients in the 8x8 block. 
 	In the case that we work in the fashion RowIDCT -> ColumnIDCT, we only have to 
 	do 1-D row idcts on the first four rows, the rest four rows remain zero anyway. 
@@ -1176,69 +1176,69 @@ void  Wmt_IDct_Dx(short *InputData, short *QuantizationTable, short *OutputData)
 	C = (C3 * I3) + (C5 * I5)		D = (C3 * I5) - (C5 * I3)
 	A. = C4 * (A - C)				B. = C4 * (B - D)
     C. = A + C						D. = B + D
-   
+        
     E = C4 * (I0 + I4)				F = C4 * (I0 - I4)
     G = (C2 * I2) + (C6 * I6)		H = (C6 * I2) - (C2 * I6)
     E. = E - G
     G. = E + G
-   
+        
     A.. = F + A.					B.. = B. - H
     F.  = F - A. 					H.  = B. + H
-   
+        
     R0 = G. + C.	R1 = A.. + H.	R3 = E. + D.	R5 = F. + B..
     R7 = G. - C.	R2 = A.. - H.	R4 = E. - D.	R6 = F. - B..
-
-
+		
+		
 	To:
-
-  	A = (C1 * I1)					B = (C7 * I1) 
+		
+        	A = (C1 * I1)					B = (C7 * I1) 
 	C = (C3 * I3)					D = - (C5 * I3)
 	A. = C4 * (A - C)				B. = C4 * (B - D)
     C. = A + C						D. = B + D
-   
+        
     E = C4 * I0						F = E
     G = (C2 * I2)					H = (C6 * I2)
     E. = E - G
     G. = E + G
-   
+        
     A.. = F + A.					B.. = B. - H
     F.  = F - A. 					H.  = B. + H
-   
+        
     R0 = G. + C.	R1 = A.. + H.	R3 = E. + D.	R5 = F. + B..
     R7 = G. - C.	R2 = A.. - H.	R4 = E. - D.	R6 = F. - B..
-
+		
 	
-******************************************************************************************/
-
-
-/**************************************************************************************
- *
- *		Macro:			Wmt_Column_IDCT10
- *		
- *		Description:	The Macro does 1-D IDct on 8 columns. 
- *
- *		Input:			None
- *
- *		Output:			None
- *		
- *		Return:			None			
- *
- *		Special Note:	None
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-
-/*	
+		******************************************************************************************/
+		
+		
+		/**************************************************************************************
+        *
+        *		Macro:			Wmt_Column_IDCT10
+        *		
+        *		Description:	The Macro does 1-D IDct on 8 columns. 
+        *
+        *		Input:			None
+        *
+        *		Output:			None
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	None
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		
+		/*	
 	The major difference between Willamette processor and other IA32 processors is that 
 	all of the simd integer instructions now support the 128 bit xmm registers instead 
 	of 64 bit mmx registers. By using these instructions, we can do 8 1-D coloumn idcts 
 	that takes shorts as input and outputs shorts at once
-
-*/
-
-#define Wmt_Column_IDCT10 __asm {		\
+		
+		*/
+		
+		#define Wmt_Column_IDCT10 __asm {		\
 	\
 	__asm	movdqa	xmm2, I(3)		/* xmm2 = i3 */				\
 	__asm	movdqa	xmm6, C(3)		/* xmm6 = c3 */				\
@@ -1374,36 +1374,36 @@ void  Wmt_IDct_Dx(short *InputData, short *QuantizationTable, short *OutputData)
 	__asm	movdqa	O(0), xmm0		/* Write out op0 */			\
 	\
 	} /* End of Wmt_Column_IDCT10 macro */
-
-
-/**************************************************************************************
- *
- *		Macro:			Wmt_Row_IDCT10
- *		
- *		Description:	The Macro does 1-D IDct on 8 columns. 
- *
- *		Input:			None
- *
- *		Output:			None
- *		
- *		Return:			None			
- *
- *		Special Note:	None
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-
-/*	
+		
+		
+		/**************************************************************************************
+        *
+        *		Macro:			Wmt_Row_IDCT10
+        *		
+        *		Description:	The Macro does 1-D IDct on 8 columns. 
+        *
+        *		Input:			None
+        *
+        *		Output:			None
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	None
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		
+		/*	
 	The major difference between Willamette processor and other IA32 processors is that 
 	all of the simd integer instructions now support the 128 bit xmm registers instead 
 	of 64 bit mmx registers. By using these instructions, we can do 8 1-D coloumn idcts 
 	that takes shorts as input and outputs shorts at once
-
-*/
-
-#define Wmt_Row_IDCT10 __asm {		\
+		
+		*/
+		
+		#define Wmt_Row_IDCT10 __asm {		\
 	\
 	__asm	movdqa	xmm2, I(3)		/* xmm2 = i3 */		\
 	__asm	movdqa	xmm6, C(3)		/* xmm6 = c3 */		\
@@ -1526,28 +1526,28 @@ void  Wmt_IDct_Dx(short *InputData, short *QuantizationTable, short *OutputData)
 	__asm	movdqa	I(0), xmm0		/* Write out op0 */		\
 	\
 	} /* End of Wmt_Row_IDCT10 macro */
-
-/**************************************************************************************
- *
- *		Macro:			Transpose
- *		
- *		Description:	The Macro does 8x8 transpose
- *
- *		Input:			None
- *
- *		Output:			None
- *		
- *		Return:			None			
- *
- *		Special Note:	None
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-
-
-#define Transpose10 __asm {	\
+		
+		/**************************************************************************************
+        *
+        *		Macro:			Transpose
+        *		
+        *		Description:	The Macro does 8x8 transpose
+        *
+        *		Input:			None
+        *
+        *		Output:			None
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	None
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		
+		
+		#define Transpose10 __asm {	\
 	\
 	__asm	movdqa		xmm4, I(4)		/* xmm4=e7e6e5e4e3e2e1e0 */	\
 	__asm	movdqa		xmm0, I(5)		/* xmm4=f7f6f5f4f3f2f1f0 */	\
@@ -1631,28 +1631,28 @@ void  Wmt_IDct_Dx(short *InputData, short *QuantizationTable, short *OutputData)
 	__asm	movdqa		I(7), xmm7		/* save I(7) */				\
 	\
 	}/* End of Transpose10 Macro */
-
-
-/**************************************************************************************
- *
- *		Macro:			Wmt_Dequant10_Dx
- *		
- *		Description:	The Macro does dequantzation 
- *
- *		Input:			[eax], quantized input, 
- *						[ebx], quantizaiton table,
- *
- *		Output:			[eax]
- *		
- *		Return:			None			
- *
- *		Special Note:	None
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-#define Wmt_Dequant10_Dx __asm {		\
+		
+		
+		/**************************************************************************************
+        *
+        *		Macro:			Wmt_Dequant10_Dx
+        *		
+        *		Description:	The Macro does dequantzation 
+        *
+        *		Input:			[eax], quantized input, 
+        *						[ebx], quantizaiton table,
+        *
+        *		Output:			[eax]
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	None
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		#define Wmt_Dequant10_Dx __asm {		\
 	__asm	movdqa	xmm0, [eax]													\
 	__asm	movdqa	xmm1, [eax + 16]											\
 	\
@@ -1672,145 +1672,145 @@ void  Wmt_IDct_Dx(short *InputData, short *QuantizationTable, short *OutputData)
 	__asm	movdqa	[edx+48], xmm3		/* write  */	\
 	\
 	}/* end of Wmt_Dequant10_Dx Macro */
-
-
-
-
-/**************************************************************************************
- *
- *		Routine:		Wmt_IDct10_Dx
- *		
- *		Description:	Perform IDCT on a 8x8 block where only the first 10 coeffs are 
- *						non-zero coefficients.
- *
- *		Input:			Pointer to input and output buffer				
- *
- *		Output:			None
- *		
- *		Return:			None			
- *
- *		Special Note:	The input coefficients are in raster order
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-void  Wmt_IDct10_Dx(short *InputData, short *QuantizationTable, short *OutputData)
-{
-
+		
+		
+		
+		
+		/**************************************************************************************
+        *
+        *		Routine:		Wmt_IDct10_Dx
+        *		
+        *		Description:	Perform IDCT on a 8x8 block where only the first 10 coeffs are 
+        *						non-zero coefficients.
+        *
+        *		Input:			Pointer to input and output buffer				
+        *
+        *		Output:			None
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	The input coefficients are in raster order
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		void  Wmt_IDct10_Dx(short *InputData, short *QuantizationTable, short *OutputData)
+		{
+		
 	
 	__asm 
 	{
-        push    ebx
-
-		mov		eax, InputData
-		mov		ebx, QuantizationTable
-		mov		edx, OutputData
-		lea		ecx, WmtIdctConst
+push    ebx
 		
-		Wmt_Dequant10_Dx
+mov		eax, InputData
+mov		ebx, QuantizationTable
+mov		edx, OutputData
+lea		ecx, WmtIdctConst
 
-#define I(i) [edx + 16 * i ]
-#define O(i) [edx + 16 * i ]
-#define C(i) [ecx + 16 * (i-1) ]
-
+Wmt_Dequant10_Dx
 		
-		/* Transpose - absorbed by the Wmt_dequant */
-
-		Wmt_Row_IDCT10
-
-		Transpose10
+		#define I(i) [edx + 16 * i ]
+		#define O(i) [edx + 16 * i ]
+		#define C(i) [ecx + 16 * (i-1) ]
 		
-		Wmt_Column_IDCT10
 
-        pop     ebx
+/* Transpose - absorbed by the Wmt_dequant */
+		
+Wmt_Row_IDCT10
+		
+Transpose10
+
+Wmt_Column_IDCT10
+		
+pop     ebx
 	}
-
-}
-/**************************************************************************************
- *
- *		Routine:		Wmt_IDct1
- *		
- *		Description:	Perform IDCT on a 8x8 block where only the first 1 coeff
- *
- *		Input:			Pointer to input and output buffer				
- *
- *		Output:			None
- *		
- *		Return:			None			
- *
- *		Special Note:	We only have one coefficient
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-
-void Wmt_idct1 (short * input, short * qtbl, short * output) 
-{
+		
+		}
+		/**************************************************************************************
+        *
+        *		Routine:		Wmt_IDct1
+        *		
+        *		Description:	Perform IDCT on a 8x8 block where only the first 1 coeff
+        *
+        *		Input:			Pointer to input and output buffer				
+        *
+        *		Output:			None
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	We only have one coefficient
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		
+		void Wmt_idct1 (short * input, short * qtbl, short * output) 
+		{
     __asm
     {
-        mov         eax,    [input]
-        mov         edx,    0xf
+mov         eax,    [input]
+mov         edx,    0xf
+		
+movd        xmm2,   edx
+		
+mov         ecx,    [qtbl]
+mov         edx,    [output]
 
-        movd        xmm2,   edx
+movq        xmm0,   QWORD ptr [eax]
+movq        xmm1,   QWORD ptr [ecx]
+		
+pmullw      xmm0,   xmm1;
+paddw       xmm0,   xmm2
+		
+psraw       xmm0,   5;        
+punpcklwd   xmm0,   xmm0;
 
-        mov         ecx,    [qtbl]
-        mov         edx,    [output]
-        
-        movq        xmm0,   QWORD ptr [eax]
-        movq        xmm1,   QWORD ptr [ecx]
+punpckldq   xmm0,   xmm0;
+punpcklqdq  xmm0,   xmm0;
+		
+movdqa      xmm1,   xmm0
 
-        pmullw      xmm0,   xmm1;
-        paddw       xmm0,   xmm2
+movdqa      [edx],  xmm0;        
+movdqa      [edx+16], xmm1;
+		
+movdqa      [edx+32],  xmm0;        
+movdqa      [edx+48], xmm1;
+		
+movdqa      [edx+64],  xmm0;        
+movdqa      [edx+80], xmm1;
 
-        psraw       xmm0,   5;        
-        punpcklwd   xmm0,   xmm0;
-        
-        punpckldq   xmm0,   xmm0;
-        punpcklqdq  xmm0,   xmm0;
-
-        movdqa      xmm1,   xmm0
-        
-        movdqa      [edx],  xmm0;        
-        movdqa      [edx+16], xmm1;
-
-        movdqa      [edx+32],  xmm0;        
-        movdqa      [edx+48], xmm1;
-
-        movdqa      [edx+64],  xmm0;        
-        movdqa      [edx+80], xmm1;
-        
-        movdqa      [edx+96],  xmm0;        
-        movdqa      [edx+112], xmm1;
-
+movdqa      [edx+96],  xmm0;        
+movdqa      [edx+112], xmm1;
+		
     }
-}
-/**************************************************************************************
- **************  Wmt_IDCT3       ******************************************************
- **************************************************************************************
- */
-
-/**************************************************************************************
- *
- *		Routine:		Wmt_IDCT3
- *		
- *		Description:	Perform IDCT on a 8x8 block with at most 3 nonzero coefficients
- *
- *		Input:			Pointer to input and output buffer				
- *
- *		Output:			None
- *		
- *		Return:			None			
- *
- *		Special Note:	Intel Compiler, Please
- *
- *		Error:			None
- *
- ***************************************************************************************
- */
-
-/***************************************************************************************
+		}
+		/**************************************************************************************
+        **************  Wmt_IDCT3       ******************************************************
+        **************************************************************************************
+        */
+		
+		/**************************************************************************************
+        *
+        *		Routine:		Wmt_IDCT3
+        *		
+        *		Description:	Perform IDCT on a 8x8 block with at most 3 nonzero coefficients
+        *
+        *		Input:			Pointer to input and output buffer				
+        *
+        *		Output:			None
+        *		
+        *		Return:			None			
+        *
+        *		Special Note:	Intel Compiler, Please
+        *
+        *		Error:			None
+        *
+        ***************************************************************************************
+        */
+		
+		/***************************************************************************************
 	In IDCT 3, we are dealing with only three Non-Zero coefficients in the 8x8 block. 
 	In the case that we work in the fashion RowIDCT -> ColumnIDCT, we only have to 
 	do 1-D row idcts on the first two rows, the rest six rows remain zero anyway. 
@@ -1825,35 +1825,36 @@ void Wmt_idct1 (short * input, short * qtbl, short * output)
 	C = (C3 * I3) + (C5 * I5)		D = (C3 * I5) - (C5 * I3)
 	A. = C4 * (A - C)				B. = C4 * (B - D)
     C. = A + C						D. = B + D
-   
+        
     E = C4 * (I0 + I4)				F = C4 * (I0 - I4)
     G = (C2 * I2) + (C6 * I6)		H = (C6 * I2) - (C2 * I6)
     E. = E - G
     G. = E + G
-   
+        
     A.. = F + A.					B.. = B. - H
     F.  = F - A. 					H.  = B. + H
-   
+        
     R0 = G. + C.	R1 = A.. + H.	R3 = E. + D.	R5 = F. + B..
     R7 = G. - C.	R2 = A.. - H.	R4 = E. - D.	R6 = F. - B..
-
+		
 	To:
-
-
+		
+		
 	A = (C1 * I1)					B = (C7 * I1)
 	C = 0							D = 0
 	A. = C4 * A 					B. = C4 * B 
     C. = A							D. = B 
-   
+        
     E = C4 * I0 					F = E
     G = 0							H = 0
     E. = E 
     G. = E 
-
+		
     A.. = E + A.					B.. = B. 
     F.  = E - A. 					H.  = B. 
-   
+        
     R0 = E + A		R1 = E + A. + B.	R3 = E + B		R5 = E - A. + B.
     R7 = E - A		R2 = E + A. - B.	R4 = E - B		R6 = F - A. - B.
 	
-******************************************************************************************/
+		******************************************************************************************/
+		

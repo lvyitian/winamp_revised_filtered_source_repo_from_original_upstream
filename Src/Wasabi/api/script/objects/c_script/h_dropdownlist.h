@@ -11,21 +11,21 @@ class H_DropDownList : public H_DROPDOWNLIST_PARENT {
 
 public:
 
-  H_DropDownList(ScriptObject *o);
-  H_DropDownList();
-  virtual ~H_DropDownList();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_DropDownList(ScriptObject *o);
+H_DropDownList();
+virtual ~H_DropDownList();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onSelect(int id, int hover) {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onSelect(int id, int hover) {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onselect_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onselect_id;
 };
 
 #endif

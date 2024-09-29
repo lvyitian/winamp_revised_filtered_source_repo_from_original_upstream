@@ -1,42 +1,42 @@
-/*
- * Ctrl_smp.h
- * ----------
- * Purpose: Sample tab, upper panel.
- * Notes  : (currently none)
- * Authors: Olivier Lapicque
- *          OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-
-#pragma once
-
-#include "openmpt/all/BuildSettings.hpp"
-
-#include "../soundlib/SampleIO.h"
-#include "../tracklib/FadeLaws.h"
-
-OPENMPT_NAMESPACE_BEGIN
-
-enum OpenSampleTypes
-{
+		/*
+        * Ctrl_smp.h
+        * ----------
+        * Purpose: Sample tab, upper panel.
+        * Notes  : (currently none)
+        * Authors: Olivier Lapicque
+        *          OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		
+		#pragma once
+		
+		#include "openmpt/all/BuildSettings.hpp"
+		
+		#include "../soundlib/SampleIO.h"
+		#include "../tracklib/FadeLaws.h"
+		
+		OPENMPT_NAMESPACE_BEGIN
+		
+		enum OpenSampleTypes
+		{
 	OpenSampleKnown = (1<<0),
 	OpenSampleRaw   = (1<<1),
-};
-MPT_DECLARE_ENUM(OpenSampleTypes)
-
-class CCtrlSamples: public CModControlDlg
-{
-protected:
+		};
+		MPT_DECLARE_ENUM(OpenSampleTypes)
+		
+		class CCtrlSamples: public CModControlDlg
+		{
+		protected:
 	friend class DoPitchShiftTimeStretch;
-
+		
 	struct SampleSelectionPoints
 	{
-		SmpLength nStart;
-		SmpLength nEnd;
-		bool selectionActive;	// does sample selection exist or not?
+SmpLength nStart;
+SmpLength nEnd;
+bool selectionActive;	// does sample selection exist or not?
 	};
-
+		
 	CModControlBar m_ToolBar1, m_ToolBar2;
 	CEdit m_EditSample, m_EditName, m_EditFileName, m_EditFineTune;
 	CEdit m_EditLoopStart, m_EditLoopEnd, m_EditSustainStart, m_EditSustainEnd;
@@ -56,41 +56,41 @@ protected:
 	INSTRUMENTINDEX m_editInstrumentName = INSTRUMENTINDEX_INVALID;
 	bool m_rememberRawFormat = false;
 	bool m_startedEdit = false;
-
+		
 	CComboBox m_ComboPitch, m_ComboQuality, m_ComboFFT;
-
+		
 	void UpdateTimeStretchParameters();
 	void ReadTimeStretchParameters();
-
+		
 	void ApplyAmplify(const double amp, const double fadeInStart, const double fadeOutEnd, const bool fadeIn, const bool fadeOut, const Fade::Law fadeLaw);
 	void ApplyResample(SAMPLEINDEX smp, uint32 newRate, ResamplingMode mode, bool ignoreSelection = false, bool updatePatternCommands = false);
-
+		
 	SampleSelectionPoints GetSelectionPoints();
 	void SetSelectionPoints(SmpLength nStart, SmpLength nEnd);
-
+		
 	void PropagateAutoVibratoChanges();
-
+		
 	bool IsOPLInstrument() const;
-
+		
 	INSTRUMENTINDEX GetParentInstrumentWithSameName() const;
-
-public:
+		
+		public:
 	CCtrlSamples(CModControlView &parent, CModDoc &document);
 	~CCtrlSamples();
-
+		
 	bool SetCurrentSample(SAMPLEINDEX nSmp, LONG lZoom = -1, bool bUpdNum = true);
 	bool InsertSample(bool duplicate, int8 *confirm = nullptr);
 	bool OpenSample(const mpt::PathString &fileName, FlagSet<OpenSampleTypes> types = OpenSampleKnown | OpenSampleRaw);
 	bool OpenSample(const CSoundFile &sndFile, SAMPLEINDEX nSample);
 	void OpenSamples(const std::vector<mpt::PathString> &files, FlagSet<OpenSampleTypes> types);
 	void SaveSample(bool doBatchSave);
-
+		
 	void Normalize(bool allSamples);
 	void RemoveDCOffset(bool allSamples);
-
+		
 	Setting<LONG> &GetSplitPosRef() override {return TrackerSettings::Instance().glSampleWindowHeight;}
-
-public:
+		
+		public:
 	//{{AFX_VIRTUAL(CCtrlSamples)
 	BOOL OnInitDialog() override;
 	void DoDataExchange(CDataExchange* pDX) override;	// DDX/DDV support
@@ -103,7 +103,7 @@ public:
 	BOOL GetToolTipText(UINT uId, LPTSTR pszText) override;
 	BOOL PreTranslateMessage(MSG* pMsg) override;
 	//}}AFX_VIRTUAL
-protected:
+		protected:
 	//{{AFX_MSG(CCtrlSamples)
 	afx_msg void OnEditFocus();
 	afx_msg void OnSampleChanged();
@@ -153,18 +153,19 @@ protected:
 	afx_msg void OnVScroll(UINT, UINT, CScrollBar *);
 	afx_msg LRESULT OnCustomKeyMsg(WPARAM, LPARAM);
 	afx_msg void OnXButtonUp(UINT nFlags, UINT nButton, CPoint point);
-
+		
 	afx_msg void OnPitchShiftTimeStretch();
 	afx_msg void OnEnableStretchToSize();
 	afx_msg void OnEstimateSampleSize();
-
+		
 	afx_msg void OnInitOPLInstrument();
-
+		
 	MPT_NOINLINE void SetModified(SampleHint hint, bool updateAll, bool waveformModified);
 	void PrepareUndo(const char *description, sampleUndoTypes type = sundo_none, SmpLength start = 0, SmpLength end = 0);
-
+		
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
-};
-
-OPENMPT_NAMESPACE_END
+		};
+		
+		OPENMPT_NAMESPACE_END
+		

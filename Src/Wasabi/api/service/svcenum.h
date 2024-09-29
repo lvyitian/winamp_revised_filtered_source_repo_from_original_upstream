@@ -9,27 +9,27 @@ class waServiceFactory;
 // abstract base class
 class NOVTABLE SvcEnum {
 protected:
-  SvcEnum();
+SvcEnum();
 
-  void *_getNext(int global_lock = TRUE);
-  void reset();
+void *_getNext(int global_lock = TRUE);
+void reset();
 
-  virtual int _testService(void *)=0;
+virtual int _testService(void *)=0;
 
 public:
 #ifdef ASSERTS_ENABLED
-  static int release(waServiceFactory *ptr) { ASSERTALWAYS("never ever call release() with a waServiceFactory * !!!"); return 0; }
+static int release(waServiceFactory *ptr) { ASSERTALWAYS("never ever call release() with a waServiceFactory * !!!"); return 0; }
 #endif
-  static int release(void *ptr);
+static int release(void *ptr);
 
-  waServiceFactory *getLastFactory();
+waServiceFactory *getLastFactory();
 
 protected:
-  FOURCC type;
+FOURCC type;
 
 private:
-  int pos;
-  waServiceFactory * factory;
+int pos;
+waServiceFactory * factory;
 };
 
 

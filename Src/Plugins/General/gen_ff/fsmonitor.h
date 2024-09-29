@@ -6,34 +6,34 @@
 
 class FSCallback {
 public:
-  virtual void onGoFullscreen()=0;
-  virtual void onCancelFullscreen()=0;
+virtual void onGoFullscreen()=0;
+virtual void onCancelFullscreen()=0;
 };
 
 class FullScreenMonitor : public TimerClientDI {
 public:
-  FullScreenMonitor();
-  virtual ~FullScreenMonitor();
+FullScreenMonitor();
+virtual ~FullScreenMonitor();
 
-  void registerCallback(FSCallback *cb);
-  void unregisterCallback(FSCallback *cb);
+void registerCallback(FSCallback *cb);
+void unregisterCallback(FSCallback *cb);
 
-  int isFullScreen() { return m_fs; }
+int isFullScreen() { return m_fs; }
 
-  int wndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+int wndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-  void timerclient_timerCallback(int id);
+void timerclient_timerCallback(int id);
 
 private:
-  void onGoFullscreen();
-  void onCancelFullscreen();
-  void sendGoFSCallbacks();
-  void sendCancelFSCallbacks();
-  PtrList<FSCallback> m_callbacks;
-  HWND hWnd;
-  int m_fs;
-  int m_go_fs_timer_set;
-  int m_cancel_fs_timer_set;
+void onGoFullscreen();
+void onCancelFullscreen();
+void sendGoFSCallbacks();
+void sendCancelFSCallbacks();
+PtrList<FSCallback> m_callbacks;
+HWND hWnd;
+int m_fs;
+int m_go_fs_timer_set;
+int m_cancel_fs_timer_set;
 };
 
 #endif

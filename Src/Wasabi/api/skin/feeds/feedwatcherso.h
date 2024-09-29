@@ -27,34 +27,34 @@ static const GUID FeedWatcherGuid =
 
 class FeedWatcherScriptObject : public FEEDWATCHER_SCRIPTPARENT {
 public:
-  FeedWatcherScriptObject();
-  virtual ~FeedWatcherScriptObject();
-  
-  void feedWatcherScriptObject_init();
+FeedWatcherScriptObject();
+virtual ~FeedWatcherScriptObject();
+
+void feedWatcherScriptObject_init();
 
 public:
-  virtual void feedwatcher_onFeedChange(const wchar_t *data);
+virtual void feedwatcher_onFeedChange(const wchar_t *data);
 };
 
 // -----------------------------------------------------------------------------
 class FeedWatcherScriptController : public ScriptObjectControllerI {
 public:
 
-  virtual const wchar_t *getClassName();
-  virtual const wchar_t *getAncestorClassName();
-  virtual ScriptObjectController *getAncestorController();
-  virtual int getNumFunctions();
-  virtual const function_descriptor_struct *getExportedFunctions();
-  virtual GUID getClassGuid();
-  virtual ScriptObject *instantiate();
-  virtual void destroy(ScriptObject *o);
-  virtual void *encapsulate(ScriptObject *o);
-  virtual void deencapsulate(void *o);
+virtual const wchar_t *getClassName();
+virtual const wchar_t *getAncestorClassName();
+virtual ScriptObjectController *getAncestorController();
+virtual int getNumFunctions();
+virtual const function_descriptor_struct *getExportedFunctions();
+virtual GUID getClassGuid();
+virtual ScriptObject *instantiate();
+virtual void destroy(ScriptObject *o);
+virtual void *encapsulate(ScriptObject *o);
+virtual void deencapsulate(void *o);
 
-  static scriptVar script_setFeed(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar feedid);
-  static scriptVar script_releaseFeed(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
-  static scriptVar script_feedwatcher_onFeedChange(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar data);
-  
+static scriptVar script_setFeed(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar feedid);
+static scriptVar script_releaseFeed(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO);
+static scriptVar script_feedwatcher_onFeedChange(SCRIPT_FUNCTION_PARAMS, ScriptObject *_pSO, scriptVar data);
+
 private:static function_descriptor_struct exportedFunctions[];
 };
 

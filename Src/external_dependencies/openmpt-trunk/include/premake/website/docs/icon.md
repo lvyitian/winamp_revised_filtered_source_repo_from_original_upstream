@@ -22,5 +22,5 @@ Premake 5.0 or later.
 
 ```lua
 project "MyProject"
-   icon "MyProject.ico"
+icon "MyProject.ico"
 ```

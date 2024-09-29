@@ -1,18 +1,18 @@
 
 /*!
- *************************************************************************************
- * \file mc_prediction.h
- *
- * \brief
- *    definitions for motion compensated prediction
- *
- * \author
- *      Main contributors (see contributors.h for copyright, 
- *                         address and affiliation details)
- *      - Alexis Michael Tourapis  <alexismt@ieee.org>
- *
- *************************************************************************************
- */
+*************************************************************************************
+* \file mc_prediction.h
+*
+* \brief
+*    definitions for motion compensated prediction
+*
+* \author
+*      Main contributors (see contributors.h for copyright, 
+*                         address and affiliation details)
+*      - Alexis Michael Tourapis  <alexismt@ieee.org>
+*
+*************************************************************************************
+*/
 
 #ifndef _MC_PREDICTION_H_
 #define _MC_PREDICTION_H_

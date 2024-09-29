@@ -32,7 +32,7 @@ implibprefix ""
 
 ### See Also ###
 
- * [implibname](implibname.md)
- * [implibdir](implibdir.md)
- * [implibextension](implibextension.md)
- * [implibsuffix](implibsuffix.md)
+* [implibname](implibname.md)
+* [implibdir](implibdir.md)
+* [implibextension](implibextension.md)
+* [implibsuffix](implibsuffix.md)

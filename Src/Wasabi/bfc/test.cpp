@@ -1,5 +1,5 @@
 #include <stdio.h>
 
 void prout() {
-  printf("prout\n");
+printf("prout\n");
 }

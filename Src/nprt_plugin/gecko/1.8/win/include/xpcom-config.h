@@ -5,8 +5,8 @@
 #define _XPCOM_CONFIG_H_
 
 /* Define this to throw() if the compiler complains about 
- * constructors returning NULL
- */
+* constructors returning NULL
+*/
 #define CPP_THROW_NEW throw()
 
 /* Define if the c++ compiler supports a 2-byte wchar_t */
@@ -28,8 +28,8 @@
 /* #undef HAVE_CPP_EXPLICIT */
 
 /* Define if the c++ compiler supports the modern template 
- * specialization syntax 
- */
+* specialization syntax 
+*/
 /* #undef HAVE_CPP_MODERN_SPECIALIZE_TEMPLATE_SYNTAX */
 
 /* Define if the c++ compiler supports the |std| namespace */
@@ -42,8 +42,8 @@
 /* #undef HAVE_CPP_PARTIAL_SPECIALIZATION */
 
 /* Define if the c++ compiler has trouble comparing a constant
- * reference to a templatized class to zero
- */
+* reference to a templatized class to zero
+*/
 /* #undef HAVE_CPP_TROUBLE_COMPARING_TO_ZERO */
 
 /* Define if the c++ compiler supports the |typename| keyword */
@@ -56,8 +56,8 @@
 /* #undef HAVE_STATVFS */
 
 /* Define if the c++ compiler requires implementations of 
- * unused virtual methods
- */
+* unused virtual methods
+*/
 /* #undef NEED_CPP_UNUSED_IMPLEMENTATIONS */
 
 /* Define to either <new> or <new.h> */

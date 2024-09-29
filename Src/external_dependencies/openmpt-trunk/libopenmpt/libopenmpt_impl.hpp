@@ -1,127 +1,127 @@
-/*
- * libopenmpt_impl.hpp
- * -------------------
- * Purpose: libopenmpt private interface
- * Notes  : This is not a public header. Do NOT ship in distributions dev packages.
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-#ifndef LIBOPENMPT_IMPL_HPP
-#define LIBOPENMPT_IMPL_HPP
-
-#include "libopenmpt_internal.h"
-#include "libopenmpt.hpp"
-
-#include <iosfwd>
-#include <memory>
-#include <utility>
-
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable:4512) // assignment operator could not be generated
-#endif
-
-// forward declarations
-namespace mpt {
-inline namespace mpt_libopenmpt {
-namespace IO {
-class FileCursorTraitsFileData;
-template <typename Tpath>
-class FileCursorFilenameTraits;
-template <typename Ttraits, typename Tfilenametraits>
-class FileCursor;
-} // namespace IO
-} // namespace mpt_libopenmpt
-} // namespace mpt
-namespace OpenMPT {
-namespace detail {
-template <typename Ttraits, typename Tfilenametraits>
-using FileCursor = mpt::IO::FileCursor<Ttraits, Tfilenametraits>;
-} // namespace detail
-namespace mpt {
-class PathString;
-} // namespace mpt
-using FileCursor = detail::FileCursor<mpt::IO::FileCursorTraitsFileData, mpt::IO::FileCursorFilenameTraits<mpt::PathString>>;
-class CSoundFile;
-struct DithersWrapperOpenMPT;
-} // namespace OpenMPT
-
-namespace openmpt {
-
-namespace version {
-
-std::uint32_t get_library_version();
-std::uint32_t get_core_version();
-std::string get_string( const std::string & key );
-
-} // namespace version
-
-class log_interface {
-protected:
+		/*
+        * libopenmpt_impl.hpp
+        * -------------------
+        * Purpose: libopenmpt private interface
+        * Notes  : This is not a public header. Do NOT ship in distributions dev packages.
+        * Authors: OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		#ifndef LIBOPENMPT_IMPL_HPP
+		#define LIBOPENMPT_IMPL_HPP
+		
+		#include "libopenmpt_internal.h"
+		#include "libopenmpt.hpp"
+		
+		#include <iosfwd>
+		#include <memory>
+		#include <utility>
+		
+		#if defined(_MSC_VER)
+		#pragma warning(push)
+		#pragma warning(disable:4512) // assignment operator could not be generated
+		#endif
+		
+		// forward declarations
+		namespace mpt {
+		inline namespace mpt_libopenmpt {
+		namespace IO {
+		class FileCursorTraitsFileData;
+		template <typename Tpath>
+		class FileCursorFilenameTraits;
+		template <typename Ttraits, typename Tfilenametraits>
+		class FileCursor;
+		} // namespace IO
+		} // namespace mpt_libopenmpt
+		} // namespace mpt
+		namespace OpenMPT {
+		namespace detail {
+		template <typename Ttraits, typename Tfilenametraits>
+		using FileCursor = mpt::IO::FileCursor<Ttraits, Tfilenametraits>;
+		} // namespace detail
+		namespace mpt {
+		class PathString;
+		} // namespace mpt
+		using FileCursor = detail::FileCursor<mpt::IO::FileCursorTraitsFileData, mpt::IO::FileCursorFilenameTraits<mpt::PathString>>;
+		class CSoundFile;
+		struct DithersWrapperOpenMPT;
+		} // namespace OpenMPT
+		
+		namespace openmpt {
+		
+		namespace version {
+		
+		std::uint32_t get_library_version();
+		std::uint32_t get_core_version();
+		std::string get_string( const std::string & key );
+		
+		} // namespace version
+		
+		class log_interface {
+		protected:
 	log_interface();
-public:
+		public:
 	virtual ~log_interface();
 	virtual void log( const std::string & message ) const = 0;
-}; // class log_interface
-
-class std_ostream_log : public log_interface {
-private:
+		}; // class log_interface
+		
+		class std_ostream_log : public log_interface {
+		private:
 	std::ostream & destination;
-public:
+		public:
 	std_ostream_log( std::ostream & dst );
 	virtual ~std_ostream_log();
 	void log( const std::string & message ) const override;
-}; // class CSoundFileLog_std_ostream
-
-class log_forwarder;
-
-struct callback_stream_wrapper {
+		}; // class CSoundFileLog_std_ostream
+		
+		class log_forwarder;
+		
+		struct callback_stream_wrapper {
 	void * stream;
 	std::size_t (*read)( void * stream, void * dst, std::size_t bytes );
 	int (*seek)( void * stream, std::int64_t offset, int whence );
 	std::int64_t (*tell)( void * stream );
-}; // struct callback_stream_wrapper
-
-class module_impl {
-public:
+		}; // struct callback_stream_wrapper
+		
+		class module_impl {
+		public:
 	enum class amiga_filter_type {
-		a500,
-		a1200,
-		unfiltered,
-		auto_filter,
+a500,
+a1200,
+unfiltered,
+auto_filter,
 	};
-
-protected:
+		
+		protected:
 	struct subsong_data {
-		double duration;
-		std::int32_t start_row;
-		std::int32_t start_order;
-		std::int32_t sequence;
-		subsong_data( double duration, std::int32_t start_row, std::int32_t start_order, std::int32_t sequence );
+double duration;
+std::int32_t start_row;
+std::int32_t start_order;
+std::int32_t sequence;
+subsong_data( double duration, std::int32_t start_row, std::int32_t start_order, std::int32_t sequence );
 	}; // struct subsong_data
-
+		
 	typedef std::vector<subsong_data> subsongs_type;
-
+		
 	enum class song_end_action {
-		fadeout_song,
-		continue_song,
-		stop_song,
+fadeout_song,
+continue_song,
+stop_song,
 	};
-
+		
 	static constexpr std::int32_t all_subsongs = -1;
-
+		
 	enum class ctl_type {
-		boolean,
-		integer,
-		floatingpoint,
-		text,
+boolean,
+integer,
+floatingpoint,
+text,
 	};
 	struct ctl_info {
-		const char * name;
-		ctl_type type;
+const char * name;
+ctl_type type;
 	};
-
+		
 	std::unique_ptr<log_interface> m_Log;
 	std::unique_ptr<log_forwarder> m_LogForwarder;
 	std::int32_t m_current_subsong;
@@ -140,10 +140,10 @@ protected:
 	bool m_ctl_load_skip_subsongs_init;
 	bool m_ctl_seek_sync_samples;
 	std::vector<std::string> m_loaderMessages;
-public:
+		public:
 	void PushToCSoundFileLog( const std::string & text ) const;
 	void PushToCSoundFileLog( int loglevel, const std::string & text ) const;
-protected:
+		protected:
 	std::string mod_string_to_utf8( const std::string & encoded ) const;
 	void apply_mixer_settings( std::int32_t samplerate, int channels );
 	void apply_libopenmpt_defaults();
@@ -162,9 +162,9 @@ protected:
 	std::pair< std::string, std::string > format_and_highlight_pattern_row_channel_command( std::int32_t p, std::int32_t r, std::int32_t c, int command ) const;
 	std::pair< std::string, std::string > format_and_highlight_pattern_row_channel( std::int32_t p, std::int32_t r, std::int32_t c, std::size_t width, bool pad ) const;
 	static double could_open_probability( const OpenMPT::FileCursor & file, double effort, std::unique_ptr<log_interface> log );
-public:
+		public:
 	static std::vector<std::string> get_supported_extensions();
-
+		
 	/// <summary>
 	/// From version 0.7.0
 	/// Hakan DANISIK
@@ -172,7 +172,7 @@ public:
 	/// <param name="extension"></param>
 	/// <returns></returns>
 	static std::string get_tracker_name( const std::string & extension );
-
+		
 	static bool is_extension_supported( std::string_view extension );
 	static double could_open_probability( callback_stream_wrapper stream, double effort, std::unique_ptr<log_interface> log );
 	static double could_open_probability( std::istream & stream, double effort, std::unique_ptr<log_interface> log );
@@ -195,7 +195,7 @@ public:
 	module_impl( const char * data, std::size_t size, std::unique_ptr<log_interface> log, const std::map< std::string, std::string > & ctls );
 	module_impl( const void * data, std::size_t size, std::unique_ptr<log_interface> log, const std::map< std::string, std::string > & ctls );
 	~module_impl();
-public:
+		public:
 	void select_subsong( std::int32_t subsong );
 	std::int32_t get_selected_subsong() const;
 	void set_repeat_count( std::int32_t repeat_count );
@@ -261,20 +261,21 @@ public:
 	void ctl_set_integer( std::string_view ctl, std::int64_t value, bool throw_if_unknown = true );
 	void ctl_set_floatingpoint( std::string_view ctl, double value, bool throw_if_unknown = true );
 	void ctl_set_text( std::string_view ctl, std::string_view value, bool throw_if_unknown = true );
-}; // class module_impl
-
-namespace helper {
-
-template<typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&... args) {
+		}; // class module_impl
+		
+		namespace helper {
+		
+		template<typename T, typename... Args> std::unique_ptr<T> make_unique(Args&&... args) {
 	return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
-}
-
-} // namespace helper
-
-} // namespace openmpt
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
-
-#endif // LIBOPENMPT_IMPL_HPP
+		}
+		
+		} // namespace helper
+		
+		} // namespace openmpt
+		
+		#if defined(_MSC_VER)
+		#pragma warning(pop)
+		#endif
+		
+		#endif // LIBOPENMPT_IMPL_HPP
+		

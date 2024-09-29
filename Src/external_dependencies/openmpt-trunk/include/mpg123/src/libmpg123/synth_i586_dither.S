@@ -1,55 +1,55 @@
-/*
+		/*
 	decode_i586_dither: asm synth with dither noise
-
+		
 	copyright ?-2007 by the mpg123 project - free software under the terms of the LGPL 2.1
 	see COPYING and AUTHORS files in distribution or http://mpg123.org
 	initially written by Stefan Bieschewski as decode_i586.s without dither
-
+		
 	This version uses "circular" 64k dither noise.
 	(Patch by Adrian <adrian.bacon@xs4all.nl>)
-
+		
 	Thomas learned something about assembler and the stack while making this one thread safe (removing static data).
-*/
-
-#include "mangle.h"
-
-.data
-#if !defined (__APPLE__) && !defined (__OS2__)
-		.section	.rodata
-#endif
+		*/
+		
+		#include "mangle.h"
+		
+		.data
+		#if !defined (__APPLE__) && !defined (__OS2__)
+.section	.rodata
+		#endif
 	ALIGN8
-.LC0:
+		.LC0:
 	.long 0x0,0x40dfffc0
 	ALIGN8
-.LC1:
+		.LC1:
 	.long 0x0,0xc0e00000
 	ALIGN8
-.text
-/* int synth_1to1_i586_asm_dither(real *bandPtr, int channel, unsigned char *out, unsigned char *buffs, int bo_and_ditherindex[2], real *decwin, real* dithernoise); */
-.globl ASM_NAME(synth_1to1_i586_asm_dither)
-ASM_NAME(synth_1to1_i586_asm_dither):
+		.text
+		/* int synth_1to1_i586_asm_dither(real *bandPtr, int channel, unsigned char *out, unsigned char *buffs, int bo_and_ditherindex[2], real *decwin, real* dithernoise); */
+		.globl ASM_NAME(synth_1to1_i586_asm_dither)
+		ASM_NAME(synth_1to1_i586_asm_dither):
 	subl $16,%esp
 	pushl %ebp
 	pushl %edi
 	pushl %esi
 	pushl %ebx
-/* stack: 0(%esp)=%ebx 4=esi 8=edi 12=ebp 16,20,24,28=local 32=back 36=bandptr 40=channel 44=out 48=buffs 52=bo 56=decwin 60=dithernoise */
-#define BANDPTR 36(%esp)
-#define CHANNEL 40(%esp)
-#define OUT     44(%esp)
-#define BUFFS   48(%esp)
-#define BO      52(%esp)
-#define DECWIN  56(%esp)
-#define DITHERNOISE 60(%esp)
-/*#define DITHERNOISE $(ASM_NAME(dithernoise))*/
-#define LOC0    16(%esp)
-#define LOC1    20(%esp)
-#define LOC2    24(%esp)
-#define DITHERINDEX  28(%esp)
-/* During application of the dithering, we need the shifted locations because there's an additional value on the stack. */
-#define DITHERNOISE2 64(%esp)
-#define DITHERINDEX2 32(%esp)
-
+		/* stack: 0(%esp)=%ebx 4=esi 8=edi 12=ebp 16,20,24,28=local 32=back 36=bandptr 40=channel 44=out 48=buffs 52=bo 56=decwin 60=dithernoise */
+		#define BANDPTR 36(%esp)
+		#define CHANNEL 40(%esp)
+		#define OUT     44(%esp)
+		#define BUFFS   48(%esp)
+		#define BO      52(%esp)
+		#define DECWIN  56(%esp)
+		#define DITHERNOISE 60(%esp)
+		/*#define DITHERNOISE $(ASM_NAME(dithernoise))*/
+		#define LOC0    16(%esp)
+		#define LOC1    20(%esp)
+		#define LOC2    24(%esp)
+		#define DITHERINDEX  28(%esp)
+		/* During application of the dithering, we need the shifted locations because there's an additional value on the stack. */
+		#define DITHERNOISE2 64(%esp)
+		#define DITHERINDEX2 32(%esp)
+		
 	movl BANDPTR,%eax
 	movl OUT,%esi
 	movl BO, %ebx
@@ -64,16 +64,16 @@ ASM_NAME(synth_1to1_i586_asm_dither):
 	movl %ebp,(%ebx)   /* save bo back */
 	movl BUFFS,%ecx
 	jmp .L49
-.L48:
-/*       In stereo mode , "rewind" dither pointer 32 samples , so 2nd channel */
-/*       has same dither values. Tested OK for mono and stereo MP2 and MP3 */
+		.L48:
+		/*       In stereo mode , "rewind" dither pointer 32 samples , so 2nd channel */
+		/*       has same dither values. Tested OK for mono and stereo MP2 and MP3 */
 	subl $128,DITHERINDEX /* better move to %edi for the two calculations? */
 	andl $0x0003fffc,DITHERINDEX
 	addl $2,%esi
 	movl BUFFS,%ecx
 	addl $2176,%ecx
-.L49:
-/* now the call of dct64 is prepared, stuff pushed to the stack, but soon after it's removed again */
+		.L49:
+		/* now the call of dct64 is prepared, stuff pushed to the stack, but soon after it's removed again */
 	testl $1,%ebp
 	je .L50
 	movl %ecx,%ebx
@@ -88,7 +88,7 @@ ASM_NAME(synth_1to1_i586_asm_dither):
 	leal 1088(,%eax,4),%eax
 	addl %ebx,%eax
 	jmp .L74
-.L50:
+		.L50:
 	leal 1088(%ecx),%ebx
 	leal 1(%ebp),%edx
 	movl %edx,LOC0
@@ -96,12 +96,12 @@ ASM_NAME(synth_1to1_i586_asm_dither):
 	leal 1092(%ecx,%ebp,4),%eax
 	pushl %eax
 	leal (%ecx,%ebp,4),%eax
-.L74:
+		.L74:
 	pushl %eax
 	call FUNC(dct64_i386)
 	addl $12,%esp
-/* Now removed the parameters.
-   stack: 0(%esp)=%ebx 4=esi 8=edi 12=ebp 16,20,24,28=local 32=back 36=bandptr 40=channel 44=out 48=buffs 52=bo 56=decwin 60=dithernoise */
+		/* Now removed the parameters.
+        stack: 0(%esp)=%ebx 4=esi 8=edi 12=ebp 16,20,24,28=local 32=back 36=bandptr 40=channel 44=out 48=buffs 52=bo 56=decwin 60=dithernoise */
 	movl LOC0,%edx
 	leal 0(,%edx,4),%edx
 	/* movl ASM_VALUE(decwin)+64,%eax */
@@ -110,7 +110,7 @@ ASM_NAME(synth_1to1_i586_asm_dither):
 	movl %eax,%ecx
 	subl %edx,%ecx
 	movl $16,%ebp
-.L55:
+		.L55:
 	flds (%ecx)
 	fmuls (%ebx)
 	flds 4(%ecx)
@@ -175,15 +175,15 @@ ASM_NAME(synth_1to1_i586_asm_dither):
 	faddp %st,%st(1)
 	fxch %st(1)
 	fsubrp %st,%st(1)
-
+		
 	addl $4,DITHERINDEX2
 	andl $0x0003fffc,DITHERINDEX2
 	movl DITHERNOISE2,%edi
 	addl DITHERINDEX2,%edi	
-
+		
 	fadds (%edi)
-
-/* fistpl and popl as a unit keep the stack unchanged */
+		
+		/* fistpl and popl as a unit keep the stack unchanged */
 	fistpl (%esp)
 	popl %eax
 	cmpl $32767,%eax
@@ -192,13 +192,13 @@ ASM_NAME(synth_1to1_i586_asm_dither):
 	jl 2f
 	movw %ax,(%esi)
 	jmp 4f
-1:	movw $32767,(%esi)
+		1:	movw $32767,(%esi)
 	jmp 3f
-2:	movw $-32768,(%esi)
-3:
-/*	incl %edi */
-4:
-.L54:
+		2:	movw $-32768,(%esi)
+		3:
+		/*	incl %edi */
+		4:
+		.L54:
 	addl $64,%ebx
 	subl $-128,%ecx
 	addl $4,%esi
@@ -235,14 +235,14 @@ ASM_NAME(synth_1to1_i586_asm_dither):
 	faddp %st,%st(1)
 	fxch %st(1)
 	faddp %st,%st(1)
-
+		
 	addl $4,DITHERINDEX2
 	andl $0x0003fffc,DITHERINDEX2
 	movl DITHERNOISE2,%edi
 	addl DITHERINDEX2,%edi	
-
+		
 	fadds (%edi)
-/* fistpl and popl as a unit keep the stack unchanged */
+		/* fistpl and popl as a unit keep the stack unchanged */
 	fistpl (%esp)
 	popl %eax
 	cmpl $32767,%eax
@@ -251,19 +251,19 @@ ASM_NAME(synth_1to1_i586_asm_dither):
 	jl 2f
 	movw %ax,(%esi)
 	jmp 4f
-1:	movw $32767,(%esi)
+		1:	movw $32767,(%esi)
 	jmp 3f
-2:	movw $-32768,(%esi)
-3:
-/*	incl %edi */
-4:
-.L62:
+		2:	movw $-32768,(%esi)
+		3:
+		/*	incl %edi */
+		4:
+		.L62:
 	addl $-64,%ebx
 	addl $4,%esi
 	movl LOC0,%edx
 	leal -128(%ecx,%edx,8),%ecx
 	movl $15,%ebp
-.L68:
+		.L68:
 	flds -4(%ecx)
 	fchs
 	fmuls (%ebx)
@@ -329,14 +329,14 @@ ASM_NAME(synth_1to1_i586_asm_dither):
 	fsubrp %st,%st(1)
 	fxch %st(1)
 	fsubrp %st,%st(1)
-
+		
 	addl $4,DITHERINDEX2
 	andl $0x0003fffc,DITHERINDEX2
 	movl DITHERNOISE2,%edi
 	addl DITHERINDEX2,%edi	
-
+		
 	fadds (%edi)
-/* fistpl and popl as a unit keep the stack unchanged */
+		/* fistpl and popl as a unit keep the stack unchanged */
 	fistpl (%esp)
 	popl %eax
 	cmpl $32767,%eax
@@ -345,38 +345,39 @@ ASM_NAME(synth_1to1_i586_asm_dither):
 	jl 2f
 	movw %ax,(%esi)
 	jmp 4f
-1:	movw $32767,(%esi)
+		1:	movw $32767,(%esi)
 	jmp 3f
-2:	movw $-32768,(%esi)
-3:
-/*	incl %edi */
-4:
-.L67:
+		2:	movw $-32768,(%esi)
+		3:
+		/*	incl %edi */
+		4:
+		.L67:
 	addl $-64,%ebx
 	addl $-128,%ecx
 	addl $4,%esi
 	decl %ebp
 	jnz .L68
-/* return ipv edi 0 in eax */
+		/* return ipv edi 0 in eax */
 	movl $0,%eax
-/* save ditherindex */
+		/* save ditherindex */
 	movl BO,%ebx
 	movl DITHERINDEX,%esi
 	movl %esi,4(%ebx);
-/* stack: 0=ebx 4=esi 8=edi 12=ebp 16,20,24,28=local 32=back 36=bandptr 40=channel 44=out 48=buffs 52=bo */
+		/* stack: 0=ebx 4=esi 8=edi 12=ebp 16,20,24,28=local 32=back 36=bandptr 40=channel 44=out 48=buffs 52=bo */
 	popl %ebx
 	popl %esi
 	popl %edi
 	popl %ebp
 	addl $16,%esp
-/* The stack must be now: 0=back 4=bandptr 8=channel 12=out 16=buffs 20=bo */
+		/* The stack must be now: 0=back 4=bandptr 8=channel 12=out 16=buffs 20=bo */
 	ret
-
-#if defined(PIC) && defined(__APPLE__)
+		
+		#if defined(PIC) && defined(__APPLE__)
 	.section __IMPORT,__jump_table,symbol_stubs,self_modifying_code+pure_instructions,5
-L_dct64_i386:
+		L_dct64_i386:
 	.indirect_symbol ASM_NAME(dct64_i386)
 	hlt ; hlt ; hlt ; hlt ; hlt
-#endif
-
-NONEXEC_STACK
+		#endif
+		
+		NONEXEC_STACK
+		

@@ -8,26 +8,26 @@
 #define C_TABSHEET_PARENT C_GuiObject
 
 class C_TabSheet : public C_TABSHEET_PARENT {
-  public:
+public:
 
-  C_TabSheet(ScriptObject *object);
-  C_TabSheet();
-  virtual ~C_TabSheet();
+C_TabSheet(ScriptObject *object);
+C_TabSheet();
+virtual ~C_TabSheet();
 
-  virtual void C_hook(ScriptObject *o);
+virtual void C_hook(ScriptObject *o);
 
-  ScriptObject *getScriptObject();
+ScriptObject *getScriptObject();
 
-  virtual int getCurPage();
-  virtual void setCurPage(int a);
+virtual int getCurPage();
+virtual void setCurPage(int a);
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int getcurpage_id;
-  static int setcurpage_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int getcurpage_id;
+static int setcurpage_id;
 };
 
 #endif

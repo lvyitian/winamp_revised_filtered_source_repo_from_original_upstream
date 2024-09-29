@@ -1,18 +1,18 @@
 /********************************************************************
- *                                                                  *
- * THIS FILE IS PART OF THE OggVorbis SOFTWARE CODEC SOURCE CODE.   *
- * USE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS     *
- * GOVERNED BY A BSD-STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE *
- * IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.       *
- *                                                                  *
- * THE OggVorbis SOURCE CODE IS (C) COPYRIGHT 1994-2009             *
- * by the Xiph.Org Foundation https://xiph.org/                     *
- *                                                                  *
- ********************************************************************
+*                                                                  *
+* THIS FILE IS PART OF THE OggVorbis SOFTWARE CODEC SOURCE CODE.   *
+* USE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS     *
+* GOVERNED BY A BSD-STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE *
+* IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.       *
+*                                                                  *
+* THE OggVorbis SOURCE CODE IS (C) COPYRIGHT 1994-2009             *
+* by the Xiph.Org Foundation https://xiph.org/                     *
+*                                                                  *
+********************************************************************
 
- function: PCM data envelope analysis and manipulation
+function: PCM data envelope analysis and manipulation
 
- ********************************************************************/
+********************************************************************/
 
 #ifndef _V_ENVELOPE_
 #define _V_ENVELOPE_
@@ -31,42 +31,42 @@
 #define VE_MAXSTRETCH 12  /* one-third full block */
 
 typedef struct {
-  float ampbuf[VE_AMP];
-  int   ampptr;
+float ampbuf[VE_AMP];
+int   ampptr;
 
-  float nearDC[VE_NEARDC];
-  float nearDC_acc;
-  float nearDC_partialacc;
-  int   nearptr;
+float nearDC[VE_NEARDC];
+float nearDC_acc;
+float nearDC_partialacc;
+int   nearptr;
 
 } envelope_filter_state;
 
 typedef struct {
-  int begin;
-  int end;
-  float *window;
-  float total;
+int begin;
+int end;
+float *window;
+float total;
 } envelope_band;
 
 typedef struct {
-  int ch;
-  int winlength;
-  int searchstep;
-  float minenergy;
+int ch;
+int winlength;
+int searchstep;
+float minenergy;
 
-  mdct_lookup  mdct;
-  float       *mdct_win;
+mdct_lookup  mdct;
+float       *mdct_win;
 
-  envelope_band          band[VE_BANDS];
-  envelope_filter_state *filter;
-  int   stretch;
+envelope_band          band[VE_BANDS];
+envelope_filter_state *filter;
+int   stretch;
 
-  int                   *mark;
+int                   *mark;
 
-  long storage;
-  long current;
-  long curmark;
-  long cursor;
+long storage;
+long current;
+long curmark;
+long cursor;
 } envelope_lookup;
 
 extern void _ve_envelope_init(envelope_lookup *e,vorbis_info *vi);

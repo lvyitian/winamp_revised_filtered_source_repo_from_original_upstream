@@ -28,7 +28,7 @@ db=`ls -1d $HOME/.mozilla/firefox/*default*`
 out=$1
 
 if test -z "$out"; then
-  out="ca-bundle.crt" # use a sensible default
+out="ca-bundle.crt" # use a sensible default
 fi
 
 currentdate=`date`
@@ -48,7 +48,7 @@ grep ' *[CcGTPpu]*,[CcGTPpu]*,[CcGTPpu]* *$' | \
 sed -e 's/ *[CcGTPpu]*,[CcGTPpu]*,[CcGTPpu]* *$//' -e 's/\(.*\)/"\1"/' | \
 sort | \
 while read nickname; \
- do echo $nickname | sed -e "s/Builtin Object Token://g"; \
+do echo $nickname | sed -e "s/Builtin Object Token://g"; \
 eval certutil -d $db -L -n "$nickname" -a ; \
 done >> $out
 

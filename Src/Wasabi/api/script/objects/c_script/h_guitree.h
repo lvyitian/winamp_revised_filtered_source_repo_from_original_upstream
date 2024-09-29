@@ -11,37 +11,37 @@ class H_GuiTree : public H_GUITREE_PARENT {
 
 public:
 
-  H_GuiTree(ScriptObject *o);
-  H_GuiTree();
-  virtual ~H_GuiTree();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_GuiTree(ScriptObject *o);
+H_GuiTree();
+virtual ~H_GuiTree();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onWantAutoContextMenu() {  }
-  virtual void hook_onMouseWheelUp(int clicked, int lines) {  }
-  virtual void hook_onMouseWheelDown(int clicked, int lines) {  }
-  virtual void hook_onContextMenu(int x, int y) {  }
-  virtual void hook_onChar(wchar_t c) {  }
-  virtual void hook_onItemRecvDrop(ScriptObject *item) {  }
-  virtual void hook_onLabelChange(ScriptObject *item) {  }
-  virtual void hook_onItemSelected(ScriptObject *item) {  }
-  virtual void hook_onItemDeselected(ScriptObject *item) {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onWantAutoContextMenu() {  }
+virtual void hook_onMouseWheelUp(int clicked, int lines) {  }
+virtual void hook_onMouseWheelDown(int clicked, int lines) {  }
+virtual void hook_onContextMenu(int x, int y) {  }
+virtual void hook_onChar(wchar_t c) {  }
+virtual void hook_onItemRecvDrop(ScriptObject *item) {  }
+virtual void hook_onLabelChange(ScriptObject *item) {  }
+virtual void hook_onItemSelected(ScriptObject *item) {  }
+virtual void hook_onItemDeselected(ScriptObject *item) {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onwantautocontextmenu_id;
-  static int onmousewheelup_id;
-  static int onmousewheeldown_id;
-  static int oncontextmenu_id;
-  static int onchar_id;
-  static int onitemrecvdrop_id;
-  static int onlabelchange_id;
-  static int onitemselected_id;
-  static int onitemdeselected_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onwantautocontextmenu_id;
+static int onmousewheelup_id;
+static int onmousewheeldown_id;
+static int oncontextmenu_id;
+static int onchar_id;
+static int onitemrecvdrop_id;
+static int onlabelchange_id;
+static int onitemselected_id;
+static int onitemdeselected_id;
 };
 
 #endif

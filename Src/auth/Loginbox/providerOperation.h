@@ -1,47 +1,47 @@
-#ifndef NULLSOFT_AUTH_LOGIN_PROVIDER_OPERATION_HEADER
-#define NULLSOFT_AUTH_LOGIN_PROVIDER_OPERATION_HEADER
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-#pragma once
-#endif
-
-#include <wtypes.h>
-
-class LoginProvider;
-class LoginProviderEnumerator;
-
-class LoginProviderOperation
-{
-public:
+		#ifndef NULLSOFT_AUTH_LOGIN_PROVIDER_OPERATION_HEADER
+		#define NULLSOFT_AUTH_LOGIN_PROVIDER_OPERATION_HEADER
+		
+		#if defined(_MSC_VER) && (_MSC_VER >= 1020)
+		#pragma once
+		#endif
+		
+		#include <wtypes.h>
+		
+		class LoginProvider;
+		class LoginProviderEnumerator;
+		
+		class LoginProviderOperation
+		{
+		public:
 	typedef enum
 	{
-		operationDelete = 0,
-		operationReplace = 1,
+operationDelete = 0,
+operationReplace = 1,
 	} OperationCode;
-
-protected:
+		
+		protected:
 	LoginProviderOperation(LoginProvider *pSource, LoginProvider *pTarget, UINT uCode);
 	~LoginProviderOperation();
-
-public:
+		
+		public:
 	static HRESULT CreateDeleteOperation(LoginProvider *pRemove, LoginProviderOperation **instance);
 	static HRESULT CreateReplaceOperation(LoginProvider *pSource, LoginProvider *pTarget, LoginProviderOperation **instance);
 	static HRESULT CreateFromUpdate(LoginProvider *active, LoginProviderEnumerator *enumerator, LoginProviderOperation **instance);
-
-public:
+		
+		public:
 	ULONG AddRef();
 	ULONG Release();
-
+		
 	UINT GetCode();
 	HRESULT GetSource(LoginProvider **provider);
 	HRESULT GetTarget(LoginProvider **provider);
-
-protected:
+		
+		protected:
 	ULONG ref;
 	LoginProvider *source;
 	LoginProvider *target;
 	UINT code;
-
-};
-
-#endif //NULLSOFT_AUTH_LOGIN_PROVIDER_OPERATION_HEADER
+		
+		};
+		
+		#endif //NULLSOFT_AUTH_LOGIN_PROVIDER_OPERATION_HEADER

@@ -22,8 +22,8 @@ PlBucketItem::~PlBucketItem() {
 }
 
 void PlBucketItem::onLeftPush(int x, int y) {
-  BUCKETITEM_PARENT::onLeftPush(x, y);
-  wa2.setWindowVisible(IPC_GETWND_PE, !wa2.isWindowVisible(IPC_GETWND_PE));
+BUCKETITEM_PARENT::onLeftPush(x, y);
+wa2.setWindowVisible(IPC_GETWND_PE, !wa2.isWindowVisible(IPC_GETWND_PE));
 }
 
 
@@ -35,8 +35,8 @@ EmbedBucketItem::~EmbedBucketItem() {
 }
 
 void EmbedBucketItem::onLeftPush(int x, int y) {
-  BUCKETITEM_PARENT::onLeftPush(x, y);
-  //wa2.setWindowVisible(IPC_GETWND_PE, !wa2.isWindowVisible(IPC_GETWND_PE));
+BUCKETITEM_PARENT::onLeftPush(x, y);
+//wa2.setWindowVisible(IPC_GETWND_PE, !wa2.isWindowVisible(IPC_GETWND_PE));
 }
 
 //-------------------------------------------------------------------------------------------
@@ -49,8 +49,8 @@ MbBucketItem::~MbBucketItem() {
 }
 
 void MbBucketItem::onLeftPush(int x, int y) {
-  BUCKETITEM_PARENT::onLeftPush(x, y);
-  wa2.setWindowVisible(IPC_GETWND_MB, !wa2.isWindowVisible(IPC_GETWND_MB));
+BUCKETITEM_PARENT::onLeftPush(x, y);
+wa2.setWindowVisible(IPC_GETWND_MB, !wa2.isWindowVisible(IPC_GETWND_MB));
 }
 #endif
 
@@ -63,8 +63,8 @@ VidBucketItem::~VidBucketItem() {
 
 //-------------------------------------------------------------------------------------------
 void VidBucketItem::onLeftPush(int x, int y) {
-  BUCKETITEM_PARENT::onLeftPush(x, y);
-  wa2.setWindowVisible(IPC_GETWND_VIDEO, !wa2.isWindowVisible(IPC_GETWND_VIDEO));
+BUCKETITEM_PARENT::onLeftPush(x, y);
+wa2.setWindowVisible(IPC_GETWND_VIDEO, !wa2.isWindowVisible(IPC_GETWND_VIDEO));
 }
 
 //-------------------------------------------------------------------------------------------
@@ -78,8 +78,8 @@ MlBucketItem::~MlBucketItem() {
 #define WA_MEDIALIB_MENUITEM_ID 23123
 
 void MlBucketItem::onLeftPush(int x, int y) {
-  BUCKETITEM_PARENT::onLeftPush(x, y);
-  SendMessageW(wa2.getMainWindow(), WM_COMMAND, WA_MEDIALIB_MENUITEM_ID, 0);
+BUCKETITEM_PARENT::onLeftPush(x, y);
+SendMessageW(wa2.getMainWindow(), WM_COMMAND, WA_MEDIALIB_MENUITEM_ID, 0);
 }
 
 //-------------------------------------------------------------------------------------------
@@ -91,6 +91,6 @@ VisBucketItem::~VisBucketItem() {
 }
 
 void VisBucketItem::onLeftPush(int x, int y) {
-  BUCKETITEM_PARENT::onLeftPush(x, y);
-  wa2.toggleVis();
+BUCKETITEM_PARENT::onLeftPush(x, y);
+wa2.toggleVis();
 }

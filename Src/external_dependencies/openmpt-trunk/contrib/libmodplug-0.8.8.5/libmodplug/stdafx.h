@@ -1,10 +1,10 @@
 /*
- * This source code is public domain.
- *
- * Authors: Rani Assaf <rani@magic.metawire.com>,
- *          Olivier Lapicque <olivierl@jps.net>,
- *          Adam Goode       <adam@evdebs.org> (endian and char fixes for PPC)
- */
+* This source code is public domain.
+*
+* Authors: Rani Assaf <rani@magic.metawire.com>,
+*          Olivier Lapicque <olivierl@jps.net>,
+*          Adam Goode       <adam@evdebs.org> (endian and char fixes for PPC)
+*/
 
 #ifndef MODPLUG_STDAFX_H
 #define MODPLUG_STDAFX_H
@@ -85,8 +85,8 @@ typedef void VOID;
 
 inline LONG MulDiv (long a, long b, long c)
 {
-  // if (!c) return 0;
-  return ((uint64_t) a * (uint64_t) b ) / c;
+// if (!c) return 0;
+return ((uint64_t) a * (uint64_t) b ) / c;
 }
 
 #define MODPLUG_NO_FILESAVE
@@ -102,10 +102,10 @@ inline LONG MulDiv (long a, long b, long c)
 
 inline int8_t * GlobalAllocPtr(unsigned int, size_t size)
 {
-  int8_t * p = (int8_t *) malloc(size);
+int8_t * p = (int8_t *) malloc(size);
 
-  if (p != NULL) memset(p, 0, size);
-  return p;
+if (p != NULL) memset(p, 0, size);
+return p;
 }
 
 inline void ProcessPlugins(int /* n */ ) {}

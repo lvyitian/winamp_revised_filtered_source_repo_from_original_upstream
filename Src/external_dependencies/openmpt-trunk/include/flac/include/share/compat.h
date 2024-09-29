@@ -1,40 +1,40 @@
 /* libFLAC - Free Lossless Audio Codec library
- * Copyright (C) 2012-2022  Xiph.Org Foundation
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * - Redistributions of source code must retain the above copyright
- * notice, this list of conditions and the following disclaimer.
- *
- * - Redistributions in binary form must reproduce the above copyright
- * notice, this list of conditions and the following disclaimer in the
- * documentation and/or other materials provided with the distribution.
- *
- * - Neither the name of the Xiph.org Foundation nor the names of its
- * contributors may be used to endorse or promote products derived from
- * this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+* Copyright (C) 2012-2022  Xiph.Org Foundation
+*
+* Redistribution and use in source and binary forms, with or without
+* modification, are permitted provided that the following conditions
+* are met:
+*
+* - Redistributions of source code must retain the above copyright
+* notice, this list of conditions and the following disclaimer.
+*
+* - Redistributions in binary form must reproduce the above copyright
+* notice, this list of conditions and the following disclaimer in the
+* documentation and/or other materials provided with the distribution.
+*
+* - Neither the name of the Xiph.org Foundation nor the names of its
+* contributors may be used to endorse or promote products derived from
+* this software without specific prior written permission.
+*
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+* ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+* LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+* A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+* CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+* EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+* PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+* PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+* LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+* NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+* SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 /* This is the preferred location of all CPP hackery to make $random_compiler
- * work like something approaching a C99 (or maybe more accurately GNU99)
- * compiler.
- *
- * It is assumed that this header will be included after "config.h".
- */
+* work like something approaching a C99 (or maybe more accurately GNU99)
+* compiler.
+*
+* It is assumed that this header will be included after "config.h".
+*/
 
 #ifndef FLAC__SHARE__COMPAT_H
 #define FLAC__SHARE__COMPAT_H
@@ -147,23 +147,23 @@
 #endif /* OpenMPT */
 #define FLAC__USE_FILELENGTHI64
 /*
- *************************************************************************************
- * V110_SDK71, in MSVC 2017 also known as v141_xp, is a platform toolset that is supposed
- * to target Windows XP. It turns out however that certain functions provided silently fail
- * on Windows XP only, which makes debugging challenging. This only occurs when building with
- * /MT. This problem has been reported to Microsoft, but there hasn't been a fix for years. See
- * https://web.archive.org/web/20170327195018/https://connect.microsoft.com/VisualStudio/feedback/details/1557168/wstat64-returns-1-on-xp-always
- *
- * It is known that this problem affects the functions _wstat64 (used by flac_stat i.e.
- * stat64_utf8) and _fstat64 (i.e. flac_fstat) and therefore affects both libFLAC in
- * several places as well as the flac and metaflac command line tools
- *
- * As the extent of this problem is unknown and Microsoft seems unwilling to fix it,
- * users of libFLAC building with Visual Studio are encouraged to not use the /MT compile
- * switch when explicitly targeting Windows XP. When use of /MT is deemed necessary with
- * this toolset, be sure to check whether your application works properly on Windows XP.
- * It is also possible to build for Windows XP with MinGW instead.
- *************************************************************************************
+*************************************************************************************
+* V110_SDK71, in MSVC 2017 also known as v141_xp, is a platform toolset that is supposed
+* to target Windows XP. It turns out however that certain functions provided silently fail
+* on Windows XP only, which makes debugging challenging. This only occurs when building with
+* /MT. This problem has been reported to Microsoft, but there hasn't been a fix for years. See
+* https://web.archive.org/web/20170327195018/https://connect.microsoft.com/VisualStudio/feedback/details/1557168/wstat64-returns-1-on-xp-always
+*
+* It is known that this problem affects the functions _wstat64 (used by flac_stat i.e.
+* stat64_utf8) and _fstat64 (i.e. flac_fstat) and therefore affects both libFLAC in
+* several places as well as the flac and metaflac command line tools
+*
+* As the extent of this problem is unknown and Microsoft seems unwilling to fix it,
+* users of libFLAC building with Visual Studio are encouraged to not use the /MT compile
+* switch when explicitly targeting Windows XP. When use of /MT is deemed necessary with
+* this toolset, be sure to check whether your application works properly on Windows XP.
+* It is also possible to build for Windows XP with MinGW instead.
+*************************************************************************************
 */
 #  endif
 #endif /* defined _MSC_VER */
@@ -221,11 +221,11 @@
 #endif
 
 /* FLAC needs to compile and work correctly on systems with a normal ISO C99
- * snprintf as well as Microsoft Visual Studio which has an non-standards
- * conformant snprint_s function.
- *
- * This function wraps the MS version to behave more like the ISO version.
- */
+* snprintf as well as Microsoft Visual Studio which has an non-standards
+* conformant snprint_s function.
+*
+* This function wraps the MS version to behave more like the ISO version.
+*/
 #ifdef __cplusplus
 extern "C" {
 #endif

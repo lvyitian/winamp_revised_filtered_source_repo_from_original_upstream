@@ -1,22 +1,23 @@
-#ifndef __WASABI_API_READERCALLBACK_H
-#define __WASABI_API_READERCALLBACK_H
-
-#include <bfc/dispatch.h>
-
-class NOVTABLE api_readercallback : public Dispatchable
-{
-public:
-	void metaDataReader_onData(const char *data, int size);
-
-	enum 
+	#ifndef __WASABI_API_READERCALLBACK_H
+	#define __WASABI_API_READERCALLBACK_H
+	
+	#include <bfc/dispatch.h>
+	
+	class NOVTABLE api_readercallback : public Dispatchable
 	{
-	    METADATAREADERONDATA = 10,
-	};
-};
-
-inline void api_readercallback::metaDataReader_onData(const char *data, int size)
+	public:
+void metaDataReader_onData(const char *data, int size);
+	
+enum 
 {
-	_voidcall(METADATAREADERONDATA, data, size);
-}
-
-#endif
+    METADATAREADERONDATA = 10,
+};
+	};
+	
+	inline void api_readercallback::metaDataReader_onData(const char *data, int size)
+	{
+_voidcall(METADATAREADERONDATA, data, size);
+	}
+	
+	#endif
+	

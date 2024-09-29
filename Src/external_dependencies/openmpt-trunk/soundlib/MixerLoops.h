@@ -1,11 +1,11 @@
 /*
- * MixerLoops.h
- * ------------
- * Purpose: Utility inner loops for mixer-related functionality.
- * Notes  : none.
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* MixerLoops.h
+* ------------
+* Purpose: Utility inner loops for mixer-related functionality.
+* Notes  : none.
+* Authors: OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 
 #pragma once

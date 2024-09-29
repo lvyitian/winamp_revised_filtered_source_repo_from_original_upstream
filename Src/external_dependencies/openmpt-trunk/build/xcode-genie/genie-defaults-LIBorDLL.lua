@@ -1,10 +1,11 @@
-
-configuration {}
-
-configuration "Debug"
-	kind "SharedLib"
-
-configuration "Release"
-	kind "SharedLib"
-
-configuration {}
+	
+	configuration {}
+	
+	configuration "Debug"
+kind "SharedLib"
+	
+	configuration "Release"
+kind "SharedLib"
+	
+	configuration {}
+	

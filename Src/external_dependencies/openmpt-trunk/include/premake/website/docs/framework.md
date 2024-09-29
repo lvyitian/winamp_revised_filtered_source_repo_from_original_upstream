@@ -10,12 +10,12 @@ This value currently is only applied to Visual Studio 2005 or later, and GNU mak
 
 `version` is one of:
 
- * 1.0
- * 1.1
- * 2.0
- * 3.0
- * 3.5
- * 4.0
+* 1.0
+* 1.1
+* 2.0
+* 3.0
+* 3.5
+* 4.0
 
 ### Applies To ###
 

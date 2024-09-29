@@ -6,17 +6,17 @@
 class Systray 
 {
 public: 
-  Systray(HWND wnd, int uid, int msg, HICON smallicon);
-  ~Systray();
-  void setTip(const wchar_t *tip);
+Systray(HWND wnd, int uid, int msg, HICON smallicon);
+~Systray();
+void setTip(const wchar_t *tip);
 private:
-  bool addIcon();
-  bool deleteIcon();
-  bool setTip();
-  int id, message;
-  HWND hwnd;
-  HICON icon;
-  StringW tip;
+bool addIcon();
+bool deleteIcon();
+bool setTip();
+int id, message;
+HWND hwnd;
+HICON icon;
+StringW tip;
 };
 
 

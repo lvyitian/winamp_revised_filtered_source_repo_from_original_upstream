@@ -11,9 +11,9 @@
 
 #ifndef LONGX86
 #ifdef _WIN64
-  #define LONGX86	LONG_PTR
+#define LONGX86	LONG_PTR
 #else /*_WIN64*/
-  #define LONGX86	 LONG	
+#define LONGX86	 LONG	
 #endif  /*_WIN64*/
 #endif // LONGX86
 

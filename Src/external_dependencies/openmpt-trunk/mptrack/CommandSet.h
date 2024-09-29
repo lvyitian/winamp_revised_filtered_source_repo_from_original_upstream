@@ -1,33 +1,33 @@
-/*
- * CommandSet.h
- * ------------
- * Purpose: Header file for custom key handling: List of supported keyboard shortcuts and class for them.
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-
-#pragma once
-
-#include "openmpt/all/BuildSettings.hpp"
-#include <string>
-#include "openmpt/base/FlagSet.hpp"
-#include <map>
-#include <bitset>
-
-OPENMPT_NAMESPACE_BEGIN
-
-#define HOTKEYF_MIDI 0x10      // modifier mask for MIDI CCs
-#define HOTKEYF_RSHIFT 0x20    // modifier mask for right Shift key
-#define HOTKEYF_RCONTROL 0x40  // modifier mask for right Ctrl key
-#define HOTKEYF_RALT 0x80      // modifier mask for right Alt key
-
-enum InputTargetContext : int8
-{
+		/*
+        * CommandSet.h
+        * ------------
+        * Purpose: Header file for custom key handling: List of supported keyboard shortcuts and class for them.
+        * Notes  : (currently none)
+        * Authors: OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		
+		#pragma once
+		
+		#include "openmpt/all/BuildSettings.hpp"
+		#include <string>
+		#include "openmpt/base/FlagSet.hpp"
+		#include <map>
+		#include <bitset>
+		
+		OPENMPT_NAMESPACE_BEGIN
+		
+		#define HOTKEYF_MIDI 0x10      // modifier mask for MIDI CCs
+		#define HOTKEYF_RSHIFT 0x20    // modifier mask for right Shift key
+		#define HOTKEYF_RCONTROL 0x40  // modifier mask for right Ctrl key
+		#define HOTKEYF_RALT 0x80      // modifier mask for right Alt key
+		
+		enum InputTargetContext : int8
+		{
 	kCtxUnknownContext = -1,
 	kCtxAllContexts = 0,
-
+		
 	kCtxViewGeneral,
 	kCtxViewPatterns,
 	kCtxViewPatternsNote,
@@ -41,7 +41,7 @@ enum InputTargetContext : int8
 	kCtxViewTree,
 	kCtxInsNoteMap,
 	kCtxVSTGUI,
-
+		
 	kCtxCtrlGeneral,
 	kCtxCtrlPatterns,
 	kCtxCtrlSamples,
@@ -50,26 +50,26 @@ enum InputTargetContext : int8
 	kCtxCtrlOrderlist,
 	kCtxChannelSettings,
 	kCtxMaxInputContexts
-};
-
-enum KeyEventType : int8
-{
+		};
+		
+		enum KeyEventType : int8
+		{
 	kKeyEventNone   = 0,
 	kKeyEventDown   = 1 << 0,
 	kKeyEventUp     = 1 << 1,
 	kKeyEventRepeat = 1 << 2,
 	kNumKeyEvents   = 1 << 3
-};
-DECLARE_FLAGSET(KeyEventType)
-
-
-enum CommandID
-{
+		};
+		DECLARE_FLAGSET(KeyEventType)
+		
+		
+		enum CommandID
+		{
 	kcCommandSetNumNotes = 33,  // kcVPEndNotes - kcVPStartNotes
-
+		
 	kcNull = -1,
 	kcFirst,
-
+		
 	//Global
 	kcGlobalStart = kcFirst,
 	kcStartFile = kcGlobalStart,
@@ -92,7 +92,7 @@ enum CommandID
 	kcFileImportMidiLib,
 	kcFileAddSoundBank,
 	kcEndFile = kcFileAddSoundBank,
-
+		
 	kcStartPlayCommands,
 	kcPlayPauseSong = kcStartPlayCommands,
 	kcPauseSong,
@@ -114,7 +114,7 @@ enum CommandID
 	kcSpeedIncrease,
 	kcSpeedDecrease,
 	kcEndPlayCommands = kcSpeedDecrease,
-
+		
 	kcStartEditCommands,
 	kcEditUndo = kcStartEditCommands,
 	kcEditRedo,
@@ -129,12 +129,12 @@ enum CommandID
 	kcEditFind,
 	kcEditFindNext,
 	kcEndEditCommands = kcEditFindNext,
-/*
+		/*
 	kcWindowNew,
 	kcWindowCascade,
 	kcWindowTileHorz,
 	kcWindowTileVert,
-*/
+		*/
 	kcStartView,
 	kcViewGeneral = kcStartView,
 	kcViewPattern,
@@ -156,7 +156,7 @@ enum CommandID
 	kcSwitchToInstrLibrary,
 	kcHelp,
 	kcEndView = kcHelp,
-
+		
 	kcStartMisc,
 	kcPrevInstrument = kcStartMisc,
 	kcNextInstrument,
@@ -165,10 +165,10 @@ enum CommandID
 	kcPrevOrder,
 	kcNextOrder,
 	kcEndMisc = kcNextOrder,
-
+		
 	kcDummyShortcut,
 	kcGlobalEnd = kcDummyShortcut,
-
+		
 	//Pattern Navigation
 	kcStartPatNavigation,
 	kcStartJumpSnap = kcStartPatNavigation,
@@ -202,7 +202,7 @@ enum CommandID
 	kcEndAbsolute,
 	kcEndHomeEnd = kcEndAbsolute,
 	kcEndPatNavigation = kcEndHomeEnd,
-
+		
 	// with select. Order must match above.
 	kcStartPatNavigationSelect,
 	kcPatternJumpDownh1Select = kcStartPatNavigationSelect,
@@ -230,7 +230,7 @@ enum CommandID
 	kcEndVerticalSelect,
 	kcEndAbsoluteSelect,
 	kcEndPatNavigationSelect = kcEndAbsoluteSelect,
-
+		
 	//Pattern Editing
 	kcStartPatternEditing,
 	kcStartSelect = kcStartPatternEditing,
@@ -255,7 +255,7 @@ enum CommandID
 	kcLoseSelection,
 	kcCopyAndLoseSelection,
 	kcEndSelect = kcCopyAndLoseSelection,
-
+		
 	kcStartPatternClipboard,
 	kcCutPatternChannel = kcStartPatternClipboard,
 	kcCutPattern,
@@ -267,7 +267,7 @@ enum CommandID
 	kcClipboardPrev,
 	kcClipboardNext,
 	kcEndPatternClipboard = kcClipboardNext,
-
+		
 	kcStartPatternEditMisc,
 	kcToggleFollowSong = kcStartPatternEditMisc,
 	kcCursorCopy,
@@ -310,7 +310,7 @@ enum CommandID
 	kcToggleNoteOffRecordPC,
 	kcToggleNoteOffRecordMIDI,
 	kcEndPatternEditMisc = kcToggleNoteOffRecordMIDI,
-
+		
 	kcStartChannelKeys,
 	kcChannelMute = kcStartChannelKeys,
 	kcChannelSolo,
@@ -374,7 +374,7 @@ enum CommandID
 	kcPrevSequence,
 	kcNextSequence,
 	kcEndPatternEditing = kcNextSequence,
-
+		
 	//Notes
 	kcVPStartNotes,
 	kcVPNoteC_0 = kcVPStartNotes,
@@ -412,7 +412,7 @@ enum CommandID
 	kcVPNoteGS2,
 	kcVPNoteA_3,
 	kcVPEndNotes = kcVPNoteA_3,
-
+		
 	//Note stops
 	kcVPStartNoteStops,
 	kcVPNoteStopC_0 = kcVPStartNoteStops,
@@ -450,7 +450,7 @@ enum CommandID
 	kcVPNoteStopGS2,
 	kcVPNoteStopA_3,
 	kcVPEndNoteStops = kcVPNoteStopA_3,
-
+		
 	//Chords
 	kcVPStartChords,
 	kcVPChordC_0 = kcVPStartChords,
@@ -488,7 +488,7 @@ enum CommandID
 	kcVPChordGS2,
 	kcVPChordA_3,
 	kcVPEndChords = kcVPChordA_3,
-
+		
 	//Chord Stops
 	kcVPStartChordStops,
 	kcVPChordStopC_0 = kcVPStartChordStops,
@@ -526,7 +526,7 @@ enum CommandID
 	kcVPChordStopGS2,
 	kcVPChordStopA_3,
 	kcVPEndChordStops = kcVPChordStopA_3,
-
+		
 	//Set octave from note column
 	kcSetOctave0,
 	kcSetOctave1,
@@ -538,7 +538,7 @@ enum CommandID
 	kcSetOctave7,
 	kcSetOctave8,
 	kcSetOctave9,
-
+		
 	// Release set octave key
 	kcSetOctaveStop0,
 	kcSetOctaveStop1,
@@ -550,7 +550,7 @@ enum CommandID
 	kcSetOctaveStop7,
 	kcSetOctaveStop8,
 	kcSetOctaveStop9,
-
+		
 	//Note Misc
 	kcStartNoteMisc,
 	kcChordModifier = kcStartNoteMisc,
@@ -563,8 +563,8 @@ enum CommandID
 	kcNotePC,
 	kcNotePCS,
 	kcEndNoteMisc = kcNotePCS,
-
-
+		
+		
 	//Set instruments
 	kcSetIns0,
 	kcSetIns1,
@@ -576,7 +576,7 @@ enum CommandID
 	kcSetIns7,
 	kcSetIns8,
 	kcSetIns9,
-
+		
 	//Volume stuff
 	kcSetVolumeStart,
 	kcSetVolume0 = kcSetVolumeStart,
@@ -605,7 +605,7 @@ enum CommandID
 	kcSetVolumeITUnused,      //:
 	kcSetVolumeITOffset,      //o
 	kcSetVolumeEnd = kcSetVolumeITOffset,
-
+		
 	//Effect params
 	kcSetFXParam0,
 	kcSetFXParam1,
@@ -623,7 +623,7 @@ enum CommandID
 	kcSetFXParamD,
 	kcSetFXParamE,
 	kcSetFXParamF,
-
+		
 	//Effect commands. ORDER IS CRUCIAL.
 	kcSetFXStart,
 	kcFixedFXStart = kcSetFXStart,
@@ -665,7 +665,7 @@ enum CommandID
 	kcSetFXFinetune,        //?,+
 	kcSetFXFinetuneSmooth,  //?,*
 	kcSetFXEnd = kcSetFXFinetuneSmooth,
-
+		
 	kcStartInstrumentMisc,
 	kcInstrumentLoad = kcStartInstrumentMisc,
 	kcInstrumentSave,
@@ -707,7 +707,7 @@ enum CommandID
 	kcInstrumentEnvelopeSetSustainLoopEnd,
 	kcInstrumentEnvelopeToggleReleaseNode,
 	kcEndInstrumentMisc = kcInstrumentEnvelopeToggleReleaseNode,
-
+		
 	kcStartInstrumentCtrlMisc,
 	kcInstrumentCtrlLoad = kcStartInstrumentCtrlMisc,
 	kcInstrumentCtrlSave,
@@ -725,7 +725,7 @@ enum CommandID
 	kcInsNoteMapTransposeOctUp,
 	kcInsNoteMapTransposeOctDown,
 	kcEndInstrumentCtrlMisc = kcInsNoteMapTransposeOctDown,
-
+		
 	kcStartSampleMisc,
 	kcSampleLoad = kcStartSampleMisc,
 	kcSampleLoadRaw,
@@ -738,7 +738,7 @@ enum CommandID
 	kcSampleTransposeOctUp,
 	kcSampleTransposeOctDown,
 	kcEndSampleMisc = kcSampleTransposeOctDown,
-
+		
 	kcStartSampleEditing,
 	kcSampleTrim = kcStartSampleEditing,
 	kcSampleTrimToLoopEnd,
@@ -777,44 +777,44 @@ enum CommandID
 	kcSampleXFade,
 	kcSampleAutotune,
 	kcEndSampleEditing = kcSampleAutotune,
-
+		
 	kcStartSampleCues,
 	kcEndSampleCues = kcStartSampleCues + 8,
 	kcSampleSlice,
 	kcEndSampleCueGroup = kcSampleSlice,
-
+		
 	kcSampStartNotes,
 	kcSampEndNotes = kcSampStartNotes + kcCommandSetNumNotes,
 	kcSampStartNoteStops,
 	kcSampEndNoteStops = kcSampStartNoteStops + kcCommandSetNumNotes,
-
+		
 	kcInstrumentStartNotes,
 	kcInstrumentEndNotes = kcInstrumentStartNotes + kcCommandSetNumNotes,
 	kcInstrumentStartNoteStops,
 	kcInstrumentEndNoteStops = kcInstrumentStartNoteStops + kcCommandSetNumNotes,
-
+		
 	kcTreeViewStartNotes,
 	kcTreeViewEndNotes = kcTreeViewStartNotes + kcCommandSetNumNotes,
 	kcTreeViewStartNoteStops,
 	kcTreeViewEndNoteStops = kcTreeViewStartNoteStops + kcCommandSetNumNotes,
-
+		
 	kcInsNoteMapStartNotes,
 	kcInsNoteMapEndNotes = kcInsNoteMapStartNotes + kcCommandSetNumNotes,
 	kcInsNoteMapStartNoteStops,
 	kcInsNoteMapEndNoteStops = kcInsNoteMapStartNoteStops + kcCommandSetNumNotes,
-
+		
 	kcVSTGUIStartNotes,
 	kcVSTGUIEndNotes = kcVSTGUIStartNotes + kcCommandSetNumNotes,
 	kcVSTGUIStartNoteStops,
 	kcVSTGUIEndNoteStops = kcVSTGUIStartNoteStops + kcCommandSetNumNotes,
-
+		
 	kcCommentsStartNotes,
 	kcCommentsEndNotes = kcCommentsStartNotes + kcCommandSetNumNotes,
 	kcCommentsStartNoteStops,
 	kcCommentsEndNoteStops = kcCommentsStartNoteStops + kcCommandSetNumNotes,
-
+		
 	kcTreeViewStopPreview,
-
+		
 	kcStartVSTGUICommands,
 	kcVSTGUIPrevPreset = kcStartVSTGUICommands,
 	kcVSTGUINextPreset,
@@ -826,7 +826,7 @@ enum CommandID
 	kcVSTGUIToggleSendKeysToPlug,
 	kcVSTGUIBypassPlug,
 	kcEndVSTGUICommands = kcVSTGUIBypassPlug,
-
+		
 	kcStartOrderlistCommands,
 	// Orderlist edit
 	kcStartOrderlistEdit = kcStartOrderlistCommands,
@@ -875,7 +875,7 @@ enum CommandID
 	kcOrderlistUnlockPlayback,
 	kcEndOrderlistLock = kcOrderlistUnlockPlayback,
 	kcEndOrderlistCommands = kcEndOrderlistLock,
-
+		
 	kcStartChnSettingsCommands,
 	kcChnSettingsPrev = kcStartChnSettingsCommands,
 	kcChnSettingsNext,
@@ -883,19 +883,19 @@ enum CommandID
 	kcChnColorFromNext,
 	kcChnSettingsClose,
 	kcEndChnSettingsCommands = kcChnSettingsClose,
-
+		
 	kcStartCommentsCommands,
 	kcToggleSmpInsList = kcStartCommentsCommands,
 	kcExecuteSmpInsListItem,
 	kcRenameSmpInsListItem,
 	kcEndCommentsCommands = kcRenameSmpInsListItem,
-
+		
 	kcNumCommands,
-};
-
-
-enum Modifiers : uint8
-{
+		};
+		
+		
+		enum Modifiers : uint8
+		{
 	ModNone = 0,
 	ModShift = HOTKEYF_SHIFT,
 	ModCtrl = HOTKEYF_CONTROL,
@@ -906,28 +906,28 @@ enum Modifiers : uint8
 	ModRCtrl = HOTKEYF_RCONTROL,
 	ModRAlt = HOTKEYF_RALT,
 	MaxMod = ModShift | ModCtrl | ModAlt | ModWin | ModMidi | ModRShift | ModRCtrl | ModRAlt,
-};
-DECLARE_FLAGSET(Modifiers)
-
-
-struct KeyCombination
-{
-protected:
+		};
+		DECLARE_FLAGSET(Modifiers)
+		
+		
+		struct KeyCombination
+		{
+		protected:
 	InputTargetContext ctx;  // TODO: This should probably rather be a member of CommandStruct and not of the individual key combinations for consistency's sake.
 	FlagSet<Modifiers> mod;
 	uint8 code;
 	FlagSet<KeyEventType> event;
-
+		
 	constexpr uint32 AsUint32() const
 	{
-		static_assert(sizeof(KeyCombination) == sizeof(uint32));
-		return (static_cast<uint32>(ctx) << 0) |
-		       (static_cast<uint32>(mod.GetRaw()) << 8) |
-		       (static_cast<uint32>(code) << 16) |
-		       (static_cast<uint32>(event.GetRaw()) << 24);
+static_assert(sizeof(KeyCombination) == sizeof(uint32));
+return (static_cast<uint32>(ctx) << 0) |
+       (static_cast<uint32>(mod.GetRaw()) << 8) |
+       (static_cast<uint32>(code) << 16) |
+       (static_cast<uint32>(event.GetRaw()) << 24);
 	}
-
-public:
+		
+		public:
 	KeyCombination(InputTargetContext context = kCtxAllContexts, FlagSet<Modifiers> modifier = ModNone, UINT key = 0, FlagSet<KeyEventType> type = kKeyEventNone)
 	    : ctx(context)
 	    , mod(modifier)
@@ -935,80 +935,80 @@ public:
 	    , event(type)
 	{
 	}
-
+		
 	constexpr bool operator==(const KeyCombination &other) const
 	{
-		return ctx == other.ctx && mod == other.mod && code == other.code && event == other.event;
+return ctx == other.ctx && mod == other.mod && code == other.code && event == other.event;
 	}
-
+		
 	constexpr bool operator<(const KeyCombination &kc) const
 	{
-		return AsUint32() < kc.AsUint32();
+return AsUint32() < kc.AsUint32();
 	}
-
+		
 	// Getters / Setters
 	void Context(InputTargetContext context) { ctx = context; }
 	constexpr InputTargetContext Context() const { return ctx; }
-
+		
 	void Modifier(FlagSet<Modifiers> modifier) { mod = modifier; }
 	constexpr FlagSet<Modifiers> Modifier() const { return mod; }
 	void Modifier(const KeyCombination &other) { mod = other.mod; }
 	void AddModifier(FlagSet<Modifiers> modifier) { mod |= modifier; }
 	void AddModifier(const KeyCombination &other) { mod |= other.mod; }
-
+		
 	void KeyCode(UINT key) { code = static_cast<uint8>(key); }
 	constexpr UINT KeyCode() const { return code; }
-
+		
 	void EventType(FlagSet<KeyEventType> type) { event = type; }
 	constexpr FlagSet<KeyEventType> EventType() const { return event; }
-
+		
 	static KeyCombination FromLPARAM(LPARAM lParam)
 	{
-		return KeyCombination(
-		    static_cast<InputTargetContext>((lParam >> 0) & 0xFF),
-		    static_cast<Modifiers>((lParam >> 8) & 0xFF),
-		    static_cast<UINT>((lParam >> 16) & 0xFF),
-		    static_cast<KeyEventType>((lParam >> 24) & 0xFF));
+return KeyCombination(
+    static_cast<InputTargetContext>((lParam >> 0) & 0xFF),
+    static_cast<Modifiers>((lParam >> 8) & 0xFF),
+    static_cast<UINT>((lParam >> 16) & 0xFF),
+    static_cast<KeyEventType>((lParam >> 24) & 0xFF));
 	}
 	LPARAM AsLPARAM() const { return AsUint32(); }
-
+		
 	// Key combination to string
 	static CString GetContextText(InputTargetContext ctx);
 	CString GetContextText() const { return GetContextText(Context()); }
-
+		
 	static CString GetModifierText(FlagSet<Modifiers> mod);
 	CString GetModifierText() const { return GetModifierText(Modifier()); }
-
+		
 	static CString GetKeyText(FlagSet<Modifiers> mod, UINT code);
 	CString GetKeyText() const { return GetKeyText(Modifier(), KeyCode()); }
-
+		
 	static CString GetKeyEventText(FlagSet<KeyEventType> event);
 	CString GetKeyEventText() const { return GetKeyEventText(EventType()); }
-
+		
 	static bool IsExtended(UINT code);
-};
-
-using KeyMap = std::multimap<KeyCombination, CommandID>;
-using KeyMapRange = std::pair<KeyMap::const_iterator, KeyMap::const_iterator>;
-
-//KeyMap
-
-struct KeyCommand
-{
+		};
+		
+		using KeyMap = std::multimap<KeyCombination, CommandID>;
+		using KeyMapRange = std::pair<KeyMap::const_iterator, KeyMap::const_iterator>;
+		
+		//KeyMap
+		
+		struct KeyCommand
+		{
 	static constexpr uint32 Dummy = 1u << 31;
 	static constexpr uint32 Hidden = 1u << 30;
 	static constexpr uint32 UIDMask = Hidden - 1u;
-
+		
 	std::vector<KeyCombination> kcList;
 	CString Message;
-
-protected:
+		
+		protected:
 	uint32 UID = 0;
-
-public:
+		
+		public:
 	KeyCommand() = default;
 	KeyCommand(uint32 uid, const TCHAR *message = _T(""), std::vector<KeyCombination> keys = {});
-
+		
 	// Unique ID for on-disk keymap format.
 	// Note that hidden commands do not have a unique ID, because they are never written to keymap files.
 	uint32 ID() const noexcept { return UID & UIDMask; }
@@ -1017,14 +1017,14 @@ public:
 	bool IsDummy() const noexcept { return (UID & Dummy) != 0; }
 	// Hidden commands are not configurable by the user (e.g. derived from dummy commands or note entry keys duplicated into other contexts)
 	bool IsHidden() const noexcept { return (UID & Hidden) != 0; }
-};
-
-
-enum RuleID
-{
+		};
+		
+		
+		enum RuleID
+		{
 	krPreventDuplicate,
 	krDeleteOldOnConflict,
-
+		
 	krAllowNavigationWithSelection,
 	krAllowSelectionWithNavigation,
 	krAutoSelectOff,
@@ -1037,48 +1037,48 @@ enum RuleID
 	krCheckModifiers,
 	krPropagateSampleManipulation,
 	kNumRules
-};
-
-struct CModSpecifications;
-
-class CCommandSet
-{
-protected:
+		};
+		
+		struct CModSpecifications;
+		
+		class CCommandSet
+		{
+		protected:
 	//util
 	void SetupCommands();
 	void SetupContextHierarchy();
 	CString EnforceAll(KeyCombination kc, CommandID cmd, bool adding);
-
+		
 	CommandID FindCmd(uint32 uid) const;
 	bool KeyCombinationConflict(KeyCombination kc1, KeyCombination kc2, bool checkEventConflict = true) const;
-
+		
 	const CModSpecifications *m_oldSpecs = nullptr;
 	KeyCommand m_commands[kcNumCommands];
 	std::bitset<kCtxMaxInputContexts> m_isParentContext[kCtxMaxInputContexts];
 	std::bitset<kNumRules> m_enforceRule;
-
-public:
+		
+		public:
 	CCommandSet();
-
+		
 	// Population
 	CString Add(KeyCombination kc, CommandID cmd, bool overwrite, int pos = -1, bool checkEventConflict = true);
 	CString Remove(KeyCombination kc, CommandID cmd);
 	CString Remove(int pos, CommandID cmd);
-
+		
 	std::pair<CommandID, KeyCombination> IsConflicting(KeyCombination kc, CommandID cmd, bool checkEventConflict = true) const;
 	bool IsCrossContextConflict(KeyCombination kc1, KeyCombination kc2) const;
-
+		
 	// Tranformation
 	bool QuickChange_SetEffects(const CModSpecifications &modSpecs);
 	bool QuickChange_NotesRepeat(bool repeat);
-
+		
 	// Communication
 	KeyCombination GetKey(CommandID cmd, UINT key) const { return m_commands[cmd].kcList[key]; }
 	bool isHidden(UINT c) const { return m_commands[c].IsHidden(); }
 	int GetKeyListSize(CommandID cmd) const { return (cmd != kcNull) ? static_cast<int>(m_commands[cmd].kcList.size()) : 0; }
 	CString GetCommandText(CommandID cmd) const { return m_commands[cmd].Message; }
 	CString GetKeyTextFromCommand(CommandID c, UINT key) const;
-
+		
 	// Pululation ;)
 	void Copy(const CCommandSet *source);  // Copy the contents of a commandset into this command set
 	void GenKeyMap(KeyMap &km);            // Generate a keymap from this command set
@@ -1086,6 +1086,7 @@ public:
 	bool LoadFile(const mpt::PathString &filename);
 	bool LoadFile(std::istream &iStrm, const mpt::ustring &filenameDescription, const bool fillExistingSet = false);
 	bool LoadDefaultKeymap();
-};
-
-OPENMPT_NAMESPACE_END
+		};
+		
+		OPENMPT_NAMESPACE_END
+		

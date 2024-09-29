@@ -296,7 +296,7 @@
 /* #undef HAVE_IOCTLSOCKET_CAMEL */
 
 /* Define to 1 if you have a working IoctlSocket camel case FIONBIO function.
-   */
+*/
 /* #undef HAVE_IOCTLSOCKET_CAMEL_FIONBIO */
 
 /* Define to 1 if you have a working ioctlsocket FIONBIO function. */
@@ -729,7 +729,7 @@
 #define HAVE_ZLIB_H 1
 
 /* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
+*/
 /* #undef LT_OBJDIR */
 
 /* If you lack a fine basename() prototype */
@@ -913,7 +913,7 @@
 #define USE_UNIX_SOCKETS
 
 /* Define to 1 if you are building a Windows target without large file
-   support. */
+support. */
 /* #undef USE_WIN32_LARGE_FILES */
 
 /* to enable SSPI support */
@@ -952,7 +952,7 @@
 /* #undef in_addr_t */
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
-   calls it, or to nothing if 'inline' is not supported under any name.  */
+calls it, or to nothing if 'inline' is not supported under any name.  */
 #ifndef __cplusplus
 #undef inline
 #endif

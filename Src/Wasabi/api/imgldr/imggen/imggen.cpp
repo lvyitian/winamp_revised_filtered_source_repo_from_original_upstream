@@ -17,13 +17,13 @@ static const GUID guid =
 { 0x9c9cb15e, 0x2904, 0x4df2, { 0xb8, 0xce, 0xff, 0xbc, 0x6c, 0xd2, 0x30, 0xdc } };
 
 WACNAME::WACNAME() {
-  registerService(new waServiceFactoryTSingle<svc_imageGenerator, SolidImage>);
-  registerService(new waServiceFactoryTSingle<svc_imageGenerator, GradientImage>);
-  registerService(new waServiceFactoryTSingle<svc_imageGenerator, OsEdgeImage>);
-  registerService(new waServiceFactoryTSingle<svc_imageGenerator, PolyImage>);
-  registerService(new XuiObjectCreator<XuiShadowWndSvc>);
+registerService(new waServiceFactoryTSingle<svc_imageGenerator, SolidImage>);
+registerService(new waServiceFactoryTSingle<svc_imageGenerator, GradientImage>);
+registerService(new waServiceFactoryTSingle<svc_imageGenerator, OsEdgeImage>);
+registerService(new waServiceFactoryTSingle<svc_imageGenerator, PolyImage>);
+registerService(new XuiObjectCreator<XuiShadowWndSvc>);
 }
 
 GUID WACNAME::getGUID() {
-  return guid;
+return guid;
 }

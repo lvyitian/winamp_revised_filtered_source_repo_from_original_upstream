@@ -26,7 +26,7 @@ Specify debug and release configurations for a workspace.
 
 ```lua
 workspace "MyWorkspace"
-  configurations { "Debug", "Release" }
+configurations { "Debug", "Release" }
 ```
 
 Add additional configurations for a dynamic link library version.

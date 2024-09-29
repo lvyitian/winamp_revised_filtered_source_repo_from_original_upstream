@@ -24,9 +24,9 @@ Comment or uncomment the following directives according to the needs of your app
 
 /* note to the team:
 
-  the WANT_WASABI_API_* directives will go away once we're done splitting the api, their only purpose
-  is to split the api one bit at a time while the rest remains working. when it's done, all that will remain
-  will be the WASABI_COMPILE_* directives
+the WANT_WASABI_API_* directives will go away once we're done splitting the api, their only purpose
+is to split the api one bit at a time while the rest remains working. when it's done, all that will remain
+will be the WASABI_COMPILE_* directives
 
 */
 
@@ -161,104 +161,104 @@ Comment or uncomment the following directives according to the needs of your app
 #endif // not _WASABIRUNTIME
 
 #ifdef _WASABIRUNTIME
-  #define WASABI_API_SYSTEM      api
-  #define WASABI_API_APP         api
-  #define WASABI_API_COMPONENT   api
-  #define WASABI_API_SVC         api
-  #define WASABI_API_SYSCB       api
-  #define WASABI_API_MAKI        api
-  #define WASABI_API_UTF         api
-  #define WASABI_API_WND         api
-  #define WASABI_API_IMGLDR      api
-  #define WASABI_API_FILE        api
-  #define WASABI_API_TIMER       api
-  #define WASABI_API_WNDMGR      api
-  #define WASABI_API_SKIN        api
-  #define WASABI_API_METADB      api
-  #define WASABI_API_LOCALE      api
-  #define WASABI_API_CONFIG      api
-  #define WASABI_API_FONT        api
-  #define WASABI_API_MEMMGR      api
-  #define WASABI_API_XML         api
-  #define WASABI_API_MEDIACORE   api
-  #define WASABI_API_MAKIDEBUG   debugApi
+#define WASABI_API_SYSTEM      api
+#define WASABI_API_APP         api
+#define WASABI_API_COMPONENT   api
+#define WASABI_API_SVC         api
+#define WASABI_API_SYSCB       api
+#define WASABI_API_MAKI        api
+#define WASABI_API_UTF         api
+#define WASABI_API_WND         api
+#define WASABI_API_IMGLDR      api
+#define WASABI_API_FILE        api
+#define WASABI_API_TIMER       api
+#define WASABI_API_WNDMGR      api
+#define WASABI_API_SKIN        api
+#define WASABI_API_METADB      api
+#define WASABI_API_LOCALE      api
+#define WASABI_API_CONFIG      api
+#define WASABI_API_FONT        api
+#define WASABI_API_MEMMGR      api
+#define WASABI_API_XML         api
+#define WASABI_API_MEDIACORE   api
+#define WASABI_API_MAKIDEBUG   debugApi
 
 #else // _WASABIRUNTIME
 
-  #define WASABI_API_SYSTEM      systemApi
-  
-  #define WASABI_API_APP         applicationApi
-  #define WASABI_API_SVC         serviceApi
-  #define WASABI_API_SYSCB       sysCallbackApi
+#define WASABI_API_SYSTEM      systemApi
 
-  #ifdef WASABI_COMPILE_COMPONENTS
-  #define WASABI_API_COMPONENT   componentApi
-  #endif
+#define WASABI_API_APP         applicationApi
+#define WASABI_API_SVC         serviceApi
+#define WASABI_API_SYSCB       sysCallbackApi
 
-  #ifdef WASABI_COMPILE_SCRIPT
-  #define WASABI_API_MAKI        makiApi
-  #endif
+#ifdef WASABI_COMPILE_COMPONENTS
+#define WASABI_API_COMPONENT   componentApi
+#endif
 
-  #ifdef WASABI_COMPILE_UTF
-  #define WASABI_API_UTF         utfApi
-  #endif
+#ifdef WASABI_COMPILE_SCRIPT
+#define WASABI_API_MAKI        makiApi
+#endif
 
-  #ifdef WASABI_COMPILE_WND
-  #define WASABI_API_WND         wndApi
-  #endif
+#ifdef WASABI_COMPILE_UTF
+#define WASABI_API_UTF         utfApi
+#endif
 
-  #ifdef WASABI_COMPILE_IMGLDR
-  #define WASABI_API_IMGLDR      imgLoaderApi
-  #endif
+#ifdef WASABI_COMPILE_WND
+#define WASABI_API_WND         wndApi
+#endif
 
-  #ifdef WASABI_COMPILE_FILEREADER
-  #define WASABI_API_FILE        fileApi
-  #endif
+#ifdef WASABI_COMPILE_IMGLDR
+#define WASABI_API_IMGLDR      imgLoaderApi
+#endif
 
-  #ifdef WASABI_COMPILE_TIMERS
-  #define WASABI_API_TIMER       timerApi
-  #endif
+#ifdef WASABI_COMPILE_FILEREADER
+#define WASABI_API_FILE        fileApi
+#endif
 
-  #ifdef WASABI_COMPILE_WNDMGR
-  #define WASABI_API_WNDMGR      wndManagerApi
-  #endif
+#ifdef WASABI_COMPILE_TIMERS
+#define WASABI_API_TIMER       timerApi
+#endif
 
-  #ifdef WASABI_COMPILE_SKIN
-  #define WASABI_API_SKIN        skinApi
-  #endif
+#ifdef WASABI_COMPILE_WNDMGR
+#define WASABI_API_WNDMGR      wndManagerApi
+#endif
 
-  #ifdef WASABI_COMPILE_METADB
-  #define WASABI_API_METADB      metadbApi
-  #endif
+#ifdef WASABI_COMPILE_SKIN
+#define WASABI_API_SKIN        skinApi
+#endif
 
-  #ifdef WASABI_COMPILE_LOCALES
-  #define WASABI_API_LOCALE      localesApi
-  #endif
+#ifdef WASABI_COMPILE_METADB
+#define WASABI_API_METADB      metadbApi
+#endif
 
-  #ifdef WASABI_COMPILE_CONFIG
-  #define WASABI_API_CONFIG      configApi
-  #endif
+#ifdef WASABI_COMPILE_LOCALES
+#define WASABI_API_LOCALE      localesApi
+#endif
 
-  #ifdef WASABI_COMPILE_FONTS
-  #define WASABI_API_FONT        fontApi
-  #endif
+#ifdef WASABI_COMPILE_CONFIG
+#define WASABI_API_CONFIG      configApi
+#endif
 
-  #ifdef WASABI_COMPILE_MEMMGR
-  #define WASABI_API_MEMMGR      memmgrApi
-  #endif
+#ifdef WASABI_COMPILE_FONTS
+#define WASABI_API_FONT        fontApi
+#endif
 
-  #ifdef WASABI_COMPILE_XMLPARSER
-  #define WASABI_API_XML         xmlApi
-  #endif
+#ifdef WASABI_COMPILE_MEMMGR
+#define WASABI_API_MEMMGR      memmgrApi
+#endif
 
-  #ifdef WASABI_COMPILE_MEDIACORE
-  #define WASABI_API_MEDIACORE   coreApi
-  #endif
+#ifdef WASABI_COMPILE_XMLPARSER
+#define WASABI_API_XML         xmlApi
+#endif
+
+#ifdef WASABI_COMPILE_MEDIACORE
+#define WASABI_API_MEDIACORE   coreApi
+#endif
 
 
-  #ifdef WASABI_COMPILE_MAKIDEBUG
-  #define WASABI_API_MAKIDEBUG   debugApi
-  #endif
+#ifdef WASABI_COMPILE_MAKIDEBUG
+#define WASABI_API_MAKIDEBUG   debugApi
+#endif
 
 #endif // _WASABIRUNTIME
 

@@ -1,18 +1,18 @@
 
 /*!
- ************************************************************************
- * \file  memalloc.h
- *
- * \brief
- *    Memory allocation and free helper funtions
- *
- * \author
- *    Main contributors (see contributors.h for copyright, address and affiliation details)
- *     - Karsten Sühring                 <suehring@hhi.de> 
- *     - Alexis Michael Tourapis         <alexismt@ieee.org> 
- *
- ************************************************************************
- */
+************************************************************************
+* \file  memalloc.h
+*
+* \brief
+*    Memory allocation and free helper funtions
+*
+* \author
+*    Main contributors (see contributors.h for copyright, address and affiliation details)
+*     - Karsten Sühring                 <suehring@hhi.de> 
+*     - Alexis Michael Tourapis         <alexismt@ieee.org> 
+*
+************************************************************************
+*/
 
 #ifndef _MEMALLOC_H_
 #define _MEMALLOC_H_

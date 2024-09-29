@@ -18,10 +18,10 @@ Premake 5.0 or later; currently Visual Studio only.
 
 ```lua
 externalproject "MyExternalProject"
-   location "build/MyExternalProject"
-   uuid "57940020-8E99-AEB6-271F-61E0F7F6B73B"
-   kind "StaticLib"
-   language "C++"
+location "build/MyExternalProject"
+uuid "57940020-8E99-AEB6-271F-61E0F7F6B73B"
+kind "StaticLib"
+language "C++"
 ```
 
 The calls to uuid(), kind(), and language() are mandatory; this information is needed to properly assemble the Premake-generated workspace. The call to location() is optional and used to locate the directory containing the external project file.

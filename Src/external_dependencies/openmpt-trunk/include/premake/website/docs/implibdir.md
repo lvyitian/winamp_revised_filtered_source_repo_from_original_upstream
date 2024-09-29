@@ -26,7 +26,7 @@ implibdir "../Libraries"
 
 ### See Also ###
 
- * [implibname](implibname.md)
- * [implibextension](implibextension.md)
- * [implibprefix](implibprefix.md)
- * [implibsuffix](implibsuffix.md)
+* [implibname](implibname.md)
+* [implibextension](implibextension.md)
+* [implibprefix](implibprefix.md)
+* [implibsuffix](implibsuffix.md)

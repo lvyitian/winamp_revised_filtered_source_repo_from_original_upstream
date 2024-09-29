@@ -1,7 +1,7 @@
 LIVE MEDIA PLUGIN : FRAGEN(F) & ANTWORTEN(A)
 
 Q : EINE FEHLERMELDUNG WIRD BEIM ÖFFNEN DER WEBSITE ANGEZEIGT!
- ============================================================
+============================================================
 R : Das Problem ist uns bekannt, kann jedoch nicht gelöst werden : das WEB Engine ist nicht so perfekt wie Internet Explorer Web Engine (u.a. mit Site-Coding etwas ungeduldig);  Dazu kommt noch, dass die Seiten, für die das Problem auftaucht, die Code nicht optimieren... Klicken Sie 'Nein', wenn solch eine Nachricht angezeigt wird und anbietet, die Seiten-Scripts weiterauszuführen.
 
 Q : RADIOKLANG IST SCHLECHTER QUALITÄT !

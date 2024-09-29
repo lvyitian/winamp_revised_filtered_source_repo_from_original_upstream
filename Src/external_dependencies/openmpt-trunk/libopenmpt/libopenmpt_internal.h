@@ -1,11 +1,11 @@
 /*
- * libopenmpt_internal.h
- * ---------------------
- * Purpose: libopenmpt internal interface configuration, overruling the public interface configuration (only used and needed when building libopenmpt)
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* libopenmpt_internal.h
+* ---------------------
+* Purpose: libopenmpt internal interface configuration, overruling the public interface configuration (only used and needed when building libopenmpt)
+* Notes  : (currently none)
+* Authors: OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 #ifndef LIBOPENMPT_INTERNAL_H
 #define LIBOPENMPT_INTERNAL_H

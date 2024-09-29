@@ -1,19 +1,19 @@
-/*
+		/*
 	tabinit_mmx: make_decode_tables_mmx
-
+		
 	copyright ?-2006 by the mpg123 project - free software under the terms of the LGPL 2.1
 	see COPYING and AUTHORS files in distribution or http://mpg123.org
 	initially written by the mysterious higway (apparently)
-
+		
 	See synth_mmx.S about license history.
-*/
-
-#include "mangle.h"
-
-.data
+		*/
+		
+		#include "mangle.h"
+		
+		.data
 	ALIGN32
-.globl ASM_NAME(costab_mmxsse)
-ASM_NAME(costab_mmxsse):
+		.globl ASM_NAME(costab_mmxsse)
+		ASM_NAME(costab_mmxsse):
 	.long 1056974725
 	.long 1057056395
 	.long 1057223771
@@ -46,7 +46,7 @@ ASM_NAME(costab_mmxsse):
 	.long 1067924853
 	.long 1060439283
 	ALIGN32
-intwinbase:
+		intwinbase:
 	.short      0,    -1,    -1,    -1,    -1,    -1,    -1,    -2
 	.short     -2,    -2,    -2,    -3,    -3,    -4,    -4,    -5
 	.short     -5,    -6,    -7,    -7,    -8,    -9,   -10,   -11
@@ -80,21 +80,21 @@ intwinbase:
 	.short   4019,  5290,  6494,  7629,  8692,  9679, 10590, 11420
 	.short  12169, 12835, 13415, 13908, 14313, 14630, 14856, 14992
 	.short  15038
-
-intwindiv:
+		
+		intwindiv:
 	.long 0x47800000			# 65536.0
-.text
+		.text
 	ALIGN32
-/* void make_decode_tables_mmx_asm(long scaleval, float* decwin_mmx, float *decwins); */
-.globl ASM_NAME(make_decode_tables_mmx_asm)
-ASM_NAME(make_decode_tables_mmx_asm):
+		/* void make_decode_tables_mmx_asm(long scaleval, float* decwin_mmx, float *decwins); */
+		.globl ASM_NAME(make_decode_tables_mmx_asm)
+		ASM_NAME(make_decode_tables_mmx_asm):
 	pushl %ebp
 	mov %esp,%ebp
 	sub $12,%esp
 	pushl %edi
 	pushl %esi
 	pushl %ebx
-
+		
 	GET_GOT
 	lea LOCAL_VAR(intwinbase),%edi
 	mov LOCAL_VAR(intwindiv),%ecx
@@ -102,15 +102,15 @@ ASM_NAME(make_decode_tables_mmx_asm):
 	lea 444(%edi),%eax
 	mov %eax,-8(%ebp)
 	mov %ecx,-12(%ebp)
-
-/* stack: -12(%ebp)=*intwindiv, -8(%ebp)=intwinbase+444, -4(%ebp)=intwinbase, ... ,
-          4(%ebp)=back, 8(%ebp)=scaleval, 12(%ebp)=decwin_mmx, 16(%ebp)=decwins */
-#define INTWINDIV -12(%ebp)
-#define INTWINBASE_PLUS_444 -8(%ebp)
-#define INTWINBASE -4(%ebp)
-#define SCALEVAL 8(%ebp)
-#define DECWIN_MMX 12(%ebp)
-#define DECWINS 16(%ebp)
+		
+		/* stack: -12(%ebp)=*intwindiv, -8(%ebp)=intwinbase+444, -4(%ebp)=intwinbase, ... ,
+4(%ebp)=back, 8(%ebp)=scaleval, 12(%ebp)=decwin_mmx, 16(%ebp)=decwins */
+		#define INTWINDIV -12(%ebp)
+		#define INTWINBASE_PLUS_444 -8(%ebp)
+		#define INTWINBASE -4(%ebp)
+		#define SCALEVAL 8(%ebp)
+		#define DECWIN_MMX 12(%ebp)
+		#define DECWINS 16(%ebp)
 	
 	xorl %ecx,%ecx
 	xorl %ebx,%ebx
@@ -118,24 +118,24 @@ ASM_NAME(make_decode_tables_mmx_asm):
 	
 	negl SCALEVAL	/* scaleval */
 	pushl $2	/* intwinbase step */
-.L00:
+		.L00:
 	cmpl $528,%ecx
 	jnc .L02
 	movswl (%edi),%eax
 	cmpl INTWINBASE_PLUS_444,%edi
 	jc .L01
 	addl $60000,%eax
-.L01:
+		.L01:
 	pushl %eax
 	fildl (%esp)
 	fdivs INTWINDIV
 	fimull SCALEVAL /* scaleval */
-/* eax used to be popped the line before... I'll just use it here a bit */
+		/* eax used to be popped the line before... I'll just use it here a bit */
 	movl DECWIN_MMX,%eax /* decwin_mmx */
 	fsts    (%eax,%ecx,4)
 	fstps 64(%eax,%ecx,4)
 	popl %eax
-.L02:
+		.L02:
 	leal -1(%esi),%edx
 	andl %ebx,%edx
 	cmpl $31,%edx
@@ -144,7 +144,7 @@ ASM_NAME(make_decode_tables_mmx_asm):
 	testl %esi,%ebx
 	jz  .L03
 	negl SCALEVAL
-.L03:
+		.L03:
 	addl %esi,%ecx
 	addl (%esp),%edi
 	incl %ebx
@@ -154,20 +154,20 @@ ASM_NAME(make_decode_tables_mmx_asm):
 	jnz .L00
 	negl (%esp)
 	jmp .L00
-.L04:
+		.L04:
 	popl %eax
-
+		
 	xorl %ecx,%ecx
 	xorl %ebx,%ebx
 	pushl $2 /* paired with popl above */
-.L05:
+		.L05:
 	cmpl $528,%ecx
 	jnc .L11
 	movswl (%edi),%eax
 	cmpl INTWINBASE_PLUS_444,%edi
 	jc .L06
 	addl $60000,%eax
-.L06:
+		.L06:
 	cltd
 	imull SCALEVAL
 	shrdl $17,%edx,%eax
@@ -176,12 +176,12 @@ ASM_NAME(make_decode_tables_mmx_asm):
 	jle .L07
 	movl $32767,%eax
 	jmp .L08
-.L07:
+		.L07:
 	cmpl $-32767,%eax
 	jge .L08
 	movl $-32767,%eax
-.L08:
-/* going to use ebx for decwins, watch the jumps */
+		.L08:
+		/* going to use ebx for decwins, watch the jumps */
 	pushl %ebx 
 	movl DECWINS,%ebx
 	cmpl $512,%ecx
@@ -189,15 +189,15 @@ ASM_NAME(make_decode_tables_mmx_asm):
 	subl %ecx,%edx
 	movw %ax,(%ebx,%edx,2) /* decwins */
 	movw %ax,-32(%ebx,%edx,2)
-.L09:
+		.L09:
 	testl $1,%ecx
 	jnz .L10
 	negl %eax
-.L10:
+		.L10:
 	movw %ax,(%ebx,%ecx,2)
 	movw %ax,32(%ebx,%ecx,2)
 	popl %ebx /* that has to match the pushl before */
-.L11:
+		.L11:
 	leal -1(%esi),%edx
 	andl %ebx,%edx
 	cmpl $31,%edx
@@ -206,7 +206,7 @@ ASM_NAME(make_decode_tables_mmx_asm):
 	testl %esi,%ebx
 	jz  .L12
 	negl SCALEVAL
-.L12:
+		.L12:
 	addl %esi,%ecx
 	addl (%esp),%edi
 	incl %ebx
@@ -216,7 +216,7 @@ ASM_NAME(make_decode_tables_mmx_asm):
 	jnz .L05
 	negl (%esp)
 	jmp .L05
-.L13:
+		.L13:
 	popl %eax
 	
 	popl %ebx
@@ -225,5 +225,6 @@ ASM_NAME(make_decode_tables_mmx_asm):
 	mov %ebp,%esp
 	pop %ebp
 	ret
-
-NONEXEC_STACK
+		
+		NONEXEC_STACK
+		

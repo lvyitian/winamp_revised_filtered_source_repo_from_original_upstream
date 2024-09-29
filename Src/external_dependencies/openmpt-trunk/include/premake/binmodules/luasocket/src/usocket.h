@@ -36,7 +36,7 @@
 #endif
 
 /* Some platforms use IPV6_JOIN_GROUP instead if
- * IPV6_ADD_MEMBERSHIP. The semantics are same, though. */
+* IPV6_ADD_MEMBERSHIP. The semantics are same, though. */
 #ifndef IPV6_ADD_MEMBERSHIP
 #ifdef IPV6_JOIN_GROUP
 #define IPV6_ADD_MEMBERSHIP IPV6_JOIN_GROUP

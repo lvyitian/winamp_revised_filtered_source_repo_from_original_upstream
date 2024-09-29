@@ -8,36 +8,36 @@
 #define C_SLIDER_PARENT C_GuiObject
 
 class C_Slider : public C_SLIDER_PARENT {
-  public:
+public:
 
-  C_Slider(ScriptObject *object);
-  C_Slider();
-  virtual ~C_Slider();
+C_Slider(ScriptObject *object);
+C_Slider();
+virtual ~C_Slider();
 
-  virtual void C_hook(ScriptObject *o);
+virtual void C_hook(ScriptObject *o);
 
-  ScriptObject *getScriptObject();
+ScriptObject *getScriptObject();
 
-  virtual void onSetPosition(int newpos);
-  virtual void onPostedPosition(int newpos);
-  virtual void onSetFinalPosition(int pos);
-  virtual void setPosition(int pos);
-  virtual int getPosition();
-  virtual void lock();
-  virtual void unlock();
+virtual void onSetPosition(int newpos);
+virtual void onPostedPosition(int newpos);
+virtual void onSetFinalPosition(int pos);
+virtual void setPosition(int pos);
+virtual int getPosition();
+virtual void lock();
+virtual void unlock();
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onsetposition_id;
-  static int onpostedposition_id;
-  static int onsetfinalposition_id;
-  static int setposition_id;
-  static int getposition_id;
-  static int lock_id;
-  static int unlock_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onsetposition_id;
+static int onpostedposition_id;
+static int onsetfinalposition_id;
+static int setposition_id;
+static int getposition_id;
+static int lock_id;
+static int unlock_id;
 };
 
 #endif

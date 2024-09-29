@@ -7,14 +7,14 @@ static const GUID guiResizableGuid =
 
 class GuiResizable {
 public:
-  virtual void beginMove()=0;
-  virtual void beginScale()=0;
-  virtual void beginResize()=0;
-  virtual void endMove()=0;
-  virtual void endScale()=0;
-  virtual void endResize()=0;
-  virtual ifc_window *guiresizable_getRootWnd()=0;
-  virtual void setEndMoveResize(int w, int h)=0;
+virtual void beginMove()=0;
+virtual void beginScale()=0;
+virtual void beginResize()=0;
+virtual void endMove()=0;
+virtual void endScale()=0;
+virtual void endResize()=0;
+virtual ifc_window *guiresizable_getRootWnd()=0;
+virtual void setEndMoveResize(int w, int h)=0;
 };
 
 

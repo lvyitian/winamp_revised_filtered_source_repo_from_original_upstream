@@ -11,21 +11,21 @@ class H_ToggleButton : public H_TOGGLEBUTTON_PARENT {
 
 public:
 
-  H_ToggleButton(ScriptObject *o);
-  H_ToggleButton();
-  virtual ~H_ToggleButton();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_ToggleButton(ScriptObject *o);
+H_ToggleButton();
+virtual ~H_ToggleButton();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onToggle(int (null)) {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onToggle(int (null)) {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int ontoggle_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int ontoggle_id;
 };
 
 #endif

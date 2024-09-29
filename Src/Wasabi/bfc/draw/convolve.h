@@ -7,18 +7,18 @@
 
 class Convolve3x3 {
 public:
-  Convolve3x3(ARGB32 *bits, int w, int h);
+Convolve3x3(ARGB32 *bits, int w, int h);
 
-  void setPos(int x, int y, float v);
-  void setMultiplier(int m);
+void setPos(int x, int y, float v);
+void setMultiplier(int m);
 
-  void convolve();
+void convolve();
 
 private:
-  ARGB32 *bits;
-  int w, h;
-  float vals[3][3];
-  float multiplier;
+ARGB32 *bits;
+int w, h;
+float vals[3][3];
+float multiplier;
 };
 
 #endif

@@ -32,8 +32,8 @@ Premake 4.4 or later.
 ```lua
 local ver = os.getversion()
 print(string.format(" %d.%d.%d (%s)",
-   ver.majorversion, ver.minorversion, ver.revision,
-   ver.description))
+ver.majorversion, ver.minorversion, ver.revision,
+ver.description))
 
 -- On Windows XP: "5.1.3 (Windows XP)"
 -- On OS X,: "10.6.6 (Mac OS X Snow Leopard)"

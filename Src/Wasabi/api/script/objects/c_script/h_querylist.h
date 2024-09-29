@@ -11,21 +11,21 @@ class H_QueryList : public H_QUERYLIST_PARENT {
 
 public:
 
-  H_QueryList(ScriptObject *o);
-  H_QueryList();
-  virtual ~H_QueryList();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_QueryList(ScriptObject *o);
+H_QueryList();
+virtual ~H_QueryList();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onResetQuery() {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onResetQuery() {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onresetquery_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onresetquery_id;
 };
 
 #endif

@@ -19,7 +19,7 @@ extern "C" { int __link_PolyGen_Svc; }
 #endif
 
 int PolyImage::testDesc(const wchar_t *desc) {
-  return !_wcsicmp(desc, L"$polygon");
+return !_wcsicmp(desc, L"$polygon");
 }
 
 void premultiply(ARGB32 *m_pBits, int nwords);
@@ -28,32 +28,32 @@ void premultiply(ARGB32 *m_pBits, int nwords);
 
 ARGB32 *PolyImage::genImage(const wchar_t *desc, int *has_alpha, int *w, int *h, ifc_xmlreaderparams *params) 
 {
-  int _w = (params->getItemValueInt(L"w", 1));
-  if (_w == 0) _w = 1;
-  int _h = (params->getItemValueInt(L"h", 1));
-  if (_h == 0) _h = 1;
-  if (_w <= 0 || _h <= 0) return NULL;
+int _w = (params->getItemValueInt(L"w", 1));
+if (_w == 0) _w = 1;
+int _h = (params->getItemValueInt(L"h", 1));
+if (_h == 0) _h = 1;
+if (_w <= 0 || _h <= 0) return NULL;
 
-  const wchar_t *bgcolorstr = params->getItemValue(L"bgcolor");
-  ARGB32 bgcolor = (bgcolorstr == NULL || *bgcolorstr=='\0') ? 0 : _byteswap_ulong(WASABI_API_SKIN->parse(params->getItemValue(L"bgcolor"), L"color")<<8);
+const wchar_t *bgcolorstr = params->getItemValue(L"bgcolor");
+ARGB32 bgcolor = (bgcolorstr == NULL || *bgcolorstr=='\0') ? 0 : _byteswap_ulong(WASABI_API_SKIN->parse(params->getItemValue(L"bgcolor"), L"color")<<8);
 
-  unsigned int bgalpha = params->getItemValueInt(L"bgalpha", 0);
-  bgcolor |= ((bgalpha & 0xff) << 24);
+unsigned int bgalpha = params->getItemValueInt(L"bgalpha", 0);
+bgcolor |= ((bgalpha & 0xff) << 24);
 
-  premultiply(&bgcolor, 1);
+premultiply(&bgcolor, 1);
 
 #ifdef WASABI_COMPILE_MEMMGR
-  ARGB32 *ret = (ARGB32*)WASABI_API_MEMMGR->sysMalloc(_w * _h * sizeof(ARGB32));
+ARGB32 *ret = (ARGB32*)WASABI_API_MEMMGR->sysMalloc(_w * _h * sizeof(ARGB32));
 #else
-  ARGB32 *ret = (ARGB32*)MALLOC(_w * _h * sizeof(ARGB32));
+ARGB32 *ret = (ARGB32*)MALLOC(_w * _h * sizeof(ARGB32));
 #endif
 
-  MEMFILL<ARGB32>(ret, bgcolor, _w * _h);
+MEMFILL<ARGB32>(ret, bgcolor, _w * _h);
 
-  Draw::drawPointList(ret, _w, _h, params->getItemValue(L"points"));
+Draw::drawPointList(ret, _w, _h, params->getItemValue(L"points"));
 
-  *w = _w;
-  *h = _h;
-  *has_alpha = 1;
-  return ret;
+*w = _w;
+*h = _h;
+*has_alpha = 1;
+return ret;
 }

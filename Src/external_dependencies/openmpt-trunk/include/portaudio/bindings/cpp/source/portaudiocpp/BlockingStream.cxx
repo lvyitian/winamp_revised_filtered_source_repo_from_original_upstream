@@ -1,100 +1,101 @@
-#include "portaudiocpp/BlockingStream.hxx"
-
-#include "portaudio.h"
-
-#include "portaudiocpp/StreamParameters.hxx"
-#include "portaudiocpp/Exception.hxx"
-
-namespace portaudio
-{
-
-	// --------------------------------------------------------------------------------------
-
-	BlockingStream::BlockingStream()
-	{
-	}
-
-	BlockingStream::BlockingStream(const StreamParameters &parameters)
-	{
-		open(parameters);
-	}
-
-	BlockingStream::~BlockingStream()
-	{
-		try
+			#include "portaudiocpp/BlockingStream.hxx"
+			
+			#include "portaudio.h"
+			
+			#include "portaudiocpp/StreamParameters.hxx"
+			#include "portaudiocpp/Exception.hxx"
+			
+			namespace portaudio
+			{
+			
+		// --------------------------------------------------------------------------------------
+			
+		BlockingStream::BlockingStream()
 		{
-			close();
 		}
-		catch (...)
+			
+		BlockingStream::BlockingStream(const StreamParameters &parameters)
 		{
-			// ignore all errors
+	open(parameters);
 		}
-	}
-
-	// --------------------------------------------------------------------------------------
-
-	void BlockingStream::open(const StreamParameters &parameters)
+			
+		BlockingStream::~BlockingStream()
+		{
+	try
 	{
-		PaError err = Pa_OpenStream(&stream_, parameters.inputParameters().paStreamParameters(), parameters.outputParameters().paStreamParameters(), 
-			parameters.sampleRate(), parameters.framesPerBuffer(), parameters.flags(), NULL, NULL);
-
-		if (err != paNoError)
-		{
-			throw PaException(err);
-		}
+close();
 	}
-
-	// --------------------------------------------------------------------------------------
-
-	void BlockingStream::read(void *buffer, unsigned long numFrames)
+	catch (...)
 	{
-		PaError err = Pa_ReadStream(stream_, buffer, numFrames);
-
-		if (err != paNoError)
-		{
-			throw PaException(err);
-		}
+// ignore all errors
 	}
-
-	void BlockingStream::write(const void *buffer, unsigned long numFrames)
+		}
+			
+		// --------------------------------------------------------------------------------------
+			
+		void BlockingStream::open(const StreamParameters &parameters)
+		{
+	PaError err = Pa_OpenStream(&stream_, parameters.inputParameters().paStreamParameters(), parameters.outputParameters().paStreamParameters(), 
+parameters.sampleRate(), parameters.framesPerBuffer(), parameters.flags(), NULL, NULL);
+			
+	if (err != paNoError)
 	{
-		PaError err = Pa_WriteStream(stream_, buffer, numFrames);
-
-		if (err != paNoError)
-		{
-			throw PaException(err);
-		}
+throw PaException(err);
 	}
-
-	// --------------------------------------------------------------------------------------
-
-	signed long BlockingStream::availableReadSize() const
+		}
+			
+		// --------------------------------------------------------------------------------------
+			
+		void BlockingStream::read(void *buffer, unsigned long numFrames)
+		{
+	PaError err = Pa_ReadStream(stream_, buffer, numFrames);
+			
+	if (err != paNoError)
 	{
-		signed long avail = Pa_GetStreamReadAvailable(stream_);
-
-		if (avail < 0)
-		{
-			throw PaException(avail);
-		}
-
-		return avail;
+throw PaException(err);
 	}
-
-	signed long BlockingStream::availableWriteSize() const
+		}
+			
+		void BlockingStream::write(const void *buffer, unsigned long numFrames)
+		{
+	PaError err = Pa_WriteStream(stream_, buffer, numFrames);
+			
+	if (err != paNoError)
 	{
-		signed long avail = Pa_GetStreamWriteAvailable(stream_);
-
-		if (avail < 0)
-		{
-			throw PaException(avail);
-		}
-
-		return avail;
+throw PaException(err);
 	}
-
-	// --------------------------------------------------------------------------------------
-
-} // portaudio
-
-
-
+		}
+			
+		// --------------------------------------------------------------------------------------
+			
+		signed long BlockingStream::availableReadSize() const
+		{
+	signed long avail = Pa_GetStreamReadAvailable(stream_);
+			
+	if (avail < 0)
+	{
+throw PaException(avail);
+	}
+			
+	return avail;
+		}
+			
+		signed long BlockingStream::availableWriteSize() const
+		{
+	signed long avail = Pa_GetStreamWriteAvailable(stream_);
+			
+	if (avail < 0)
+	{
+throw PaException(avail);
+	}
+			
+	return avail;
+		}
+			
+		// --------------------------------------------------------------------------------------
+			
+			} // portaudio
+			
+			
+			
+			

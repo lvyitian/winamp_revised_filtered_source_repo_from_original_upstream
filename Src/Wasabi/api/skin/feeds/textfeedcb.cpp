@@ -4,6 +4,6 @@
 
 #define CBCLASS TextFeedCallbackI
 START_DISPATCH;
-  VCB(TEXTFEEDCB_ONRECEIVETEXT, textfeed_onReceiveText);
+VCB(TEXTFEEDCB_ONRECEIVETEXT, textfeed_onReceiveText);
 END_DISPATCH;
 #endif

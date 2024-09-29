@@ -5,7 +5,7 @@
 
 class AnimatedRects {
 public:
-  static void draw(const RECT *src, const RECT *dst, int nsteps=5);
+static void draw(const RECT *src, const RECT *dst, int nsteps=5);
 };
 
 #endif

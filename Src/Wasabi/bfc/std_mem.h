@@ -17,13 +17,13 @@ void MEMCPY32(void *dest, const void *src, size_t words);
 
 #ifdef __cplusplus
 static __inline int MEMCMP(const void *buf1, const void *buf2, size_t count) {
-  return memcmp(buf1, buf2, count);
+return memcmp(buf1, buf2, count);
 }
 static __inline void MEMSET(void *dest, int c, size_t n) {
-  memset(dest, c, n);
+memset(dest, c, n);
 }
 static __inline void MEMZERO(void *dest, size_t nbytes) {
-  memset(dest, 0, nbytes);
+memset(dest, 0, nbytes);
 }
 #else
 #define MEMCMP memcmp
@@ -41,7 +41,7 @@ inline void ZERO(T &obj) { MEMZERO(&obj, sizeof(T)); }
 // generic version that should work for all types
 template<class T>
 inline void MEMFILL(T *ptr, T val, unsigned int n) {
-  for (int i = 0; i < n; i++) ptr[i] = val;
+for (int i = 0; i < n; i++) ptr[i] = val;
 }
 
 // asm 32-bits version
@@ -57,13 +57,13 @@ void  MEMFILL<unsigned short>(unsigned short *ptr, unsigned short val, unsigned 
 // int
 template<>
 inline void MEMFILL<int>(int *ptr, int val, unsigned int n) {
-  MEMFILL32(ptr, *reinterpret_cast<unsigned long *>(&val), n);
+MEMFILL32(ptr, *reinterpret_cast<unsigned long *>(&val), n);
 }
 
 // float
 template<>
 inline void MEMFILL<float>(float *ptr, float val, unsigned int n) {
-  MEMFILL32(ptr, *reinterpret_cast<unsigned long *>(&val), n);
+MEMFILL32(ptr, *reinterpret_cast<unsigned long *>(&val), n);
 }
 
 #endif	// __cplusplus defined

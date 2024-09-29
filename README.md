@@ -73,12 +73,12 @@ Run `unpack_intel_ipp_6.1.1.035.cmd` to unpack it.
 Several external build tools are required to build Winamp. These tools are not bundled directly into the repository to comply with their respective licenses. You will need to download them separately from the following links:
 
 - **7-Zip Portable**: Download from [https://www.7-zip.org/](https://www.7-zip.org/)  
-  License: GNU LGPL
+License: GNU LGPL
 
 - **Git**: Download from [https://git-scm.com/download/win](https://git-scm.com/download/win)  
-  License: GNU GPL v2
+License: GNU GPL v2
 
 - **TortoiseSVN**: Download from [https://tortoisesvn.net/downloads.html](https://tortoisesvn.net/downloads.html)  
-  License: GNU GPL v2
+License: GNU GPL v2
 
 Make sure to install these tools as part of your build environment. You may need to modify the build scripts to reflect the correct paths to these tools on your system.

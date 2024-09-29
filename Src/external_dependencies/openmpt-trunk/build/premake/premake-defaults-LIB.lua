@@ -1,3 +1,3 @@
 
-  filter {}
-   kind "StaticLib"
+filter {}
+kind "StaticLib"

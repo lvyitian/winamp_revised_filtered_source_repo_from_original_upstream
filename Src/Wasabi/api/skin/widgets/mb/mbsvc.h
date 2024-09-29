@@ -8,19 +8,19 @@
 
 class MbSvc : public svc_miniBrowserI {
 public:
-  MbSvc();
-  ~MbSvc();
+MbSvc();
+~MbSvc();
 
-  static const char *getServiceName() { return "Internet Explorer ActiveX MiniBrowser Service"; }
-  virtual int testQueryFormat(int queryformat) { return WaSvc::MINIBROWSER; }
+static const char *getServiceName() { return "Internet Explorer ActiveX MiniBrowser Service"; }
+virtual int testQueryFormat(int queryformat) { return WaSvc::MINIBROWSER; }
 
-  virtual int testGuid(GUID g);
-  virtual MiniBrowser *createMiniBrowser();
-  virtual void destroyMiniBrowser(MiniBrowser *w);
-  
+virtual int testGuid(GUID g);
+virtual MiniBrowser *createMiniBrowser();
+virtual void destroyMiniBrowser(MiniBrowser *w);
+
 private:
 
-  PtrList<BrowserWnd> browsers;
+PtrList<BrowserWnd> browsers;
 };
 
 #endif

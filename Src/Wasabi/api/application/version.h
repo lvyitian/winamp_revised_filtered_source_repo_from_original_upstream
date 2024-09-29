@@ -3,10 +3,10 @@
 /*
 class WasabiVersion {
 public:
-  static void setAppName(const wchar_t *name);
-  static const wchar_t *getAppName();
-  static const wchar_t *getVersionString();
-  static unsigned int getBuildNumber();
+static void setAppName(const wchar_t *name);
+static const wchar_t *getAppName();
+static const wchar_t *getVersionString();
+static unsigned int getBuildNumber();
 };*/
 
 #endif

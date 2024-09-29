@@ -28,37 +28,37 @@ Function double _##ROTATION_LAYER_VAR##GetRotationDegree();
 Function double _##ROTATION_LAYER_VAR##GetRotation();
 
 _##ROTATION_LAYER_VAR##RotateDegree(double r) {
-  _##ROTATION_LAYER_VAR##Rotate(r * PI / 180.0);
+_##ROTATION_LAYER_VAR##Rotate(r * PI / 180.0);
 }
 
 _##ROTATION_LAYER_VAR##Rotate(double r) {
-  _##ROTATION_LAYER_VAR##R = r;
-  _##ROTATION_LAYER_VAR##Layer.fx_update();
+_##ROTATION_LAYER_VAR##R = r;
+_##ROTATION_LAYER_VAR##Layer.fx_update();
 }
 
 double _##ROTATION_LAYER_VAR##GetRotationDegree() {
-  return _##ROTATION_LAYER_VAR##R * 180 / PI;
+return _##ROTATION_LAYER_VAR##R * 180 / PI;
 }
 
 double _##ROTATION_LAYER_VAR##GetRotation() {
-  return _##ROTATION_LAYER_VAR##R;
+return _##ROTATION_LAYER_VAR##R;
 }
 
 _##ROTATION_LAYER_VAR##Init(Group parentgroup, String layername) {
-  _##ROTATION_LAYER_VAR##Layer = parentgroup.getObject(layername);
-  _##ROTATION_LAYER_VAR##Layer.fx_setGridSize(1,1);
-  _##ROTATION_LAYER_VAR##Layer.fx_setBgFx(0);
-  _##ROTATION_LAYER_VAR##Layer.fx_setWrap(1);
-  _##ROTATION_LAYER_VAR##Layer.fx_setBilinear(1);
-  _##ROTATION_LAYER_VAR##Layer.fx_setRect(0);
-  _##ROTATION_LAYER_VAR##Layer.fx_setClear(0);
-  _##ROTATION_LAYER_VAR##Layer.fx_setLocalized(1);
-  _##ROTATION_LAYER_VAR##Layer.fx_setRealtime(0);
-  _##ROTATION_LAYER_VAR##Layer.fx_setEnabled(1);
+_##ROTATION_LAYER_VAR##Layer = parentgroup.getObject(layername);
+_##ROTATION_LAYER_VAR##Layer.fx_setGridSize(1,1);
+_##ROTATION_LAYER_VAR##Layer.fx_setBgFx(0);
+_##ROTATION_LAYER_VAR##Layer.fx_setWrap(1);
+_##ROTATION_LAYER_VAR##Layer.fx_setBilinear(1);
+_##ROTATION_LAYER_VAR##Layer.fx_setRect(0);
+_##ROTATION_LAYER_VAR##Layer.fx_setClear(0);
+_##ROTATION_LAYER_VAR##Layer.fx_setLocalized(1);
+_##ROTATION_LAYER_VAR##Layer.fx_setRealtime(0);
+_##ROTATION_LAYER_VAR##Layer.fx_setEnabled(1);
 }
 
 _##ROTATION_LAYER_VAR##Layer.fx_onGetPixelR(double r, double d, double x, double y) {
-  return r + _##ROTATION_LAYER_VAR##R;
+return r + _##ROTATION_LAYER_VAR##R;
 }
 
 //--------------------II-----------------
@@ -72,37 +72,37 @@ Function double _##ROTATION_LAYER_VARII##GetRotationDegree();
 Function double _##ROTATION_LAYER_VARII##GetRotation();
 
 _##ROTATION_LAYER_VARII##RotateDegree(double r) {
-  _##ROTATION_LAYER_VARII##Rotate(r * PI / 180.0);
+_##ROTATION_LAYER_VARII##Rotate(r * PI / 180.0);
 }
 
 _##ROTATION_LAYER_VARII##Rotate(double r) {
-  _##ROTATION_LAYER_VARII##R = r;
-  _##ROTATION_LAYER_VARII##Layer.fx_update();
+_##ROTATION_LAYER_VARII##R = r;
+_##ROTATION_LAYER_VARII##Layer.fx_update();
 }
 
 double _##ROTATION_LAYER_VARII##GetRotationDegree() {
-  return _##ROTATION_LAYER_VARII##R * 180 / PI;
+return _##ROTATION_LAYER_VARII##R * 180 / PI;
 }
 
 double _##ROTATION_LAYER_VARII##GetRotation() {
-  return _##ROTATION_LAYER_VARII##R;
+return _##ROTATION_LAYER_VARII##R;
 }
 
 _##ROTATION_LAYER_VARII##Init(Group parentgroup, String layername) {
-  _##ROTATION_LAYER_VARII##Layer = parentgroup.getObject(layername);
-  _##ROTATION_LAYER_VARII##Layer.fx_setGridSize(1,1);
-  _##ROTATION_LAYER_VARII##Layer.fx_setBgFx(0);
-  _##ROTATION_LAYER_VARII##Layer.fx_setWrap(1);
-  _##ROTATION_LAYER_VARII##Layer.fx_setBilinear(1);
-  _##ROTATION_LAYER_VARII##Layer.fx_setRect(0);
-  _##ROTATION_LAYER_VARII##Layer.fx_setClear(0);
-  _##ROTATION_LAYER_VARII##Layer.fx_setLocalized(1);
-  _##ROTATION_LAYER_VARII##Layer.fx_setRealtime(0);
-  _##ROTATION_LAYER_VARII##Layer.fx_setEnabled(1);
+_##ROTATION_LAYER_VARII##Layer = parentgroup.getObject(layername);
+_##ROTATION_LAYER_VARII##Layer.fx_setGridSize(1,1);
+_##ROTATION_LAYER_VARII##Layer.fx_setBgFx(0);
+_##ROTATION_LAYER_VARII##Layer.fx_setWrap(1);
+_##ROTATION_LAYER_VARII##Layer.fx_setBilinear(1);
+_##ROTATION_LAYER_VARII##Layer.fx_setRect(0);
+_##ROTATION_LAYER_VARII##Layer.fx_setClear(0);
+_##ROTATION_LAYER_VARII##Layer.fx_setLocalized(1);
+_##ROTATION_LAYER_VARII##Layer.fx_setRealtime(0);
+_##ROTATION_LAYER_VARII##Layer.fx_setEnabled(1);
 
 }
 
 _##ROTATION_LAYER_VARII##Layer.fx_onGetPixelR(double r, double d, double x, double y) {
-  return r + _##ROTATION_LAYER_VAR##R;
+return r + _##ROTATION_LAYER_VAR##R;
 }
 

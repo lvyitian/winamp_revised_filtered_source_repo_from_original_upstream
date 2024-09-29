@@ -1,15 +1,15 @@
-#ifndef CPR_ERROR_H
-#define CPR_ERROR_H
-
-#include <cstdint>
-#include <string>
-
-#include "cpr/cprtypes.h"
-#include <utility>
-
-namespace cpr {
-
-enum class ErrorCode {
+		#ifndef CPR_ERROR_H
+		#define CPR_ERROR_H
+		
+		#include <cstdint>
+		#include <string>
+		
+		#include "cpr/cprtypes.h"
+		#include <utility>
+		
+		namespace cpr {
+		
+		enum class ErrorCode {
     OK = 0,
     CONNECTION_FAILURE,
     EMPTY_RESPONSE,
@@ -29,25 +29,26 @@ enum class ErrorCode {
     REQUEST_CANCELLED,
     TOO_MANY_REDIRECTS,
     UNKNOWN_ERROR = 1000,
-};
-
-class Error {
-  public:
+		};
+		
+		class Error {
+        public:
     ErrorCode code = ErrorCode::OK;
     std::string message{};
-
+		
     Error() = default;
-
+		
     Error(const std::int32_t& curl_code, std::string&& p_error_message) : code{getErrorCodeForCurlError(curl_code)}, message(std::move(p_error_message)) {}
-
+		
     explicit operator bool() const {
-        return code != ErrorCode::OK;
+return code != ErrorCode::OK;
     }
-
-  private:
+		
+        private:
     static ErrorCode getErrorCodeForCurlError(std::int32_t curl_code);
-};
-
-} // namespace cpr
-
-#endif
+		};
+		
+		} // namespace cpr
+		
+		#endif
+		

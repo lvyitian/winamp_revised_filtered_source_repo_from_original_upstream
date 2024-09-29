@@ -1,28 +1,28 @@
-#pragma once
-#include <ocidl.h>
-#include <exdisp.h>
-#include <objsafe.h>
-
-class Winamp : public IObjectWithSite, 
+		#pragma once
+		#include <ocidl.h>
+		#include <exdisp.h>
+		#include <objsafe.h>
+		
+		class Winamp : public IObjectWithSite, 
 	public IDispatch,
 	public IOleObject,
 	public IPersistStorage,
 	public IDataObject,
 	public IObjectSafety
-{
-public:
+		{
+		public:
 	Winamp();
-		/* IUnknown */
+/* IUnknown */
 	HRESULT STDMETHODCALLTYPE QueryInterface(REFIID riid, void __RPC_FAR *__RPC_FAR *ppvObject);
 	ULONG STDMETHODCALLTYPE AddRef(void);
 	ULONG STDMETHODCALLTYPE Release(void);
-
+		
 	// *** IDispatch Methods ***
 	STDMETHOD (GetIDsOfNames)(REFIID riid, OLECHAR FAR* FAR* rgszNames, unsigned int cNames, LCID lcid, DISPID FAR* rgdispid);
 	STDMETHOD (GetTypeInfo)(unsigned int itinfo, LCID lcid, ITypeInfo FAR* FAR* pptinfo);
 	STDMETHOD (GetTypeInfoCount)(unsigned int FAR * pctinfo);
 	STDMETHOD (Invoke)(DISPID dispid, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS FAR *pdispparams, VARIANT FAR *pvarResult, EXCEPINFO FAR * pexecinfo, unsigned int FAR *puArgErr);
-
+		
 	/* IOleObject */
 	HRESULT STDMETHODCALLTYPE SetClientSite(IOleClientSite *pClientSite);
 	HRESULT STDMETHODCALLTYPE GetClientSite(IOleClientSite **ppClientSite);
@@ -45,7 +45,7 @@ public:
 	HRESULT STDMETHODCALLTYPE EnumAdvise(IEnumSTATDATA **ppenumAdvise);
 	HRESULT STDMETHODCALLTYPE GetMiscStatus(DWORD dwAspect,DWORD *pdwStatus);
 	HRESULT STDMETHODCALLTYPE SetColorScheme(LOGPALETTE *pLogpal);
-
+		
 	/* IPersistStorage */
 	HRESULT STDMETHODCALLTYPE GetClassID(CLSID *pClassID);
 	HRESULT STDMETHODCALLTYPE IsDirty(void);
@@ -54,36 +54,36 @@ public:
 	HRESULT STDMETHODCALLTYPE Save(IStorage *pStgSave, BOOL fSameAsLoad);
 	HRESULT STDMETHODCALLTYPE SaveCompleted(IStorage *pStgNew);
 	HRESULT STDMETHODCALLTYPE HandsOffStorage(void);
-
+		
 	/* IDataStorage */
 	 HRESULT STDMETHODCALLTYPE GetData(FORMATETC *pformatetcIn,STGMEDIUM *pmedium);
- HRESULT STDMETHODCALLTYPE GetDataHere(FORMATETC *pformatetc,STGMEDIUM *pmedium);
- HRESULT STDMETHODCALLTYPE QueryGetData(FORMATETC *pformatetc);
- HRESULT STDMETHODCALLTYPE GetCanonicalFormatEtc(FORMATETC *pformatectIn,FORMATETC *pformatetcOut);
- HRESULT STDMETHODCALLTYPE SetData(FORMATETC *pformatetc,STGMEDIUM *pmedium,BOOL fRelease);
- HRESULT STDMETHODCALLTYPE EnumFormatEtc(DWORD dwDirection,IEnumFORMATETC **ppenumFormatEtc);
- HRESULT STDMETHODCALLTYPE DAdvise(FORMATETC *pformatetc,DWORD advf,IAdviseSink *pAdvSink,DWORD *pdwConnection);
- HRESULT STDMETHODCALLTYPE DUnadvise(DWORD dwConnection);
- HRESULT STDMETHODCALLTYPE EnumDAdvise(IEnumSTATDATA **ppenumAdvise);
-
- /* IObjectSafety */
- HRESULT STDMETHODCALLTYPE GetInterfaceSafetyOptions(REFIID riid, DWORD *pdwSupportedOptions, DWORD *pdwEnabledOptions);
- HRESULT STDMETHODCALLTYPE SetInterfaceSafetyOptions(REFIID riid, DWORD dwOptionSetMask, DWORD dwEnabledOptions);
-
+        HRESULT STDMETHODCALLTYPE GetDataHere(FORMATETC *pformatetc,STGMEDIUM *pmedium);
+        HRESULT STDMETHODCALLTYPE QueryGetData(FORMATETC *pformatetc);
+        HRESULT STDMETHODCALLTYPE GetCanonicalFormatEtc(FORMATETC *pformatectIn,FORMATETC *pformatetcOut);
+        HRESULT STDMETHODCALLTYPE SetData(FORMATETC *pformatetc,STGMEDIUM *pmedium,BOOL fRelease);
+        HRESULT STDMETHODCALLTYPE EnumFormatEtc(DWORD dwDirection,IEnumFORMATETC **ppenumFormatEtc);
+        HRESULT STDMETHODCALLTYPE DAdvise(FORMATETC *pformatetc,DWORD advf,IAdviseSink *pAdvSink,DWORD *pdwConnection);
+        HRESULT STDMETHODCALLTYPE DUnadvise(DWORD dwConnection);
+        HRESULT STDMETHODCALLTYPE EnumDAdvise(IEnumSTATDATA **ppenumAdvise);
+		
+        /* IObjectSafety */
+        HRESULT STDMETHODCALLTYPE GetInterfaceSafetyOptions(REFIID riid, DWORD *pdwSupportedOptions, DWORD *pdwEnabledOptions);
+        HRESULT STDMETHODCALLTYPE SetInterfaceSafetyOptions(REFIID riid, DWORD dwOptionSetMask, DWORD dwEnabledOptions);
+		
 	/* IObjectWithSite */
 	HRESULT STDMETHODCALLTYPE GetSite(REFIID riid, void** ppvSite);
 	HRESULT STDMETHODCALLTYPE SetSite(IUnknown*);
-
+		
 	STDMETHOD (Test)(WORD wFlags, DISPPARAMS FAR *pdispparams, VARIANT FAR *pvarResult, unsigned int FAR *puArgErr);
 	STDMETHOD (getVersion)(WORD wFlags, DISPPARAMS FAR *pdispparams, VARIANT FAR *pvarResult, unsigned int FAR *puArgErr);
-private:
+		private:
 	LONG refCount;
 	IOleClientSite *client_site;
-
-private:
-IWebBrowser2 *webBrowser_;
-IConnectionPointContainer *connectionPointContainer;
-DWORD cookie_;
-IDispatch *document_;
-
-};
+		
+		private:
+		IWebBrowser2 *webBrowser_;
+		IConnectionPointContainer *connectionPointContainer;
+		DWORD cookie_;
+		IDispatch *document_;
+		
+		};

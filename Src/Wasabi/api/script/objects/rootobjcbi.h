@@ -8,8 +8,8 @@
 //?>
 
 class NOVTABLE RootObjectCallbackI : public RootObjectCallbackX {
-  public:
-  DISPATCH(10) virtual void rootobjectcb_onNotify(const wchar_t *a, const wchar_t *b, int c, int d)=0;
+public:
+DISPATCH(10) virtual void rootobjectcb_onNotify(const wchar_t *a, const wchar_t *b, int c, int d)=0;
 };
 
 #endif

@@ -21,8 +21,8 @@ Premake 5.0 or later.
 
 ```lua
 project "MyProject"
-   postbuildcommands { "copy dependencies/*.lib bin" }
-   postbuildmessage "Copying dependencies..."
+postbuildcommands { "copy dependencies/*.lib bin" }
+postbuildmessage "Copying dependencies..."
 ```
 
 ### See Also ###

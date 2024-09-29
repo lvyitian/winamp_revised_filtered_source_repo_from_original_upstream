@@ -5,5 +5,5 @@ packages to be installed.
 The configure script should be run with the right options to disable
 shared libraries:
 
-  ./configure --disable-shared --enable-static
+./configure --disable-shared --enable-static
 

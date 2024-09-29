@@ -12,15 +12,15 @@
 
 class SepWnd : public VirtualWnd {
 public:
-  SepWnd();
-  ~SepWnd();
-  virtual int onPaint(Canvas *c);
-  virtual int setOrientation(int which);
-  virtual int onInit();
-  virtual void freeResources();
+SepWnd();
+~SepWnd();
+virtual int onPaint(Canvas *c);
+virtual int setOrientation(int which);
+virtual int onInit();
+virtual void freeResources();
 private:
-  SkinBitmap *bitmap;
-  int orientation;
+SkinBitmap *bitmap;
+int orientation;
 };
 
 

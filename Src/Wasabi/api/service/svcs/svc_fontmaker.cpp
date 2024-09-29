@@ -2,8 +2,8 @@
 
 #define CBCLASS svc_fontMakerI
 START_DISPATCH
-  CB(GETFONTMAKERNAME, getFontMakerName);
-  CB(NEWTRUETYPEFONT, newTrueTypeFont);
-  CB(DELETETRUETYPEFONT, deleteTrueTypeFont);
+CB(GETFONTMAKERNAME, getFontMakerName);
+CB(NEWTRUETYPEFONT, newTrueTypeFont);
+CB(DELETETRUETYPEFONT, deleteTrueTypeFont);
 END_DISPATCH
 #undef CBCLASS

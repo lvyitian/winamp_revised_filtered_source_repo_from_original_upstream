@@ -45,7 +45,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #endif /* OpenMPT */
 
 /* Presume SSE functions, if compiled to use SSE/SSE2/AVX (note that AMD64 implies SSE2, and AVX
-   implies SSE4.1) */
+implies SSE4.1) */
 #if defined(_M_X64) || (defined(_M_IX86_FP) && (_M_IX86_FP >= 1)) || defined(__AVX__)
 #define OPUS_X86_PRESUME_SSE 1
 #endif

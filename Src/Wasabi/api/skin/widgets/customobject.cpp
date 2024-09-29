@@ -3,6 +3,6 @@
 
 #define CBCLASS CustomObjectI
 START_DISPATCH;
-  VCB(CUSTOMOBJECT_SETROOTWND, customobject_setRootWnd);
+VCB(CUSTOMOBJECT_SETROOTWND, customobject_setRootWnd);
 END_DISPATCH;
 

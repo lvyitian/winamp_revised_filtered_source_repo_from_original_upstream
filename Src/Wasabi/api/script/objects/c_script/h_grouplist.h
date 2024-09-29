@@ -11,19 +11,19 @@ class H_GroupList : public H_GROUPLIST_PARENT {
 
 public:
 
-  H_GroupList(ScriptObject *o);
-  H_GroupList();
-  virtual ~H_GroupList();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_GroupList(ScriptObject *o);
+H_GroupList();
+virtual ~H_GroupList();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
+ScriptObject *obj;
+int inited;
+static int loaded;
 };
 
 #endif

@@ -1,24 +1,24 @@
-#ifndef CPR_CPR_TYPES_H
-#define CPR_CPR_TYPES_H
-
-#include <curl/system.h>
-#include <initializer_list>
-#include <map>
-#include <memory>
-#include <numeric>
-#include <string>
-#include <string_view>
-
-namespace cpr {
-
-/**
- * Wrapper around "curl_off_t" to prevent applications from having to link against libcurl.
- **/
-using cpr_off_t = curl_off_t;
-
-template <class T>
-class StringHolder {
-  public:
+		#ifndef CPR_CPR_TYPES_H
+		#define CPR_CPR_TYPES_H
+		
+		#include <curl/system.h>
+		#include <initializer_list>
+		#include <map>
+		#include <memory>
+		#include <numeric>
+		#include <string>
+		#include <string_view>
+		
+		namespace cpr {
+		
+		/**
+        * Wrapper around "curl_off_t" to prevent applications from having to link against libcurl.
+        **/
+		using cpr_off_t = curl_off_t;
+		
+		template <class T>
+		class StringHolder {
+        public:
     StringHolder() = default;
     explicit StringHolder(const std::string& str) : str_(str) {}
     explicit StringHolder(std::string&& str) : str_(std::move(str)) {}
@@ -26,87 +26,87 @@ class StringHolder {
     explicit StringHolder(const char* str) : str_(str) {}
     StringHolder(const char* str, size_t len) : str_(str, len) {}
     StringHolder(const std::initializer_list<std::string> args) {
-        str_ = std::accumulate(args.begin(), args.end(), str_);
+str_ = std::accumulate(args.begin(), args.end(), str_);
     }
     StringHolder(const StringHolder& other) = default;
     StringHolder(StringHolder&& old) noexcept = default;
     virtual ~StringHolder() = default;
-
+		
     StringHolder& operator=(StringHolder&& old) noexcept = default;
-
+		
     StringHolder& operator=(const StringHolder& other) = default;
-
+		
     explicit operator std::string() const {
-        return str_;
+return str_;
     }
-
+		
     T operator+(const char* rhs) const {
-        return T(str_ + rhs);
+return T(str_ + rhs);
     }
-
+		
     T operator+(const std::string& rhs) const {
-        return T(str_ + rhs);
+return T(str_ + rhs);
     }
-
+		
     T operator+(const StringHolder<T>& rhs) const {
-        return T(str_ + rhs.str_);
+return T(str_ + rhs.str_);
     }
-
+		
     void operator+=(const char* rhs) {
-        str_ += rhs;
+str_ += rhs;
     }
     void operator+=(const std::string& rhs) {
-        str_ += rhs;
+str_ += rhs;
     }
     void operator+=(const StringHolder<T>& rhs) {
-        str_ += rhs;
+str_ += rhs;
     }
-
+		
     bool operator==(const char* rhs) const {
-        return str_ == rhs;
+return str_ == rhs;
     }
     bool operator==(const std::string& rhs) const {
-        return str_ == rhs;
+return str_ == rhs;
     }
     bool operator==(const StringHolder<T>& rhs) const {
-        return str_ == rhs.str_;
+return str_ == rhs.str_;
     }
-
+		
     bool operator!=(const char* rhs) const {
-        return str_.c_str() != rhs;
+return str_.c_str() != rhs;
     }
     bool operator!=(const std::string& rhs) const {
-        return str_ != rhs;
+return str_ != rhs;
     }
     bool operator!=(const StringHolder<T>& rhs) const {
-        return str_ != rhs.str_;
+return str_ != rhs.str_;
     }
-
+		
     const std::string& str() {
-        return str_;
+return str_;
     }
     const std::string& str() const {
-        return str_;
+return str_;
     }
     const char* c_str() const {
-        return str_.c_str();
+return str_.c_str();
     }
     const char* data() const {
-        return str_.data();
+return str_.data();
     }
-
-  protected:
+		
+        protected:
     std::string str_{};
-};
-
-template <class T>
-std::ostream& operator<<(std::ostream& os, const StringHolder<T>& s) {
+		};
+		
+		template <class T>
+		std::ostream& operator<<(std::ostream& os, const StringHolder<T>& s) {
     os << s.str();
     return os;
-}
-
-class Url : public StringHolder<Url> {
-  public:
+		}
+		
+		class Url : public StringHolder<Url> {
+        public:
     Url() = default;
     // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)
     Url(const std::string& url) : StringHolder<Url>(url) {}
@@ -121,17 +121,18 @@ class Url : public StringHolder<Url> {
     Url(const Url& other) = default;
     Url(Url&& old) noexcept = default;
     ~Url() override = default;
-
+		
     Url& operator=(Url&& old) noexcept = default;
     Url& operator=(const Url& other) = default;
-};
-
-struct CaseInsensitiveCompare {
+		};
+		
+		struct CaseInsensitiveCompare {
     bool operator()(const std::string& a, const std::string& b) const noexcept;
-};
-
-using Header = std::map<std::string, std::string, CaseInsensitiveCompare>;
-
-} // namespace cpr
-
-#endif
+		};
+		
+		using Header = std::map<std::string, std::string, CaseInsensitiveCompare>;
+		
+		} // namespace cpr
+		
+		#endif
+		

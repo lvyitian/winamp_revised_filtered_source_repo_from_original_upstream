@@ -30,24 +30,24 @@ BinPackArguments: true
 BinPackParameters: false
 BitFieldColonSpacing: Both
 BraceWrapping:
- AfterCaseLabel: true
- AfterClass: true
- AfterControlStatement: Always
- AfterEnum: true
- AfterFunction: true
- AfterNamespace: true
- #AfterObjCDeclaration
- AfterStruct: true
- AfterUnion: true
- AfterExternBlock: true
- BeforeCatch: false
- BeforeElse: false
- BeforeLambdaBody: true
- BeforeWhile: false
- IndentBraces: false
- SplitEmptyFunction: true
- SplitEmptyRecord: true
- SplitEmptyNamespace: true
+AfterCaseLabel: true
+AfterClass: true
+AfterControlStatement: Always
+AfterEnum: true
+AfterFunction: true
+AfterNamespace: true
+#AfterObjCDeclaration
+AfterStruct: true
+AfterUnion: true
+AfterExternBlock: true
+BeforeCatch: false
+BeforeElse: false
+BeforeLambdaBody: true
+BeforeWhile: false
+IndentBraces: false
+SplitEmptyFunction: true
+SplitEmptyRecord: true
+SplitEmptyNamespace: true
 #BreakAfterJavaFieldAnnotations
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBraces: Custom
@@ -138,8 +138,8 @@ SpacesInCStyleCastParentheses: false
 SpacesInConditionalStatement: false
 SpacesInContainerLiterals: false
 SpacesInLineCommentPrefix:
-  Minimum: 1
-  Maximum: -1
+Minimum: 1
+Maximum: -1
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
 StatementAttributeLikeMacros: []
@@ -149,4 +149,4 @@ TypenameMacros: [] #?
 UseCRLF: false
 UseTab: ForContinuationAndIndentation
 WhitespaceSensitiveMacros:
-  - MPT_PP_STRINGIFY
+- MPT_PP_STRINGIFY

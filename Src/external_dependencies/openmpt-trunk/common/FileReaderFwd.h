@@ -1,11 +1,11 @@
 /*
- * FileReaderFwd.h
- * ---------------
- * Purpose: Forward declaration for class FileReader.
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* FileReaderFwd.h
+* ---------------
+* Purpose: Forward declaration for class FileReader.
+* Notes  : (currently none)
+* Authors: OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 #pragma once
 

@@ -5,17 +5,17 @@
 
 CriticalSection::CriticalSection() {
 #ifdef WIN32
-  InitializeCriticalSection(&cs);
+InitializeCriticalSection(&cs);
 #elif defined(__APPLE__)
-  MPCreateCriticalRegion(&cr);
+MPCreateCriticalRegion(&cr);
 #elif defined(LINUX)
-  pthread_mutex_t recursive = PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP;
-  cs.mutex = recursive;
+pthread_mutex_t recursive = PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP;
+cs.mutex = recursive;
 #endif
 
 #ifdef ASSERTS_ENABLED
 #ifdef CS_DEBUG
-  within = 0;
+within = 0;
 #endif
 #endif
 }
@@ -23,51 +23,51 @@ CriticalSection::CriticalSection() {
 CriticalSection::~CriticalSection() {
 #ifdef CS_DEBUG
 #ifdef ASSERTS_ENABLED
-  ASSERT(!within);
+ASSERT(!within);
 #endif
 #endif
 #ifdef WIN32
-  DeleteCriticalSection(&cs);
+DeleteCriticalSection(&cs);
 #elif defined(__APPLE__)
-  MPDeleteCriticalRegion(cr);
+MPDeleteCriticalRegion(cr);
 #elif defined(LINUX)
-  pthread_mutex_destroy(&cs.mutex);
+pthread_mutex_destroy(&cs.mutex);
 #endif
 }
 
 void CriticalSection::enter() {
 #ifdef WIN32
-  EnterCriticalSection(&cs);
+EnterCriticalSection(&cs);
 #elif defined(__APPLE__)
-  MPEnterCriticalRegion(cr, kDurationForever);
+MPEnterCriticalRegion(cr, kDurationForever);
 #elif defined(LINUX)
-  pthread_mutex_lock(&cs.mutex);
+pthread_mutex_lock(&cs.mutex);
 #endif
 
 #ifdef CS_DEBUG
 #ifdef ASSERTS_ENABLED
-  ASSERT(!within);
-  within = 1;
+ASSERT(!within);
+within = 1;
 #endif
 #endif
 }
 
 void CriticalSection::leave() {
 #if defined(CS_DEBUG) && defined(ASSERTS_ENABLED)
-  ASSERT(within);
-  within = 0;
+ASSERT(within);
+within = 0;
 #endif
 
 #ifdef WIN32
-  LeaveCriticalSection(&cs);
+LeaveCriticalSection(&cs);
 #elif defined(__APPLE__)
-  MPExitCriticalRegion(cr);
+MPExitCriticalRegion(cr);
 #elif defined(LINUX)
-  pthread_mutex_unlock(&cs.mutex);
+pthread_mutex_unlock(&cs.mutex);
 #endif
 }
 
 void CriticalSection::inout() {
-  enter();
-  leave();
+enter();
+leave();
 }

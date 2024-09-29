@@ -9,18 +9,18 @@
 
 class SPanBar : public SPANBAR_PARENT, public CoreCallbackI {
 public:
-  SPanBar();
-  virtual ~SPanBar();
+SPanBar();
+virtual ~SPanBar();
 
-  virtual int onInit();
-  virtual void lock();
-  virtual void unlock();
+virtual int onInit();
+virtual void lock();
+virtual void unlock();
 
 protected:
-  int locked;
-  virtual int onSetPosition();
+int locked;
+virtual int onSetPosition();
 
-  virtual int corecb_onPanChange(int newpan);
+virtual int corecb_onPanChange(int newpan);
 };
 
 extern const wchar_t panBarXuiStr[];

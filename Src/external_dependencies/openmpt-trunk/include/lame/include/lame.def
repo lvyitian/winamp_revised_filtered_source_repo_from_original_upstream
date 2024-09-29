@@ -67,7 +67,7 @@ lame_set_msgf		@40
 
 lame_set_brate		@41
 lame_get_brate		@42
- 
+
 lame_set_compression_ratio	@43
 lame_get_compression_ratio	@44
 

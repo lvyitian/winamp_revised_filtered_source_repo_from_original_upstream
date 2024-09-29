@@ -1,25 +1,26 @@
-import React from 'react';
-
-const Column = ({ children }) =>
+		import React from 'react';
+		
+		const Column = ({ children }) =>
 	<div className="col">
-		{children}
+{children}
 	</div>;
-
-
-const Container = ({ children, className }) =>
+		
+		
+		const Container = ({ children, className }) =>
 	<div className={`container ${className ?? ""}`}>
-		{children}
+{children}
 	</div>;
-
-
-const Row = ({ children }) =>
+		
+		
+		const Row = ({ children }) =>
 	<div className="row">
-		{children}
+{children}
 	</div>;
-
-
-export {
+		
+		
+		export {
 	Column,
 	Container,
 	Row
-};
+		};
+		

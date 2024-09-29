@@ -1,12 +1,12 @@
 /*
- * Tables.h
- * --------
- * Purpose: Effect, interpolation, data and other pre-calculated tables.
- * Notes  : (currently none)
- * Authors: Olivier Lapicque
- *          OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* Tables.h
+* --------
+* Purpose: Effect, interpolation, data and other pre-calculated tables.
+* Notes  : (currently none)
+* Authors: Olivier Lapicque
+*          OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 
 #pragma once

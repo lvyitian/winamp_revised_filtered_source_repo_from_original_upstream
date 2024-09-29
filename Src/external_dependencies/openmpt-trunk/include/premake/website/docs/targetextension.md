@@ -26,7 +26,7 @@ targetextension ".zmf"
 
 ### See Also ###
 
- * [targetname](targetname.md)
- * [targetdir](targetdir.md)
- * [targetprefix](targetprefix.md)
- * [targetsuffix](targetsuffix.md)
+* [targetname](targetname.md)
+* [targetdir](targetdir.md)
+* [targetprefix](targetprefix.md)
+* [targetsuffix](targetsuffix.md)

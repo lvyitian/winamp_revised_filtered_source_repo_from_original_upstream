@@ -22,7 +22,7 @@ static const GUID Wa2FFOptionsGuid =
 
 class Wa2FFOptions : public WA2FFOPTIONS_PARENT {
 public:
-  Wa2FFOptions ();
+Wa2FFOptions ();
 };
 
 extern Wa2FFOptions *ffoptions;

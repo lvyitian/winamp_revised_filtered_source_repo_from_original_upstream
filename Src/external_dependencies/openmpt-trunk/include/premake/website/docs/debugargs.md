@@ -24,5 +24,5 @@ Premake 4.4 or later.
 
 ```lua
 filter { "configurations:Debug" }
-   debugargs { "--append", "somefile.txt" }
+debugargs { "--append", "somefile.txt" }
 ```

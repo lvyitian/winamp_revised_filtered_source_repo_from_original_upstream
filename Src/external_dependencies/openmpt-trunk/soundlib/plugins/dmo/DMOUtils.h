@@ -1,11 +1,11 @@
 /*
- * DMOUtils.h
- * ----------
- * Purpose: Utility functions shared by DMO plugins
- * Notes  : none
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* DMOUtils.h
+* ----------
+* Purpose: Utility functions shared by DMO plugins
+* Notes  : none
+* Authors: OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 
 OPENMPT_NAMESPACE_BEGIN

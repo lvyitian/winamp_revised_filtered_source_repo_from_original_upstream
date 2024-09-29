@@ -21,12 +21,12 @@ Premake 4.0 or later.
 ```lua
 -- Add "-d" to debug versions of files
 filter { "configurations:Debug" }
-   implibsuffix "-d"
+implibsuffix "-d"
 ```
 
 ### See Also ###
 
- * [implibname](implibname.md)
- * [implibdir](implibdir.md)
- * [implibextension](implibextension.md)
- * [implibprefix](implibprefix.md)
+* [implibname](implibname.md)
+* [implibdir](implibdir.md)
+* [implibextension](implibextension.md)
+* [implibprefix](implibprefix.md)

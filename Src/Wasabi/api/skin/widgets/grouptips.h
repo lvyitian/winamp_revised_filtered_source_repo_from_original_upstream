@@ -11,13 +11,13 @@ int groupTipsTimerProc(int id, void *data1, void *data2);
 
 class GroupTips : public svc_toolTipsRendererI/*, public TimerClientI*/ {
 public:
-  GroupTips();
-  virtual ~GroupTips();
-  static const char *getServiceName() { return "Group tooltip renderer"; }
-  
-  virtual int spawnTooltip(const wchar_t *text);
+GroupTips();
+virtual ~GroupTips();
+static const char *getServiceName() { return "Group tooltip renderer"; }
+
+virtual int spawnTooltip(const wchar_t *text);
 private:
-  ifc_window *tipwnd;
+ifc_window *tipwnd;
 };
 
 #endif

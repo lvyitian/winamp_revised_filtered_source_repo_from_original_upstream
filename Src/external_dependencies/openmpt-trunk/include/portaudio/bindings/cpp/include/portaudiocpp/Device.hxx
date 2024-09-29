@@ -1,29 +1,29 @@
-#ifndef INCLUDED_PORTAUDIO_DEVICE_HXX
-#define INCLUDED_PORTAUDIO_DEVICE_HXX
-
-// ---------------------------------------------------------------------------------------
-
-#include <iterator>
-
-#include "portaudio.h"
-
-#include "portaudiocpp/SampleDataFormat.hxx"
-
-// ---------------------------------------------------------------------------------------
-
-// Forward declaration(s):
-namespace portaudio
-{
+		#ifndef INCLUDED_PORTAUDIO_DEVICE_HXX
+		#define INCLUDED_PORTAUDIO_DEVICE_HXX
+		
+		// ---------------------------------------------------------------------------------------
+		
+		#include <iterator>
+		
+		#include "portaudio.h"
+		
+		#include "portaudiocpp/SampleDataFormat.hxx"
+		
+		// ---------------------------------------------------------------------------------------
+		
+		// Forward declaration(s):
+		namespace portaudio
+		{
 	class System;
 	class HostApi;
-}
-
-// ---------------------------------------------------------------------------------------
-
-// Declaration(s):
-namespace portaudio
-{
-
+		}
+		
+		// ---------------------------------------------------------------------------------------
+		
+		// Declaration(s):
+		namespace portaudio
+		{
+		
 	//////
 	/// @brief Class which represents a PortAudio device in the System.
 	///
@@ -40,52 +40,53 @@ namespace portaudio
 	class Device
 	{
 	public:
-		// query info: name, max in channels, max out channels, 
-		// default low/high input/output latency, default sample rate
-		PaDeviceIndex index() const;
-		const char *name() const;
-		int maxInputChannels() const;
-		int maxOutputChannels() const;
-		PaTime defaultLowInputLatency() const;
-		PaTime defaultHighInputLatency() const;
-		PaTime defaultLowOutputLatency() const;
-		PaTime defaultHighOutputLatency() const;
-		double defaultSampleRate() const;
-
-		bool isInputOnlyDevice() const; // extended
-		bool isOutputOnlyDevice() const; // extended
-		bool isFullDuplexDevice() const; // extended
-		bool isSystemDefaultInputDevice() const; // extended
-		bool isSystemDefaultOutputDevice() const; // extended
-		bool isHostApiDefaultInputDevice() const; // extended
-		bool isHostApiDefaultOutputDevice() const; // extended
-
-		bool operator==(const Device &rhs) const;
-		bool operator!=(const Device &rhs) const;
-
-		// host api reference
-		HostApi &hostApi();
-		const HostApi &hostApi() const;
-
-	private:
-		PaDeviceIndex index_;
-		const PaDeviceInfo *info_;
-
-	private:
-		friend class System;
+// query info: name, max in channels, max out channels, 
+// default low/high input/output latency, default sample rate
+PaDeviceIndex index() const;
+const char *name() const;
+int maxInputChannels() const;
+int maxOutputChannels() const;
+PaTime defaultLowInputLatency() const;
+PaTime defaultHighInputLatency() const;
+PaTime defaultLowOutputLatency() const;
+PaTime defaultHighOutputLatency() const;
+double defaultSampleRate() const;
 		
-		explicit Device(PaDeviceIndex index);
-		~Device();
+bool isInputOnlyDevice() const; // extended
+bool isOutputOnlyDevice() const; // extended
+bool isFullDuplexDevice() const; // extended
+bool isSystemDefaultInputDevice() const; // extended
+bool isSystemDefaultOutputDevice() const; // extended
+bool isHostApiDefaultInputDevice() const; // extended
+bool isHostApiDefaultOutputDevice() const; // extended
+		
+bool operator==(const Device &rhs) const;
+bool operator!=(const Device &rhs) const;
+		
+// host api reference
+HostApi &hostApi();
+const HostApi &hostApi() const;
+		
+	private:
+PaDeviceIndex index_;
+const PaDeviceInfo *info_;
+		
+	private:
+friend class System;
 
-		Device(const Device &); // non-copyable
-		Device &operator=(const Device &); // non-copyable
+explicit Device(PaDeviceIndex index);
+~Device();
+		
+Device(const Device &); // non-copyable
+Device &operator=(const Device &); // non-copyable
 	};
-
+		
 	// -----------------------------------------------------------------------------------
-
-} // namespace portaudio
-
-// ---------------------------------------------------------------------------------------
-
-#endif // INCLUDED_PORTAUDIO_DEVICE_HXX
-
+		
+		} // namespace portaudio
+		
+		// ---------------------------------------------------------------------------------------
+		
+		#endif // INCLUDED_PORTAUDIO_DEVICE_HXX
+		
+		

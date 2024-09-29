@@ -9,14 +9,14 @@
 class WACNAME : public WACPARENT 
 {
 public:
-  WACNAME();
-  virtual ~WACNAME();
+WACNAME();
+virtual ~WACNAME();
 
-  virtual GUID getGUID();
+virtual GUID getGUID();
 
-  virtual void onRegisterServices();
-  virtual void onCreate();
-  virtual void onDestroy();
+virtual void onRegisterServices();
+virtual void onCreate();
+virtual void onDestroy();
 private:
 };
 

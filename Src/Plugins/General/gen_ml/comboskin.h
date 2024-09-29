@@ -8,11 +8,11 @@
 class ComboSkin
 {
 public:
-  ComboSkin(HWND hwnd);
-  ~ComboSkin();
+ComboSkin(HWND hwnd);
+~ComboSkin();
 
-  HWND m_hwnd;
-  WNDPROC m_old_wndproc;
+HWND m_hwnd;
+WNDPROC m_old_wndproc;
 };
 
 #endif

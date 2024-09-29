@@ -22,7 +22,7 @@ Link against some NuGet packages.
 
 ```lua
 project "foo"
-   nuget { "sdl2.v140:2.0.4", "sdl2.v140.redist:2.0.4" }
+nuget { "sdl2.v140:2.0.4", "sdl2.v140.redist:2.0.4" }
 ```
 
 ### See Also ###

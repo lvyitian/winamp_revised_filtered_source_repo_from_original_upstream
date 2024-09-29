@@ -1,46 +1,46 @@
-#ifndef __XUITREE_H
-#define __XUITREE_H
-
-#include <map>
-#include <api/wnd/wndclass/treewnd.h>
-#include <api/script/objcontroller.h>
-#include <bfc/depend.h>
-
-class HPNode;
-class ScriptTreeItem;
-class svc_textFeed;
-
-#define SCRIPTTREE_PARENT TreeWnd
-
-typedef std::map<TreeItem *,ScriptTreeItem *>  ScriptTreeMap;
-
-// -----------------------------------------------------------------------
-class ScriptTree : public SCRIPTTREE_PARENT, public DependentViewerI {
-  
-  public:
-
+		#ifndef __XUITREE_H
+		#define __XUITREE_H
+		
+		#include <map>
+		#include <api/wnd/wndclass/treewnd.h>
+		#include <api/script/objcontroller.h>
+		#include <bfc/depend.h>
+		
+		class HPNode;
+		class ScriptTreeItem;
+		class svc_textFeed;
+		
+		#define SCRIPTTREE_PARENT TreeWnd
+		
+		typedef std::map<TreeItem *,ScriptTreeItem *>  ScriptTreeMap;
+		
+		// -----------------------------------------------------------------------
+		class ScriptTree : public SCRIPTTREE_PARENT, public DependentViewerI {
+        
+        public:
+		
     ScriptTree();
     virtual ~ScriptTree();
-
+		
     virtual int onInit();
-
+		
     int setXuiParam(int xuihandle, int xmlattributeid, const wchar_t *xmlattributename, const wchar_t *value);
     int onReloadConfig();
-
+		
     virtual int viewer_onEvent(api_dependent *item, const GUID *classguid, int event, intptr_t param, void *ptr, size_t ptrlen);
     virtual void onSetVisible(int i);
-
+		
     virtual int onAction(const wchar_t *action, const wchar_t *param, int x, int y, intptr_t p1, intptr_t p2, void *data, size_t datalen, ifc_window *source);
-
+		
     // Find a ScriptTreeItem to wrap a TreeItem
     ScriptTreeItem *bindScriptTreeItem(TreeItem *item);
-
+		
     // Someone is deleting a ScriptTreeItem so we should stop tracking it.
     int destroyScriptTreeItem(ScriptTreeItem *item);
-
+		
     // Transfer a TreeItem from our tree to a different tree (or global space)
     int transferScriptTreeItem(TreeItem *item, ScriptTree *tree);
-
+		
     // Callback methods that send hooks into the Script system
     virtual int onLeftButtonDown(int x, int y);
     virtual int onLeftButtonUp(int x, int y);
@@ -59,35 +59,35 @@ class ScriptTree : public SCRIPTTREE_PARENT, public DependentViewerI {
     virtual void onItemSelected(TreeItem *item);
     virtual void onItemDeselected(TreeItem *item);
     virtual int onKillFocus();
-
-
-
+		
+		
+		
     // Valid XML Params for Tree
     enum {
-      SCRIPTTREE_SETITEMS = 0,
-      SCRIPTTREE_FEED,
-      SCRIPTTREE_SORTED,
-      SCRIPTTREE_CHILDTABS,
-      SCRIPTTREE_EXPANDROOT,
+    SCRIPTTREE_SETITEMS = 0,
+    SCRIPTTREE_FEED,
+    SCRIPTTREE_SORTED,
+    SCRIPTTREE_CHILDTABS,
+    SCRIPTTREE_EXPANDROOT,
     };
-
-protected:
+		
+		protected:
 	/*static */void CreateXMLParameters(int master_handle);
-
-  private:
-
-#ifdef WASABI_COMPILE_CONFIG
+		
+        private:
+		
+		#ifdef WASABI_COMPILE_CONFIG
     void saveToConfig();
     void selectFromConfig();
-#endif
+		#endif
     void expandRoot(int val);
-
+		
     void fillFromParams();
     void fillFromHPNode(HPNode *node, TreeItem *parent = NULL);
-
+		
     int selectEntry(const wchar_t *e, int cb=1);
     void selectEntries(const wchar_t *multientry, int cb=1);
-
+		
     void openFeed(const wchar_t *feedid);
     void closeFeed();
     
@@ -97,15 +97,15 @@ protected:
     int expandroot;
     svc_textFeed *feed;
     StringW last_feed;
-		static XMLParamPair params[];
-
-//    ScriptTreeMap scriptitems;  
-};
-
-// -----------------------------------------------------------------------------------------------------
-class GuiTreeScriptController : public ScriptObjectControllerI {
-  public:
-
+static XMLParamPair params[];
+		
+		//    ScriptTreeMap scriptitems;  
+		};
+		
+		// -----------------------------------------------------------------------------------------------------
+		class GuiTreeScriptController : public ScriptObjectControllerI {
+        public:
+		
     virtual const wchar_t *getClassName() { return L"GuiTree"; }
     virtual const wchar_t *getAncestorClassName() { return L"GuiObject"; }
     virtual ScriptObjectController *getAncestorController() { return WASABI_API_MAKI->maki_getController(guiObjectGuid); }
@@ -116,11 +116,11 @@ class GuiTreeScriptController : public ScriptObjectControllerI {
     virtual void destroy(ScriptObject *o);
     virtual void *encapsulate(ScriptObject *o);
     virtual void deencapsulate(void *o);
-
-  public:
+		
+        public:
     static scriptVar /*int*/ guitree_getNumRootItems(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static scriptVar /*TreeItem*/ guitree_enumRootItem(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, scriptVar /*int*/ which);
-
+		
     static /*Int*/ scriptVar guitree_onLeftButtonDown(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*Int*/ scriptVar x, /*Int*/ scriptVar y);
     static /*Int*/ scriptVar guitree_onLeftButtonUp(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*Int*/ scriptVar x, /*Int*/ scriptVar y);
     static /*Int*/ scriptVar guitree_onRightButtonUp(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*Int*/ scriptVar x, /*Int*/ scriptVar y);
@@ -138,7 +138,7 @@ class GuiTreeScriptController : public ScriptObjectControllerI {
     static /*Void*/ scriptVar guitree_onItemSelected(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*TreeItem*/ scriptVar item);
     static /*Void*/ scriptVar guitree_onItemDeselected(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*TreeItem*/ scriptVar item);
     static /*Int*/ scriptVar guitree_onKillFocus(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
-
+		
     static /*Void*/ scriptVar guitree_jumpToNext(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*Int*/ scriptVar c);
     static /*Void*/ scriptVar guitree_ensureItemVisible(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*TreeItem*/ scriptVar item);
     static /*Int*/ scriptVar guitree_getContentsWidth(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
@@ -179,84 +179,84 @@ class GuiTreeScriptController : public ScriptObjectControllerI {
     static /*Int*/ scriptVar guitree_getItemRectY(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*TreeItem*/ scriptVar item);
     static /*Int*/ scriptVar guitree_getItemRectW(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*TreeItem*/ scriptVar item);
     static /*Int*/ scriptVar guitree_getItemRectH(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*TreeItem*/ scriptVar item);
-//    static /*TreeItem*/ scriptVar guitree_getItemFromPoint(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*Int*/ scriptVar x, /*Int*/ scriptVar y);
-
-  private:
+		//    static /*TreeItem*/ scriptVar guitree_getItemFromPoint(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*Int*/ scriptVar x, /*Int*/ scriptVar y);
+		
+        private:
     static function_descriptor_struct exportedFunction[];
-
+		
     static StringW staticStr;
-};
-
-extern GuiTreeScriptController *guiTreeController;
-
-
-// -----------------------------------------------------------------------
-extern const wchar_t ScriptTreeXuiObjectStr[];
-extern char ScriptTreeXuiSvcName[];
-class ScriptTreeXuiSvc : public XuiObjectSvc<ScriptTree, ScriptTreeXuiObjectStr, ScriptTreeXuiSvcName> {};
-
-
-
-// -----------------------------------------------------------------------
-#define SCRIPTTREEITEM_SCRIPTPARENT RootObjectInstance
-
-class ScriptTreeItem : public SCRIPTTREEITEM_SCRIPTPARENT {
-public:
-  ScriptTreeItem(TreeItem *_item = NULL, ScriptTree *_tree = NULL);
-  virtual ~ScriptTreeItem();
-
-  TreeItem *getItem() {return item;}
-  void setItem(TreeItem *_item) {item = _item;}
-  ScriptTree *getScriptTree() {return tree;}
-  void setScriptTree(ScriptTree *_tree) {tree = _tree;}
-
-  int destroyScriptTreeItem() {
+		};
+		
+		extern GuiTreeScriptController *guiTreeController;
+		
+		
+		// -----------------------------------------------------------------------
+		extern const wchar_t ScriptTreeXuiObjectStr[];
+		extern char ScriptTreeXuiSvcName[];
+		class ScriptTreeXuiSvc : public XuiObjectSvc<ScriptTree, ScriptTreeXuiObjectStr, ScriptTreeXuiSvcName> {};
+		
+		
+		
+		// -----------------------------------------------------------------------
+		#define SCRIPTTREEITEM_SCRIPTPARENT RootObjectInstance
+		
+		class ScriptTreeItem : public SCRIPTTREEITEM_SCRIPTPARENT {
+		public:
+        ScriptTreeItem(TreeItem *_item = NULL, ScriptTree *_tree = NULL);
+        virtual ~ScriptTreeItem();
+		
+        TreeItem *getItem() {return item;}
+        void setItem(TreeItem *_item) {item = _item;}
+        ScriptTree *getScriptTree() {return tree;}
+        void setScriptTree(ScriptTree *_tree) {tree = _tree;}
+		
+        int destroyScriptTreeItem() {
     if (tree) return tree->destroyScriptTreeItem(this); // CAREFUL, WE GET OURSELVES DELETED HERE!!!!!!!!
     return 0;
-  }
-
-// These methods all thunk directly to the TreeItem
-public:
-  int getNumChildren();
-  void setLabel(const wchar_t *label);
-  const wchar_t *getLabel();
-  void ensureVisible();
-  TreeItem *getNthChild(int nth);
-  TreeItem *getChild();
-  TreeItem *getChildSibling(TreeItem *_item);
-  TreeItem *getSibling();
-  TreeItem *getParent();
-  void editLabel();
-  bool hasSubItems();
-  void setSorted(int issorted);
-  void setChildTab(int haschildtab);
-  bool isSorted();
-  bool isCollapsed();
-  bool isExpanded();
-  void invalidate();
-  bool isSelected();
-  bool isHilited();
-  void setHilited(bool ishilited);
-  int collapse();
-  int expand();
-//  void setCurrent(bool tf);
-  TreeWnd *getTree();
-  
-private:
-  ScriptTreeItem *bindScriptTreeItem(TreeItem *item) {
+        }
+		
+		// These methods all thunk directly to the TreeItem
+		public:
+        int getNumChildren();
+        void setLabel(const wchar_t *label);
+        const wchar_t *getLabel();
+        void ensureVisible();
+        TreeItem *getNthChild(int nth);
+        TreeItem *getChild();
+        TreeItem *getChildSibling(TreeItem *_item);
+        TreeItem *getSibling();
+        TreeItem *getParent();
+        void editLabel();
+        bool hasSubItems();
+        void setSorted(int issorted);
+        void setChildTab(int haschildtab);
+        bool isSorted();
+        bool isCollapsed();
+        bool isExpanded();
+        void invalidate();
+        bool isSelected();
+        bool isHilited();
+        void setHilited(bool ishilited);
+        int collapse();
+        int expand();
+		//  void setCurrent(bool tf);
+        TreeWnd *getTree();
+        
+		private:
+        ScriptTreeItem *bindScriptTreeItem(TreeItem *item) {
     if (tree) return tree->bindScriptTreeItem(item);
     return NULL;
-  }
-  
-  TreeItem *item;
-  ScriptTree *tree;
-};
-
-
-// -----------------------------------------------------------------------------------------------------
-class TreeItemScriptController : public ScriptObjectControllerI {
-  public:
-
+        }
+        
+        TreeItem *item;
+        ScriptTree *tree;
+		};
+		
+		
+		// -----------------------------------------------------------------------------------------------------
+		class TreeItemScriptController : public ScriptObjectControllerI {
+        public:
+		
     virtual const wchar_t *getClassName() { return L"TreeItem"; }
     virtual const wchar_t *getAncestorClassName() { return L"Object"; }
     virtual ScriptObjectController *getAncestorController() { return WASABI_API_MAKI->maki_getController(rootObjectGuid); }
@@ -267,8 +267,8 @@ class TreeItemScriptController : public ScriptObjectControllerI {
     virtual void destroy(ScriptObject *o);
     virtual void *encapsulate(ScriptObject *o);
     virtual void deencapsulate(void *o);
-
-  public:
+		
+        public:
     static /*int*/ scriptVar treeitem_getNumChildren(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static /*void*/ scriptVar treeitem_setLabel(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*String*/ scriptVar label);
     static /*String*/ scriptVar treeitem_getLabel(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
@@ -291,9 +291,9 @@ class TreeItemScriptController : public ScriptObjectControllerI {
     static /*void*/ scriptVar treeitem_setHilited(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar ishilited);
     static /*int*/ scriptVar treeitem_collapse(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static /*int*/ scriptVar treeitem_expand(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
-//    static /*void*/ scriptVar treeitem_setCurrent(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar tf);
+		//    static /*void*/ scriptVar treeitem_setCurrent(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar tf);
     static /*GuiTree*/ scriptVar treeitem_getTree(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
-
+		
     static /*void*/ scriptVar treeitem_onTreeAdd(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static /*void*/ scriptVar treeitem_onTreeRemove(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static /*void*/ scriptVar treeitem_onSelect(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
@@ -306,21 +306,22 @@ class TreeItemScriptController : public ScriptObjectControllerI {
     static /*int*/ scriptVar treeitem_onBeginLabelEdit(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static /*int*/ scriptVar treeitem_onEndLabelEdit(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*String*/ scriptVar _newlabel);
     static /*int*/ scriptVar treeitem_onContextMenu(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar _x, /*int*/ scriptVar _y);
-
-
-  private:
+		
+		
+        private:
     static function_descriptor_struct exportedFunction[];
-
+		
     static StringW staticStr;
-
+		
     friend ScriptTree;
     static ScriptTreeMap g_scriptitems;  // items not living in trees are tracked here.
-
-};
-
-extern TreeItemScriptController *treeItemController;
-
-#define TISC TreeItemScriptController 
-
-
-#endif
+		
+		};
+		
+		extern TreeItemScriptController *treeItemController;
+		
+		#define TISC TreeItemScriptController 
+		
+		
+		#endif
+		

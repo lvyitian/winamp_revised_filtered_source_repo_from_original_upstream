@@ -8,26 +8,26 @@
 #define C_TOGGLEBUTTON_PARENT C_Button
 
 class C_ToggleButton : public C_TOGGLEBUTTON_PARENT {
-  public:
+public:
 
-  C_ToggleButton(ScriptObject *object);
-  C_ToggleButton();
-  virtual ~C_ToggleButton();
+C_ToggleButton(ScriptObject *object);
+C_ToggleButton();
+virtual ~C_ToggleButton();
 
-  virtual void C_hook(ScriptObject *o);
+virtual void C_hook(ScriptObject *o);
 
-  ScriptObject *getScriptObject();
+ScriptObject *getScriptObject();
 
-  virtual void onToggle(int (null));
-  virtual int getCurCfgVal();
+virtual void onToggle(int (null));
+virtual int getCurCfgVal();
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int ontoggle_id;
-  static int getcurcfgval_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int ontoggle_id;
+static int getcurcfgval_id;
 };
 
 #endif

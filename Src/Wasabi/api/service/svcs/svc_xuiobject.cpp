@@ -4,9 +4,9 @@
 
 #define CBCLASS svc_xuiObjectI
 START_DISPATCH;
-  CB(XUI_TESTTAG,        testTag);
+CB(XUI_TESTTAG,        testTag);
 //  CB(XUI_INSTANTIATE,    instantiate);
-  CB(XUI_INSTANTIATEWITHPARAMS,    instantiate);
-  VCB(XUI_DESTROY,       destroy);
+CB(XUI_INSTANTIATEWITHPARAMS,    instantiate);
+VCB(XUI_DESTROY,       destroy);
 END_DISPATCH;
 #undef CBCLASS

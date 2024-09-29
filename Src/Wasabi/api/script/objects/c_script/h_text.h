@@ -11,21 +11,21 @@ class H_Text : public H_TEXT_PARENT {
 
 public:
 
-  H_Text(ScriptObject *o);
-  H_Text();
-  virtual ~H_Text();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_Text(ScriptObject *o);
+H_Text();
+virtual ~H_Text();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onTextChanged(const wchar_t *newtxt) {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onTextChanged(const wchar_t *newtxt) {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int ontextchanged_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int ontextchanged_id;
 };
 
 #endif

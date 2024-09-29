@@ -1,28 +1,29 @@
-project "lua-lib"
+		project "lua-lib"
 	language    "C"
 	kind        "StaticLib"
 	warnings    "off"
-
+		
 	includedirs { "src" }
-
+		
 	files
 	{
-		"**.h",
-		"**.c"
+"**.h",
+"**.c"
 	}
-
+		
 	excludes
 	{
-		"src/lauxlib.c",
-		"src/lua.c",
-		"src/luac.c",
-		"src/print.c",
-		"**.lua",
-		"etc/*.c"
+"src/lauxlib.c",
+"src/lua.c",
+"src/luac.c",
+"src/print.c",
+"**.lua",
+"etc/*.c"
 	}
-
+		
 	filter "system:linux or bsd or hurd or aix or solaris or haiku"
-		defines     { "LUA_USE_POSIX", "LUA_USE_DLOPEN" }
-
+defines     { "LUA_USE_POSIX", "LUA_USE_DLOPEN" }
+		
 	filter "system:macosx"
-		defines     { "LUA_USE_MACOSX" }
+defines     { "LUA_USE_MACOSX" }
+		

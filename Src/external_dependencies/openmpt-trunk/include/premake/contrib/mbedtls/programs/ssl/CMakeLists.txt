@@ -1,19 +1,19 @@
-set(THREADS_USE_PTHREADS_WIN32 true)
-find_package(Threads)
-
-set(libs
+		set(THREADS_USE_PTHREADS_WIN32 true)
+		find_package(Threads)
+		
+		set(libs
     ${mbedtls_target}
-)
-
-if(USE_PKCS11_HELPER_LIBRARY)
+		)
+		
+		if(USE_PKCS11_HELPER_LIBRARY)
     set(libs ${libs} pkcs11-helper)
-endif(USE_PKCS11_HELPER_LIBRARY)
-
-if(ENABLE_ZLIB_SUPPORT)
+		endif(USE_PKCS11_HELPER_LIBRARY)
+		
+		if(ENABLE_ZLIB_SUPPORT)
     set(libs ${libs} ${ZLIB_LIBRARIES})
-endif(ENABLE_ZLIB_SUPPORT)
-
-set(executables
+		endif(ENABLE_ZLIB_SUPPORT)
+		
+		set(executables
     dtls_client
     dtls_server
     mini_client
@@ -24,23 +24,24 @@ set(executables
     ssl_mail_client
     ssl_server
     ssl_server2
-)
-
-foreach(exe IN LISTS executables)
+		)
+		
+		foreach(exe IN LISTS executables)
     add_executable(${exe} ${exe}.c $<TARGET_OBJECTS:mbedtls_test>)
     target_link_libraries(${exe} ${libs})
     target_include_directories(${exe} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../tests/include)
-endforeach()
-
-set_property(TARGET ssl_client2 APPEND PROPERTY SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../test/query_config.c)
-set_property(TARGET ssl_server2 APPEND PROPERTY SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../test/query_config.c)
-
-if(THREADS_FOUND)
+		endforeach()
+		
+		set_property(TARGET ssl_client2 APPEND PROPERTY SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../test/query_config.c)
+		set_property(TARGET ssl_server2 APPEND PROPERTY SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../test/query_config.c)
+		
+		if(THREADS_FOUND)
     add_executable(ssl_pthread_server ssl_pthread_server.c $<TARGET_OBJECTS:mbedtls_test>)
     target_link_libraries(ssl_pthread_server ${libs} ${CMAKE_THREAD_LIBS_INIT})
     list(APPEND executables ssl_pthread_server)
-endif(THREADS_FOUND)
-
-install(TARGETS ${executables}
-        DESTINATION "bin"
-        PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+		endif(THREADS_FOUND)
+		
+		install(TARGETS ${executables}
+DESTINATION "bin"
+PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+		

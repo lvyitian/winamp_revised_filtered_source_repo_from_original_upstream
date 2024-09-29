@@ -19,18 +19,18 @@
 
 class WACNAME : public WAComponentClient {
 public:
-  WACNAME();
-  virtual ~WACNAME();
+WACNAME();
+virtual ~WACNAME();
 
-  virtual const char *getName() { return "WaveOut Output"; };
-  virtual GUID getGUID();
+virtual const char *getName() { return "WaveOut Output"; };
+virtual GUID getGUID();
 
-  virtual void onDestroy();
-  virtual void onCreate();
-  
-  virtual int getDisplayComponent() { return FALSE; };
+virtual void onDestroy();
+virtual void onCreate();
 
-  virtual CfgItem *getCfgInterface(int n) { return this; }
+virtual int getDisplayComponent() { return FALSE; };
+
+virtual CfgItem *getCfgInterface(int n) { return this; }
 };
 
 

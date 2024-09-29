@@ -13,10 +13,10 @@ static const GUID videoFeedFactoryGUID =
 
 class VideoTextFeedFactory : public waServiceBase<svc_textFeed, VideoTextFeedFactory> {
 public:
-  VideoTextFeedFactory() : waServiceBase<svc_textFeed, VideoTextFeedFactory>(videoFeedFactoryGUID) {}
-  static const char *getServiceName() { return "Video Text Feed"; }
-  svc_textFeed *getService() { return videoTextFeed; }
-  static FOURCC getServiceType() { return WaSvc::TEXTFEED; }
+VideoTextFeedFactory() : waServiceBase<svc_textFeed, VideoTextFeedFactory>(videoFeedFactoryGUID) {}
+static const char *getServiceName() { return "Video Text Feed"; }
+svc_textFeed *getService() { return videoTextFeed; }
+static FOURCC getServiceType() { return WaSvc::TEXTFEED; }
 };
 
 // {87291C37-EC56-476b-B813-ED0F6F90C3B7}
@@ -26,10 +26,10 @@ static const GUID playlistFeedFactory =
 
 class PlaylistTextFeedFactory : public waServiceBase<svc_textFeed, PlaylistTextFeedFactory> {
 public:
-  PlaylistTextFeedFactory() : waServiceBase<svc_textFeed, PlaylistTextFeedFactory>(playlistFeedFactory) {}
-  static const char *getServiceName() { return "Playlist Text Feed"; }
-  svc_textFeed *getService() { return playlistTextFeed; }
-  static FOURCC getServiceType() { return WaSvc::TEXTFEED; }
+PlaylistTextFeedFactory() : waServiceBase<svc_textFeed, PlaylistTextFeedFactory>(playlistFeedFactory) {}
+static const char *getServiceName() { return "Playlist Text Feed"; }
+svc_textFeed *getService() { return playlistTextFeed; }
+static FOURCC getServiceType() { return WaSvc::TEXTFEED; }
 };
 
 #endif

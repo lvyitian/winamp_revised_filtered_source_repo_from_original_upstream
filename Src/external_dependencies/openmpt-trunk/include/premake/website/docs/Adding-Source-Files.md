@@ -6,9 +6,9 @@ You add files—source code, resources, and so on—to your project using the [f
 
 ```lua
 files {
-   "hello.h",  -- you can specify exact names
-   "*.c",      -- or use a wildcard...
-   "**.cpp"    -- ...and recurse into subdirectories
+"hello.h",  -- you can specify exact names
+"*.c",      -- or use a wildcard...
+"**.cpp"    -- ...and recurse into subdirectories
 }
 ```
 

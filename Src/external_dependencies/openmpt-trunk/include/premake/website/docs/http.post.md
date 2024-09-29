@@ -20,9 +20,9 @@ There are three return values.
 resource, result_str, response_code = http.post(url, data, { options })
 ```
 
- * `resource` is the content that was retrieved or nil if it could not be retrieved.
- * `result_str` is set to "OK" if successful or contains a description of the failure.
- * `result_code` is the HTTP [result code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) of the get. 
+* `resource` is the content that was retrieved or nil if it could not be retrieved.
+* `result_str` is set to "OK" if successful or contains a description of the failure.
+* `result_code` is the HTTP [result code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) of the get. 
 
 ### Examples ###
 

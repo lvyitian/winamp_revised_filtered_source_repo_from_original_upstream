@@ -31,24 +31,24 @@ BinPackArguments: true
 BinPackParameters: false
 BitFieldColonSpacing: Both
 BraceWrapping:
- AfterCaseLabel: true
- AfterClass: false
- AfterControlStatement: MultiLine
- AfterEnum: false
- AfterFunction: false
- AfterNamespace: false
- #AfterObjCDeclaration
- AfterStruct: false
- AfterUnion: false
- AfterExternBlock: false
- BeforeCatch: false
- BeforeElse: false
- BeforeLambdaBody: true
- BeforeWhile: false
- IndentBraces: false
- SplitEmptyFunction: true
- SplitEmptyRecord: false
- SplitEmptyNamespace: true
+AfterCaseLabel: true
+AfterClass: false
+AfterControlStatement: MultiLine
+AfterEnum: false
+AfterFunction: false
+AfterNamespace: false
+#AfterObjCDeclaration
+AfterStruct: false
+AfterUnion: false
+AfterExternBlock: false
+BeforeCatch: false
+BeforeElse: false
+BeforeLambdaBody: true
+BeforeWhile: false
+IndentBraces: false
+SplitEmptyFunction: true
+SplitEmptyRecord: false
+SplitEmptyNamespace: true
 #BreakAfterJavaFieldAnnotations
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBraces: Custom
@@ -136,15 +136,15 @@ SpaceBeforeCtorInitializerColon: true
 SpaceBeforeInheritanceColon: true
 SpaceBeforeParens: ControlStatements
 SpaceBeforeParensOptions:
-  AfterControlStatements: true
-  AfterForeachMacros: true
-  AfterFunctionDeclarationName: false
-  AfterFunctionDefinitionName: false
-  AfterIfMacros: true
-  AfterOverloadedOperator: false
-  #AfterRequiresInClause: false
-  #AfterRequiresInExpression: false
-  BeforeNonEmptyParentheses: false
+AfterControlStatements: true
+AfterForeachMacros: true
+AfterFunctionDeclarationName: false
+AfterFunctionDefinitionName: false
+AfterIfMacros: true
+AfterOverloadedOperator: false
+#AfterRequiresInClause: false
+#AfterRequiresInExpression: false
+BeforeNonEmptyParentheses: false
 SpaceBeforeRangeBasedForLoopColon: true
 SpaceBeforeSquareBrackets: false
 SpaceInEmptyBlock: true
@@ -155,8 +155,8 @@ SpacesInCStyleCastParentheses: false
 SpacesInConditionalStatement: true
 SpacesInContainerLiterals: true
 SpacesInLineCommentPrefix:
-  Minimum: 1
-  Maximum: -1
+Minimum: 1
+Maximum: -1
 SpacesInParentheses: true
 SpacesInSquareBrackets: false
 StatementAttributeLikeMacros: []
@@ -166,4 +166,4 @@ TypenameMacros: [] #?
 UseCRLF: false
 UseTab: ForContinuationAndIndentation
 WhitespaceSensitiveMacros:
-  - MPT_PP_STRINGIFY
+- MPT_PP_STRINGIFY

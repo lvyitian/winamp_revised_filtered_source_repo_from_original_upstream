@@ -22,7 +22,7 @@ Premake 5.0.0 alpha 12 or later.
 
 ```lua
 if os.host() == "windows" then
-   -- do something Windows-specific
+-- do something Windows-specific
 end
 ```
 

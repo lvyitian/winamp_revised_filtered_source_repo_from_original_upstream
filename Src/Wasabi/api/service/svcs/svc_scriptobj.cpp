@@ -4,7 +4,7 @@
 
 #define CBCLASS svc_scriptObjectI
 START_DISPATCH;
-  CB(GETCONTROLLER, getController);
-  VCB(ONREGISTER,   onRegisterClasses);
+CB(GETCONTROLLER, getController);
+VCB(ONREGISTER,   onRegisterClasses);
 END_DISPATCH;
 #undef CBCLASS

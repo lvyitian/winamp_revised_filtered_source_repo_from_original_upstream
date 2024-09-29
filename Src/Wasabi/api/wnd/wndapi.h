@@ -1,37 +1,37 @@
-#ifndef _WNDAPI_H
-#define _WNDAPI_H
-
-#include <api/wnd/api_wnd.h>
-#include <bfc/ptrlist.h>
-#include <tataki/bitmap/autobitmap.h>
-#include <api/wnd/popexitchecker.h>
-// ---
-
-class BaseTexture
-{
-  public:
+		#ifndef _WNDAPI_H
+		#define _WNDAPI_H
+		
+		#include <api/wnd/api_wnd.h>
+		#include <bfc/ptrlist.h>
+		#include <tataki/bitmap/autobitmap.h>
+		#include <api/wnd/popexitchecker.h>
+		// ---
+		
+		class BaseTexture
+		{
+        public:
     BaseTexture(ifc_window *_wnd, const wchar_t *_bmp) : wnd(_wnd), texture(_bmp) {}
     virtual ~BaseTexture() {}
-
+		
     SkinBitmap *getTexture() { return texture.getBitmap(); }
     ifc_window *getWnd() { return wnd; }
-
+		
     virtual void renderBaseTexture(ifc_window *wndbase, ifc_canvas *c, const RECT &r, ifc_window *dest, int alpha);
-
-  private:
+		
+        private:
     ifc_window *wnd;
     AutoSkinBitmap texture;
-};
-
-// ---
-
-class WndApi : public wnd_apiI
-{
-  public:
-
+		};
+		
+		// ---
+		
+		class WndApi : public wnd_apiI
+		{
+        public:
+		
     WndApi();
     virtual ~WndApi();
-
+		
     virtual ifc_window *main_getRootWnd();
     virtual void main_setRootWnd(ifc_window *w);
     virtual ifc_window *getModalWnd();
@@ -67,15 +67,15 @@ class WndApi : public wnd_apiI
     virtual void appdeactivation_pop_disallow(ifc_window *w);
     virtual int appdeactivation_isallowed(ifc_window *w);
     virtual void appdeactivation_setbypass(int i);
-#ifdef WASABI_COMPILE_PAINTSETS
+		#ifdef WASABI_COMPILE_PAINTSETS
     virtual int paintset_present(int set);
-#ifdef WASABI_COMPILE_IMGLDR
+		#ifdef WASABI_COMPILE_IMGLDR
     virtual void paintset_render(int set, ifc_canvas *c, const RECT *r, int alpha=255);
-#ifdef WASABI_COMPILE_FONTS
+		#ifdef WASABI_COMPILE_FONTS
     virtual void paintset_renderTitle(const wchar_t *t, ifc_canvas *c, const RECT *r, int alpha=255);
-#endif // fonts
-#endif // imgldr
-#endif // paintsets
+		#endif // fonts
+		#endif // imgldr
+		#endif // paintsets
     virtual int forwardOnMouseWheel(int l, int a);
     virtual void setDefaultDropTarget(void *dt);
     virtual void *getDefaultDropTarget();
@@ -83,10 +83,10 @@ class WndApi : public wnd_apiI
     virtual int pushKeyboardLock();
     virtual int popKeyboardLock();
     virtual int isKeyboardLocked();
-
-		PopupExitChecker popupExitChecker;
-  private:
-
+		
+PopupExitChecker popupExitChecker;
+        private:
+		
     static BaseTexture *getBaseTexture(ifc_window *b);
     static void renderBaseTexture(ifc_window *base, ifc_canvas *c, const RECT &r, ifc_window *dest, int alpha);
     static void renderBaseTexture(ifc_window *base, BaseTexture *s, ifc_canvas *c, const RECT &r, ifc_window *dest, int alpha);
@@ -94,8 +94,9 @@ class WndApi : public wnd_apiI
     static ifc_window *genericwnd;
     static void *default_drop_target;
     static int kbdlock;
-};
-
-extern WndApi _wndApi;
-
-#endif
+		};
+		
+		extern WndApi _wndApi;
+		
+		#endif
+		

@@ -15,15 +15,15 @@ Workspaces are defined using the [`workspace`](workspace.md) function. Most buil
 
 ```lua
 workspace "HelloWorld"
-   configurations { "Debug", "Release" }
+configurations { "Debug", "Release" }
 ```
 
 The workspace name, provided as a parameter to the function, is used as the default file name of the generated workspace file, so it is best to avoid special characters (spaces are okay). If you wish to use a different name use the [`filename`](filename.md) function to specify it.
 
 ```lua
 workspace "Hello World"
-   filename "Hello"
-   configurations { "Debug", "Release" }
+filename "Hello"
+configurations { "Debug", "Release" }
 ```
 
 *(Note: Due to [a bug in the way Xcode handles target dependencies](http://stackoverflow.com/questions/1456806/xcode-dependencies-across-different-build-directories), we currently don't generate a "workspace" file for it.
@@ -37,7 +37,7 @@ Projects are defined using the [`project`](project.md) function. You must create
 
 ```lua
 workspace "MyWorkspace"
-  configurations { "Debug", "Release" }
+configurations { "Debug", "Release" }
 
 project "MyProject"
 ```
@@ -50,8 +50,8 @@ Each project also specifies which programming language it uses, such as C++ or C
 
 ```lua
 project "MyProject"
-  kind "ConsoleApp"
-  language "C++"
+kind "ConsoleApp"
+language "C++"
 ```
 
 
@@ -63,11 +63,11 @@ You can change the output location using the [location](location.md) function.
 
 ```lua
 workspace "MyWorkspace"
-  configurations { "Debug", "Release" }
-  location "build"
+configurations { "Debug", "Release" }
+location "build"
 
 project "MyProject"
-  location "build/MyProject"
+location "build/MyProject"
 ```
 
 Like all paths in Premake, the [location](location.md) should be specified relative to the script file. Using the example and script above, the generated workspace will be placed in `C:\Code\MyProject\build` and the project in `C:\Code\MyProject\build\MyProject`.

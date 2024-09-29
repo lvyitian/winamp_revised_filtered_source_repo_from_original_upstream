@@ -1,39 +1,39 @@
---
--- Generates Ninja project file for Swift
--- Copyright (c) 2016 Stuart Carnie and the GENie project
---
-
-local ninja = premake.ninja
-local swift = {}
-local p     = premake
-
--- generate project + config build file
-	function ninja.generate_swift(prj)
+				--
+				-- Generates Ninja project file for Swift
+				-- Copyright (c) 2016 Stuart Carnie and the GENie project
+				--
+				
+				local ninja = premake.ninja
+				local swift = {}
+				local p     = premake
+				
+				-- generate project + config build file
+			function ninja.generate_swift(prj)
 		local pxy = ninja.get_proxy("prj", prj)
 		local tool = premake.gettool(prj)
 		
 		-- build a list of supported target platforms that also includes a generic build
 		local platforms = premake.filterplatforms(prj.solution, tool.platforms, "Native")
-
+				
 		for _, platform in ipairs(platforms) do
-			for cfg in p.eachconfig(pxy, platform) do
-				p.generate(cfg, cfg:getprojectfilename(), function() swift.generate_config(prj, cfg) end)
-			end
-		end
+	for cfg in p.eachconfig(pxy, platform) do
+p.generate(cfg, cfg:getprojectfilename(), function() swift.generate_config(prj, cfg) end)
 	end
-	
-	function swift.generate_config(prj, cfg)
+		end
+			end
+			
+			function swift.generate_config(prj, cfg)
 		local tool = premake.gettool(prj)
 		
 		local flags = {
-			swiftcflags    = ninja.list(tool.getswiftcflags(cfg)),
-			swiftlinkflags = ninja.list(tool.getswiftlinkflags(cfg)),
+	swiftcflags    = ninja.list(tool.getswiftcflags(cfg)),
+	swiftlinkflags = ninja.list(tool.getswiftlinkflags(cfg)),
 		}
 		
 		_p("# Swift project build file")
 		_p("# generated with GENie ninja")
 		_p("")
-
+				
 		-- needed for implicit outputs, introduced in 1.7
 		_p("ninja_required_version = 1.7")
 		_p("")
@@ -50,22 +50,22 @@ local p     = premake
 		_p("ld_flags = %s", ninja.list(tool.getldflags(cfg)))
 		
 		if cfg.flags.Symbols then
-			_p("symbols = $target.dSYM")
-			symbols_command = string.format("&& %s $target -o $symbols", tool.dsymutil)
+	_p("symbols = $target.dSYM")
+	symbols_command = string.format("&& %s $target -o $symbols", tool.dsymutil)
 		else
-			_p("symbols = ")
-			symbols_command = ""
+	_p("symbols = ")
+	symbols_command = ""
 		end
-
+				
 		local sdk = tool.get_sdk_path(cfg)
 		if sdk then
-			_p("toolchain_path = %s", tool.get_toolchain_path(cfg))
-			_p("sdk_path = %s", sdk)
-			_p("platform_path = %s", tool.get_sdk_platform_path(cfg))
-			_p("sdk = -sdk $sdk_path")
+	_p("toolchain_path = %s", tool.get_toolchain_path(cfg))
+	_p("sdk_path = %s", sdk)
+	_p("platform_path = %s", tool.get_sdk_platform_path(cfg))
+	_p("sdk = -sdk $sdk_path")
 		else
-			_p("sdk_path =")
-			_p("sdk =")
+	_p("sdk_path =")
+	_p("sdk =")
 		end
 		_p("")
 		
@@ -87,34 +87,35 @@ local p     = premake
 		
 		local objfiles = {}
 		for _, file in ipairs(cfg.files) do
-			if path.isswiftfile(file) then
-				table.insert(objfiles, swift.objectname(cfg, file))
-			end
+	if path.isswiftfile(file) then
+table.insert(objfiles, swift.objectname(cfg, file))
+	end
 		end
 		
 		swift.file_rules(cfg, objfiles)
 		
 		_p("")
-
+				
 		swift.linker(prj, cfg, objfiles, tool)
-	end
-	
-	function swift.objectname(cfg, file)
+			end
+			
+			function swift.objectname(cfg, file)
 		return path.join("$obj_dir", path.getname(file)..".o")
-	end
-	
-	function swift.file_rules(cfg, objfiles)
+			end
+			
+			function swift.file_rules(cfg, objfiles)
 		_p("build %s: swiftc %s", ninja.list(objfiles), ninja.list(cfg.files))
 		_p(1, "obj_files = %s", ninja.arglist("-o", objfiles))
-	end
-	
-	function swift.linker(prj, cfg, objfiles, tool)
+			end
+			
+			function swift.linker(prj, cfg, objfiles, tool)
 		local lddeps = ninja.list(premake.getlinks(cfg, "siblings", "fullpath")) 
 		
 		if cfg.kind == "StaticLib" then
-			_p("build $target: ar %s | %s ", ninja.list(objfiles), lddeps)
+	_p("build $target: ar %s | %s ", ninja.list(objfiles), lddeps)
 		else
-			local lddeps = ninja.list(premake.getlinks(cfg, "siblings", "fullpath"))
-			_p("build $target: swiftlink %s | %s", ninja.list(objfiles), lddeps)
+	local lddeps = ninja.list(premake.getlinks(cfg, "siblings", "fullpath"))
+	_p("build $target: swiftlink %s | %s", ninja.list(objfiles), lddeps)
 		end
-	end
+			end
+				

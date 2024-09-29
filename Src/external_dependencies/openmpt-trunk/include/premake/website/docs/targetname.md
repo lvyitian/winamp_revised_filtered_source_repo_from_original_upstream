@@ -27,7 +27,7 @@ targetname "mytarget"
 
 ### See Also ###
 
- * [targetdir](targetdir.md)
- * [targetextension](targetextension.md)
- * [targetprefix](targetprefix.md)
- * [targetsuffix](targetsuffix.md)
+* [targetdir](targetdir.md)
+* [targetextension](targetextension.md)
+* [targetprefix](targetprefix.md)
+* [targetsuffix](targetsuffix.md)

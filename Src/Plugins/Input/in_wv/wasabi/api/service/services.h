@@ -1,20 +1,20 @@
-#ifndef _SERVICES_H
-#define _SERVICES_H
-
-#include <bfc/std_mkncc.h> // for MKnCC()
-
-// lower-case service names are reserved by Nullsoft for future use
-// upper-case service names are for 3rd parties to extend the service system
-
-// if you have a service that is unique to a component, make it type
-// UNIQUE and register it by GUID
-
-
-namespace WaSvc {
-  enum {
+		#ifndef _SERVICES_H
+		#define _SERVICES_H
+		
+		#include <bfc/std_mkncc.h> // for MKnCC()
+		
+		// lower-case service names are reserved by Nullsoft for future use
+		// upper-case service names are for 3rd parties to extend the service system
+		
+		// if you have a service that is unique to a component, make it type
+		// UNIQUE and register it by GUID
+		
+		
+		namespace WaSvc {
+        enum {
     NONE=MK4CC('n','o','n','e'),
     UNIQUE=MK4CC('u','n','i','q'),                  // for unique services, enumed by GUID
-		OBJECT=MK4CC('o','b','j','f'),                  // for unique objects, enumed by GUID
+OBJECT=MK4CC('o','b','j','f'),                  // for unique objects, enumed by GUID
     CONTEXTCMD=MK4CC('c','c','m','d'),              // context menu command	svc_contextCmd.h
     DEVICE=MK3CC('d','e','v'),                   // portable device	svc_device.h
     FILEREADER=MK4CC('f','s','r','d'),	            // file system reader (disk, zip, http)
@@ -30,7 +30,7 @@ namespace WaSvc {
     MEDIACORE=MK4CC('c','o','r','e'),               // media core
     MEDIARECORDER=MK4CC('m','r','e','c'),           // media recorder
     SCRIPTOBJECT=MK4CC('m','a','k','i'),            // third party script object
-//    TRANSLATOR=MK4CC('x','l','a','t'),            // text translator
+		//    TRANSLATOR=MK4CC('x','l','a','t'),            // text translator
     WINDOWCREATE=MK4CC('w','n','d','c'),            // window creator
     XMLPROVIDER=MK4CC('x','m','l','p'),	            // xml provider
     DB=MK2CC('d','b'),                        // database
@@ -58,11 +58,12 @@ namespace WaSvc {
 	MP4AUDIODECODER=MK4CC('m','4','a','d'),	// mp4 audio decoder
 	PLAYLISTREADER_WA5=MK4CC('p','l','r','5'),          // playlist reader 
     PLAYLISTWRITER_WA5=MK4CC('p','l','w','5'),          // playlist writer
-		PLAYLISTHANDLER=MK3CC('p','l','h'),          // playlist handler
-		TAGPROVIDER=MK4CC('t','a','g','z'),				// tag provider (for ATF engine)
-		NSVFACTORY=MK4CC('n','s','v','f'),				// NSV factory (to create NSV objects)
-		JSAPI2_APICREATOR=MK4CC('j','s','a','c'), // API Creator for the Javascript API
-  };
-};
-
-#endif
+PLAYLISTHANDLER=MK3CC('p','l','h'),          // playlist handler
+TAGPROVIDER=MK4CC('t','a','g','z'),				// tag provider (for ATF engine)
+NSVFACTORY=MK4CC('n','s','v','f'),				// NSV factory (to create NSV objects)
+JSAPI2_APICREATOR=MK4CC('j','s','a','c'), // API Creator for the Javascript API
+        };
+		};
+		
+		#endif
+		

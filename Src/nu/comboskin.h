@@ -6,10 +6,10 @@
 class ComboSkin
 {
 public:
-  ComboSkin(HWND hwnd);
-  ~ComboSkin();
+ComboSkin(HWND hwnd);
+~ComboSkin();
 
-  int token;
+int token;
 };
 
 #endif

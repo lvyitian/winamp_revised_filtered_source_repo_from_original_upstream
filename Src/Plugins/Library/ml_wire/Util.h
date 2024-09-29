@@ -16,16 +16,16 @@
 
 #ifndef LONGX86
 #ifdef _WIN64
-  #define LONGX86	LONG_PTR
+#define LONGX86	LONG_PTR
 #else /*_WIN64*/
-  #define LONGX86	 LONG	
+#define LONGX86	 LONG	
 #endif  /*_WIN64*/
 #endif // LONGX86
 
 #ifdef __cplusplus
-  #define SENDMSG(__hwnd, __msgId, __wParam, __lParam) ::SendMessageW((__hwnd), (__msgId), (__wParam), (__lParam))
+#define SENDMSG(__hwnd, __msgId, __wParam, __lParam) ::SendMessageW((__hwnd), (__msgId), (__wParam), (__lParam))
 #else
- #define SENDMSG(__hwnd, __msgId, __wParam, __lParam) SendMessageW((__hwnd), (__msgId), (__wParam), (__lParam))
+#define SENDMSG(__hwnd, __msgId, __wParam, __lParam) SendMessageW((__hwnd), (__msgId), (__wParam), (__lParam))
 #endif // __cplusplus
 
 #define SENDMLIPC(__hwndML, __ipcMsgId, __param) SENDMSG((__hwndML), WM_ML_IPC, (WPARAM)(__param), (LPARAM)(__ipcMsgId))
@@ -33,9 +33,9 @@
 
 
 #if defined (_WIN64)
-  #define MSGRESULT(__hwnd, __result) { SetWindowLongPtrW((__hwnd), DWLP_MSGRESULT, ((LONGX86)(LONG_PTR)(__result))); return TRUE; }
+#define MSGRESULT(__hwnd, __result) { SetWindowLongPtrW((__hwnd), DWLP_MSGRESULT, ((LONGX86)(LONG_PTR)(__result))); return TRUE; }
 #else
-  #define MSGRESULT(__hwnd, __result) { SetWindowLongPtrW((__hwnd), DWL_MSGRESULT, ((LONGX86)(LONG_PTR)(__result))); return TRUE; }
+#define MSGRESULT(__hwnd, __result) { SetWindowLongPtrW((__hwnd), DWL_MSGRESULT, ((LONGX86)(LONG_PTR)(__result))); return TRUE; }
 #endif
 
 #define SENDCMD(__hwnd, __ctrlId, __eventId, __hctrl) (SENDMSG((__hwnd), WM_COMMAND, MAKEWPARAM(__ctrlId, __eventId), (LPARAM)(__hctrl)))

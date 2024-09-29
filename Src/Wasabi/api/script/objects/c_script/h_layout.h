@@ -11,37 +11,37 @@ class H_Layout : public H_LAYOUT_PARENT {
 
 public:
 
-  H_Layout(ScriptObject *o);
-  H_Layout();
-  virtual ~H_Layout();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_Layout(ScriptObject *o);
+H_Layout();
+virtual ~H_Layout();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onDock() {  }
-  virtual void hook_onUndock() {  }
-  virtual void hook_onScale(double newscalevalue) {  }
-  virtual void hook_onMove() {  }
-  virtual void hook_onEndMove() {  }
-  virtual void hook_onUserResize(int x, int y, int w, int h) {  }
-  virtual void hook_onMouseEnterLayout() {  }
-  virtual void hook_onMouseLeaveLayout() {  }
-  virtual void hook_onSnapAdjustChanged() {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onDock() {  }
+virtual void hook_onUndock() {  }
+virtual void hook_onScale(double newscalevalue) {  }
+virtual void hook_onMove() {  }
+virtual void hook_onEndMove() {  }
+virtual void hook_onUserResize(int x, int y, int w, int h) {  }
+virtual void hook_onMouseEnterLayout() {  }
+virtual void hook_onMouseLeaveLayout() {  }
+virtual void hook_onSnapAdjustChanged() {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int ondock_id;
-  static int onundock_id;
-  static int onscale_id;
-  static int onmove_id;
-  static int onendmove_id;
-  static int onuserresize_id;
-  static int onmouseenterlayout_id;
-  static int onmouseleavelayout_id;
-  static int onsnapadjustchanged_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int ondock_id;
+static int onundock_id;
+static int onscale_id;
+static int onmove_id;
+static int onendmove_id;
+static int onuserresize_id;
+static int onmouseenterlayout_id;
+static int onmouseleavelayout_id;
+static int onsnapadjustchanged_id;
 };
 
 #endif

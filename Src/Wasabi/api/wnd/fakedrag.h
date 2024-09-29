@@ -5,8 +5,8 @@
 
 class FakeDragWnd : public BaseWnd {
 public:
-  FakeDragWnd() { dragging = 1; }
-  ~FakeDragWnd() { dragging = 0; }
+FakeDragWnd() { dragging = 1; }
+~FakeDragWnd() { dragging = 0; }
 };
 
 #endif

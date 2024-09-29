@@ -1,14 +1,14 @@
-set(executables_mbedtls
+		set(executables_mbedtls
     dh_client
     dh_server
-)
-
-foreach(exe IN LISTS executables_mbedtls)
+		)
+		
+		foreach(exe IN LISTS executables_mbedtls)
     add_executable(${exe} ${exe}.c $<TARGET_OBJECTS:mbedtls_test>)
     target_link_libraries(${exe} ${mbedtls_target})
-endforeach()
-
-set(executables_mbedcrypto
+		endforeach()
+		
+		set(executables_mbedcrypto
     dh_genprime
     ecdh_curve25519
     ecdsa
@@ -27,13 +27,14 @@ set(executables_mbedcrypto
     rsa_sign_pss
     rsa_verify
     rsa_verify_pss
-)
-
-foreach(exe IN LISTS executables_mbedcrypto)
+		)
+		
+		foreach(exe IN LISTS executables_mbedcrypto)
     add_executable(${exe} ${exe}.c $<TARGET_OBJECTS:mbedtls_test>)
     target_link_libraries(${exe} ${mbedcrypto_target})
-endforeach()
-
-install(TARGETS ${executables_mbedtls} ${executables_mbedcrypto}
-        DESTINATION "bin"
-        PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+		endforeach()
+		
+		install(TARGETS ${executables_mbedtls} ${executables_mbedcrypto}
+DESTINATION "bin"
+PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+		

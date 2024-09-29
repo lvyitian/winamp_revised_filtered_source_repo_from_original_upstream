@@ -1,7 +1,7 @@
 /******************************************************************************
-  pl_conf.h
-  PLUSH 3D VERSION 1.2 CONFIGURATION HEADER
-  Copyright (c) 1996-2000, Justin Frankel
+pl_conf.h
+PLUSH 3D VERSION 1.2 CONFIGURATION HEADER
+Copyright (c) 1996-2000, Justin Frankel
 ******************************************************************************/
 
 #ifndef _PL_CONF_H_

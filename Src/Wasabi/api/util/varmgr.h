@@ -10,8 +10,8 @@ class WaComponent;
 
 class PublicVarManager {
 public: 
-  static StringW *translate_nocontext(const wchar_t *str);
-  static StringW *translate(const wchar_t *str, GuiObject *o=NULL, Container *c=NULL);
+static StringW *translate_nocontext(const wchar_t *str);
+static StringW *translate(const wchar_t *str, GuiObject *o=NULL, Container *c=NULL);
 };
 
 #endif

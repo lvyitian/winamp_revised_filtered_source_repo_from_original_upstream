@@ -56,19 +56,19 @@ copy /y ..\..\bin\%MPT_BIN_CONF%\%MPT_VS_VER%-%MPT_BIN_TARGET%-%MPT_BIN_RUNTIME%
 copy /y ..\..\bin\%MPT_BIN_CONF%\%MPT_VS_VER%-%MPT_BIN_TARGET%-%MPT_BIN_RUNTIME%\amd64\PluginBridgeLegacy-amd64.pdb .\ || goto error
 copy /y ..\..\bin\%MPT_BIN_CONF%\%MPT_VS_VER%-%MPT_BIN_TARGET%-%MPT_BIN_RUNTIME%\%MPT_BIN_ARCH_TRK%\openmpt-wine-support.zip .\ || goto error
 ..\..\build\tools\7zip\7z.exe a -t%MPT_PKG_FORMAT% -mx=9 ..\openmpt\bin.%MPT_DIST_VARIANT_TRK%\%OPENMPT_VERSION_MAJORMAJOR%.%OPENMPT_VERSION_MAJOR%\openmpt-%MPT_DIST_VARIANT_TRK%-%MPT_REVISION%.%MPT_PKG_FORMAT% ^
- License.txt ^
- Licenses ^
- OpenMPT%MPT_VS_FLAVOUR%.exe ^
- openmpt-lame.dll ^
- openmpt-mpg123.dll ^
- openmpt-soundtouch.dll ^
- PluginBridge-x86.exe ^
- PluginBridge-amd64.exe ^
- PluginBridgeLegacy-x86.exe ^
- PluginBridgeLegacy-amd64.exe ^
- openmpt-wine-support.zip ^
- extraKeymaps ^
- || goto error
+License.txt ^
+Licenses ^
+OpenMPT%MPT_VS_FLAVOUR%.exe ^
+openmpt-lame.dll ^
+openmpt-mpg123.dll ^
+openmpt-soundtouch.dll ^
+PluginBridge-x86.exe ^
+PluginBridge-amd64.exe ^
+PluginBridgeLegacy-x86.exe ^
+PluginBridgeLegacy-amd64.exe ^
+openmpt-wine-support.zip ^
+extraKeymaps ^
+|| goto error
 mkdir ..\openmpt\dbg.%MPT_DIST_VARIANT_TRK%\%OPENMPT_VERSION_MAJORMAJOR%.%OPENMPT_VERSION_MAJOR%\openmpt-%MPT_DIST_VARIANT_TRK%-%MPT_REVISION%-symbols || goto error
 ..\..\build\tools\7zip\7z.exe a -t%MPT_PKG_FORMAT_SYMBOLS% -mx=9 ..\openmpt\dbg.%MPT_DIST_VARIANT_TRK%\%OPENMPT_VERSION_MAJORMAJOR%.%OPENMPT_VERSION_MAJOR%\openmpt-%MPT_DIST_VARIANT_TRK%-%MPT_REVISION%-symbols\OpenMPT%MPT_VS_FLAVOUR%.pdb.%MPT_PKG_FORMAT_SYMBOLS% OpenMPT%MPT_VS_FLAVOUR%.pdb || goto error
 ..\..\build\tools\7zip\7z.exe a -t%MPT_PKG_FORMAT_SYMBOLS% -mx=9 ..\openmpt\dbg.%MPT_DIST_VARIANT_TRK%\%OPENMPT_VERSION_MAJORMAJOR%.%OPENMPT_VERSION_MAJOR%\openmpt-%MPT_DIST_VARIANT_TRK%-%MPT_REVISION%-symbols\openmpt-lame.pdb.%MPT_PKG_FORMAT_SYMBOLS% openmpt-lame.pdb || goto error

@@ -13,8 +13,8 @@
 
 /* option registry */
 typedef struct t_opt {
-  const char *name;
-  int (*func)(lua_State *L, p_socket ps);
+const char *name;
+int (*func)(lua_State *L, p_socket ps);
 } t_opt;
 typedef t_opt *p_opt;
 

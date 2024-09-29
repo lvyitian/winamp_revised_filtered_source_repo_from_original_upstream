@@ -1,211 +1,212 @@
-/* SPDX-License-Identifier: BSL-1.0 OR BSD-3-Clause */
-
-#ifndef MPT_MUTEX_MUTEX_HPP
-#define MPT_MUTEX_MUTEX_HPP
-
-
-
-#include "mpt/base/detect.hpp"
-#include "mpt/base/namespace.hpp"
-
-
-#if !MPT_PLATFORM_MULTITHREADED
-#define MPT_MUTEX_NONE 1
-#elif MPT_COMPILER_GENERIC
-#define MPT_MUTEX_STD 1
-#elif MPT_OS_WINDOWS && MPT_LIBCXX_GNU && !defined(_GLIBCXX_HAS_GTHREADS) && defined(MPT_WITH_MINGWSTDTHREADS)
-#define MPT_MUTEX_STD 1
-#elif MPT_OS_WINDOWS && MPT_LIBCXX_GNU && !defined(_GLIBCXX_HAS_GTHREADS)
-#define MPT_MUTEX_WIN32 1
-#else
-#define MPT_MUTEX_STD 1
-#endif
-
-#ifndef MPT_MUTEX_STD
-#define MPT_MUTEX_STD 0
-#endif
-#ifndef MPT_MUTEX_WIN32
-#define MPT_MUTEX_WIN32 0
-#endif
-#ifndef MPT_MUTEX_NONE
-#define MPT_MUTEX_NONE 0
-#endif
-
-#if MPT_MUTEX_STD
-#if !MPT_COMPILER_GENERIC && (defined(__MINGW32__) || defined(__MINGW64__)) && !defined(_GLIBCXX_HAS_GTHREADS) && defined(MPT_WITH_MINGWSTDTHREADS)
-#include <mingw.mutex.h>
-#else
-#include <mutex>
-#ifdef MPT_COMPILER_QUIRK_COMPLEX_STD_MUTEX
-#include <shared_mutex>
-#include <type_traits>
-#endif
-#endif
-#elif MPT_MUTEX_WIN32
-#include <windows.h>
-#endif // MPT_MUTEX
-
-
-
-namespace mpt {
-inline namespace MPT_INLINE_NS {
-
-
-
-#if MPT_MUTEX_STD
-
-#ifdef MPT_COMPILER_QUIRK_COMPLEX_STD_MUTEX
-using mutex = std::conditional<sizeof(std::shared_mutex) < sizeof(std::mutex), std::shared_mutex, std::mutex>::type;
-#else
-using mutex = std::mutex;
-#endif
-using recursive_mutex = std::recursive_mutex;
-
-#elif MPT_MUTEX_WIN32
-
-#if (_WIN32_WINNT >= 0x0600) // _WIN32_WINNT_VISTA
-
-// compatible with c++11 std::mutex, can eventually be replaced without touching any usage site
-class mutex {
-private:
+		/* SPDX-License-Identifier: BSL-1.0 OR BSD-3-Clause */
+		
+		#ifndef MPT_MUTEX_MUTEX_HPP
+		#define MPT_MUTEX_MUTEX_HPP
+		
+		
+		
+		#include "mpt/base/detect.hpp"
+		#include "mpt/base/namespace.hpp"
+		
+		
+		#if !MPT_PLATFORM_MULTITHREADED
+		#define MPT_MUTEX_NONE 1
+		#elif MPT_COMPILER_GENERIC
+		#define MPT_MUTEX_STD 1
+		#elif MPT_OS_WINDOWS && MPT_LIBCXX_GNU && !defined(_GLIBCXX_HAS_GTHREADS) && defined(MPT_WITH_MINGWSTDTHREADS)
+		#define MPT_MUTEX_STD 1
+		#elif MPT_OS_WINDOWS && MPT_LIBCXX_GNU && !defined(_GLIBCXX_HAS_GTHREADS)
+		#define MPT_MUTEX_WIN32 1
+		#else
+		#define MPT_MUTEX_STD 1
+		#endif
+		
+		#ifndef MPT_MUTEX_STD
+		#define MPT_MUTEX_STD 0
+		#endif
+		#ifndef MPT_MUTEX_WIN32
+		#define MPT_MUTEX_WIN32 0
+		#endif
+		#ifndef MPT_MUTEX_NONE
+		#define MPT_MUTEX_NONE 0
+		#endif
+		
+		#if MPT_MUTEX_STD
+		#if !MPT_COMPILER_GENERIC && (defined(__MINGW32__) || defined(__MINGW64__)) && !defined(_GLIBCXX_HAS_GTHREADS) && defined(MPT_WITH_MINGWSTDTHREADS)
+		#include <mingw.mutex.h>
+		#else
+		#include <mutex>
+		#ifdef MPT_COMPILER_QUIRK_COMPLEX_STD_MUTEX
+		#include <shared_mutex>
+		#include <type_traits>
+		#endif
+		#endif
+		#elif MPT_MUTEX_WIN32
+		#include <windows.h>
+		#endif // MPT_MUTEX
+		
+		
+		
+		namespace mpt {
+		inline namespace MPT_INLINE_NS {
+		
+		
+		
+		#if MPT_MUTEX_STD
+		
+		#ifdef MPT_COMPILER_QUIRK_COMPLEX_STD_MUTEX
+		using mutex = std::conditional<sizeof(std::shared_mutex) < sizeof(std::mutex), std::shared_mutex, std::mutex>::type;
+		#else
+		using mutex = std::mutex;
+		#endif
+		using recursive_mutex = std::recursive_mutex;
+		
+		#elif MPT_MUTEX_WIN32
+		
+		#if (_WIN32_WINNT >= 0x0600) // _WIN32_WINNT_VISTA
+		
+		// compatible with c++11 std::mutex, can eventually be replaced without touching any usage site
+		class mutex {
+		private:
 	SRWLOCK impl = SRWLOCK_INIT;
-
-public:
+		
+		public:
 	mutex() = default;
 	~mutex() = default;
 	void lock() {
-		AcquireSRWLockExclusive(&impl);
+AcquireSRWLockExclusive(&impl);
 	}
 	bool try_lock() {
-		return TryAcquireSRWLockExclusive(&impl) ? true : false;
+return TryAcquireSRWLockExclusive(&impl) ? true : false;
 	}
 	void unlock() {
-		ReleaseSRWLockExclusive(&impl);
+ReleaseSRWLockExclusive(&impl);
 	}
-};
-
-#else // !_WIN32_WINNT_VISTA
-
-// compatible with c++11 std::mutex, can eventually be replaced without touching any usage site
-class mutex {
-private:
+		};
+		
+		#else // !_WIN32_WINNT_VISTA
+		
+		// compatible with c++11 std::mutex, can eventually be replaced without touching any usage site
+		class mutex {
+		private:
 	CRITICAL_SECTION impl;
-
-public:
+		
+		public:
 	mutex() {
-		InitializeCriticalSection(&impl);
+InitializeCriticalSection(&impl);
 	}
 	~mutex() {
-		DeleteCriticalSection(&impl);
+DeleteCriticalSection(&impl);
 	}
 	void lock() {
-		EnterCriticalSection(&impl);
+EnterCriticalSection(&impl);
 	}
 	bool try_lock() {
-		return TryEnterCriticalSection(&impl) ? true : false;
+return TryEnterCriticalSection(&impl) ? true : false;
 	}
 	void unlock() {
-		LeaveCriticalSection(&impl);
+LeaveCriticalSection(&impl);
 	}
-};
-
-#endif // _WIN32_WINNT_VISTA
-
-// compatible with c++11 std::recursive_mutex, can eventually be replaced without touching any usage site
-class recursive_mutex {
-private:
+		};
+		
+		#endif // _WIN32_WINNT_VISTA
+		
+		// compatible with c++11 std::recursive_mutex, can eventually be replaced without touching any usage site
+		class recursive_mutex {
+		private:
 	CRITICAL_SECTION impl;
-
-public:
+		
+		public:
 	recursive_mutex() {
-		InitializeCriticalSection(&impl);
+InitializeCriticalSection(&impl);
 	}
 	~recursive_mutex() {
-		DeleteCriticalSection(&impl);
+DeleteCriticalSection(&impl);
 	}
 	void lock() {
-		EnterCriticalSection(&impl);
+EnterCriticalSection(&impl);
 	}
 	bool try_lock() {
-		return TryEnterCriticalSection(&impl) ? true : false;
+return TryEnterCriticalSection(&impl) ? true : false;
 	}
 	void unlock() {
-		LeaveCriticalSection(&impl);
+LeaveCriticalSection(&impl);
 	}
-};
-
-#else // MPT_MUTEX_NONE
-
-class mutex {
-public:
+		};
+		
+		#else // MPT_MUTEX_NONE
+		
+		class mutex {
+		public:
 	mutex() {
-		return;
+return;
 	}
 	~mutex() {
-		return;
+return;
 	}
 	void lock() {
-		return;
+return;
 	}
 	bool try_lock() {
-		return true;
+return true;
 	}
 	void unlock() {
-		return;
+return;
 	}
-};
-
-class recursive_mutex {
-public:
+		};
+		
+		class recursive_mutex {
+		public:
 	recursive_mutex() {
-		return;
+return;
 	}
 	~recursive_mutex() {
-		return;
+return;
 	}
 	void lock() {
-		return;
+return;
 	}
 	bool try_lock() {
-		return true;
+return true;
 	}
 	void unlock() {
-		return;
+return;
 	}
-};
-
-#endif // MPT_MUTEX
-
-#if MPT_MUTEX_STD
-
-template <typename T>
-using lock_guard = std::lock_guard<T>;
-
-#else // !MPT_MUTEX_STD
-
-// compatible with c++11 std::lock_guard, can eventually be replaced without touching any usage site
-template <typename mutex_type>
-class lock_guard {
-private:
+		};
+		
+		#endif // MPT_MUTEX
+		
+		#if MPT_MUTEX_STD
+		
+		template <typename T>
+		using lock_guard = std::lock_guard<T>;
+		
+		#else // !MPT_MUTEX_STD
+		
+		// compatible with c++11 std::lock_guard, can eventually be replaced without touching any usage site
+		template <typename mutex_type>
+		class lock_guard {
+		private:
 	mutex_type & mutex;
-
-public:
+		
+		public:
 	lock_guard(mutex_type & m)
-		: mutex(m) {
-		mutex.lock();
+: mutex(m) {
+mutex.lock();
 	}
 	~lock_guard() {
-		mutex.unlock();
+mutex.unlock();
 	}
-};
-
-#endif // MPT_MUTEX_STD
-
-
-
-} // namespace MPT_INLINE_NS
-} // namespace mpt
-
-
-
-#endif // MPT_MUTEX_MUTEX_HPP
+		};
+		
+		#endif // MPT_MUTEX_STD
+		
+		
+		
+		} // namespace MPT_INLINE_NS
+		} // namespace mpt
+		
+		
+		
+		#endif // MPT_MUTEX_MUTEX_HPP
+		

@@ -41,7 +41,7 @@ Embed all PNG images files into the target binary.
 
 ```lua
 filter "files:**.png"
-   buildaction "Embed"
+buildaction "Embed"
 ```
 
 [1]: http://msdn.microsoft.com/en-us/library/ms228287(v=vs.90).aspx

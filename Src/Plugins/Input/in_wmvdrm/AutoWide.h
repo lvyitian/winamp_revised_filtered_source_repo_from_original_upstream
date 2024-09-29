@@ -1,41 +1,41 @@
-#ifndef AUTOWIDEH
-#define AUTOWIDEH
-
-class AutoWide
-{
-public:
-	AutoWide(const char *convert) : allocated(false), wide(0)
-	{
-		// review maybe CP_UTF8?
-		int size = MultiByteToWideChar(CP_ACP, 0, convert, -1, 0,0);
-		if (!size)
-			return;
-
-		wide = new unsigned short[size];
-		allocated=true;
-		if (!MultiByteToWideChar(CP_ACP, 0, convert, -1, wide,size))
+			#ifndef AUTOWIDEH
+			#define AUTOWIDEH
+			
+			class AutoWide
+			{
+			public:
+		AutoWide(const char *convert) : allocated(false), wide(0)
 		{
-			delete wide;
-			wide=0;
-			allocated=false;
-		}
-	}
-	~AutoWide()
+	// review maybe CP_UTF8?
+	int size = MultiByteToWideChar(CP_ACP, 0, convert, -1, 0,0);
+	if (!size)
+return;
+			
+	wide = new unsigned short[size];
+	allocated=true;
+	if (!MultiByteToWideChar(CP_ACP, 0, convert, -1, wide,size))
 	{
-		if (allocated)
+delete wide;
+wide=0;
+allocated=false;
+	}
+		}
+		~AutoWide()
 		{
-			delete wide;
-			wide=0;
-			allocated=false;
-		}
-	}
-	operator unsigned short *()
+	if (allocated)
 	{
-		return wide;
+delete wide;
+wide=0;
+allocated=false;
 	}
-private:
-	bool allocated;
-	unsigned short *wide;
-};
-
-#endif
+		}
+		operator unsigned short *()
+		{
+	return wide;
+		}
+			private:
+		bool allocated;
+		unsigned short *wide;
+			};
+			
+			#endif

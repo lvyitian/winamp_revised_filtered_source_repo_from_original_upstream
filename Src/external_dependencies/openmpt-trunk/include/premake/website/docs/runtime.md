@@ -24,6 +24,6 @@ Force selection of a release runtime.
 
 ```lua
 filter { "configurations:Debug" }
-   symbols "On"
-   runtime "Release"
+symbols "On"
+runtime "Release"
 ```

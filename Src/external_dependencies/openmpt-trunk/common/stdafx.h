@@ -1,12 +1,12 @@
 /*
- * StdAfx.h
- * --------
- * Purpose: Include file for standard system include files, or project specific include files that are used frequently, but are changed infrequently. Also includes the global build settings from openmpt/all/BuildSettings.hpp.
- * Notes  : (currently none)
- * Authors: Olivier Lapicque
- *          OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
+* StdAfx.h
+* --------
+* Purpose: Include file for standard system include files, or project specific include files that are used frequently, but are changed infrequently. Also includes the global build settings from openmpt/all/BuildSettings.hpp.
+* Notes  : (currently none)
+* Authors: Olivier Lapicque
+*          OpenMPT Devs
+* The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+*/
 
 
 #pragma once

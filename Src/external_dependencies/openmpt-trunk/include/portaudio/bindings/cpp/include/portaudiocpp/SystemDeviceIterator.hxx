@@ -1,28 +1,28 @@
-#ifndef INCLUDED_PORTAUDIO_SYSTEMDEVICEITERATOR_HXX
-#define INCLUDED_PORTAUDIO_SYSTEMDEVICEITERATOR_HXX
-
-// ---------------------------------------------------------------------------------------
-
-#include <iterator>
-#include <cstddef>
-
-#include "portaudiocpp/System.hxx"
-
-// ---------------------------------------------------------------------------------------
-
-// Forward declaration(s):
-namespace portaudio
-{
+		#ifndef INCLUDED_PORTAUDIO_SYSTEMDEVICEITERATOR_HXX
+		#define INCLUDED_PORTAUDIO_SYSTEMDEVICEITERATOR_HXX
+		
+		// ---------------------------------------------------------------------------------------
+		
+		#include <iterator>
+		#include <cstddef>
+		
+		#include "portaudiocpp/System.hxx"
+		
+		// ---------------------------------------------------------------------------------------
+		
+		// Forward declaration(s):
+		namespace portaudio
+		{
 	class Device;
 	class HostApi;
-}
-
-// ---------------------------------------------------------------------------------------
-
-// Declaration(s):
-namespace portaudio
-{
-
+		}
+		
+		// ---------------------------------------------------------------------------------------
+		
+		// Declaration(s):
+		namespace portaudio
+		{
+		
 	
 	//////
 	/// @brief Iterator class for iterating through all Devices in a System.
@@ -34,33 +34,34 @@ namespace portaudio
 	class System::DeviceIterator
 	{
 	public:
-		typedef std::bidirectional_iterator_tag iterator_category;
-		typedef Device value_type;
-		typedef ptrdiff_t difference_type;
-		typedef Device * pointer;
-		typedef Device & reference;
-
-		Device &operator*() const;
-		Device *operator->() const;
-
-		DeviceIterator &operator++();
-		DeviceIterator operator++(int);
-		DeviceIterator &operator--();
-		DeviceIterator operator--(int);
-
-		bool operator==(const DeviceIterator &rhs) const;
-		bool operator!=(const DeviceIterator &rhs) const;
-
+typedef std::bidirectional_iterator_tag iterator_category;
+typedef Device value_type;
+typedef ptrdiff_t difference_type;
+typedef Device * pointer;
+typedef Device & reference;
+		
+Device &operator*() const;
+Device *operator->() const;
+		
+DeviceIterator &operator++();
+DeviceIterator operator++(int);
+DeviceIterator &operator--();
+DeviceIterator operator--(int);
+		
+bool operator==(const DeviceIterator &rhs) const;
+bool operator!=(const DeviceIterator &rhs) const;
+		
 	private:
-		friend class System;
-		friend class HostApi;
-		Device **ptr_;
+friend class System;
+friend class HostApi;
+Device **ptr_;
 	};
-
-
-} // namespace portaudio
-
-// ---------------------------------------------------------------------------------------
-
-#endif // INCLUDED_PORTAUDIO_SYSTEMDEVICEITERATOR_HXX
-
+		
+		
+		} // namespace portaudio
+		
+		// ---------------------------------------------------------------------------------------
+		
+		#endif // INCLUDED_PORTAUDIO_SYSTEMDEVICEITERATOR_HXX
+		
+		

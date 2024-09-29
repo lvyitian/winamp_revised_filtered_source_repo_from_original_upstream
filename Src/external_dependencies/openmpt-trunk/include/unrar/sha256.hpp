@@ -5,9 +5,9 @@
 
 typedef struct
 {
-  uint32 H[8];
-  uint64 Count;
-  byte Buffer[64];
+uint32 H[8];
+uint64 Count;
+byte Buffer[64];
 } sha256_context;
 
 void sha256_init(sha256_context *ctx);

@@ -1,11 +1,12 @@
-HKCR
-{
-	NoRemove AppID
-	{
-		'%APPID%' = s 'Elevator'
-		'Elevator.EXE'
+			HKCR
+			{
+		NoRemove AppID
 		{
-			val AppID = s '%APPID%'
-		}
+	'%APPID%' = s 'Elevator'
+	'Elevator.EXE'
+	{
+val AppID = s '%APPID%'
 	}
-}
+		}
+			}
+			

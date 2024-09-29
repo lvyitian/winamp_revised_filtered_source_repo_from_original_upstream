@@ -40,18 +40,18 @@ void DosSlashToUnix(const wchar *SrcName,wchar *DestName,size_t MaxLength);
 inline void SlashToNative(const char *SrcName,char *DestName,size_t MaxLength)
 {
 #ifdef _WIN_ALL
-  UnixSlashToDos(SrcName,DestName,MaxLength);
+UnixSlashToDos(SrcName,DestName,MaxLength);
 #else
-  DosSlashToUnix(SrcName,DestName,MaxLength);
+DosSlashToUnix(SrcName,DestName,MaxLength);
 #endif
 }
 
 inline void SlashToNative(const wchar *SrcName,wchar *DestName,size_t MaxLength)
 {
 #ifdef _WIN_ALL
-  UnixSlashToDos(SrcName,DestName,MaxLength);
+UnixSlashToDos(SrcName,DestName,MaxLength);
 #else
-  DosSlashToUnix(SrcName,DestName,MaxLength);
+DosSlashToUnix(SrcName,DestName,MaxLength);
 #endif
 }
 

@@ -1,18 +1,18 @@
-#ifndef NULLSOFT_OUT_DS_CONFIG_H
-#define NULLSOFT_OUT_DS_CONFIG_H
-
-#include <windows.h>
-#include "ds_main.h"
-
-class DS2config	//config struct to pass to DS2::create(); if create messes up, this struct also returns error message
-{
-public:
+		#ifndef NULLSOFT_OUT_DS_CONFIG_H
+		#define NULLSOFT_OUT_DS_CONFIG_H
+		
+		#include <windows.h>
+		#include "ds_main.h"
+		
+		class DS2config	//config struct to pass to DS2::create(); if create messes up, this struct also returns error message
+		{
+		public:
 	enum
 	{
-		DEFAULT_BUFFER = 1500,
-		DEFAULT_PREBUFFER = 500,
+DEFAULT_BUFFER = 1500,
+DEFAULT_PREBUFFER = 500,
 	};
-private:
+		private:
 	size_t sr, bps, nch;
 	HWND wnd;
 	bool create_primary;
@@ -30,17 +30,17 @@ private:
 	UINT mixing;
 	UINT refresh;
 	UINT coop;
-#ifdef DS2_HAVE_PITCH
+		#ifdef DS2_HAVE_PITCH
 	bool have_pitch;
-#endif
+		#endif
 	TCHAR error[256];
 	void SetError(LPCTSTR n_error);
 	void SetErrorCodeMsgA(const TCHAR *msg, DWORD code);
-public:
+		public:
 	enum {
-		MIXING_DEFAULT = 0,
-		MIXING_FORCE_HARDWARE = 1,
-		MIXING_FORCE_SOFTWARE = 2
+MIXING_DEFAULT = 0,
+MIXING_FORCE_HARDWARE = 1,
+MIXING_FORCE_SOFTWARE = 2
 	};
 	DS2config();
 	inline const TCHAR *GetError() { return error[0] ? error : 0;}
@@ -61,10 +61,10 @@ public:
 	void _inline SetCpuManagement(bool b) {use_cpu_management = b;}
 	void _inline SetRefresh(UINT n) {refresh = n;}
 	void _inline SetCoop(UINT n) {coop = n;}
-#ifdef DS2_HAVE_PITCH
+		#ifdef DS2_HAVE_PITCH
 	void _inline SetHavePitch(bool b) {have_pitch = b;}
-#endif
+		#endif
 	friend class DS2;
-};
-
-#endif
+		};
+		
+		#endif

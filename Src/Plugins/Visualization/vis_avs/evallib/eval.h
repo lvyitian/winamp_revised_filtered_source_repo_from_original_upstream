@@ -5,12 +5,12 @@
 extern "C" {
 #endif
 
-  // stuff that apps will want to use
+// stuff that apps will want to use
 #define EVAL_MAX_VARS 256
 typedef struct 
 {
-  char name[8];
-  double value;
+char name[8];
+double value;
 } varType;
 
 extern double globalregs[100];

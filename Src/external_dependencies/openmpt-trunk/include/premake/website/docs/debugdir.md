@@ -25,5 +25,5 @@ Premake 4.4 or later.
 
 ```lua
 filter { "configurations:Debug" }
-   debugdir "bin/debug"
+debugdir "bin/debug"
 ```

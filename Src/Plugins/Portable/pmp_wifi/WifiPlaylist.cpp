@@ -1,10 +1,10 @@
-#include "WifiPlaylist.h"
-#include "api.h"
-#include "nu/AutoWide.h"
-
-/* ---- WifiTrack ---- */
-WifiTrack::WifiTrack()
-{
+		#include "WifiPlaylist.h"
+		#include "api.h"
+		#include "nu/AutoWide.h"
+		
+		/* ---- WifiTrack ---- */
+		WifiTrack::WifiTrack()
+		{
 	last_updated=0;
 	id=0;
 	artist=0;
@@ -16,10 +16,10 @@ WifiTrack::WifiTrack()
 	size=0;
 	title=0;
 	mime_type=0;
-}
-
-WifiTrack::WifiTrack(const char *id, const itemRecordW *record, const wchar_t *filename)
-{
+		}
+		
+		WifiTrack::WifiTrack(const char *id, const itemRecordW *record, const wchar_t *filename)
+		{
 	this->id=AutoWideDup(id);
 	artist=_wcsdup(record->artist);
 	album=_wcsdup(record->album);
@@ -32,18 +32,18 @@ WifiTrack::WifiTrack(const char *id, const itemRecordW *record, const wchar_t *f
 	wchar_t mime[128] = {0};
 	if (AGAVE_API_METADATA->GetExtendedFileInfo(filename, L"mime", mime, 128) && mime[0])
 	{
-		mime_type=_wcsdup(mime);
+mime_type=_wcsdup(mime);
 	}
 	else
 	{
-		mime_type=0;
+mime_type=0;
 	}
-
+		
 	last_updated=record->lastupd;
-}
-
-WifiTrack::WifiTrack(const WifiTrack &copy)
-{
+		}
+		
+		WifiTrack::WifiTrack(const WifiTrack &copy)
+		{
 	id=_wcsdup(copy.id);
 	artist=_wcsdup(copy.artist);
 	album=_wcsdup(copy.album);
@@ -55,50 +55,50 @@ WifiTrack::WifiTrack(const WifiTrack &copy)
 	title=_wcsdup(copy.title);
 	mime_type=_wcsdup(copy.mime_type);
 	last_updated=copy.last_updated;
-}
-
-WifiTrack::~WifiTrack()
-{
+		}
+		
+		WifiTrack::~WifiTrack()
+		{
 	free(id);
 	free(artist);
 	free(album);
 	free(composer);
 	free(title);
 	free(mime_type);
-}
-
-
-/* ---- WifiPlaylist ---- */
-
-WifiPlaylist::WifiPlaylist()
-{
+		}
+		
+		
+		/* ---- WifiPlaylist ---- */
+		
+		WifiPlaylist::WifiPlaylist()
+		{
 	id=0;
 	name=0;
-}
-
-WifiPlaylist::WifiPlaylist(const char *id, const wchar_t *name)
-{
+		}
+		
+		WifiPlaylist::WifiPlaylist(const char *id, const wchar_t *name)
+		{
 	this->id = AutoWideDup(id);
 	this->name = _wcsdup(name);
-}
-
-WifiPlaylist::~WifiPlaylist()
-{
+		}
+		
+		WifiPlaylist::~WifiPlaylist()
+		{
 	free(id);
 	free(name);
 	//tracks.deleteAll();
 	for (auto obj : tracks)
 	{
-		delete obj;
+delete obj;
 	}
 	tracks.clear();
-}
-
-void WifiPlaylist::SetName(const wchar_t *new_name)
-{
+		}
+		
+		void WifiPlaylist::SetName(const wchar_t *new_name)
+		{
 	if (name != new_name)
 	{
-		free(name);
-		name = _wcsdup(new_name);
+free(name);
+name = _wcsdup(new_name);
 	}
-}
+		}

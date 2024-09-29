@@ -11,19 +11,19 @@ class H_TabSheet : public H_TABSHEET_PARENT {
 
 public:
 
-  H_TabSheet(ScriptObject *o);
-  H_TabSheet();
-  virtual ~H_TabSheet();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_TabSheet(ScriptObject *o);
+H_TabSheet();
+virtual ~H_TabSheet();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
+ScriptObject *obj;
+int inited;
+static int loaded;
 };
 
 #endif

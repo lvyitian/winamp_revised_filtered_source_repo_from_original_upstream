@@ -1,18 +1,18 @@
-#ifndef NULLSOFT_IN_WMVDRM_AUDIOFORMAT_H
-#define NULLSOFT_IN_WMVDRM_AUDIOFORMAT_H
-
-#include <mmreg.h>
-#include <wmsdk.h>
-
-class AudioFormat
-{
-public:
+		#ifndef NULLSOFT_IN_WMVDRM_AUDIOFORMAT_H
+		#define NULLSOFT_IN_WMVDRM_AUDIOFORMAT_H
+		
+		#include <mmreg.h>
+		#include <wmsdk.h>
+		
+		class AudioFormat
+		{
+		public:
 	AudioFormat() : waveFormat(0)
 	{
 	}
 	~AudioFormat()
 	{
-		delete [] waveFormat;
+delete [] waveFormat;
 	}
 	unsigned long AudioBytesToSamples(unsigned long bytes);
 	unsigned long AudioSamplesToBytes(unsigned long samples);
@@ -24,22 +24,22 @@ public:
 	long ValidBits();
 	long BitSize();
 	long SampleRate();
-//protected:
+		//protected:
 	void Open(WM_MEDIA_TYPE *mediaType)
 	{
-		delete[] waveFormat;
-		waveFormat = (WAVEFORMATEXTENSIBLE *) new unsigned char[mediaType->cbFormat];
-		memcpy(waveFormat, mediaType->pbFormat, mediaType->cbFormat);
+delete[] waveFormat;
+waveFormat = (WAVEFORMATEXTENSIBLE *) new unsigned char[mediaType->cbFormat];
+memcpy(waveFormat, mediaType->pbFormat, mediaType->cbFormat);
 	}
-
+		
 	void Close()
 	{
-		delete [] waveFormat;
-		waveFormat=0;
+delete [] waveFormat;
+waveFormat=0;
 	}
-
-private:
+		
+		private:
 	WAVEFORMATEXTENSIBLE *waveFormat;
-};
-
-#endif
+		};
+		
+		#endif

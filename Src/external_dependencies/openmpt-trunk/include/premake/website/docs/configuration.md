@@ -38,32 +38,32 @@ Define a new symbol which applies only to debug builds; assumes a configuration 
 
 ```lua
 configuration "Debug"
-  defines { "_DEBUG" }
+defines { "_DEBUG" }
 ```
 
 Define a symbol only when targeting Visual Studio 2010.
 
 ```lua
 configuration "vs2010"
-  defines { "VISUAL_STUDIO_2005" }
+defines { "VISUAL_STUDIO_2005" }
 ```
 
 Wildcards can be used to match multiple terms. Define a symbol for all versions of Visual Studio.
 
 ```lua
 configuration "vs*"
-  defines { "VISUAL_STUDIO" }
+defines { "VISUAL_STUDIO" }
 ```
 
 Add a suffix to the debug versions of libraries.
 
 ```lua
 configuration { "Debug", "SharedLib or StaticLib" }
-  targetsuffix "_d"
+targetsuffix "_d"
 
 -- ...or...
 configuration { "Debug", "*Lib" }
-  targetsuffix "_d"
+targetsuffix "_d"
 ```
 
 Apply settings based on the presence of a [custom command line option](Command-Line-Arguments.md).
@@ -71,32 +71,32 @@ Apply settings based on the presence of a [custom command line option](Command-L
 ```lua
 -- Using an option like --localized
 configuration { "localized" }
-   files { "src/localizations/**" }
+files { "src/localizations/**" }
 
 -- Using an option like --renderer=opengl
 configuration { "renderer=opengl" }
-   files { "src/opengl/**.cpp" }
+files { "src/opengl/**.cpp" }
 ```
 
 Although support is currently quite limited, you may also apply settings to a particular file or set of files. This example sets the build action for all PNG image files.
 
 ```lua
 configuration "*.png"
-  buildaction "Embed"
+buildaction "Embed"
 ```
 
 In the case of files you may also use the **\*\*** wildcard, which will recurse into subdirectories.
 
 ```lua
 configuration "**.png"
-  buildaction "Embed"
+buildaction "Embed"
 ```
 
 If multiple keywords are specified, they will be treated as a logical AND. All terms must be present for the block to be applied. This example will apply the symbol only for debug builds on Mac OS X.
 
 ```lua
 configuration { "debug", "macosx" }
-  defines { "DEBUG_MACOSX" }
+defines { "DEBUG_MACOSX" }
 ```
 
 Multiple terms must use Lua's curly bracket list syntax.
@@ -105,14 +105,14 @@ You can use the **or** modifier to match against multiple, specific terms.
 
 ```lua
 configuration "linux or macosx"
-  defines { "LINUX_OR_MACOSX" }
+defines { "LINUX_OR_MACOSX" }
 ```
 
 You can also use **not** to apply the settings to all environments where the identifier is not set.
 
 ```lua
 configuration "not windows"
-  defines { "NOT_WINDOWS" }
+defines { "NOT_WINDOWS" }
 ```
 
 Finally, you can reset the configuration filter and remove all active keywords by passing the function an empty table.

@@ -1,28 +1,28 @@
-/*
- * Ctrl_ins.h
- * ----------
- * Purpose: Instrument tab, upper panel.
- * Notes  : (currently none)
- * Authors: Olivier Lapicque
- *          OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-
-#pragma once
-
-#include "openmpt/all/BuildSettings.hpp"
-
-#include "CDecimalSupport.h"
-
-OPENMPT_NAMESPACE_BEGIN
-
-class CNoteMapWnd;
-class CCtrlInstruments;
-
-class CNoteMapWnd: public CStatic
-{
-protected:
+		/*
+        * Ctrl_ins.h
+        * ----------
+        * Purpose: Instrument tab, upper panel.
+        * Notes  : (currently none)
+        * Authors: Olivier Lapicque
+        *          OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		
+		#pragma once
+		
+		#include "openmpt/all/BuildSettings.hpp"
+		
+		#include "CDecimalSupport.h"
+		
+		OPENMPT_NAMESPACE_BEGIN
+		
+		class CNoteMapWnd;
+		class CCtrlInstruments;
+		
+		class CNoteMapWnd: public CStatic
+		{
+		protected:
 	CModDoc &m_modDoc;
 	CCtrlInstruments &m_pParent;
 	UINT m_nNote = (NOTE_MIDDLEC - NOTE_MIN), m_nOldNote = 0, m_nOldIns = 0;
@@ -30,20 +30,20 @@ protected:
 	int m_cxFont = 0, m_cyFont = 0;
 	CHANNELINDEX m_noteChannel = 0;
 	ModCommand::NOTE m_nPlayingNote = NOTE_NONE;
-
+		
 	bool m_bIns = false;
 	bool m_undo = true;
-
-private:
+		
+		private:
 	void MapTranspose(int nAmount);
 	void PrepareUndo(const char *description);
-
-public:
+		
+		public:
 	CNoteMapWnd(CCtrlInstruments &parent, CModDoc &document)
-		: m_modDoc(document)
-		, m_pParent(parent)
+: m_modDoc(document)
+, m_pParent(parent)
 	{
-		EnableActiveAccessibility();
+EnableActiveAccessibility();
 	}
 	void SetCurrentInstrument(INSTRUMENTINDEX nIns);
 	void SetCurrentNote(UINT nNote);
@@ -52,16 +52,16 @@ public:
 	bool HandleNav(WPARAM k);
 	void PlayNote(UINT note);
 	void StopNote();
-
+		
 	void UpdateAccessibleTitle();
-
-public:
+		
+		public:
 	//{{AFX_VIRTUAL(CNoteMapWnd)
 	BOOL PreTranslateMessage(MSG* pMsg) override;
 	HRESULT get_accName(VARIANT varChild, BSTR *pszName) override;
 	//}}AFX_VIRTUAL
-
-protected:
+		
+		protected:
 	//{{AFX_MSG(CNoteMapWnd)
 	afx_msg void OnLButtonDown(UINT, CPoint);
 	afx_msg void OnMButtonDown(UINT flags, CPoint pt) { OnLButtonDown(flags, pt); }
@@ -85,12 +85,12 @@ protected:
 	afx_msg LRESULT OnCustomKeyMsg(WPARAM, LPARAM); //rewbs.customKeys
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
-};
-
-
-class CCtrlInstruments: public CModControlDlg
-{
-protected:
+		};
+		
+		
+		class CCtrlInstruments: public CModControlDlg
+		{
+		protected:
 	CModControlBar m_ToolBar;
 	CSpinButtonCtrl m_SpinInstrument, m_SpinFadeOut, m_SpinGlobalVol, m_SpinPanning;
 	CSpinButtonCtrl m_SpinMidiPR, m_SpinPPS, m_SpinMidiBK, m_SpinPWD;
@@ -107,21 +107,21 @@ protected:
 	// Pitch/Tempo lock
 	CNumberEdit m_EditPitchTempoLock;
 	CButton m_CheckPitchTempoLock;
-
+		
 	INSTRUMENTINDEX m_nInstrument = 1;
 	bool m_openendPluginListWithMouse = false;
 	bool m_startedHScroll = false;
 	bool m_startedEdit = false;
-
+		
 	void UpdateTuningComboBox();
 	void BuildTuningComboBox();
-
+		
 	void UpdatePluginList();
 	
-public:
+		public:
 	CCtrlInstruments(CModControlView &parent, CModDoc &document);
-
-public:
+		
+		public:
 	void SetModified(InstrumentHint hint, bool updateAll);
 	BOOL SetCurrentInstrument(UINT nIns, BOOL bUpdNum=TRUE);
 	bool InsertInstrument(bool duplicate);
@@ -131,8 +131,8 @@ public:
 	BOOL EditSample(UINT nSample);
 	void UpdateFilterText();
 	Setting<LONG> &GetSplitPosRef() override {return TrackerSettings::Instance().glInstrumentWindowHeight;}
-
-public:
+		
+		public:
 	//{{AFX_VIRTUAL(CCtrlInstruments)
 	BOOL OnInitDialog() override;
 	void DoDataExchange(CDataExchange* pDX) override;	// DDX/DDV support
@@ -145,9 +145,9 @@ public:
 	BOOL GetToolTipText(UINT uId, LPTSTR pszText) override;
 	BOOL PreTranslateMessage(MSG* pMsg) override;
 	//}}AFX_VIRTUAL
-protected:
+		protected:
 	void PrepareUndo(const char *description);
-
+		
 	//{{AFX_MSG(CCtrlInstruments)
 	afx_msg void OnEditFocus();
 	afx_msg void OnVScroll(UINT nCode, UINT nPos, CScrollBar *pSB);
@@ -199,6 +199,7 @@ protected:
 	afx_msg void OnXButtonUp(UINT nFlags, UINT nButton, CPoint point);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
-};
-
-OPENMPT_NAMESPACE_END
+		};
+		
+		OPENMPT_NAMESPACE_END
+		

@@ -1,18 +1,18 @@
 /********************************************************************
- *                                                                  *
- * THIS FILE IS PART OF THE OggVorbis SOFTWARE CODEC SOURCE CODE.   *
- * USE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS     *
- * GOVERNED BY A BSD-STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE *
- * IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.       *
- *                                                                  *
- * THE OggVorbis SOURCE CODE IS (C) COPYRIGHT 1994-2009             *
- * by the Xiph.Org Foundation https://xiph.org/                     *
- *                                                                  *
- ********************************************************************
+*                                                                  *
+* THIS FILE IS PART OF THE OggVorbis SOFTWARE CODEC SOURCE CODE.   *
+* USE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS     *
+* GOVERNED BY A BSD-STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE *
+* IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.       *
+*                                                                  *
+* THE OggVorbis SOURCE CODE IS (C) COPYRIGHT 1994-2009             *
+* by the Xiph.Org Foundation https://xiph.org/                     *
+*                                                                  *
+********************************************************************
 
- function: modified discrete cosine transform prototypes
+function: modified discrete cosine transform prototypes
 
- ********************************************************************/
+********************************************************************/
 
 #ifndef _OGG_mdct_H_
 #define _OGG_mdct_H_
@@ -53,13 +53,13 @@
 
 
 typedef struct {
-  int n;
-  int log2n;
+int n;
+int log2n;
 
-  DATA_TYPE *trig;
-  int       *bitrev;
+DATA_TYPE *trig;
+int       *bitrev;
 
-  DATA_TYPE scale;
+DATA_TYPE scale;
 } mdct_lookup;
 
 extern void mdct_init(mdct_lookup *lookup,int n);

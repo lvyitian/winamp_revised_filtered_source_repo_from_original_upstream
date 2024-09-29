@@ -28,44 +28,44 @@ static const GUID guidNull =
 #endif
 
 typedef struct {
-  scriptVar v;
-  int scriptId;
-  int varId;
-  char transcient;
-  char isaclass;
-  char isstatic;
+scriptVar v;
+int scriptId;
+int varId;
+char transcient;
+char isaclass;
+char isstatic;
 } VCPUscriptVar;
 
 typedef struct {
-  int varId;
-  int pointer;
-  int DLFid;
-  int scriptId;
+int varId;
+int pointer;
+int DLFid;
+int scriptId;
 } VCPUeventEntry;
 
 typedef struct {
-  wchar_t *functionName;
-  int basetype;
-  int scriptId;
-  int DLFid;
-  void *ptr;
-  int nparams;
+wchar_t *functionName;
+int basetype;
+int scriptId;
+int DLFid;
+void *ptr;
+int nparams;
 } VCPUdlfEntry;
 
 typedef struct {
-  char *codeBlock;
-  int scriptId;
-  int dlfBase;
-  int varBase;
-  int size;
-  char *debugsymbols;
-  int debugsize;
+char *codeBlock;
+int scriptId;
+int dlfBase;
+int varBase;
+int size;
+char *debugsymbols;
+int debugsize;
 } VCPUcodeBlock;
 
 typedef struct 
 {
-  int cmd;
-  int id;
+int cmd;
+int id;
 } maki_cmd;
 
 #ifdef _MSC_VER

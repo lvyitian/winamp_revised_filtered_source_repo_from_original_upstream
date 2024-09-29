@@ -1,24 +1,24 @@
-#ifndef NULLSOFT_WINAMP_OUTPUTPLUGINAUDIOSTREAM_H
-#define NULLSOFT_WINAMP_OUTPUTPLUGINAUDIOSTREAM_H
-
-#include "../Agave/DecodeFile/ifc_audiostream.h"
-#include "in2.h"
-#include "../Agave/DecodeFile/api_decodefile.h"
-#include "CommonReader.h"
-
-class OutputPluginAudioStream : public CommonReader
-{
-public:
-	OutputPluginAudioStream();
-	~OutputPluginAudioStream();
-	bool Open(In_Module *in, const wchar_t *filename, AudioParameters *parameters);
-	size_t ReadAudio(void *buffer, size_t sizeBytes);
+	#ifndef NULLSOFT_WINAMP_OUTPUTPLUGINAUDIOSTREAM_H
+	#define NULLSOFT_WINAMP_OUTPUTPLUGINAUDIOSTREAM_H
 	
-protected:
-	RECVS_DISPATCH;
+	#include "../Agave/DecodeFile/ifc_audiostream.h"
+	#include "in2.h"
+	#include "../Agave/DecodeFile/api_decodefile.h"
+	#include "CommonReader.h"
+	
+	class OutputPluginAudioStream : public CommonReader
+	{
+	public:
+OutputPluginAudioStream();
+~OutputPluginAudioStream();
+bool Open(In_Module *in, const wchar_t *filename, AudioParameters *parameters);
+size_t ReadAudio(void *buffer, size_t sizeBytes);
 
-	size_t oldBits;
-	bool oldSurround, oldMono, oldRG;
-};
-
-#endif
+	protected:
+RECVS_DISPATCH;
+	
+size_t oldBits;
+bool oldSurround, oldMono, oldRG;
+	};
+	
+	#endif

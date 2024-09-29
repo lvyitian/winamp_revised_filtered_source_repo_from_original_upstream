@@ -1,35 +1,35 @@
-#ifndef __XUILIST_H
-#define __XUILIST_H
-
-#include <api/wnd/wndclass/listwnd.h>
-#include <api/script/objcontroller.h>
-#include <bfc/depend.h>
-
-class svc_textFeed;
-
-#define SCRIPTLIST_PARENT ListWnd
-
-// -----------------------------------------------------------------------
-class ScriptList : public SCRIPTLIST_PARENT, public DependentViewerI {
-  public:
+		#ifndef __XUILIST_H
+		#define __XUILIST_H
+		
+		#include <api/wnd/wndclass/listwnd.h>
+		#include <api/script/objcontroller.h>
+		#include <bfc/depend.h>
+		
+		class svc_textFeed;
+		
+		#define SCRIPTLIST_PARENT ListWnd
+		
+		// -----------------------------------------------------------------------
+		class ScriptList : public SCRIPTLIST_PARENT, public DependentViewerI {
+        public:
     ScriptList();
     virtual ~ScriptList();
-
+		
     virtual int onInit();
-
-  //virtual void onDoubleClick(int itemnum); // moved to the script-handling callback.
-  //void onItemSelection(int itemnum, int selected);
+		
+        //virtual void onDoubleClick(int itemnum); // moved to the script-handling callback.
+        //void onItemSelection(int itemnum, int selected);
     
     int setXuiParam(int xuihandle, int xmlattributeid, const wchar_t *xmlattributename, const wchar_t *value);
-#ifdef WASABI_COMPILE_CONFIG
+		#ifdef WASABI_COMPILE_CONFIG
     int onReloadConfig();
-#endif
-
+		#endif
+		
     virtual int viewer_onEvent(api_dependent *item, const GUID *classguid, int event, intptr_t param, void *ptr, size_t ptrlen);
     virtual void onSetVisible(int i);
-
+		
     virtual int onAction(const wchar_t *action, const wchar_t *param, int x, int y, intptr_t p1, intptr_t p2, void *data, size_t datalen, ifc_window *source);
-
+		
     // Callback methods that send hooks into the Script system
     virtual void onSelectAll();
     virtual void onDelete();
@@ -42,43 +42,43 @@ class ScriptList : public SCRIPTLIST_PARENT, public DependentViewerI {
     virtual void onItemSelection(int itemnum, int selected);
 	virtual int onIconLeftClick(int itemnum, int x, int y);
 	
-
-
-    enum {
-      SCRIPTLIST_SETITEMS = 0,
-      SCRIPTLIST_SETMULTISELECT,
-      SCRIPTLIST_SETAUTODESELECT,
-      SCRIPTLIST_SELECT,
-      SCRIPTLIST_FEED,
-      SCRIPTLIST_HOVERSELECT,
-      SCRIPTLIST_SORT,
-      SCRIPTLIST_SELECTONUPDOWN,
-      SCRIPTLIST_NUMCOLUMNS,
-      SCRIPTLIST_COLUMNWIDTHS,
-      SCRIPTLIST_COLUMNLABELS,
-    };
 		
-protected:
+		
+    enum {
+    SCRIPTLIST_SETITEMS = 0,
+    SCRIPTLIST_SETMULTISELECT,
+    SCRIPTLIST_SETAUTODESELECT,
+    SCRIPTLIST_SELECT,
+    SCRIPTLIST_FEED,
+    SCRIPTLIST_HOVERSELECT,
+    SCRIPTLIST_SORT,
+    SCRIPTLIST_SELECTONUPDOWN,
+    SCRIPTLIST_NUMCOLUMNS,
+    SCRIPTLIST_COLUMNWIDTHS,
+    SCRIPTLIST_COLUMNLABELS,
+    };
+
+		protected:
 	/*static */void CreateXMLParameters(int master_handle);
-  private:
+        private:
 	static XMLParamPair params[];
-#ifdef WASABI_COMPILE_CONFIG
+		#ifdef WASABI_COMPILE_CONFIG
     void saveToConfig();
     void selectFromConfig();
-#endif
+		#endif
     void fillFromParams();
     int selectEntry(const wchar_t *e, int cb=1);
     void selectEntries(const wchar_t *multientry, int cb=1);
     void setNumColumns();
     void setColumnWidths();
     void setColumnLabels();
-
+		
     void openFeed(const wchar_t *feedid);
     void closeFeed();
     
     //virtual int getColumnsHeight() { return 0; }
     virtual int wantHScroll() { return 0; }
-
+		
     StringW items;
     StringW columnwidths;
     StringW columnlabels;
@@ -87,18 +87,18 @@ protected:
     int multiselect;
     int myxuihandle;
     int autosave;
-#ifdef WASABI_COMPILE_CONFIG
+		#ifdef WASABI_COMPILE_CONFIG
     int config_reentry;
-#endif
-
+		#endif
+		
     svc_textFeed *feed;
     StringW last_feed;
-};
-
-// -----------------------------------------------------------------------------------------------------
-class GuiListScriptController : public ScriptObjectControllerI {
-  public:
-
+		};
+		
+		// -----------------------------------------------------------------------------------------------------
+		class GuiListScriptController : public ScriptObjectControllerI {
+        public:
+		
     virtual const wchar_t *getClassName() { return L"GuiList"; }
     virtual const wchar_t *getAncestorClassName() { return L"GuiObject"; }
     virtual ScriptObjectController *getAncestorController() { return WASABI_API_MAKI->maki_getController(guiObjectGuid); }
@@ -109,8 +109,8 @@ class GuiListScriptController : public ScriptObjectControllerI {
     virtual void destroy(ScriptObject *o);
     virtual void *encapsulate(ScriptObject *o);
     virtual void deencapsulate(void *o);
-
-  public:
+		
+        public:
     static scriptVar guilist_getNumItems(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static /*int*/ scriptVar guilist_getWantAutoDeselect(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static /*void*/ scriptVar guilist_setWantAutoDeselect(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar want);
@@ -153,7 +153,7 @@ class GuiListScriptController : public ScriptObjectControllerI {
 	static /*int*/ scriptVar guilist_getIconHeight(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
 	static /*void*/ scriptVar guilist_setIconHeight(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, scriptVar val);
 	static /*int*/ scriptVar guilist_onIconLeftClick(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, scriptVar pos, scriptVar x, scriptVar y);
-
+		
     static /*int*/ scriptVar guilist_getItemSelected(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar pos);
     static /*int*/ scriptVar guilist_isItemFocused(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar pos);
     static /*int*/ scriptVar guilist_getItemFocused(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
@@ -193,7 +193,7 @@ class GuiListScriptController : public ScriptObjectControllerI {
     static /*int*/ scriptVar guilist_getPreventMultipleSelection(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static /*int*/ scriptVar guilist_setPreventMultipleSelection(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar val);
     static /*void*/ scriptVar guilist_moveItem(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar from, /*int*/ scriptVar to);
-
+		
     static /*void*/ scriptVar guilist_onSelectAll(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static /*void*/ scriptVar guilist_onDelete(SCRIPT_FUNCTION_PARAMS, ScriptObject *o);
     static /*void*/ scriptVar guilist_onDoubleClick(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar itemnum);
@@ -203,19 +203,20 @@ class GuiListScriptController : public ScriptObjectControllerI {
     static /*int*/ scriptVar guilist_onColumnDblClick(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar col, /*int*/ scriptVar x, /*int*/ scriptVar y);
     static /*int*/ scriptVar guilist_onColumnLabelClick(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar col, /*int*/ scriptVar x, /*int*/ scriptVar y);
     static /*void*/ scriptVar guilist_onItemSelection(SCRIPT_FUNCTION_PARAMS, ScriptObject *o, /*int*/ scriptVar itemnum, /*int*/ scriptVar selected);
-
-  private:
+		
+        private:
     static function_descriptor_struct exportedFunction[];
-
+		
     static StringW staticStr;
-};
-
-extern GuiListScriptController *guiListController;
-
-
-// -----------------------------------------------------------------------
-extern const wchar_t ScriptListXuiObjectStr[];
-extern char ScriptListXuiSvcName[];
-class ScriptListXuiSvc : public XuiObjectSvc<ScriptList, ScriptListXuiObjectStr, ScriptListXuiSvcName> {};
-
-#endif
+		};
+		
+		extern GuiListScriptController *guiListController;
+		
+		
+		// -----------------------------------------------------------------------
+		extern const wchar_t ScriptListXuiObjectStr[];
+		extern char ScriptListXuiSvcName[];
+		class ScriptListXuiSvc : public XuiObjectSvc<ScriptList, ScriptListXuiObjectStr, ScriptListXuiSvcName> {};
+		
+		#endif
+		

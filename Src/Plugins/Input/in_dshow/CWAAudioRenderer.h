@@ -12,19 +12,19 @@ EXTERN_C GUID DECLSPEC_SELECTANY CLSID_WAAudioRend						=
 class CWAAudioRenderer : public CAudioSwitchRenderer//, CBaseReferenceClock
 {
 public:
-  CWAAudioRenderer();
-  virtual ~CWAAudioRenderer();
-  HRESULT DoRenderSample(IMediaSample *pMediaSample) ;
-  HRESULT CheckMediaType(const CMediaType *pmt);
-  HRESULT SetMediaType(const CMediaType *pmt);
-  CMediaType *GetAcceptedType();
-  HRESULT SetCallback(CSampleCB *Callback);
-  HRESULT EndOfStream(void);
-  HRESULT ShouldDrawSampleNow(IMediaSample *pMediaSample, REFERENCE_TIME *pStartTime, REFERENCE_TIME *pEndTime);
-  HRESULT GetSampleTimes(IMediaSample *pMediaSample, REFERENCE_TIME *pStartTime, REFERENCE_TIME *pEndTime);
+CWAAudioRenderer();
+virtual ~CWAAudioRenderer();
+HRESULT DoRenderSample(IMediaSample *pMediaSample) ;
+HRESULT CheckMediaType(const CMediaType *pmt);
+HRESULT SetMediaType(const CMediaType *pmt);
+CMediaType *GetAcceptedType();
+HRESULT SetCallback(CSampleCB *Callback);
+HRESULT EndOfStream(void);
+HRESULT ShouldDrawSampleNow(IMediaSample *pMediaSample, REFERENCE_TIME *pStartTime, REFERENCE_TIME *pEndTime);
+HRESULT GetSampleTimes(IMediaSample *pMediaSample, REFERENCE_TIME *pStartTime, REFERENCE_TIME *pEndTime);
 
 private:
-  CSampleCB *m_callback;
-  CMediaType m_mt;
+CSampleCB *m_callback;
+CMediaType m_mt;
 };
 #endif

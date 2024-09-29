@@ -1,7 +1,7 @@
 /**
- * This file is part of the mingw-w64 runtime package.
- * No warranty is given; refer to the file DISCLAIMER within this package.
- */
+* This file is part of the mingw-w64 runtime package.
+* No warranty is given; refer to the file DISCLAIMER within this package.
+*/
 
 #include <winapifamily.h>
 
@@ -20,29 +20,29 @@
 #endif
 
 typedef enum _AudioSessionState {
-  AudioSessionStateInactive = 0,
-  AudioSessionStateActive = 1,
-  AudioSessionStateExpired = 2
+AudioSessionStateInactive = 0,
+AudioSessionStateActive = 1,
+AudioSessionStateExpired = 2
 } AudioSessionState;
 
 typedef enum _AUDCLNT_SHAREMODE {
-  AUDCLNT_SHAREMODE_SHARED,
-  AUDCLNT_SHAREMODE_EXCLUSIVE
+AUDCLNT_SHAREMODE_SHARED,
+AUDCLNT_SHAREMODE_EXCLUSIVE
 } AUDCLNT_SHAREMODE;
 
 typedef enum _AUDIO_STREAM_CATEGORY {
-  AudioCategory_Other = 0,
-  AudioCategory_ForegroundOnlyMedia,
-  AudioCategory_BackgroundCapableMedia,
-  AudioCategory_Communications,
-  AudioCategory_Alerts,
-  AudioCategory_SoundEffects,
-  AudioCategory_GameEffects,
-  AudioCategory_GameMedia,
-  AudioCategory_GameChat,
-  AudioCategory_Speech,
-  AudioCategory_Movie,
-  AudioCategory_Media
+AudioCategory_Other = 0,
+AudioCategory_ForegroundOnlyMedia,
+AudioCategory_BackgroundCapableMedia,
+AudioCategory_Communications,
+AudioCategory_Alerts,
+AudioCategory_SoundEffects,
+AudioCategory_GameEffects,
+AudioCategory_GameMedia,
+AudioCategory_GameChat,
+AudioCategory_Speech,
+AudioCategory_Movie,
+AudioCategory_Media
 } AUDIO_STREAM_CATEGORY;
 
 #define AUDCLNT_STREAMFLAGS_CROSSPROCESS 0x00010000

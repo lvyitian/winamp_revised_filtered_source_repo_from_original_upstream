@@ -1,15 +1,15 @@
-#ifndef __API_CORE_H
-#define __API_CORE_H
-
-#include <bfc/dispatch.h>
-
-typedef unsigned int CoreToken;
-class CoreCallback;
-class ItemSequencer;
-
-class NOVTABLE api_core : public Dispatchable
-{
-public:
+		#ifndef __API_CORE_H
+		#define __API_CORE_H
+		
+		#include <bfc/dispatch.h>
+		
+		typedef unsigned int CoreToken;
+		class CoreCallback;
+		class ItemSequencer;
+		
+		class NOVTABLE api_core : public Dispatchable
+		{
+		public:
 	const wchar_t *core_getSupportedExtensions();
 	const wchar_t *core_getExtSupportedExtensions();
 	CoreToken core_create();
@@ -53,7 +53,7 @@ public:
 	// these don't necessarily belong here, but api_core is already over-bloated :)
 	int core_getRating();
 	void core_setRating(int newRating);
-
+		
 	enum
 	{
 	    API_CORE_GETSUPPORTEDEXTENSIONS = 0,
@@ -94,226 +94,226 @@ public:
 	    API_CORE_GETEXTENSIONFAMILY = 350,
 	    API_CORE_UNREGISTEREXTENSION = 360,
 	    API_CORE_GETTITLE = 370,
-		API_CORE_GETRATING = 380,
-		API_CORE_SETRATING = 390,
-		API_CORE_GETDECODERNAME = 400,
-		API_CORE_SETTITLE = 410,
+API_CORE_GETRATING = 380,
+API_CORE_SETRATING = 390,
+API_CORE_GETDECODERNAME = 400,
+API_CORE_SETTITLE = 410,
 	};
-};
-
-inline const wchar_t *api_core::core_getSupportedExtensions()
-{
+		};
+		
+		inline const wchar_t *api_core::core_getSupportedExtensions()
+		{
 	return _call(API_CORE_GETSUPPORTEDEXTENSIONS, (const wchar_t *)0);
-}
-
-inline const wchar_t *api_core::core_getExtSupportedExtensions()
-{
+		}
+		
+		inline const wchar_t *api_core::core_getExtSupportedExtensions()
+		{
 	return _call(API_CORE_GETEXTSUPPORTEDEXTENSIONS, (const wchar_t *)0);
-}
-
-inline CoreToken api_core::core_create()
-{
+		}
+		
+		inline CoreToken api_core::core_create()
+		{
 	return _call(API_CORE_CREATE, (CoreToken)NULL);
-}
-
-inline int api_core::core_free(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_free(CoreToken core)
+		{
 	return _call(API_CORE_FREE, (int)0, core);
-}
-
-inline int api_core::core_setNextFile(CoreToken core, const wchar_t *playstring)
-{
+		}
+		
+		inline int api_core::core_setNextFile(CoreToken core, const wchar_t *playstring)
+		{
 	return _call(API_CORE_SETNEXTFILE, (int)0, core, playstring);
-}
-
-inline int api_core::core_getStatus(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getStatus(CoreToken core)
+		{
 	return _call(API_CORE_GETSTATUS, (int)0, core);
-}
-
-inline const wchar_t *api_core::core_getCurrent(CoreToken core)
-{
+		}
+		
+		inline const wchar_t *api_core::core_getCurrent(CoreToken core)
+		{
 	return _call(API_CORE_GETCURRENT, (const wchar_t *)0, core);
-}
-
-inline int api_core::core_getCurPlaybackNumber(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getCurPlaybackNumber(CoreToken core)
+		{
 	return _call(API_CORE_GETCURPLAYBACKNUMBER, (int)0, core);
-}
-
-inline int api_core::core_getPosition(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getPosition(CoreToken core)
+		{
 	return _call(API_CORE_GETPOSITION, (int)0, core);
-}
-
-inline int api_core::core_getWritePosition(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getWritePosition(CoreToken core)
+		{
 	return _call(API_CORE_GETWRITEPOSITION, (int)0, core);
-}
-
-inline int api_core::core_setPosition(CoreToken core, int ms)
-{
+		}
+		
+		inline int api_core::core_setPosition(CoreToken core, int ms)
+		{
 	return _call(API_CORE_SETPOSITION, (int)0, core, ms);
-}
-
-inline int api_core::core_getLength(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getLength(CoreToken core)
+		{
 	return _call(API_CORE_GETLENGTH, (int)0, core);
-}
-
-inline int api_core::core_getPluginData(const wchar_t *playstring, const wchar_t *name, wchar_t *data, int data_len, int data_type)
-{
+		}
+		
+		inline int api_core::core_getPluginData(const wchar_t *playstring, const wchar_t *name, wchar_t *data, int data_len, int data_type)
+		{
 	return _call(API_CORE_GETPLUGINDATA, (int)0, playstring, name, data, data_len, data_type);
-}
-
-inline unsigned int api_core::core_getVolume(CoreToken core)
-{
+		}
+		
+		inline unsigned int api_core::core_getVolume(CoreToken core)
+		{
 	return _call(API_CORE_GETVOLUME, (unsigned int)0, core);
-}
-
-inline void api_core::core_setVolume(CoreToken core, unsigned int vol)
-{
+		}
+		
+		inline void api_core::core_setVolume(CoreToken core, unsigned int vol)
+		{
 	_voidcall(API_CORE_SETVOLUME, core, vol);
-}
-
-inline int api_core::core_getPan(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getPan(CoreToken core)
+		{
 	return _call(API_CORE_GETPAN, (int)0, core);
-}
-
-inline void api_core::core_setPan(CoreToken core, int val)
-{
+		}
+		
+		inline void api_core::core_setPan(CoreToken core, int val)
+		{
 	_voidcall(API_CORE_SETPAN, core, val);
-}
-
-inline void api_core::core_addCallback(CoreToken core, CoreCallback *cb)
-{
+		}
+		
+		inline void api_core::core_addCallback(CoreToken core, CoreCallback *cb)
+		{
 	_voidcall(API_CORE_ADDCALLBACK, core, cb);
-}
-
-inline void api_core::core_delCallback(CoreToken core, CoreCallback *cb)
-{
+		}
+		
+		inline void api_core::core_delCallback(CoreToken core, CoreCallback *cb)
+		{
 	_voidcall(API_CORE_DELCALLBACK, core, cb);
-}
-
-inline int api_core::core_getVisData(CoreToken core, void *dataptr, int sizedataptr)
-{
+		}
+		
+		inline int api_core::core_getVisData(CoreToken core, void *dataptr, int sizedataptr)
+		{
 	return _call(API_CORE_GETVISDATA, (int)0, core, dataptr, sizedataptr);
-}
-
-inline int api_core::core_getLeftVuMeter(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getLeftVuMeter(CoreToken core)
+		{
 	return _call(API_CORE_GETLEFTVUMETER, (int)0, core);
-}
-
-inline int api_core::core_getRightVuMeter(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getRightVuMeter(CoreToken core)
+		{
 	return _call(API_CORE_GETRIGHTVUMETER, (int)0, core);
-}
-
-inline int api_core::core_registerSequencer(CoreToken core, ItemSequencer *seq)
-{
+		}
+		
+		inline int api_core::core_registerSequencer(CoreToken core, ItemSequencer *seq)
+		{
 	return _call(API_CORE_REGISTERSEQUENCER, (int)0, core, seq);
-}
-
-inline int api_core::core_deregisterSequencer(CoreToken core, ItemSequencer *seq)
-{
+		}
+		
+		inline int api_core::core_deregisterSequencer(CoreToken core, ItemSequencer *seq)
+		{
 	return _call(API_CORE_DEREGISTERSEQUENCER, (int)0, core, seq);
-}
-
-inline void api_core::core_userButton(CoreToken core, int button)
-{
+		}
+		
+		inline void api_core::core_userButton(CoreToken core, int button)
+		{
 	_voidcall(API_CORE_USERBUTTON, core, button);
-}
-
-inline int api_core::core_getEqStatus(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getEqStatus(CoreToken core)
+		{
 	return _call(API_CORE_GETEQSTATUS, (int)0, core);
-}
-
-inline void api_core::core_setEqStatus(CoreToken core, int enable)
-{
+		}
+		
+		inline void api_core::core_setEqStatus(CoreToken core, int enable)
+		{
 	_voidcall(API_CORE_SETEQSTATUS, core, enable);
-}
-
-inline int api_core::core_getEqPreamp(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getEqPreamp(CoreToken core)
+		{
 	return _call(API_CORE_GETEQPREAMP, (int)0, core);
-}
-
-inline void api_core::core_setEqPreamp(CoreToken core, int pre)
-{
+		}
+		
+		inline void api_core::core_setEqPreamp(CoreToken core, int pre)
+		{
 	_voidcall(API_CORE_SETEQPREAMP, core, pre);
-}
-
-inline int api_core::core_getEqBand(CoreToken core, int band)
-{
+		}
+		
+		inline int api_core::core_getEqBand(CoreToken core, int band)
+		{
 	return _call(API_CORE_GETEQBAND, (int)0, core, band);
-}
-
-inline void api_core::core_setEqBand(CoreToken core, int band, int val)
-{
+		}
+		
+		inline void api_core::core_setEqBand(CoreToken core, int band, int val)
+		{
 	_voidcall(API_CORE_SETEQBAND, core, band, val);
-}
-
-inline int api_core::core_getEqAuto(CoreToken core)
-{
+		}
+		
+		inline int api_core::core_getEqAuto(CoreToken core)
+		{
 	return _call(API_CORE_GETEQAUTO, (int)0, core);
-}
-
-inline void api_core::core_setEqAuto(CoreToken core, int enable)
-{
+		}
+		
+		inline void api_core::core_setEqAuto(CoreToken core, int enable)
+		{
 	_voidcall(API_CORE_SETEQAUTO, core, enable);
-}
-
-inline void api_core::core_setCustomMsg(CoreToken core, const wchar_t *text)
-{
+		}
+		
+		inline void api_core::core_setCustomMsg(CoreToken core, const wchar_t *text)
+		{
 	_voidcall(API_CORE_SETCUSTOMMSG, core, text);
-}
-
-inline void api_core::core_registerExtension(const wchar_t *extensions, const wchar_t *extension_name, const wchar_t *family)
-{
+		}
+		
+		inline void api_core::core_registerExtension(const wchar_t *extensions, const wchar_t *extension_name, const wchar_t *family)
+		{
 	_voidcall(API_CORE_REGISTEREXTENSION, extensions, extension_name, family);
-}
-
-inline const wchar_t *api_core::core_getExtensionFamily(const wchar_t *extension)
-{
+		}
+		
+		inline const wchar_t *api_core::core_getExtensionFamily(const wchar_t *extension)
+		{
 	return _call(API_CORE_GETEXTENSIONFAMILY, (const wchar_t *)0, extension);
-}
-
-inline void api_core::core_unregisterExtension(const wchar_t *extensions)
-{
+		}
+		
+		inline void api_core::core_unregisterExtension(const wchar_t *extensions)
+		{
 	_voidcall(API_CORE_UNREGISTEREXTENSION, extensions);
-}
-
-inline const wchar_t *api_core::core_getTitle(CoreToken core)
-{
+		}
+		
+		inline const wchar_t *api_core::core_getTitle(CoreToken core)
+		{
 	return _call(API_CORE_GETTITLE, (const wchar_t *)0, core);
-}
-
-inline void api_core::core_setTitle(const wchar_t *new_title)
-{
+		}
+		
+		inline void api_core::core_setTitle(const wchar_t *new_title)
+		{
 	_voidcall(API_CORE_SETTITLE, new_title);
-}
-
-inline int api_core::core_getRating()
-{
+		}
+		
+		inline int api_core::core_getRating()
+		{
 	return _call(API_CORE_GETRATING, (int)0);
-}
-
+		}
+		
 	inline void api_core::core_setRating(int newRating)
 	{
-		_voidcall(API_CORE_SETRATING, newRating);
+_voidcall(API_CORE_SETRATING, newRating);
 	}
-
+		
 	inline const wchar_t *api_core::core_getDecoderName(const wchar_t *filename)
 	{
-		return _call(API_CORE_GETDECODERNAME, (const wchar_t *)0, filename);
+return _call(API_CORE_GETDECODERNAME, (const wchar_t *)0, filename);
 	}
-
-class api_coreI : public api_core
-{
-public:
+		
+		class api_coreI : public api_core
+		{
+		public:
 	virtual const wchar_t *core_getSupportedExtensions() = 0;
 	virtual const wchar_t *core_getExtSupportedExtensions() = 0;
 	virtual CoreToken core_create() = 0;
@@ -356,16 +356,17 @@ public:
 	virtual int core_getRating()=0;
 	virtual void core_setRating(int newRating)=0;
 	virtual const wchar_t *core_getDecoderName(const wchar_t *filename)=0;
-
-
-protected:
+		
+		
+		protected:
 	RECVS_DISPATCH;
-};
-
-// {966E3DA1-C2C5-43a9-A931-EB5F8B040A4F}
-static const GUID coreApiServiceGuid =
+		};
+		
+		// {966E3DA1-C2C5-43a9-A931-EB5F8B040A4F}
+		static const GUID coreApiServiceGuid =
     { 0x966e3da1, 0xc2c5, 0x43a9, { 0xa9, 0x31, 0xeb, 0x5f, 0x8b, 0x4, 0xa, 0x4f } };
-
-extern api_core *coreApi;
-
-#endif
+		
+		extern api_core *coreApi;
+		
+		#endif
+		

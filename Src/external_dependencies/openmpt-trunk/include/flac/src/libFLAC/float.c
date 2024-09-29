@@ -1,55 +1,55 @@
-/* libFLAC - Free Lossless Audio Codec library
- * Copyright (C) 2004-2009  Josh Coalson
- * Copyright (C) 2011-2022  Xiph.Org Foundation
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * - Redistributions of source code must retain the above copyright
- * notice, this list of conditions and the following disclaimer.
- *
- * - Redistributions in binary form must reproduce the above copyright
- * notice, this list of conditions and the following disclaimer in the
- * documentation and/or other materials provided with the distribution.
- *
- * - Neither the name of the Xiph.org Foundation nor the names of its
- * contributors may be used to endorse or promote products derived from
- * this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
-#include "FLAC/assert.h"
-#include "share/compat.h"
-#include "private/float.h"
-
-#ifdef FLAC__INTEGER_ONLY_LIBRARY
-
-const FLAC__fixedpoint FLAC__FP_ZERO = 0;
-const FLAC__fixedpoint FLAC__FP_ONE_HALF = 0x00008000;
-const FLAC__fixedpoint FLAC__FP_ONE = 0x00010000;
-const FLAC__fixedpoint FLAC__FP_LN2 = 45426;
-const FLAC__fixedpoint FLAC__FP_E = 178145;
-
-/* Lookup tables for Knuth's logarithm algorithm */
-#define LOG2_LOOKUP_PRECISION 16
-static const FLAC__uint32 log2_lookup[][LOG2_LOOKUP_PRECISION] = {
-	{
+				/* libFLAC - Free Lossless Audio Codec library
+                * Copyright (C) 2004-2009  Josh Coalson
+                * Copyright (C) 2011-2022  Xiph.Org Foundation
+                *
+                * Redistribution and use in source and binary forms, with or without
+                * modification, are permitted provided that the following conditions
+                * are met:
+                *
+                * - Redistributions of source code must retain the above copyright
+                * notice, this list of conditions and the following disclaimer.
+                *
+                * - Redistributions in binary form must reproduce the above copyright
+                * notice, this list of conditions and the following disclaimer in the
+                * documentation and/or other materials provided with the distribution.
+                *
+                * - Neither the name of the Xiph.org Foundation nor the names of its
+                * contributors may be used to endorse or promote products derived from
+                * this software without specific prior written permission.
+                *
+                * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+                * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+                * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                * A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+                * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+                * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+                * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+                * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+                * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+                * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+                * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                */
+				
+				#ifdef HAVE_CONFIG_H
+				#  include <config.h>
+				#endif
+				
+				#include "FLAC/assert.h"
+				#include "share/compat.h"
+				#include "private/float.h"
+				
+				#ifdef FLAC__INTEGER_ONLY_LIBRARY
+				
+				const FLAC__fixedpoint FLAC__FP_ZERO = 0;
+				const FLAC__fixedpoint FLAC__FP_ONE_HALF = 0x00008000;
+				const FLAC__fixedpoint FLAC__FP_ONE = 0x00010000;
+				const FLAC__fixedpoint FLAC__FP_LN2 = 45426;
+				const FLAC__fixedpoint FLAC__FP_E = 178145;
+				
+				/* Lookup tables for Knuth's logarithm algorithm */
+				#define LOG2_LOOKUP_PRECISION 16
+				static const FLAC__uint32 log2_lookup[][LOG2_LOOKUP_PRECISION] = {
+			{
 		/*
 		 * 0 fraction bits
 		 */
@@ -69,8 +69,8 @@ static const FLAC__uint32 log2_lookup[][LOG2_LOOKUP_PRECISION] = {
 		/* lg(8192/8191) = */ 0x00000000,
 		/* lg(16384/16383) = */ 0x00000000,
 		/* lg(32768/32767) = */ 0x00000000
-	},
-	{
+			},
+			{
 		/*
 		 * 4 fraction bits
 		 */
@@ -90,8 +90,8 @@ static const FLAC__uint32 log2_lookup[][LOG2_LOOKUP_PRECISION] = {
 		/* lg(8192/8191) = */ 0x00000000,
 		/* lg(16384/16383) = */ 0x00000000,
 		/* lg(32768/32767) = */ 0x00000000
-	},
-	{
+			},
+			{
 		/*
 		 * 8 fraction bits
 		 */
@@ -111,8 +111,8 @@ static const FLAC__uint32 log2_lookup[][LOG2_LOOKUP_PRECISION] = {
 		/* lg(8192/8191) = */ 0x00000000,
 		/* lg(16384/16383) = */ 0x00000000,
 		/* lg(32768/32767) = */ 0x00000000
-	},
-	{
+			},
+			{
 		/*
 		 * 12 fraction bits
 		 */
@@ -132,8 +132,8 @@ static const FLAC__uint32 log2_lookup[][LOG2_LOOKUP_PRECISION] = {
 		/* lg(8192/8191) = */ 0x00000001,
 		/* lg(16384/16383) = */ 0x00000000,
 		/* lg(32768/32767) = */ 0x00000000
-	},
-	{
+			},
+			{
 		/*
 		 * 16 fraction bits
 		 */
@@ -153,8 +153,8 @@ static const FLAC__uint32 log2_lookup[][LOG2_LOOKUP_PRECISION] = {
 		/* lg(8192/8191) = */ 0x0000000c,
 		/* lg(16384/16383) = */ 0x00000006,
 		/* lg(32768/32767) = */ 0x00000003
-	},
-	{
+			},
+			{
 		/*
 		 * 20 fraction bits
 		 */
@@ -174,8 +174,8 @@ static const FLAC__uint32 log2_lookup[][LOG2_LOOKUP_PRECISION] = {
 		/* lg(8192/8191) = */ 0x000000b9,
 		/* lg(16384/16383) = */ 0x0000005c,
 		/* lg(32768/32767) = */ 0x0000002e
-	},
-	{
+			},
+			{
 		/*
 		 * 24 fraction bits
 		 */
@@ -195,8 +195,8 @@ static const FLAC__uint32 log2_lookup[][LOG2_LOOKUP_PRECISION] = {
 		/* lg(8192/8191) = */ 0x00000b8b,
 		/* lg(16384/16383) = */ 0x000005c5,
 		/* lg(32768/32767) = */ 0x000002e3
-	},
-	{
+			},
+			{
 		/*
 		 * 28 fraction bits
 		 */
@@ -216,12 +216,12 @@ static const FLAC__uint32 log2_lookup[][LOG2_LOOKUP_PRECISION] = {
 		/* lg(8192/8191) = */ 0x0000b8ad,
 		/* lg(16384/16383) = */ 0x00005c56,
 		/* lg(32768/32767) = */ 0x00002e2b
-	}
-};
-
-#if 0
-static const FLAC__uint64 log2_lookup_wide[] = {
-	{
+			}
+				};
+				
+				#if 0
+				static const FLAC__uint64 log2_lookup_wide[] = {
+			{
 		/*
 		 * 32 fraction bits
 		 */
@@ -241,8 +241,8 @@ static const FLAC__uint64 log2_lookup_wide[] = {
 		/* lg(8192/8191) = */ FLAC__U64L(0x000b8ad2),
 		/* lg(16384/16383) = */ FLAC__U64L(0x0005c55d),
 		/* lg(32768/32767) = */ FLAC__U64L(0x0002e2ac)
-	},
-	{
+			},
+			{
 		/*
 		 * 48 fraction bits
 		 */
@@ -262,41 +262,42 @@ static const FLAC__uint64 log2_lookup_wide[] = {
 		/* lg(8192/8191) = */ FLAC__U64L(0xb8ad1de1b),
 		/* lg(16384/16383) = */ FLAC__U64L(0x5c55d640d),
 		/* lg(32768/32767) = */ FLAC__U64L(0x2e2abcf52)
-	}
-};
-#endif
-
-FLAC__uint32 FLAC__fixedpoint_log2(FLAC__uint32 x, uint32_t fracbits, uint32_t precision)
-{
-	const FLAC__uint32 ONE = (1u << fracbits);
-	const FLAC__uint32 *table = log2_lookup[fracbits >> 2];
-
-	FLAC__ASSERT(fracbits < 32);
-	FLAC__ASSERT((fracbits & 0x3) == 0);
-
-	if(x < ONE)
+			}
+				};
+				#endif
+				
+				FLAC__uint32 FLAC__fixedpoint_log2(FLAC__uint32 x, uint32_t fracbits, uint32_t precision)
+				{
+			const FLAC__uint32 ONE = (1u << fracbits);
+			const FLAC__uint32 *table = log2_lookup[fracbits >> 2];
+				
+			FLAC__ASSERT(fracbits < 32);
+			FLAC__ASSERT((fracbits & 0x3) == 0);
+				
+			if(x < ONE)
 		return 0;
-
-	if(precision > LOG2_LOOKUP_PRECISION)
+				
+			if(precision > LOG2_LOOKUP_PRECISION)
 		precision = LOG2_LOOKUP_PRECISION;
-
-	/* Knuth's algorithm for computing logarithms, optimized for base-2 with lookup tables */
-	{
+				
+			/* Knuth's algorithm for computing logarithms, optimized for base-2 with lookup tables */
+			{
 		FLAC__uint32 y = 0;
 		FLAC__uint32 z = x >> 1, k = 1;
 		while (x > ONE && k < precision) {
-			if (x - z >= ONE) {
-				x -= z;
-				z = x >> k;
-				y += table[k];
-			}
-			else {
-				z >>= 1;
-				k++;
-			}
+	if (x - z >= ONE) {
+x -= z;
+z = x >> k;
+y += table[k];
+	}
+	else {
+z >>= 1;
+k++;
+	}
 		}
 		return y;
-	}
-}
-
-#endif /* defined FLAC__INTEGER_ONLY_LIBRARY */
+			}
+				}
+				
+				#endif /* defined FLAC__INTEGER_ONLY_LIBRARY */
+				

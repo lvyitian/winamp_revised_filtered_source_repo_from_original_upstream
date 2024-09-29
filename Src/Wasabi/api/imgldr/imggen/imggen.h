@@ -6,9 +6,9 @@
 #define WACNAME WACimggen
 class WACNAME : public WAComponentClient {
 public:
-  WACNAME();
+WACNAME();
 
-  virtual const char *getName() { return "Standard Image Generators"; };
-  virtual GUID getGUID();
+virtual const char *getName() { return "Standard Image Generators"; };
+virtual GUID getGUID();
 };
 #endif

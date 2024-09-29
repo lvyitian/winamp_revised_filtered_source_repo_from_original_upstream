@@ -30,41 +30,41 @@ Use a directory named "obj" (the default) for intermediate files. Actual directo
 
 ```lua
 workspace "MyWorkspace"
-   configurations { "Debug", "Release" }
+configurations { "Debug", "Release" }
 
 project "MyProject"
-   objdir "obj"
+objdir "obj"
 ```
 
 Use a directory named "obj" (the default) for intermediate files. Actual directories will be `obj/Debug/x32`, `obj/Debug/x64`, `obj/Release/x32`, and `obj/Release/x64`.
 
 ```lua
 workspace "MyWorkspace"
-   configurations { "Debug", "Release" }
-   platforms { "x32", "x64" }
+configurations { "Debug", "Release" }
+platforms { "x32", "x64" }
 
 project "MyProject"
-   objdir "obj"
+objdir "obj"
 ```
 
 Use tokens to reformat the path. Since the end result is unique, Premake will not append any extra directories. Actual directories will be `obj/x32_Debug`, `obj/x64_Debug`, `obj/x32_Release`, and `obj/x64_Release`.
 
 ```lua
 workspace "MyWorkspace"
-   configurations { "Debug", "Release" }
-   platforms { "x32", "x64" }
+configurations { "Debug", "Release" }
+platforms { "x32", "x64" }
 
 project "MyProject"
-   objdir "obj/%{cfg.platform}_%{cfg.buildcfg}"
+objdir "obj/%{cfg.platform}_%{cfg.buildcfg}"
 ```
 
 Use the "!" prefix to force a specific directory using Visual Studio's provided environment variables instead of Premake tokens.
 
 ```lua
 workspace "MyWorkspace"
-   configurations { "Debug", "Release" }
-   platforms { "x32", "x64" }
+configurations { "Debug", "Release" }
+platforms { "x32", "x64" }
 
 project "MyProject"
-   objdir "!obj/$(Platform)_$(Configuration)"
+objdir "!obj/$(Platform)_$(Configuration)"
 ```

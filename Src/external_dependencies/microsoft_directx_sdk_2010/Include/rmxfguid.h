@@ -1,12 +1,12 @@
 /***************************************************************************
- *
- *  Copyright (C) 1998-1999 Microsoft Corporation.  All Rights Reserved.
- *
- *  File:       rmxfguid.h
- *
- *  Content:    Defines GUIDs of D3DRM's templates.
- *
- ***************************************************************************/
+*
+*  Copyright (C) 1998-1999 Microsoft Corporation.  All Rights Reserved.
+*
+*  File:       rmxfguid.h
+*
+*  Content:    Defines GUIDs of D3DRM's templates.
+*
+***************************************************************************/
 
 #ifndef __RMXFGUID_H_
 #define __RMXFGUID_H_

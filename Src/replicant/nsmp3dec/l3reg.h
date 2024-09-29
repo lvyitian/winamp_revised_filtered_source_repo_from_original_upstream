@@ -1,20 +1,20 @@
 /***************************************************************************\ 
- *
- *               (C) copyright Fraunhofer - IIS (1996)
- *                        All Rights Reserved
- *
- *   filename: l3reg.h
- *   project : <none>
- *   author  : Martin Sieler
- *   date    : 1996-11-05
- *   contents/description: HEADER - registered types for MPEG Layer-3
- *
+*
+*               (C) copyright Fraunhofer - IIS (1996)
+*                        All Rights Reserved
+*
+*   filename: l3reg.h
+*   project : <none>
+*   author  : Martin Sieler
+*   date    : 1996-11-05
+*   contents/description: HEADER - registered types for MPEG Layer-3
+*
 \***************************************************************************/
 
 /*
- * $Date: 2010/11/17 20:46:02 $
- * $Header: /cvs/root/nullsoft/Replicant/jni/nsmp3/l3reg.h,v 1.1 2010/11/17 20:46:02 audiodsp Exp $
- */
+* $Date: 2010/11/17 20:46:02 $
+* $Header: /cvs/root/nullsoft/Replicant/jni/nsmp3/l3reg.h,v 1.1 2010/11/17 20:46:02 audiodsp Exp $
+*/
 
 #ifndef __L3REG_H__
 #define __L3REG_H__
@@ -23,7 +23,7 @@
 /*-------------------------- defines --------------------------------------*/
 
 #ifdef _MSC_VER
-  #pragma pack(push, 1) /* assume byte packing throughout */
+#pragma pack(push, 1) /* assume byte packing throughout */
 #endif
 
 /*-------------------------------------------------------------------------*/
@@ -56,9 +56,9 @@
 //==========================================================================;
 
 #ifdef MPEGLAYER3_WFX_EXTRA_BYTES
-  //
-  // seems like the structure below is already defined
-  //
+//
+// seems like the structure below is already defined
+//
 #else
 
 //==========================================================================;
@@ -70,16 +70,16 @@
 // WAVE_FORMAT_MPEGLAYER3 format structure
 //
 typedef struct tagMPEGLAYER3WAVEFORMAT
-  {
-  WAVEFORMATEX	wfx;
+{
+WAVEFORMATEX	wfx;
 
-  WORD          wID;
-  DWORD         fdwFlags;
-  WORD          nBlockSize;
-  WORD          nFramesPerBlock;
-  WORD          nCodecDelay;
+WORD          wID;
+DWORD         fdwFlags;
+WORD          nBlockSize;
+WORD          nFramesPerBlock;
+WORD          nCodecDelay;
 
-  } MPEGLAYER3WAVEFORMAT;
+} MPEGLAYER3WAVEFORMAT;
 
 typedef MPEGLAYER3WAVEFORMAT       * PMPEGLAYER3WAVEFORMAT;
 typedef MPEGLAYER3WAVEFORMAT NEAR  *NPMPEGLAYER3WAVEFORMAT;
@@ -105,7 +105,7 @@ typedef MPEGLAYER3WAVEFORMAT FAR   *LPMPEGLAYER3WAVEFORMAT;
 /*-------------------------------------------------------------------------*/
 
 #ifdef _MSC_VER
-  #pragma pack(pop) /* revert to previous packing */
+#pragma pack(pop) /* revert to previous packing */
 #endif
 
 /*-------------------------------------------------------------------------*/

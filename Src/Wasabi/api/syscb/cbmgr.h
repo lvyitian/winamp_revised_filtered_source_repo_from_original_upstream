@@ -8,11 +8,11 @@ class WaComponent;
 
 class CallbackManager {
 public:
-  static void registerCallback(SysCallback *cb, void *param, WaComponent *owner);
-  static void deregisterCallback(SysCallback *cb, WaComponent *owner);
+static void registerCallback(SysCallback *cb, void *param, WaComponent *owner);
+static void deregisterCallback(SysCallback *cb, WaComponent *owner);
 
-  static void issueCallback(int eventtype, int msg, intptr_t param1 = 0, intptr_t param2 = 0);
-  static int getNumCallbacks();
+static void issueCallback(int eventtype, int msg, intptr_t param1 = 0, intptr_t param2 = 0);
+static int getNumCallbacks();
 };
 
 #endif

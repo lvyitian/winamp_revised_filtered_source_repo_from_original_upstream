@@ -1,23 +1,23 @@
-/*
- * Mainbar.h
- * ---------
- * Purpose: Implementation of OpenMPT's window toolbar.
- * Notes  : (currently none)
- * Authors: OpenMPT Devs
- * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
- */
-
-
-#pragma once
-
-#include "openmpt/all/BuildSettings.hpp"
-#include "UpdateToolTip.h"
-
-OPENMPT_NAMESPACE_BEGIN
-
-class CStereoVU: public CStatic
-{
-protected:
+		/*
+        * Mainbar.h
+        * ---------
+        * Purpose: Implementation of OpenMPT's window toolbar.
+        * Notes  : (currently none)
+        * Authors: OpenMPT Devs
+        * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
+        */
+		
+		
+		#pragma once
+		
+		#include "openmpt/all/BuildSettings.hpp"
+		#include "UpdateToolTip.h"
+		
+		OPENMPT_NAMESPACE_BEGIN
+		
+		class CStereoVU: public CStatic
+		{
+		protected:
 	uint8 numChannels;
 	uint32 vuMeter[4];
 	DWORD lastVuUpdateTime;
@@ -25,56 +25,56 @@ protected:
 	bool lastClip[4];
 	bool horizontal;
 	bool allowRightToLeft;
-
-public:
+		
+		public:
 	CStereoVU() { numChannels = 2; MemsetZero(vuMeter); lastVuUpdateTime = timeGetTime(); horizontal = true; MemsetZero(lastV); MemsetZero(lastClip); allowRightToLeft = false; }
 	void SetVuMeter(uint8 validChannels, const uint32 channels[4], bool force=false);
 	void SetOrientation(bool h) { horizontal = h; }
-
-protected:
+		
+		protected:
 	void DrawVuMeters(CDC &dc, bool redraw=false);
 	void DrawVuMeter(CDC &dc, const CRect &rect, int index, bool redraw=false);
-
-protected:
+		
+		protected:
 	afx_msg void OnPaint();
 	afx_msg void OnLButtonDown(UINT, CPoint);
 	DECLARE_MESSAGE_MAP();
-};
-
-#define MIN_BASEOCTAVE		0
-#define MAX_BASEOCTAVE		8
-
-class CSoundFile;
-class CModDoc;
-class CModTree;
-class CMainFrame;
-
-class CToolBarEx: public CToolBar
-{
-protected:
+		};
+		
+		#define MIN_BASEOCTAVE		0
+		#define MAX_BASEOCTAVE		8
+		
+		class CSoundFile;
+		class CModDoc;
+		class CModTree;
+		class CMainFrame;
+		
+		class CToolBarEx: public CToolBar
+		{
+		protected:
 	bool m_bVertical = false, m_bFlatButtons = false;
-
-public:
+		
+		public:
 	CToolBarEx() {}
 	~CToolBarEx() override {}
-
-public:
+		
+		public:
 	BOOL EnableControl(CWnd &wnd, UINT nIndex, UINT nHeight=0);
 	void ChangeCtrlStyle(LONG lStyle, BOOL bSetStyle);
 	void EnableFlatButtons(BOOL bFlat);
-
-public:
+		
+		public:
 	//{{AFX_VIRTUAL(CToolBarEx)
 	CSize CalcDynamicLayout(int nLength, DWORD dwMode) override;
 	virtual void SetHorizontal();
 	virtual void SetVertical();
 	//}}AFX_VIRTUAL
-};
-
-
-class CMainToolBar: public CToolBarEx
-{
-protected:
+		};
+		
+		
+		class CMainToolBar: public CToolBarEx
+		{
+		protected:
 	UpdateToolTip m_tooltip;
 	CImageListEx m_ImageList, m_ImageListDisabled;
 	CStatic m_EditTempo, m_EditSpeed, m_EditOctave, m_EditRowsPerBeat;
@@ -82,40 +82,40 @@ protected:
 	CSpinButtonCtrl m_SpinTempo, m_SpinSpeed, m_SpinOctave, m_SpinRowsPerBeat;
 	int nCurrentSpeed, nCurrentOctave, nCurrentRowsPerBeat;
 	TEMPO nCurrentTempo;
-public:
+		public:
 	CStereoVU m_VuMeter;
-
-public:
+		
+		public:
 	CMainToolBar() {}
 	~CMainToolBar() override {}
-
-protected:
+		
+		protected:
 	void SetRowsPerBeat(ROWINDEX nNewRPB);
-
-public:
+		
+		public:
 	//{{AFX_VIRTUAL(CMainToolBar)
 	void SetHorizontal() override;
 	void SetVertical() override;
 	//}}AFX_VIRTUAL
-
-public:
-#if MPT_COMPILER_CLANG
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Woverloaded-virtual"
-#endif // MPT_COMPILER_CLANG
+		
+		public:
+		#if MPT_COMPILER_CLANG
+		#pragma clang diagnostic push
+		#pragma clang diagnostic ignored "-Woverloaded-virtual"
+		#endif // MPT_COMPILER_CLANG
 	BOOL Create(CWnd *parent);
-#if MPT_COMPILER_CLANG
-#pragma clang diagnostic pop
-#endif // MPT_COMPILER_CLANG
+		#if MPT_COMPILER_CLANG
+		#pragma clang diagnostic pop
+		#endif // MPT_COMPILER_CLANG
 	void Init(CMainFrame *);
 	UINT GetBaseOctave() const;
 	BOOL SetBaseOctave(UINT nOctave);
 	BOOL SetCurrentSong(CSoundFile *pModDoc);
-
+		
 	bool ShowUpdateInfo(const CString &newVersion, const CString &infoURL, bool showHighLight);
 	void RemoveUpdateInfo();
-
-protected:
+		
+		protected:
 	//{{AFX_MSG(CMainToolBar)
 	afx_msg void OnVScroll(UINT, UINT, CScrollBar *);
 	afx_msg void OnTbnDropDownToolBar(NMHDR* pNMHDR, LRESULT* pResult);
@@ -123,33 +123,33 @@ protected:
 	afx_msg void OnSelectMIDIDevice(UINT id);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
-};
-
-
-class CModTreeBar: public CDialogBar
-{
-protected:
+		};
+		
+		
+		class CModTreeBar: public CDialogBar
+		{
+		protected:
 	enum Status
 	{
-		MTB_VERTICAL = 0x01,
-		MTB_CAPTURE = 0x02,
-		MTB_DRAGGING = 0x04,
-		MTB_TRACKER = 0x08,
+MTB_VERTICAL = 0x01,
+MTB_CAPTURE = 0x02,
+MTB_DRAGGING = 0x04,
+MTB_TRACKER = 0x08,
 	};
-
+		
 	DWORD m_dwStatus = 0; // MTB_XXXX
 	UINT m_nCursorDrag = 0;
 	CPoint ptDragging;
 	UINT m_cxOriginal = 0, m_cyOriginal = 0, m_nTrackPos = 0;
 	UINT m_nTreeSplitRatio = 0;
-
-public:
+		
+		public:
 	CModTree *m_pModTree = nullptr, *m_pModTreeData = nullptr;
-
+		
 	CModTreeBar();
 	~CModTreeBar() override;
-
-public:
+		
+		public:
 	void Init();
 	void RecalcLayout();
 	void DoMouseMove(CPoint point);
@@ -167,14 +167,14 @@ public:
 	HWND GetModTreeHWND(); //rewbs.customKeys
 	LRESULT SendMessageToModTree(UINT cmdID, WPARAM wParam, LPARAM lParam);
 	bool SetTreeSoundfile(FileReader &file);
-
-
-protected:
+		
+		
+		protected:
 	//{{AFX_VIRTUAL(CModTreeBar)
 	CSize CalcFixedLayout(BOOL bStretch, BOOL bHorz) override;
 	//}}AFX_VIRTUAL
-
-protected:
+		
+		protected:
 	//{{AFX_MSG(CModTreeBar)
 	afx_msg void OnNcPaint();
 	afx_msg LRESULT OnNcHitTest(CPoint point);
@@ -191,7 +191,8 @@ protected:
 	afx_msg LRESULT OnInitDialog(WPARAM, LPARAM);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
-};
-
-
-OPENMPT_NAMESPACE_END
+		};
+		
+		
+		OPENMPT_NAMESPACE_END
+		

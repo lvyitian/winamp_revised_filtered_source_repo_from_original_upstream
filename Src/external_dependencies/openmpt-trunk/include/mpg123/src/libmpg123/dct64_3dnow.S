@@ -1,49 +1,49 @@
-/*
+		/*
 	dct64_3dnow.s: Replacement of dct64() with AMD's 3DNow! SIMD operations support
-
+		
 	copyright ?-2006 by the mpg123 project - free software under the terms of the LGPL 2.1
 	see COPYING and AUTHORS files in distribution or http://mpg123.org
 	initially written by Syuuhei Kashiyama
-
+		
 	Original "license" statement:
 	The author of this program disclaim whole expressed or implied
 	warranties with regard to this program, and in no event shall the
 	author of this program liable to whatever resulted from the use of
 	this program. Use it at your own risk.
-*/
-
-#include "mangle.h"
-
+		*/
+		
+		#include "mangle.h"
+		
 	.globl ASM_NAME(dct64_3dnow)
-/*	.type	 ASM_NAME(dct64_3dnow),@function */
-ASM_NAME(dct64_3dnow):
+		/*	.type	 ASM_NAME(dct64_3dnow),@function */
+		ASM_NAME(dct64_3dnow):
 	subl $256,%esp
 	pushl %ebp
 	pushl %edi
 	pushl %esi
 	pushl %ebx
-
+		
 	#undef _EBX_
 	#define _EBX_ %ecx
 	GET_GOT
-
+		
 	leal 16(%esp),%ebx
 	movl 284(%esp),%edi
 	movl 276(%esp),%ebp
 	movl 280(%esp),%edx
 	leal 128(%ebx),%esi
-
+		
 	/* femms */
-
+		
 	/* 1 */
-#if defined(PIC) && defined(__APPLE__)
+		#if defined(PIC) && defined(__APPLE__)
 	movl GLOBAL_VAR_PTR(pnts),%eax
 	movl (%eax),%eax
-#else
+		#else
 	movl GLOBAL_VAR(pnts),%eax
-#endif
+		#endif
 	movq 0(%edi),%mm0
-        movq %mm0,%mm1
+movq %mm0,%mm1
 	movd 124(%edi),%mm2
 	punpckldq 120(%edi),%mm2
 	movq 0(%eax),%mm3
@@ -140,12 +140,12 @@ ASM_NAME(dct64_3dnow):
 	movd %mm5,64(%ebx)
 	
 	/* 2 */
-#if defined(PIC) && defined(__APPLE__)
+		#if defined(PIC) && defined(__APPLE__)
 	movl GLOBAL_VAR_PTR(pnts),%eax
 	movl 4(%eax),%eax
-#else
+		#else
 	movl 4+GLOBAL_VAR(pnts),%eax
-#endif
+		#endif
 	/* 0,14 */
 	movq 0(%ebx),%mm0
 	movq %mm0,%mm1
@@ -246,14 +246,14 @@ ASM_NAME(dct64_3dnow):
 	movd %mm5,100(%esi)
 	psrlq $32,%mm5
 	movd %mm5,96(%esi)
-
+		
 	/* 3 */
-#if defined(PIC) && defined(__APPLE__)
+		#if defined(PIC) && defined(__APPLE__)
 	movl GLOBAL_VAR_PTR(pnts),%eax
 	movl 8(%eax),%eax
-#else
+		#else
 	movl 8+GLOBAL_VAR(pnts),%eax
-#endif
+		#endif
 	movq 0(%eax),%mm0
 	movq 8(%eax),%mm1
 	/* 0,6 */
@@ -354,12 +354,12 @@ ASM_NAME(dct64_3dnow):
 	movd %mm6,112(%ebx)
 	
 	/*  4 */
-#if defined(PIC) && defined(__APPLE__)
+		#if defined(PIC) && defined(__APPLE__)
 	movl GLOBAL_VAR_PTR(pnts),%eax
 	movl 12(%eax),%eax
-#else
+		#else
 	movl 12+GLOBAL_VAR(pnts),%eax
-#endif
+		#endif
 	movq 0(%eax),%mm0
 	/*  0 */
 	movq 0(%ebx),%mm1
@@ -457,7 +457,7 @@ ASM_NAME(dct64_3dnow):
 	movd %mm5,124(%esi)
 	psrlq $32,%mm5
 	movd %mm5,120(%esi)
-
+		
 	/*  5 */
 	movl $-1,%eax
 	movd %eax,%mm1
@@ -469,12 +469,12 @@ ASM_NAME(dct64_3dnow):
 	pi2fd %mm0,%mm0	
 	movd %eax,%mm1
 	pi2fd %mm1,%mm1
-#if defined(PIC) && defined(__APPLE__)
+		#if defined(PIC) && defined(__APPLE__)
 	movl GLOBAL_VAR_PTR(pnts),%eax
 	movl 16(%eax),%eax
-#else
+		#else
 	movl 16+GLOBAL_VAR(pnts),%eax
-#endif
+		#endif
 	movd 0(%eax),%mm2
 	/*  1.0 | cos0 */
 	punpckldq %mm2,%mm1
@@ -630,7 +630,7 @@ ASM_NAME(dct64_3dnow):
 	pfadd %mm3,%mm4
 	movq %mm2,112(%ebx)
 	movq %mm4,120(%ebx)
-
+		
 	/*  Phase6 */
 	movl 0(%ebx),%eax
 	movl %eax,1024(%ebp)
@@ -641,17 +641,17 @@ ASM_NAME(dct64_3dnow):
 	movl %eax,512(%ebp)
 	movl 12(%ebx),%eax
 	movl %eax,512(%edx)
-
+		
 	movl 16(%ebx),%eax
 	movl %eax,768(%ebp)
 	movl 20(%ebx),%eax
 	movl %eax,256(%edx)
-
+		
 	movl 24(%ebx),%eax
 	movl %eax,256(%ebp)
 	movl 28(%ebx),%eax
 	movl %eax,768(%edx)
-
+		
 	movq 32(%ebx),%mm0
 	movq 48(%ebx),%mm1
 	pfadd %mm1,%mm0
@@ -663,13 +663,13 @@ ASM_NAME(dct64_3dnow):
 	movd %mm1,640(%ebp)
 	psrlq $32,%mm1
 	movd %mm1,384(%edx)
-
+		
 	movq 56(%ebx),%mm3
 	pfadd %mm3,%mm2
 	movd %mm2,384(%ebp)
-        psrlq $32,%mm2
+psrlq $32,%mm2
 	movd %mm2,640(%edx)
-
+		
 	movd 36(%ebx),%mm4
 	pfadd %mm4,%mm3
 	movd %mm3,128(%ebp)
@@ -677,9 +677,9 @@ ASM_NAME(dct64_3dnow):
 	movd %mm3,896(%edx)
 	movq 96(%ebx),%mm0
 	movq 64(%ebx),%mm1
-
+		
 	movq 112(%ebx),%mm2
-        pfadd %mm2,%mm0
+pfadd %mm2,%mm0
 	movq %mm0,%mm3
 	pfadd %mm1,%mm3
 	movd %mm3,960(%ebp)
@@ -688,7 +688,7 @@ ASM_NAME(dct64_3dnow):
 	movq 80(%ebx),%mm1
 	pfadd %mm1,%mm0
 	movd %mm0,832(%ebp)
-        psrlq $32,%mm0
+psrlq $32,%mm0
 	movd %mm0,192(%edx)
 	movq 104(%ebx),%mm3
 	pfadd %mm3,%mm2
@@ -702,7 +702,7 @@ ASM_NAME(dct64_3dnow):
 	movd %mm2,576(%ebp)
 	psrlq $32,%mm2
 	movd %mm2,448(%edx)
-
+		
 	movq 120(%ebx),%mm4
 	pfadd %mm4,%mm3
 	movq %mm3,%mm5
@@ -715,7 +715,7 @@ ASM_NAME(dct64_3dnow):
 	movd %mm3,320(%ebp)
 	psrlq $32,%mm3
 	movd %mm3,704(%edx)
-
+		
 	movd 100(%ebx),%mm5
 	pfadd %mm5,%mm4
 	movq %mm4,%mm6
@@ -728,22 +728,23 @@ ASM_NAME(dct64_3dnow):
 	movd %mm4,64(%ebp)
 	psrlq $32,%mm4
 	movd %mm4,960(%edx)
-
+		
 	/*  femms */
-
-        popl %ebx
+		
+popl %ebx
 	popl %esi
 	popl %edi
-        popl %ebp
+popl %ebp
 	addl $256,%esp
 	
-        ret
-
-#if defined(PIC) && defined(__APPLE__)
+ret
+		
+		#if defined(PIC) && defined(__APPLE__)
 	.section	__IMPORT,__pointers,non_lazy_symbol_pointers
-L_pnts:
+		L_pnts:
 	.indirect_symbol	ASM_NAME(pnts)
 	.long	0
-#endif
-
-NONEXEC_STACK
+		#endif
+		
+		NONEXEC_STACK
+		

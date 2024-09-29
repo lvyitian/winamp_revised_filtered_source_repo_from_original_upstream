@@ -4,9 +4,9 @@
 
 #define CBCLASS WasabiKernelControllerI
 START_DISPATCH;
-  CB(TESTCOMPONENT, testComponent);
-  CB(TESTSCRIPT, testScript);
-  CB(TESTSKIN, testSkin);
-  CB(TESTSKINFILE, testSkinFile);
+CB(TESTCOMPONENT, testComponent);
+CB(TESTSCRIPT, testScript);
+CB(TESTSKIN, testSkin);
+CB(TESTSKINFILE, testSkinFile);
 END_DISPATCH;
 #undef CBCLASS

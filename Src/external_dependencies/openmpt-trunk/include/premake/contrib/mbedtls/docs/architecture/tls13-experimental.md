@@ -26,24 +26,24 @@ together with their level of testing:
 
 * TLS 1.3 record protection mechanisms
 
-  The record protection routines `mbedtls_ssl_{encrypt|decrypt}_buf()` have been extended
-  to support the modified TLS 1.3 record protection mechanism, including modified computation
-  of AAD, IV, and the introduction of a flexible padding.
+The record protection routines `mbedtls_ssl_{encrypt|decrypt}_buf()` have been extended
+to support the modified TLS 1.3 record protection mechanism, including modified computation
+of AAD, IV, and the introduction of a flexible padding.
 
-  Those record protection routines have unit tests in `test_suite_ssl` alongside the
-  tests for the other record protection routines.
+Those record protection routines have unit tests in `test_suite_ssl` alongside the
+tests for the other record protection routines.
 
-  TODO: Add some test vectors from RFC 8448.
+TODO: Add some test vectors from RFC 8448.
 
 - The HKDF key derivation function on which the TLS 1.3 key schedule is based,
-  is already present as an independent module controlled by `MBEDTLS_HKDF_C`
-  independently of the development of the TLS 1.3 prototype.
+is already present as an independent module controlled by `MBEDTLS_HKDF_C`
+independently of the development of the TLS 1.3 prototype.
 
 - The TLS 1.3-specific HKDF-based key derivation functions (see RFC 8446):
-  * HKDF-Expand-Label
-  * Derive-Secret
-  - Secret evolution
-  * The traffic {Key,IV} generation from secret
-  Those functions are implemented in `library/ssl_tls13_keys.c` and
-  tested in `test_suite_ssl` using test vectors from RFC 8448 and
-  https://tls13.ulfheim.net/.
+* HKDF-Expand-Label
+* Derive-Secret
+- Secret evolution
+* The traffic {Key,IV} generation from secret
+Those functions are implemented in `library/ssl_tls13_keys.c` and
+tested in `test_suite_ssl` using test vectors from RFC 8448 and
+https://tls13.ulfheim.net/.

@@ -11,27 +11,27 @@ class H_Container : public H_CONTAINER_PARENT {
 
 public:
 
-  H_Container(ScriptObject *o);
-  H_Container();
-  virtual ~H_Container();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_Container(ScriptObject *o);
+H_Container();
+virtual ~H_Container();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onSwitchToLayout(ScriptObject *newlayout) {  }
-  virtual void hook_onBeforeSwitchToLayout(ScriptObject *oldlayout, ScriptObject *newlayout) {  }
-  virtual void hook_onHideLayout(ScriptObject *_layout) {  }
-  virtual void hook_onShowLayout(ScriptObject *_layout) {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onSwitchToLayout(ScriptObject *newlayout) {  }
+virtual void hook_onBeforeSwitchToLayout(ScriptObject *oldlayout, ScriptObject *newlayout) {  }
+virtual void hook_onHideLayout(ScriptObject *_layout) {  }
+virtual void hook_onShowLayout(ScriptObject *_layout) {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onswitchtolayout_id;
-  static int onbeforeswitchtolayout_id;
-  static int onhidelayout_id;
-  static int onshowlayout_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onswitchtolayout_id;
+static int onbeforeswitchtolayout_id;
+static int onhidelayout_id;
+static int onshowlayout_id;
 };
 
 #endif

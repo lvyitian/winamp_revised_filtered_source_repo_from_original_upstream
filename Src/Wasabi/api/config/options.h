@@ -23,40 +23,40 @@ extern _string cfg_options_fontrenderer;
 
 class SetupOptions : public CfgItemI {
 public:
-  SetupOptions();
+SetupOptions();
 
-  Filetypes filetypes;
+Filetypes filetypes;
 };
 
 class InstalledComponents : public CfgItemI {
 public:
-  InstalledComponents();
+InstalledComponents();
 };
 #endif
 
 class AudioOptions : public CfgItemI {
 public:
-  AudioOptions();
+AudioOptions();
 };
 
 #define OPTIONS_PARENT CfgItemI
 class Options : public OPTIONS_PARENT {
 public:
-  Options();
-  void checkCd();
+Options();
+void checkCd();
 
-  AudioOptions audio_options;
-  UIOptions ui_options;
+AudioOptions audio_options;
+UIOptions ui_options;
 };
 
 #ifdef _WASABIRUNTIME
 
 class LanguageCB : public AttrCallback {
 public:
-  LanguageCB(CfgItemI *_par) : par(_par) { }
-  virtual void onValueChange(Attribute *attr);
+LanguageCB(CfgItemI *_par) : par(_par) { }
+virtual void onValueChange(Attribute *attr);
 private:
-  CfgItemI *par;
+CfgItemI *par;
 };
 
 #endif

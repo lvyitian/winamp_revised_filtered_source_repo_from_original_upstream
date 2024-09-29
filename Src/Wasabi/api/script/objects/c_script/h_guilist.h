@@ -11,39 +11,39 @@ class H_GuiList : public H_GUILIST_PARENT {
 
 public:
 
-  H_GuiList(ScriptObject *o);
-  H_GuiList();
-  virtual ~H_GuiList();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_GuiList(ScriptObject *o);
+H_GuiList();
+virtual ~H_GuiList();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onSetVisible(int show) {  }
-  virtual void hook_onSelectAll() {  }
-  virtual void hook_onDelete() {  }
-  virtual void hook_onDoubleClick(int itemnum) {  }
-  virtual void hook_onLeftClick(int itemnum) {  }
-  virtual void hook_onSecondLeftClick(int itemnum) {  }
-  virtual void hook_onRightClick(int itemnum) {  }
-  virtual void hook_onColumnDblClick(int col, int x, int y) {  }
-  virtual void hook_onColumnLabelClick(int col, int x, int y) {  }
-  virtual void hook_onItemSelection(int itemnum, int selected) {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onSetVisible(int show) {  }
+virtual void hook_onSelectAll() {  }
+virtual void hook_onDelete() {  }
+virtual void hook_onDoubleClick(int itemnum) {  }
+virtual void hook_onLeftClick(int itemnum) {  }
+virtual void hook_onSecondLeftClick(int itemnum) {  }
+virtual void hook_onRightClick(int itemnum) {  }
+virtual void hook_onColumnDblClick(int col, int x, int y) {  }
+virtual void hook_onColumnLabelClick(int col, int x, int y) {  }
+virtual void hook_onItemSelection(int itemnum, int selected) {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onsetvisible_id;
-  static int onselectall_id;
-  static int ondelete_id;
-  static int ondoubleclick_id;
-  static int onleftclick_id;
-  static int onsecondleftclick_id;
-  static int onrightclick_id;
-  static int oncolumndblclick_id;
-  static int oncolumnlabelclick_id;
-  static int onitemselection_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onsetvisible_id;
+static int onselectall_id;
+static int ondelete_id;
+static int ondoubleclick_id;
+static int onleftclick_id;
+static int onsecondleftclick_id;
+static int onrightclick_id;
+static int oncolumndblclick_id;
+static int oncolumnlabelclick_id;
+static int onitemselection_id;
 };
 
 #endif

@@ -11,25 +11,25 @@ class H_Slider : public H_SLIDER_PARENT {
 
 public:
 
-  H_Slider(ScriptObject *o);
-  H_Slider();
-  virtual ~H_Slider();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_Slider(ScriptObject *o);
+H_Slider();
+virtual ~H_Slider();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onSetPosition(int newpos) {  }
-  virtual void hook_onPostedPosition(int newpos) {  }
-  virtual void hook_onSetFinalPosition(int pos) {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onSetPosition(int newpos) {  }
+virtual void hook_onPostedPosition(int newpos) {  }
+virtual void hook_onSetFinalPosition(int pos) {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onsetposition_id;
-  static int onpostedposition_id;
-  static int onsetfinalposition_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onsetposition_id;
+static int onpostedposition_id;
+static int onsetfinalposition_id;
 };
 
 #endif

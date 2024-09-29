@@ -1,26 +1,26 @@
-/*
-
-Copyright (c) 2011, 2012, Simon Howard
-
-Permission to use, copy, modify, and/or distribute this software
-for any purpose with or without fee is hereby granted, provided
-that the above copyright notice and this permission notice appear
-in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
-WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
-AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR
-CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,
-NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
-CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
- */
-
-#include "crc16.h"
-
-static unsigned int crc16_table[] = {
+		/*
+		
+		Copyright (c) 2011, 2012, Simon Howard
+		
+		Permission to use, copy, modify, and/or distribute this software
+		for any purpose with or without fee is hereby granted, provided
+		that the above copyright notice and this permission notice appear
+		in all copies.
+		
+		THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+		WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+		WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
+		AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR
+		CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+		LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,
+		NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+		CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+		
+        */
+		
+		#include "crc16.h"
+		
+		static unsigned int crc16_table[] = {
 	0x0000, 0xc0c1, 0xc181, 0x0140, 0xc301, 0x03c0, 0x0280, 0xc241,
 	0xc601, 0x06c0, 0x0780, 0xc741, 0x0500, 0xc5c1, 0xc481, 0x0440,
 	0xcc01, 0x0cc0, 0x0d80, 0xcd41, 0x0f00, 0xcfc1, 0xce81, 0x0e40,
@@ -53,21 +53,22 @@ static unsigned int crc16_table[] = {
 	0x4e00, 0x8ec1, 0x8f81, 0x4f40, 0x8d01, 0x4dc0, 0x4c80, 0x8c41,
 	0x4400, 0x84c1, 0x8581, 0x4540, 0x8701, 0x47c0, 0x4680, 0x8641,
 	0x8201, 0x42c0, 0x4380, 0x8341, 0x4100, 0x81c1, 0x8081, 0x4040
-};
-
-void lha_crc16_buf(uint16_t *crc, uint8_t *buf, size_t buf_len)
-{
+		};
+		
+		void lha_crc16_buf(uint16_t *crc, uint8_t *buf, size_t buf_len)
+		{
 	uint16_t tmp;
 	unsigned int index;
 	unsigned int i;
-
+		
 	tmp = *crc;
-
+		
 	for (i = 0; i < buf_len; ++i) {
-		index = (tmp ^ buf[i]) & 0xff;
-		tmp = ((tmp >> 8) ^ crc16_table[index]) & 0xffff;
+index = (tmp ^ buf[i]) & 0xff;
+tmp = ((tmp >> 8) ^ crc16_table[index]) & 0xffff;
 	}
-
+		
 	*crc = tmp;
-}
-
+		}
+		
+		

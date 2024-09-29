@@ -23,8 +23,8 @@ Premake 5.0 or later.
 
 ```lua
 rule "Cg"
-  display "Cg Compiler"
-  fileextension ".cg"
+display "Cg Compiler"
+fileextension ".cg"
 ```
 
 

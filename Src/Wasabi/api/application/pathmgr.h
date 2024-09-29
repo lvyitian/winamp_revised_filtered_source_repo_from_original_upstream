@@ -6,9 +6,9 @@
 class PathMgr 
 {
 public:
-  //static const char *getUserSettingsPath();
+//static const char *getUserSettingsPath();
 #ifdef WASABI_COMPILE_COMPONENTS
-  static const wchar_t *getComponentDataPath(GUID g);
+static const wchar_t *getComponentDataPath(GUID g);
 #endif
 };
 

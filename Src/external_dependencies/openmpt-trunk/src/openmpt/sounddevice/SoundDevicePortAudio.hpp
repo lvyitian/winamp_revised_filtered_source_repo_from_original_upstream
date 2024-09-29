@@ -1,81 +1,81 @@
-/* SPDX-License-Identifier: BSD-3-Clause */
-/* SPDX-FileCopyrightText: OpenMPT Project Developers and Contributors */
-
-
-#pragma once
-
-#include "openmpt/all/BuildSettings.hpp"
-
-#include "SoundDevice.hpp"
-#include "SoundDeviceBase.hpp"
-
-#include "mpt/base/detect.hpp"
-#include "mpt/string/types.hpp"
-#include "openmpt/base/Types.hpp"
-#include "openmpt/logging/Logger.hpp"
-
-#include <atomic>
-#include <memory>
-#include <utility>
-#include <vector>
-
-#ifdef MPT_WITH_PORTAUDIO
-#include <portaudio.h>
-#if MPT_OS_WINDOWS
-#include <pa_win_wasapi.h>
-#endif  // MPT_OS_WINDOWS
-#endif
-
-OPENMPT_NAMESPACE_BEGIN
-
-namespace SoundDevice
-{
-
-#ifdef MPT_WITH_PORTAUDIO
-
-class PortAudioInitializer
+		/* SPDX-License-Identifier: BSD-3-Clause */
+		/* SPDX-FileCopyrightText: OpenMPT Project Developers and Contributors */
+		
+		
+		#pragma once
+		
+		#include "openmpt/all/BuildSettings.hpp"
+		
+		#include "SoundDevice.hpp"
+		#include "SoundDeviceBase.hpp"
+		
+		#include "mpt/base/detect.hpp"
+		#include "mpt/string/types.hpp"
+		#include "openmpt/base/Types.hpp"
+		#include "openmpt/logging/Logger.hpp"
+		
+		#include <atomic>
+		#include <memory>
+		#include <utility>
+		#include <vector>
+		
+		#ifdef MPT_WITH_PORTAUDIO
+		#include <portaudio.h>
+		#if MPT_OS_WINDOWS
+		#include <pa_win_wasapi.h>
+		#endif  // MPT_OS_WINDOWS
+		#endif
+		
+		OPENMPT_NAMESPACE_BEGIN
+		
+		namespace SoundDevice
+		{
+		
+		#ifdef MPT_WITH_PORTAUDIO
+		
+		class PortAudioInitializer
 	: public BackendInitializer
-{
-private:
+		{
+		private:
 	bool m_initialized = false;
-
-public:
+		
+		public:
 	PortAudioInitializer();
 	PortAudioInitializer(const PortAudioInitializer &) = delete;
 	PortAudioInitializer &operator=(const PortAudioInitializer &) = delete;
 	void Reload();
 	~PortAudioInitializer() override;
-};
-
-class CPortaudioDevice : public SoundDevice::Base
-{
-
-private:
+		};
+		
+		class CPortaudioDevice : public SoundDevice::Base
+		{
+		
+		private:
 	PortAudioInitializer m_PortAudio;
-
-protected:
+		
+		protected:
 	PaDeviceIndex m_DeviceIsDefault;
 	PaDeviceIndex m_DeviceIndex;
 	PaHostApiTypeId m_HostApiType;
 	PaStreamParameters m_StreamParameters;
 	PaStreamParameters m_InputStreamParameters;
-#if MPT_OS_WINDOWS
+		#if MPT_OS_WINDOWS
 	PaWasapiStreamInfo m_WasapiStreamInfo;
-#endif  // MPT_OS_WINDOWS
+		#endif  // MPT_OS_WINDOWS
 	PaStream *m_Stream;
 	const PaStreamInfo *m_StreamInfo;
 	void *m_CurrentFrameBuffer;
 	const void *m_CurrentFrameBufferInput;
 	unsigned long m_CurrentFrameCount;
-
+		
 	double m_CurrentRealLatency;  // seconds
 	std::atomic<uint32> m_StatisticPeriodFrames;
-
-public:
+		
+		public:
 	CPortaudioDevice(ILogger &logger, SoundDevice::Info info, SoundDevice::SysInfo sysInfo);
 	~CPortaudioDevice();
-
-public:
+		
+		public:
 	bool InternalOpen();
 	bool InternalClose();
 	void InternalFillAudioBuffer();
@@ -90,32 +90,33 @@ public:
 	SoundDevice::DynamicCaps GetDeviceDynamicCaps(const std::vector<uint32> &baseSampleRates);
 	bool OpenDriverSettings();
 	bool OnIdle();
-
+		
 	int StreamCallback(
-		const void *input, void *output, unsigned long frameCount, const PaStreamCallbackTimeInfo *timeInfo, PaStreamCallbackFlags statusFlags);
-
-public:
+const void *input, void *output, unsigned long frameCount, const PaStreamCallbackTimeInfo *timeInfo, PaStreamCallbackFlags statusFlags);
+		
+		public:
 	static int StreamCallbackWrapper(
-		const void *input, void *output, unsigned long frameCount, const PaStreamCallbackTimeInfo *timeInfo, PaStreamCallbackFlags statusFlags, void *userData);
-
+const void *input, void *output, unsigned long frameCount, const PaStreamCallbackTimeInfo *timeInfo, PaStreamCallbackFlags statusFlags, void *userData);
+		
 	static std::unique_ptr<SoundDevice::BackendInitializer> BackendInitializer()
 	{
-		return std::make_unique<PortAudioInitializer>();
+return std::make_unique<PortAudioInitializer>();
 	}
-
+		
 	static std::vector<SoundDevice::Info> EnumerateDevices(ILogger &logger, SoundDevice::SysInfo sysInfo);
-
-private:
+		
+		private:
 	bool HasInputChannelsOnSameDevice() const;
-
+		
 	static std::vector<std::pair<PaDeviceIndex, mpt::ustring>> EnumerateInputOnlyDevices(PaHostApiTypeId hostApiType);
-};
-
-
-#endif  // MPT_WITH_PORTAUDIO
-
-
-}  // namespace SoundDevice
-
-
-OPENMPT_NAMESPACE_END
+		};
+		
+		
+		#endif  // MPT_WITH_PORTAUDIO
+		
+		
+		}  // namespace SoundDevice
+		
+		
+		OPENMPT_NAMESPACE_END
+		

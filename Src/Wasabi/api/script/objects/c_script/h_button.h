@@ -11,25 +11,25 @@ class H_Button : public H_BUTTON_PARENT {
 
 public:
 
-  H_Button(ScriptObject *o);
-  H_Button();
-  virtual ~H_Button();
-  virtual void H_hook(ScriptObject *o);
-  ScriptObject *getHookedObject();
+H_Button(ScriptObject *o);
+H_Button();
+virtual ~H_Button();
+virtual void H_hook(ScriptObject *o);
+ScriptObject *getHookedObject();
 
-  virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
-  virtual void hook_onActivate(int activated) {  }
-  virtual void hook_onLeftClick() {  }
-  virtual void hook_onRightClick() {  }
+virtual int eventCallback(ScriptObject *object, int dlfid, scriptVar **params, int nparams);
+virtual void hook_onActivate(int activated) {  }
+virtual void hook_onLeftClick() {  }
+virtual void hook_onRightClick() {  }
 
-  private:
+private:
 
-  ScriptObject *obj;
-  int inited;
-  static int loaded;
-  static int onactivate_id;
-  static int onleftclick_id;
-  static int onrightclick_id;
+ScriptObject *obj;
+int inited;
+static int loaded;
+static int onactivate_id;
+static int onleftclick_id;
+static int onrightclick_id;
 };
 
 #endif

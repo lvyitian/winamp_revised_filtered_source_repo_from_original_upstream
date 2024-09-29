@@ -1,12 +1,12 @@
-#ifndef NULLSOFT_UTILITY_ALIASH
-#define NULLSOFT_UTILITY_ALIASH
-
-template <class ptr_t>
-class Alias
-{
-public:
+		#ifndef NULLSOFT_UTILITY_ALIASH
+		#define NULLSOFT_UTILITY_ALIASH
+		
+		template <class ptr_t>
+		class Alias
+		{
+		public:
 	Alias()
-		:pointer(0)
+:pointer(0)
 	{
 	}
 	Alias(ptr_t *_pointer) : pointer(_pointer)
@@ -14,41 +14,41 @@ public:
 	}
 	Alias(const Alias<ptr_t> &copy)
 	{
-		pointer=copy.pointer;
+pointer=copy.pointer;
 	}
 	~Alias()
 	{
-		pointer=0;
+pointer=0;
 	}
 	ptr_t *operator = (ptr_t *copy)
 	{
-		pointer=copy;
-		return copy;
+pointer=copy;
+return copy;
 	}
-
+		
 	ptr_t *operator ->()
 	{
-		return pointer;
+return pointer;
 	}
-
+		
 	operator bool()
 	{
-		return !!pointer;
+return !!pointer;
 	}
-
+		
 	bool operator == (ptr_t *compare)
 	{
-		return pointer == compare;
+return pointer == compare;
 	}
-/*
+		/*
 	operator ptr_t *()
 	{
-		return pointer;
+return pointer;
 	}
 	*/
-
-private:
+		
+		private:
 	ptr_t *pointer;
-};
-
-#endif
+		};
+		
+		#endif

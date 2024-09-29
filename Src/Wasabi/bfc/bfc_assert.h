@@ -27,13 +27,13 @@ COMEXP void _assert_handler_str(const char *string, const char *reason, const ch
 
 #ifdef ASSERTS_ENABLED
 
-  #define ASSERT(x) ((x) ? void() : _assert_handler(#x, __FILE__, __LINE__))
-  #define ASSERTPR(x, str) ((x) ? void() : _assert_handler_str((str), #x, __FILE__, __LINE__))
-  #define ASSERTALWAYS(str) _assert_handler_str((str), 0, __FILE__, __LINE__)
+#define ASSERT(x) ((x) ? void() : _assert_handler(#x, __FILE__, __LINE__))
+#define ASSERTPR(x, str) ((x) ? void() : _assert_handler_str((str), #x, __FILE__, __LINE__))
+#define ASSERTALWAYS(str) _assert_handler_str((str), 0, __FILE__, __LINE__)
 #else
-  #define ASSERT(x) ;
-  #define ASSERTPR(x,y) ;
-  #define ASSERTALWAYS ;
+#define ASSERT(x) ;
+#define ASSERTPR(x,y) ;
+#define ASSERTALWAYS ;
 #endif
 
 #endif
