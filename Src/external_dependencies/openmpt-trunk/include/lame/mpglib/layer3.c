@@ -1275,7 +1275,7 @@ maybe still wrong??? (copy 12 to 13?) */
         }               /* end for(lwin; .. ; . ) */
 
         if (do_l) {
-/* also check l-part, if ALL bands in the three windows are 'empty'
+/* also check l-part, if ALL bands in the three arch are 'empty'
  * and mode = mixed_mode 
  */
             int     sfb = gr_infos->maxbandl;

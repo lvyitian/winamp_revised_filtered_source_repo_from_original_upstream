@@ -1,5 +1,5 @@
 #include "FileTypeRegistrar.h"
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 #include <shellapi.h>
 #include <shobjidl.h>

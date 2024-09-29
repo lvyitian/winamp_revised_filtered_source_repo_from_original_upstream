@@ -185,8 +185,8 @@ static int do_timedisplay()
 { 
 	if (mouse_type == -2)
 		return 0;
-	if (((!config_windowshade && inreg(36,26,96,39)) || 
-		(config_windowshade && inreg(129,3,129+28,3+6))
+	if (((!config_archhade && inreg(36,26,96,39)) || 
+		(config_archhade && inreg(129,3,129+28,3+6))
 		) && mouse_type == 1)
 	{
 		config_timeleftmode = !config_timeleftmode;
@@ -211,7 +211,7 @@ static int do_timedisplay()
 		sa_setthread(config_sa);
 		return 1;
 	}
-	if (config_windowshade && inreg(78,4,116,11) && mouse_type == 1)
+	if (config_archhade && inreg(78,4,116,11) && mouse_type == 1)
 	{
 		config_sa++;
 		if (config_sa > 2) config_sa = 0;
@@ -219,7 +219,7 @@ static int do_timedisplay()
 		sa_setthread(config_sa);
 		return 1;
 	}
-	if (config_windowshade && inreg(168,2,213+11,11) && mouse_type == 1)
+	if (config_archhade && inreg(168,2,213+11,11) && mouse_type == 1)
 	{
 		int which = 5 - (mouse_x < 215) - (mouse_x < 204) - (mouse_x < 195) - (mouse_x < 186) - (mouse_x < 176);
 		__do_buttons(which);
@@ -340,7 +340,7 @@ static int do_titlebar()
 				omwr=mwr;
 				MoveRect(&mwr,mouse_x-clickx,mouse_y-clicky);
 
-				// snap to nondocked windows
+				// snap to nondocked arch
 				if ((!!config_snap) ^ (!!(mouse_stats & MK_SHIFT)))
 				{
 					embedWindowState *state=embedwndlist;
@@ -359,7 +359,7 @@ static int do_titlebar()
 				}
 
 
-				// move docked windows the same amount the the main window has moved
+				// move docked arch the same amount the the main window has moved
 				{
 					embedWindowState *state=embedwndlist;
 					int movex=mwr.left-omwr.left;
@@ -377,7 +377,7 @@ static int do_titlebar()
 
 				if ((!!config_snap) ^ (!!(mouse_stats & MK_SHIFT)))
 				{
-					// dock the attached windows to the screen
+					// dock the attached arch to the screen
 					if (config_keeponscreen&1) 
 					{
 						RECT omwr;
@@ -444,7 +444,7 @@ static int do_titlebar()
 					} // kepponscreen&1
 
 
-					// dock the attached windows to the non attached windows
+					// dock the attached arch to the non attached arch
 					{
 						int x;
 						p = embedwndlist;
@@ -519,7 +519,7 @@ static int do_titlebar()
 				} // if snapping
 
 				{
-					// calculate number of windows to move
+					// calculate number of arch to move
 					int deferred_move_count = 1;
 					if (do_titlebar_clicking&2 && !skip_eq) deferred_move_count ++;// final EQ positioning
 					if (do_titlebar_clicking&4 && !skip_pl) deferred_move_count ++;// final PE positioning
@@ -578,7 +578,7 @@ static int do_titlebuttons()
 {
 	if (mouse_type == -2)
 		return 0;
-	if (inreg(254,3,262,12)) // windowshade button
+	if (inreg(254,3,262,12)) // archhade button
 	{
 		if (mouse_type == -1)
 		{
@@ -947,7 +947,7 @@ static int do_posbar()
 	{
 		if (mouse_type == -1) 
 			do_posbar_active=0;
-		if (config_windowshade)
+		if (config_archhade)
 		{
 			a = mouse_x - 228;
 			a *= (257-29-10);
@@ -973,10 +973,10 @@ static int do_posbar()
 		}
 	}
 	if (mouse_type == 1)
-		if ((inreg(11+7,58+15,256+7,66+15) && !config_windowshade) || (inreg(228,3,228+14,12) && config_windowshade) ) 
+		if ((inreg(11+7,58+15,256+7,66+15) && !config_archhade) || (inreg(228,3,228+14,12) && config_archhade) ) 
 		{
 			do_posbar_active=1;
-			if (!config_windowshade)
+			if (!config_archhade)
 			{
 				int curpos = 11 + 7 + 
 					((in_getouttime() * (257-10-29)) / in_getlength()) / 1000;
@@ -988,7 +988,7 @@ static int do_posbar()
 
 		if (do_posbar_active) 
 		{
-			if (config_windowshade)
+			if (config_archhade)
 			{
 				a = mouse_x - 228;
 				a *= (257-29-10);
@@ -1012,7 +1012,7 @@ static int do_posbar()
 				StringCchPrintfW(buf,256, L"%s: %02d:%02d/%02d:%02d (%d%%)",getStringW(IDS_SEEK_TO,seekStr,64),t/60,t%60,
 					a/60,a%60,(t*100)/(a?a:1)
 					);
-				if (config_windowshade) draw_time(t/60,t%60,0);
+				if (config_archhade) draw_time(t/60,t%60,0);
 				t=0;
 				draw_songname(buf,&t,-1);
 			}
@@ -1032,7 +1032,7 @@ void ui_drawtime(int time_elapsed, int mode)
 	} 
 	else 
 	{
-		if (!do_posbar_active || !config_windowshade)
+		if (!do_posbar_active || !config_archhade)
 			draw_time(time_elapsed/60,time_elapsed%60,0);
 	}
 	if (playing) 
@@ -1223,7 +1223,7 @@ void ui_handlecursor(void)
 		{5,3,17,13},//mainmenu
 		{0,0,275,13},// titelbar
 		{105,24,266,35},
-	}, b_windowshade[] = 
+	}, b_archhade[] = 
 	{
 		{254,3,262,12},//wshade
 		{244,3,253,12},//min
@@ -1235,7 +1235,7 @@ void ui_handlecursor(void)
 		int x;
 
 		if (0 != (WS_DISABLED & GetWindowLongPtrW(hMainWindow, GWL_STYLE)))
-			x = (config_windowshade)	 ? 14 : 8;
+			x = (config_archhade)	 ? 14 : 8;
 		else
 		{
 			int b_len;
@@ -1249,10 +1249,10 @@ void ui_handlecursor(void)
 			if (config_dsize) { mouse_x/=2; mouse_y/=2;}
 
 			RECT *b;
-			if (config_windowshade)	
+			if (config_archhade)	
 			{
-				b=b_windowshade;
-				b_len = sizeof(b_windowshade)/sizeof(b_windowshade[0]);
+				b=b_archhade;
+				b_len = sizeof(b_archhade)/sizeof(b_archhade[0]);
 			}
 			else 
 			{
@@ -1262,7 +1262,7 @@ void ui_handlecursor(void)
 			for (x = 0; x < b_len; x ++) 
 				if (inreg(b[x].left,b[x].top,b[x].right,b[x].bottom)) break;
 
-			if (config_windowshade) x+=9;
+			if (config_archhade) x+=9;
 		}
 		
 

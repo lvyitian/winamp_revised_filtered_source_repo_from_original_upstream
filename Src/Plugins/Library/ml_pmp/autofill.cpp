@@ -16,7 +16,7 @@
 **   3. This notice may not be removed or altered from any source distribution.
 */
 
-#include <windows.h>
+#include <arch.h>
 #include <time.h>
 #include "../../General/gen_ml/ml.h"
 #include "pmp.h"

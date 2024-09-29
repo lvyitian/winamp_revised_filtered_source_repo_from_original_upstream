@@ -52,7 +52,7 @@
 #include "soundlib/AudioReadTarget.h"
 
 #if MPT_OS_WINDOWS && MPT_OS_WINDOWS_WINRT
-#include <windows.h>
+#include <arch.h>
 #endif // MPT_OS_WINDOWS && MPT_OS_WINDOWS_WINRT
 
 OPENMPT_NAMESPACE_BEGIN

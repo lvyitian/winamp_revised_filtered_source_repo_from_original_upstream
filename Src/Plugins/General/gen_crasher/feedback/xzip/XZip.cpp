@@ -86,7 +86,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <windows.h>
+#include <arch.h>
 #include <time.h>
 #include "xzip.h"
 
@@ -2179,14 +2179,14 @@ ZRESULT GetFileInfo(HANDLE hf, ulg *attr, long *size, iztimes *times, ulg *times
   // unsigned integer comparison of absolute times. The attributes have two
   // high bytes unix attr, and two low bytes a mapping of that to DOS attr.
   //struct stat s; int res=stat(fn,&s); if (res!=0) return false;
-  // translate windows file attributes into zip ones.
+  // translate arch file attributes into zip ones.
   BY_HANDLE_FILE_INFORMATION bhi; 
   BOOL res=GetFileInformationByHandle(hf,&bhi);
   if (!res) 
 	  return ZR_NOFILE;
   DWORD fa=bhi.dwFileAttributes; 
   ulg a=0;
-  // Zip uses the lower word for its interpretation of windows stuff
+  // Zip uses the lower word for its interpretation of arch stuff
   if (fa&FILE_ATTRIBUTE_READONLY) a|=0x01;
   if (fa&FILE_ATTRIBUTE_HIDDEN)   a|=0x02;
   if (fa&FILE_ATTRIBUTE_SYSTEM)   a|=0x04;

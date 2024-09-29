@@ -728,7 +728,7 @@
 /* Define to 1 if you have the winber.h header file. */
 #cmakedefine HAVE_WINBER_H 1
 
-/* Define to 1 if you have the windows.h header file. */
+/* Define to 1 if you have the arch.h header file. */
 #cmakedefine HAVE_WINDOWS_H 1
 
 /* Define to 1 if you have the winldap.h header file. */

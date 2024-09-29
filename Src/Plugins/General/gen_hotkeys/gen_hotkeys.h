@@ -1,7 +1,7 @@
 #ifndef ___HOTAMP3_H___
 #define ___HOTAMP3_H___
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include "winamp.h"
 #include "wa_hotkeys.h"

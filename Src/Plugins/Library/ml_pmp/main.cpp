@@ -2,8 +2,8 @@
 #define PLUGIN_VERSION L"2.25"
 
 #include "main.h"
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <stdio.h>
 #include <shlobj.h>
 #include <shlwapi.h>

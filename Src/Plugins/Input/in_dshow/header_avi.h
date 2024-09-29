@@ -1,7 +1,7 @@
 #ifndef _HEADER_AVI_H
 #define _HEADER_AVI_H
 
-#include <windows.h>
+#include <arch.h>
 
 #include "Header.h"
 

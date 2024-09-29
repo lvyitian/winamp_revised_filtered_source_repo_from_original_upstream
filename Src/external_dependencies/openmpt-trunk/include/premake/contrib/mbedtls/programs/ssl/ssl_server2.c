@@ -106,7 +106,7 @@ int main( void )
 #endif
 
 #if defined(_WIN32)
-#include <windows.h>
+#include <arch.h>
 #endif
 
 /* Size of memory to be allocated for the heap, when using the library's memory

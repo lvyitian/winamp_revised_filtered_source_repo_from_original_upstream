@@ -102,26 +102,26 @@
     </VcpkgInstalledDir>
     <VcpkgUseStatic>false</VcpkgUseStatic>
     <VcpkgConfiguration>Debug</VcpkgConfiguration>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <VcpkgInstalledDir>
     </VcpkgInstalledDir>
     <VcpkgUseStatic>false</VcpkgUseStatic>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgInstalledDir>
     </VcpkgInstalledDir>
     <VcpkgUseStatic>false</VcpkgUseStatic>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
     <VcpkgConfiguration>Debug</VcpkgConfiguration>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgInstalledDir>
     </VcpkgInstalledDir>
     <VcpkgUseStatic>false</VcpkgUseStatic>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -146,7 +146,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>comctl32.lib;winmm.lib;msacm32.lib;shlwapi.lib;Rpcrt4.lib;d3dx9d.lib;wininet.lib;fmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-windows-dbg;..\external_dependencies\microsoft_directx_sdk_2010\Lib\$(PlatformShortName);..\nsutil\$(PlatformShortName)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-arch-dbg;..\external_dependencies\microsoft_directx_sdk_2010\Lib\$(PlatformShortName);..\nsutil\$(PlatformShortName)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <DelayLoadDLLs>msacm32.dll;nsutil.dll;comctl32.dll;comdlg32.dll;tataki.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -230,7 +230,7 @@ xcopy /Y /D /S "..\..\Qt\DLL_5.12_$(PlatformShortName)\$(Configuration)\" "..\..
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>comctl32.lib;winmm.lib;msacm32.lib;shlwapi.lib;Rpcrt4.lib;d3dx9d.lib;wininet.lib;fmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-windows-dbg;..\external_dependencies\microsoft_directx_sdk_2010\Lib\$(PlatformShortName);..\nsutil\$(PlatformShortName)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-arch-dbg;..\external_dependencies\microsoft_directx_sdk_2010\Lib\$(PlatformShortName);..\nsutil\$(PlatformShortName)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <DelayLoadDLLs>msacm32.dll;nsutil.dll;comctl32.dll;comdlg32.dll;tataki.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -245,7 +245,7 @@ xcopy /Y /D /S "..\..\Qt\DLL_5.12_$(PlatformShortName)\$(Configuration)\" "..\..
       <Command>xcopy /Y /D /S $(OutDir)$(TargetName)$(TargetExt) ..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\
 xcopy /Y /D /S $(IntDir)$(TargetName).pdb ..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\
 
-xcopy /Y /D /S "..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-windows-dbg\bin\fmtd.dll" "..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\"
+xcopy /Y /D /S "..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-arch-dbg\bin\fmtd.dll" "..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\"
 
 xcopy /Y /D /S ..\resources\languages\*.wlz ..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\Lang\
 
@@ -307,7 +307,7 @@ xcopy /Y /D /S "..\resources\data\dsp_sps\*.sps" "..\..\Build\Winamp_$(PlatformS
       <AdditionalDependencies>comctl32.lib;winmm.lib;msacm32.lib;shlwapi.lib;Rpcrt4.lib;d3dx9.lib;wininet.lib;fmt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <DelayLoadDLLs>msacm32.dll;nsutil.dll;comctl32.dll;comdlg32.dll;tataki.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
-      <AdditionalLibraryDirectories>..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-windows-rel;..\external_dependencies\microsoft_directx_sdk_2010\Lib\$(PlatformShortName);..\nsutil\$(PlatformShortName)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-arch-rel;..\external_dependencies\microsoft_directx_sdk_2010\Lib\$(PlatformShortName);..\nsutil\$(PlatformShortName)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -390,7 +390,7 @@ xcopy /Y /D /S "..\..\Qt\DLL_5.12_$(PlatformShortName)\$(Configuration)\" "..\..
       <AdditionalDependencies>comctl32.lib;winmm.lib;msacm32.lib;shlwapi.lib;Rpcrt4.lib;d3dx9.lib;wininet.lib;fmt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <DelayLoadDLLs>msacm32.dll;nsutil.dll;comctl32.dll;comdlg32.dll;tataki.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
-      <AdditionalLibraryDirectories>..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-windows-rel;..\external_dependencies\microsoft_directx_sdk_2010\Lib\$(PlatformShortName);..\nsutil\$(PlatformShortName)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-arch-rel;..\external_dependencies\microsoft_directx_sdk_2010\Lib\$(PlatformShortName);..\nsutil\$(PlatformShortName)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -402,7 +402,7 @@ xcopy /Y /D /S "..\..\Qt\DLL_5.12_$(PlatformShortName)\$(Configuration)\" "..\..
     <PostBuildEvent>
       <Command>xcopy /Y /D /S $(OutDir)$(TargetName)$(TargetExt) ..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\
 
-xcopy /Y /D /S "..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-windows-rel\bin\fmt.dll" "..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\"
+xcopy /Y /D /S "..\external_dependencies\vcpkg\buildtrees\fmt\$(PlatformShortName)-arch-rel\bin\fmt.dll" "..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\"
 
 xcopy /Y /D /S ..\resources\languages\*.wlz ..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\Lang\
 

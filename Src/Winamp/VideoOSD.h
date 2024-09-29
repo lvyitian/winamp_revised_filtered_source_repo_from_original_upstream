@@ -2,7 +2,7 @@
 #define NULLSOFT_VIDEOOSDH
 
 /* Video On Screen Display */
-#include <windows.h>
+#include <arch.h>
 
 #define NUM_WIDGETS 11
 

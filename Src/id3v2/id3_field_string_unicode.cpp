@@ -17,7 +17,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "id3_field.h"
-#include <windows.h>
+#include <arch.h>
 #include "../Plugins/Input/in_mp3/config.h" // TODO: cut
 #include "id3_misc_support.h"
 

@@ -103,11 +103,11 @@ public:
 	Context(mpt::OS::Wine::VersionContext versionContext);
 public:
 	std::string EscapePosixShell(std::string line);
-	std::string PathToPosix(mpt::PathString windowsPath);
+	std::string PathToPosix(mpt::PathString archPath);
 	mpt::PathString PathToWindows(std::string hostPath);
 	ExecResult ExecutePosixShellScript(std::string script, FlagSet<ExecFlags> flags, std::map<std::string, std::vector<char> > filetree, std::string title, ExecutePosixCommandProgress progress, ExecutePosixShellScriptProgress progressCancel, void *userdata);
 	int ExecutePosixShellCommand(std::string command, std::string & output, std::string & error);
-	std::string PathToPosixCanonical(mpt::PathString windowsPath);
+	std::string PathToPosixCanonical(mpt::PathString archPath);
 	std::string GetPosixEnvVar(std::string var, std::string def = std::string());
 public:
 	mpt::OS::Wine::VersionContext VersionContext() const { return m_VersionContext; }

@@ -437,7 +437,7 @@ LRESULT CALLBACK WndProc(HWND hwnd,         // Window handle
         // If the message is WM_NCCREATE we set our pBaseWindow pointer
         // and will then place it in the window structure
 
-        // turn off WS_EX_LAYOUTRTL style for quartz windows
+        // turn off WS_EX_LAYOUTRTL style for quartz arch
         if (uMsg == WM_NCCREATE) {
             SetWindowLong(hwnd, GWL_EXSTYLE, GetWindowLong(hwnd, GWL_EXSTYLE) & ~0x400000);
         }

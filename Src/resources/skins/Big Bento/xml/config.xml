@@ -45,7 +45,7 @@
 		downImage="config.button.selected"
 		activeImage="config.button.selected"
 	/>
-	<layer x="0" y="0" image="config.button.text.windowsizing" ghost="1"/>
+	<layer x="0" y="0" image="config.button.text.archizing" ghost="1"/>
 </groupdef>
 
 <groupdef id="bucket.entry.3" windowtype="skin.config" w="128" h="20">
@@ -102,38 +102,38 @@
 <groupdef id="optionsgroup.autoresize">
 
 	<togglebutton x="102" y="14" h="12" w="238" rectrgn="1"
-		hoverImage="config.windowsizing.autoresize.hover"
+		hoverImage="config.archizing.autoresize.hover"
 		cfgattrib="{0542AFA4-48D9-4c9f-8900-5739D52C114F};Prevent video resize" 
 	/>
 	<togglebutton x="106" y="14" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{0542AFA4-48D9-4c9f-8900-5739D52C114F};Prevent video resize" />
 
 	<togglebutton x="102" y="0" h="12" w="238" rectrgn="1"
-		hoverImage="config.windowsizing.autoresize.hover"
+		hoverImage="config.archizing.autoresize.hover"
 		cfgattrib="{E704AB5A-108E-4309-B54B-43EBA5C0C3AA};Autoresize Main Window if maximized" 
 	/>
 	<togglebutton x="106" y="0" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{E704AB5A-108E-4309-B54B-43EBA5C0C3AA};Autoresize Main Window if maximized" />
 
 	<togglebutton x="102" y="28" h="12" w="238" rectrgn="1"
-		hoverImage="config.windowsizing.autoresize.hover"
+		hoverImage="config.archizing.autoresize.hover"
 		cfgattrib="{E704AB5A-108E-4309-B54B-43EBA5C0C3AA};Link shade and player width" 
 	/>
 	<togglebutton x="106" y="28" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{E704AB5A-108E-4309-B54B-43EBA5C0C3AA};Link shade and player width" />
 
-	<layer x="106" y="45" image="config.windowsizing.titlebar.text" ghost="1" />
+	<layer x="106" y="45" image="config.archizing.titlebar.text" ghost="1" />
 
 	<togglebutton x="102" y="59" h="12" w="89" rectrgn="1"
-		hoverImage="config.windowsizing.titlebar.maximize.hover"
+		hoverImage="config.archizing.titlebar.maximize.hover"
 		cfgattrib="{E704AB5A-108E-4309-B54B-43EBA5C0C3AA};Maximize Window on Titlebar Doubleclick" 
 	/>
 	<togglebutton x="106" y="59" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{E704AB5A-108E-4309-B54B-43EBA5C0C3AA};Maximize Window on Titlebar Doubleclick" />
 
 	<togglebutton x="171" y="59" h="12" w="138" rectrgn="1"
-		hoverImage="config.windowsizing.titlebar.shade.hover"
+		hoverImage="config.archizing.titlebar.shade.hover"
 		cfgattrib="{E704AB5A-108E-4309-B54B-43EBA5C0C3AA};Switch to Shade on Titlebar Doubleclick" 
 	/>
 	<togglebutton x="175" y="59" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{E704AB5A-108E-4309-B54B-43EBA5C0C3AA};Switch to Shade on Titlebar Doubleclick" />
 
-	<layer x="106" y="0" image="config.windowsizing.text" ghost="1" />
+	<layer x="106" y="0" image="config.archizing.text" ghost="1" />
 
 </groupdef>
 
@@ -334,7 +334,7 @@
 		hoverImage="config.notifier.sub.hover"
 	/>
 	<layer id="notifier.show" x="177" y="0" image="config.notifier.text.always" ghost="1"/>
-	<script file="scripts/imagecontrol.maki" param="notifier.show|4|{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show always;config.notifier.text.always|{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show with windowshade and when minimized;config.notifier.text.shade_minimized|{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show only when minimized;config.notifier.text.minimized|{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Never show;config.notifier.text.never" />
+	<script file="scripts/imagecontrol.maki" param="notifier.show|4|{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show always;config.notifier.text.always|{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show with archhade and when minimized;config.notifier.text.shade_minimized|{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show only when minimized;config.notifier.text.minimized|{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Never show;config.notifier.text.never" />
 
 	<button
 		action="switchto;optionsgroup.notifier.location;subpage" action_target="skin.config.target"
@@ -375,9 +375,9 @@
 
 	<togglebutton x="103" y="14" h="12" w="179" rectrgn="1"
 		hoverImage="config.notifier.show.hover"
-		cfgattrib="{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show with windowshade and when minimized"
+		cfgattrib="{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show with archhade and when minimized"
 	/>
-	<togglebutton x="106" y="14" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show with windowshade and when minimized" />
+	<togglebutton x="106" y="14" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show with archhade and when minimized" />
 
 	<togglebutton x="103" y="28" h="12" w="179" rectrgn="1"
 		hoverImage="config.notifier.show.hover"
@@ -586,19 +586,19 @@
 <groupdef id="optionsgroup.visualization" >
 
 	<togglebutton x="103" y="14" h="12" w="218" rectrgn="1"
-		hoverImage="config.windowsizing.autoresize.hover"
+		hoverImage="config.archizing.autoresize.hover"
 		cfgattrib="{090B63DE-FD24-4528-ABE5-A522615E8AE9};Open in Big Component View" 
 	/>
 	<togglebutton x="106" y="14" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{090B63DE-FD24-4528-ABE5-A522615E8AE9};Open in Big Component View" />
 
 	<togglebutton x="103" y="28" h="12" w="218" rectrgn="1"
-		hoverImage="config.windowsizing.autoresize.hover"
+		hoverImage="config.archizing.autoresize.hover"
 		cfgattrib="{090B63DE-FD24-4528-ABE5-A522615E8AE9};Open in Multi Content View (stretched)" 
 	/>
 	<togglebutton x="106" y="28" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{090B63DE-FD24-4528-ABE5-A522615E8AE9};Open in Multi Content View (stretched)" />
 
 	<togglebutton x="103" y="42" h="12" w="218" rectrgn="1"
-		hoverImage="config.windowsizing.autoresize.hover"
+		hoverImage="config.archizing.autoresize.hover"
 		cfgattrib="{090B63DE-FD24-4528-ABE5-A522615E8AE9};Open in Multi Content View (mini)" 
 	/>
 	<togglebutton x="106" y="42" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{090B63DE-FD24-4528-ABE5-A522615E8AE9};Open in Multi Content View (mini)" />
@@ -610,13 +610,13 @@
 <groupdef id="optionsgroup.playlist" >
 
 	<togglebutton x="103" y="0" h="12" w="218" rectrgn="1"
-		hoverImage="config.windowsizing.autoresize.hover"
+		hoverImage="config.archizing.autoresize.hover"
 		cfgattrib="{0167CFD9-5D35-404a-8F03-80ED5B89DEDF};Enlarge Playlist" 
 	/>
 	<togglebutton x="106" y="0" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{0167CFD9-5D35-404a-8F03-80ED5B89DEDF};Enlarge Playlist" />
 
 	<togglebutton x="103" y="14" h="12" w="218" rectrgn="1"
-		hoverImage="config.windowsizing.autoresize.hover"
+		hoverImage="config.archizing.autoresize.hover"
 		cfgattrib="{0167CFD9-5D35-404a-8F03-80ED5B89DEDF};Show Album Art if Playlist is enlarged" 
 	/>
 	<togglebutton x="106" y="14" image="config.checkbox.inactive" activeImage="config.checkbox.active" ghost="1" cfgattrib="{0167CFD9-5D35-404a-8F03-80ED5B89DEDF};Show Album Art if Playlist is enlarged" />

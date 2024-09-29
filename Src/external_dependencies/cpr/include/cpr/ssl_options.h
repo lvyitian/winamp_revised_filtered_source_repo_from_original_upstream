@@ -413,10 +413,10 @@ class NoRevoke {
 } // namespace ssl
 
 struct SslOptions {
-    // We don't use fs::path here, as this leads to problems using windows
+    // We don't use fs::path here, as this leads to problems using arch
     std::string cert_file;
     std::string cert_type;
-    // We don't use fs::path here, as this leads to problems using windows
+    // We don't use fs::path here, as this leads to problems using arch
     std::string key_file;
 #if SUPPORT_CURLOPT_SSLKEY_BLOB
     std::string key_blob;
@@ -440,14 +440,14 @@ struct SslOptions {
 #if SUPPORT_MAX_TLS_VERSION
     int max_version = CURL_SSLVERSION_MAX_DEFAULT;
 #endif
-    // We don't use fs::path here, as this leads to problems using windows
+    // We don't use fs::path here, as this leads to problems using arch
     std::string ca_info;
-    // We don't use fs::path here, as this leads to problems using windows
+    // We don't use fs::path here, as this leads to problems using arch
     std::string ca_path;
 #if SUPPORT_CURLOPT_SSL_CTX_FUNCTION
     std::string ca_buffer;
 #endif
-    // We don't use fs::path here, as this leads to problems using windows
+    // We don't use fs::path here, as this leads to problems using arch
     std::string crl_file;
     std::string ciphers;
 #if SUPPORT_TLSv13_CIPHERS

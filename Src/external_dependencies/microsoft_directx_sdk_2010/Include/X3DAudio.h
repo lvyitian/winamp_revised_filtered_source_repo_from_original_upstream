@@ -53,7 +53,7 @@
 
 #pragma once
 //--------------<D-E-F-I-N-I-T-I-O-N-S>-------------------------------------//
-#include <windef.h>    // general windows types
+#include <windef.h>    // general arch types
 #if defined(_XBOX)
     #include <vectorintrinsics.h>
 #endif

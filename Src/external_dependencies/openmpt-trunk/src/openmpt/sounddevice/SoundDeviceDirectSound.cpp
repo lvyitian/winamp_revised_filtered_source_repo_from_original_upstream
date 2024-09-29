@@ -27,7 +27,7 @@
 #include <vector>
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif  // MPT_OS_WINDOWS
 
 
@@ -86,10 +86,10 @@ static BOOL WINAPI DSEnumCallback(GUID *lpGuid, LPCTSTR lpstrDescription, LPCTST
 	info.useNameAsIdentifier = false;
 	// clang-format off
 	info.flags = {
-		sysInfo.SystemClass == mpt::osinfo::osclass::Windows ? sysInfo.IsWindowsOriginal() && sysInfo.WindowsVersion.IsBefore(mpt::osinfo::windows::Version::Win7) ? Info::Usability::Usable : Info::Usability::Deprecated : Info::Usability::NotAvailable,
+		sysInfo.SystemClass == mpt::osinfo::osclass::Windows ? sysInfo.IsWindowsOriginal() && sysInfo.WindowsVersion.IsBefore(mpt::osinfo::arch::Version::Win7) ? Info::Usability::Usable : Info::Usability::Deprecated : Info::Usability::NotAvailable,
 		Info::Level::Primary,
 		sysInfo.SystemClass == mpt::osinfo::osclass::Windows && sysInfo.IsWindowsWine() ? Info::Compatible::Yes : Info::Compatible::No,
-		sysInfo.SystemClass == mpt::osinfo::osclass::Windows ? sysInfo.IsWindowsWine() ? Info::Api::Emulated : sysInfo.WindowsVersion.IsAtLeast(mpt::osinfo::windows::Version::WinVista) ? Info::Api::Emulated : Info::Api::Native : Info::Api::Emulated,
+		sysInfo.SystemClass == mpt::osinfo::osclass::Windows ? sysInfo.IsWindowsWine() ? Info::Api::Emulated : sysInfo.WindowsVersion.IsAtLeast(mpt::osinfo::arch::Version::WinVista) ? Info::Api::Emulated : Info::Api::Native : Info::Api::Emulated,
 		Info::Io::OutputOnly,
 		Info::Mixing::Software,
 		Info::Implementor::OpenMPT
@@ -143,7 +143,7 @@ SoundDevice::Caps CDSoundDevice::InternalGetDeviceCaps()
 	caps.HasNamedInputSources = false;
 	caps.CanDriverPanel = false;
 	caps.ExclusiveModeDescription = MPT_USTRING("Use primary buffer");
-	caps.DefaultSettings.sampleFormat = (GetSysInfo().IsOriginal() && GetSysInfo().WindowsVersion.IsAtLeast(mpt::osinfo::windows::Version::WinVista)) ? SampleFormat::Float32 : SampleFormat::Int16;
+	caps.DefaultSettings.sampleFormat = (GetSysInfo().IsOriginal() && GetSysInfo().WindowsVersion.IsAtLeast(mpt::osinfo::arch::Version::WinVista)) ? SampleFormat::Float32 : SampleFormat::Int16;
 	IDirectSound *dummy = nullptr;
 	IDirectSound *ds = nullptr;
 	if(m_piDS)
@@ -220,7 +220,7 @@ SoundDevice::DynamicCaps CDSoundDevice::GetDeviceDynamicCaps(const std::vector<u
 				}
 			}
 		}
-		if(GetSysInfo().IsOriginal() && GetSysInfo().WindowsVersion.IsAtLeast(mpt::osinfo::windows::Version::WinVista))
+		if(GetSysInfo().IsOriginal() && GetSysInfo().WindowsVersion.IsAtLeast(mpt::osinfo::arch::Version::WinVista))
 		{
 			// Vista
 			caps.supportedSampleFormats = {SampleFormat::Float32};
@@ -362,7 +362,7 @@ bool CDSoundDevice::InternalOpen()
 	}
 	m_dwWritePos = 0xFFFFFFFF;
 	SetWakeupInterval(std::min(m_Settings.UpdateInterval, m_nDSoundBufferSize / (2.0 * m_Settings.GetBytesPerSecond())));
-	m_Flags.WantsClippedOutput = (GetSysInfo().IsOriginal() && GetSysInfo().WindowsVersion.IsAtLeast(mpt::osinfo::windows::Version::WinVista));
+	m_Flags.WantsClippedOutput = (GetSysInfo().IsOriginal() && GetSysInfo().WindowsVersion.IsAtLeast(mpt::osinfo::arch::Version::WinVista));
 	return true;
 }
 

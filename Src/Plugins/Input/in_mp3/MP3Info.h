@@ -2,7 +2,7 @@
 #define NULLSOFT_IN_MP3_MP3_INFO_H
 
 #include "Metadata.h"
-#include <windows.h>
+#include <arch.h>
 
 class MP3Info 
 {

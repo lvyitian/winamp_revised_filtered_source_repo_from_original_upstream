@@ -3,7 +3,7 @@
 
 #include "ifc_playlist.h"
 
-#include <windows.h> // for MAX_PATH
+#include <arch.h> // for MAX_PATH
 #include "pl_entry.h"
 #include "ifc_playlistT.h"
 #include "ifc_playlistloadercallbackT.h"

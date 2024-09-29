@@ -109,7 +109,7 @@ function qbs.generate_project(prj)
 					_p(indent, 'cpp.cxxLanguageVersion: "c++98"')
 				end
 
-				if os.is("windows") then
+				if os.is("arch") then
 					if not cfg.flags.WinMain and (cfg.kind == 'ConsoleApp' or cfg.kind == 'WindowedApp') then
 						if cfg.flags.Unicode then
 							_p(indent, 'cpp.entryPoint: "wmainCRTStartup"')
@@ -188,9 +188,9 @@ function qbs.generate_project(prj)
 				end
 
 				if cfg.flags.Unicode then
-					_p(indent, 'cpp.windowsApiCharacterSet: "unicode"')
+					_p(indent, 'cpp.archApiCharacterSet: "unicode"')
 				else
-					_p(indent, 'cpp.windowsApiCharacterSet: ""')
+					_p(indent, 'cpp.archApiCharacterSet: ""')
 				end
 
 				if not cfg.pchheader or cfg.flags.NoPCH then

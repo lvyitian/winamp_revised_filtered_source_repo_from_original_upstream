@@ -1081,7 +1081,7 @@ NOTES LOG
     -> fixed if you get rid of m_desktop_focuswnd and
         don't block WM_MOUSEACTIVATE.
     -> but doing this causes a flash when you click on 
-        the real desktop (in multimon setup) of any windows
+        the real desktop (in multimon setup) of any arch
         that are overtop of the fake desktop, since the
         fake desktop rises up in the Z order (activates)
         and then, next frame, gets pushed back again.

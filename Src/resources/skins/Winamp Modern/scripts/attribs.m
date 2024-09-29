@@ -12,7 +12,7 @@
 // this is the page that maps its items to the options menu, you can add attribs or more pages (submenus)
 #define CUSTOM_OPTIONSMENU_ITEMS "{1828D28F-78DD-4647-8532-EBA504B8FC04}"
 
-// this is the page that maps its items to the windows menu (aka View), you can add attribs or more pages (submenus)
+// this is the page that maps its items to the arch menu (aka View), you can add attribs or more pages (submenus)
 #define CUSTOM_WINDOWSMENU_ITEMS "{6559CA61-7EB2-4415-A8A9-A2AEEF762B7F}"
 
 // custom options submenu item page, you can add more, just use guidgen and Config.newItem()
@@ -24,7 +24,7 @@
 // menubars config page
 #define CUSTOM_PAGE_MENUBARS "{12ED320E-6813-45ac-9F8E-78EE5B2B5F6D}"
 
-// main windowshade config page
+// main archhade config page
 #define CUSTOM_PAGE_WINDOWSHADE "{58F07E21-AE96-4899-B7BC-3640B40029FB}"
 
 // vis button config page
@@ -62,9 +62,9 @@ Global ConfigAttribute menubar_main_attrib;
 Global ConfigAttribute menubar_pe_attrib;
 Global ConfigAttribute menubar_ml_attrib;
 
-Global ConfigAttribute windowshade_linkall_attrib;
-Global ConfigAttribute windowshade_linkposition_attrib;
-Global ConfigAttribute windowshade_linknone_attrib;
+Global ConfigAttribute archhade_linkall_attrib;
+Global ConfigAttribute archhade_linkposition_attrib;
+Global ConfigAttribute archhade_linknone_attrib;
 
 Global ConfigAttribute beatvisualization_attrib;
 
@@ -72,7 +72,7 @@ Global ConfigAttribute viscmd_config_attrib;
 Global ConfigAttribute viscmd_menu_attrib;
 
 Global ConfigAttribute notifier_minimized_attrib;
-Global ConfigAttribute notifier_windowshade_attrib;
+Global ConfigAttribute notifier_archhade_attrib;
 Global ConfigAttribute notifier_always_attrib;
 Global ConfigAttribute notifier_never_attrib;
 Global ConfigAttribute notifier_fadeintime_attrib;
@@ -95,7 +95,7 @@ initAttribs() {
 	ConfigItem custom_page = Config.newItem("Winamp Modern", CUSTOM_PAGE);
 	ConfigItem custom_page_drawer = Config.newItem("Drawers", CUSTOM_PAGE_DRAWER);
 	ConfigItem custom_page_menubars = Config.newItem("Menus", CUSTOM_PAGE_MENUBARS);
-	ConfigItem custom_page_windowshade = Config.newItem("Main Windowshade Mode", CUSTOM_PAGE_WINDOWSHADE);
+	ConfigItem custom_page_archhade = Config.newItem("Main Windowshade Mode", CUSTOM_PAGE_WINDOWSHADE);
 	ConfigItem custom_page_viscmd = Config.newItem("Vis Buttons", CUSTOM_PAGE_VISCMD);
 	ConfigItem custom_page_notifier = Config.newItem("Notifications", CUSTOM_PAGE_NOTIFIER);
 	ConfigItem custom_page_songticker = Config.newItem("Songticker", CUSTOM_PAGE_SONGTICKER);
@@ -104,7 +104,7 @@ initAttribs() {
 
 	// load up the cfgpage in which we'll insert our custom page
 	ConfigItem custom_options_page = Config.getItem(CUSTOM_OPTIONSMENU_ITEMS);
-	ConfigItem custom_windows_page = Config.getItem(CUSTOM_WINDOWSMENU_ITEMS);
+	ConfigItem custom_arch_page = Config.getItem(CUSTOM_WINDOWSMENU_ITEMS);
 
 	// this creates a submenu for this attribute
 	ConfigAttribute submenuattrib = custom_options_page.newAttribute("Winamp Modern", "");
@@ -116,8 +116,8 @@ initAttribs() {
 	ConfigAttribute menubarssubmenu = custom_page.newAttribute("Menus", "");
 	menubarssubmenu.setData(CUSTOM_PAGE_MENUBARS);
 
-	ConfigAttribute windowshadesubmenu = custom_page.newAttribute("Main Windowshade Mode", "");
-	windowshadesubmenu.setData(CUSTOM_PAGE_WINDOWSHADE);
+	ConfigAttribute archhadesubmenu = custom_page.newAttribute("Main Windowshade Mode", "");
+	archhadesubmenu.setData(CUSTOM_PAGE_WINDOWSHADE);
 
 	ConfigAttribute viscmdsubmenu = custom_page.newAttribute("Vis Shortcut Button", "");
 	viscmdsubmenu.setData(CUSTOM_PAGE_VISCMD);
@@ -145,21 +145,21 @@ initAttribs() {
 	sep = custom_page.newAttribute("sep1", ""); sep.setData("-");
 	vis_detach_attrib = custom_page.newAttribute("Detach Vis Window", "0");
 	video_detach_attrib = custom_page.newAttribute("Detach Video Window", "0");
-	eq_visible_attrib = custom_windows_page.newAttribute("Equalizer\tAlt+G", "0");
-	albumart_visible_attrib = custom_windows_page.newAttribute("Album Art\tAlt+A", "1");
+	eq_visible_attrib = custom_arch_page.newAttribute("Equalizer\tAlt+G", "0");
+	albumart_visible_attrib = custom_arch_page.newAttribute("Album Art\tAlt+A", "1");
 
 	sep = custom_page.newAttribute("sep2", ""); sep.setData("-");
 	beatvisualization_attrib = custom_page.newAttribute("Enable Beat Visualization", "1");
 
-	windowshade_linkall_attrib = custom_page_windowshade.newAttribute("Link Position and Width", "1");
-	windowshade_linkposition_attrib = custom_page_windowshade.newAttribute("Link Position, Unlink Width", "0");
-	windowshade_linknone_attrib = custom_page_windowshade.newAttribute("Unlink Position and Width", "0");
+	archhade_linkall_attrib = custom_page_archhade.newAttribute("Link Position and Width", "1");
+	archhade_linkposition_attrib = custom_page_archhade.newAttribute("Link Position, Unlink Width", "0");
+	archhade_linknone_attrib = custom_page_archhade.newAttribute("Unlink Position and Width", "0");
 
 	viscmd_menu_attrib = custom_page_viscmd.newAttribute("Open Context Menu", "1");
 	viscmd_config_attrib = custom_page_viscmd.newAttribute("Open Configuration", "0");
 
 	notifier_always_attrib = custom_page_notifier.newAttribute("Show always", "0");
-	notifier_windowshade_attrib = custom_page_notifier.newAttribute("Show with windowshade and when minimized", "0");
+	notifier_archhade_attrib = custom_page_notifier.newAttribute("Show with archhade and when minimized", "0");
 	notifier_minimized_attrib = custom_page_notifier.newAttribute("Show only when minimized", "0");
 	notifier_never_attrib = custom_page_notifier.newAttribute("Never show", "1");
 	sep = custom_page_notifier.newAttribute("sep1", ""); sep.setData("-");
@@ -205,30 +205,30 @@ drawer_directionbottom_attrib.onDataChanged() {
   attribs_mychange = 0;
 }
 
-windowshade_linkall_attrib.onDataChanged() {
+archhade_linkall_attrib.onDataChanged() {
   if (attribs_mychange) return;
   NOOFF
   attribs_mychange = 1;
-  windowshade_linkposition_attrib.setData("0");
-  windowshade_linknone_attrib.setData("0");
+  archhade_linkposition_attrib.setData("0");
+  archhade_linknone_attrib.setData("0");
   attribs_mychange = 0;
 }
 
-windowshade_linkposition_attrib.onDataChanged() {
+archhade_linkposition_attrib.onDataChanged() {
   if (attribs_mychange) return;
   NOOFF
   attribs_mychange = 1;
-  windowshade_linkall_attrib.setData("0");
-  windowshade_linknone_attrib.setData("0");
+  archhade_linkall_attrib.setData("0");
+  archhade_linknone_attrib.setData("0");
   attribs_mychange = 0;
 }
 
-windowshade_linknone_attrib.onDataChanged() {
+archhade_linknone_attrib.onDataChanged() {
   if (attribs_mychange) return;
   NOOFF
   attribs_mychange = 1;
-  windowshade_linkall_attrib.setData("0");
-  windowshade_linkposition_attrib.setData("0");
+  archhade_linkall_attrib.setData("0");
+  archhade_linkposition_attrib.setData("0");
   attribs_mychange = 0;
 }
 
@@ -255,7 +255,7 @@ notifier_always_attrib.onDataChanged() {
   NOOFF
   attribs_mychange = 1;
   notifier_never_attrib.setData("0");
-  notifier_windowshade_attrib.setData("0");
+  notifier_archhade_attrib.setData("0");
   notifier_minimized_attrib.setData("0");
   attribs_mychange = 0;
 }
@@ -265,7 +265,7 @@ notifier_never_attrib.onDataChanged() {
   NOOFF
   attribs_mychange = 1;
   notifier_always_attrib.setData("0");
-  notifier_windowshade_attrib.setData("0");
+  notifier_archhade_attrib.setData("0");
   notifier_minimized_attrib.setData("0");
   attribs_mychange = 0;
 }
@@ -275,12 +275,12 @@ notifier_minimized_attrib.onDataChanged() {
   NOOFF
   attribs_mychange = 1;
   notifier_never_attrib.setData("0");
-  notifier_windowshade_attrib.setData("0");
+  notifier_archhade_attrib.setData("0");
   notifier_always_attrib.setData("0");
   attribs_mychange = 0;
 }
 
-notifier_windowshade_attrib.onDataChanged() {
+notifier_archhade_attrib.onDataChanged() {
   if (attribs_mychange) return;
   NOOFF
   attribs_mychange = 1;

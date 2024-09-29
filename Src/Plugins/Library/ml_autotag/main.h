@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_ML_AUTOTAG_MAIN_H
 #define NULLSOFT_ML_AUTOTAG_MAIN_H
 
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 #include "../../General/gen_ml/ml.h"
 #include "../nu/AutoWide.h"

@@ -2,7 +2,7 @@
 #pragma warning(disable:4530)
 #include "main.h"
 #include "ml_local.h"
-#include <windowsx.h>
+#include <archx.h>
 #include <time.h>
 #include <rpc.h>
 #include <assert.h>

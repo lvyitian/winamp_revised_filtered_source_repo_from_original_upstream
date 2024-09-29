@@ -2,7 +2,7 @@
 #define NULLSOFT_PROGRESSIVEHTTPREADER_H
 
 #include <api/service/svcs/svc_fileread.h>
-#include <windows.h>
+#include <arch.h>
 
 class ProgressiveHTTPReader : public svc_fileReader
 {

@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_CLOUDH
 #define NULLSOFT_CLOUDH
 
-#include <windows.h>
+#include <arch.h>
 
 #include "Feeds.h"
 #include "../nu/threadpool/api_threadpool.h"

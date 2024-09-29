@@ -28,7 +28,7 @@
 #include <avrt.h>
 #endif
 #include <mmsystem.h>
-#include <windows.h>
+#include <arch.h>
 #endif  // MPT_OS_WINDOWS
 
 #if !MPT_OS_WINDOWS

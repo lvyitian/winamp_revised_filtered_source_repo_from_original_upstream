@@ -1,5 +1,5 @@
 /*
-	wpathconv: static functions for windows file path conversions
+	wpathconv: static functions for arch file path conversions
 
 	This file is intended to be included in libcompat sources for internal use.
 	It is separated out to be able to split off the dlopen functions into a
@@ -50,7 +50,7 @@ static int wpath_need_elongation(wchar_t *wpath)
 		return 0;
 }
 
-/* Take any wide windows path and turn it into a path that is allowed
+/* Take any wide arch path and turn it into a path that is allowed
    to be longer than MAX_PATH, if it is not already. */
 static wchar_t* wlongpath(wchar_t *wpath)
 {
@@ -86,7 +86,7 @@ static wchar_t* wlongpath(wchar_t *wpath)
 	return wlpath;
 }
 
-/* Convert unix path to wide windows path, optionally marking
+/* Convert unix path to wide arch path, optionally marking
    it as long path if necessary. */
 static wchar_t* u2wlongpath(const char *upath)
 {

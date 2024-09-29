@@ -30,7 +30,7 @@
 ;
 ;  * * * N O T E * * * * * * N O T E * * * * * * N O T E * * * * * * N O T E * * * * * * N O T E * * * * * * N O T E * * *
 ; 
-; This function will NOT run on windows NT systems.  The function reads control registers
+; This function will NOT run on arch NT systems.  The function reads control registers
 ; which are protected under Windows NT.  If you attempt to run this function under Windows NT a
 ; protected mode access violation will be generated.
 ;

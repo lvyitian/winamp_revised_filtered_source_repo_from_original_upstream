@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_AUDIOOUTH
 #define NULLSOFT_AUDIOOUTH
 
-#include <windows.h>
+#include <arch.h>
 #include "../../../../Winamp/out.h"
 
 enum InitState

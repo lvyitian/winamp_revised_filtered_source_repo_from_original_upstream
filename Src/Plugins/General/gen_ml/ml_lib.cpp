@@ -16,7 +16,7 @@
 **
 */
 
-#include <windows.h>
+#include <arch.h>
 #include "ml.h"
 
 void freeRecord(itemRecord *p)

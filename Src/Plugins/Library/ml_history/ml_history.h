@@ -2,7 +2,7 @@
 #define ML_HISTORY_MAIN_H
 
 #include "main.h"
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include "..\..\General\gen_ml/gaystring.h"
 #include "..\..\General\gen_ml/config.h"

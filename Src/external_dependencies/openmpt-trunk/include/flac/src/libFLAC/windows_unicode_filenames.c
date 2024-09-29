@@ -34,8 +34,8 @@
 #endif
 
 #include <io.h>
-#include <windows.h>
-#include "share/windows_unicode_filenames.h"
+#include <arch.h>
+#include "share/arch_unicode_filenames.h"
 
 /*** FIXME: KLUDGE: export these syms for flac.exe, metaflac.exe, etc. ***/
 

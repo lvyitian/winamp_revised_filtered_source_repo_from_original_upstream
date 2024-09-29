@@ -1,6 +1,6 @@
 #include "ID3v1.h"
 #include "../nu/ns_wc.h"
-#include <windows.h>
+#include <arch.h>
 #include "config.h"
 #include <strsafe.h>
 

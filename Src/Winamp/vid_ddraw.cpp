@@ -191,7 +191,7 @@ bool DDrawVideoOutput::Paint(HWND hwnd)
 	ClientToScreen(hwnd, (LPPOINT)&r);
 	ClientToScreen(hwnd, ((LPPOINT)&r) + 1);
 
-	// transform coords from windows desktop coords (where 0,0==upper-left corner of box encompassing all monitors)
+	// transform coords from arch desktop coords (where 0,0==upper-left corner of box encompassing all monitors)
 	// to the coords for the monitor we're displaying on:
 	r.left -= m_mon_x;
 	r.right -= m_mon_x;

@@ -554,9 +554,9 @@ LRESULT Main_OnIPC(HWND hwnd, int which, WPARAM data)
 			if (data == 1) g_mm_optionsbase_adj++;
 			return g_mm_optionsbase_adj;
 		case IPC_ADJUST_FFWINDOWSMENUPOS:
-			if (data == -1) g_mm_ffwindowsbase_adj--;
-			if (data == 1) g_mm_ffwindowsbase_adj++;
-			return g_mm_ffwindowsbase_adj;
+			if (data == -1) g_mm_ffarchbase_adj--;
+			if (data == 1) g_mm_ffarchbase_adj++;
+			return g_mm_ffarchbase_adj;
 		case IPC_ADJUST_FFOPTIONSMENUPOS:
 			if (data == -1) g_mm_ffoptionsbase_adj--;
 			if (data == 1) g_mm_ffoptionsbase_adj++;
@@ -1208,7 +1208,7 @@ LRESULT Main_OnIPC(HWND hwnd, int which, WPARAM data)
 
 				EMBEDWND *pew = (EMBEDWND*)calloc(1, sizeof(EMBEDWND));
 				SetPropW(parms->me, EMBEDWND_PROPW, pew);
-				// this makes sure that JTFE won't mess with the windows
+				// this makes sure that JTFE won't mess with the arch
 				SetPropA(parms->me, "WnShdProcIgnore", (HANDLE)1);
 
 				// do this just incase it's missed off by the plug-in
@@ -1414,7 +1414,7 @@ LRESULT Main_OnIPC(HWND hwnd, int which, WPARAM data)
 		case IPC_GET_PREVIOUS_PLITEM:
 			return -1;
 		case IPC_IS_WNDSHADE:
-			if (data == -1) return config_windowshade;
+			if (data == -1) return config_archhade;
 			if (data == IPC_GETWND_PE) return config_pe_height == 14;
 			if (data == IPC_GETWND_EQ) return config_eq_ws;
 			return 0;

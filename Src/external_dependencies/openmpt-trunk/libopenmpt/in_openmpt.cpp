@@ -41,7 +41,7 @@
 #include <afxwin.h>
 #include <afxcmn.h>
 #endif // MPT_WITH_MFC
-#include <windows.h>
+#include <arch.h>
 #endif // _MFC_VER
 
 #ifdef LIBOPENMPT_BUILD_DLL
@@ -73,7 +73,7 @@ static const char * in_openmpt_string = "in_openmpt " OPENMPT_API_VERSION_STRING
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
-#include <windows.h>
+#include <arch.h>
 
 #ifdef UNICODE
 #define UNICODE_INPUT_PLUGIN

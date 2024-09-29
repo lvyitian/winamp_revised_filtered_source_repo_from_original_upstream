@@ -22,7 +22,7 @@
 #define THUMBTRACK_SNAPDIST 128
 
 
-#include <windows.h>
+#include <arch.h>
 
 // To complement the exisiting SB_HORZ, SB_VERT, SB_BOTH
 // scrollbar identifiers

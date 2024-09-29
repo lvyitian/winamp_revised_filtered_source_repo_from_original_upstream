@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_BACKGROUNDDOWNLOADERH
 #define NULLSOFT_BACKGROUNDDOWNLOADERH
 
-#include <windows.h>
+#include <arch.h>
 
 class BackgroundDownloader
 {

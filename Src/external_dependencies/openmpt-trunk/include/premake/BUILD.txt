@@ -34,7 +34,7 @@ BUILDING FROM THE REPOSITORY
  Where PLATFORM can be osx or linux.
  On Windows with Visual Studio use nmake:
 
-    $ nmake -f Bootstrap.mak windows
+    $ nmake -f Bootstrap.mak arch
 
  Or on Windows with MinGW use mingw32-make:
 

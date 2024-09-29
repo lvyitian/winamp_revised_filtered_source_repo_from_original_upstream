@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 
 // LGIVEN Mods 4-10-05
 #include "main.h"

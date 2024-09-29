@@ -1,6 +1,6 @@
 #pragma once
 #include <ocidl.h>
-#include <windows.h>
+#include <arch.h>
 
 class TempFileCOM : public IDispatch
 {

@@ -16,7 +16,7 @@
 #include "api__gen_ml.h"
 #include "../nu/CGlobalAtom.h"
 #include "../nu/trace.h"
-#include <windowsx.h>
+#include <archx.h>
 #include <strsafe.h>
 
 extern "C" winampGeneralPurposePlugin plugin;

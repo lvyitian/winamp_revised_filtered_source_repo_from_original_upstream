@@ -7,7 +7,7 @@
 
 #include <wtypes.h>
 
-#include <windows.h>
+#include <arch.h>
 #include "../nu/listview.h"
 #include "../nu/AutoLock.h"
 

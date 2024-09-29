@@ -294,7 +294,7 @@ int Skin_GetRegionPointList( int eq, int **points, int **counts )
 {
 	if ( !eq )
 	{
-		if ( config_windowshade )
+		if ( config_archhade )
 		{
 			*points = skin_rgn_points_ws;
 			*counts = skin_rgn_numpoints_ws;
@@ -432,7 +432,7 @@ static void Skin_LoadCursors( void )
 	}
 	cursor_loads[ N_CURSORS ] =
 	{
-		// main, non windowshade, start 0, end 8
+		// main, non archhade, start 0, end 8
 		{IDC_LRSCROLL,     L"VolBal.cur"},   // vol & bal
 		{IDC_LRSCROLL,     L"Posbar.cur"},   // pos
 		{IDC_NORMALCURSOR, L"WinBut.cur"},   //wshade
@@ -442,7 +442,7 @@ static void Skin_LoadCursors( void )
 		{IDC_MOVEMAIN,     L"TitleBar.cur"}, // titelbar
 		{IDC_LRSCROLL,     L"SongName.cur"},
 		{IDC_NORMALCURSOR, L"Normal.cur"},
-		// main, windowshade, start 9, end 14
+		// main, archhade, start 9, end 14
 		{IDC_NORMALCURSOR, L"WinBut.cur"},   //wshade
 		{IDC_NORMALCURSOR, L"Min.cur"},      //min
 		{IDC_LRSCROLL,     L"WSPosbar.cur"}, // seeker
@@ -456,7 +456,7 @@ static void Skin_LoadCursors( void )
 		{IDC_UDSCROLL,     L"PVScroll.cur"},
 		{IDC_RESIZE,       L"PSize.cur"},
 		{IDC_NORMALCURSOR, L"PNormal.cur"},
-		// playlist editor, windowshade, start 21 end 24
+		// playlist editor, archhade, start 21 end 24
 		{IDC_NORMALCURSOR, L"PWinBut.cur"},  //wshade
 		{IDC_DANGER,       L"PClose.cur"},   //close
 		{IDC_LRSCROLL,     L"PWSSize.cur"},  //size

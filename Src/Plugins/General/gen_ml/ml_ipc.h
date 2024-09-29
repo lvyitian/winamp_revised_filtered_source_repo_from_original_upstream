@@ -1,7 +1,7 @@
 #ifndef _WA_ML_IPC_H_
 #define _WA_ML_IPC_H_
 
-#include <windows.h>
+#include <arch.h>
 #include <stddef.h>
 
 //# IPC_LIBRARY_SENDTOMENU 

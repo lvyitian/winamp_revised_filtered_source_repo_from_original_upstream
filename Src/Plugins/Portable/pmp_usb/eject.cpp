@@ -1,6 +1,6 @@
 // this file almost totally copied from MSDN
 
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include <winioctl.h>
 

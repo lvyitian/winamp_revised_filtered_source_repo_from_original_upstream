@@ -86,7 +86,7 @@
 #define WIN32_LEAN_AND_MEAN  // compile only important Headerfiles
 #endif
 
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include "aspifunc.h"
 

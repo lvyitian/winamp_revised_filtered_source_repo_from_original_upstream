@@ -1,6 +1,6 @@
 #include "main.h"
 #include "ml_local.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "editquery.h"
 #include "../nde/NDE.h"
 #include "resource.h"

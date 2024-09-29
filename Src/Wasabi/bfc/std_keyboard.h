@@ -2,7 +2,7 @@
 #define NULLSOFT_WASABI_STD_KEYBOARD_H
 
 #ifdef _WIN32
-#include <windows.h>
+#include <arch.h>
 enum
 {
   STDKEY_SHIFT = VK_SHIFT,
@@ -23,7 +23,7 @@ enum
 enum
 {
   STDKEY_SHIFT = shiftKey,
-  STDKEY_ALT = cmdKey, // yes, I know the option call has "alt" written on it, but Mac programs use Apple key like windows Alt key
+  STDKEY_ALT = cmdKey, // yes, I know the option call has "alt" written on it, but Mac programs use Apple key like arch Alt key
   STDKEY_CONTROL = controlKey,
   
     STDKEY_UP = kUpArrowCharCode,

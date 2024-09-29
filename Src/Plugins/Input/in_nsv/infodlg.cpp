@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "api.h"
 #include "resource.h"
 

@@ -242,7 +242,7 @@ NUMTHREADS:=$(shell nproc)
 
 else ifeq ($(OS),Windows_NT)
 
-HOST=windows
+HOST=arch
 HOST_FLAVOUR=
 
 TOOLCHAIN_SUFFIX=

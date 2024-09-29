@@ -12,7 +12,7 @@
 
 /* TODO: benski> test this with a server that does not return content-length.  I bet we could get it to work */
 
-/* TODO: benski> on windows, we can use a single CreateFile HANDLE for both reading and writing
+/* TODO: benski> on arch, we can use a single CreateFile HANDLE for both reading and writing
                  and use ReadFile(..., &overlapped) to maintain two separate file pointers
 								 this should improve performance as they will share the same cache 
 								 _might_ have to use async I/O to get it to work (but use it synchronously by waiting on the handle after making the call
@@ -625,7 +625,7 @@ ns_error_t NXFileObject_ProgressiveDownloader::Read(void *buffer, size_t bytes_r
 	}
 
 	/* TODO: benski> if r < bytes_requested, then we need to flush the buffer.
-	on windows, we can use fflush(progressive_file_read)
+	on arch, we can use fflush(progressive_file_read)
 	on other platforms it's not guaranteed! */
 	size_t r = fread(buffer, 1, bytes_requested, progressive_file_read);
 	this->position += r;

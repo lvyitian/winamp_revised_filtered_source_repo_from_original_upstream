@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 //#include "../primo/obj_primo.h"
 
 // drive types

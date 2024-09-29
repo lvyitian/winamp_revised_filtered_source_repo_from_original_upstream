@@ -5,7 +5,7 @@
 #include "../../nx/nxfile.h"
 #include "../../nx/nxstring.h"
 
-/* windows implementation */
+/* arch implementation */
 #ifdef __cplusplus
 extern "C" {
 #endif

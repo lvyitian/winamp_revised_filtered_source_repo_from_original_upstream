@@ -103,7 +103,7 @@ static int _ve_amp(envelope_lookup *ve,
   float minV=ve->minenergy;
   float *vec=alloca(n*sizeof(*vec));
 
-  /* stretch is used to gradually lengthen the number of windows
+  /* stretch is used to gradually lengthen the number of arch
      considered prevoius-to-potential-trigger */
   int stretch=max(VE_MINSTRETCH,ve->stretch/2);
   float penalty=gi->stretch_penalty-(ve->stretch/2-VE_MINSTRETCH);

@@ -2227,7 +2227,7 @@ CURLcode Curl_setopt(struct Curl_easy *data, CURLoption option,
      * Set CA path info for SSL connection. Specify directory name of the CA
      * certificates which have been prepared using openssl c_rehash utility.
      */
-    /* This does not work on windows. */
+    /* This does not work on arch. */
     result = setstropt(&data->set.str[STRING_SSL_CAPATH_ORIG],
                        va_arg(param, char *));
 #else
@@ -2240,7 +2240,7 @@ CURLcode Curl_setopt(struct Curl_easy *data, CURLoption option,
      * Set CA path info for SSL connection proxy. Specify directory name of the
      * CA certificates which have been prepared using openssl c_rehash utility.
      */
-    /* This does not work on windows. */
+    /* This does not work on arch. */
     result = setstropt(&data->set.str[STRING_SSL_CAPATH_PROXY],
                        va_arg(param, char *));
 #else

@@ -61,7 +61,7 @@ class NS_NO_VTABLE nsIWebBrowserFocus : public nsISupports {
    * MANDATORY
    * deactivate() is a mandatory call that must be made to the browser
    * when the embedding application's window is deactivated *and* the
-   * browser area was the last thing in focus.  On non-windows platforms,
+   * browser area was the last thing in focus.  On non-arch platforms,
    * deactivate() should also be called when focus moves from the browser
    * to the embedding chrome.
    *

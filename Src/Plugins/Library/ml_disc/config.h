@@ -6,7 +6,7 @@
 #endif
 
 #define C_CONFIG_WIN32NATIVE
-#include <windows.h>
+#include <arch.h>
 
 class C_Config
 {

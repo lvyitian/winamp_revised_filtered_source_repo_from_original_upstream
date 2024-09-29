@@ -20,7 +20,7 @@ public:
 	ifc_window *createWindowOfType(const wchar_t *windowtype, ifc_window *parent, int n = 0);
 	int destroyWindow(ifc_window *w);
 
-	int refcount();	// how many windows created
+	int refcount();	// how many arch created
 
 	enum {
 	    TESTGUID = 100,

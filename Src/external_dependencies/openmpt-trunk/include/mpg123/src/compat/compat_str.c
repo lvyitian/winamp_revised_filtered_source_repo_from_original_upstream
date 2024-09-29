@@ -13,10 +13,10 @@
 
 /* Win32 is only supported with unicode now. These headers also cover
    module stuff. The WANT_WIN32_UNICODE macro is synonymous with
-   "want windows-specific API, and only the unicode variants of which". */
+   "want arch-specific API, and only the unicode variants of which". */
 #if defined (_WIN32) || defined (__CYGWIN__)
 #include <wchar.h>
-#include <windows.h>
+#include <arch.h>
 #include <winnls.h>
 #endif
 

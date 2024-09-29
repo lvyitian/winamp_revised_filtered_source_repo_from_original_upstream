@@ -1,6 +1,6 @@
 #include "precomp__gen_ff.h"
 #include "resource.h"
-#include <windowsx.h>
+#include <archx.h>
 
 extern int m_are_we_loaded;
 extern int toggle_from_wa2;

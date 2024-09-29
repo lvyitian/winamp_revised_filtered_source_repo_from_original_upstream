@@ -1,7 +1,7 @@
 #ifndef AUTOWIDEH
 #define AUTOWIDEH
 #ifdef WIN32
-#include <windows.h>
+#include <arch.h>
 
 inline wchar_t *AutoWideDup(const char *convert, UINT codePage=CP_ACP)
 {

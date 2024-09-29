@@ -109,7 +109,7 @@
 --
 
 	function suite.impLibExtensionUnmodified_OnCustomTargetExt()
-		system "windows"
+		system "arch"
 		kind "SharedLib"
 		targetextension ".mil"
 		i = prepare()

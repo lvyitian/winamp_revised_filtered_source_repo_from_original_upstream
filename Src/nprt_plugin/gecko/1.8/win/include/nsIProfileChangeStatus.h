@@ -24,13 +24,13 @@
     *   Called before a profile change is attempted. Typically,
     *   the application level observer will ask the user if
     *   he/she wants to stop all network activity, close all open
-    *   windows, etc. If the user says NO, the observer should
+    *   arch, etc. If the user says NO, the observer should
     *   call the subject's vetoChange(). If any observer does
     *   this, the profile will not be changed.
     *
     * "profile-change-teardown"
     *   All async activity must be stopped in this phase. Typically,
-    *   the application level observer will close all open windows.
+    *   the application level observer will close all open arch.
     *   This is the last phase in which the subject's vetoChange()
     *   method may still be called. 
     *   The next notification will be either 

@@ -30,7 +30,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef __NULLSOFT_DX9_PLUGIN_SHELL_DXCONTEXT_H__
 #define __NULLSOFT_DX9_PLUGIN_SHELL_DXCONTEXT_H__ 1
 
-#include <windows.h>
+#include <arch.h>
 #include "shell_defines.h"
 
 #ifdef _DEBUG

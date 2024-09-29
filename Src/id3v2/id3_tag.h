@@ -14,7 +14,7 @@
 #ifndef ID3LIB_TAG_H
 #define ID3LIB_TAG_H
 
-#include <windows.h>
+#include <arch.h>
 #include <wchar.h>
 #include <stdio.h>
 #include "id3_types.h"

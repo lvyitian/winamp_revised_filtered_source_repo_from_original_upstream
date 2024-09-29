@@ -301,7 +301,7 @@ int lHFB_GetStreamSampleSize(HFB_STREAM_HANDLE xStream);
 
 int lHFB_WhatsAhead(HFB_STREAM_HANDLE ,int ,int *);
 
-/* windows 95 dll system abstraction functions */
+/* arch 95 dll system abstraction functions */
 
 void lHFB_Setmalloc(
 	void *(*mallocFuncPtr)(unsigned int size)

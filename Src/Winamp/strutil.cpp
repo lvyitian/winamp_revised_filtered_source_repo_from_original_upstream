@@ -6,7 +6,7 @@
  ** Created:
  **/
 
-#include <windows.h>
+#include <arch.h>
 #include <Shlwapi.h>
 #include "strutil.h"
 

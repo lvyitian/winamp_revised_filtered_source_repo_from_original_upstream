@@ -127,7 +127,7 @@ extern _int cfg_uioptions_extendautoopacity;
 extern _bool cfg_options_usefontmapper;
 
 extern CustomOptionsMenuItems *optionsmenuitems;
-extern CustomWindowsMenuItems *windowsmenuitems;
+extern CustomWindowsMenuItems *archmenuitems;
 extern SkinTweaks *skintweaks;
 extern int disable_set_wa2_repeat;
 extern StringW eqmenustring;

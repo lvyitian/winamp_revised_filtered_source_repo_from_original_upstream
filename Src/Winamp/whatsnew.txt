@@ -188,7 +188,7 @@ Winamp 5.12
 * Fixed: [in_mp4] unicode metadata writing 
 * Fixed: [in_wm/in_dshow] mms:// streaming video playback
 * Fixed: [in_cdda] audio cd bitrate display
-* Fixed: [in_cdda] Sonic engine on 64bit windows (thanks STanger)
+* Fixed: [in_cdda] Sonic engine on 64bit arch (thanks STanger)
 * Fixed: lots of small bugs ...
 * Updated: Sonic CD Engine 2.2.50
 * Updated: libmp4v2 1.4.1
@@ -352,7 +352,7 @@ Winamp 5.04:
 * added screenshots of classic/modern mode in installer
 * fixed MP3 bitrate calculation (in_mp3 was reporting incorrect lengths on some MP3s)
 * fixed incorrect length reporting on long WMA files
-* better fix for pledit/video windows showing up at startup when minimized
+* better fix for pledit/video arch showing up at startup when minimized
 * fixed db text bug when moving EQ sliders
 * upgraded MP3 encoding to LAME v3.96
 * fixed crash in WMA playback when using WMA v8 codecs
@@ -384,7 +384,7 @@ Winamp 5.04:
 * added escaping of ", ', [ and ] in ml queries : uses %HH where HH is the hex char code (uses %% for '%')
 * added sdk support for multiple audio/video tracks in video input plugins (see wa_ipc.h for ITrackSelector class)
 * added multiple audio avi support (right click video window, select "Audio Tracks")
-* fixed multimonitor problem when toggling a windowshade on one monitor while playing a fullscreen video on the other
+* fixed multimonitor problem when toggling a archhade on one monitor while playing a fullscreen video on the other
 * added ML_IPC_EDITQUERY and ML_IPC_EDITVIEW
 * fixed pledit drawing bug under winxp/cleartype
 * fixed crash in id3 reading of zero byte files
@@ -398,12 +398,12 @@ Winamp 5.04:
 * made ui:preferences global hotkey open the prefs to the previously opened page
 * fixed a few preferences cosmetic 'bugs'
 * modern skin updates :
-  - fixed windowshade repeat-track button state
+  - fixed archhade repeat-track button state
   - fixed scaling docked toolbars
   - fixed 5.03 assert on deletion of newGroupAsLayout()
-  - fixed floating video windows coordinates dropping to 0,0
+  - fixed floating video arch coordinates dropping to 0,0
   - fixed auto opaque when layouts are loaded already docked as toolbars
-  - fixed fadein/fadeout not used on notification window when linking all normal windows' 
+  - fixed fadein/fadeout not used on notification window when linking all normal arch' 
     alpha
   - fixed docked toolbars moving when some other window docked to them switches to an 
     alternative layout
@@ -423,7 +423,7 @@ Winamp 5.04:
     resets to 4:3 proportions
   - fixed docking bug when using snapadjustleft
   - fixed buggy calculation of time display default width conflicting with right text alignment
-  - fixed windows moving after changing screen resolution
+  - fixed arch moving after changing screen resolution
   - fixed rare always on top desync with classic skins
 
 Winamp 5.03:
@@ -448,7 +448,7 @@ Winamp 5.03:
 * updated VP6 video decoder to latest VP6.2 code
 * fixed crash when launching winamp with very long filenames from explorer
 * made registration dialog to appear in Explorer's taskbar when installing pro version
-* fixed pledit/video windows showing up at startup when minimized
+* fixed pledit/video arch showing up at startup when minimized
 * modern skins updates :
   - winamp modern skin now uses a 3 state repeat button: no repeat/repeat all/repeat track
   - added appplication desktop toolbars capabilities for layouts, add 
@@ -458,7 +458,7 @@ Winamp 5.03:
     of course we continue to support 0.8 to 1.1)
   - (very) limited maki debugger (for now you can bring it up with invokeDebugger(); in a 
     script then use 'x' to continue and 'i' to trace into)
-  - fixed obscure capture problem with dragging windows
+  - fixed obscure capture problem with dragging arch
   - fixed rectrgn being forced to 1 in xml xuiobject buttons that are originally imageless
   - fixed hilited state not on after clicking on buttons while the mouse stays in area
   - fixed scripted onEnterArea/onLeaveArea not being always correctly called while mouse 
@@ -569,7 +569,7 @@ Winamp 5.0rc11:
 
 Winamp 5.0rc10:
 * modern skin updates
-  - fixed coming back from windowshade closes video drawer
+  - fixed coming back from archhade closes video drawer
   - fixed user settings path assert
   - added 6 color themes (coagulated, peachy, bricks set, rosemary, blueberry and cream, qwayke)
 * added media library plugins configuration, support for type column
@@ -660,15 +660,15 @@ Winamp 5.0rc0 11/16/03
   - fixed lack of shift/ctrl + next/play/stop/prev
   - fixed system.floattostring ignoring its ndigits param
   - fixed potential crash in text widgets that change display param dynamically
-  - fixed locked windows going offscreen (like nonstep avs) made then ignore offscreen since they are locked to a layout that checks its own position
+  - fixed locked arch going offscreen (like nonstep avs) made then ignore offscreen since they are locked to a layout that checks its own position
   - added nooffscreencheck="1" for layouts in case offscreen check needs to be disabled for a window
   - fixed assert in region
   - fixed crash color extraction from undefined container
   - fixed crash when not specifying a band parameter to an eqband object
   - fixed buttons onleavearea detection with nonstandard scales
-  - fixed notifier not showing minimized when "show in windowshade and when minimized" is on
+  - fixed notifier not showing minimized when "show in archhade and when minimized" is on
   - fixed freeform dropdownlists not closing
-  - fixed crash when a window is destroyed while moving all windows docked
+  - fixed crash when a window is destroyed while moving all arch docked
   - fixed system.playfile (base dir changed, has to be relative to skin in wa5, so filename is tweaked if it starts with "skin\nameofskin")
 
 
@@ -710,7 +710,7 @@ Winamp 5.0beta4:
   - fixed custom opacity using window's opacity as a starting point (and reseting to it on cancel) when opacity is linked
   - fixed invisible window when loading desktopalpha skin with global transparency on
   - made jpgloading external
-  - fixed ctrl+f4 on main window or on pure wasabi windows (with no pl/ml/video, etc, ie: colorthemes) bringing up wa2 window
+  - fixed ctrl+f4 on main window or on pure wasabi arch (with no pl/ml/video, etc, ie: colorthemes) bringing up wa2 window
   - fixed notifier "disable in fullscreen"
   - fixed 0db/-12db not always working
   - fixed eq showing last modern skin eq settings after going back to classic and changing them
@@ -720,7 +720,7 @@ Winamp 5.0beta4:
   - fixed equalizer menu entry being checked after closing config drawer without animation
   - fixed blank notifier when linked autoopacity on
   - fixed switching desktopalpha on a window that previously had forced transparency flag
-  - fixed clicking eq button on windowshade not repainting drawer when transparency on and eq wasn't the previously selected tab in config drawer and drawer animation is off (phew!)
+  - fixed clicking eq button on archhade not repainting drawer when transparency on and eq wasn't the previously selected tab in config drawer and drawer animation is off (phew!)
 * updated a lot of little menu shit
 * made better handling of no media in library
 * renamed a lot of directories to folders, library to media library.
@@ -791,9 +791,9 @@ Winamp 5.0beta4 11/10/03:
 Winamp 5.0beta3 11/07/03:
 * modern skin updates :
   - new skin drop
-  - fixed winamp3 skins windowshade not being used :
-    - prevented use of autoclose="1" in < 1.0 skins (wasn't doing anything in 0.8 but breaks windowshades if used in 1.0)
-    - added autoavailable="0" to drawer's wndholder params (should _not_ be used in floating component windows unless you know what you are doing)
+  - fixed winamp3 skins archhade not being used :
+    - prevented use of autoclose="1" in < 1.0 skins (wasn't doing anything in 0.8 but breaks archhades if used in 1.0)
+    - added autoavailable="0" to drawer's wndholder params (should _not_ be used in floating component arch unless you know what you are doing)
   - fixed maddoubleclicks on switch to vis/video spawning undocked wnd
   - fixed vertical componentbucket sizes stuff, added functions to use as custom bucket
   - fixed freetype wrapped text draw
@@ -829,7 +829,7 @@ Winamp 5.0beta3 11/07/03:
   - fixed double click in songtitle not cancelling text grab
   - added fullscreen flag for vis to send to winamp so that script can query if something (video or vis) is fullscreen, modified avs & milkdrop accordingly
   - linked auto100% opacity when layouts opacity is linked
-  - added link all windows opacity (and auto100%) & scale, added custom opacity dialog
+  - added link all arch opacity (and auto100%) & scale, added custom opacity dialog
   - made auto100% hold time configurable
   - made another mode where scale lock is just ignored, and everything is locked
   - fixed notifier being in the menu (added nomenu param to containers)
@@ -886,7 +886,7 @@ Winamp 5.0beta2 10/23/03:
   - added popup menu on song title text
   - fixed how menus would overlap menubar buttons when skin was at the bottom of the screen
   - added "animate config drawer" in skin option menus
-  - fixed saving/restoring of classic main window and eq status, and classic pledit windowshade and size
+  - fixed saving/restoring of classic main window and eq status, and classic pledit archhade and size
   - fixed showing classic skins at startup when loading modern skin
   - even newer skin drop
   - added "temporary" to scale menu so that this locked scale thing is a bit more obvious
@@ -900,7 +900,7 @@ Winamp 5.0beta2 10/23/03:
   - added checkbox for using operating system font rendering
   - gave a few fontsizes to bitmapfont text objects so overrides aren't all the same size
   - fixed crashbugs when not finding ttf fonts
-  - fixed empty playlist when starting with previously windowshaded playlist in classic mode but no xnf data
+  - fixed empty playlist when starting with previously archhaded playlist in classic mode but no xnf data
   - fixed crash when trying to update stuff while switching skin
   - fixed crossfader time going back to 0
   - added right to left ttf rendering
@@ -908,7 +908,7 @@ Winamp 5.0beta2 10/23/03:
   - updated to freetype 2.1.5, fixes crash, #ifdefed out some unused stuff from it
   - fixed ctrl+w + alt+g guru
   - fixed alt+tab while resizing player
-  - fixed player leaving a resize trail when aborting resize above autorefresh-on-alt+tab windows
+  - fixed player leaving a resize trail when aborting resize above autorefresh-on-alt+tab arch
   - removed small kerning hack due to freetype 2.1.5 having much better native kerning
   - fixed equalizer xnf entry getting duplicated over and over
   - fixed small leak in font loader
@@ -917,7 +917,7 @@ Winamp 5.0beta2 10/23/03:
   - added ability to not override bitmap font with ttf or use altfont on 7-bits character strings
   - fixed disabled widgets states
   - fixed typo in about box :)
-  - added ctrl+tab / ctrl+shift+tab to cycle thru windows
+  - added ctrl+tab / ctrl+shift+tab to cycle thru arch
 * made playlist showing deferred so startups looked cleaner with modern skins
 * fixed crash on skindir change in prefs
 * added "adding to burner" status window when using sendto/drag&drop to burner, for reassuring
@@ -947,7 +947,7 @@ Winamp 5.0beta2 10/23/03:
 * made modern skin extracted by default, for speed
 * improved config dialogs for aac/mp3
 * made info viewer activated by button instead of slider 
-* made internet radio/tv page handle resize better (search doesnt get screwed on small windows)
+* made internet radio/tv page handle resize better (search doesnt get screwed on small arch)
 * cleaned up some labeling places
 * cleaned up ripping and burning UIs more
 * fixed library prefs radio buttons
@@ -985,7 +985,7 @@ Winamp 5.0beta 10/13/03
   - removed move="1" for song title display on main window normal and shade modes
   - fixed click on beatvis that would sometime fail to toggle active status
   - added gammagroup xml param to vis objects
-  - made switching to windowshade open undocked video & vis when video is playing or vis is visible, docks back when coming back to normal mode
+  - made switching to archhade open undocked video & vis when video is playing or vis is visible, docks back when coming back to normal mode
 * made library able to update info on files that dont support tag writing when tag writing is checked
 * fixed burning bug when using certain .WAV output settings
 * enabled burning on multiple devices simultaneously
@@ -1009,7 +1009,7 @@ Winamp 5.a10 10/10/03:
   - fixed right key in menubar when menu item selected is a submenu, fixed left when in a submenu, fixed right after hovering on an submenu item, phew!
   - fixed left/right keys seeking while in a menubar
   - fixed guru due to custom checkbox accessing nonexisting layouts because they are now dynamic, made them use configattributes
-  - made vis & video open undocked when in windowshade mode
+  - made vis & video open undocked when in archhade mode
 
 Winamp 5.0a9 10/08/03:
 * modern skin updates :
@@ -1024,11 +1024,11 @@ Winamp 5.0a9 10/08/03:
   - added "equalizer" to popups, automatically opens the drawer and switches to the tab
   - added modern skin submenu to main popup menu/options
   - added attrib page for adding items to View menu via script (also show up in main popup)
-  - fixed auto move of docked layouts when switching to windowshade when original layout has snapadjust values
+  - fixed auto move of docked layouts when switching to archhade when original layout has snapadjust values
   - added action PE_ListOfLists for winshade playlist editors
   - added about box guid for lightning bolt click ({8DDA9D48-B915-4320-A888-831A1D837516})
   - added unlink="1" for layouts to remember their own position/size regardless of linkwidth/linkheight
-  - added windowshade for main & pledit, whoohoo Sven!
+  - added archhade for main & pledit, whoohoo Sven!
   - fixed checkmark for container entries in menu
   - added automatic discarding of unused bitmaps in memory, drops usage by 2 to 7mb (depending on skin) when not interacting with the ui
   - fixed huge leak in ttf rendering, that one was leaking 300k/s when the song title was scrolling ! uh oh...
@@ -1038,7 +1038,7 @@ Winamp 5.0a9 10/08/03:
   - fixed small leak in gammamgr
   - reduced memory usage by ~3mb when using winamp modern skin.
   - fixed shutdown sequence
-  - fixed drawer locking up in closed position after detaching both windows via the menus
+  - fixed drawer locking up in closed position after detaching both arch via the menus
   - fixed vis or video poping up when clicking detach menu option while wnd is hidden
   - added option to bypass user defined drawer direction when window is going to get partially hidden after opening the drawer
   - added ability to set cfgattribute value "-" to make a separator in the custom skin option menus 
@@ -1409,7 +1409,7 @@ Winamp 2.7:
   * new directsound output plug-in (very charming)
   * many optimizations and bugfixes to AVS - this version is quite fast.
   * faster playlist loading, faster playlist editting on large lists
-  * windowshade visualization now has spectrum analyzer instead of (crappy)
+  * archhade visualization now has spectrum analyzer instead of (crappy)
     VU meter.
   * improved that old issue of what happens when you delete the playing file 
     in the playlist.
@@ -1450,7 +1450,7 @@ Winamp 2.63:
     files into WMA!
 
 Winamp 2.62:
-  * Generic dialog processing message loop so now TAB/etc... works in plugins dialog windows
+  * Generic dialog processing message loop so now TAB/etc... works in plugins dialog arch
   * Fix to Mjuice (memory leak that caused the full install to puke after many hours)
   * Winamp Visualization Studio updates.
   * Installer bitmap updates
@@ -1660,7 +1660,7 @@ What's new in Winamp 2.03?
   * Improved shift selection in playlist editor
   * Better litestep support (litestep options in preferences/options, too)
   * Fixed a number of midi/cdda related bugs
-  * Added WM_GETMINMAXINFO handler, to improve maximize handling and windowshade
+  * Added WM_GETMINMAXINFO handler, to improve maximize handling and archhade
   * Fixed some stupid (but very annoying) window region related bugs. 
   * Nitrane 1.22, for better sounding MP3 playback
   * New 'No Playlist Advance' option for DJs and people who like to jump
@@ -1678,9 +1678,9 @@ What's new in Winamp 2.02?
   * Ported some code to C in in_mod, for the upcoming 2.02 AXP build :)
  
 What's new in Winamp 2.01?
-  * made playlist editor use windows font.. resizable and skinnable
+  * made playlist editor use arch font.. resizable and skinnable
   * fixed a silly little hide-mainwindow-while-minimized-bug
-  * added up/down arrow (and mousewheel scroll) to plwindowshade
+  * added up/down arrow (and mousewheel scroll) to plarchhade
   * fixed silly position bar moving bug
   * made EQ's 0-lock more accurate
   * made title-scroll option 
@@ -1771,7 +1771,7 @@ What's new in Winamp 1.91?
   * mod decoder: fixed priority setting bug
   * mod decoder: added better 8 bit support
   * mod decoder: new 'if title is empty' logic.. 
-  * mod decoder: added support  for windowshade vu
+  * mod decoder: added support  for archhade vu
   * mod decoder: added .669 support
   * mod decoder: new output system (optimized)
   * mod decoder: added waveform dsp plugin support
@@ -1861,7 +1861,7 @@ What's new in Winamp 1.69?
 What's new in Winamp 1.666?
   * The Clutterbar.
   * Windowshade button 
-  * Seek-in-windowshade mode 
+  * Seek-in-archhade mode 
   * Added desktop icon adding to preferences
   * Added a nifty hq control on main interface. 
   * New ID3 tags 
@@ -1877,7 +1877,7 @@ What's new in Winamp 1.666?
   * Changed format of seeking display status 
   * Added nifty "add to playlist from explorer" (more or less) option to 
     prefs/initial setup 
-  * Better VU meter with peak detection in windowshade 
+  * Better VU meter with peak detection in archhade 
   * More stable threading
   * Improved command line handling (supports relative pathnames better) 
   * Alternate volume setting mode (for some soundcards)
@@ -1932,7 +1932,7 @@ What's new in Winamp 1.6 BETA?
         be pretty useful. 
   * Right-click context menus in main interface 
   * Improved ID3 tag editor w/ MPEG info display 
-  * VU meter and eject button in windowshade mode 
+  * VU meter and eject button in archhade mode 
   * Increased visualization accuracy 
   * Faster seeking 
   * More reliable HTTP streaming 

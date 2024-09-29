@@ -116,7 +116,7 @@ int lha_arch_utime(char *filename, unsigned int timestamp);
  * @return                   Non-zero if set successfully.
  */
 
-int lha_arch_set_windows_timestamps(char *filename,
+int lha_arch_set_arch_timestamps(char *filename,
                                     uint64_t creation_time,
                                     uint64_t modification_time,
                                     uint64_t access_time);

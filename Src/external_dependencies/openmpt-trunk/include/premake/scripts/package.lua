@@ -22,7 +22,7 @@
 
 	local allowedCompilers = {}
 
-	if os.ishost("windows") then
+	if os.ishost("arch") then
 		allowedCompilers = {
 			"vs2019",
 			"vs2017",
@@ -102,7 +102,7 @@
 	local pkgExt = ".zip"
 	if kind == "binary" then
 		pkgName = pkgName .. "-" .. os.host()
-		if not os.istarget("windows") then
+		if not os.istarget("arch") then
 			pkgExt = ".tar.gz"
 		end
 	else
@@ -204,7 +204,7 @@ if kind == "source" then
 			if table.contains(perOSActions, action.trigger) then
 
 				local osList = {
-					{ "windows", },
+					{ "arch", },
 					{ "unix", "linux" },
 					{ "macosx", },
 					{ "bsd", },
@@ -264,7 +264,7 @@ if kind == "binary" then
 	local addCommand = "git add -f premake5%s"
 	local archiveCommand = "git archive --format=%s -o ../../../%s%s stash@{0} -- ./premake5%s"
 
-	if os.ishost("windows") then
+	if os.ishost("arch") then
 		addCommand = string.format(addCommand, ".exe")
 		archiveCommand = string.format(archiveCommand, "zip -9", pkgName, pkgExt, ".exe")
 	else

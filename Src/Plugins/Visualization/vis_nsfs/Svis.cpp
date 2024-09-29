@@ -1,7 +1,7 @@
 //#define PLUGIN_NAME "Nullsoft Tiny Fullscreen"
 #define PLUGIN_VERSION "v2.16"
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <ddraw.h>
 #include "resource.h"

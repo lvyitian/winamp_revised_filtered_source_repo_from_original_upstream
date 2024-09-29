@@ -20,7 +20,7 @@ newaction {
 
 	-- Visual Studio always uses Windows path and naming conventions
 
-	targetos = "windows",
+	targetos = "arch",
 	toolset  = "msc-v143",
 
 	-- The capabilities of this action

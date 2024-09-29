@@ -145,7 +145,7 @@ void restoreAOT()
 		// but for some reason I cannot figure out, it does not work unless WA has been clicked away and back in focus.
 		// if that hasn't been done, then reseting the flag on each window is necessary.
 		// now for the fun part: the above is true for classic skin, but in modern skins, reseting the flag
-		// on those windows actually prevents the player from coming back ONTOP! FUN!
+		// on those arch actually prevents the player from coming back ONTOP! FUN!
 		if (GetParent(hPLWindow) == NULL)
 		{
 			SetWindowPos(hPLWindow, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_NOOWNERZORDER);

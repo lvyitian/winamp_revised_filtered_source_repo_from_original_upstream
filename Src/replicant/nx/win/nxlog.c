@@ -1,7 +1,7 @@
 #include "nxlog.h"
 #include <stdio.h>
 #include <stdarg.h>
-//#include <windows.h>
+//#include <arch.h>
 
 static char *nx_log_tag = "libreplicant";
 #define MAX_FMT_SIZE 512

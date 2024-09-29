@@ -12,7 +12,7 @@
 namespace cpr {
 class HttpsServer : public AbstractServer {
   private:
-    // We don't use fs::path here, as this leads to problems using windows
+    // We don't use fs::path here, as this leads to problems using arch
     const std::string baseDirPath;
     const std::string sslCertFileName;
     const std::string sslKeyFileName;

@@ -45,8 +45,8 @@ jobs:
       with:
         name: premake-macosx-${{ matrix.platform }}
         path: bin/${{ matrix.config }}/
-  windows:
-    runs-on: windows-latest
+  arch:
+    runs-on: arch-latest
     strategy:
       matrix:
         config: [debug, release]
@@ -57,7 +57,7 @@ jobs:
     - name: Build
       run: |
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x86_amd64
-        nmake -f Bootstrap.mak MSDEV=vs2019 windows-msbuild PLATFORM=${{ matrix.platform }} CONFIG=${{ matrix.config }}
+        nmake -f Bootstrap.mak MSDEV=vs2019 arch-msbuild PLATFORM=${{ matrix.platform }} CONFIG=${{ matrix.config }}
       shell: cmd
     - name: Test
       run: bin\${{ matrix.config }}\premake5 test --test-all
@@ -69,5 +69,5 @@ jobs:
       if: matrix.config == 'release'
       uses: actions/upload-artifact@v2
       with:
-        name: premake-windows-${{ matrix.platform }}
+        name: premake-arch-${{ matrix.platform }}
         path: bin\${{ matrix.config }}\

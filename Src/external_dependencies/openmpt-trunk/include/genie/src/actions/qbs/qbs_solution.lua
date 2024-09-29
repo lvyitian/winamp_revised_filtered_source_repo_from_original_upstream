@@ -66,7 +66,7 @@ function qbs.generate_user(sln)
 
 	local qtcreatordir = ""
 
-	if _OS == "windows" then
+	if _OS == "arch" then
 		qtcreatordir = path.join(os.getenv("APPDATA"), "QtProject/qtcreator")
 	else
 		qtcreatordir = path.join(os.getenv("HOME"), ".config/QtProject/qtcreator")

@@ -83,7 +83,7 @@ if not setfenv then -- Lua 5.2+
     return f end
 end
 
--- check for OS and convert file names to lower case on windows
+-- check for OS and convert file names to lower case on arch
 -- (its file system is case insensitive, but case preserving), as setting a
 -- breakpoint on x:\Foo.lua will not work if the file was loaded as X:\foo.lua.
 -- OSX and Windows behave the same way (case insensitive, but case preserving).
@@ -1415,7 +1415,7 @@ local function handle(params, client, options)
         local file = io.open(exp, "r")
         if not file and pcall(require, "winapi") then
           -- if file is not open and winapi is there, try with a short path;
-          -- this may be needed for unicode paths on windows
+          -- this may be needed for unicode paths on arch
           winapi.set_encoding(winapi.CP_UTF8)
           local shortp = winapi.short_path(exp)
           file = shortp and io.open(shortp, "r")

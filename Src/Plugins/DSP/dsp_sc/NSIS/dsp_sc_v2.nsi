@@ -24,7 +24,7 @@ BrandingText "${NAME} v${VERSION} Build ${BUILD}"
 InstallDirRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Winamp" "UninstallString"
 
 ; The file to write
-OutFile "shoutcast-dsp-2-4-2-windows.exe"
+OutFile "shoutcast-dsp-2-4-2-arch.exe"
 
 ; The default installation directory
 InstallDir "$PROGRAMFILES32\Winamp"

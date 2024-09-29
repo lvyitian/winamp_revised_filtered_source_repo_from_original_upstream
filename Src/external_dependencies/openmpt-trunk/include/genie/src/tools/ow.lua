@@ -5,7 +5,7 @@
 --
 
 	premake.ow = { }
-	premake.ow.namestyle = "windows"
+	premake.ow.namestyle = "arch"
 
 
 --

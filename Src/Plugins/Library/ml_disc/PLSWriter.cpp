@@ -1,5 +1,5 @@
 #include "PLSWriter.h"
-#include <windows.h>
+#include <arch.h>
 
 PLSWriter::PLSWriter() : numEntries(0), entryUsed(0)
 {

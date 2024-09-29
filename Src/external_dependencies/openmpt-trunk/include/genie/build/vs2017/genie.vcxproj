@@ -39,14 +39,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\..\bin\windows\</OutDir>
+    <OutDir>..\..\bin\arch\</OutDir>
     <IntDir>obj\Release\</IntDir>
     <TargetName>genie</TargetName>
     <TargetExt>.exe</TargetExt>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\bin\windows\</OutDir>
+    <OutDir>..\..\bin\arch\</OutDir>
     <IntDir>obj\Debug\</IntDir>
     <TargetName>genie</TargetName>
     <TargetExt>.exe</TargetExt>

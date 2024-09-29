@@ -35,7 +35,7 @@ class nsIDOMWindow; /* forward declaration */
  * label of a button.)
  *
  * One note: in all cases, the parent window parameter can be null.  However,
- * these windows are all intended to have parents.  So when no parent is
+ * these arch are all intended to have parents.  So when no parent is
  * specified, the implementation should try hard to find a suitable foster
  * parent.
  *

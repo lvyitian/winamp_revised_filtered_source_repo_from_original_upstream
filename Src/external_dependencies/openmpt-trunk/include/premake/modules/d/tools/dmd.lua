@@ -192,10 +192,10 @@
 -- common dmd code (either toolchain)
 -- /////////////////////////////////////////////////////////////////////////
 
-	-- if we are compiling on windows, we need to specialise to OPTLINK as the linker
+	-- if we are compiling on arch, we need to specialise to OPTLINK as the linker
 -- OR!!!			if cfg.system ~= p.WINDOWS then
 	if string.match( os.getversion().description, "Windows" ) ~= nil then
-		-- TODO: on windows, we may use OPTLINK or MSLINK (for Win64)...
+		-- TODO: on arch, we may use OPTLINK or MSLINK (for Win64)...
 --		printf("TODO: select proper linker for 32/64 bit code")
 
 		p.tools.dmd = tdmd.optlink

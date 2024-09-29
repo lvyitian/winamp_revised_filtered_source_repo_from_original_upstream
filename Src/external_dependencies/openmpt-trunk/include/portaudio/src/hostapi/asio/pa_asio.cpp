@@ -87,7 +87,7 @@
 //#include <values.h>
 #include <new>
 
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 
 #include "portaudio.h"
@@ -126,7 +126,7 @@
 */
 /*
 #include <math.h>
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 */
 /*

@@ -1,8 +1,8 @@
 #ifndef NULLSOFT_MAINH
 #define NULLSOFT_MAINH
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <shlwapi.h>
 #include "..\..\General\gen_ml/ml.h"
 #include "../nu/MediaLibraryInterface.h"

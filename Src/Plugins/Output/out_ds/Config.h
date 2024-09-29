@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_OUT_DS_CONFIG_H
 #define NULLSOFT_OUT_DS_CONFIG_H
 
-#include <windows.h>
+#include <arch.h>
 #include "ds_main.h"
 
 class DS2config	//config struct to pass to DS2::create(); if create messes up, this struct also returns error message

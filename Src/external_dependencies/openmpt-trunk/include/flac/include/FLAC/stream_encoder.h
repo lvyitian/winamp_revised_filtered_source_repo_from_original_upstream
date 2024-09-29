@@ -932,14 +932,14 @@ FLAC_API FLAC__bool FLAC__stream_encoder_set_loose_mid_side_stereo(FLAC__StreamE
  * Specifying \c partial_tukey or \c punchout_tukey works a little
  * different. These do not specify a single apodization function, but
  * a series of them with some overlap. partial_tukey specifies a series
- * of small windows (all treated separately) while punchout_tukey
- * specifies a series of windows that have a hole in them. In this way,
+ * of small arch (all treated separately) while punchout_tukey
+ * specifies a series of arch that have a hole in them. In this way,
  * the predictor is constructed with only a part of the block, which
  * helps in case a block consists of dissimilar parts.
  *
  * The three parameters that can be specified for the functions are
  * n, ov and P. n is the number of functions to add, ov is the overlap
- * of the windows in case of partial_tukey and the overlap in the gaps
+ * of the arch in case of partial_tukey and the overlap in the gaps
  * in case of punchout_tukey. P is the fraction of the window that is
  * tapered, like with a regular tukey window. The function can be
  * specified with only a number, a number and an overlap, or a number
@@ -955,7 +955,7 @@ FLAC_API FLAC__bool FLAC__stream_encoder_set_loose_mid_side_stereo(FLAC__StreamE
  * partial_tukey(3) and punchout_tukey(3), specifying subdivide_tukey(5)
  * equivalently adds partial_tukey(4), punchout_tukey(4), partial_tukey(5)
  * and punchout_tukey(5). To be able to reuse data as much as possible,
- * the tukey taper is taken equal for all windows, and the P specified is
+ * the tukey taper is taken equal for all arch, and the P specified is
  * applied for the smallest used window. In other words,
  * subdivide_tukey(2/0.5) results in a taper equal to that of tukey(0.25)
  * and subdivide_tukey(5) in a taper equal to that of tukey(0.1). The

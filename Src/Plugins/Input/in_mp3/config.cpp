@@ -1,7 +1,7 @@
 #include "main.h"
 #include <shlobj.h>
 #include <commctrl.h>
-#include <windows.h>
+#include <arch.h>
 #include "../winamp/wa_ipc.h"
 #include "config.h"
 #include "api__in_mp3.h"

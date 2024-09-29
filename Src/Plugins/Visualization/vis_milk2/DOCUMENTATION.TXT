@@ -97,11 +97,11 @@ Required software
     1. Nullsoft Winamp 2.X (~1 MB)
           http://www.winamp.com/
     2. Microsoft DirectX 8.0+ - (~11 MB)
-          http://www.microsoft.com/windows/directx/
+          http://www.microsoft.com/arch/directx/
     3. Microsoft Developer Studio (Visual C++) 6.0
           (a retail product)
     4. Microsoft DirectX 8.0 SDK (Software Development Kit) - (~173 MB)
-          http://www.microsoft.com/windows/directx/
+          http://www.microsoft.com/arch/directx/
           (then click the 'msdn' icon in the lower right, under 
           "info for developers")
           *** NOTE that you can use a later SDK, such as 8.1b; but if you
@@ -707,7 +707,7 @@ Version History
         'integrate with winamp' checkbox and the plugin [when running in 
         windowed mode] will be skinned just like Winamp.  The integrated 
         window works just like any other Winamp window; it docks with 
-        other windows, CTRL+TAB cycles between them all, and lots of new 
+        other arch, CTRL+TAB cycles between them all, and lots of new 
         keys work (J, L, CTRL+P, ALT+E, etc.).
     -fixed bug (or error in judgment?) where fake fullscreen mode window 
         would actually run at the *bottom* of the Z order when running 
@@ -717,7 +717,7 @@ Version History
         (before) to just stick the plugin at the bottom of the Z order in
         this case.  Well, this is now fixed; the plugin tries its best
         to stay on top, but watch out - if you try and click on any other
-        windows, the taskbar WILL pop up.  If you want to avoid that,
+        arch, the taskbar WILL pop up.  If you want to avoid that,
         you'll have to run in true fullscreen mode.
     -improved audio and video synchronization
         -the current framerate is now used to tell Winamp, each frame, 
@@ -960,7 +960,7 @@ Version History
        destroyed (by Windows, it seems).                    
     -fixed a bug in config panel, where list of video modes wasn't updating
        when you changed the fullscreen adapter.
-    -fixed a bug where DXContext was remembering the native windows display
+    -fixed a bug where DXContext was remembering the native arch display
        mode for the first monitor that the window was created on, only.
        This was a problem because if two monitors had different bit depths,
        and you ran it and switched to another monitor by toggling fullscreen,

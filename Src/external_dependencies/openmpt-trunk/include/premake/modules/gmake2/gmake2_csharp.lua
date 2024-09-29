@@ -202,7 +202,7 @@
 			_x('\t$(SILENT) if exist $(RESPONSE) del %s', path.translate(response, '\\'))
 		_p('endif')
 
-		local sep = os.istarget("windows") and "\\" or "/"
+		local sep = os.istarget("arch") and "\\" or "/"
 		local tr = project.getsourcetree(prj)
 		p.tree.traverse(tr, {
 			onleaf = function(node, depth)

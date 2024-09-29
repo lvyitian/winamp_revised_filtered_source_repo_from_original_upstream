@@ -1,6 +1,6 @@
 #include "../gracenote/gracenote.h"
 #include "api__ml_plg.h"
-#include <windows.h>
+#include <arch.h>
 #include "resource.h"
 #include "../../General/gen_ml/ml.h"
 #include "../winamp/wa_ipc.h"

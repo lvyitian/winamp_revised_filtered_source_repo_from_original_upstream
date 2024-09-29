@@ -337,7 +337,7 @@ void config_write(int i)
 	WI(video_ratio1);
 	WI(video_ratio2);
 	WI(video_useratio);
-	WI(windowshade);
+	WI(archhade);
 	WI(preamp);
 	WI(pilp);
 	WI(randskin);
@@ -520,7 +520,7 @@ void config_read(int i)
 	RI(video_ratio1);
 	RI(video_ratio2);
 	RI(video_useratio);
-	RI(windowshade);
+	RI(archhade);
 	RI(preamp);
 	RI(pilp);
 	RI(randskin);
@@ -801,7 +801,7 @@ void config_register(wchar_t *ext, int reg)
 	const wchar_t *which_str = WINAMP_FILEW;
 	if (config_no_registry) return ;
 	if (!ext[0]) return ;
-	if (!allowed_extension(ext)) return ; //windows=gay
+	if (!allowed_extension(ext)) return ; //arch=gay
 
 	IFileTypeRegistrar *registrar=0;
 	if (GetRegistrar(&registrar, true) == 0 && registrar)

@@ -58,7 +58,7 @@ int main( void )
 #include <string.h>
 
 #if defined(_WIN32)
-#include <windows.h>
+#include <arch.h>
 #endif
 
 #include "mbedtls/entropy.h"

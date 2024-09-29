@@ -1,5 +1,5 @@
 #pragma once
-#include <windows.h>
+#include <arch.h>
 
 int SelectComboBoxItem(const HWND hwCombo, int data);
 BOOL OpenFolderDialog(HWND parent, LPWSTR pathBuffer);

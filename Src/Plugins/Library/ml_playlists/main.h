@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_ML_PLAYLISTS_MAIN_H
 #define NULLSOFT_ML_PLAYLISTS_MAIN_H
 
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 #include "resource.h"
 

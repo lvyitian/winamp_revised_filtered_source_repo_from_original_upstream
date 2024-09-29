@@ -59,7 +59,7 @@
 		local path, formats
 
 		-- assemble a search path, depending on the platform
-		if os.is("windows") then
+		if os.is("arch") then
 			formats = { "%s.dll", "%s" }
 			path = os.getenv("PATH")
 		else
@@ -135,7 +135,7 @@
 
 		-- Identify the system
 		local arch = ""
-		if _OS == "windows" then
+		if _OS == "arch" then
 			arch = os.getenv("PROCESSOR_ARCHITECTURE")
 		elseif _OS == "macosx" then
 			arch = os.outputof("echo $HOSTTYPE")

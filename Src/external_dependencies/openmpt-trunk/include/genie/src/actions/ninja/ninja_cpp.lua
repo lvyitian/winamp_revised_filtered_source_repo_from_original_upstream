@@ -9,7 +9,7 @@ local cpp   = premake.ninja.cpp
 local p     = premake
 
 local function wrap_ninja_cmd(c)
-	if os.is("windows") then
+	if os.is("arch") then
 		return 'cmd /c "' .. c .. '"'
 	else
 		return c

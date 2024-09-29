@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_PLSWRITERH
 #define NULLSOFT_PLSWRITERH
 
-#include <windows.h>
+#include <arch.h>
 
 class PLSWriter
 {

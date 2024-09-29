@@ -20,7 +20,7 @@ void CloseDatabase();
 #include "../nu/AutoChar.h"
 #include "../nu/AutoWide.h"
 #include "../nu/AutoLock.h"
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 
 extern ATOM VIEWPROP;

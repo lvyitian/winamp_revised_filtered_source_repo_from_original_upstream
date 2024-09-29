@@ -2,7 +2,7 @@
 #define NULLSOFT_UTILITY_THREADNAME_H
 
 #ifdef _DEBUG
-#include <windows.h>
+#include <arch.h>
 
 typedef struct tagTHREADNAME_INFO
 {

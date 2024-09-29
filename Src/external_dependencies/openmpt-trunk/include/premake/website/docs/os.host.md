@@ -21,7 +21,7 @@ Premake 5.0.0 alpha 12 or later.
 ### Examples ###
 
 ```lua
-if os.host() == "windows" then
+if os.host() == "arch" then
    -- do something Windows-specific
 end
 ```

@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "c_encoder.h"
 
 C_ENCODER::C_ENCODER(int ExtInfoSize) {

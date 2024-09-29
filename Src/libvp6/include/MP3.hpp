@@ -11,7 +11,7 @@
 #pragma warning(disable:4786)
 
 #include "mp3header.hpp"
-#include <windows.h>
+#include <arch.h>
 #include <string>
 #include <exception>
 #include <iosfwd>

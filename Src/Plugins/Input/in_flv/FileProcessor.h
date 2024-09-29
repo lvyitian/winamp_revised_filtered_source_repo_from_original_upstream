@@ -1,6 +1,6 @@
 #pragma once
 #include "FLVProcessor.h"
-#include <windows.h>
+#include <arch.h>
 #include <vector>
 #include "../nu/AutoLock.h"
 

@@ -1,7 +1,7 @@
 #ifndef WINAMP_SETUP_LANGUTIL_HEADER
 #define WINAMP_SETUP_LANGUTIL_HEADER
 
-#include <windows.h>
+#include <arch.h>
 #include "./loadimage.h"
 
 INT_PTR WADialogBoxParam(LPCWSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);

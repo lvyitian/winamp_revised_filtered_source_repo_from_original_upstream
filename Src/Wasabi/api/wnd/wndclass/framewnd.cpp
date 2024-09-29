@@ -20,7 +20,7 @@ FrameWnd::FrameWnd()
 		children[i] = NULL;
 		rwchildren[i] = NULL;
 		hidey[i] = 0;
-		windowshaded[i] = 0;
+		archhaded[i] = 0;
 	}
 	vert = DIVIDER_UNDEFINED;
 	divideside = SDP_FROMLEFT;
@@ -39,7 +39,7 @@ FrameWnd::FrameWnd()
 	v_bitmap = L"wasabi.framewnd.verticaldivider";
 	h_grabber = L"wasabi.framewnd.horizontalgrabber";
 	v_grabber = L"wasabi.framewnd.verticalgrabber";
-	ws_bitmap = L"wasabi.framewnd.windowshade";
+	ws_bitmap = L"wasabi.framewnd.archhade";
 	resizing = 0;
 }
 
@@ -67,7 +67,7 @@ FrameWnd::~FrameWnd() {
 #ifdef WASABI_COMPILE_CONFIG
 	if (getId() != NULL) {
 		StringPrintfW buf(L"FrameWnd/ws,%s", getId());
-		WASABI_API_CONFIG->setIntPrivate(buf, windowshaded[0]);
+		WASABI_API_CONFIG->setIntPrivate(buf, archhaded[0]);
 	}
 #endif
 
@@ -82,12 +82,12 @@ int FrameWnd::onInit() {
 
   ASSERT(vert != DIVIDER_UNDEFINED || nchild == 0);
 
-  // have to set children for frame windows
+  // have to set children for frame arch
 
   // fill in members
   nchild = 0;
 
-  // make children create their windows
+  // make children create their arch
   for (i = 0; i < MAXCHILD; i++) {
     if (rwchildren[i] != NULL) {
       if (rwchildren[i]->init(this) != 0) {
@@ -108,8 +108,8 @@ int FrameWnd::onInit() {
     StringPrintfW buf(L"FrameWnd/ws,%s", getId());
     int ws = WASABI_API_CONFIG->getIntPrivate(buf, /*rwchildren[0] && rwchildren[0]->childNotify(NULL, CHILD_WINDOWSHADE_CAPABLE)*/ 0);
     if (ws) {
-      windowshade(0, !ws);
-      windowshade(0, ws);
+      archhade(0, !ws);
+      archhade(0, ws);
       pullbarpos = 0;
     }
   }
@@ -364,7 +364,7 @@ int FrameWnd::onResize()
     return 1;
   }
 
-  if (hidey[0] && hidey[1]) return 0;	// both windows are hiding
+  if (hidey[0] && hidey[1]) return 0;	// both arch are hiding
 
   // if we have only one child, it takes up all the room
   if (hidey[0]) {
@@ -389,7 +389,7 @@ int FrameWnd::onResize()
 
   if (!resizeable) sizerwidth = 0;
 
-  // resize the subwindows
+  // resize the subarch
 
   int w;
   if (vert == DIVIDER_VERTICAL) {
@@ -584,7 +584,7 @@ int FrameWnd::onPaint(Canvas *canvas) {
       }
     }
 
-    if (windowshaded[0]) {
+    if (archhaded[0]) {
       RECT wr = cr;
       if (vert == DIVIDER_VERTICAL) {
         wr.right = r.left;
@@ -671,27 +671,27 @@ int FrameWnd::onMouseMove(int x, int y) {
 		{
       if (rwchildren[0] != NULL && rwchildren[0]->childNotify(NULL, ChildNotify::FRAMEWND_WINDOWSHADE_CAPABLE, 0, 0)) {
         pullbarpos = 0;
-        windowshade(0, TRUE);
+        archhade(0, TRUE);
       } else {
         pullbarpos = realMinPixels;
       }
     } else {
-      windowshade(0, FALSE);
+      archhade(0, FALSE);
     }
   } else if (divideside == SDP_FROMRIGHT) {
     if (pullbarpos < realMinPixels) {
       if (rwchildren[1] != NULL /* && rwchildren[1]->childNotify(NULL, CHILD_WINDOWSHADE_CAPABLE) */) {
         pullbarpos = /*convertPropToPix(PULLBAR_FULL)-*/0;
-        windowshade(1, TRUE);
+        archhade(1, TRUE);
       } else {
         pullbarpos = realMinPixels;
       }
     } else {
-      windowshade(1, FALSE);
+      archhade(1, FALSE);
     }
   }
 
-  if (!windowshaded[0] && !windowshaded[1]) {
+  if (!archhaded[0] && !archhaded[1]) {
 //    if (pullbarpos > pos-convertPropToPix(minwidth))
 //      pullbarpos = pos-convertPropToPix(minwidth);
 		int realMaxPixels;
@@ -738,19 +738,19 @@ int FrameWnd::onLeftButtonUp(int x, int y) {
   return 0;
 }
 
-void FrameWnd::windowshade(int which, int shaded) {
+void FrameWnd::archhade(int which, int shaded) {
   ASSERT(which == 0 || which == 1);
-  if (!!windowshaded[which] == !!shaded) return;
+  if (!!archhaded[which] == !!shaded) return;
   if (rwchildren[which] == NULL) return;
   rwchildren[which]->childNotify(NULL, ChildNotify::FRAMEWND_WINDOWSHADE_ENABLE, shaded, 0);
-  windowshaded[which] = shaded;
+  archhaded[which] = shaded;
   rwchildren[which]->setVisible(!shaded);
 }
 
 ifc_window *FrameWnd::getWindowShadedChild() {
   if (nchild != 2) return NULL;
-  if (!(windowshaded[0] | windowshaded[1])) return NULL;
-  return windowshaded[0] ? rwchildren[0] : rwchildren[1];
+  if (!(archhaded[0] | archhaded[1])) return NULL;
+  return archhaded[0] ? rwchildren[0] : rwchildren[1];
 }
 
 int FrameWnd::onGetFocus() {

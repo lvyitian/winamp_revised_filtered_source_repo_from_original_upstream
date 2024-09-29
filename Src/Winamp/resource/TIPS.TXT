@@ -1,7 +1,7 @@
 Note that these keyboard shortcuts are a good starting point, but this list
 is far from complete. :)
 
-******* Keyboard Shortcuts (these can be used in most Winamp windows) *******
+******* Keyboard Shortcuts (these can be used in most Winamp arch) *******
 
 Key		Action
 -----------------------------------------------------------------------------
@@ -18,7 +18,7 @@ Alt+E		Toggle Playlist Editor
 Alt+G		Toggle Graphical Equalizer
 Alt+V		Toggle Video Window
 Alt+L		Toggle Media Library
-Ctrl+Tab		Cycle through different Winamp windows
+Ctrl+Tab		Cycle through different Winamp arch
 Alt+S		Go to Skin selection
 Ctrl+P		Go to Preferences
 Alt+F		Open Main Menu

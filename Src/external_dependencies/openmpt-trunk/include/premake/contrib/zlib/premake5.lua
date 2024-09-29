@@ -10,8 +10,8 @@ project "zlib-lib"
 		"**.c"
 	}
 
-	filter "system:windows"
+	filter "system:arch"
 		defines { "_WINDOWS" }
 
-	filter "system:not windows"
+	filter "system:not arch"
 		defines { 'HAVE_UNISTD_H' }

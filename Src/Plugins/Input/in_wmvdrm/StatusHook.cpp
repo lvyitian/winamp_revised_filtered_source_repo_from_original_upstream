@@ -1,5 +1,5 @@
 #if 0
-#include <windows.h>
+#include <arch.h>
 #include "../Winamp/wa_ipc.h"
 #include "Main.h"
 #include <shlwapi.h>

@@ -309,7 +309,7 @@ void Skin::validateBaseTextureRect(RECT *r)
 // FG> Please change this only if you REALLY know what you are doing. this needs to account for basewnd
 // coordinates (start from 0,0), as well as virtualwnd (relative to parent), at any depth (group holding
 // texture as 2nd group of the tree, and rendering the base texture in a basewnd in a virtual in the group),
-// and should handle resized textures and scaled windows. ooch
+// and should handle resized textures and scaled arch. ooch
 
 void Skin::_renderBaseTexture(ifc_window *wndbase, ifc_canvas *c, const RECT &r, ifc_window *dest, int alpha)
 {

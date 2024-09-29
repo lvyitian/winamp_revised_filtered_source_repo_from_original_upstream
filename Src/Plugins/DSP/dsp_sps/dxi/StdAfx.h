@@ -12,8 +12,8 @@
 
 #define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 
 #ifdef _DEBUG
 #define DEBUG	// the DirectShow headers use this symbol

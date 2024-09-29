@@ -22,7 +22,7 @@
 #include <FLAC/all.h>
 #include "main.h"
 #include "../nu/ns_wc.h"
-#include <windows.h>
+#include <arch.h>
 #include "resource.h"
 #include "Metadata.h"
 #include "../nu/AutoWide.h"

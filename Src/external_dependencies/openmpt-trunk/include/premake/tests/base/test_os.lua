@@ -26,7 +26,7 @@
 		if os.istarget("macosx") then
 			-- macOS no longer stores system libraries on filesystem; see
 			-- https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_0_1-release-notes
-		elseif os.istarget("windows") then
+		elseif os.istarget("arch") then
 			test.istrue(os.findlib("user32"))
 		elseif os.istarget("haiku") then
 			test.istrue(os.findlib("root"))
@@ -40,7 +40,7 @@
 	end
 
 	function suite.findheader_stdheaders()
-		if not os.istarget("windows") and not os.istarget("macosx") then
+		if not os.istarget("arch") and not os.istarget("macosx") then
 			test.istrue(os.findheader("stdlib.h"))
 		end
 	end
@@ -230,89 +230,89 @@
 	end
 
 --
--- os.translateCommand() windows COPY tests
+-- os.translateCommand() arch COPY tests
 --
 
-	function suite.translateCommand_windowsCopyNoDst()
-		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a > nul) ELSE (xcopy /Q /Y /I a > nul)', os.translateCommands('{COPY} a', "windows"))
+	function suite.translateCommand_archCopyNoDst()
+		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a > nul) ELSE (xcopy /Q /Y /I a > nul)', os.translateCommands('{COPY} a', "arch"))
 	end
 
-	function suite.translateCommand_windowsCopyNoDst_ExtraSpace()
-		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a > nul) ELSE (xcopy /Q /Y /I a > nul)', os.translateCommands('{COPY} a ', "windows"))
+	function suite.translateCommand_archCopyNoDst_ExtraSpace()
+		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a > nul) ELSE (xcopy /Q /Y /I a > nul)', os.translateCommands('{COPY} a ', "arch"))
 	end
 
-	function suite.translateCommand_windowsCopyNoQuotes()
-		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a b > nul) ELSE (xcopy /Q /Y /I a b > nul)', os.translateCommands('{COPY} a b', "windows"))
+	function suite.translateCommand_archCopyNoQuotes()
+		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a b > nul) ELSE (xcopy /Q /Y /I a b > nul)', os.translateCommands('{COPY} a b', "arch"))
 	end
 
-	function suite.translateCommand_windowsCopyNoQuotes_ExtraSpace()
-		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a b > nul) ELSE (xcopy /Q /Y /I a b > nul)', os.translateCommands('{COPY} a b ', "windows"))
+	function suite.translateCommand_archCopyNoQuotes_ExtraSpace()
+		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a b > nul) ELSE (xcopy /Q /Y /I a b > nul)', os.translateCommands('{COPY} a b ', "arch"))
 	end
 
-	function suite.translateCommand_windowsCopyQuotes()
-		test.isequal('IF EXIST "a a"\\ (xcopy /Q /E /Y /I "a a" "b" > nul) ELSE (xcopy /Q /Y /I "a a" "b" > nul)', os.translateCommands('{COPY} "a a" "b"', "windows"))
+	function suite.translateCommand_archCopyQuotes()
+		test.isequal('IF EXIST "a a"\\ (xcopy /Q /E /Y /I "a a" "b" > nul) ELSE (xcopy /Q /Y /I "a a" "b" > nul)', os.translateCommands('{COPY} "a a" "b"', "arch"))
 	end
 
-	function suite.translateCommand_windowsCopyQuotes_ExtraSpace()
-		test.isequal('IF EXIST "a a"\\ (xcopy /Q /E /Y /I "a a" "b" > nul) ELSE (xcopy /Q /Y /I "a a" "b" > nul)', os.translateCommands('{COPY} "a a" "b" ', "windows"))
+	function suite.translateCommand_archCopyQuotes_ExtraSpace()
+		test.isequal('IF EXIST "a a"\\ (xcopy /Q /E /Y /I "a a" "b" > nul) ELSE (xcopy /Q /Y /I "a a" "b" > nul)', os.translateCommands('{COPY} "a a" "b" ', "arch"))
 	end
 
-	function suite.translateCommand_windowsCopyNoQuotesDst()
-		test.isequal('IF EXIST "a a"\\ (xcopy /Q /E /Y /I "a a" b > nul) ELSE (xcopy /Q /Y /I "a a" b > nul)', os.translateCommands('{COPY} "a a" b', "windows"))
+	function suite.translateCommand_archCopyNoQuotesDst()
+		test.isequal('IF EXIST "a a"\\ (xcopy /Q /E /Y /I "a a" b > nul) ELSE (xcopy /Q /Y /I "a a" b > nul)', os.translateCommands('{COPY} "a a" b', "arch"))
 	end
 
-	function suite.translateCommand_windowsCopyNoQuotesDst_ExtraSpace()
-		test.isequal('IF EXIST "a a"\\ (xcopy /Q /E /Y /I "a a" b > nul) ELSE (xcopy /Q /Y /I "a a" b > nul)', os.translateCommands('{COPY} "a a" b ', "windows"))
+	function suite.translateCommand_archCopyNoQuotesDst_ExtraSpace()
+		test.isequal('IF EXIST "a a"\\ (xcopy /Q /E /Y /I "a a" b > nul) ELSE (xcopy /Q /Y /I "a a" b > nul)', os.translateCommands('{COPY} "a a" b ', "arch"))
 	end
 
-	function suite.translateCommand_windowsCopyNoQuotesSrc()
-		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a "b" > nul) ELSE (xcopy /Q /Y /I a "b" > nul)', os.translateCommands('{COPY} a "b"', "windows"))
+	function suite.translateCommand_archCopyNoQuotesSrc()
+		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a "b" > nul) ELSE (xcopy /Q /Y /I a "b" > nul)', os.translateCommands('{COPY} a "b"', "arch"))
 	end
 
-	function suite.translateCommand_windowsCopyNoQuotesSrc_ExtraSpace()
-		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a "b" > nul) ELSE (xcopy /Q /Y /I a "b" > nul)', os.translateCommands('{COPY} a "b" ', "windows"))
+	function suite.translateCommand_archCopyNoQuotesSrc_ExtraSpace()
+		test.isequal('IF EXIST a\\ (xcopy /Q /E /Y /I a "b" > nul) ELSE (xcopy /Q /Y /I a "b" > nul)', os.translateCommands('{COPY} a "b" ', "arch"))
 	end
 
 --
--- os.getWindowsRegistry windows tests
+-- os.getWindowsRegistry arch tests
 --
 	function suite.getreg_nonExistentValue()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.getWindowsRegistry("HKCU:Should\\Not\\Exist\\At\\All")
 			test.isequal(nil, x)
 		end
 	end
 
 	function suite.getreg_nonExistentDefaultValue()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.getWindowsRegistry("HKCU:Should\\Not\\Exist\\At\\All\\")
 			test.isequal(nil, x)
 		end
 	end
 
 	function suite.getreg_noSeparators()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.getWindowsRegistry("HKCU:ShouldNotExistAtAll")
 			test.isequal(nil, x)
 		end
 	end
 
 	function suite.getreg_namedValue()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.getWindowsRegistry("HKCU:Environment\\TEMP")
 			test.istrue(x ~= nil)
 		end
 	end
 
 	function suite.getreg_namedValueOptSeparator()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.getWindowsRegistry("HKCU:\\Environment\\TEMP")
 			test.istrue(x ~= nil)
 		end
 	end
 
 	function suite.getreg_defaultValue()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.getWindowsRegistry("HKLM:SYSTEM\\CurrentControlSet\\Control\\SafeBoot\\Minimal\\AppInfo\\")
 			test.isequal("Service", x)
 		end
@@ -320,45 +320,45 @@
 
 
 --
--- os.listWindowsRegistry windows tests
+-- os.listWindowsRegistry arch tests
 --
 	function suite.listreg_nonExistentKey()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.listWindowsRegistry("HKCU:Should\\Not\\Exist\\At\\All")
 			test.isequal(nil, x)
 		end
 	end
 
 	function suite.listreg_nonExistentKeyTrailingBackslash()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.listWindowsRegistry("HKCU:Should\\Not\\Exist\\At\\All\\")
 			test.isequal(nil, x)
 		end
 	end
 
 	function suite.listreg_noSeparators()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.listWindowsRegistry("HKCU:ShouldNotExistAtAll")
 			test.isequal(nil, x)
 		end
 	end
 
 	function suite.listreg_noSeparatorExistingPath()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.listWindowsRegistry("HKCU:Environment")
 			test.istrue(x ~= nil and x["TEMP"] ~= nil)
 		end
 	end
 
 	function suite.listreg_optSeparators()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.listWindowsRegistry("HKCU:\\Environment\\")
 			test.istrue(x ~= nil and x["TEMP"] ~= nil)
 		end
 	end
 
 	function suite.listreg_keyDefaultValueAndStringValueFormat()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.listWindowsRegistry("HKLM:SYSTEM\\CurrentControlSet\\Control\\SafeBoot\\Minimal\\AppInfo")
 			test.isequal(x[""]["value"], "Service")
 			test.isequal(x[""]["type"], "REG_SZ")
@@ -366,7 +366,7 @@
 	end
 
 	function suite.listreg_numericValueFormat()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.listWindowsRegistry("HKCU:Console")
 			test.isequal(type(x["FullScreen"]["value"]), "number")
 			test.isequal(x["FullScreen"]["type"], "REG_DWORD")
@@ -374,7 +374,7 @@
 	end
 
 	function suite.listreg_subkeyFormat()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			local x = os.listWindowsRegistry("HKLM:")
 			test.isequal(type(x["SOFTWARE"]), "table")
 			test.isequal(next(x["SOFTWARE"]), nil)
@@ -421,7 +421,7 @@
 
 	local tmpfile = function()
 		local p = tmpname()
-		if os.ishost("windows") then
+		if os.ishost("arch") then
 			os.execute("type nul >" .. p)
 		else
 			os.execute("touch " .. p)

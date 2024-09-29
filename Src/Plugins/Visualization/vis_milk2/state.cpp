@@ -33,7 +33,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "ns-eel2/ns-eel.h"
 #include "plugin.h"
 #include "utility.h"
-#include <windows.h>
+#include <arch.h>
 #include <locale.h>
 #include "resource.h"
 #include <vector>

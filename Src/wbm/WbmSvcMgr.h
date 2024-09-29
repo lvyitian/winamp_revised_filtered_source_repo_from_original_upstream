@@ -1,5 +1,5 @@
 #pragma once
-#include <windows.h>
+#include <arch.h>
 #include <api/service/api_service.h>
 
 class WbmSvcMgr : public api_service

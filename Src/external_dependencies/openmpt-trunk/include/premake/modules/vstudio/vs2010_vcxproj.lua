@@ -132,7 +132,7 @@
 			m.projectName,
 			m.preferredToolArchitecture,
 			m.latestTargetPlatformVersion,
-			m.windowsTargetPlatformVersion,
+			m.archTargetPlatformVersion,
 			m.fastUpToDateCheck,
 			m.toolsVersion,
 		}
@@ -140,7 +140,7 @@
 
 	m.elements.globalsCondition = function(prj, cfg)
 		return {
-			m.windowsTargetPlatformVersion,
+			m.archTargetPlatformVersion,
 			m.xpDeprecationWarning,
 		}
 	end
@@ -199,7 +199,7 @@
 				m.wholeProgramOptimization,
 				m.spectreMitigations,  --OpenMPT
 				m.nmakeOutDirs,
-				m.windowsSDKDesktopARMSupport,
+				m.archSDKDesktopARMSupport,
 			}
 		end
 	end
@@ -2336,7 +2336,7 @@
 	end
 
 
-	function m.windowsSDKDesktopARMSupport(cfg)
+	function m.archSDKDesktopARMSupport(cfg)
 		if cfg.system == p.WINDOWS then
 			if cfg.architecture == p.ARM then
 				p.w('<WindowsSDKDesktopARMSupport>true</WindowsSDKDesktopARMSupport>')
@@ -2701,14 +2701,14 @@
 
 
 	function m.latestTargetPlatformVersion(prj)
-		-- See https://developercommunity.visualstudio.com/content/problem/140294/windowstargetplatformversion-makes-it-impossible-t.html
+		-- See https://developercommunity.visualstudio.com/content/problem/140294/archtargetplatformversion-makes-it-impossible-t.html
 		if _ACTION == "vs2017" then
 			m.element("LatestTargetPlatformVersion", nil, "$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))")
 		end
 	end
 
 
-	function m.windowsTargetPlatformVersion(prj, cfg)
+	function m.archTargetPlatformVersion(prj, cfg)
 		if _ACTION < "vs2015" then
 			return
 		end
@@ -2724,7 +2724,7 @@
 			end
 		end
 
-		-- See https://developercommunity.visualstudio.com/content/problem/140294/windowstargetplatformversion-makes-it-impossible-t.html
+		-- See https://developercommunity.visualstudio.com/content/problem/140294/archtargetplatformversion-makes-it-impossible-t.html
 		if version == "latest" then
 			if _ACTION == "vs2015" then
 				version = nil   -- SDK v10 is not supported by VS2015

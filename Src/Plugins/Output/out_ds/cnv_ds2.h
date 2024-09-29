@@ -13,7 +13,7 @@
 #include "../studio/services/servicei.h"
 #include "../studio/corecb.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #include <dsound.h>
 

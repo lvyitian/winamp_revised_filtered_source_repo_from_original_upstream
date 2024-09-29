@@ -37,7 +37,7 @@ inline namespace MPT_INLINE_NS {
 // COM CLSID<->string conversion
 // A CLSID string is not necessarily a standard UUID string,
 // it might also be a symbolic name for the interface.
-// (see CLSIDFromString ( http://msdn.microsoft.com/en-us/library/windows/desktop/ms680589%28v=vs.85%29.aspx ))
+// (see CLSIDFromString ( http://msdn.microsoft.com/en-us/library/arch/desktop/ms680589%28v=vs.85%29.aspx ))
 
 inline mpt::winstring CLSIDToString(CLSID clsid) {
 	std::wstring str;

@@ -1,5 +1,5 @@
 #define STRICT
-#include <windows.h>
+#include <arch.h>
 #include "cfg_var.h"
 #include "string_unicode.h"
 

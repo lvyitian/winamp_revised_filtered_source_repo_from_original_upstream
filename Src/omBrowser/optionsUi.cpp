@@ -7,7 +7,7 @@
 #include "./ifc_omtoolbarconfig.h"
 #include "./ifc_omstatusbarconfig.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <shlwapi.h>
 #include <strsafe.h>

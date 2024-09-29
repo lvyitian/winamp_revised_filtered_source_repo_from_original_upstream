@@ -1,6 +1,6 @@
 #include "main.h"
 #include "resource.h"
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include "SendTo.h"
 #include "ml_local/api_mldb.h"

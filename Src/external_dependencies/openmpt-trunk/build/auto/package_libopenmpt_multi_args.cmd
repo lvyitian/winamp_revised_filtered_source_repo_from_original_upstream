@@ -26,13 +26,13 @@ set MPT_PKG_TAG=%MPT_DIST_VARIANT_OS%
 cd bin || goto error
 rmdir /s /q libopenmpt
 mkdir libopenmpt || goto error
-mkdir libopenmpt\bin.windows
-mkdir libopenmpt\bin.windows\%LIBOPENMPT_VERSION_STRING%
-rmdir /s /q libopenmpt-windows
-del /f /q libopenmpt-windows.tar
-del /f /q libopenmpt-%MPT_REVISION%.bin.windows.%MPT_PKG_FORMAT%
-mkdir libopenmpt-windows
-cd libopenmpt-windows || goto error
+mkdir libopenmpt\bin.arch
+mkdir libopenmpt\bin.arch\%LIBOPENMPT_VERSION_STRING%
+rmdir /s /q libopenmpt-arch
+del /f /q libopenmpt-arch.tar
+del /f /q libopenmpt-%MPT_REVISION%.bin.arch.%MPT_PKG_FORMAT%
+mkdir libopenmpt-arch
+cd libopenmpt-arch || goto error
 mkdir openmpt123
 mkdir openmpt123\x86
 mkdir openmpt123\amd64
@@ -102,7 +102,7 @@ copy /y ..\..\bin\release\%MPT_VS_VER%-win7-static\x86\xmp-openmpt.dll .\XMPlay-
 copy /y ..\..\bin\release\%MPT_VS_VER%-win7-static\x86\openmpt-mpg123.dll .\XMPlay-legacy\ || goto error
 copy /y ..\..\bin\release\%MPT_VS_VER%-win7-static\x86\in_openmpt.dll .\Winamp-legacy\ || goto error
 copy /y ..\..\bin\release\%MPT_VS_VER%-win7-static\x86\openmpt-mpg123.dll .\Winamp-legacy\ || goto error
-..\..\build\tools\7zip\7z.exe a -t%MPT_PKG_FORMAT% -mx=9 ..\libopenmpt\bin.windows\%LIBOPENMPT_VERSION_STRING%\libopenmpt-%MPT_REVISION%.bin.windows.%MPT_PKG_FORMAT% ^
+..\..\build\tools\7zip\7z.exe a -t%MPT_PKG_FORMAT% -mx=9 ..\libopenmpt\bin.arch\%LIBOPENMPT_VERSION_STRING%\libopenmpt-%MPT_REVISION%.bin.arch.%MPT_PKG_FORMAT% ^
  LICENSE.txt ^
  Licenses ^
  changelog.md ^
@@ -132,22 +132,22 @@ copy /y ..\..\bin\release\%MPT_VS_VER%-win7-static\x86\openmpt-mpg123.dll .\Wina
  Winamp-legacy\openmpt-mpg123.dll ^
  || goto error
 cd .. || goto error
-rmdir /s /q libopenmpt-windows
-..\build\tools\7zip\7z.exe a -r -ttar libopenmpt-windows.tar libopenmpt || goto error
-del /f /q libopenmpt\bin.windows\%LIBOPENMPT_VERSION_STRING%\libopenmpt-%MPT_REVISION%.bin.windows.%MPT_PKG_FORMAT%
+rmdir /s /q libopenmpt-arch
+..\build\tools\7zip\7z.exe a -r -ttar libopenmpt-arch.tar libopenmpt || goto error
+del /f /q libopenmpt\bin.arch\%LIBOPENMPT_VERSION_STRING%\libopenmpt-%MPT_REVISION%.bin.arch.%MPT_PKG_FORMAT%
 rmdir /s /q libopenmpt
 cd .. || goto error
 
 cd bin || goto error
 rmdir /s /q libopenmpt
 mkdir libopenmpt || goto error
-mkdir libopenmpt\dev.windows.%MPT_VS_VER%
-mkdir libopenmpt\dev.windows.%MPT_VS_VER%\%LIBOPENMPT_VERSION_STRING%
-rmdir /s /q libopenmpt-dev-windows-%MPT_VS_VER%
-del /f /q libopenmpt-dev-windows-%MPT_VS_VER%.tar
-del /f /q libopenmpt-%MPT_REVISION%.dev.windows.%MPT_VS_VER%.%MPT_PKG_FORMAT%
-mkdir libopenmpt-dev-windows-%MPT_VS_VER%
-cd libopenmpt-dev-windows-%MPT_VS_VER% || goto error
+mkdir libopenmpt\dev.arch.%MPT_VS_VER%
+mkdir libopenmpt\dev.arch.%MPT_VS_VER%\%LIBOPENMPT_VERSION_STRING%
+rmdir /s /q libopenmpt-dev-arch-%MPT_VS_VER%
+del /f /q libopenmpt-dev-arch-%MPT_VS_VER%.tar
+del /f /q libopenmpt-%MPT_REVISION%.dev.arch.%MPT_VS_VER%.%MPT_PKG_FORMAT%
+mkdir libopenmpt-dev-arch-%MPT_VS_VER%
+cd libopenmpt-dev-arch-%MPT_VS_VER% || goto error
 mkdir inc
 mkdir inc\libopenmpt
 mkdir lib
@@ -243,7 +243,7 @@ copy /y ..\..\bin\release\%MPT_VS_VER%-win7-shared\amd64\openmpt-mpg123.dll bin\
 copy /y ..\..\bin\release\%MPT_VS_VER%-win7-shared\amd64\openmpt-ogg.dll bin\amd64-legacy\ || goto error
 copy /y ..\..\bin\release\%MPT_VS_VER%-win7-shared\amd64\openmpt-vorbis.dll bin\amd64-legacy\ || goto error
 copy /y ..\..\bin\release\%MPT_VS_VER%-win7-shared\amd64\openmpt-zlib.dll bin\amd64-legacy\ || goto error
-..\..\build\tools\7zip\7z.exe a -t%MPT_PKG_FORMAT% -mx=9 ..\libopenmpt\dev.windows.%MPT_VS_VER%\%LIBOPENMPT_VERSION_STRING%\libopenmpt-%MPT_REVISION%.dev.windows.%MPT_VS_VER%.%MPT_PKG_FORMAT% ^
+..\..\build\tools\7zip\7z.exe a -t%MPT_PKG_FORMAT% -mx=9 ..\libopenmpt\dev.arch.%MPT_VS_VER%\%LIBOPENMPT_VERSION_STRING%\libopenmpt-%MPT_REVISION%.dev.arch.%MPT_VS_VER%.%MPT_PKG_FORMAT% ^
  LICENSE.txt ^
  Licenses ^
  changelog.md ^
@@ -294,9 +294,9 @@ copy /y ..\..\bin\release\%MPT_VS_VER%-win7-shared\amd64\openmpt-zlib.dll bin\am
  bin\amd64-legacy\openmpt-zlib.dll ^
  || goto error
 cd .. || goto error
-rmdir /s /q libopenmpt-dev-windows-%MPT_VS_VER%
-..\build\tools\7zip\7z.exe a -r -ttar libopenmpt-dev-windows-%MPT_VS_VER%.tar libopenmpt || goto error
-del /f /q libopenmpt\dev.windows.%MPT_VS_VER%\%LIBOPENMPT_VERSION_STRING%\libopenmpt-%MPT_REVISION%.dev.windows.%MPT_VS_VER%.%MPT_PKG_FORMAT%
+rmdir /s /q libopenmpt-dev-arch-%MPT_VS_VER%
+..\build\tools\7zip\7z.exe a -r -ttar libopenmpt-dev-arch-%MPT_VS_VER%.tar libopenmpt || goto error
+del /f /q libopenmpt\dev.arch.%MPT_VS_VER%\%LIBOPENMPT_VERSION_STRING%\libopenmpt-%MPT_REVISION%.dev.arch.%MPT_VS_VER%.%MPT_PKG_FORMAT%
 rmdir /s /q libopenmpt
 cd .. || goto error
 

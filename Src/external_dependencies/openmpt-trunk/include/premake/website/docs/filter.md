@@ -121,14 +121,14 @@ filter "files:**.png"
 You can also use **not** to apply the settings to all environments where the identifier is not set.
 
 ```lua
-filter "system:not windows"
+filter "system:not arch"
   defines { "NOT_WINDOWS" }
 ```
 
 You can combine different prefixes within a single keyword.
 
 ```lua
-filter "system:windows or language:C#"
+filter "system:arch or language:C#"
 ```
 
 Finally, you can reset the filter and remove all active keywords by passing the function an empty table.

@@ -16,7 +16,7 @@
 #ifndef MINIVERSION_H
 #define MINIVERSION_H
 
-#include <windows.h>
+#include <arch.h>
 #include <TCHAR.h>
 
 class CMiniVersion

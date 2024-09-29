@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <AtlBase.h>
 #include <streams.h>
 #include <strsafe.h>

@@ -33,7 +33,7 @@ class nsIWebProgressListener; /* forward declaration */
  *
  * nsIWebProgress instances may be arranged in a parent-child configuration,
  * corresponding to the parent-child configuration of their respective DOM
- * windows.  However, in some cases a nsIWebProgress instance may not have an
+ * arch.  However, in some cases a nsIWebProgress instance may not have an
  * associated DOM window.  The parent-child relationship of nsIWebProgress
  * instances is not made explicit by this interface, but the relationship may
  * exist in some implementations.

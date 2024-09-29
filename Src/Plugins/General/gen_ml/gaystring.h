@@ -1,7 +1,7 @@
 #ifndef _GAYSTRING_H_
 #define _GAYSTRING_H_
 
-#include <windows.h>
+#include <arch.h>
 
 class GayString
 {

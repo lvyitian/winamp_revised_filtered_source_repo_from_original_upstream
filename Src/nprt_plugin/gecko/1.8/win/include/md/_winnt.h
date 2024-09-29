@@ -48,7 +48,7 @@
     #define _WIN32_WINNT 0x0400
 #endif /* _WIN32_WINNT */
 
-#include <windows.h>
+#include <arch.h>
 #include <winsock.h>
 #ifdef __MINGW32__
 #include <mswsock.h>

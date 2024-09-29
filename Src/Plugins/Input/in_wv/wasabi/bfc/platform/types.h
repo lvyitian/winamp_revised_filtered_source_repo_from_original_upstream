@@ -39,7 +39,7 @@ typedef unsigned long FOURCC;
 
 #if defined(_WIN32) && !defined(__GNUC__)
 #include <stddef.h>
-	// since windows doesn't have stdint.h
+	// since arch doesn't have stdint.h
 	typedef unsigned __int64 uint64_t;
 	typedef unsigned __int32 uint32_t;
 	typedef unsigned __int16 uint16_t;
@@ -56,7 +56,7 @@ typedef unsigned long FOURCC;
 #endif
 
 #ifdef WIN32
-#include <windows.h>
+#include <arch.h>
 // this is for GUID == and !=
 #include <objbase.h>
 #ifndef GUID_EQUALS_DEFINED

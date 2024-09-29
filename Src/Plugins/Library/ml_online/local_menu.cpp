@@ -5,7 +5,7 @@
 #include "./api__ml_online.h"
 #include "../../General/gen_ml/menu.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 
 #define MENU_SERVICECONTEXT		0

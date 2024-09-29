@@ -8,7 +8,7 @@
 	premake.snc = { }
 
 
--- TODO: Will cfg.system == "windows" ever be true for SNC? If
+-- TODO: Will cfg.system == "arch" ever be true for SNC? If
 -- not, remove the conditional blocks that use this test.
 
 --

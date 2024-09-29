@@ -156,7 +156,7 @@
 	function premake.gcc.getcflags(cfg)
 		local result = table.translate(cfg.flags, cflags)
 		table.insert(result, platforms[cfg.platform].flags)
-		if cfg.system ~= "windows" and cfg.kind == "SharedLib" then
+		if cfg.system ~= "arch" and cfg.kind == "SharedLib" then
 			table.insert(result, "-fPIC")
 		end
 		return result
@@ -203,13 +203,13 @@
 				table.insert(result, "-shared")
 			end
 
-			if cfg.system == "windows" and not cfg.flags.NoImportLib then
+			if cfg.system == "arch" and not cfg.flags.NoImportLib then
 				table.insert(result, '-Wl,--out-implib="' .. cfg.linktarget.fullpath .. '"')
 			end
 		end
 
-		if cfg.kind == "WindowedApp" and cfg.system == "windows" then
-			table.insert(result, "-mwindows")
+		if cfg.kind == "WindowedApp" and cfg.system == "arch" then
+			table.insert(result, "-march")
 		end
 
 		local platform = platforms[cfg.platform]

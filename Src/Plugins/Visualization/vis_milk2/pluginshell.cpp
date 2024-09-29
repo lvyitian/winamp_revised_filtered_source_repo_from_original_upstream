@@ -40,12 +40,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         -make an 'advanced view' button on config panel; hide complicated stuff
             til they click that.
         -put an asterisk(*) next to the 'max framerate' values that
-            are ideal (given the current windows display mode or selected FS dispmode).
+            are ideal (given the current arch display mode or selected FS dispmode).
         -or add checkbox: "smart sync"
             -> matches FPS limit to nearest integer divisor of refresh rate.
         -debug.txt/logging support!
         -audio: make it a DSP plugin? then we could get the complete, continuous waveform
-            and overlap our waveform windows, so we'd never miss a brief high note.
+            and overlap our waveform arch, so we'd never miss a brief high note.
         -bugs:
             -vms plugins sometimes freeze after a several-minute pause; I've seen it
                 with most of them.  hard to repro, though.
@@ -100,9 +100,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 and we have to cleanup & reallocate everything, b/c we
                 can't tell when the resize begins & ends.
                 [justin said he'd fix in wa5, though]
-            -kiv: with embedded windows of any type (plugin, playlist, etc.)
+            -kiv: with embedded arch of any type (plugin, playlist, etc.)
                 you can't place the winamp main wnd over them.
-            -kiv: embedded windows are child windows and don't get the
+            -kiv: embedded arch are child arch and don't get the
                 WM_SETFOCUS or WM_KILLFOCUS messages when they get or lose
                 the focus.  (For a workaround, see milkdrop & scroll lock key.)
             -kiv: tiny bug (IGNORE): when switching between embedwnd &
@@ -1684,7 +1684,7 @@ void CPluginShell::DrawAndDisplay(int redraw)
 	    //         but it's like this for code simplicity.]
 	    int taskbar_is_above_plugin_window = 1;
 	    HWND h = FindWindow("Shell_TrayWnd", NULL);
-	    while (h) //(..shouldn't be very many windows to iterate through here)
+	    while (h) //(..shouldn't be very many arch to iterate through here)
 	    {
 	        h = GetWindow(h, GW_HWNDPREV);
 	        if (h == GetPluginWindow())
@@ -2586,7 +2586,7 @@ LRESULT CPluginShell::PluginShellWindowProc(HWND hWnd, unsigned uMsg, WPARAM wPa
 			// in the Z order!  (i.e., keep it on the bottom)
 
 			// without this code, when you click on the 'real' desktop
-			// in a multimon setup, any windows that are overtop of the
+			// in a multimon setup, any arch that are overtop of the
 			// 'fake' desktop will flash, since they'll be covered
 			// up by the fake desktop window (but then shown again on
 			// the next frame, when we detect that the fake desktop
@@ -3636,7 +3636,7 @@ LRESULT CPluginShell::PluginShellVJModeWndProc(HWND hwnd, UINT message, WPARAM w
 		    // in the Z order!  (i.e., keep it on the bottom)
 		    
 		    // without this code, when you click on the 'real' desktop
-		    // in a multimon setup, any windows that are overtop of the
+		    // in a multimon setup, any arch that are overtop of the
 		    // 'fake' desktop will flash, since they'll be covered
 		    // up by the fake desktop window (but then shown again on
 		    // the next frame, when we detect that the fake desktop

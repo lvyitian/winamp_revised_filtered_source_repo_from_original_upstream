@@ -466,7 +466,7 @@ static int set_timestamps_from_header(char *path, LHAFileHeader *header)
 {
 #if LHA_ARCH == LHA_ARCH_WINDOWS
 	if (LHA_FILE_HAVE_EXTRA(header, LHA_FILE_WINDOWS_TIMESTAMPS)) {
-		return lha_arch_set_windows_timestamps(
+		return lha_arch_set_arch_timestamps(
 		    path,
 		    header->win_creation_time,
 		    header->win_modification_time,

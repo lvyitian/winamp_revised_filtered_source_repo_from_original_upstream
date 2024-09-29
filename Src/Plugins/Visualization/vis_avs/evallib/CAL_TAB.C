@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include "Compiler.h"
 #include "eval.h"

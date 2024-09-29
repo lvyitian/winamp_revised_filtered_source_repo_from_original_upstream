@@ -1,6 +1,6 @@
 #include "FLVMetadata.h"
 #include "FLVUtil.h"
-#include <windows.h>
+#include <arch.h>
 
 /*
 (c) 2006 Nullsoft, Inc.

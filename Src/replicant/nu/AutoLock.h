@@ -3,7 +3,7 @@
 
 #ifdef _WIN32
 #pragma warning (disable:4786)
-#include <windows.h>
+#include <arch.h>
 #elif defined(__linux__) || defined(__APPLE__)
 #include <pthread.h>
 #else
@@ -24,7 +24,7 @@ any threads using the mutex, and their function stack
 #include <deque> // we make a list of the recursive function stack for each thread
 #include <map> // and map
 #include <iostream> // we output to std::cerr
-#include <windows.h>
+#include <arch.h>
 
 
 /*****

@@ -2,7 +2,7 @@
 // Copyright (C) 1997, Justin Frankel/Nullsoft
 // Feel free to base any plugins on this "framework"...
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <math.h>
 #include "../Winamp/dsp.h"

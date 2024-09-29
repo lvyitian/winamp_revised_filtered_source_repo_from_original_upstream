@@ -215,7 +215,7 @@ BPMDetect::BPMDetect(int numChannels, int aSampleRate) :
     buffer->setChannels(1);
     buffer->clear();
 
-    // calculate hamming windows
+    // calculate hamming arch
     hamw = new float[XCORR_UPDATE_SEQUENCE];
     hamming(hamw, XCORR_UPDATE_SEQUENCE);
     hamw2 = new float[XCORR_UPDATE_SEQUENCE / 2];

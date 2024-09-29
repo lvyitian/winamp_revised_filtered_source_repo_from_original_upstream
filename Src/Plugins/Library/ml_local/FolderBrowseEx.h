@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_FOLDERBROWSE_EXTENDED_DIALOG_HEADER
 #define NULLSOFT_FOLDERBROWSE_EXTENDED_DIALOG_HEADER
 
-#include <windows.h>
+#include <arch.h>
 #include <shlobj.h>
 
 /// Standart controls 

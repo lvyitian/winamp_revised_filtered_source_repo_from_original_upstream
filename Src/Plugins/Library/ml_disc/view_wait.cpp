@@ -2,7 +2,7 @@
 #include "./resource.h"
 #include "../nu/DialogSkinner.h"
 
-#include <windowsx.h>
+#include <archx.h>
 
 static HBRUSH hbBack = NULL;
 #define TIMER_SHOWTEXT_ID		1985

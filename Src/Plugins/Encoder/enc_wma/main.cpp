@@ -19,7 +19,7 @@
 
 #define ENC_VERSION "v1.23"
 
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include <wmsdk.h>
 

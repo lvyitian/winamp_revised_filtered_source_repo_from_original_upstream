@@ -1,8 +1,8 @@
 #ifndef _SKINNEDLISTVIEW_H_
 #define _SKINNEDLISTVIEW_H_
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <stdio.h>
 #include <shlobj.h>
 #include "..\..\General\gen_ml/ml.h"

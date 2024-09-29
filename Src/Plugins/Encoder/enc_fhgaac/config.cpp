@@ -1,5 +1,5 @@
 #include "config.h"
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 #include <assert.h>
 #include "mp4FastAAClib.h"

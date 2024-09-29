@@ -17,7 +17,7 @@
 #include "mptRandom.h"
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #if defined(MODPLUG_TRACKER)
 #include <shlwapi.h>
 #endif

@@ -30,7 +30,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef __ICON_T_H__
 #define __ICON_T_H__ 1
 
-#include <windows.h>
+#include <arch.h>
 #include <shlobj.h> // for ITEMIDLIST
 
 typedef struct

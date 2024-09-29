@@ -216,7 +216,7 @@ void clt_mdct_backward_neon(const mdct_lookup *l,
          im = yp0[1];
          t0 = t[i];
          t1 = t[N4+i];
-         /* We'd scale up by 2 here, but instead it's done when mixing the windows */
+         /* We'd scale up by 2 here, but instead it's done when mixing the arch */
          yr = S_MUL(re,t0) + S_MUL(im,t1);
          yi = S_MUL(re,t1) - S_MUL(im,t0);
          re = yp1[0];
@@ -226,7 +226,7 @@ void clt_mdct_backward_neon(const mdct_lookup *l,
 
          t0 = t[(N4-i-1)];
          t1 = t[(N2-i-1)];
-         /* We'd scale up by 2 here, but instead it's done when mixing the windows */
+         /* We'd scale up by 2 here, but instead it's done when mixing the arch */
          yr = S_MUL(re,t0) + S_MUL(im,t1);
          yi = S_MUL(re,t1) - S_MUL(im,t0);
          yp1[0] = yr;

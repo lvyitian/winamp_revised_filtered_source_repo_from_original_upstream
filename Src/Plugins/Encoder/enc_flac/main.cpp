@@ -5,7 +5,7 @@
 #include "AudioCoderFlac.h"
 #include "resource.h"
 #include <commctrl.h>
-#include <windows.h>
+#include <arch.h>
 #include <Uxtheme.h>
 #include <api/service/waservicefactory.h>
 #include <api/application/api_application.h>

@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "irctell.h"
 #include <api/syscb/api_syscb.h>
 #include <api/core/api_core.h>
@@ -34,7 +34,7 @@ void WACIrctell::RegisterServices(api_service *service)
 
 void WACIrctell::DeregisterServices(api_service *service) 
 {
-	// be sure to delete all your windows etc HERE, not in the destructor
+	// be sure to delete all your arch etc HERE, not in the destructor
 	// because the API pointer might be invalid in the destructor
 //	if (core)
 	//	core->core_delCallback(0, this);

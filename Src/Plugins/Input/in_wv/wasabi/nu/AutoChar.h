@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_AUTOCHARH
 #define NULLSOFT_AUTOCHARH
 #ifdef WIN32
-#include <windows.h>
+#include <arch.h>
 
 inline char *AutoCharDupN(const wchar_t *convert, size_t len, UINT codePage = CP_ACP, UINT flags=0)
 {

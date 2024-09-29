@@ -24,7 +24,7 @@ void draw_sa(unsigned char *values, int draw)
 	int dbx;
 	float spfo;
 
-	int ws=(config_windowshade&&config_mw_open);
+	int ws=(config_archhade&&config_mw_open);
 	int s = (config_dsize&&config_mw_open)?1:0;
 	unsigned char *gmem;
 
@@ -96,9 +96,9 @@ void draw_sa(unsigned char *values, int draw)
 	}
 	else if (!s) // singlesize
 	{
-		if (!ws) // non windowshade singlesize
+		if (!ws) // non archhade singlesize
 		{
-			if (config_sa == 2) // non windowshade singlesize oscilliscope
+			if (config_sa == 2) // non archhade singlesize oscilliscope
 			{
 				gmem = specData + 76*2*14;
 				if (draw) 
@@ -135,7 +135,7 @@ void draw_sa(unsigned char *values, int draw)
 					}
 				}
 			} 
-			else // non windowshade singlesize spectrum analyzer
+			else // non archhade singlesize spectrum analyzer
 			{
 				for (x = 0; x < 75; x ++)
 				{
@@ -185,9 +185,9 @@ void draw_sa(unsigned char *values, int draw)
 				}
 			}
 		}
-		else // windowshade singlesize
+		else // archhade singlesize
 		{
-			if (config_sa==1)  // windowshade singlesize spectrum analyzer
+			if (config_sa==1)  // archhade singlesize spectrum analyzer
 			{
 				gmem = specData+76*2*(32-5);
 				for (x = 0; x < 37; x ++)
@@ -240,7 +240,7 @@ void draw_sa(unsigned char *values, int draw)
 					if (t_bx[x*2] < 0) t_bx[x*2]=0;
 				}
 			}
-			else if (config_sa == 2)  // windowshade singlesize oscilliscope 
+			else if (config_sa == 2)  // archhade singlesize oscilliscope 
 			{
 				int wm=((config_safire>>2)&3);
 				int lastv=-5;

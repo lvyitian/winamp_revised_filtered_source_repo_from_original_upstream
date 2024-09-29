@@ -1,7 +1,7 @@
 #ifndef _COMBOSKIN_H
 #define _COMBOSKIN_H
 
-#include <windows.h>
+#include <arch.h>
 
 class ComboSkin
 {

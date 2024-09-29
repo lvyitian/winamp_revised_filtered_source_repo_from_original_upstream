@@ -32,12 +32,12 @@
 
 #include "../api.h"
 #include "../api_auth.h"
-#include "../../nu/windowsTheme.h"
+#include "../../nu/archTheme.h"
 #include "../../winamp/commandLink.h"
 #include "../../ombrowser/ifc_omcacherecord.h"
 
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <vssym32.h>
 #include <shlwapi.h>

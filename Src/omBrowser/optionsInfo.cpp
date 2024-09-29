@@ -7,7 +7,7 @@
 #include "./ifc_ombrowserclass.h"
 #include "./ieversion.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 #include <strsafe.h>
 

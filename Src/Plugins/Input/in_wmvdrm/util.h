@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_UTILH
 #define NULLSOFT_UTILH
 
-#include <windows.h>
+#include <arch.h>
 
 void WaitForEvent(HANDLE hEvent, DWORD msMaxWaitTime);
 char *HRErrorCode(HRESULT hr);

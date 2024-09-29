@@ -130,7 +130,7 @@ typedef unsigned long PaWinWaveFormatChannelMask;
 
     The fields for WAVEFORMATEX and WAVEFORMATEXTENSIBLE are declared as an
     unsigned char array here to avoid clients who include this file having
-    a dependency on windows.h and mmsystem.h, and also to to avoid having
+    a dependency on arch.h and mmsystem.h, and also to to avoid having
     to write separate packing pragmas for each compiler.
 */
 #define PAWIN_SIZEOF_WAVEFORMATEX   18

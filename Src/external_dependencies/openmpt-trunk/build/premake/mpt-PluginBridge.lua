@@ -135,9 +135,9 @@
 	filter { "action:vs*", "architecture:x86_64" }
 		dataexecutionprevention "Off"
 	filter { "action:vs*", "architecture:ARM" }
-		-- dataexecutionprevention "Off" -- not supported by windows loader on arm64
+		-- dataexecutionprevention "Off" -- not supported by arch loader on arm64
 	filter { "action:vs*", "architecture:ARM64" }
-		-- dataexecutionprevention "Off" -- not supported by windows loader on arm64
+		-- dataexecutionprevention "Off" -- not supported by arch loader on arm64
 	filter {}
   characterset "Unicode"
   warnings "Extra"

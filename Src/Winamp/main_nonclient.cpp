@@ -15,15 +15,15 @@ BOOL Main_OnNCActivate(HWND hwnd, BOOL fActive, HWND hwndActDeact, BOOL fMinimiz
 {
 	if (fActive == FALSE)
 	{
-		draw_tbar(config_hilite ? 0 : 1, config_windowshade, eggstat);
-		if (config_windowshade) SendMessageW(hwnd, WM_TIMER, UPDATE_DISPLAY_TIMER + 4, 0);
+		draw_tbar(config_hilite ? 0 : 1, config_archhade, eggstat);
+		if (config_archhade) SendMessageW(hwnd, WM_TIMER, UPDATE_DISPLAY_TIMER + 4, 0);
 	}
 	else
 	{
 		static int i;
-		if (i) draw_tbar(1, config_windowshade, eggstat);
+		if (i) draw_tbar(1, config_archhade, eggstat);
 		i = 1;
-		if (config_windowshade) SendMessageW(hwnd, WM_TIMER, UPDATE_DISPLAY_TIMER + 4, 0);
+		if (config_archhade) SendMessageW(hwnd, WM_TIMER, UPDATE_DISPLAY_TIMER + 4, 0);
 	}
 
 	return TRUE;

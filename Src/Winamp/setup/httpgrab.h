@@ -1,7 +1,7 @@
 #ifndef WINAMP_HTTP_GRAB_TEXT_HEADER
 #define WINAMP_HTTP_GRAB_TEXT_HEADER
 
-#include <windows.h>
+#include <arch.h>
 
 #define HTTPGRAB_USEWINDOWTEXT		0x0000
 #define HTTPGRAB_USESTATUSTEXT		0x0001

@@ -29,7 +29,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 // alphachannel safe (sets alpha to 0 on rendered portions) 11/21/99
 
-#include <windows.h>
+#include <arch.h>
 #include <math.h>
 #include "r_defs.h"
 

@@ -1119,14 +1119,14 @@
 
 
 	function m.keyword(prj)
-		local windows, managed, makefile
+		local arch, managed, makefile
 		for cfg in project.eachconfig(prj) do
-			if cfg.system == p.WINDOWS then windows = true end
+			if cfg.system == p.WINDOWS then arch = true end
 			if cfg.clr ~= p.OFF then managed = true end
 			if vstudio.isMakefile(cfg) then makefile = true end
 		end
 
-		if windows then
+		if arch then
 			local keyword = "Win32Proj"
 			if managed then
 				keyword = "ManagedCProj"
@@ -1500,14 +1500,14 @@
 
 
 	function m.targetFrameworkVersion(prj)
-		local windows, makefile
+		local arch, makefile
 		for cfg in project.eachconfig(prj) do
-			if cfg.system == p.WINDOWS then windows = true end
+			if cfg.system == p.WINDOWS then arch = true end
 			if vstudio.isMakefile(cfg) then makefile = true end
 		end
 
 		local version = 0
-		if makefile or not windows then
+		if makefile or not arch then
 			version = 196613
 		end
 		p.w('TargetFrameworkVersion="%d"', version)

@@ -1,7 +1,7 @@
 #include "LockFreeLIFO.h"
 #include "foundation/atomics.h"
 
-/* TODO: on windows, replace with InitializeSListHead/InterlockedPushEntrySList/InterlockedPopEntrySList just to be safe */
+/* TODO: on arch, replace with InitializeSListHead/InterlockedPushEntrySList/InterlockedPopEntrySList just to be safe */
 void lifo_init(lifo_t *lifo)
 {
 	lifo->head = 0;

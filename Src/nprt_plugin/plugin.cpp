@@ -39,8 +39,8 @@
 //
 // CPlugin class implementation
 //
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include "plugin.h"
 #include "npupp.h"
 #include "nsError.h"

@@ -5,7 +5,7 @@
 #error Must define _WIN32_WINNT >= 0x400 to use TimerHandle
 #endif
 
-#include <windows.h>
+#include <arch.h>
 #include <bfc/platform/types.h>
 /*
 TimerHandle() constructor will make a new timer handle

@@ -17,7 +17,7 @@
 
 	function suite.setup()
 		p.action.set("test")
-		_TARGET_OS = "windows"
+		_TARGET_OS = "arch"
 		wks, prj = test.createWorkspace()
 	end
 
@@ -56,7 +56,7 @@
 --
 
 	function suite.skipsExtension_onExplicitExtension()
-		system "windows"
+		system "arch"
 		links { "user32.lib" }
 		local r = prepare("all", "fullpath")
 		test.isequal({ "user32.lib" }, r)
@@ -68,7 +68,7 @@
 --
 
 	function suite.variableMaintained_onLeadingVariable()
-		system "windows"
+		system "arch"
 		location "build"
 		links { "$(LOCAL_DEV_PATH)/sdk/lib/DEVMAPI" }
 		local r = prepare("all", "fullpath")
@@ -76,7 +76,7 @@
 	end
 
 	function suite.variableMaintained_onQuotedVariable()
-		system "windows"
+		system "arch"
 		location "build"
 		links { '"$(LOCAL_DEV_PATH)/sdk/lib/DEVMAPI.lib"' }
 		local r = prepare("all", "fullpath")
@@ -101,7 +101,7 @@
 --
 
 	function suite.skipsAssemblies_onManagedCpp()
-		system "windows"
+		system "arch"
 		clr "On"
 		links { "user32", "System.dll" }
 		local r = prepare("all", "fullpath")
@@ -115,7 +115,7 @@
 --
 
 	function suite.skipsUnmanagedLibs_onManagedLinkage()
-		system "windows"
+		system "arch"
 		clr "On"
 		links { "user32", "System.dll" }
 		local r = prepare("all", "fullpath", "managed")

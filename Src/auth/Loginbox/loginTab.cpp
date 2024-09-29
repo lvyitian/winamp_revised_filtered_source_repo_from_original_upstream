@@ -6,7 +6,7 @@
 
 #include "../api.h"
 #include "../resource.h"
-#include "../../nu/windowsTheme.h"
+#include "../../nu/archTheme.h"
 
 #include <vssym32.h>
 #include <vsstyle.h>

@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_OUT_DS_VOLCTRL_H
 #define NULLSOFT_OUT_DS_VOLCTRL_H
 
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #include <dsound.h>
 

@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <winioctl.h>
 
 //functions to get the SCSI ID from a drive letter

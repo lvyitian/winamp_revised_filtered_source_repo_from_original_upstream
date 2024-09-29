@@ -55,7 +55,7 @@ BOOL InitApplication(HINSTANCE hInstance)  // register Winamp's window class, re
 #endif
 #endif
 
-	/* now register unicode windows */
+	/* now register unicode arch */
 	WNDCLASSW wcW = {0, };
 
 	wcW.style     = CS_DBLCLKS;
@@ -220,7 +220,7 @@ void main_Create()
 	draw_playicon(2);
 	draw_clutterbar(0);
 	draw_monostereo(0);
-	draw_tbar(1, config_windowshade, 0);
+	draw_tbar(1, config_archhade, 0);
 	draw_setnoupdate(0);
 	InsertMenuW(GetSystemMenu(hMainWindow, FALSE), 0, MF_POPUP | MF_BYPOSITION, (UINT_PTR) main_menu, L"Winamp");
 	InsertMenu(GetSystemMenu(hMainWindow, FALSE), 1, MF_BYPOSITION | MF_SEPARATOR, 0, NULL);

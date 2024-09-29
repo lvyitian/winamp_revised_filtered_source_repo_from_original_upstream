@@ -18,7 +18,7 @@
 #include <map>
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif
 
 
@@ -124,19 +124,19 @@ Context::Context(mpt::OS::Wine::VersionContext versionContext)
 }
 
 
-std::string Context::PathToPosix(mpt::PathString windowsPath)
+std::string Context::PathToPosix(mpt::PathString archPath)
 {
 	std::string result;
-	if(windowsPath.empty())
+	if(archPath.empty())
 	{
 		return result;
 	}
-	if(windowsPath.Length() >= 32000)
+	if(archPath.Length() >= 32000)
 	{
 		throw mpt::Wine::Exception("Path too long.");
 	}
 	LPSTR tmp = nullptr;
-	tmp = wine_get_unix_file_name(windowsPath.ToWide().c_str());
+	tmp = wine_get_unix_file_name(archPath.ToWide().c_str());
 	if(!tmp)
 	{
 		throw mpt::Wine::Exception("Wine kernel32.dll:wine_get_unix_file_name failed.");
@@ -170,10 +170,10 @@ mpt::PathString Context::PathToWindows(std::string hostPath)
 	return result;
 }
 
-std::string Context::PathToPosixCanonical(mpt::PathString windowsPath)
+std::string Context::PathToPosixCanonical(mpt::PathString archPath)
 {
 	std::string result;
-	std::string hostPath = PathToPosix(windowsPath);
+	std::string hostPath = PathToPosix(archPath);
 	if(hostPath.empty())
 	{
 		return result;

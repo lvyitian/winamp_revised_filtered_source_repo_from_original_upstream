@@ -3,7 +3,7 @@
 ** Copyright (c) 1998, Justin Frankel/Nullsoft Inc.
 */
 
-#include <windows.h>
+#include <arch.h>
 #include <mmreg.h>
 #include <msacm.h>
 #include <math.h>

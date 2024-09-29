@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_CONFIG_H_
 #define NULLSOFT_CONFIG_H_
 
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,6 +1,6 @@
 #ifndef NULLSOFT_ML_PLG_MAIN_H
 #define NULLSOFT_ML_PLG_MAIN_H
-#include <windows.h>
+#include <arch.h>
 #include "playlist.h"
 #include "../../General/gen_ml/ml.h"
 #include "IDScanner.h"

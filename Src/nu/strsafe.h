@@ -6400,7 +6400,7 @@ STRSAFE_INLINE_API StringGetsExWorkerW(wchar_t* pszDest, size_t cchDest, size_t 
 #pragma deprecated(gets)
 #pragma deprecated(_getws)
 
-// Then all the windows.h names - we need to undef and redef based on UNICODE setting
+// Then all the arch.h names - we need to undef and redef based on UNICODE setting
 #undef lstrcpy
 #undef lstrcat
 #undef wsprintf

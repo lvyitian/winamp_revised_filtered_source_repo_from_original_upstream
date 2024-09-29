@@ -155,7 +155,7 @@ public:
 	// Return the same path string with a different (or appended) extension (including "."), e.g. "foo.bar",".txt" -> "foo.txt" or "C:\OpenMPT\foo",".txt" -> "C:\OpenMPT\foo.txt"
 	PathString ReplaceExt(const mpt::PathString &newExt) const;
 
-	// Removes special characters from a filename component and replaces them with a safe replacement character ("_" on windows).
+	// Removes special characters from a filename component and replaces them with a safe replacement character ("_" on arch).
 	// Returns the result.
 	// Note that this also removes path component separators, so this should only be used on single-component PathString objects.
 	PathString SanitizeComponent() const;

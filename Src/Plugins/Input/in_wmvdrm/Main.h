@@ -5,7 +5,7 @@
 
 #include "WinampInterface.h"
 #include "../Winamp/in2.h"
-#include <windows.h>
+#include <arch.h>
 #include "WMDRMModule.h"
 #include <shlwapi.h>
 #include <wmsdk.h>

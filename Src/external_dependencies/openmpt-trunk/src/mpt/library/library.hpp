@@ -22,7 +22,7 @@
 #include <vector>
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #elif MPT_OS_ANDROID
 #elif defined(MPT_WITH_DL)
 #include <dlfcn.h>

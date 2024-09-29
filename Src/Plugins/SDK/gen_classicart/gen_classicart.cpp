@@ -57,7 +57,7 @@
 
 */
 
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 #include <strsafe.h>
 
@@ -412,7 +412,7 @@ wchar_t temp[MAX_PATH] = {0};
 static LRESULT WINAPI SubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	// handles the item being selected through the main window menu
-	// including via the windows taskbar menu as it'll fail otherwise
+	// including via the arch taskbar menu as it'll fail otherwise
 	if((msg == WM_COMMAND || msg == WM_SYSCOMMAND) && LOWORD(wParam) == WINAMP_ARTVIEW_MENUID)
 	{
 		if(artwindow_open) PostMessage(myWndChild,WM_CLOSE,0,0);

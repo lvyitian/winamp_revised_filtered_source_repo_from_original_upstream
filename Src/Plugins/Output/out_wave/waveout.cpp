@@ -1,5 +1,5 @@
 #define STRICT
-#include <windows.h>
+#include <arch.h>
 #include "out_wave.h"
 #include "api.h"
 #include "waveout.h"

@@ -1,6 +1,6 @@
 #include "main.h"
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <stdio.h>
 #include <shlobj.h>
 #include "..\..\General\gen_ml/ml.h"

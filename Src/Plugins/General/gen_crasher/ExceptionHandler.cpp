@@ -30,7 +30,7 @@
 
 #define _WIN32_WINDOWS 0x0500	// for IsDebuggerPresent
 
-#include "windows.h"
+#include "arch.h"
 #include <tchar.h>
 #include "GetWinVer.h"
 #include "miniversion.h"

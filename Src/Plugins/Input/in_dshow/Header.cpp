@@ -1,5 +1,5 @@
 #include "Header.h"
-#include <windows.h>
+#include <arch.h>
 #include "header_avi.h"
 #include "header_mpg.h"
 #include "header_asf.h"

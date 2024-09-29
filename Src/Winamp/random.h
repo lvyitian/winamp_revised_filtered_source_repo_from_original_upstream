@@ -2,7 +2,7 @@
 #define NULLSOFT_WINAMP_RANDOM_H
 
 #include "api_random.h"
-#include <windows.h> // for DWORD
+#include <arch.h> // for DWORD
 
 
 class Random : public api_random

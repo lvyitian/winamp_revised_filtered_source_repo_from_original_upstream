@@ -10,12 +10,12 @@
   <elementalias id="studio.basetexture" target="wasabi.basetexture" />
 
 
-<!-- Frame windows -->
+<!-- Frame arch -->
   <elementalias id="studio.framewnd.verticaldivider" target="wasabi.framewnd.verticaldivider"/>
   <elementalias id="studio.framewnd.verticalgrabber" target="wasabi.framewnd.verticalgrabber"/>
   <elementalias id="studio.framewnd.horizontaldivider" target="wasabi.framewnd.horizontaldivider"/>
   <elementalias id="studio.framewnd.horizontalgrabber" target="wasabi.framewnd.horizontalgrabber"/>
-  <elementalias id="studio.framewnd.windowshade" target="wasabi.framewnd.windowshade"/>
+  <elementalias id="studio.framewnd.archhade" target="wasabi.framewnd.archhade"/>
   
 <!-- Generic Lists and Trees -->
   <elementalias id="studio.list.background" target="wasabi.list.background"/>
@@ -164,7 +164,7 @@
   <elementalias id="studio.component.title.border" target="wasabi.component.title.border"/>
 
 
-<!-- labeled windows -->
+<!-- labeled arch -->
   <elementalias id="common.labelwnd.foreground" target="wasabi.labelwnd.foreground"/>
   <elementalias id="common.labelwnd.background" target="wasabi.labelwnd.background"/>
 

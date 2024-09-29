@@ -2,7 +2,7 @@
 ** .WV input plug-in for WavPack
 ** Copyright (c) 2000 - 2006, Conifer Software, All Rights Reserved
 */
-#include <windows.h>
+#include <arch.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <mmreg.h>

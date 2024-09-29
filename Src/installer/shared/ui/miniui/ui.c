@@ -1,13 +1,13 @@
 // ui.cpp : Defines the entry point for the application.
 //
 
-#include <windows.h>
+#include <arch.h>
 #include "resource.h"
 
 HINSTANCE g_hInstance;
 HWND m_curwnd;
 
-LPTSTR windows[] = {
+LPTSTR arch[] = {
   MAKEINTRESOURCE(IDD_LICENSE),
   MAKEINTRESOURCE(IDD_SELCOM),
   MAKEINTRESOURCE(IDD_DIR),
@@ -45,12 +45,12 @@ BOOL CALLBACK DialogProc(HWND hwndDlg,UINT uMsg,WPARAM wParam,LPARAM lParam) {
         i++;
         break;
       }
-      if (i >= (int)sizeof(windows)/sizeof(char*)) {
+      if (i >= (int)sizeof(arch)/sizeof(char*)) {
         i--;
         break;
       }
       if (m_curwnd) DestroyWindow(m_curwnd);
-      m_curwnd=CreateDialog(g_hInstance,windows[i],hwndDlg,GenericProc);
+      m_curwnd=CreateDialog(g_hInstance,arch[i],hwndDlg,GenericProc);
       if (m_curwnd)
       {
         RECT r;

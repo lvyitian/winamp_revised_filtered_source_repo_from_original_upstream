@@ -435,7 +435,7 @@
 				return r
 			end,
 			WindowedApp = function(cfg)
-				if cfg.system == p.WINDOWS then return "-mwindows" end
+				if cfg.system == p.WINDOWS then return "-march" end
 			end,
 		},
 		system = {

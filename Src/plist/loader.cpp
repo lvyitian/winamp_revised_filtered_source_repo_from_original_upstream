@@ -6,7 +6,7 @@
 //------------------------------------------------------------------------
 
 #include "loader.h"
-#include <windows.h>
+#include <arch.h>
 #include <commdlg.h>
 #include <bfc/string/stringdict.h>
 

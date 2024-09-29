@@ -2,7 +2,7 @@
 #include "config.h"
 #include "preferences.h"
 #include "../Winamp/wa_ipc.h"
-#include <windows.h>
+#include <arch.h>
 #include <assert.h>
 #include "resource.h"
 #include "link_control.h"

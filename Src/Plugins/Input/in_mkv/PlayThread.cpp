@@ -15,7 +15,7 @@
 #include "../nsmkv/file_mkv_reader.h"
 #include <api/service/waservicefactory.h>
 #include <api/service/services.h>
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 
 // {B6CB4A7C-A8D0-4c55-8E60-9F7A7A23DA0F}

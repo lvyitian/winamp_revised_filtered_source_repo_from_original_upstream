@@ -1,5 +1,5 @@
 #pragma once
-#include <windows.h>
+#include <arch.h>
 #include "config.h"
 
 extern HINSTANCE enc_fhg_HINST;

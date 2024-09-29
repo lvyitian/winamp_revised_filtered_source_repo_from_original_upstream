@@ -245,7 +245,7 @@ void clt_mdct_backward(const mdct_lookup *l, kiss_fft_scalar *in, kiss_fft_scala
          im = yp0[0];
          t0 = t[i];
          t1 = t[N4+i];
-         /* We'd scale up by 2 here, but instead it's done when mixing the windows */
+         /* We'd scale up by 2 here, but instead it's done when mixing the arch */
          yr = S_MUL_ADD(re,t0 , im,t1);
          yi = S_MUL_SUB(re,t1 , im,t0);
          /* We swap real and imag because we're using an FFT instead of an IFFT. */
@@ -256,7 +256,7 @@ void clt_mdct_backward(const mdct_lookup *l, kiss_fft_scalar *in, kiss_fft_scala
 
          t0 = t[(N4-i-1)];
          t1 = t[(N2-i-1)];
-         /* We'd scale up by 2 here, but instead it's done when mixing the windows */
+         /* We'd scale up by 2 here, but instead it's done when mixing the arch */
          yr = S_MUL_ADD(re,t0,im,t1);
          yi = S_MUL_SUB(re,t1,im,t0);
          yp1[0] = yr;

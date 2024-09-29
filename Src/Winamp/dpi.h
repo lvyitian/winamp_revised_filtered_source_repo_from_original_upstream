@@ -8,7 +8,7 @@ extern "C"
 {
 #endif
 
-#include <windows.h>
+#include <arch.h>
 
 // DPI awareness based on http://msdn.microsoft.com/en-US/library/dd464660.aspx
 // Definition: relative pixel = 1 pixel at 96 DPI and scaled based on actual DPI.

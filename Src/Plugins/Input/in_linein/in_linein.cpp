@@ -2,7 +2,7 @@
 #define PLUGIN_VERSION L"3.16"
 
 #include "main.h"
-#include <windows.h>
+#include <arch.h>
 #include "LineIn.h"
 #include <api/service/waServiceFactory.h>
 #include "../Agave/Language/api_language.h"

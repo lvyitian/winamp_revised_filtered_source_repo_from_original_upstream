@@ -16,7 +16,7 @@
 **
 */
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include "listview.h"
 

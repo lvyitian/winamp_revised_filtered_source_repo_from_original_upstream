@@ -13,7 +13,7 @@
  *
 \***************************************************************************/
 
-/* the typedefs should be in place if we already got windows.h included */
+/* the typedefs should be in place if we already got arch.h included */
 
 #ifndef _INC_WINDOWS
 

@@ -2,7 +2,7 @@
 #define NULLSOFT_PLAYLIST_PLSLOADER_H
 
 #include "ifc_playlistloader.h"
-#include <windows.h>
+#include <arch.h>
 
 class PLSLoader : public ifc_playlistloader
 {

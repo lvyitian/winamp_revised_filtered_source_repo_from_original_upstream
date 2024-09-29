@@ -667,7 +667,7 @@
     <ClInclude Include="..\..\src\mpt\binary\tests\tests_binary.hpp" />
     <ClInclude Include="..\..\src\mpt\check\libc.hpp" />
     <ClInclude Include="..\..\src\mpt\check\mfc.hpp" />
-    <ClInclude Include="..\..\src\mpt\check\windows.hpp" />
+    <ClInclude Include="..\..\src\mpt\check\arch.hpp" />
     <ClInclude Include="..\..\src\mpt\crc\crc.hpp" />
     <ClInclude Include="..\..\src\mpt\crc\tests\tests_crc.hpp" />
     <ClInclude Include="..\..\src\mpt\crypto\exception.hpp" />
@@ -727,7 +727,7 @@
     <ClInclude Include="..\..\src\mpt\library\library.hpp" />
     <ClInclude Include="..\..\src\mpt\mutex\mutex.hpp" />
     <ClInclude Include="..\..\src\mpt\osinfo\class.hpp" />
-    <ClInclude Include="..\..\src\mpt\osinfo\windows_version.hpp" />
+    <ClInclude Include="..\..\src\mpt\osinfo\arch_version.hpp" />
     <ClInclude Include="..\..\src\mpt\out_of_memory\out_of_memory.hpp" />
     <ClInclude Include="..\..\src\mpt\parse\parse.hpp" />
     <ClInclude Include="..\..\src\mpt\parse\split.hpp" />

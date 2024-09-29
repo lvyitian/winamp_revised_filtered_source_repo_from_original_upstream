@@ -26,7 +26,7 @@
 #include <vector>
 
 #if defined WIN32
-#include <windows.h>
+#include <arch.h>
 #endif
 
 namespace AVI

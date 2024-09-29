@@ -767,7 +767,7 @@ libFunc int HFB_WhatsAhead(
 
 
 
-/* windows 95 dll system abstraction functions */
+/* arch 95 dll system abstraction functions */
 
 libFunc void HFB_Setmalloc(
 	void *(*mallocFuncPtr)(unsigned int size)

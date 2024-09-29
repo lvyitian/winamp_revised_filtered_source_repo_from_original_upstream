@@ -36,8 +36,8 @@
 #endif
 
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <olectl.h>
 #include <ddraw.h>
 #include <mmsystem.h>
@@ -179,7 +179,7 @@ LONG_PTR _SetWindowLongPtr(HWND hwnd, int nIndex, T p)
 #include <outputq.h>    // Output pin queueing
 #include <errors.h>     // HRESULT status and error definitions
 #include <renbase.h>    // Base class for writing ActiveX renderers
-#include <winutil.h>    // Helps with filters that manage windows
+#include <winutil.h>    // Helps with filters that manage arch
 #include <winctrl.h>    // Implements the IVideoWindow interface
 #include <videoctl.h>   // Specifically video related classes
 #include <refclock.h>	// Base clock class

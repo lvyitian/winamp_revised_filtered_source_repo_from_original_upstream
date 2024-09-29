@@ -1,7 +1,7 @@
 #ifndef STRICT
 #define STRICT
 #endif
-#include <windows.h>
+#include <arch.h>
 
 #ifndef NOVTABLE
 #define NOVTABLE _declspec(novtable)

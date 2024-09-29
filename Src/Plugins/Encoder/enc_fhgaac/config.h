@@ -1,7 +1,7 @@
 #pragma once
 
 #include "mp4FastAAClib.h"
-#include <windows.h> // or MAX_PATH
+#include <arch.h> // or MAX_PATH
 
 
 #define ENCODER_TYPE_MPEG4 (mmioFOURCC('A','A','C','f'))

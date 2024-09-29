@@ -2,7 +2,7 @@
 #define STRICT
 #endif
 #include "../Agave/Language/api_language.h"
-#include <windows.h>
+#include <arch.h>
 #include <malloc.h>
 
 #ifndef NOVTABLE

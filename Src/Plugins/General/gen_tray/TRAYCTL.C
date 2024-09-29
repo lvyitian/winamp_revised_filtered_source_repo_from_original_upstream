@@ -4,7 +4,7 @@
 // Winamp general purpose plug-in mini-SDK
 // Copyright (C) 1997, Justin Frankel/Nullsoft
 // Modifications and useability enhancements by DrO aka Darren Owen 2006-2014
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <shlwapi.h>
 #include "../winamp/gen.h"
@@ -982,7 +982,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 // GetWindowsVersionRunningOnCompact(...)
 //
-// Function to get the version of windows being run on
+// Function to get the version of arch being run on
 //
 // Optionally a 'short version[2]' can be passed into the
 // function as 'GetWindowsVersionRunningOnCompact(version)'

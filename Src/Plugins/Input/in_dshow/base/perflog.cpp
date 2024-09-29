@@ -9,7 +9,7 @@
 #pragma warning (disable:4201)
 
 #include <streams.h>
-#include <windows.h>
+#include <arch.h>
 #include <tchar.h>
 #include <winperf.h>
 #include <wmistr.h>

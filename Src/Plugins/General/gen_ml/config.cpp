@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 
 #include "config.h"

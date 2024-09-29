@@ -1,7 +1,7 @@
 #ifndef WINAMP_LOADIMAGE_HEADER
 #define WINAMP_LOADIMAGE_HEADER
 
-#include <windows.h>
+#include <arch.h>
 
 HBITMAP WALoadImage(HMODULE hMod, LPCWSTR pszSection, LPCWSTR pszImage, BOOL bPremult);
 HBITMAP WAResizeImage(HBITMAP hbmp, INT cx, INT cy, HBRUSH hbBk);

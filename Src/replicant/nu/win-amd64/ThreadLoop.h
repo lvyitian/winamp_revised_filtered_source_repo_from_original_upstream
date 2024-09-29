@@ -2,7 +2,7 @@
 #include "nu/lfmpscq.h"
 #include "nu/LockFreeLIFO.h"
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include <arch.h>
 
 struct threadloop_node_t : public queue_node_t
 {

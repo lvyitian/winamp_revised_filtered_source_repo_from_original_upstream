@@ -46,7 +46,7 @@ size_t utf16BE_to_utf8(const uint16_t *src, size_t source_len, char *dst, size_t
 #endif
 
 #ifdef _WIN32
-#include <windows.h>
+#include <arch.h>
 int WINAPI NDE_FindNLSString(LCID Locale, DWORD dwFindNLSStringFlags, LPCWSTR lpStringSource, int cchSource, LPCWSTR lpStringValue, int cchValue, LPINT pcchFound);
 extern int (WINAPI *findNLSString)(LCID Locale, DWORD dwFindNLSStringFlags, LPCWSTR lpStringSource, int cchSource, LPCWSTR lpStringValue, int cchValue, LPINT pcchFound);
 bool nde_wcsbegins(const wchar_t *a, const wchar_t *b);

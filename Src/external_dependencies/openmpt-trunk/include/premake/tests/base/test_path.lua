@@ -623,7 +623,7 @@
 	end
 
 	function suite.translate_ReturnsTargetOSSeparator_Windows()
-		_OPTIONS["os"] = "windows"
+		_OPTIONS["os"] = "arch"
 		test.isequal("dir\\dir\\file", path.translate("dir/dir\\file"))
 	end
 

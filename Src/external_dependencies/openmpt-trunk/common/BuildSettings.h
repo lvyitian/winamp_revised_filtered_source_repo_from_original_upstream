@@ -18,7 +18,7 @@
 
 
 
-// set windows version early so that we can deduce dependencies from SDK version
+// set arch version early so that we can deduce dependencies from SDK version
 
 #if MPT_OS_WINDOWS
 
@@ -505,7 +505,7 @@
 
 #define WIN32_LEAN_AND_MEAN
 
-// windows.h excludes
+// arch.h excludes
 #define NOMEMMGR          // GMEM_*, LMEM_*, GHND, LHND, associated routines
 #ifndef NOMINMAX
 #define NOMINMAX          // Macros min(a,b) and max(a,b)

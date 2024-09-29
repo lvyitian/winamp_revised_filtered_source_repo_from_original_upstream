@@ -47,7 +47,7 @@ MAKEFILE = genie.make
 
 ifeq ($(config),release)
   OBJDIR              = obj/Release
-  TARGETDIR           = ../../bin/windows
+  TARGETDIR           = ../../bin/arch
   override TARGET              = $(TARGETDIR)/genie.exe
   DEFINES            += -DNDEBUG -DLUA_COMPAT_MODULE
   INCLUDES           += -I"../../src/host/lua-5.3.0/src"
@@ -134,7 +134,7 @@ endif
 
 ifeq ($(config),debug)
   OBJDIR              = obj/Debug
-  TARGETDIR           = ../../bin/windows
+  TARGETDIR           = ../../bin/arch
   override TARGET              = $(TARGETDIR)/genie.exe
   DEFINES            += -D_DEBUG -DLUA_COMPAT_MODULE
   INCLUDES           += -I"../../src/host/lua-5.3.0/src"

@@ -5,7 +5,7 @@
 #if !defined(AFX_CBase64_H__B2E45717_0625_11D2_A80A_00C04FB6794C__INCLUDED_)
 #define AFX_CBase64_H__B2E45717_0625_11D2_A80A_00C04FB6794C__INCLUDED_
 
-#include <windows.h>
+#include <arch.h>
 
 #define lCONTEXT char
 #define PlCONTEXT lCONTEXT*

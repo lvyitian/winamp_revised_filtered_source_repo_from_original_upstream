@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "link_control.h"
 
 static HCURSOR link_hand_cursor;

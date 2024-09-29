@@ -14,7 +14,7 @@ use content-disposition for filename, if available (instead of temp filename)
 
 */
 #include "ProgressiveHTTPReader.h"
-#include <windows.h>
+#include <arch.h>
 
 int ProgressiveHTTPReader::isMine(const wchar_t *filename, int mode)
 {

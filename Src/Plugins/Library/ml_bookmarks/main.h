@@ -1,8 +1,8 @@
 #ifndef NULLSOFT_BOOKMARKS_MAIN_H
 #define NULLSOFT_BOOKMARKS_MAIN_H
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 
 #include "api__ml_bookmarks.h"
 

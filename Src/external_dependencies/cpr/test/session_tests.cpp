@@ -1056,7 +1056,7 @@ TEST(LocalPortTests, SetOptionTest) {
     EXPECT_LE(port_from_response, local_port + local_port_range);
 }
 
-// The tests using the port of the server as a source port for curl fail for windows.
+// The tests using the port of the server as a source port for curl fail for arch.
 // The reason probably is that Windows allows two sockets to bind to the same port if the full hostname is different.
 // In these tests, mongoose binds to http://127.0.0.1:61936, while libcurl binds to a different hostname, but still port 61936.
 // This seems to be okay for Windows, however, these tests expect an error like on Linux and MacOS

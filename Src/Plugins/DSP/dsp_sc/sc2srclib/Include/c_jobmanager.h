@@ -8,7 +8,7 @@
 #include <winbase.h>  // for mutex support
 #define T_MUTEX HANDLE
 #else // _WIN32
-#error "This won't compile under anything other than windows since I haven't implemented mutexing on anything else"
+#error "This won't compile under anything other than arch since I haven't implemented mutexing on anything else"
 #endif // _WIN32
 
 template<class T> class C_JOBMANAGER {

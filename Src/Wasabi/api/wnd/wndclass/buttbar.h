@@ -78,7 +78,7 @@ public:
 
   /**
     Enables you to add a child window to your button bar.
-    Since this is a button bar, the windows you can add must be
+    Since this is a button bar, the arch you can add must be
     derived or be ButtonWnd's.
 
     @see removeChild()

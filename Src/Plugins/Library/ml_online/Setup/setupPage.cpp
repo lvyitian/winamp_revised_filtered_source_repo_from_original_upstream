@@ -17,7 +17,7 @@
 #include <ifc_omfilestorage.h>
 #include <ifc_omwebstorage.h>
 
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 #include <vector>
 

@@ -1,6 +1,6 @@
 #include "main.h"
 #include "api.h"
-#include <windows.h>
+#include <arch.h>
 #include "../Winamp/wa_ipc.h"
 #include "FactoryHelper.h"
 #include "MetaTagFactory.h"

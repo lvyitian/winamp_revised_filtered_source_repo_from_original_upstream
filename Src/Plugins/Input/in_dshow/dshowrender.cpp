@@ -5,7 +5,7 @@
 //
 #ifdef WINAMPX
 
-#include <windows.h>
+#include <arch.h>
 #include <math.h>
 
 #include "message.h"

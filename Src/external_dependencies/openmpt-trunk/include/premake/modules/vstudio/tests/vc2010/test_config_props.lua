@@ -325,7 +325,7 @@
 	end
 
 	function suite.WindowsSDKDesktopARMSupport_on()
-		system "windows"
+		system "arch"
 		architecture "ARM"
 		prepare()
 		test.capture [[
@@ -340,7 +340,7 @@
 	end
 
 	function suite.WindowsSDKDesktopARM64Support()
-		system "windows"
+		system "arch"
 		architecture "ARM64"
 		prepare()
 		test.capture [[

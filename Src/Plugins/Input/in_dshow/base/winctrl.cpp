@@ -23,7 +23,7 @@
 }
 
 // This checks to see whether the window has a drain. An application can in
-// most environments set the owner/parent of windows so that they appear in
+// most environments set the owner/parent of arch so that they appear in
 // a compound document context (for example). In this case, the application
 // would probably like to be told of any keyboard/mouse messages. Therefore
 // we pass these messages on untranslated, returning TRUE if we're successful
@@ -320,7 +320,7 @@ STDMETHODIMP CBaseControlWindow::get_WindowState(__out long *pWindowState)
     *pWindowState = FALSE;
 
     // Is the window visible, a window is termed visible if it is somewhere on
-    // the current desktop even if it is completely obscured by other windows
+    // the current desktop even if it is completely obscured by other arch
     // so the flag is a style for each window set with the WS_VISIBLE bit
 
     if (IsWindowVisible(m_hwnd) == TRUE) {
@@ -422,7 +422,7 @@ STDMETHODIMP CBaseControlWindow::get_Visible(__out long *pVisible)
     CheckConnected(m_pPin,VFW_E_NOT_CONNECTED);
 
     // See if the base window has a WS_VISIBLE style - this will return TRUE
-    // even if the window is completely obscured by other desktop windows, we
+    // even if the window is completely obscured by other desktop arch, we
     // return FALSE if the window is not showing because of earlier calls
 
     BOOL Mode = IsWindowVisible(m_hwnd);
@@ -736,7 +736,7 @@ STDMETHODIMP CBaseControlWindow::get_MessageDrain(__out OAHWND *Drain)
 
 // This is called by the filter graph to inform us of a message we should know
 // is being sent to our owning window. We have this because as a child window
-// we do not get certain messages that are only sent to top level windows. We
+// we do not get certain messages that are only sent to top level arch. We
 // must see the palette changed/changing/query messages so that we know if we
 // have the foreground palette or not. We pass the message on to our window
 // using SendMessage - this will cause an interthread send message to occur

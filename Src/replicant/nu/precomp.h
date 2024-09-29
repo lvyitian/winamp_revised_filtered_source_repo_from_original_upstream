@@ -12,7 +12,7 @@
 #include <string.h>
 
 #ifdef WIN32
-#include <windows.h>
+#include <arch.h>
 #else
 #include <pthread.h>
 #endif //WIN32

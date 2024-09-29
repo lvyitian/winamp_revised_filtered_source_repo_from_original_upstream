@@ -6,7 +6,7 @@
 #include "../Winamp/buildtype.h"
 #include <api/config/items/cfgitem.h>
 #include <wa2frontend.h>
-#include <windows.h>
+#include <arch.h>
 #include <Mshtml.h>
 #include "minibrowserCOM.h"
 

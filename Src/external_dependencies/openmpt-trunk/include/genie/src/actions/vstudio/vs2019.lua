@@ -17,7 +17,7 @@
 		trigger         = "vs2019",
 		shortname       = "Visual Studio 2019",
 		description     = "Generate Microsoft Visual Studio 2019 project files",
-		os              = "windows",
+		os              = "arch",
 
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "StaticLib", "SharedLib", "Bundle" },
 
@@ -57,7 +57,7 @@
 			solutionVersion = "12",
 			targetFramework = "4.7.2",
 			toolsVersion    = "16.0",
-			windowsTargetPlatformVersion = "10.0",
+			archTargetPlatformVersion = "10.0",
 			supports64bitEditContinue    = true,
 			intDirAbsolute  = false,
 		}

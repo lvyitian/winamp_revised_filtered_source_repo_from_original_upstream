@@ -43,7 +43,7 @@
 
   <!-- edit wnds -->
   <color id="wasabi.window.background" value="127,135,149" gammagroup="Backgrounds"/> <!--window background. -  If this color is not defined, a whole container is created in memory to extract a pixel, so specifying it makes skin loading faster -->
-  <color id="wasabi.window.text" value="255,255,255" gammagroup="listText"/> <!--text color within windows -->
+  <color id="wasabi.window.text" value="255,255,255" gammagroup="listText"/> <!--text color within arch -->
   <color id="wasabi.border.sunken" value="204,208,217" gammagroup="Backgrounds"/> // color of dividers and sunken borders
 
   <color id="wasabi.scrollbar.foreground" value="28,61,125" gammagroup="ListBackground"/> <!-- scrollbar foreground color -->
@@ -52,7 +52,7 @@
   <color id="wasabi.scrollbar.background.inverted" value="0,0,0" gammagroup="ListBackground"/> <!-- inverse scrollbar background color -->
 
   <color id="wasabi.button.text" value="0,0,0" gammagroup="ButtonText"/> <!-- Buttons text color -->
-  <color id="wasabi.button.hiliteText" value="0,0,0" gammagroup="ButtonText"/> <!-- Buttons hilite text color, used by tab windows-->
+  <color id="wasabi.button.hiliteText" value="0,0,0" gammagroup="ButtonText"/> <!-- Buttons hilite text color, used by tab arch-->
   <color id="wasabi.button.dimmedText" value="149,156,169" gammagroup="ButtonText"/> <!-- Buttons dimmed text color, when disabled -->
 
 </elements>

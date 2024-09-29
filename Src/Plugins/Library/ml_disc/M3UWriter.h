@@ -2,7 +2,7 @@
 #define NULLSOFT_M3UWRITERH
 
 #include <stdio.h>
-#include <windows.h>
+#include <arch.h>
 
 class M3UWriter
 {

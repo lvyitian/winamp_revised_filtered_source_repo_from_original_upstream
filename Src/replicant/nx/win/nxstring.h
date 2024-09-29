@@ -1,6 +1,6 @@
 #pragma once
 #include "../../foundation/types.h"
-#include <windows.h>
+#include <arch.h>
 #include "../../nx/nxapi.h"
 
 #ifdef __cplusplus

@@ -1,5 +1,5 @@
 #include "Main.h"
-#include <windows.h>
+#include <arch.h>
 #include "VeritasPlay.h"
 #include "CDDB.h"
 #include "workorder.h"

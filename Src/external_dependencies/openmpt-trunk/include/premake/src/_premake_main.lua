@@ -41,7 +41,7 @@
 ---
 
 	function m.installModuleLoader()
-		if not os.ishost('windows') then
+		if not os.ishost('arch') then
 			local premakeDir = path.getdirectory(_PREMAKE_COMMAND)
 			package.cpath = package.cpath .. ';' .. premakeDir .. '/?.so'
 		end

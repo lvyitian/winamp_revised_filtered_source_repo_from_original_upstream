@@ -602,7 +602,7 @@ static int mapping0_forward(vorbis_block *vb){
       /* Encode the packet type */
       oggpack_write(opb,0,1);
       /* Encode the modenumber */
-      /* Encode frame mode, pre,post windowsize, then dispatch */
+      /* Encode frame mode, pre,post archize, then dispatch */
       oggpack_write(opb,modenumber,b->modebits);
       if(vb->W){
         oggpack_write(opb,vb->lW,1);

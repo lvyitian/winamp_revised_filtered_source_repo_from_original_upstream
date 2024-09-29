@@ -9,7 +9,7 @@
 *******************************************************************************/
 #include <stdlib.h>
 #include <malloc.h>
-#include <windows.h>
+#include <arch.h>
 
 #define BYTES_PER_PARA      16
 #define DWORDS_PER_PARA     4

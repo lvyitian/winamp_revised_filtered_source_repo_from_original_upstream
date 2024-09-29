@@ -14,7 +14,7 @@
 --
 
 	function suite.findlib_FindSystemLib()
-		if os.is("windows") then
+		if os.is("arch") then
 			test.istrue(os.findlib("user32"))
 		else
 			test.istrue(os.findlib("m"))

@@ -20,7 +20,7 @@
 **
 */
 
-#include <windows.h>
+#include <arch.h>
 #include "../nsv/nsvlib.h"
 #include "../nsv/dec_if.h"
 #include "../libvp6/include/duck_dxl.h"

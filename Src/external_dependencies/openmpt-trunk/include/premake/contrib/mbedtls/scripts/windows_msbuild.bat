@@ -1,5 +1,5 @@
 @rem Build and test Mbed TLS with Visual Studio using msbuild.
-@rem Usage: windows_msbuild [RETARGET]
+@rem Usage: arch_msbuild [RETARGET]
 @rem   RETARGET: version of Visual Studio to emulate
 @rem             https://docs.microsoft.com/en-us/cpp/build/how-to-modify-the-target-framework-and-platform-toolset
 

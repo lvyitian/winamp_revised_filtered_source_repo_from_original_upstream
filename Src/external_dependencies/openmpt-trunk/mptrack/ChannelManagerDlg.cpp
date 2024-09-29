@@ -221,7 +221,7 @@ void CChannelManagerDlg::OnApply()
 
 	ResetState(true, true, true, true, true);
 
-	// Update document & windows
+	// Update document & arch
 	m_ModDoc->SetModified();
 	m_ModDoc->UpdateAllViews(nullptr, GeneralHint().Channels().ModType(), this); //refresh channel headers
 

@@ -3,7 +3,7 @@
 
 
 class SubsItem;
-#include <windows.h>
+#include <arch.h>
 #include "VideoAspectAdjuster.h"
 
 /*

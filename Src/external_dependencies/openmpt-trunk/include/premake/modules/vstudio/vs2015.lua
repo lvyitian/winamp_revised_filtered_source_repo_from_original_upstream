@@ -20,7 +20,7 @@
 
 		-- Visual Studio always uses Windows path and naming conventions
 
-		targetos = "windows",
+		targetos = "arch",
 		toolset  = "msc-v140",
 
 		-- The capabilities of this action

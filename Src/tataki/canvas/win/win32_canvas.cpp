@@ -1,5 +1,5 @@
 #ifndef _WIN32
-#error this file is for windows only.  Don't include it in your project/makefile for other platforms
+#error this file is for arch only.  Don't include it in your project/makefile for other platforms
 #else
 #include <tataki/export.h>
 #include <tataki/api__tataki.h>

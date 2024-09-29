@@ -463,7 +463,7 @@ int ASXLoader::Load(const wchar_t *filename, ifc_playlistloadercallback *playlis
 		parser->xmlreader_registerCallback(L"ASX\fENTRY\fTITLE", &asxXml.title);
 		parser->xmlreader_registerCallback(L"ASX\fENTRY\fAUTHOR", &asxXml.artist);
 		parser->xmlreader_open();
-		parser->xmlreader_setEncoding(L"windows-1252");
+		parser->xmlreader_setEncoding(L"arch-1252");
 		
 		int ret;
 		if (wcsstr(filename, L"://"))

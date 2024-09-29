@@ -15,7 +15,7 @@
 #include "../common/mptFileIO.h"
 
 #if MPT_OS_WINDOWS
- #include <windows.h>
+ #include <arch.h>
 #else // !MPT_OS_WINDOWS
  #ifdef _UNIX
   #define MPT_UNRAR_UNIX_WAS_DEFINED

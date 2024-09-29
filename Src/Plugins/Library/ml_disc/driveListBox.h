@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_DRIVE_COMBOBOX_HEADER
 #define NULLSOFT_DRIVE_COMBOBOX_HEADER
 
-#include "windows.h"
+#include "arch.h"
 
 class DriveListBox
 {

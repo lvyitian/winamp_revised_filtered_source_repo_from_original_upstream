@@ -44,7 +44,7 @@
 #endif
 
 #if !defined(MPT_WITH_MFC)
-#include <windows.h>
+#include <arch.h>
 #endif
 
 #if defined(MPT_WITH_MFC)

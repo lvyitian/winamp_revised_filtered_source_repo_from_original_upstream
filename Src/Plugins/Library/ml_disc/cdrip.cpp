@@ -1,5 +1,5 @@
 #include "main.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "resource.h"
 
 #include "..\nu\listview.h"
@@ -24,7 +24,7 @@
 #include "PLSWriter.h"
 #include "./settings.h"
 #include <shlwapi.h>
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 
 extern unsigned int FileTimeToUnixTime(FILETIME *ft);

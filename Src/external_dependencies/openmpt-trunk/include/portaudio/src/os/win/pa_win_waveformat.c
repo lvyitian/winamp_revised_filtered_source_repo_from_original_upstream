@@ -36,7 +36,7 @@
  * license above.
  */
 
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #if defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_APP)
     #include <mmreg.h> /* for WAVEFORMATEX */

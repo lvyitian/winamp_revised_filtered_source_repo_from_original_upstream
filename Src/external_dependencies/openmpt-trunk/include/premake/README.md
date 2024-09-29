@@ -14,7 +14,7 @@
         <img src="https://img.shields.io/travis/premake/premake-core/master.svg?label=linux" alt="Linux" />
     </a>
     <a href="https://ci.appveyor.com/project/PremakeOrganization/premake-core" target="_blank">
-        <img src="https://img.shields.io/appveyor/ci/PremakeOrganization/premake-core?label=windows" alt="Windows" />
+        <img src="https://img.shields.io/appveyor/ci/PremakeOrganization/premake-core?label=arch" alt="Windows" />
     </a>
     <a href="https://github.com/premake/premake-core/graphs/contributors" target="_blank">
         <img src="https://img.shields.io/github/contributors/premake/premake-core?label=code+contributors" alt="Contributors" />

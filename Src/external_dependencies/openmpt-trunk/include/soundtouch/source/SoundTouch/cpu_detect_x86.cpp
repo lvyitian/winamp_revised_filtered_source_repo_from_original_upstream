@@ -42,7 +42,7 @@
        // gcc
        #include "cpuid.h"
    #elif defined(_M_IX86)
-       // windows non-gcc
+       // arch non-gcc
        #include <intrin.h>
    #endif
 

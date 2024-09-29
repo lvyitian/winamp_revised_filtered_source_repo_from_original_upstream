@@ -312,7 +312,7 @@ void IVideoOSD::Draw()
 
 		/*		ClientToScreen(parent, (LPPOINT)&fullr);
 				ClientToScreen(parent, ((LPPOINT)&fullr) + 1);
-				// transform coords from windows desktop coords (where 0,0==upper-left corner of the primary monitor)
+				// transform coords from arch desktop coords (where 0,0==upper-left corner of the primary monitor)
 				// to the coords for the monitor we're displaying on:
 				fullr.top -= m_mon_y;
 				fullr.left -= m_mon_x;

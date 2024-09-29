@@ -39,7 +39,7 @@
 
 /**
  * nsIWindowCreator is a callback interface used by Gecko to create
- * new browser windows. The application, either Mozilla or an embedding app,
+ * new browser arch. The application, either Mozilla or an embedding app,
  * must provide an implementation of the Window Watcher component and
  * notify the WindowWatcher during application initialization.
  * @see nsIWindowWatcher
@@ -56,7 +56,7 @@ interface nsIWebBrowserChrome;
 interface nsIWindowCreator : nsISupports {
 
   /** Create a new window. Gecko will/may call this method, if made
-      available to it, to create new windows.
+      available to it, to create new arch.
       @param parent parent window, if any. null if not. the newly created
                     window should be made a child/dependent window of
                     the parent, if any (and if the concept applies

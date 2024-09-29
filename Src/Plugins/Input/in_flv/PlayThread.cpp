@@ -1,5 +1,5 @@
 #include "main.h"
-#include <windows.h>
+#include <arch.h>
 #include "api__in_flv.h"
 #include "../Winamp/wa_ipc.h"
 #include "FLVHeader.h"

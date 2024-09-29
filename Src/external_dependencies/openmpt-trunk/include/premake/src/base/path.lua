@@ -296,7 +296,7 @@
 --
 
 	function path.getDefaultSeparator()
-		if os.istarget('windows') then
+		if os.istarget('arch') then
 			return '\\'
 		else
 			return '/'

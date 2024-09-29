@@ -1,5 +1,5 @@
 #define STRICT
-#include <windows.h>
+#include <arch.h>
 #include "../Winamp/out.h"
 #include "ds2.h"
 #include "../pfc/pfc.h"

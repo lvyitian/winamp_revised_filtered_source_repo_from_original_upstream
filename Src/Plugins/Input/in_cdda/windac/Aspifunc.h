@@ -14,7 +14,7 @@
 #define STRICT               // Enable strict tape checking
 #define WIN32_LEAN_AND_MEAN  // Include only needed header files
 #endif
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include <winioctl.h>
 

@@ -4,7 +4,7 @@
 #ifndef STRICT
 #define STRICT
 #endif
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #include <dsound.h>
 

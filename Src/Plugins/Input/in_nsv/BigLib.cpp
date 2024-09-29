@@ -1,6 +1,6 @@
 #ifdef WINAMPX
 #define WIN32_LEAN_AND_MEAN	1
-#include <windows.h>
+#include <arch.h>
 #include "stdio.h"
 #include "proxydt.h"
 #include <winsock2.h>
@@ -319,7 +319,7 @@ int GetAutoConfigScriptProxySettings(LPSTR lpIPAddress, int *pnPort)
 		return retval;
 	}
 
-	// use the registry read of HKCU\\software\microsoft\windows\current version\internet settings to see if "Use Automatic Configuration Script" is checked
+	// use the registry read of HKCU\\software\microsoft\arch\current version\internet settings to see if "Use Automatic Configuration Script" is checked
 	lstrcpyn(szWPADLocation, "", MAX_PATH);
 
 	lRet = RegOpenKeyEx(HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", 0, KEY_READ, &hKey);
@@ -756,7 +756,7 @@ BOOL GetAutomaticConfigurationScriptCheckboxState()
 
 
 #if 1
-	// use the registry read of HKCU\\software\microsoft\windows\current version\internet settings to see if "Use Automatic Configuration Script" is checked
+	// use the registry read of HKCU\\software\microsoft\arch\current version\internet settings to see if "Use Automatic Configuration Script" is checked
 	szWPAD[0] = '\0';
 
 	lRet = RegOpenKeyEx(HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", 0, KEY_READ, &hKey);
@@ -987,7 +987,7 @@ int CProfileFolder::GetProfileFolder(LPSTR lpProfileFolder, BOOL bFirefox)
 }
 
 // private function for GetProfileFolder()
-// on my test system, the folder to get is c:\windows\application data\mozilla\profiles\default\y3h9azmi.slt
+// on my test system, the folder to get is c:\arch\application data\mozilla\profiles\default\y3h9azmi.slt
 int CProfileFolder::GetProfileFolder_9598ME(LPSTR lpProfileFolder, BOOL bFirefox)
 {
 	WIN32_FIND_DATA		fd;

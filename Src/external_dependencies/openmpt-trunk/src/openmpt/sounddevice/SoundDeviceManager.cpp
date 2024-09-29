@@ -250,12 +250,12 @@ void Manager::ReEnumerate(bool firstRun)
 	{  // Wine
 		typeDefault[SoundDevice::TypePORTAUDIO_WASAPI].value = Info::DefaultFor::System;
 		typeDefault[SoundDevice::TypeDSOUND].value = Info::DefaultFor::LowLevel;
-	} else if(GetSysInfo().SystemClass == mpt::osinfo::osclass::Windows && GetSysInfo().WindowsVersion.IsBefore(mpt::osinfo::windows::Version::WinVista))
+	} else if(GetSysInfo().SystemClass == mpt::osinfo::osclass::Windows && GetSysInfo().WindowsVersion.IsBefore(mpt::osinfo::arch::Version::WinVista))
 	{  // WinXP
 		typeDefault[SoundDevice::TypeWAVEOUT].value = Info::DefaultFor::System;
 		typeDefault[SoundDevice::TypeASIO].value = Info::DefaultFor::ProAudio;
 		typeDefault[SoundDevice::TypePORTAUDIO_WDMKS].value = Info::DefaultFor::LowLevel;
-	} else if(GetSysInfo().SystemClass == mpt::osinfo::osclass::Windows && GetSysInfo().WindowsVersion.IsBefore(mpt::osinfo::windows::Version::Win7))
+	} else if(GetSysInfo().SystemClass == mpt::osinfo::osclass::Windows && GetSysInfo().WindowsVersion.IsBefore(mpt::osinfo::arch::Version::Win7))
 	{  // Vista
 		typeDefault[SoundDevice::TypeWAVEOUT].value = Info::DefaultFor::System;
 		typeDefault[SoundDevice::TypeASIO].value = Info::DefaultFor::ProAudio;

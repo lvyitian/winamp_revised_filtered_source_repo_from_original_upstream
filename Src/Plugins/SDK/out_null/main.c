@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <shlobj.h>
 #include "../winamp/out.h"
 

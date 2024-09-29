@@ -1,7 +1,7 @@
 /*
  * ChildFrm.cpp
  * ------------
- * Purpose: Implementation of the MDI document child windows.
+ * Purpose: Implementation of the MDI document child arch.
  * Notes  : (currently none)
  * Authors: OpenMPT Devs
  * The OpenMPT source code is released under the BSD license. Read LICENSE for more details.
@@ -388,7 +388,7 @@ BOOL CChildFrame::OnToolTipText(UINT, NMHDR* pNMHDR, LRESULT* pResult)
 	mpt::String::WriteCStringBuf(pTTT->szText) = strTipText;
 	*pResult = 0;
 
-	// bring the tooltip window above other popup windows
+	// bring the tooltip window above other popup arch
 	::SetWindowPos(pNMHDR->hwndFrom, HWND_TOP, 0, 0, 0, 0,
 		SWP_NOACTIVATE|SWP_NOSIZE|SWP_NOMOVE|SWP_NOOWNERZORDER);
 

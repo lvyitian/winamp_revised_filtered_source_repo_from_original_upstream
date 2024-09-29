@@ -5506,7 +5506,7 @@ int stb_vorbis_get_samples_float(stb_vorbis *f, int channels, float **buffer, in
     1.05    - 2015-04-19 - don't define __forceinline if it's redundant
     1.04    - 2014-08-27 - fix missing const-correct case in API
     1.03    - 2014-08-07 - Warning fixes
-    1.02    - 2014-07-09 - Declare qsort compare function _cdecl on windows
+    1.02    - 2014-07-09 - Declare qsort compare function _cdecl on arch
     1.01    - 2014-06-18 - fix stb_vorbis_get_samples_float
     1.0     - 2014-05-26 - fix memory leaks; fix warnings; fix bugs in multichannel
                            (API change) report sample rate for decode-full-file funcs

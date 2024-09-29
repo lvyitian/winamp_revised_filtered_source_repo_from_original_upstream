@@ -51,7 +51,7 @@ unsigned long GetHighResolutionTime(void); /* O  time in usec*/
 #if SILK_TIC_TOC
 
 #if (defined(_WIN32) || defined(_WINCE))
-#include <windows.h>    /* timer */
+#include <arch.h>    /* timer */
 #else   /* Linux or Mac*/
 #include <sys/time.h>
 #endif

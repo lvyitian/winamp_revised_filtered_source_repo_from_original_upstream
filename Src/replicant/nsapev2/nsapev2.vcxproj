@@ -154,7 +154,7 @@
     <ClCompile Include="item.cpp" />
     <ClCompile Include="nsapev2_common.cpp" />
     <ClCompile Include="tag.cpp" />
-    <ClCompile Include="windows\nsapev2.cpp" />
+    <ClCompile Include="arch\nsapev2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="flags.h" />
@@ -164,7 +164,7 @@
     <ClInclude Include="precomp.h" />
     <ClInclude Include="tag.h" />
     <ClInclude Include="util.h" />
-    <ClInclude Include="windows\nsapev2.h" />
+    <ClInclude Include="arch\nsapev2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

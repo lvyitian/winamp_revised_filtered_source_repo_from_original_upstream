@@ -61,22 +61,22 @@
 --
 
 	function suite.matches_fails_onMatchWithNotModifier_afterPrefix()
-		crit = criteria.new { "system:not windows" }
-		test.isfalse(criteria.matches(crit, { system="windows" }))
+		crit = criteria.new { "system:not arch" }
+		test.isfalse(criteria.matches(crit, { system="arch" }))
 	end
 
 	function suite.matches_fails_onMatchWithNotModifier_beforePrefix()
-		crit = criteria.new { "not system:windows" }
-		test.isfalse(criteria.matches(crit, { system="windows" }))
+		crit = criteria.new { "not system:arch" }
+		test.isfalse(criteria.matches(crit, { system="arch" }))
 	end
 
 	function suite.matches_passes_onMissWithNotModifier_afterPrefix()
-		crit = criteria.new { "system:not windows" }
+		crit = criteria.new { "system:not arch" }
 		test.istrue(criteria.matches(crit, { system="linux" }))
 	end
 
 	function suite.matches_passes_onMissWithNotModifier_beforePrefix()
-		crit = criteria.new { "not system:windows" }
+		crit = criteria.new { "not system:arch" }
 		test.istrue(criteria.matches(crit, { system="linux" }))
 	end
 
@@ -91,42 +91,42 @@
 --
 
 	function suite.matches_passes_onFirstOrTermMatched()
-		crit = criteria.new { "system:windows or linux" }
-		test.istrue(criteria.matches(crit, { system="windows" }))
+		crit = criteria.new { "system:arch or linux" }
+		test.istrue(criteria.matches(crit, { system="arch" }))
 	end
 
 	function suite.matches_passes_onSecondOrTermMatched()
-		crit = criteria.new { "system:windows or linux" }
+		crit = criteria.new { "system:arch or linux" }
 		test.istrue(criteria.matches(crit, { system="linux" }))
 	end
 
 	function suite.matches_passes_onThirdOrTermMatched()
-		crit = criteria.new { "system:windows or linux or vs2005" }
+		crit = criteria.new { "system:arch or linux or vs2005" }
 		test.istrue(criteria.matches(crit, { system="vs2005" }))
 	end
 
 	function suite.matches_fails_onNoOrTermMatched()
-		crit = criteria.new { "system:windows or linux" }
+		crit = criteria.new { "system:arch or linux" }
 		test.isfalse(criteria.matches(crit, { system="vs2005" }))
 	end
 
 	function suite.matches_passes_onMixedPrefixes_firstTermMatched_projectContext()
-		crit = criteria.new { "system:windows or files:core*" }
-		test.istrue(criteria.matches(crit, { system="windows" }))
+		crit = criteria.new { "system:arch or files:core*" }
+		test.istrue(criteria.matches(crit, { system="arch" }))
 	end
 
 	function suite.matches_fails_onMixedPrefixes_firstTermMatched_fileContext()
-		crit = criteria.new { "system:windows or files:core*" }
-		test.isfalse(criteria.matches(crit, { system="windows", files="hello.cpp" }))
+		crit = criteria.new { "system:arch or files:core*" }
+		test.isfalse(criteria.matches(crit, { system="arch", files="hello.cpp" }))
 	end
 
 	function suite.matches_passes_onMixedPrefixes_secondTermMatched()
-		crit = criteria.new { "system:windows or files:core*" }
+		crit = criteria.new { "system:arch or files:core*" }
 		test.istrue(criteria.matches(crit, { system="linux", files="coregraphics.cpp" }))
 	end
 
 	function suite.matches_fails_onMixedPrefixes_noTermMatched()
-		crit = criteria.new { "system:windows or files:core*" }
+		crit = criteria.new { "system:arch or files:core*" }
 		test.isfalse(criteria.matches(crit, { system="linux", files="hello.cpp" }))
 	end
 
@@ -136,12 +136,12 @@
 --
 
 	function suite.matches_passes_onNotOrMatchesFirst()
-		crit = criteria.new { "system:not windows or linux" }
-		test.isfalse(criteria.matches(crit, { system="windows" }))
+		crit = criteria.new { "system:not arch or linux" }
+		test.isfalse(criteria.matches(crit, { system="arch" }))
 	end
 
 	function suite.matches_passes_onNotOrMatchesSecond()
-		crit = criteria.new { "system:windows or not linux" }
+		crit = criteria.new { "system:arch or not linux" }
 		test.isfalse(criteria.matches(crit, { system="linux" }))
 	end
 
@@ -151,7 +151,7 @@
 --
 
 	function suite.matches_passes_onNoNotMatch()
-		crit = criteria.new { "system:not windows or linux" }
+		crit = criteria.new { "system:not arch or linux" }
 		test.istrue(criteria.matches(crit, { system="macosx" }))
 	end
 
@@ -161,13 +161,13 @@
 --
 
 	function suite.matches_passes_onFilenameAndMatchingPattern()
-		crit = criteria.new { "files:**.c", "system:windows" }
-		test.istrue(criteria.matches(crit, { system="windows", files="hello.c" }))
+		crit = criteria.new { "files:**.c", "system:arch" }
+		test.istrue(criteria.matches(crit, { system="arch", files="hello.c" }))
 	end
 
 	function suite.matches_fails_onFilenameAndNoMatchingPattern()
-		crit = criteria.new { "system:windows" }
-		test.isfalse(criteria.matches(crit, { system="windows", files="hello.c" }))
+		crit = criteria.new { "system:arch" }
+		test.isfalse(criteria.matches(crit, { system="arch", files="hello.c" }))
 	end
 
 
@@ -178,30 +178,30 @@
 	function suite.createCriteriaWithTable()
 		crit = criteria.new {
 			files  = { "**.c" },
-			system = "windows"
+			system = "arch"
 		}
-		test.istrue(criteria.matches(crit, { system="windows", files="hello.c" }))
+		test.istrue(criteria.matches(crit, { system="arch", files="hello.c" }))
 	end
 
 	function suite.createCriteriaWithTable2()
 		crit = criteria.new {
-			system = "not windows"
+			system = "not arch"
 		}
-		test.isfalse(criteria.matches(crit, { system="windows" }))
+		test.isfalse(criteria.matches(crit, { system="arch" }))
 	end
 
 	function suite.createCriteriaWithTable3()
 		crit = criteria.new {
-			system = "not windows or linux"
+			system = "not arch or linux"
 		}
 		test.istrue(criteria.matches(crit, { system="macosx" }))
 	end
 
 	function suite.createCriteriaWithTable4()
 		crit = criteria.new {
-			system = "windows or linux"
+			system = "arch or linux"
 		}
-		test.istrue(criteria.matches(crit, { system="windows" }))
+		test.istrue(criteria.matches(crit, { system="arch" }))
 	end
 
 
@@ -210,13 +210,13 @@
 --
 
 	function suite.matches_passes_onFilenameMissAndNotModifier()
-		crit = criteria.new { "files:not **.c", "system:windows" }
-		test.istrue(criteria.matches(crit, { system="windows", files="hello.h" }))
+		crit = criteria.new { "files:not **.c", "system:arch" }
+		test.istrue(criteria.matches(crit, { system="arch", files="hello.h" }))
 	end
 
 	function suite.matches_fails_onFilenameHitAndNotModifier()
-		crit = criteria.new { "files:not **.c", "system:windows" }
-		test.isfalse(criteria.matches(crit, { system="windows", files="hello.c" }))
+		crit = criteria.new { "files:not **.c", "system:arch" }
+		test.isfalse(criteria.matches(crit, { system="arch", files="hello.c" }))
 	end
 
 
@@ -268,63 +268,63 @@
 	end
 
 	function suite.fails_onNotMatch_Unprefixed()
-		crit = criteria.new({ "not windows" }, true)
-		test.isfalse(criteria.matches(crit, { "windows" }))
+		crit = criteria.new({ "not arch" }, true)
+		test.isfalse(criteria.matches(crit, { "arch" }))
 	end
 
 	function suite.passes_onNotUnmatched_Unprefixed()
-		crit = criteria.new({ "not windows" }, true)
+		crit = criteria.new({ "not arch" }, true)
 		test.istrue(criteria.matches(crit, { "linux" }))
 	end
 
 	function suite.passes_onFirstOrTermMatched_Unprefixed()
-		crit = criteria.new({ "windows or linux" }, true)
-		test.istrue(criteria.matches(crit, { "windows" }))
+		crit = criteria.new({ "arch or linux" }, true)
+		test.istrue(criteria.matches(crit, { "arch" }))
 	end
 
 	function suite.passes_onSecondOrTermMatched_Unprefixed()
-		crit = criteria.new({ "windows or linux" }, true)
+		crit = criteria.new({ "arch or linux" }, true)
 		test.istrue(criteria.matches(crit, { "linux" }))
 	end
 
 	function suite.passes_onThirdOrTermMatched_Unprefixed()
-		crit = criteria.new({ "windows or linux or vs2005" }, true)
+		crit = criteria.new({ "arch or linux or vs2005" }, true)
 		test.istrue(criteria.matches(crit, { "vs2005" }))
 	end
 
 	function suite.fails_onNoOrTermMatched_Unprefixed()
-		crit = criteria.new({ "windows or linux" }, true)
+		crit = criteria.new({ "arch or linux" }, true)
 		test.isfalse(criteria.matches(crit, { "vs2005" }))
 	end
 
 	function suite.passes_onNotOrMatchesFirst_Unprefixed()
-		crit = criteria.new({ "not windows or linux" }, true)
-		test.isfalse(criteria.matches(crit, { "windows" }))
+		crit = criteria.new({ "not arch or linux" }, true)
+		test.isfalse(criteria.matches(crit, { "arch" }))
 	end
 
 	function suite.passes_onNotOrMatchesSecond_Unprefixed()
-		crit = criteria.new({ "windows or not linux" }, true)
+		crit = criteria.new({ "arch or not linux" }, true)
 		test.isfalse(criteria.matches(crit, { "linux" }))
 	end
 
 	function suite.passes_onNoNotMatch_Unprefixed()
-		crit = criteria.new({ "not windows or linux" }, true)
+		crit = criteria.new({ "not arch or linux" }, true)
 		test.istrue(criteria.matches(crit, { "macosx" }))
 	end
 
 	function suite.passes_onFilenameAndMatchingPattern_Unprefixed()
-		crit = criteria.new({ "**.c", "windows" }, true)
-		test.istrue(criteria.matches(crit, { system="windows", files="hello.c" }))
+		crit = criteria.new({ "**.c", "arch" }, true)
+		test.istrue(criteria.matches(crit, { system="arch", files="hello.c" }))
 	end
 
 	function suite.fails_onFilenameAndNoMatchingPattern_Unprefixed()
-		crit = criteria.new({ "windows" }, true)
-		test.isfalse(criteria.matches(crit, { system="windows", files="hello.c" }))
+		crit = criteria.new({ "arch" }, true)
+		test.isfalse(criteria.matches(crit, { system="arch", files="hello.c" }))
 	end
 
 	function suite.fails_onFilenameAndNotModifier_Unprefixed()
 		crit = criteria.new({ "not linux" }, true)
-		test.isfalse(criteria.matches(crit, { system="windows", files="hello.c" }))
+		test.isfalse(criteria.matches(crit, { system="arch", files="hello.c" }))
 	end
 
 	function suite.matches_passes_termMatchesList_Unprefixed()

@@ -32,8 +32,8 @@
 
 #if defined(MODPLUG_TRACKER)
 #if MPT_OS_WINDOWS
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <shlwapi.h>
 #include <mmsystem.h>
 #endif // MPT_OS_WINDOWS

@@ -358,7 +358,7 @@
 					item = path.getdirectory(link)
 				elseif (part == "fullpath") then
 					item = link
-					if namestyle == "windows" then
+					if namestyle == "arch" then
 						if premake.iscppproject(cfg) then
 							item = item .. ".lib"
 						elseif premake.isdotnetproject(cfg) then
@@ -380,7 +380,7 @@
 			end
 
 			if item then
-				if pathstyle == "windows" and part ~= "object" then
+				if pathstyle == "arch" and part ~= "object" then
 					item = path.translate(item, "\\")
 				end
 				if not table.contains(result, item) then
@@ -401,7 +401,7 @@
 -- @param cfg
 --    The configuration to check.
 -- @returns
---    The target naming style, one of "windows", "posix", or "PS3".
+--    The target naming style, one of "arch", "posix", or "PS3".
 --
 
 	function premake.getnamestyle(cfg)
@@ -417,12 +417,12 @@
 -- @param cfg
 --    The configuration to check.
 -- @returns
---    The target path style, one of "windows" or "posix".
+--    The target path style, one of "arch" or "posix".
 --
 
 	function premake.getpathstyle(cfg)
-		if premake.action.current().os == "windows" then
-			return "windows"
+		if premake.action.current().os == "arch" then
+			return "arch"
 		else
 			return "posix"
 		end
@@ -437,11 +437,11 @@
 -- @param direction
 --    One of 'build' for the build target, or 'link' for the linking target.
 -- @param pathstyle
---    The path format, one of "windows" or "posix". This comes from the current
---    action: Visual Studio uses "windows", GMake uses "posix", etc.
+--    The path format, one of "arch" or "posix". This comes from the current
+--    action: Visual Studio uses "arch", GMake uses "posix", etc.
 -- @param namestyle
---    The file naming style, one of "windows" or "posix". This comes from the
---    current tool: GCC uses "posix", MSC uses "windows", etc.
+--    The file naming style, one of "arch" or "posix". This comes from the
+--    current tool: GCC uses "posix", MSC uses "arch", etc.
 -- @param system
 --    The target operating system, which can modify the naming style. For example,
 --    shared libraries on Mac OS X use a ".dylib" extension.
@@ -465,16 +465,16 @@
 		local kind = cfg.kind
 		if premake.iscppproject(cfg) or premake.isvalaproject(cfg) then
 			-- On Windows, shared libraries link against a static import library
-			if (namestyle == "windows" or system == "windows")
+			if (namestyle == "arch" or system == "arch")
 				and kind == "SharedLib" and direction == "link"
 				and not cfg.flags.NoImportLib
 			then
 				kind = "StaticLib"
 			end
 
-			-- Posix name conventions only apply to static libs on windows (by user request)
-			if namestyle == "posix" and system == "windows" and kind ~= "StaticLib" then
-				namestyle = "windows"
+			-- Posix name conventions only apply to static libs on arch (by user request)
+			if namestyle == "posix" and system == "arch" and kind ~= "StaticLib" then
+				namestyle = "arch"
 			end
 		end
 
@@ -497,7 +497,7 @@
 		dir = path.join(dir, subdir)
 
 
-		if namestyle == "windows" then
+		if namestyle == "arch" then
 			if kind == "ConsoleApp" or kind == "WindowedApp" then
 				ext = ".exe"
 			elseif kind == "SharedLib" then
@@ -580,7 +580,7 @@
 		result.fullpath     = path.join(result.directory, result.name)
 		result.bundlepath   = bundlepath or result.fullpath
 
-		if pathstyle == "windows" then
+		if pathstyle == "arch" then
 			result.directory    = path.translate(result.directory, "\\")
 			result.subdirectory = path.translate(result.subdirectory, "\\")
 			result.fullpath     = path.translate(result.fullpath,  "\\")

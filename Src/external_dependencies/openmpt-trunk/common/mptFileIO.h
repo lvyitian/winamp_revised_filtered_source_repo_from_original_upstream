@@ -37,7 +37,7 @@
 
 #ifdef MODPLUG_TRACKER
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif // MPT_OS_WINDOWS
 #endif // MODPLUG_TRACKER
 

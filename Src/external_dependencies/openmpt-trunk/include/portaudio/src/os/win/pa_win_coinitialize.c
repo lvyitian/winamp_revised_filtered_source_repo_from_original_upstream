@@ -42,7 +42,7 @@
  @brief Microsoft COM initialization routines.
 */
 
-#include <windows.h>
+#include <arch.h>
 #include <objbase.h>
 
 #include "portaudio.h"

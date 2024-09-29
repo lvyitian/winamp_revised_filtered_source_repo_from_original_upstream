@@ -1,7 +1,7 @@
 #include "main.h"
 #include "api__ml_local.h"
 #include "ml_local.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "../nu/listview.h"
 #include "resource.h"
 #include "..\..\General\gen_ml/config.h"
@@ -1220,7 +1220,7 @@ INT_PTR CALLBACK view_audioDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LP
 
 		SendMessageW(hwndDlg, WM_DISPLAYCHANGE, 0, 0L);
 
-		// clear the media windows refine shit
+		// clear the media arch refine shit
 		SetDlgItemText(m_media_hwnd, IDC_QUICKSEARCH, L"");
 		SetDlgItemText(m_media_hwnd, IDC_SEARCHCAPTION, WASABI_API_LNGSTRINGW(IDS_REFINE));
 		SetDlgItemText(m_media_hwnd, IDC_CLEAR, WASABI_API_LNGSTRINGW(IDS_CLEAR_REFINE));

@@ -22,7 +22,7 @@ protected:
 public:
 	HRESULT RegisterWindow(HWND hwnd, const GUID *windowType);
 	HRESULT UnregisterWindow(HWND hwnd);
-	HRESULT Enumerate(const GUID *windowType, unsigned int *serviceIdFilter, ifc_ombrowserwndenum **enumerator); // serviceIdFilter can be NULL if you want to get all windows
+	HRESULT Enumerate(const GUID *windowType, unsigned int *serviceIdFilter, ifc_ombrowserwndenum **enumerator); // serviceIdFilter can be NULL if you want to get all arch
 
 public:
 	DISPATCH_CODES

@@ -434,7 +434,7 @@
 		system "Windows"
 		kind "WindowedApp"
 		prepare()
-		test.contains({ "-mwindows" }, gcc.getldflags(cfg))
+		test.contains({ "-march" }, gcc.getldflags(cfg))
 	end
 
 
@@ -497,7 +497,7 @@
 	end
 
 	function suite.links_onSystemLibs_onWindows()
-		system "windows"
+		system "arch"
 		links { "ole32" }
 		prepare()
 		test.contains({ "-lole32" }, gcc.getlinks(cfg))

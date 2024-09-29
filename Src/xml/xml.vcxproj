@@ -100,20 +100,20 @@
     <VcpkgInstalledDir>
     </VcpkgInstalledDir>
     <VcpkgConfiguration>Debug</VcpkgConfiguration>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <VcpkgUseStatic>false</VcpkgUseStatic>
     <VcpkgInstalledDir>
     </VcpkgInstalledDir>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgUseStatic>false</VcpkgUseStatic>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
     <VcpkgConfiguration>Debug</VcpkgConfiguration>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

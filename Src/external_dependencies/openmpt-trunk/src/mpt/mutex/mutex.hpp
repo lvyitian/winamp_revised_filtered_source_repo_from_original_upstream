@@ -42,7 +42,7 @@
 #endif
 #endif
 #elif MPT_MUTEX_WIN32
-#include <windows.h>
+#include <arch.h>
 #endif // MPT_MUTEX
 
 

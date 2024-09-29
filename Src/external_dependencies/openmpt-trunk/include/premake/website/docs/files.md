@@ -38,7 +38,7 @@ Add files for specific systems; might not work with all exporters.
 
 ```lua
 filter "system:Windows"
-  files { "src/windows/*.h", "src/windows/*.cpp" }
+  files { "src/arch/*.h", "src/arch/*.cpp" }
 
 filter "system:MacOSX"
   files { "src/mac/*.h", "src/mac/*.cpp" }

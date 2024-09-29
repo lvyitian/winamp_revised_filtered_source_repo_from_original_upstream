@@ -89,11 +89,11 @@ DEFINE_IID(IXAPOParameters, A90BC001, E897, E897, 55, E4, 9E, 47, 00, 00, 00, 01
 
 
 #if !defined(GUID_DEFS_ONLY) // ignore rest if only GUID definitions requested
-    #if defined(_XBOX)       // general windows and COM declarations
+    #if defined(_XBOX)       // general arch and COM declarations
         #include <xtl.h>
         #include <xobjbase.h>
     #else
-        #include <windows.h>
+        #include <arch.h>
         #include <objbase.h>
     #endif
     #include "audiodefs.h"   // for WAVEFORMATEX etc.

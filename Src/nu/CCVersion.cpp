@@ -1,5 +1,5 @@
 #include "CCVersion.h"
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <shlwapi.h>
 

@@ -1,8 +1,8 @@
 #define _WIN32_DCOM
 
 #include <winsock2.h>
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <rapi2.h>
 #include <shlobj.h>
 //#include <vector>

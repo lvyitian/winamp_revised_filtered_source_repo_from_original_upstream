@@ -40,7 +40,7 @@
 
 #include "prio.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <winsock.h>
 #include <errno.h>
 

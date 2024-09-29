@@ -192,7 +192,7 @@ void WindowTracker::startCooperativeMove(ifc_window *thiswnd)
 	if (recursList.getNumItems() > 0) recursList.removeAll();
 	addCooperative(thiswnd);
 	foreach_reverse(recursList)
-	// FG> we need to prevent windows from excessively activating our windows or focus is gonna blow up
+	// FG> we need to prevent arch from excessively activating our arch or focus is gonna blow up
 	// thiswnd->bringToFront();
 #ifdef WIN32
 	SetWindowPos(recursList.getfor()->gethWnd(), HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_DEFERERASE | SWP_NOACTIVATE | SWP_NOSENDCHANGING);
@@ -730,7 +730,7 @@ void WindowTracker::recursAddToMoveWindows(ifc_window *wnd, redock_struct *rs, i
 		         )) return ;
 	}
 
-	// add all touching windows
+	// add all touching arch
 	for (int i = 0; i < desktopwnds.getNumItems(); i++)
 	{
 		ifc_window *w = desktopwnds[i];

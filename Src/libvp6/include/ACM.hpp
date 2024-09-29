@@ -1,7 +1,7 @@
 #ifndef ACM_HPP
 #define ACM_HPP
 
-#include <windows.h>
+#include <arch.h>
 #include <vfw.h>
 #include <string>
 #include <iosfwd>

@@ -758,7 +758,7 @@ BOOL CMainToolBar::OnToolTipText(UINT, NMHDR* pNMHDR, LRESULT* pResult)
 	mpt::String::WriteWinBuf(pTTT->szText) = fmt;
 	*pResult = 0;
 
-	// bring the tooltip window above other popup windows
+	// bring the tooltip window above other popup arch
 	::SetWindowPos(pNMHDR->hwndFrom, HWND_TOP, 0, 0, 0, 0,
 		SWP_NOACTIVATE | SWP_NOSIZE | SWP_NOMOVE | SWP_NOOWNERZORDER);
 

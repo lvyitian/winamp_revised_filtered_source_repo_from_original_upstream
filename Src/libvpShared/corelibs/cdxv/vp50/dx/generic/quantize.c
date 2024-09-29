@@ -28,7 +28,7 @@
 *	1.05 JBB 27/01/99  Globals Removed, use of QUANTIZER, Dequant no longer 
 *                      used
 *   1.04 PGW 05/11/99  Changes to support AC range entropy tables
-*   1.03 PGW 12/10/99  Removal of spurious windows dependancies.
+*   1.03 PGW 12/10/99  Removal of spurious arch dependancies.
 *   1.02 PGW 14/09/99  Removal of some floating point code.
 *   1.01 PGW 13/07/99  Changes to keep dequant output to 16 bit
 *   1.01 PGW 07/07/99  Tweaks to baseline matrix.

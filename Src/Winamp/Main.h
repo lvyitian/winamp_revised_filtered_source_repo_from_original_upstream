@@ -6,8 +6,8 @@
 extern "C"
 {
 #endif
-#include <windows.h>
-//#include <windowsx.h>
+#include <arch.h>
+//#include <archx.h>
 #include "wasabicfg.h"
 #include "wa_ipc.h"
 #include "config.h"
@@ -64,7 +64,7 @@ extern HINSTANCE language_pack_instance;
 #define BIGINT 1000000000
 
 #define MAINMENU_OPTIONS_BASE (11+g_mm_optionsbase_adj)
-#define WINDOWMENU_FFWINDOWS_BASE (3+g_mm_ffwindowsbase_adj)
+#define WINDOWMENU_FFWINDOWS_BASE (3+g_mm_ffarchbase_adj)
 
 #define HIDDEN_TRAP -33
 
@@ -225,7 +225,7 @@ extern HINSTANCE language_pack_instance;
 	void draw_sa(unsigned char *values, int draw); // array of 12 bands, starting with leftmost, of 0..7
 	void draw_tbuttons(int b1, int b2, int b3, int b4);
 	void draw_setnoupdate(int);
-	void draw_tbar(int active, int windowshade, int egg);
+	void draw_tbar(int active, int archhade, int egg);
 	void draw_eject(int pressed);
 	void draw_clutterbar(int enable);
 	void update_volume_text(int songlen);
@@ -466,7 +466,7 @@ extern HINSTANCE language_pack_instance;
 	extern int g_srate, g_brate, g_nch, g_srate_exact;
 
 	extern int g_mm_optionsbase_adj;
-	extern int g_mm_ffwindowsbase_adj;
+	extern int g_mm_ffarchbase_adj;
 	extern HWND g_dialog_box_parent;
 	extern int g_restartonquit;
 	extern char playlist_custom_font[128];

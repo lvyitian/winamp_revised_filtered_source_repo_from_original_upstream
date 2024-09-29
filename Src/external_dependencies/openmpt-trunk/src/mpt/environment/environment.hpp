@@ -20,7 +20,7 @@
 #include <cstdlib>
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif // MPT_OS_WINDOWS
 
 
@@ -38,7 +38,7 @@ inline std::optional<mpt::ustring> getenv(const mpt::ustring & env_var) {
 	std::vector<WCHAR> buf(32767);
 	DWORD size = GetEnvironmentVariable(mpt::transcode<std::wstring>(env_var).c_str(), buf.data(), 32767);
 	if (size == 0) {
-		mpt::windows::ExpectError(ERROR_ENVVAR_NOT_FOUND);
+		mpt::arch::ExpectError(ERROR_ENVVAR_NOT_FOUND);
 		return std::nullopt;
 	}
 	return mpt::transcode<mpt::ustring>(buf.data());

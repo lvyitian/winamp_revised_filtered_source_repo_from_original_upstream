@@ -67,7 +67,7 @@ IF NOT EXIST "%VsPath%vsdevcmd.bat" (
 	EXIT /B 2
 )
 
-CALL "%VsPath%vsdevcmd.bat" && nmake MSDEV="%~1" -f Bootstrap.mak windows
+CALL "%VsPath%vsdevcmd.bat" && nmake MSDEV="%~1" -f Bootstrap.mak arch
 EXIT /B %ERRORLEVEL%
 
 REM :LegacyVisualBootstrap
@@ -95,7 +95,7 @@ SET VsWhereCmdLine="!VsWherePath! -nologo -latest -version [%VsVersionMin%,%VsVe
 FOR /F "usebackq delims=" %%i in (`!VsWhereCmdLine!`) DO (
 
 	IF EXIST "%%i\VC\Auxiliary\Build\vcvars32.bat" (
-		CALL "%%i\VC\Auxiliary\Build\vcvars32.bat" && nmake MSDEV="%PremakeVsVersion%" -f Bootstrap.mak windows
+		CALL "%%i\VC\Auxiliary\Build\vcvars32.bat" && nmake MSDEV="%PremakeVsVersion%" -f Bootstrap.mak arch
 		EXIT /B %ERRORLEVEL%
 	)
 )

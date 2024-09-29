@@ -2,7 +2,7 @@
 #include "./fileview_internal.h"
 #include "./resource.h"
 #include "../nu/menushortcuts.h"
-#include <windowsx.h>
+#include <archx.h>
 #include <strsafe.h>
 
 #define SUBMENU_VIEWMODE 	0

@@ -40,16 +40,16 @@ SRC		= src/host/*.c			\
 
 HOST_PLATFORM= none
 
-.PHONY: default none clean nix-clean windows-clean \
+.PHONY: default none clean nix-clean arch-clean \
 	mingw-clean mingw macosx macosx-clean osx-clean osx \
 	linux-clean linux bsd-clean bsd solaris-clean solaris \ 
-	haiku-clean haiku windows-base windows windows-msbuild
+	haiku-clean haiku arch-base arch arch-msbuild
 
 default: $(HOST_PLATFORM)
 
 none:
 	@echo "Please do"
-	@echo "   nmake -f Bootstrap.mak windows"
+	@echo "   nmake -f Bootstrap.mak arch"
 	@echo "or"
 	@echo "   CC=mingw32-gcc mingw32-make -f Bootstrap.mak mingw CONFIG=x64"
 	@echo "or"
@@ -63,7 +63,7 @@ none:
 
 clean:
 	@echo "Please run the same command used for building by adding a '-clean' suffix to the target name."
-	@echo "   nmake -f Bootstrap.mak windows-clean"
+	@echo "   nmake -f Bootstrap.mak arch-clean"
 	@echo "or"
 	@echo "   CC=mingw32-gcc mingw32-make -f Bootstrap.mak mingw-clean CONFIG=x64"
 	@echo "or"
@@ -76,18 +76,18 @@ nix-clean:
 	$(SILENT) rm -rf ./build
 	$(SILENT) rm -rf ./obj
 
-windows-clean:
+arch-clean:
 	$(SILENT) if exist .\bin rmdir /s /q .\bin
 	$(SILENT) if exist .\build rmdir /s /q .\build
 	$(SILENT) if exist .\obj rmdir /s /q .\obj
 	
-mingw-clean: windows-clean
+mingw-clean: arch-clean
 	
 mingw: mingw-clean
 	if not exist build\bootstrap (mkdir build\bootstrap)
 	$(CC) -o build/bootstrap/premake_bootstrap -DPREMAKE_NO_BUILTIN_SCRIPTS -I"$(LUA_DIR)" -I"$(LUASHIM_DIR)" $(SRC) -lole32 -lversion
 	./build/bootstrap/premake_bootstrap embed
-	./build/bootstrap/premake_bootstrap --arch=$(PLATFORM) --os=windows --to=build/bootstrap --cc=mingw gmake2
+	./build/bootstrap/premake_bootstrap --arch=$(PLATFORM) --os=arch --to=build/bootstrap --cc=mingw gmake2
 	$(MAKE) -C build/bootstrap config=$(CONFIG)_$(PLATFORM)
 
 macosx: osx
@@ -139,15 +139,15 @@ haiku: haiku-clean
 	./build/bootstrap/premake_bootstrap --to=build/bootstrap gmake2
 	$(MAKE) -C build/bootstrap -j`getconf _NPROCESSORS_ONLN` config=$(CONFIG)
 
-windows-base: windows-clean
+arch-base: arch-clean
 	if not exist build\bootstrap (mkdir build\bootstrap)
 	cl /Fo.\build\bootstrap\ /Fe.\build\bootstrap\premake_bootstrap.exe /DPREMAKE_NO_BUILTIN_SCRIPTS /I"$(LUA_DIR)" /I"$(LUASHIM_DIR)" user32.lib ole32.lib advapi32.lib $(SRC)
 	.\build\bootstrap\premake_bootstrap.exe embed
 	.\build\bootstrap\premake_bootstrap --arch=$(PLATFORM) --to=build/bootstrap $(MSDEV)
 
-windows: windows-base
+arch: arch-base
 	devenv .\build\bootstrap\Premake5.sln /Upgrade
 	devenv .\build\bootstrap\Premake5.sln /Build "$(CONFIG)|$(PLATFORM:x86=win32)"
 
-windows-msbuild: windows-base
+arch-msbuild: arch-base
 	msbuild /p:Configuration=$(CONFIG) /p:Platform=$(PLATFORM:x86=win32) .\build\bootstrap\Premake5.sln

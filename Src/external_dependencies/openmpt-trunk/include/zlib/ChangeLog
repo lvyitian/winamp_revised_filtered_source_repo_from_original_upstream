@@ -290,9 +290,9 @@ Changes in 1.2.5.2 (17 Dec 2011)
 - Simplify gzseek() now that raw after gzip is ignored
 - Change gzgetc() to a macro for speed (~40% speedup in testing)
 - Fix gzclose() to return the actual error last encountered
-- Always add large file support for windows
-- Include zconf.h for windows large file support
-- Include zconf.h.cmakein for windows large file support
+- Always add large file support for arch
+- Include zconf.h for arch large file support
+- Include zconf.h.cmakein for arch large file support
 - Update zconf.h.cmakein on make distclean
 - Merge vestigial vsnprintf determination from zutil.h to gzguts.h
 - Clarify how gzopen() appends in zlib.h comments

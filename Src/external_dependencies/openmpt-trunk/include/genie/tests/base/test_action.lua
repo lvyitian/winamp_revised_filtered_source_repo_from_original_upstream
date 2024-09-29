@@ -68,6 +68,6 @@
 		local oldos = _OS
 		_OS = "linux"
 		premake.action.set("vs2008")
-		test.isequal(_OS, "windows")
+		test.isequal(_OS, "arch")
 		_OS = oldos
 	end

@@ -99,7 +99,7 @@ public:
 #endif  // !_WIN32
 
 	/*
-	note: on windows, these two functions DON'T call Set/GetCurrentDirectory, Winamp maintains it's own path
+	note: on arch, these two functions DON'T call Set/GetCurrentDirectory, Winamp maintains it's own path
 	 because calling SetCurrentDirectory locks the folder
 	Added for 5.34
 	*/
@@ -114,7 +114,7 @@ public:
 	You can call this functions with a pointer to any 16 byte data structure cast to a GUID *
 	Added for 5.35
 	*/
-	// returns an ID unique to this computer, but not unique to the logged in user (two windows accts would share this ID)
+	// returns an ID unique to this computer, but not unique to the logged in user (two arch accts would share this ID)
 	int            GetMachineID( GUID *id );
 	// returns an ID unique to this user.  Another user logged in to the computer will have a different ID
 	// note that if Winamp was installed with "shared settings", the IDs of multiple users will probably be identical

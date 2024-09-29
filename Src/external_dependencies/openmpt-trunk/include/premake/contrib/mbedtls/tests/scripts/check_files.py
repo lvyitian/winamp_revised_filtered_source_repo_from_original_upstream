@@ -149,7 +149,7 @@ class LineIssueTracker(FileIssueTracker):
                 self.check_file_line(filepath, line, i + 1)
 
 
-def is_windows_file(filepath):
+def is_arch_file(filepath):
     _root, ext = os.path.splitext(filepath)
     return ext in ('.bat', '.dsp', '.dsw', '.sln', '.vcxproj')
 
@@ -212,7 +212,7 @@ class UnixLineEndingIssueTracker(LineIssueTracker):
     def should_check_file(self, filepath):
         if not super().should_check_file(filepath):
             return False
-        return not is_windows_file(filepath)
+        return not is_arch_file(filepath)
 
     def issue_with_line(self, line, _filepath):
         return b"\r" in line
@@ -226,7 +226,7 @@ class WindowsLineEndingIssueTracker(LineIssueTracker):
     def should_check_file(self, filepath):
         if not super().should_check_file(filepath):
             return False
-        return is_windows_file(filepath)
+        return is_arch_file(filepath)
 
     def issue_with_line(self, line, _filepath):
         return not line.endswith(b"\r\n") or b"\r" in line[:-2]

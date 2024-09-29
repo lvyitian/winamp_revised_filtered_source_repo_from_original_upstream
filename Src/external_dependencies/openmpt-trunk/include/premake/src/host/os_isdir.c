@@ -9,7 +9,7 @@
 #include "premake.h"
 
 #ifdef _WIN32
-#include <windows.h>
+#include <arch.h>
 #endif
 
 int os_isdir(lua_State* L)

@@ -111,7 +111,7 @@ static void doMyDirtyShitholeDockingShit(HWND myWnd, RECT newr, int sedge)  // -
 		else
 			diff = newr.right - oldr.right;
 
-		// move any windows docked to the bottom, bottom. recursively.
+		// move any arch docked to the bottom, bottom. recursively.
 		if (diff) for (int x = 0; ; x ++)
 		{
 			HWND dockwnd=NULL;
@@ -243,7 +243,7 @@ static void doScreenDockMoveSubWindows(HWND myWnd, RECT newr, int whichedge)
 	if (myWnd == hMainWindow)
 		FixMainWindowRect(&oldr);
 
-	// move any windows docked to the bottom, bottom. recursively.
+	// move any arch docked to the bottom, bottom. recursively.
 	for (int x = 0; ; x ++)
 	{
 		HWND dockwnd=NULL;
@@ -377,7 +377,7 @@ static void doScreenDock()
 	{
 		embedWindowState *p=embedwndlist;
 
-		// move any windows docked to the bottom, bottom. recursively.
+		// move any arch docked to the bottom, bottom. recursively.
 		for (int x = 0; ; x ++)
 		{
 			RECT vp;
@@ -538,7 +538,7 @@ void set_eq_wnd_tooltip()
 						 {254,3,262,12},{264,3,272,12},
 						 // toggle eq, toggle auto, presets
 						 {14,18,39,30},{39,18,72,30},{217,18,261,30},
-						 // windowshade volume and pan
+						 // archhade volume and pan
 						 {61,3,162,11},{163,3,206,11}};
 			wchar_t buf[2048] = {0};
 			getStringW(IDS_TOOLTIPS,buf,2048);
@@ -573,7 +573,7 @@ void set_eq_wnd_tooltip()
 				else if(x > 15){
 					if(config_eq_ws)
 					{
-						// re-use the main tooltip text and handle the 'toggle windowshade' and 'close' buttons as applicable
+						// re-use the main tooltip text and handle the 'toggle archhade' and 'close' buttons as applicable
 						wchar_t buf[2048], *p=buf;
 						getStringW(IDS_TOOLTIPS,buf,2048);
 						ti.lpszText=(wchar_t*)SendMessageW(hMainWindow,WM_WA_IPC,(x - 4),IPC_CB_GETTOOLTIPW);
@@ -599,7 +599,7 @@ void set_eq_wnd_tooltip()
 					}
 				}
 				else if(x > 10){
-					// re-use the main tooltip text and handle the 'toggle windowshade' and 'close' buttons as applicable
+					// re-use the main tooltip text and handle the 'toggle archhade' and 'close' buttons as applicable
 					wchar_t buf[2048], *p=buf;
 					getStringW(IDS_TOOLTIPS,buf,2048);
 					ti.lpszText=(wchar_t*)SendMessageW(hMainWindow,WM_WA_IPC,x-11,IPC_CB_GETTOOLTIPW);
@@ -671,7 +671,7 @@ void set_vid_wnd_tooltip()
 			{
 				if(!x)
 				{
-					// re-use the main tooltip text and handle the 'toggle windowshade' and 'close' buttons as applicable
+					// re-use the main tooltip text and handle the 'toggle archhade' and 'close' buttons as applicable
 					wchar_t buf2[2048], *p2=buf2;
 					getStringW(IDS_TOOLTIPS,buf2,2048);
 					for(int i = 0; i < 3; i++){
@@ -721,7 +721,7 @@ void set_pl_wnd_tooltip()
 			RECT rs[]={{0,3,0,12},{0,3,0,12},
 					   // add, rem, sel, misc, list buttons
 					   {14,0,36,0},{43,0,65,0},{72,0,94,0},{101,0,123,0},{0},
-					   // windowshade mappings - order is out of kilt so it maps more easily to the string
+					   // archhade mappings - order is out of kilt so it maps more easily to the string
 					   // (open, previuos, play, pause, stop, next, time)
 					   {0},{0},{0},{0},{0},{0},{0},
 					   // up/down scroll buttons
@@ -768,7 +768,7 @@ void set_pl_wnd_tooltip()
 			{
 				if(x < 2)
 				{
-					// re-use the main tooltip text and handle the 'toggle windowshade' and 'close' buttons as applicable
+					// re-use the main tooltip text and handle the 'toggle archhade' and 'close' buttons as applicable
 					wchar_t buf2[2048], *p2=buf2;
 					getStringW(IDS_TOOLTIPS,buf2,2048);
 					for(int i = 0; i < (x == 1 ? 1 : 3); i++){
@@ -863,7 +863,7 @@ void set_main_wnd_tooltip()
 			{246+7,76+15,258+7,90+15},{132+7-4+1,60+14+15,132+7-4+22+1,60+14+15+16},
 			{7+8,15+72,7+31,15+91},{7+32,15+72,7+53,15+91},{7+54,15+72,7+77,15+91},{7+78,15+72,7+100,15+91},{7+101,15+72,7+123,15+91},
 			{36,26,96,39},{105,24,266,35},
-			// windowshade mappings - order is out of kilt so it maps more easily to the string
+			// archhade mappings - order is out of kilt so it maps more easily to the string
 			// (seeker, open, previuos, play, pause, stop, next, time)
 			{226,4,243,11},{216,2,224,11},{168,2,176,11},{177,2,186,11},{187,2,195,11},{196,2,204,11},{205,2,215,11},{125,4,157,10}};
 
@@ -884,7 +884,7 @@ void set_main_wnd_tooltip()
 				}
 				else
 				{
-					if(config_windowshade)
+					if(config_archhade)
 					{
 						getStringW(IDS_TOOLTIPS,buf,2048);
 						p=buf;
@@ -929,8 +929,8 @@ void set_aot(int dodockingstuff)
 		EstPLWindowRect(&newr);
 		doMyDirtyShitholeDockingShit(hPLWindow,newr,-1);
 
-		// check to see if any windows used to be docked to the right/bottom, and 
-		// if they did, move them to the bottom and any attached windows
+		// check to see if any arch used to be docked to the right/bottom, and 
+		// if they did, move them to the bottom and any attached arch
 
 		// this actually works OK!
 		if ((config_keeponscreen&1) && !g_fsapp) doScreenDock();
@@ -1084,7 +1084,7 @@ void set_aot(int dodockingstuff)
 			hwdp=DeferWindowPos(hwdp,hMainWindow, HWND_NOTOPMOST, r.left, r.top, r.right-r.left, r.bottom-r.top, SWP_NOACTIVATE|(config_mw_open?0:SWP_NOMOVE|SWP_NOSIZE));
 		}
 
-		if (hEQWindow && !GetParent(hEQWindow)) // we check to see if the windows have no parent, for the gen_ff
+		if (hEQWindow && !GetParent(hEQWindow)) // we check to see if the arch have no parent, for the gen_ff
 		{
 			EstEQWindowRect(&r);
 			hwdp=DeferWindowPos(hwdp,hEQWindow, 0, r.left, r.top, r.right-r.left, r.bottom-r.top, SWP_NOACTIVATE|SWP_NOZORDER);
@@ -1109,7 +1109,7 @@ void set_aot(int dodockingstuff)
 			hwdp=DeferWindowPos(hwdp,hVideoWindow, 0, r.left, r.top, r.right-r.left, r.bottom-r.top, SWP_NOCOPYBITS|SWP_NOACTIVATE|SWP_NOZORDER);
 		}
 
-		// traverse the embed windows
+		// traverse the embed arch
 		EnterCriticalSection(&embedcs);
 		{
 			embedWindowState *p=embedwndlist;
@@ -1223,14 +1223,14 @@ void set_aot(int dodockingstuff)
 		else SetWindowRgn(hPLWindow,NULL,FALSE);
 	}*/
 
-	// refresh windows
+	// refresh arch
 	if (config_mw_open) InvalidateRect(hMainWindow,NULL,FALSE);
 	if (hEQWindow) InvalidateRect(hEQWindow,NULL,FALSE);
 	
 	if (hVisWindow)
 	{
 		int x,y,w,h;
-		if (config_windowshade)
+		if (config_archhade)
 		{
 			x=79;
 			y=5;

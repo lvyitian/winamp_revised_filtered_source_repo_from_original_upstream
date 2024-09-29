@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_ENC_ACM_CONFIG_H
 #define NULLSOFT_ENC_ACM_CONFIG_H
 
-#include <windows.h>
+#include <arch.h>
 #include <mmreg.h>
 #include <msacm.h>
 

@@ -2,7 +2,7 @@
 #pragma message(__FILE__": telling linker to ignore libmmd.lib")
 
 #include "FhGAACEncoder.h"
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #include <stdio.h>
 #include "../nsv/enc_if.h"

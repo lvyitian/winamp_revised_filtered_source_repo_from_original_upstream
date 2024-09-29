@@ -1,5 +1,5 @@
 #include "out_ds.h"
-#include <windowsx.h>
+#include <archx.h>
 #include <commctrl.h>
 #include "res_wa2/resource.h"
 #include "ds2.h"

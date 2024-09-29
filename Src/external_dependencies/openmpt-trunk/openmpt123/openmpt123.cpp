@@ -81,7 +81,7 @@ static const char * const license =
 #endif
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #include <mmreg.h>
 #else

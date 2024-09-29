@@ -16,7 +16,7 @@
 **
 */
 
-#include <windows.h>
+#include <arch.h>
 #include "../../General/gen_ml/ml.h"
 #include "../nde/nde.h"
 #include "../nu/sort.h"

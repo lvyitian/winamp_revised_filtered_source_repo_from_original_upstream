@@ -19,7 +19,7 @@ endif
 endif
 endif
 else
-OS=windows
+OS=arch
 endif
 
 .PHONY: release
@@ -39,7 +39,7 @@ clean:
 	$(SILENT) -rm -rf bin
 
 projgen:
-	$(SILENT) $(GENIE) --to=../build/$(PROJECT_TYPE).windows --os=windows $(PROJECT_TYPE)
+	$(SILENT) $(GENIE) --to=../build/$(PROJECT_TYPE).arch --os=arch $(PROJECT_TYPE)
 	$(SILENT) $(GENIE) --to=../build/$(PROJECT_TYPE).linux   --os=linux $(PROJECT_TYPE)
 	$(SILENT) $(GENIE) --to=../build/$(PROJECT_TYPE).darwin  --os=macosx --platform=universal32 $(PROJECT_TYPE)
 	$(SILENT) $(GENIE) --to=../build/$(PROJECT_TYPE).freebsd --os=bsd $(PROJECT_TYPE)
@@ -47,7 +47,7 @@ projgen:
 rebuild:
 	$(SILENT) $(MAKE) -C build/$(PROJECT_TYPE).$(OS) clean all
 
-release-windows release-darwin: $(GENIE)
+release-arch release-darwin: $(GENIE)
 	$(GENIE) release
 	$(SILENT) $(MAKE) -C build/$(PROJECT_TYPE).$(OS) clean all
 	$(SILENT) git checkout src/host/version.h
@@ -56,12 +56,12 @@ release-linux: $(GENIE)
 	$(SILENT) $(GENIE) release
 	$(SILENT) $(MAKE) -C build/$(PROJECT_TYPE).darwin  clean all CC=x86_64-apple-darwin20.2-clang
 	$(SILENT) $(MAKE) -C build/$(PROJECT_TYPE).linux   clean all
-	$(SILENT) $(MAKE) -C build/$(PROJECT_TYPE).windows clean all CC=x86_64-w64-mingw32-gcc
+	$(SILENT) $(MAKE) -C build/$(PROJECT_TYPE).arch clean all CC=x86_64-w64-mingw32-gcc
 	$(SILENT) git checkout src/host/version.h
 
 release: release-$(OS)
 
 dist: release
 	cp bin/linux/genie       ../bx/tools/bin/linux/
-	cp bin/windows/genie.exe ../bx/tools/bin/windows/
+	cp bin/arch/genie.exe ../bx/tools/bin/arch/
 	cp bin/darwin/genie      ../bx/tools/bin/darwin/

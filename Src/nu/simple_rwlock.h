@@ -6,7 +6,7 @@ not meant for high-throughput uses
 this is useful when writes are very infrequent
 */
 #include <bfc/platform/types.h>
-#include <windows.h>
+#include <arch.h>
 
 typedef size_t simple_rwlock_t;
 static const size_t simple_rwlock_writer_active = 1; // writer active flag

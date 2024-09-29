@@ -443,7 +443,7 @@ Winamp 5.6	[Nov 27 2010]
 Winamp 5.5.81	[Jul 12 2010]
 * Improved: [pmp_android/usb] Disk-performance of metadata cache
 * Fixed: [gen_ml] Minor resource leak fix, plus other optimizations
-* Fixed: [gen_ff] Tooltip issue causing dialog windows to vanish underneath Winamp
+* Fixed: [gen_ff] Tooltip issue causing dialog arch to vanish underneath Winamp
 * Fixed: [ml_disc] CD drives not appearing in ML tree when ML starts not-visible
 * Fixed: [ml_wire] Sort by date before auto-downloading podcasts
 * Fixed: [pmp_android] Settings not being saved
@@ -694,16 +694,16 @@ Winamp 5.5.5	[Feb 27 2009]
 Winamp 5.5.41	[Aug  4 2008]
 * Improved: [pmp_ipod] Better auto-detection of newer iPod models
 * Fixed: Filetype icons in Windows Explorer not updating when changed in Prefs
-* Fixed: ML & Vis appear under other overlapping modern skin windows
+* Fixed: ML & Vis appear under other overlapping modern skin arch
 * Fixed: No error message when trying to edit metadata for Read-Only files
 * Fixed: Potential security vulnerability in NowPlaying
-* Fixed: [gen_ff] Keyboard shortcuts in modern skin playlist windowshade mode
+* Fixed: [gen_ff] Keyboard shortcuts in modern skin playlist archhade mode
 * Fixed: [gen_ml] Scrolling to bottom of AlbumArt pane & other misc scrollbar issues
 * Fixed: [in_mp3] Broken '307 - Temporary Redirect' url's
 * Fixed: [ml_local] AlbumArt icon selection glitch
 * Fixed: [ml_playlists] Play and Enqueue actions reversed if Enqueue is set as default
 * Fixed: [ml_rg] ReplayGain analysis of 20bit files
-* Misc: Double-click Modern pledit songticker now toggles windowshade mode again
+* Misc: Double-click Modern pledit songticker now toggles archhade mode again
 * Misc: More miscellaneous general tweaks, improvements, fixes and optimizations
 
 Winamp 5.5.4	[Jul  8 2008]
@@ -728,7 +728,7 @@ Winamp 5.5.4	[Jul  8 2008]
 * Fixed: Alt+F4 closing Winamp instead of individual dialogs
 * Fixed: Bento browser redirecting network drive url's to Winamp Search
 * Fixed: Blank playlist when in docked toolbar mode and Winamp is minimized
-* Fixed: Modern skin component windows appearing individually in Alt+Tab
+* Fixed: Modern skin component arch appearing individually in Alt+Tab
 * Fixed: Multi-flashing on startup when previously closed whilst minimized to systray
 * Fixed: Pure Virtual Function Call runtime crash errors
 * Fixed: Redraw issue when built-in classic vis is disabled
@@ -755,7 +755,7 @@ Winamp 5.5.4	[Jul  8 2008]
 * Fixed: [ml_disc] Small resource leak
 * Fixed: [ml_playlists] Autoscroll broken when dragging items in large playlists
 * Fixed: [ml_playlists] Enter/Shift+Enter broken for selected ML Playlist items
-* Fixed: [ml_playlists] Not respecting overlapping external windows on item drag+drop
+* Fixed: [ml_playlists] Not respecting overlapping external arch on item drag+drop
 * Fixed: [ml_playlists / ml_transcode] Sending playlists from ML tree to Transcoder
 * Fixed: [ml_wire] 404/timeout with valid rss feeds on Vista
 * Misc: Miscellaneous localization tweaks, fixes & updates
@@ -1110,7 +1110,7 @@ Winamp 5.3.4	[Apr 20 2007]
 * Fixed: Folder locking bug after using Open Files/Folder dialog
 * Fixed: Installation of Sonic Engine on systems with other Sonic/Roxio products
 * Fixed: Installer resets cwd= to the install dir
-* Fixed: Redraw bug when moving external windows over Pledit
+* Fixed: Redraw bug when moving external arch over Pledit
 * Fixed: Tab orders in Preferences
 * Fixed: Various media library accessibility/focus issues
 * Fixed: Video crash when using WinKey+L
@@ -1228,7 +1228,7 @@ Winamp 5.3.2	[Nov 21 2006]
 * Fixed: [in_mp4] unable to play truncated M4A files
 * Fixed: [in_vorbis] crash with very short files
 * Fixed: [jnetlib] HTTP timeouts on streams with character 255 in HTTP headers
-* Fixed: [ml_disc] CD View sometimes causing flickering of all open windows
+* Fixed: [ml_disc] CD View sometimes causing flickering of all open arch
 * Fixed: [ml_history] crash when disabling & re-enabling view
 * Fixed: [ml_playlists] corrupt display when scrolling
 * Fixed: [ml_wire] crash when parsing podcasts with badly formed dates
@@ -1568,7 +1568,7 @@ Winamp 5.1.2	[Dec 12 2005]
 * Fixed: [in_mp4] unicode metadata writing 
 * Fixed: [in_wm/in_dshow] mms:// streaming video playback
 * Fixed: [in_cdda] audio cd bitrate display
-* Fixed: [in_cdda] Sonic engine on 64bit windows (thanks STanger)
+* Fixed: [in_cdda] Sonic engine on 64bit arch (thanks STanger)
 * Fixed: lots of small bugs ...
 * Updated: Sonic CD Engine 2.2.50
 * Updated: libmp4v2 1.4.1
@@ -1726,7 +1726,7 @@ Winamp 5.0.4	[Jul 28 2004]
 * Added screenshots of classic/modern mode in installer
 * Fixed MP3 bitrate calculation (in_mp3 was reporting incorrect lengths on some MP3s)
 * Fixed incorrect length reporting on long WMA files
-* Better fix for pledit/video windows showing up at startup when minimized
+* Better fix for pledit/video arch showing up at startup when minimized
 * Fixed db text bug when moving EQ sliders
 * Upgraded MP3 encoding to LAME v3.96
 * Fixed crash in WMA playback when using WMA v8 codecs
@@ -1760,7 +1760,7 @@ Winamp 5.0.4	[Jul 28 2004]
 * Added sdk support for multiple audio/video tracks in video input plug-ins (see wa_ipc.h
   for ITrackSelector class)
 * Added multiple audio avi support (right click video window, select "Audio Tracks")
-* Fixed multimonitor problem when toggling a windowshade on one monitor while playing
+* Fixed multimonitor problem when toggling a archhade on one monitor while playing
   a fullscreen video on the other
 * Added ML_IPC_EDITQUERY and ML_IPC_EDITVIEW
 * Fixed pledit drawing bug under winxp/cleartype
@@ -1775,12 +1775,12 @@ Winamp 5.0.4	[Jul 28 2004]
 * Made ui:preferences global hotkey open the prefs to the previously opened page
 * Fixed a few preferences cosmetic 'bugs'
 * Modern skin updates :
-  - Fixed windowshade repeat-track button state
+  - Fixed archhade repeat-track button state
   - Fixed scaling docked toolbars
   - Fixed 5.03 assert on deletion of newGroupAsLayout()
-  - Fixed floating video windows coordinates dropping to 0,0
+  - Fixed floating video arch coordinates dropping to 0,0
   - Fixed auto opaque when layouts are loaded already docked as toolbars
-  - Fixed fadein/fadeout not used on notification window when linking all normal windows' 
+  - Fixed fadein/fadeout not used on notification window when linking all normal arch' 
     alpha
   - Fixed docked toolbars moving when some other window docked to them switches to an 
     alternative layout
@@ -1801,7 +1801,7 @@ Winamp 5.0.4	[Jul 28 2004]
     proportions
   - Fixed docking bug when using snapadjustleft
   - Fixed buggy calculation of time display default width conflicting with right text alignment
-  - Fixed windows moving after changing screen resolution
+  - Fixed arch moving after changing screen resolution
   - Fixed rare always on top desync with classic skins
 
 Winamp 5.0.3	[Mar 24 2004]
@@ -1827,7 +1827,7 @@ Winamp 5.0.3	[Mar 24 2004]
 * Updated VP6 video decoder to latest VP6.2 code
 * Fixed crash when launching Winamp with very long filenames from explorer
 * Made registration dialog to appear in Explorer's taskbar when installing pro version
-* Fixed pledit/video windows showing up at startup when minimized
+* Fixed pledit/video arch showing up at startup when minimized
 * Modern skins updates :
   - Winamp modern skin now uses a 3 state repeat button: no repeat/repeat all/repeat track
   - Added appplication desktop toolbars capabilities for layouts, add 
@@ -1837,7 +1837,7 @@ Winamp 5.0.3	[Mar 24 2004]
     of course we continue to support 0.8 to 1.1)
   - (Very) limited maki debugger (for now you can bring it up with invokeDebugger(); in a 
     script then use 'x' to continue and 'i' to trace into)
-  - Fixed obscure capture problem with dragging windows
+  - Fixed obscure capture problem with dragging arch
   - Fixed rectrgn being forced to 1 in xml xuiobject buttons that are originally imageless
   - Fixed hilited state not on after clicking on buttons while the mouse stays in area
   - Fixed scripted onEnterArea/onLeaveArea not being always correctly called while mouse 

@@ -11,7 +11,7 @@
 // damage or loss of business that this software may cause. 
 //
 ///////////////////////////////////////////////////////////////////////////////
-#include <windows.h>
+#include <arch.h>
 
 #ifndef GETWINVER_H
 #define GETWINVER_H

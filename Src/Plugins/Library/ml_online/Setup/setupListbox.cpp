@@ -6,7 +6,7 @@
 #include "../resource.h"
 #include "../api__ml_online.h"
 
-#include "../../nu/windowsTheme.h"
+#include "../../nu/archTheme.h"
 
 #include <vssym32.h>
 

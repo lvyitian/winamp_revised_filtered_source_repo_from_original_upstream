@@ -2,7 +2,7 @@
 #define __NDE_VFS_H
 
 #include <bfc/platform/types.h>
-#include <windows.h>
+#include <arch.h>
 
 //#define NDE_ALLOW_NONCACHED
 

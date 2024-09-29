@@ -19,7 +19,7 @@
 * Boston, MA  02111-1307, USA.
 */
 
-#include <windows.h>
+#include <arch.h>
 #include <Windef.h>
 #include "BladeMP3EncDLL.h"
 #include <assert.h>

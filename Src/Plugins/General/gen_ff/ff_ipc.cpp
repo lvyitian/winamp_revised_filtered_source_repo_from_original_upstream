@@ -181,7 +181,7 @@ COLORREF getWindowBackground(COLORREF *wb)
           windowbackground = b[_w*_y+_x];
           WASABI_API_SKIN->imgldr_releaseSkinBitmap(b);
         } else {
-          // no idea... we'll just set the default windows color
+          // no idea... we'll just set the default arch color
           windowbackground = GetSysColor(COLOR_WINDOWFRAME);
         }
       }

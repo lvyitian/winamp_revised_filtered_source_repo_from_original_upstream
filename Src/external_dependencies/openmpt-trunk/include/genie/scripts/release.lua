@@ -37,7 +37,7 @@ function dorelease()
 
 	print("Generating project files...")
 
-	exec(_PREMAKE_COMMAND .. " /to=../build/gmake.windows /os=windows gmake")
+	exec(_PREMAKE_COMMAND .. " /to=../build/gmake.arch /os=arch gmake")
 	exec(_PREMAKE_COMMAND .. " /to=../build/gmake.linux /os=linux gmake")
 	exec(_PREMAKE_COMMAND .. " /to=../build/gmake.darwin /os=macosx /platform=universal32 gmake")
 

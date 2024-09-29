@@ -7,7 +7,7 @@
 #include "../Agave/Language/api_language.h"
 #include "gen.h"
 #include <commctrl.h>
-#include <windowsx.h>
+#include <archx.h>
 
 void turnonoff(HWND wnd, int *t, int n, int v) {
   for (int i=0;i<n;i++) {

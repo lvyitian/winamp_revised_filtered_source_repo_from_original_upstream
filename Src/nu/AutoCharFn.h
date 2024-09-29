@@ -8,7 +8,7 @@
 #endif
 
 
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 
 class AutoCharFn

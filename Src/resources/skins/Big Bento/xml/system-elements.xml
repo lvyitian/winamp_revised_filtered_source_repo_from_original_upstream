@@ -102,12 +102,12 @@
 	 <bitmap id="wasabi.button.radio" file="window/window-elements.png" x="79" y="77" h="7" w="7" gammagroup="PlayerDisplay"/>
 	 <bitmap id="wasabi.button.radio.pressed" file="window/window-elements.png" x="72" y="77" h="7" w="7" gammagroup="DisplayText"/>
 
-<!-- Frame windows -->
+<!-- Frame arch -->
 	<bitmap id="wasabi.framewnd.verticaldivider" file="window/window-elements.png" x="124" y="53" h="65" w="8" gammagroup="Frame_Borders"/>
 	<bitmap id="wasabi.framewnd.verticalgrabber" file="window/window-elements.png" x="115" y="53" h="65" w="8" gammagroup="Frame_Borders"/>
 	<bitmap id="wasabi.framewnd.horizontaldivider" file="window/window-elements.png" x="40" y="97" h="8" w="65" gammagroup="Frame_Borders"/>
 	<bitmap id="wasabi.framewnd.horizontalgrabber" file="window/window-elements.png" x="40" y="106" h="8" w="65" gammagroup="Frame_Borders"/>
-	<bitmap id="wasabi.framewnd.windowshade" file="window/framewnd-windowshade.png" gammagroup="Frame_Borders"/>
+	<bitmap id="wasabi.framewnd.archhade" file="window/framewnd-archhade.png" gammagroup="Frame_Borders"/>
 
 	<bitmap id="wasabi.frame.divider.arrow.up" file="window/window-elements.png" x="64" y="124" h="4" w="7" gammagroup="Frame_Borders"/>
 	<bitmap id="wasabi.frame.divider.arrow.down" file="window/window-elements.png" x="64" y="128" h="4" w="7" gammagroup="Frame_Borders"/>

@@ -4,7 +4,7 @@
 #ifdef __ANDROID__
 #include "android/nsid3v2.h"
 #elif defined(_WIN32)
-#include "windows/nsid3v2.h"
+#include "arch/nsid3v2.h"
 #elif defined(__linux__)
 #include "linux/nsid3v2.h"
 #elif defined(__APPLE__)

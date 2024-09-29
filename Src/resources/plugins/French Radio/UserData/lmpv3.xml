@@ -6,7 +6,7 @@
 	  <id>rtl</id>
 	  <name>RTL</name>
 	  <type>radio</type>
-	  <url>http://radio.rtl.fr/windowsmediacenter/</url>
+	  <url>http://radio.rtl.fr/archmediacenter/</url>
 	  <thumbnail>256x256/todae_radio_rtl.png</thumbnail>
 	  <stream>http://streaming.radio.rtl.fr:80/rtl-1-44-96</stream>
 	  <comments>La première radio de France</comments>
@@ -17,7 +17,7 @@
       <id>nrj</id>
       <name>NRJ</name>
       <type>radio</type>
-      <url>http://ops.nrj.fr/windows-media-center/</url>
+      <url>http://ops.nrj.fr/arch-media-center/</url>
       <thumbnail>256x256/todae_radio_nrj.png</thumbnail>
       <stream>http://mp3.live.tv-radio.com/nrj/all/nrj_113225.mp3</stream>
       <comments>HIT MUSIC ONLY</comments>

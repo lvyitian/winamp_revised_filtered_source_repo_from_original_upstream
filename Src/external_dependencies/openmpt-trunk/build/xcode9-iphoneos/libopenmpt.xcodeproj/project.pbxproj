@@ -296,7 +296,7 @@
 		17C32E5A8380D7900C4BC3F8 /* tests_binary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = EF5714F9DB014A08C4D25123 /* tests_binary.hpp */; };
 		B447DB5EA05ADBB74944B8A4 /* libc.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 638B4931CF1A0B1CD816EC33 /* libc.hpp */; };
 		924830DAFEADC36087866539 /* mfc.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A169CFBA8DBBA6AA76DAE3BA /* mfc.hpp */; };
-		E907EB3355434BF75E38C886 /* windows.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 18DED47E04469B4C6DB1AF62 /* windows.hpp */; };
+		E907EB3355434BF75E38C886 /* arch.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 18DED47E04469B4C6DB1AF62 /* arch.hpp */; };
 		A131EE8A0D4C512C566E61C0 /* crc.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0270ACB6EE566EAE97A7D4CB /* crc.hpp */; };
 		B8A0AAB824BD9CA9ED940917 /* tests_crc.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C71C02DFB3C5690EDC5B858D /* tests_crc.hpp */; };
 		E7BBCE12D34FC4BA3C141E6F /* exception.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F6BEB77F622FBAF82B4E3481 /* exception.hpp */; };
@@ -356,7 +356,7 @@
 		862ACB1DF2F0273A3B4CB69C /* library.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 55C637D341D9372CEAC21419 /* library.hpp */; };
 		1CEBDC56885BDFCF517A5958 /* mutex.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AB099F81978692C4C00393D8 /* mutex.hpp */; };
 		DD9F3244C91D83DDB2154175 /* class.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AC99CC3518B42FD761D63F6B /* class.hpp */; };
-		D9421C9CC517644FEEC6A34B /* windows_version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = E801BE9954136640DD64F87F /* windows_version.hpp */; };
+		D9421C9CC517644FEEC6A34B /* arch_version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = E801BE9954136640DD64F87F /* arch_version.hpp */; };
 		8611888FF2D95513BB6A5E25 /* out_of_memory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D5A33355C1787B08EA27BB04 /* out_of_memory.hpp */; };
 		4E6F61FCBADF637583FEDDFD /* parse.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 9DA6A1DC8923951FB2A09533 /* parse.hpp */; };
 		C1686B342DD96DADF6F7E735 /* split.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 302CAA7A1CA99DBD45269ED1 /* split.hpp */; };
@@ -726,7 +726,7 @@
 		EF5714F9DB014A08C4D25123 /* tests_binary.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "tests_binary.hpp"; path = "tests_binary.hpp"; sourceTree = "<group>"; };
 		638B4931CF1A0B1CD816EC33 /* libc.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "libc.hpp"; path = "libc.hpp"; sourceTree = "<group>"; };
 		A169CFBA8DBBA6AA76DAE3BA /* mfc.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "mfc.hpp"; path = "mfc.hpp"; sourceTree = "<group>"; };
-		18DED47E04469B4C6DB1AF62 /* windows.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "windows.hpp"; path = "windows.hpp"; sourceTree = "<group>"; };
+		18DED47E04469B4C6DB1AF62 /* arch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "arch.hpp"; path = "arch.hpp"; sourceTree = "<group>"; };
 		0270ACB6EE566EAE97A7D4CB /* crc.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "crc.hpp"; path = "crc.hpp"; sourceTree = "<group>"; };
 		C71C02DFB3C5690EDC5B858D /* tests_crc.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "tests_crc.hpp"; path = "tests_crc.hpp"; sourceTree = "<group>"; };
 		F6BEB77F622FBAF82B4E3481 /* exception.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "exception.hpp"; path = "exception.hpp"; sourceTree = "<group>"; };
@@ -786,7 +786,7 @@
 		55C637D341D9372CEAC21419 /* library.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "library.hpp"; path = "library.hpp"; sourceTree = "<group>"; };
 		AB099F81978692C4C00393D8 /* mutex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "mutex.hpp"; path = "mutex.hpp"; sourceTree = "<group>"; };
 		AC99CC3518B42FD761D63F6B /* class.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "class.hpp"; path = "class.hpp"; sourceTree = "<group>"; };
-		E801BE9954136640DD64F87F /* windows_version.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "windows_version.hpp"; path = "windows_version.hpp"; sourceTree = "<group>"; };
+		E801BE9954136640DD64F87F /* arch_version.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "arch_version.hpp"; path = "arch_version.hpp"; sourceTree = "<group>"; };
 		D5A33355C1787B08EA27BB04 /* out_of_memory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "out_of_memory.hpp"; path = "out_of_memory.hpp"; sourceTree = "<group>"; };
 		9DA6A1DC8923951FB2A09533 /* parse.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "parse.hpp"; path = "parse.hpp"; sourceTree = "<group>"; };
 		302CAA7A1CA99DBD45269ED1 /* split.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = "split.hpp"; path = "split.hpp"; sourceTree = "<group>"; };
@@ -1280,7 +1280,7 @@
 			children = (
 				638B4931CF1A0B1CD816EC33 /* libc.hpp */,
 				A169CFBA8DBBA6AA76DAE3BA /* mfc.hpp */,
-				18DED47E04469B4C6DB1AF62 /* windows.hpp */,
+				18DED47E04469B4C6DB1AF62 /* arch.hpp */,
 			);
 			name = "check";
 			path = "check";
@@ -1497,7 +1497,7 @@
 			isa = PBXGroup;
 			children = (
 				AC99CC3518B42FD761D63F6B /* class.hpp */,
-				E801BE9954136640DD64F87F /* windows_version.hpp */,
+				E801BE9954136640DD64F87F /* arch_version.hpp */,
 			);
 			name = "osinfo";
 			path = "osinfo";

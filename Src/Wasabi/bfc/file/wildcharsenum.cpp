@@ -1,7 +1,7 @@
 // NONPORTABLE NONPORTABLE NONPORTABLE
 #include "precomp_wasabi_bfc.h"
 #ifdef WIN32
-#include <windows.h>
+#include <arch.h>
 #endif
 #include "wildcharsenum.h"
 #include <bfc/parse/pathparse.h>

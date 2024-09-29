@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "../nsvlib.h"
 #include "../dec_if.h"
 

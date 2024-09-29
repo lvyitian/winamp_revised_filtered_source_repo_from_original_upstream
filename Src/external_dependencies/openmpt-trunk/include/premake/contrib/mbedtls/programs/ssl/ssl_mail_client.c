@@ -79,7 +79,7 @@ int main( void )
 
 #if defined(_WIN32) || defined(_WIN32_WCE)
 #include <winsock2.h>
-#include <windows.h>
+#include <arch.h>
 
 #if defined(_MSC_VER)
 #if defined(_WIN32_WCE)

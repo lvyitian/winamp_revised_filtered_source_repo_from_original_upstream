@@ -39,7 +39,7 @@
 #define COM_NO_WINDOWS_H
 #include <objbase.h>
 
-#include <windows.h>
+#include <arch.h>
 
 #if !defined(HMONITOR_DECLARED) && (WINVER < 0x0500)
     #define HMONITOR_DECLARED

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <wtypes.h>
-#include <windowsx.h>
+#include <archx.h>
 
 #include "./graphics.h"
 #include "DeviceView.h"

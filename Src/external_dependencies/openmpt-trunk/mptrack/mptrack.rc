@@ -2988,7 +2988,7 @@ BEGIN
     ID_HELP_INDEX           "Opens Help\nHelp Topics"
     ID_HELP_FINDER          "List Help topics\nHelp Topics"
     ID_HELP_USING           "Display instructions about how to use help\nHelp"
-    ID_CONTEXT_HELP         "Display help for buttons, menus and windows\nHelp"
+    ID_CONTEXT_HELP         "Display help for buttons, menus and arch\nHelp"
     ID_HELP                 "Display help for current task or command\nHelp"
 END
 
@@ -3002,9 +3002,9 @@ STRINGTABLE
 BEGIN
     ID_WINDOW_NEW           "Open another window for the active song\nNew Window"
     ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
-    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
-    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
-    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_CASCADE       "Arrange arch so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange arch as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange arch as non-overlapping tiles\nTile Windows"
     ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
 END
 

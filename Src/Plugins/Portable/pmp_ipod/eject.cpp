@@ -1,6 +1,6 @@
 // this file almost totally copied from MSDN
 
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include <winioctl.h>
 
@@ -140,7 +140,7 @@ BOOL EjectVolume(TCHAR cDriveLetter)
 #else
 #include <stdio.h>
 
-#include <windows.h>
+#include <arch.h>
 
 #include <Setupapi.h>
 #include <winioctl.h>

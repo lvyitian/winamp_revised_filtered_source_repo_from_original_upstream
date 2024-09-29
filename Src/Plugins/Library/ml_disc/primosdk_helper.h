@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 //#include <primosdk.h>
 #define PRIMOSDK_CMDSEQUENCE ((DWORD)0xFFFFFFFF)
 #define PRIMOSDK_OK 0

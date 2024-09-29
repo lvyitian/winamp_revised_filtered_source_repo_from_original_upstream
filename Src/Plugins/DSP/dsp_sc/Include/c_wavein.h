@@ -1,7 +1,7 @@
 #ifndef __C_WAVEIN_H__
 #define __C_WAVEIN_H__
 
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #define EXIT_ON_ERROR(hr)  \
 	if (FAILED(hr)) { goto Exit; }

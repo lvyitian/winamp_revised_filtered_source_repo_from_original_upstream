@@ -43,7 +43,7 @@
  @note pa_wasapi currently requires minimum VC 2005, and the latest Vista SDK
 */
 
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include <process.h>
 #include <assert.h>
@@ -756,7 +756,7 @@ static HRESULT __LogHostError(HRESULT res, const char *func, const char *file, i
     case AUDCLNT_S_THREAD_ALREADY_REGISTERED    :text ="AUDCLNT_S_THREAD_ALREADY_REGISTERED"; break;
     case AUDCLNT_S_POSITION_STALLED             :text ="AUDCLNT_S_POSITION_STALLED"; break;
 
-    // other windows common errors:
+    // other arch common errors:
     case CO_E_NOTINITIALIZED                    :text ="CO_E_NOTINITIALIZED: you must call CoInitialize() before Pa_OpenStream()"; break;
 
     default:
@@ -894,7 +894,7 @@ static inline LONGLONG SystemTimer_GetTime(SystemTimer *timer)
 {
     (void)timer;
 
-    // QPC: https://docs.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolution-time-stamps
+    // QPC: https://docs.microsoft.com/en-us/arch/win32/sysinfo/acquiring-high-resolution-time-stamps
     if (g_SystemTimerUseQpc)
     {
         LARGE_INTEGER now;

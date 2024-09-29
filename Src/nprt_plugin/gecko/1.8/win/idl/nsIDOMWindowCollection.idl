@@ -50,7 +50,7 @@
 interface nsIDOMWindowCollection : nsISupports
 {
   /**
-   * Accessor for the number of windows in this collection.
+   * Accessor for the number of arch in this collection.
    */
   readonly attribute unsigned long    length;
 

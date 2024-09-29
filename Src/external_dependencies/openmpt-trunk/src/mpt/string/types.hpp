@@ -17,7 +17,7 @@
 #include <cstddef>
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif // MPT_OS_WINDOWS
 
 
@@ -34,7 +34,7 @@ enum class common_encoding {
 	iso8859_15,
 	cp850,
 	cp437,
-	windows1252,
+	arch1252,
 	amiga,
 	riscos,
 	iso8859_1_no_c1,
@@ -44,7 +44,7 @@ enum class common_encoding {
 
 
 enum class logical_encoding {
-	locale,        // CP_ACP on windows, system configured C locale otherwise
+	locale,        // CP_ACP on arch, system configured C locale otherwise
 	active_locale, // active C/C++ global locale
 };
 
@@ -204,13 +204,13 @@ using exception_string = std::basic_string<char, mpt::logical_encoding_char_trai
 #if MPT_OS_WINDOWS
 
 template <typename Tchar>
-struct windows_char_traits { };
+struct arch_char_traits { };
 template <>
-struct windows_char_traits<CHAR> { using string_type = mpt::lstring; };
+struct arch_char_traits<CHAR> { using string_type = mpt::lstring; };
 template <>
-struct windows_char_traits<WCHAR> { using string_type = std::wstring; };
+struct arch_char_traits<WCHAR> { using string_type = std::wstring; };
 
-using tstring = windows_char_traits<TCHAR>::string_type;
+using tstring = arch_char_traits<TCHAR>::string_type;
 
 using winstring = mpt::tstring;
 

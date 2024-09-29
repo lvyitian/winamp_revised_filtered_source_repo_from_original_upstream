@@ -11,7 +11,7 @@
 // Mon Nov 23 18:34:01 1998
 // improved/optimized/whatever 10/30/00 JF
 
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include <memory.h>
 #include "id3_field.h"

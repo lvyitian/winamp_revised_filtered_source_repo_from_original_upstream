@@ -25,7 +25,7 @@
 # include <io.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-# include <windows.h>
+# include <arch.h>
 #ifndef strcasecmp
 # define strcasecmp _strcmpi
 #endif

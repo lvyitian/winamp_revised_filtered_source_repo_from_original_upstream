@@ -24,7 +24,7 @@
 #define COMP_INTERFACE_H
 
 #define  INC_WIN_HEADER      1
-#include <windows.h>
+#include <arch.h>
 
 #include "codec_common_interface.h"
 #include "type_aliases.h"

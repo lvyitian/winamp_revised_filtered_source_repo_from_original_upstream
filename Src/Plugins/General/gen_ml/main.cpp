@@ -1,5 +1,5 @@
 #include "main.h"
-#include <windowsx.h>
+#include <archx.h>
 #include <time.h>
 #include <rpc.h>
 #include "../winamp/gen.h"
@@ -101,7 +101,7 @@ extern "C"
 HWND g_PEWindow;
 
 HMENU wa_main_menu = NULL;
-HMENU wa_windows_menu = NULL;
+HMENU wa_arch_menu = NULL;
 HMENU wa_playlists_cmdmenu = NULL;
 HMENU last_playlistsmenu = NULL;
 HMENU last_viewmenu = NULL;
@@ -890,9 +890,9 @@ int init()
 	
 	int vis = g_config->ReadInt(L"visible", 1);
 	wa_main_menu = (HMENU)SendMessage(plugin.hwndParent, WM_WA_IPC, 0, IPC_GET_HMENU);
-	wa_windows_menu = (HMENU)SendMessage(plugin.hwndParent, WM_WA_IPC, 4, IPC_GET_HMENU);
+	wa_arch_menu = (HMENU)SendMessage(plugin.hwndParent, WM_WA_IPC, 4, IPC_GET_HMENU);
 	wa_playlists_cmdmenu = NULL;
-	if (wa_main_menu || wa_windows_menu)
+	if (wa_main_menu || wa_arch_menu)
 	{
 		if (wa_main_menu)
 		{
@@ -906,13 +906,13 @@ int init()
 			SendMessage(plugin.hwndParent, WM_WA_IPC, 1, IPC_ADJUST_OPTIONSMENUPOS);
 		}
 
-		if (wa_windows_menu)
+		if (wa_arch_menu)
 		{
 			MENUITEMINFOW i = {sizeof(i), MIIM_ID | MIIM_STATE | MIIM_TYPE, MFT_STRING, vis ? (UINT)MFS_CHECKED : 0, WA_MENUITEM_ID};
-			int prior_item = GetMenuItemID(wa_windows_menu,3);
-			if(prior_item <= 0) prior_item = GetMenuItemID(wa_windows_menu,2);
+			int prior_item = GetMenuItemID(wa_arch_menu,3);
+			if(prior_item <= 0) prior_item = GetMenuItemID(wa_arch_menu,2);
 			i.dwTypeData = WASABI_API_LNGSTRINGW(IDS_ML_ALT_L_SHORTCUT);
-			InsertMenuItemW(wa_windows_menu, prior_item, FALSE, &i);
+			InsertMenuItemW(wa_arch_menu, prior_item, FALSE, &i);
 			SendMessage(plugin.hwndParent, WM_WA_IPC, 1, IPC_ADJUST_FFWINDOWSMENUPOS);
 		}
 	}

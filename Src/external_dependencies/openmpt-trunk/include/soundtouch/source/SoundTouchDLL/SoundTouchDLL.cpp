@@ -32,7 +32,7 @@
 
 
 #if defined(_WIN32) || defined(WIN32)
-    #include <windows.h>
+    #include <arch.h>
 
     // DLL main in Windows compilation
     BOOL APIENTRY DllMain( HANDLE hModule,

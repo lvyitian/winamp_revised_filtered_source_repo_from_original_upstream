@@ -1,8 +1,8 @@
 #ifndef _ARTISTALBUMLISTS_H_
 #define _ARTISTALBUMLISTS_H_
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <stdio.h>
 #include <shlobj.h>
 #include <time.h>

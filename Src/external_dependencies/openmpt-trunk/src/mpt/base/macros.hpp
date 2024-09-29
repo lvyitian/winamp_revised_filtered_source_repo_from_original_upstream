@@ -10,7 +10,7 @@
 #include <type_traits>
 
 #if MPT_COMPILER_MSVC && MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif // MPT_COMPILER_MSVC && MPT_OS_WINDOWS
 
 

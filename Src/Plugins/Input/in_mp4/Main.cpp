@@ -1,6 +1,6 @@
 #define PLUGIN_VERSION L"2.70"
 #include "Main.h"
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include <locale.h>
 #include "resource.h"

@@ -1206,7 +1206,7 @@ Misc
 - [Imp] <js> Show keyboard shortcuts in various tooltips (http://bugs.openmpt.org/view.php?id=980).
 - [Imp] <js> Try to figure out when a USB MIDI device is disconnected and disable the MIDI record button if this device was being used for recording.
 - [Imp] <js> In addition to checking for the latest development builds, it is now also possible to receive update notifications for upcoming minor updates.
-- [Fix] <js> In High-DPI mode, scale initial size of the upper panel of child windows properly.
+- [Fix] <js> In High-DPI mode, scale initial size of the upper panel of child arch properly.
 
 Bundled plugins
 - [Fix] <js> MIDI I/O Plugin: Do not crash when sending a MIDI message fails (e.g. with Coolsoft Virtual MIDI Synth, http://bugs.openmpt.org/view.php?id=1219).
@@ -1947,7 +1947,7 @@ v1.26.14.00 (14 August 2017, revision 8772)
 -------------------------------------------
 Pattern tab
 - [Fix] <js> Changing the octave of notes below middle-C was broken in OpenMPT 1.26.13.00.
-- [Fix] <js> Resizing a pattern did not properly redraw the row numbers in other pattern windows.
+- [Fix] <js> Resizing a pattern did not properly redraw the row numbers in other pattern arch.
 
 
 v1.26.13.00 (12 August 2017, revision 8759)
@@ -2150,7 +2150,7 @@ General tab
 Pattern tab
 - [Mod] <js> Do not wrap around the spin wheel for the edit spacing box from 0 to 64.
 - [Fix] <js> Correctly center active row when switching to a pattern that has less rows than the previously edited pattern (http://bugs.openmpt.org/view.php?id=899).
-- [Fix] <js> Moving channels did not update the channel names in other windows.
+- [Fix] <js> Moving channels did not update the channel names in other arch.
 - [Fix] <js> The "switch to order list" shortcut also toggled overflow paste.
 - [Fix] <js> Quick Channel Settings: Entering a panning value manually did not reset the surround setting visually.
 - [Fix] <js> Trying to play a part of a pattern that is not part of the regular play sequence (e.g. rows after a pattern break) caused the pattern to be played from the first row instead.
@@ -2181,7 +2181,7 @@ Other formats
 Misc
 - [Fix] <js> Configuring chords with a relative base note was broken since OpenMPT 1.26.01.00.
 - [Fix] <js> Tempo Swing dialog: A swing amount of 100% is now displayed correctly on Wine prior to version 2.0.
-- [Fix] <js> When switching between multiple windows of a single module, sample and instrument editors are now receiving playback updates instantly.
+- [Fix] <js> When switching between multiple arch of a single module, sample and instrument editors are now receiving playback updates instantly.
 - [Fix] <js> SF2: Some stereo sample pairs were mismatched.
 - [Fix] <js> Running OpenMPT with a relative path to a module file as a parameter did not work as intended.
 
@@ -2762,7 +2762,7 @@ Misc
 - [Fix] <js> Crash in 64-bit builds when trying to append a module.
 - [Fix] <js> After changing the default rows per beat, the new value was not used in tempo approximation for classic and alternative tempo mode if the song was not currently playing.
 - [Fix] <js> Some menu items were not greyed out when they should have been (http://bugs.openmpt.org/view.php?id=710).
-- [Fix] <jh> Fix resource exhaustion on Wine when invoking any popup windows via a keyboard hotkey (http://bugs.openmpt.org/view.php?id=713).
+- [Fix] <jh> Fix resource exhaustion on Wine when invoking any popup arch via a keyboard hotkey (http://bugs.openmpt.org/view.php?id=713).
 - [Reg] <js> Remove hidden setting "Misc.ShowHackControls". All it did was showing an input field for changing the sequence margins, which can already be controlled through a different setting "Pattern Editor.DefaultSequenceMargins".
 
 Third-Party Libraries
@@ -3055,7 +3055,7 @@ Misc
 - [Mod] <js> No longer mark module as modified when switching between sequences (http://bugs.openmpt.org/view.php?id=141).
 - [Fix] <js> The bold and italic styles were ignored on custom pattern and comments fonts.
 - [Fix] <js> It was possible to switch song tabs while being in a modal dialog, which could lead to crashes when exiting the dialog.
-- [Fix] <js> Tooltips were missing in some windows in the 32-bit build (http://bugs.openmpt.org/view.php?id=646).
+- [Fix] <js> Tooltips were missing in some arch in the 32-bit build (http://bugs.openmpt.org/view.php?id=646).
 - [Fix] <js> Channel Manager window was not sized properly.
 - [Fix] <jh> OpenMPT 1.24 was previously no longer running on Windows 98 + KernelEx.
 
@@ -3522,7 +3522,7 @@ VST / DMO Plugins
 - [Imp] <js> Implemented audioMasterGetChunkFile opcode.
 - [Imp] <js> Implemented more timing information for plugins that want it.
 - [Imp] <js> When rescanning plugins on startup is taking too long, show a progress dialog.
-- [Mod] <js> Optimize VST window redrawing a little bit by not filling the window with the default background colour (removes flicker when resizing plugin windows).
+- [Mod] <js> Optimize VST window redrawing a little bit by not filling the window with the default background colour (removes flicker when resizing plugin arch).
 - [Fix] <js> OpenMPT should no longer "forget" plugins randomly (http://bugs.openmpt.org/view.php?id=18).
 - [Fix] <js> Plugins with same internal ID should no longer confuse OpenMPT's plugin cache (http://bugs.openmpt.org/view.php?id=25).
 - [Fix] <js> Some plugins could produce a crash when using the buffer clearing option in export (tx coda).
@@ -5298,7 +5298,7 @@ Sample tab
 Instrument tab
 - [Fix] <js> When playing an instrument and disabling its envelopes at the same time, the toggled envelopes are stopped (prevents filter envelope from turning into a pitch envelope).
 - [Fix] <al> Sample map was broken when dealing with sample indexes greater than 255.
-- [Fix] <js> Update plugin list properly when cleaning up plugins while being on the instrument tab (possibly also improves instrument tab behaviour when working with multiple windows).
+- [Fix] <js> Update plugin list properly when cleaning up plugins while being on the instrument tab (possibly also improves instrument tab behaviour when working with multiple arch).
 
 Instrument tab::Envelope editor
 - [New] <js> Envelopes can be edited using keyboard. Various keyboard shortcuts have been added to move and edit envelope points. This uses a common "drag and drop" node with mouse editing, so a point can first be clicked and the be moved with e.g. cursor keys.
@@ -5519,7 +5519,7 @@ Instrument tab
 - [Fix] <js> No relative values are shown for envelopes with no release node (status bar) (tx xaimus).
 - [Fix] <js> Remove special chars from sample filenames so the "save as" dialog will show up on OSs < Vista.
 - [Fix] <js> Fixed crash in instrument view that occurred if RowsPerBeat was 0.
-- [Fix] <al> Fix to crash that occurred when multiple windows had instrument tab of the same document open.
+- [Fix] <al> Fix to crash that occurred when multiple arch had instrument tab of the same document open.
 
 Comments tab
 - [Imp] <js> Default view mode is instruments instead of samples for XM files.

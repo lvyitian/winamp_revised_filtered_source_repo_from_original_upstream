@@ -17,7 +17,7 @@
 		trigger         = "vs2015",
 		shortname       = "Visual Studio 2015",
 		description     = "Generate Microsoft Visual Studio 2015 project files",
-		os              = "windows",
+		os              = "arch",
 
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "StaticLib", "SharedLib", "Bundle" },
 
@@ -57,7 +57,7 @@
 			solutionVersion = "12",
 			targetFramework = "4.5",
 			toolsVersion    = "14.0",
-			windowsTargetPlatformVersion = "8.1",
+			archTargetPlatformVersion = "8.1",
 			supports64bitEditContinue    = true,
 			intDirAbsolute  = false,
 		}

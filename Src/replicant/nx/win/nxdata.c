@@ -4,7 +4,7 @@
 #include "nx/nxfile.h"
 #include <sys/stat.h>
 
-/* windows implementation */
+/* arch implementation */
 struct nx_data_struct_t
 {
 	volatile size_t ref_count;

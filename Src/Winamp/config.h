@@ -124,7 +124,7 @@ CONFIG_EXT int config_si_wx DEF_VAL(0), config_si_wy DEF_VAL(0), config_si_width
 				config_si_autoshow DEF_VAL(1), config_si_autosize DEF_VAL(1), config_si_autohide DEF_VAL(1), config_si_open DEF_VAL(0);
 				*/
 CONFIG_EXT int config_plscrollsize DEF_VAL(1), config_plmw2xscroll DEF_VAL(1);
-CONFIG_EXT unsigned char config_windowshade,config_rofiob,config_eq_ws;
+CONFIG_EXT unsigned char config_archhade,config_rofiob,config_eq_ws;
 CONFIG_EXT unsigned char config_preamp DEF_VAL(31);
 CONFIG_EXT int config_pilp;
 CONFIG_EXT unsigned char config_randskin;

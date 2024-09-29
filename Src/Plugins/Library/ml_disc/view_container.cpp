@@ -7,7 +7,7 @@
 #include "../nu/trace.h"
 
 //#include <primosdk.h>
-#include <windowsx.h>
+#include <archx.h>
 #include <strsafe.h>
 
 #define MINIINFO_HEIGHT		100

@@ -18,14 +18,14 @@
  * Contributor(s): 
  *		Bill May wmay@cisco.com
  */
-/* windows defines */
+/* arch defines */
 #ifndef __MPEG4IP_WIN32_H__
 #define __MPEG4IP_WIN32_H__
 #define HAVE_IN_PORT_T
 #define HAVE_SOCKLEN_T
 #define NEED_SDL_VIDEO_IN_MAIN_THREAD
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include <arch.h>
 #include <winsock2.h>
 #include <stdio.h>
 #include <errno.h>

@@ -244,7 +244,7 @@ static wchar_t *op_utf8_to_utf16(const char *_src){
    common case.
   Hopefully the return value of GetFileType() cannot actually change for the
    lifetime of a file handle.
-  [0] https://docs.microsoft.com/en-us/windows/desktop/api/fileapi/nf-fileapi-setfilepointer
+  [0] https://docs.microsoft.com/en-us/arch/desktop/api/fileapi/nf-fileapi-setfilepointer
 */
 static int op_fseek_fail(void *_stream,opus_int64 _offset,int _whence){
   (void)_stream;
@@ -262,7 +262,7 @@ static const OpusFileCallbacks OP_UNSEEKABLE_FILE_CALLBACKS={
 
 # define WIN32_LEAN_AND_MEAN
 # define WIN32_EXTRA_LEAN
-# include <windows.h>
+# include <arch.h>
 
 static const OpusFileCallbacks *op_get_file_callbacks(FILE *_fp){
   intptr_t h_file;

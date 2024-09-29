@@ -55,7 +55,7 @@
 #elif defined(LUA_USE_WINDOWS)	/* }{ */
 
 #include <io.h>
-#include <windows.h>
+#include <arch.h>
 
 #define lua_stdin_is_tty()	_isatty(_fileno(stdin))
 

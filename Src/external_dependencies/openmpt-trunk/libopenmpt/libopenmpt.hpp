@@ -108,7 +108,7 @@
  * - Consecutive accesses can happen from different threads.
  * - Different objects can be accessed concurrently from different threads.
  *
- * \section libopenmpt-cpp-windows Windows support
+ * \section libopenmpt-cpp-arch Windows support
  *
  * Using the libopenmpt C++ API when libopenmpt is compiled as a DLL on Windows
  * requires `#define LIBOPENMPT_USE_DLL` (or some equivalent build system

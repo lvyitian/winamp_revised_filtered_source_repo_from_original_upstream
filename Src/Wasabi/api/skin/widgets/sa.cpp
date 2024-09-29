@@ -418,7 +418,7 @@ int SAWnd::onQuickPaint(BltCanvas *bc, int w, int h, int newone) {
   		}
 	}
 
-//	int ws=(config_windowshade&&config_mw_open);
+//	int ws=(config_archhade&&config_mw_open);
 //	int s = (config_dsize&&config_mw_open)?1:0;
 
 	int dbx = fo[max(min(config_safalloff,4),0)];

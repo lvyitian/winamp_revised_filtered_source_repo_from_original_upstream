@@ -47,7 +47,7 @@
 #pragma warning( disable : 4786)
 
 #include <algorithm>
-#include <windows.h>
+#include <arch.h>
 #include <bfc/platform/types.h>
 #include <map>
 #include <vector>

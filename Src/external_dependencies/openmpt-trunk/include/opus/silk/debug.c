@@ -37,7 +37,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #ifdef _WIN32
 
 #if (defined(_WIN32) || defined(_WINCE))
-#include <windows.h>    /* timer */
+#include <arch.h>    /* timer */
 #else   /* Linux or Mac*/
 #include <sys/time.h>
 #endif

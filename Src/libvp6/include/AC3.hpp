@@ -10,7 +10,7 @@
 
 #pragma warning(disable:4786)
 
-#include <windows.h>
+#include <arch.h>
 #include <string>
 #include <vector>
 #include <exception>

@@ -16,7 +16,7 @@
 
 
 // size rules
-#define SHS_SIZERULE_WINDOWS		0x00	// Use windows default size rule.
+#define SHS_SIZERULE_WINDOWS		0x00	// Use arch default size rule.
 #define SHS_SIZERULE_ADJUSTONE		0x01	// Resize column and adjust adjacent column.
 #define SHS_SIZERULE_ADJUSTALL		0x03	// Resize column and adjust adjacent column when column reach minimum adjust next one.
 #define SHS_SIZERULE_PROPORTIONAL	0x02	// Resize column and adjust all columns proportionately.

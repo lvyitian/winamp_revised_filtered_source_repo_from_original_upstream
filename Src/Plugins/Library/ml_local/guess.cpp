@@ -2,7 +2,7 @@
 #include <memory.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <windows.h>
+#include <arch.h>
 
 wchar_t *guessTitles(const wchar_t *filename,
 					 int *tracknum,

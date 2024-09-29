@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_ML_DISC_REPLAYGAIN_H
 #define NULLSOFT_ML_DISC_REPLAYGAIN_H
 
-#include <windows.h>
+#include <arch.h>
 #include "../ml_rg/obj_replaygain.h"
 
 void CALLBACK StartGain(ULONG_PTR data);

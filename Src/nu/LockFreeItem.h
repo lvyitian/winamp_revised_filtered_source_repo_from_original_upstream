@@ -1,5 +1,5 @@
 #pragma once
-#include <windows.h>
+#include <arch.h>
 
 /* This data structure holds one item, and returns you the old item when you replace it 
    it's sort of a "stack of 1" */

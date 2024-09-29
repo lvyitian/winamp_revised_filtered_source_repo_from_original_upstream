@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_ML_BANNER_HEADER
 #define NULLSOFT_ML_BANNER_HEADER
 
-#include <windows.h>
+#include <arch.h>
 
 class MLBanner
 {

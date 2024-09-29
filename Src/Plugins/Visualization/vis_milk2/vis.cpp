@@ -28,7 +28,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "api__vis_milk2.h"
-#include <windows.h>
+#include <arch.h>
 #include "vis.h"
 #include "plugin.h"
 #include "defines.h"

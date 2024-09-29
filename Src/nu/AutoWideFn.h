@@ -8,7 +8,7 @@
 #define REMOVE_FILENAME_SIZE
 #endif
 
-#include <windows.h>
+#include <arch.h>
 #include "AutoWide.h"
 #include "AutoChar.h"
 #include <shlwapi.h> 

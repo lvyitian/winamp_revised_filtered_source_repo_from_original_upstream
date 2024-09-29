@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 
 #define CACHED_DC			0x0000
 

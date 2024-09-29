@@ -1,5 +1,5 @@
 #pragma once
-#include <windows.h>
+#include <arch.h>
 #include <bfc/platform/types.h>
 #include "mkv_reader.h"
 

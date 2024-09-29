@@ -212,7 +212,7 @@ static LHAExtHeaderType lha_ext_header_path = {
 // Windows FILETIME format. The timestamps have 100ns accuracy, which is
 // much more accurate than the normal Unix time_t format.
 
-static int ext_header_windows_timestamps(LHAFileHeader *header,
+static int ext_header_arch_timestamps(LHAFileHeader *header,
                                          uint8_t *data,
                                          size_t data_len)
 {
@@ -224,9 +224,9 @@ static int ext_header_windows_timestamps(LHAFileHeader *header,
 	return 1;
 }
 
-static LHAExtHeaderType lha_ext_header_windows_timestamps = {
+static LHAExtHeaderType lha_ext_header_arch_timestamps = {
 	LHA_EXT_HEADER_WINDOWS_TIMESTAMPS,
-	ext_header_windows_timestamps,
+	ext_header_arch_timestamps,
 	24
 };
 
@@ -388,7 +388,7 @@ static const LHAExtHeaderType *ext_header_types[] = {
 	&lha_ext_header_unix_username,
 	&lha_ext_header_unix_group,
 	&lha_ext_header_unix_timestamp,
-	&lha_ext_header_windows_timestamps,
+	&lha_ext_header_arch_timestamps,
 	&lha_ext_header_os9,
 };
 

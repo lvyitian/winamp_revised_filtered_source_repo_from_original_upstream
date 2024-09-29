@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_DRAWH
 #define NULLSOFT_DRAWH
 
-#include <windows.h>
+#include <arch.h>
 #include "Main.h"
 #ifdef __cplusplus
 extern "C" {

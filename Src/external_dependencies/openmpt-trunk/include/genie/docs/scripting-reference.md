@@ -269,7 +269,7 @@ Possible values:
 
 * Configuration names - configuration names passed to [configurations](#configurations)
 * Action names - "vs2015", "gmake", etc.
-* Operating system names - "windows", "macosx", etc.
+* Operating system names - "arch", "macosx", etc.
 * Platform names - "ps3", "xbox360", etc.
 * Command-line options - either built-in or custom
 * File names - very limited, but some settings can be applied to specific files
@@ -337,7 +337,7 @@ configuration "linux or macosx"
 Define a symbol based on a "not"
 
 ```lua
-configuration "not windows"
+configuration "not arch"
     defines { "NOT_WINDOWS" }
 ```
 
@@ -1029,7 +1029,7 @@ When linking against system libraries, do not include any prefix or file extensi
 Link against some system libraries
 
 ```lua
-configuration "windows"
+configuration "arch"
     links { "user32", "gdi32" }
 
 configuration "linux"
@@ -1365,10 +1365,10 @@ _commands_ - one or more shell commands
 #### Examples
 
 ```lua
-configuration "windows"
+configuration "arch"
     postbuildcommands { "copy default.config bin\\project.config" }
 
-configuration "not windows"
+configuration "not arch"
     postbuildcommands { "cp default.config bin/project.config" }
 ```
 
@@ -1404,10 +1404,10 @@ _commands_ - one or more shell commands
 #### Examples
 
 ```lua
-configuration "windows"
+configuration "arch"
     prebuildcommands { "copy default.config bin\\project.config" }
 
-configuration "not windows"
+configuration "not arch"
     prebuildcommands { "cp default.config bin/project.config" }
 ```
 
@@ -1425,10 +1425,10 @@ _commands_ - one or more shell commands
 #### Examples
 
 ```lua
-configuration "windows"
+configuration "arch"
     prelinkcommands { "copy default.config bin\\project.config" }
 
-configuration "not windows"
+configuration "not arch"
     prelinkcommands { "cp default.config bin/project.config" }
 ```
 
@@ -2072,7 +2072,7 @@ _falseval_ - value to return if _condition_ evaluates to `false`
 #### Examples
 
 ```lua
-result = iif(os.is("windows"), "is windows", "is not windows")
+result = iif(os.is("arch"), "is arch", "is not arch")
 ```
 
 Note that all expressions are evaluated before the condition is checked. The following expression cannot be implemented with an `iif` because it may try to concatenate a string value.
@@ -2125,15 +2125,15 @@ The path containing the library file, if found. Otherwise, `nil`.
 Identifies the currently-targeted operating system.
 
 #### Return Value
-One of "bsd", "linux", "macosx", "solaris", or "windows"
+One of "bsd", "linux", "macosx", "solaris", or "arch"
 
 **Note:** This function returns the OS being targeted, which is not necessarily the same as the OS on which GENie is being run.
 
 #### Example
 
 ```lua
-if os.get() == "windows" then
-    -- do something windows-specific
+if os.get() == "arch" then
+    -- do something arch-specific
 end
 ```
 
@@ -2184,7 +2184,7 @@ print(string.format(" %d.%d.%d (%s)",
 Checks the current operating system identifier against a particular value
 
 #### Arguments
-_id_ - one of "bsd", "linux", "macosx", "solaris", or "windows"
+_id_ - one of "bsd", "linux", "macosx", "solaris", or "arch"
 
 **Note:** This function returns the OS being targeted, which is not necessarily the same as the OS on which GENie is being run.
 

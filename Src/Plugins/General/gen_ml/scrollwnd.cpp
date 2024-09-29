@@ -1,6 +1,6 @@
 // some code taken from (freeware) Cool ScrollBar library by J Brown
 #include "main.h"
-#include <windowsx.h>
+#include <archx.h>
 #include <tchar.h>
 #include "scrollwnd.h"
 #include "../winamp/wa_dlg.h"
@@ -955,7 +955,7 @@ static LRESULT NCPaint(ScrollWnd *sw, HWND hwnd, WPARAM wParam, LPARAM lParam)
 	dwStyle = GetWindowLongPtr(hwnd, GWL_STYLE);
 
 	// If the window has WS_(H-V)SCROLL bits set, we should reset them
-	// to avoid windows taking the scrollbars into account.
+	// to avoid arch taking the scrollbars into account.
 	// We temporarily set a flag preventing the subsecuent
 	// WM_STYLECHANGING/WM_STYLECHANGED to be forwarded to
 	// the original window procedure
@@ -1876,7 +1876,7 @@ static LRESULT CoolSB_SetCursor(ScrollWnd *swnd, HWND hwnd, WPARAM wParam, LPARA
 
 //
 //  CoolScrollbar subclass procedure.
-//	Handle all messages needed to mimick normal windows scrollbars
+//	Handle all messages needed to mimick normal arch scrollbars
 //
 LRESULT CALLBACK CoolSBWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -1997,7 +1997,7 @@ LRESULT CALLBACK CoolSBWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lP
 		case WM_ERASEBKGND:
 			if (swnd && !swnd->fThumbTracking && uCurrentScrollPortion == HTSCROLL_NONE)
 			{
-				//disable windows scrollbar painting (fixes gfx repainting weirdness)
+				//disable arch scrollbar painting (fixes gfx repainting weirdness)
 				int style = GetWindowLong(hwnd, GWL_STYLE);
 				if (style&(WS_HSCROLL | WS_VSCROLL))
 				{
@@ -2024,7 +2024,7 @@ LRESULT CALLBACK CoolSBWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lP
 			return ret;
 		}
 
-		case WM_USER + 0x3443: //manually sent by other windows (like columns header for ex.)
+		case WM_USER + 0x3443: //manually sent by other arch (like columns header for ex.)
 			if (swnd) swnd->update();
 			break;
 

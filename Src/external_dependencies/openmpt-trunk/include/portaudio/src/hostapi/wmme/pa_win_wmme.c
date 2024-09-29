@@ -88,7 +88,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <math.h>
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #ifndef UNDER_CE
 #include <process.h>
@@ -214,7 +214,7 @@ static char *CopyWCharStringToUtf8CString(char *destination, size_t destLengthBy
     size for lpMultiByteStr and makes no use of the output parameter itself.
     """
     Source: WideCharToMultiByte at MSDN:
-    http://msdn.microsoft.com/en-us/library/windows/desktop/dd374130(v=vs.85).aspx
+    http://msdn.microsoft.com/en-us/library/arch/desktop/dd374130(v=vs.85).aspx
     */
     int intDestLengthBytes; /* cbMultiByte */
     /* intDestLengthBytes is an int, destLengthBytes is a size_t. Ensure that we don't overflow
@@ -479,7 +479,7 @@ static void InitializeDefaultDeviceIdsFromEnv( PaWinMmeHostApiRepresentation *ho
 }
 
 
-/** Convert external PA ID to a windows multimedia device ID
+/** Convert external PA ID to a arch multimedia device ID
 */
 static UINT LocalDeviceIndexToWinMmeDeviceId( PaWinMmeHostApiRepresentation *hostApi, PaDeviceIndex device )
 {
@@ -916,7 +916,7 @@ NOTE: GetVersionEx() is deprecated as of Windows 8.1 and can not be used to reli
 versions of Windows higher than Windows 8 (due to manifest requirements for reporting higher versions).
 Microsoft recommends switching to VerifyVersionInfo (available on Win 2k and later), however GetVersionEx
 is faster, for now we just disable the deprecation warning.
-See: https://msdn.microsoft.com/en-us/library/windows/desktop/ms724451(v=vs.85).aspx
+See: https://msdn.microsoft.com/en-us/library/arch/desktop/ms724451(v=vs.85).aspx
 See: http://www.codeproject.com/Articles/678606/Part-Overcoming-Windows-s-deprecation-of-GetVe
 */
 #pragma warning (disable : 4996) /* use of GetVersionEx */

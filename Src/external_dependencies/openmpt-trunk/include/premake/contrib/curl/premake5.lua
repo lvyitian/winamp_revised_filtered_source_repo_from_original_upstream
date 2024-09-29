@@ -17,14 +17,14 @@ project "curl-lib"
 		"**.c"
 	}
 
-	filter { "system:windows" }
+	filter { "system:arch" }
 		defines { "USE_SCHANNEL", "USE_WINDOWS_SSPI" }
 		links "crypt32"
 
 	filter { "system:macosx" }
 		defines { "USE_DARWINSSL" }
 
-	filter { "system:not windows", "system:not macosx" }
+	filter { "system:not arch", "system:not macosx" }
 		defines { "USE_MBEDTLS" }
 
 	filter { "system:linux or bsd or solaris" }

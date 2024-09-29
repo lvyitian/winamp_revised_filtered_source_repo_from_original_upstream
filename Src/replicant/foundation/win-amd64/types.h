@@ -2,7 +2,7 @@
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
 #endif
-#include <windows.h>
+#include <arch.h>
 
 #include <wchar.h>
 // first, some standard int types
@@ -33,7 +33,7 @@ typedef int socklen_t;
 #include <stddef.h>
 #include <stdint.h>
 
-	// since windows doesn't have stdint.h
+	// since arch doesn't have stdint.h
 	typedef unsigned __int64 uint64_t;
 	typedef unsigned __int32 uint32_t;
 	typedef unsigned __int16 uint16_t;

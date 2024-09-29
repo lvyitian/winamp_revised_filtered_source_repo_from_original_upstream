@@ -124,7 +124,7 @@ BOOL config_setup_filetypes(int mode)
 	if (GetRegistrar(&registrar, !mode) == 0 && registrar)
 	{
 		wchar_t str[MAX_PATH+32] = {0}, langbuf[1024] = {0};
-		// droptarget stuff for windows XP
+		// droptarget stuff for arch XP
 		// clsid for open
 		registrar->RegisterGUID(programname, L"{46986115-84D6-459c-8F95-52DD653E532E}");
 		// clsid for enqueue

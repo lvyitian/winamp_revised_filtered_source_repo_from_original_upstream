@@ -38,7 +38,7 @@
 #ifndef nspr_win16_defs_h___
 #define nspr_win16_defs_h___
 
-#include <windows.h>
+#include <arch.h>
 #include <winsock.h>
 #include <errno.h>
 #include <direct.h>

@@ -2,7 +2,7 @@
 #define NULLSOFT_AMFOBJECT_H
 
 #include "FLVUtil.h"
-#include <windows.h>
+#include <arch.h>
 #include <map>
 #include <string>
 #include <vector>

@@ -1,6 +1,6 @@
 #include "precomp_wasabi_bfc.h"
 #ifdef WIN32
-#include <windows.h>
+#include <arch.h>
 #endif
 #ifdef __APPLE__
 #include <unistd.h>

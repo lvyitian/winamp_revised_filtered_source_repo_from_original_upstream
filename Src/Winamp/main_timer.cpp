@@ -114,7 +114,7 @@ LRESULT Main_OnTimer(HWND hwnd, UINT id)
 				draw_playicon(8);
 		}
 	}
-	if (id == UPDATE_DISPLAY_TIMER + 1 && !config_minimized && !config_windowshade && config_mw_open)
+	if (id == UPDATE_DISPLAY_TIMER + 1 && !config_minimized && !config_archhade && config_mw_open)
 		if (config_autoscrollname&1)
 		{
 			ui_doscrolling();

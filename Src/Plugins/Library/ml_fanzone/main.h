@@ -1,13 +1,13 @@
 #ifndef NULLSOFT_FANZONE_MAIN_H
 #define NULLSOFT_FANZONE_MAIN_H
 
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 #include <iostream>
 
 #include "api__ml_fanzone.h"
 #include "resource.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "../Plugins/General/gen_ml/ml.h"
 #include "../nu/MediaLibraryInterface.h"
 

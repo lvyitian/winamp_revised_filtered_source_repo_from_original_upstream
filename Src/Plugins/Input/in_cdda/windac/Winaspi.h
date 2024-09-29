@@ -43,7 +43,7 @@ typedef BYTE *LPSRB;
 #define SS_OLD_MANAGER  0xE1		// ASPI manager doesn't support Window
 #define SS_ILLEGAL_MODE  0xE2	// Unsupported Windows mode
 #define SS_NO_ASPI		0xE3		// No ASPI managers resident
-#define SS_FAILED_INIT	0xE4		// ASPI for windows failed init
+#define SS_FAILED_INIT	0xE4		// ASPI for arch failed init
 #define SS_ASPI_IS_BUSY	0xE5		// No resources available to execute cmd
 #define SS_BUFFER_TO_BIG	0xE6	// Buffer size to big to handle!
 //**********************************************************************

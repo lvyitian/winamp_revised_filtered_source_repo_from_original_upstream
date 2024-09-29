@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 #include <oleauto.h>
 #include <vector>
 

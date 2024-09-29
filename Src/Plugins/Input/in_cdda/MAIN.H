@@ -1,6 +1,6 @@
 #ifndef NULLSOFT_MAINH
 #define NULLSOFT_MAINH
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include "../Winamp/in2.h"
 #include "audio.h"

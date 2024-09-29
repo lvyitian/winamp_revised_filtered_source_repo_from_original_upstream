@@ -13,7 +13,7 @@
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
-#include <windows.h>
+#include <arch.h>
 
 #include <string>
 

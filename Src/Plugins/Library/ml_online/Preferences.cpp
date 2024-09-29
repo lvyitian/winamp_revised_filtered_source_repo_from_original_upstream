@@ -6,7 +6,7 @@
 #include "./api__ml_online.h"
 #include "./config.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <shlobj.h>
 
 static prefsDlgRecW preferences;

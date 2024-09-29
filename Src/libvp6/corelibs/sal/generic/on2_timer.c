@@ -1,7 +1,7 @@
 #include "on2_timer.h"
 
 #if defined(WIN32)
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #else
 #include <sys/time.h>

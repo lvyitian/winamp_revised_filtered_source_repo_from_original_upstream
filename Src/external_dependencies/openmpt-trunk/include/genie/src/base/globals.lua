@@ -55,7 +55,7 @@
 		{
 			cfgsuffix       = "xbox360",
 			iscrosscompiler = true,
-			namestyle       = "windows",
+			namestyle       = "arch",
 		},
 		PowerPC =
 		{
@@ -83,7 +83,7 @@
 			cfgsuffix       = "durango",
 			iscrosscompiler = true,
 			nosharedlibs    = true,
-			namestyle       = "windows",
+			namestyle       = "arch",
 		},
 		TegraAndroid =
 		{

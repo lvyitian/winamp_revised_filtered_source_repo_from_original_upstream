@@ -26,7 +26,7 @@
 
 #ifdef MODPLUG_TRACKER
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #include <WinIoCtl.h>
 #include <io.h>
 #endif // MPT_OS_WINDOWS
@@ -521,9 +521,9 @@ OnDiskFileWrapper::OnDiskFileWrapper(FileCursor &file, const mpt::PathString &fi
 
 			HANDLE hFile = NULL;
 			#if MPT_OS_WINDOWS_WINRT
-				hFile = mpt::windows::CheckFileHANDLE(CreateFile2(tempName.AsNative().c_str(), GENERIC_WRITE, FILE_SHARE_READ, CREATE_ALWAYS, NULL));
+				hFile = mpt::arch::CheckFileHANDLE(CreateFile2(tempName.AsNative().c_str(), GENERIC_WRITE, FILE_SHARE_READ, CREATE_ALWAYS, NULL));
 			#else
-				hFile = mpt::windows::CheckFileHANDLE(CreateFile(tempName.AsNative().c_str(), GENERIC_WRITE, FILE_SHARE_READ, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_TEMPORARY, NULL));
+				hFile = mpt::arch::CheckFileHANDLE(CreateFile(tempName.AsNative().c_str(), GENERIC_WRITE, FILE_SHARE_READ, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_TEMPORARY, NULL));
 			#endif
 			while(!file.EndOfFile())
 			{
@@ -536,7 +536,7 @@ OnDiskFileWrapper::OnDiskFileWrapper(FileCursor &file, const mpt::PathString &fi
 					DWORD chunkDone = 0;
 					try
 					{
-						mpt::windows::CheckBOOL(WriteFile(hFile, view.data() + written, chunkSize, &chunkDone, NULL));
+						mpt::arch::CheckBOOL(WriteFile(hFile, view.data() + written, chunkSize, &chunkDone, NULL));
 					} catch(...)
 					{
 						CloseHandle(hFile);

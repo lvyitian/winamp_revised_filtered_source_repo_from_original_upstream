@@ -1,7 +1,7 @@
 #pragma once
 
 #include <FLAC/all.h>
-#include <windows.h>
+#include <arch.h>
 
 struct Win32_State
 {

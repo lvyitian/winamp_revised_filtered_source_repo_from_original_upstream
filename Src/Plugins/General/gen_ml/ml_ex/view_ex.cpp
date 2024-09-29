@@ -16,8 +16,8 @@
 **
 */
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <stdio.h>
 #include "../ml.h"
 #include "resource.h"

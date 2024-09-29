@@ -348,7 +348,7 @@ svc_font *Font::requestSkinFont(const wchar_t *id, int *size, int *gotdefault)
   }
   */
 
-  // not found ? try to find it in the windows fonts directory
+  // not found ? try to find it in the arch fonts directory
   {
     wchar_t *fp = WMALLOC(WA_MAX_PATH);
     Wasabi::Std::getFontPath(WA_MAX_PATH, fp);

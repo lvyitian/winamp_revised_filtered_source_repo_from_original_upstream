@@ -1,5 +1,5 @@
 #pragma once
-#include <windows.h>
+#include <arch.h>
 
 extern "C" {
 void link_startsubclass(HWND hwndDlg, UINT id);

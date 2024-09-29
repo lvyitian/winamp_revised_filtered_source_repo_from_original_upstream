@@ -299,7 +299,7 @@ init_outer_loop(lame_internal_flags const *gfc, gr_info * const cod_info)
         /* By Takehiro TOMINAGA */
         /*
            Within each scalefactor band, data is given for successive
-           time windows, beginning with window 0 and ending with window 2.
+           time arch, beginning with window 0 and ending with window 2.
            Within each window, the quantized values are then arranged in
            order of increasing frequency...
          */

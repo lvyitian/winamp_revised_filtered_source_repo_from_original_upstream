@@ -2,7 +2,7 @@
 #include "./resource.h"
 #include "../nu/DialogSkinner.h"
 
-#include <windowsx.h>
+#include <archx.h>
 
 static HBRUSH hbBack = NULL;
 

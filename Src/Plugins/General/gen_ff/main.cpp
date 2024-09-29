@@ -1,5 +1,5 @@
 #include "precomp__gen_ff.h"
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 
 #include "main.h"
@@ -53,7 +53,7 @@
 
 #include "../nu/AutoWide.h"
 #include <shlwapi.h>
-#include <windowsx.h>
+#include <archx.h>
 //wtf?
 #define _WAFE_H_
 #define ___HOTAMP3_H___
@@ -342,11 +342,11 @@ void autoOpacifyFocus();
 ifc_window *g_controlMenuTarget = NULL;
 HMENU controlmenu = NULL;
 void lockScaling(int lock);
-int ffwindowsitempos = -1;
+int ffarchitempos = -1;
 int ffoptionstop = -1;
 int ffwoptionstop = -1;
-int ffwindowstop = -1;
-int ffwindowsitempos2 = -1;
+int ffarchtop = -1;
+int ffarchitempos2 = -1;
 int eqremoved = 0;
 void removeEq();
 void restoreEq();
@@ -422,7 +422,7 @@ __declspec(dllexport) BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, L
 }
 
 //-----------------------------------------------------------------------------------------------
-// core actions implement "play", "stop", etc. wndEmbedded embed wa2 windows into GUID-based wnds
+// core actions implement "play", "stop", etc. wndEmbedded embed wa2 arch into GUID-based wnds
 //-----------------------------------------------------------------------------------------------
 BEGIN_SERVICES(Winamp2_Svcs);
 DECLARE_SERVICETSINGLE(svc_action, CoreActions);
@@ -1454,7 +1454,7 @@ static LRESULT WINAPI wa_newWndProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPAR
 				}
 				else if (wParam == 2)
 				{
-					// embed the windows that are currently visible because at the time the window were originally shown,
+					// embed the arch that are currently visible because at the time the window were originally shown,
 					// we hadn't been loaded yet
 					// but then again, we might if it's only a switch skin and not a app load, so let's check anyway
 
@@ -1548,7 +1548,7 @@ static LRESULT WINAPI wa_newWndProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPAR
 					wa2.setIdealVideoSize(HIWORD(wParam), LOWORD(wParam));
 					break;
 				}
-				// this is where we detect that wa2 wants to open one of its windows (thru popup menu, button, whatever)
+				// this is where we detect that wa2 wants to open one of its arch (thru popup menu, button, whatever)
 				// when this happens, we create a freeform wndembedder if one doesn't already exist. that embedder will
 				// reparent and resize the wa2 window on its own. when we return, winamp then shows the HWND inside our frame
 				// as it would show the HWND as a popup normally.
@@ -1616,7 +1616,7 @@ static LRESULT WINAPI wa_newWndProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPAR
 						break;
 					}
 					break;
-					// here we do the reverse, we detect that wa2 wants to close one of its windows, so we destroy our window
+					// here we do the reverse, we detect that wa2 wants to close one of its arch, so we destroy our window
 					// embedder (it will reparent the wa2 window back to its former parent and resize it back to where it was
 					// on its own). when we return, winamp then hides the window.
 
@@ -1733,7 +1733,7 @@ static LRESULT WINAPI wa_newWndProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPAR
 			// sending us the WM_KEY* directly
 			if (WASABI_API_WND->isKeyboardLocked()) return 0;
 		}
-		else if ((uMsg == WM_COMMAND || uMsg == WM_SYSCOMMAND) && LOWORD(wParam) >= 43000 && LOWORD(wParam) < ffwindowstop)
+		else if ((uMsg == WM_COMMAND || uMsg == WM_SYSCOMMAND) && LOWORD(wParam) >= 43000 && LOWORD(wParam) < ffarchtop)
 		{
 			int id = LOWORD(wParam) - 43000;
 
@@ -2132,7 +2132,7 @@ void init_inst()
 	if ( DEFERREDCALLBACKMSG > 65536 )
 		PostMessage( wa2.getMainWindow(), WM_WA_IPC, 2, DEFERREDCALLBACKMSG );
 
-	// so if some embedwindows are already visible, they update their look
+	// so if some embedarch are already visible, they update their look
 	PostMessage( wa2.getMainWindow(), WM_WA_IPC, 0xf00d, IPC_FF_ONCOLORTHEMECHANGED );
 
 	// monitor color theme
@@ -2698,7 +2698,7 @@ void restoreEq()
 //-----------------------------------------------------------------------------------------------
 void unpopulateWindowsMenus()
 {
-	if (ffwindowsitempos == -1) return ;
+	if (ffarchitempos == -1) return ;
 
 	HMENU menuBarMenu = wa2.getMenuBarMenu(Winamp2FrontEnd::WA2_MAINMENUBAR_WINDOWS);
 	for(int i = GetMenuItemCount(menuBarMenu)-1; i >= 0; i--)
@@ -2726,8 +2726,8 @@ void unpopulateWindowsMenus()
 		}
 	}
 
-	ffwindowsitempos = -1;
-	ffwindowsitempos2 = -1;
+	ffarchitempos = -1;
+	ffarchitempos2 = -1;
 
 	MenuActions::removeSkinWindowOptions();
 	MenuActions::removeSkinOptions();
@@ -2736,20 +2736,20 @@ void unpopulateWindowsMenus()
 //-----------------------------------------------------------------------------------------------
 void populateWindowsMenus()
 {
-	if (ffwindowsitempos != -1) unpopulateWindowsMenus();
+	if (ffarchitempos != -1) unpopulateWindowsMenus();
 	MenuActions::installSkinOptions();
 	MenuActions::installSkinWindowOptions();
 
-	ffwindowsitempos = wa2.adjustFFWindowsMenu(0) + NUMSTATICWINDOWS;
-	ffwindowsitempos2 = wa2.adjustOptionsPopupMenu(0) + 6 + NUMSTATICWINDOWS + 1;
+	ffarchitempos = wa2.adjustFFWindowsMenu(0) + NUMSTATICWINDOWS;
+	ffarchitempos2 = wa2.adjustOptionsPopupMenu(0) + 6 + NUMSTATICWINDOWS + 1;
 
 	MENUITEMINFOW i = {sizeof(i), };
 	i.fMask = MIIM_TYPE | MIIM_DATA | MIIM_ID | MIIM_STATE;
 	i.fType = MFT_STRING;
 	i.wID = 43000;
 	i.dwItemData = 0xD01;	// use this as a check so we're only removing the correct items!!
-	int pos = ffwindowsitempos;
-	int pos2 = ffwindowsitempos2;
+	int pos = ffarchitempos;
+	int pos2 = ffarchitempos2;
 	PtrListQuickSorted<StringW, StringWComparator> items;
 
 	HMENU hMenu = wa2.getMenuBarMenu(Winamp2FrontEnd::WA2_MAINMENUBAR_WINDOWS);
@@ -2824,7 +2824,7 @@ void populateWindowsMenus()
 	}
 
 	items.deleteAll();
-	ffwindowstop = i.wID;
+	ffarchtop = i.wID;
 }
 
 //-----------------------------------------------------------------------------------------------
@@ -3465,7 +3465,7 @@ void updateParentlessOnTop()
 				Layout *l = c->enumLayout(j);
 				if (l != NULL)
 				{
-					// skip windows owned by winamp
+					// skip arch owned by winamp
 					// skip appbars, they take care of themselves
 					if (l->getNoParent() && !l->appbar_isDocked())
 					{
@@ -3479,17 +3479,17 @@ void updateParentlessOnTop()
 
 void onGoFullscreen()
 {
-	// hidden windows will not receive APPBAR_CALLBACK, so forward it to winamp's main
+	// hidden arch will not receive APPBAR_CALLBACK, so forward it to winamp's main
 	SendMessageW(wa2.getMainWindow(), APPBAR_CALLBACK, ABN_FULLSCREENAPP, 1);
-	// update ontop flag for windows that are not parented to winamp
+	// update ontop flag for arch that are not parented to winamp
 	updateParentlessOnTop();
 }
 
 void onCancelFullscreen()
 {
-	// hidden windows will not receive APPBAR_CALLBACK, so forward it to winamp's main
+	// hidden arch will not receive APPBAR_CALLBACK, so forward it to winamp's main
 	SendMessageW(wa2.getMainWindow(), APPBAR_CALLBACK, ABN_FULLSCREENAPP, 0);
-	// update ontop flag for windows that are not owned by winamp
+	// update ontop flag for arch that are not owned by winamp
 	updateParentlessOnTop();
 }
 

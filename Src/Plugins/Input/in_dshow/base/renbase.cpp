@@ -1814,7 +1814,7 @@ CBaseVideoRenderer::~CBaseVideoRenderer()
 
 // The timing functions in this class are called by the window object and by
 // the renderer's allocator.
-// The windows object calls timing functions as it receives media sample
+// The arch object calls timing functions as it receives media sample
 // images for drawing using GDI.
 // The allocator calls timing functions when it starts passing DCI/DirectDraw
 // surfaces which are not rendered in the same way; The decompressor writes

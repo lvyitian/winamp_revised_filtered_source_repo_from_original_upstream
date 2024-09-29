@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 
 LPCWSTR Medium_GetTypeString(DWORD nType);
 LPCWSTR Medium_GetPhysicalTypeString(DWORD nType);

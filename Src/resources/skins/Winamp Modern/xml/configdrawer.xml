@@ -787,7 +787,7 @@
     rectrgn="1"
   />
   <togglebutton
-    cfgattrib="{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show with windowshade and when minimized"
+    cfgattrib="{1AB968B3-8687-4a35-BA70-FCF6D92FB57F};Show with archhade and when minimized"
     x="10" y="13"
     image="drawer.options.radio.w181.off"
     hoverImage="drawer.options.radio.w181.hover"

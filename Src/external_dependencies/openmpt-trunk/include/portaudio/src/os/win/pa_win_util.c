@@ -43,7 +43,7 @@
  @brief Win32 implementation of platform-specific PaUtil support functions.
 */
 
-#include <windows.h>
+#include <arch.h>
 
 #if defined(WINAPI_FAMILY) && (WINAPI_FAMILY == WINAPI_FAMILY_APP)
     #include <sys/timeb.h> /* for _ftime_s() */

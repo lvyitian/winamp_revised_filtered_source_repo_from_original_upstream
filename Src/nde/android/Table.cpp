@@ -662,7 +662,7 @@ void Table::Compact(int *progress) {
 		if (progress != NULL) *progress = 100;
 		return;
 	}
-	// create a temporary table in windows temp dir
+	// create a temporary table in arch temp dir
 	wchar_t temp_table[MAX_PATH+12];
 	wchar_t temp_index[MAX_PATH+12];
 	wchar_t old_table[MAX_PATH+12];

@@ -1,7 +1,7 @@
 #pragma once
 #include "../playlist/ifc_playlist.h"
 #include <vector>
-#include <windows.h> // for MAX_PATH
+#include <arch.h> // for MAX_PATH
 #include <bfc/multipatch.h>
 #include "../playlist/ifc_playlistloadercallback.h"
 

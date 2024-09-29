@@ -35,7 +35,7 @@ void CloseDatabase();
 #include "../nu/AutoWide.h"
 #include "../nu/AutoLock.h"
 #include "..\..\General\gen_ml/menu.h"
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 
 extern ATOM VIEWPROP;

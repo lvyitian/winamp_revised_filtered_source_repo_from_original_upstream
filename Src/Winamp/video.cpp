@@ -1,4 +1,4 @@
-#include <windowsx.h>
+#include <archx.h>
 
 #include "main.h"
 #include <ddraw.h>
@@ -47,7 +47,7 @@ int widthOnOpen, heightOnOpen;
 #define VideoClassicHeight() 58
 static void VideoClose();
 
-/* Resizes the windows (parent and children) based on what the size of the video should be */
+/* Resizes the arch (parent and children) based on what the size of the video should be */
 static void SetVideoSize(int width, int height)
 {
 	if (m_videooutput && m_videooutput->is_fullscreen()) // fullscreen
@@ -65,7 +65,7 @@ static void SetVideoSize(int width, int height)
 	}
 }
 
-/*	Resizes the windows (parent and children) based on what the size of the parent should be 	*/
+/*	Resizes the arch (parent and children) based on what the size of the parent should be 	*/
 void SetExteriorSize(int width, int height)
 {
 	// calculate interior size
@@ -99,7 +99,7 @@ static void LayoutChildren(int width, int height)
 	}
 }
 
-/* Resizes the windows (parent and children) based on what the size of the parent should be
+/* Resizes the arch (parent and children) based on what the size of the parent should be
 Sets the position of the parent window */
 static void SetExteriorSizeAndPosition(int x, int y, int width, int height)
 {

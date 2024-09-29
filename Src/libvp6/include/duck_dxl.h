@@ -485,7 +485,7 @@ int DXL_CheckVScreenXImageBlit(DXL_VSCREEN_HANDLE dst,DXL_XIMAGE_HANDLE src);
 
 
 
-/* windows 95 dll system abstraction functions */
+/* arch 95 dll system abstraction functions */
 
 /* set memory allocator function */
 void DXV_Setmalloc(

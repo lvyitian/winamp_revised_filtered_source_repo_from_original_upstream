@@ -30,7 +30,7 @@ typedef unsigned long long WDL_UINT64;
 
 
 #ifdef _WIN32
-#include <windows.h>
+#include <arch.h>
 #else
 #include <stdint.h>
 typedef intptr_t INT_PTR;

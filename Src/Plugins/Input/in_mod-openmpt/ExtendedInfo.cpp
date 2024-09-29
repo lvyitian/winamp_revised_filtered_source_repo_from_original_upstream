@@ -1,5 +1,5 @@
 #include <bfc/platform/types.h>
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 #include "api__in_mod.h"
 #include "resource.h"

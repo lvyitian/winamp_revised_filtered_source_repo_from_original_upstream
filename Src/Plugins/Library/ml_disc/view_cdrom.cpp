@@ -1,7 +1,7 @@
 #include <shlwapi.h>
 
 #include "main.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "resource.h"
 #include "../nu/DialogSkinner.h"
 #include "../nu/ChildSizer.h"

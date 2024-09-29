@@ -1,7 +1,7 @@
 #ifndef WINAMP_POSTSETUP_HEADER
 #define WINAMP_POSTSETUP_HEADER
 
-#include <windows.h>
+#include <arch.h>
 
 HWND CreateStatusWnd(HWND hwndParent, INT x, INT y, INT cx, INT cy);
 void SetStatusText();

@@ -15,7 +15,7 @@
 #include <memory.h>
 #include "id3_tag.h"
 #include "id3_misc_support.h"
-#include <windows.h>
+#include <arch.h>
 
 
 

@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_IN_FLV_MAIN_H
 #define NULLSOFT_IN_FLV_MAIN_H
 
-#include <windows.h>
+#include <arch.h>
 #include "../Winamp/in2.h"
 #include "../nu/VideoClock.h"
 #include "../nu/AutoLock.h"

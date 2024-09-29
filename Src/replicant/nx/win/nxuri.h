@@ -22,7 +22,7 @@ extern "C" {
 
 	NX_API nx_uri_t NXURIMalloc(size_t characters);
 	NX_API int NXURICreateWithNXString(nx_uri_t *uri, nx_string_t string);
-	NX_API int NXURICreateFromPath(nx_uri_t *uri, const wchar_t *filename, const nx_uri_t path); // windows only
+	NX_API int NXURICreateFromPath(nx_uri_t *uri, const wchar_t *filename, const nx_uri_t path); // arch only
 	NX_API int NXURICreateWithPath(nx_uri_t *uri, const nx_uri_t filename, const nx_uri_t path);
 	NX_API int NXURICreateWithNXString(nx_uri_t *new_value, nx_string_t string);
 	NX_API int NXURICreateTempForFilepath(nx_uri_t *out_temp, nx_uri_t filename);

@@ -28,7 +28,7 @@
 --
 
 	function suite.cppflags_OnWindows()
-		cfg.system = "windows"
+		cfg.system = "arch"
 		local r = premake.gcc.getcppflags(cfg)
 		test.isequal("-MMD -MP", table.concat(r, " "))
 	end
@@ -39,7 +39,7 @@
 
 	function suite.cflags_SharedLib_Windows()
 		cfg.kind = "SharedLib"
-		cfg.system = "windows"
+		cfg.system = "arch"
 		local r = premake.gcc.getcflags(cfg)
 		test.isequal('', table.concat(r,"|"))
 	end
@@ -65,7 +65,7 @@
 
 	function suite.ldflags_SharedLib_Windows()
 		cfg.kind = "SharedLib"
-		cfg.system = "windows"
+		cfg.system = "arch"
 		local r = premake.gcc.getldflags(cfg)
 		test.isequal('-s|-shared|-Wl,--out-implib="libMyProject.a"', table.concat(r,"|"))
 	end

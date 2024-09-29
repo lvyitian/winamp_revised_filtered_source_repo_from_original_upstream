@@ -23,10 +23,10 @@
 #include "lualib.h"
 
 /*
-* PREMAKE change: UTF-8 character support on windows.
+* PREMAKE change: UTF-8 character support on arch.
 */
 #if defined(LUA_WIN)
-#include <windows.h>
+#include <arch.h>
 #endif
 
 
@@ -267,7 +267,7 @@ static int io_open (lua_State *L) {
   luaL_argcheck(L, l_checkmode(md), 2, "invalid mode");
 
   /*
-   * PREMAKE change: UTF-8 character support on windows.
+   * PREMAKE change: UTF-8 character support on arch.
    */
 #if defined(LUA_WIN)
   wchar_t wide_path[4096];

@@ -73,7 +73,7 @@ void PopupExitChecker::deregisterCallback(PopupExitCallback *cb) {
     if (e->cb == cb) {
       watchers.removeByPos(i); i--;
       delete e;
-      // no break, watcher can watch many windows, but wait, there cannot be 2 popups at once on a screen! who says so ?
+      // no break, watcher can watch many arch, but wait, there cannot be 2 popups at once on a screen! who says so ?
     }
   }
 }

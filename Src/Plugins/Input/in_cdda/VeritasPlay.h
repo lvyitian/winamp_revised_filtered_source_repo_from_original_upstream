@@ -2,7 +2,7 @@
 #define NULLSOFT_VERITASPLAYH
 
 #include "CDPlay.h"
-#include <windows.h>
+#include <arch.h>
 #include "SpeedLimiter.h"
 #include "main.h"
 

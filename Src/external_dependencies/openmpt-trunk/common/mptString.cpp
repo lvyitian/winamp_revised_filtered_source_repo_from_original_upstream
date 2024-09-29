@@ -29,7 +29,7 @@
 #endif // MODPLUG_TRACKER
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif // MPT_OS_WINDOWS
 
 
@@ -61,7 +61,7 @@ List of string types
     reason to do so.
 
  *  std::wstring (OpenMPT)
-    UTF16 (on windows) or UTF32 (otherwise). Do not use unless there is an
+    UTF16 (on arch) or UTF32 (otherwise). Do not use unless there is an
     obvious reason to do so.
 
  *  mpt::lstring (OpenMPT)
@@ -289,7 +289,7 @@ APIs only available in WCHAR variants, or use mpt::winstring and
 mpt::WinStringBuf helpers otherwise.
 Specify TCHAR string literals with _T("foo") in mptrack/, and with TEXT("foo")
 in common/ or sounddev/. _T() requires <tchar.h> which is specific to the MSVC
-runtime and not portable across compilers. TEXT() is from <windows.h>. We use
+runtime and not portable across compilers. TEXT() is from <arch.h>. We use
 _T() in mptrack/ only because it is shorter.
 
 
@@ -367,7 +367,7 @@ static Tdststring EncodeImpl(Charset charset, const mpt::widestring &src)
 		case Charset::CP437:            return mpt::encode<Tdststring>(mpt::common_encoding::cp437, src); break;
 		case Charset::CP437AMS:         return mpt::encode<Tdststring>(CharsetTableCP437AMS, src); break;
 		case Charset::CP437AMS2:        return mpt::encode<Tdststring>(CharsetTableCP437AMS2, src); break;
-		case Charset::Windows1252:      return mpt::encode<Tdststring>(mpt::common_encoding::windows1252, src); break;
+		case Charset::Windows1252:      return mpt::encode<Tdststring>(mpt::common_encoding::arch1252, src); break;
 		case Charset::Amiga:            return mpt::encode<Tdststring>(mpt::common_encoding::amiga, src); break;
 		case Charset::RISC_OS:          return mpt::encode<Tdststring>(mpt::common_encoding::riscos, src); break;
 		case Charset::ISO8859_1_no_C1:  return mpt::encode<Tdststring>(mpt::common_encoding::iso8859_1_no_c1, src); break;
@@ -397,7 +397,7 @@ static mpt::widestring DecodeImpl(Charset charset, const Tsrcstring &src)
 		case Charset::CP437:            return mpt::decode<Tsrcstring>(mpt::common_encoding::cp437, src); break;
 		case Charset::CP437AMS:         return mpt::decode<Tsrcstring>(CharsetTableCP437AMS, src); break;
 		case Charset::CP437AMS2:        return mpt::decode<Tsrcstring>(CharsetTableCP437AMS2, src); break;
-		case Charset::Windows1252:      return mpt::decode<Tsrcstring>(mpt::common_encoding::windows1252, src); break;
+		case Charset::Windows1252:      return mpt::decode<Tsrcstring>(mpt::common_encoding::arch1252, src); break;
 		case Charset::Amiga:            return mpt::decode<Tsrcstring>(mpt::common_encoding::amiga, src); break;
 		case Charset::RISC_OS:          return mpt::decode<Tsrcstring>(mpt::common_encoding::riscos, src); break;
 		case Charset::ISO8859_1_no_C1:  return mpt::decode<Tsrcstring>(mpt::common_encoding::iso8859_1_no_c1, src); break;

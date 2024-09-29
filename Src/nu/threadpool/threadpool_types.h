@@ -1,6 +1,6 @@
 #pragma once
 #include <deque>
-#include <windows.h>
+#include <arch.h>
 namespace ThreadPoolTypes
 {
 	typedef std::deque<HANDLE> HandleList;

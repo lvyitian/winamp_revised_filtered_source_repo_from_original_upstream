@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <Ws2tcpip.h>
 #include "../api.h"
 #include "Include/shoutcast_output.h"

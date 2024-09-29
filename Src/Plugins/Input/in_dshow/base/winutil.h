@@ -62,7 +62,7 @@ protected:
                                     // It should be held anytime the
                                     // program use the value of m_hPalette.
 
-    // Maps windows message procedure into C++ methods
+    // Maps arch message procedure into C++ methods
     friend LRESULT CALLBACK WndProc(HWND hwnd,      // Window handle
                                     UINT uMsg,      // Message ID
                                     WPARAM wParam,  // First parameter

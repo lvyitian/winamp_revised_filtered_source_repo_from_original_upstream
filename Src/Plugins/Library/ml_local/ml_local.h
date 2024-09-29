@@ -1,7 +1,7 @@
 #ifndef ML_LOCAL_HEADER
 #define ML_LOCAL_HEADER
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 
 #include <iostream>   // for std::wstring

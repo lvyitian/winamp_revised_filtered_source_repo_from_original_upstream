@@ -1,4 +1,4 @@
-#include <windowsx.h>
+#include <archx.h>
 
 #include "main.h"
 #include "VideoOutput.h"

@@ -11,7 +11,7 @@ namespace Wasabi2
 	#include "ssdp/cb_ssdp.h"
 }
 
-#include <windows.h>
+#include <arch.h>
 
 static nu::LockGuard connections_guard;
 

@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "main.h"
 #if 1
 BOOL CALLBACK AboutProc(HWND hwndDlg, UINT uMsg, WPARAM wParam,LPARAM lParam)
