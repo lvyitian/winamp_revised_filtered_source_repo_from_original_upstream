@@ -23,7 +23,7 @@
 */
 
 
-#include <windows.h>
+#include <arch.h>
 #include <math.h>
 #include "ns-eel-int.h"
 

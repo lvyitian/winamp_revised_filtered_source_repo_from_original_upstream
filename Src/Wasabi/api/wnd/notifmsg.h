@@ -20,7 +20,7 @@ enum {
   KILLFOCUS = 210, // no params
   NAMECHANGED = 220, // no params
 
-  // for transient child windows
+  // for transient child arch
   RETURN_CODE = 300, // param1 = the code
 	// NOTE: Currently only used by editwnd.cpp, but open for custom use by developers
 

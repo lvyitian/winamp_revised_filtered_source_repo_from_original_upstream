@@ -73,7 +73,7 @@ endif
 	end
 
 	function suite.listResponseRulesWindows()
-		_TARGET_OS = "windows"
+		_TARGET_OS = "arch"
 		suite.listResponseRules()
 		test.capture [[
 $(RESPONSE): MyProject.make

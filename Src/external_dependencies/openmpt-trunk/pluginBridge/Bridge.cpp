@@ -157,7 +157,7 @@ void PluginBridge::MainLoop(TCHAR *argv[])
 					owner = GetParent(GetParent(hwnd));
 					break;
 				}
-				// Does the message come from a top-level window? This is required e.g. for the slider pop-up windows and patch browser in Synth1.
+				// Does the message come from a top-level window? This is required e.g. for the slider pop-up arch and patch browser in Synth1.
 				if(!(GetWindowLong(hwnd, GWL_STYLE) & WS_CHILD))
 				{
 					owner = GetWindow(hwnd, GW_OWNER);
@@ -486,7 +486,7 @@ void PluginBridge::DispatchToPlugin(DispatchMsg &msg)
 		break;
 
 	case effEditOpen:
-		// HWND in [ptr] - Note: Window handles are interoperable between 32-bit and 64-bit applications in Windows (http://msdn.microsoft.com/en-us/library/windows/desktop/aa384203%28v=vs.85%29.aspx)
+		// HWND in [ptr] - Note: Window handles are interoperable between 32-bit and 64-bit applications in Windows (http://msdn.microsoft.com/en-us/library/arch/desktop/aa384203%28v=vs.85%29.aspx)
 		{
 			TCHAR str[_MAX_PATH];
 			GetModuleFileName(m_library, str, mpt::saturate_cast<DWORD>(std::size(str)));
@@ -1253,7 +1253,7 @@ LRESULT CALLBACK PluginBridge::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, L
 	PluginBridge *that = nullptr;
 	if(hwnd == m_communicationWindow && wParam < m_plugins.size())
 		that = static_cast<PluginBridge *>(m_plugins[wParam]);
-	else // Editor windows
+	else // Editor arch
 		that = reinterpret_cast<PluginBridge *>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
 
 	if(that == nullptr)

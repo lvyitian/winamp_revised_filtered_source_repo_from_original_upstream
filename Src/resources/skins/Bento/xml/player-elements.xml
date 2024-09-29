@@ -493,7 +493,7 @@
 
 	<!-- Config -->
 
-	<bitmap id="config.button.text.windowsizing" file="window/config.png" x="0" y="0" h="14" w="72" gammagroup="DisplayText"/>
+	<bitmap id="config.button.text.archizing" file="window/config.png" x="0" y="0" h="14" w="72" gammagroup="DisplayText"/>
 	<bitmap id="config.button.text.visualization" file="window/config.png" x="72" y="0" h="14" w="72" gammagroup="DisplayText"/>
 	<bitmap id="config.button.text.songticker" file="window/config.png" x="0" y="14" h="14" w="72" gammagroup="DisplayText"/>
 	<bitmap id="config.button.text.colorthemes" file="window/config.png" x="0" y="28" h="14" w="72" gammagroup="DisplayText"/>
@@ -508,10 +508,10 @@
 	<bitmap id="config.checkbox.active" file="window/config.png" x="158" y="84" h="12" w="12" gammagroup="DisplayText"/>
 	<bitmap id="config.checkbox.inactive" file="window/config.png" x="170" y="84" h="12" w="12" gammagroup="DisplayText"/>
 
-	<bitmap id="config.windowsizing.text" file="window/config.png" x="0" y="70" h="74" w="158" gammagroup="DisplayText"/>
-	<bitmap id="config.windowsizing.autoresize.hover" file="window/config.png" x="158" y="70" h="12" w="158" gammagroup="SelectionBg"/>
-	<bitmap id="config.windowsizing.titlebar.maximize.hover" file="window/config.png" x="158" y="70" h="12" w="54" gammagroup="SelectionBg"/>
-	<bitmap id="config.windowsizing.titlebar.shade.hover" file="window/config.png" x="158" y="70" h="12" w="89" gammagroup="SelectionBg"/>
+	<bitmap id="config.archizing.text" file="window/config.png" x="0" y="70" h="74" w="158" gammagroup="DisplayText"/>
+	<bitmap id="config.archizing.autoresize.hover" file="window/config.png" x="158" y="70" h="12" w="158" gammagroup="SelectionBg"/>
+	<bitmap id="config.archizing.titlebar.maximize.hover" file="window/config.png" x="158" y="70" h="12" w="54" gammagroup="SelectionBg"/>
+	<bitmap id="config.archizing.titlebar.shade.hover" file="window/config.png" x="158" y="70" h="12" w="89" gammagroup="SelectionBg"/>
 
 	<bitmap id="config.appearance.text" file="window/config.png" x="0" y="144" h="74" w="158" gammagroup="DisplayText"/>
 

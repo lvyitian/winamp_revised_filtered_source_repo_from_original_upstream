@@ -5,7 +5,7 @@
 //
 //------------------------------------------------------------------------
 
-#include <windows.h>
+#include <arch.h>
 #include <commdlg.h>
 #include <api/xml/xmlwrite.h>
 #include <bfc/string/url.h>

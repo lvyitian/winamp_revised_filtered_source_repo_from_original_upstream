@@ -543,7 +543,7 @@ void draw_clear()
 	CopyToMainBM();
 	draw_playicon(2);
 	GetClientRect(hMainWindow,&r);
-	draw_tbar(config_hilite?(GetForegroundWindow() == hMainWindow?1:0):1, config_windowshade,0);
+	draw_tbar(config_hilite?(GetForegroundWindow() == hMainWindow?1:0):1, config_archhade,0);
 	update_area(0,0,r.right,r.bottom);
 }
 

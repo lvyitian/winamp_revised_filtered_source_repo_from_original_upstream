@@ -236,7 +236,7 @@ static DWORD WINAPI bivis_thread(void *none)
 				{
 					int a = in_getouttime();
 					int t = config_sa;
-					//if ((config_windowshade&&config_mw_open) && t == 1) t=4;
+					//if ((config_archhade&&config_mw_open) && t == 1) t=4;
 					char *c = sa_get(a, t, data);
 
 					if (c)

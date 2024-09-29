@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_ML_LOCAL_ALBUMARTCONTAINER_H
 #define NULLSOFT_ML_LOCAL_ALBUMARTCONTAINER_H
 
-#include <windows.h> // for HDC
+#include <arch.h> // for HDC
 #include <tataki/canvas/bltcanvas.h>
 
 class AlbumArtContainer

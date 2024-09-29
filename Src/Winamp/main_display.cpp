@@ -19,7 +19,7 @@ int Main_OnGetText(wchar_t *text, int sizeCch)
 	return (int)sizeCch-rem;
 
 }
-// evil 256 color mode windows palette handling
+// evil 256 color mode arch palette handling
 int Main_OnQueryNewPalette(HWND hwnd)
 {
 	if (draw_hpal) { // hPal is NULL if we're in hicolor
@@ -32,7 +32,7 @@ int Main_OnQueryNewPalette(HWND hwnd)
 	return 1;
 }
 
-// more 256 color windows palette handling
+// more 256 color arch palette handling
 int Main_OnPaletteChanged(HWND hwnd, HWND hwndPaletteChange)
 {
 	if (draw_hpal)
@@ -75,7 +75,7 @@ int Main_OnDisplayChange(HWND hwnd)
 	draw_panbar(config_pan,0);
 	draw_songname(L"",&t,0);
 	draw_playicon(playing?paused?4:1:2);
-	draw_tbar(config_hilite?(GetForegroundWindow() == hMainWindow?1:0):1, config_windowshade,eggstat);
+	draw_tbar(config_hilite?(GetForegroundWindow() == hMainWindow?1:0):1, config_archhade,eggstat);
 
 	draw_monostereo(-1);
 	if (playing)
@@ -86,7 +86,7 @@ int Main_OnDisplayChange(HWND hwnd)
 	draw_setnoupdate(0);
 	draw_songname(FileTitle,&ui_songposition,playing?in_getlength():PlayList_getcurrentlength());
 
-	// tell other windows
+	// tell other arch
 	if (IsWindow(hVideoWindow))
 		SendMessageW(hVideoWindow, WM_DISPLAYCHANGE,0,0);
 	if (IsWindow(hEQWindow))

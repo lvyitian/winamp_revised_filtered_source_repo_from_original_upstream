@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_DISCINFO_HEADER
 #define NULLSOFT_DISCINFO_HEADER
 
-#include <windows.h>
+#include <arch.h>
 
 
 // disc data array size (see decalrations in discInfo.cpp)

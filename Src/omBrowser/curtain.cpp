@@ -10,7 +10,7 @@
 #include "./ifc_skinhelper.h"
 
 #include <strsafe.h>
-#include <windows.h>
+#include <arch.h>
 
 #define WIDGET_MINWIDTH_UNITS	60 
 #define WIDGET_MAXWIDTH_UNITS	200

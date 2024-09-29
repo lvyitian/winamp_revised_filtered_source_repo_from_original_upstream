@@ -214,7 +214,7 @@ static bool BuildAudioBuffers()
 
 DWORD WINAPI PlayProc(LPVOID lpParameter)
 {
-	// set an event when we start.  this keeps Windows from queueing an APC before the thread proc even starts (evil, evil windows)
+	// set an event when we start.  this keeps Windows from queueing an APC before the thread proc even starts (evil, evil arch)
 	HANDLE threadCreatedEvent = (HANDLE)lpParameter;
 	SetEvent(threadCreatedEvent);
 

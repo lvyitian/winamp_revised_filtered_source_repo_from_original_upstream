@@ -587,9 +587,9 @@ STDAPI AMGetWideString(LPCWSTR psz, __deref_out LPWSTR *ppszReturn)
 }
 
 // Waits for the HANDLE hObject.  While waiting messages sent
-// to windows on our thread by SendMessage will be processed.
+// to arch on our thread by SendMessage will be processed.
 // Using this function to do waits and mutual exclusion
-// avoids some deadlocks in objects with windows.
+// avoids some deadlocks in objects with arch.
 // Return codes are the same as for WaitForSingleObject
 DWORD WINAPI WaitDispatchingMessages(
     HANDLE hObject,

@@ -5,7 +5,7 @@
 #include "../resource.h"
 #include "../api.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 
 typedef struct __MESSAGECREATEPARAM

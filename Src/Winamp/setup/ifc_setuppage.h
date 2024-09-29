@@ -2,7 +2,7 @@
 #define WINAMP_IFC_SETUP_PAGE_HEADER
 
 #include <bfc/dispatch.h>
-#include <windows.h>
+#include <arch.h>
 
 class NOVTABLE ifc_setuppage : public Dispatchable
 {

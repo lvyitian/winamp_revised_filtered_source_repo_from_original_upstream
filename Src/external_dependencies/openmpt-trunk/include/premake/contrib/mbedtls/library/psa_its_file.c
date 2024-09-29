@@ -33,7 +33,7 @@
 #endif
 
 #if defined(_WIN32)
-#include <windows.h>
+#include <arch.h>
 #endif
 
 #include "psa_crypto_its.h"

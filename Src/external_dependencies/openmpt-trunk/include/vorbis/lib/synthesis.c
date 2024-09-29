@@ -44,7 +44,7 @@ int vorbis_synthesis(vorbis_block *vb,ogg_packet *op){
     return(OV_ENOTAUDIO);
   }
 
-  /* read our mode and pre/post windowsize */
+  /* read our mode and pre/post archize */
   mode=oggpack_read(opb,b->modebits);
   if(mode==-1){
     return(OV_EBADPACKET);
@@ -108,7 +108,7 @@ int vorbis_synthesis_trackonly(vorbis_block *vb,ogg_packet *op){
     return(OV_ENOTAUDIO);
   }
 
-  /* read our mode and pre/post windowsize */
+  /* read our mode and pre/post archize */
   mode=oggpack_read(opb,b->modebits);
   if(mode==-1)return(OV_EBADPACKET);
 
@@ -157,7 +157,7 @@ long vorbis_packet_blocksize(vorbis_info *vi,ogg_packet *op){
     return(OV_ENOTAUDIO);
   }
 
-  /* read our mode and pre/post windowsize */
+  /* read our mode and pre/post archize */
   mode=oggpack_read(&opb,ov_ilog(ci->modes-1));
   if(mode==-1 || !ci->mode_param[mode])return(OV_EBADPACKET);
   return(ci->blocksizes[ci->mode_param[mode]->blockflag]);
@@ -167,7 +167,7 @@ int vorbis_synthesis_halfrate(vorbis_info *vi,int flag){
   /* set / clear half-sample-rate mode */
   codec_setup_info     *ci=vi->codec_setup;
 
-  /* right now, our MDCT can't handle < 64 sample windows. */
+  /* right now, our MDCT can't handle < 64 sample arch. */
   if(ci->blocksizes[0]<=64 && flag)return -1;
   ci->halfrate_flag=(flag?1:0);
   return 0;

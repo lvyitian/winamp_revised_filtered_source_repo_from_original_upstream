@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "../ns-eel/ns-eel.h"
 #include "../ns-eel/ns-eel-int.h"
 #include "megabuf.h"

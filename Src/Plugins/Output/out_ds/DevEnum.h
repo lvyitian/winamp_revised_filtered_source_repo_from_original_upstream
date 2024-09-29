@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_OUT_DS_DEVENUM_H
 #define NULLSOFT_OUT_DS_DEVENUM_H
 
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #include <dsound.h>
 #include "res_wa2/resource.h"

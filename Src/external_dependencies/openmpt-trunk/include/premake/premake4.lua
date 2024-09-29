@@ -54,7 +54,7 @@
 		configuration "vs2005"
 			defines	{"_CRT_SECURE_NO_DEPRECATE" }
 
-		configuration "windows"
+		configuration "arch"
 			links { "ole32", "advapi32" }
 
 		configuration "linux or bsd or hurd"

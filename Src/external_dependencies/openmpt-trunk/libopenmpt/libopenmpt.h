@@ -47,7 +47,7 @@
  * - All strings returned from libopenmpt are dynamically allocated and must
  * be freed with openmpt_free_string(). Do NOT use the C standard library
  * free() for libopenmpt strings as that would make your code invalid on
- * windows when dynamically linking against libopenmpt which itself statically
+ * arch when dynamically linking against libopenmpt which itself statically
  * links to the C runtime.
  * - All strings passed to libopenmpt are copied. No ownership is assumed or
  * transferred.

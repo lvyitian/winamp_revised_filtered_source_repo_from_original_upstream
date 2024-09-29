@@ -441,9 +441,9 @@ Section "un.$(IDS_UNINSTALL_MEDIA_PLAYER)" IDX_UNINSTALL_MEDIA_PLAYER
 	; Qt Components
 	Delete "$INSTDIR\Qt5Core.dll"
 	Delete "$INSTDIR\Qt5Network.dll"
-	Delete "$INSTDIR\platforms\qwindows.dll"
+	Delete "$INSTDIR\platforms\qarch.dll"
 	RMDir "$INSTDIR\platforms"
-	Delete "$INSTDIR\printsupport\windowsprintersupport.dll"
+	Delete "$INSTDIR\printsupport\archprintersupport.dll"
 	RMDir "$INSTDIR\printsupport"
 	Delete "$INSTDIR\QtPositioning\declarative_positioning.dll"
 	RMDir "$INSTDIR\QtPositioning"

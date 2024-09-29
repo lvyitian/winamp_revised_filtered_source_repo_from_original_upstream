@@ -1,7 +1,7 @@
 #include "functions.h"
 #include "string.h"
 #include "varlist.h"
-#include <windows.h>
+#include <arch.h>
 #include <stddef.h>
 #include <shlwapi.h>
 #include "api__tagz.h"

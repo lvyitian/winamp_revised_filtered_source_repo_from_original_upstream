@@ -1,6 +1,6 @@
 #include "./layout.h"
 
-#include <windows.h>
+#include <arch.h>
 
 BOOL Layout_Initialize( HWND hwnd, const INT *itemList, INT itemCount, LAYOUTITEM *layout )
 {

@@ -1,5 +1,5 @@
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include <arch.h>
 #include "api__jpeg.h"
 #include "main.h"
 #include "w5s.h"

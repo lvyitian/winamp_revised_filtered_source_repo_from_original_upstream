@@ -58,7 +58,7 @@
 // for OutputDebugStringA
 #if defined(_MSC_VER) && defined(PA_ENABLE_MSVC_DEBUG_OUTPUT)
     #define WIN32_LEAN_AND_MEAN // exclude rare headers
-    #include "windows.h"
+    #include "arch.h"
 #endif
 
 // User callback

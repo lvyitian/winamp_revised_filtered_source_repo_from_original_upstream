@@ -35,7 +35,7 @@
  * license above.
  */
 
-#include <windows.h>
+#include <arch.h>
 #include <mmreg.h>
 #ifndef WAVE_FORMAT_IEEE_FLOAT
     #define WAVE_FORMAT_IEEE_FLOAT 0x0003   // MinGW32 does not define this

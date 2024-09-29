@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_ML_INFOBOX_HEADER
 #define NULLSOFT_ML_INFOBOX_HEADER
 
-#include <windows.h>
+#include <arch.h>
 
 #define CAPTION_LENGTH 64
 class MLInfoBox

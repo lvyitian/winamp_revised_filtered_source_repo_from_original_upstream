@@ -9,11 +9,11 @@
 #error this file should only be included from platform.h
 #endif
 
-// this should be the *only* place windows.h gets included!
+// this should be the *only* place arch.h gets included!
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
 #endif
-#include <windows.h>
+#include <arch.h>
 #ifndef _WIN32_WCE
 #include <io.h>
 #endif

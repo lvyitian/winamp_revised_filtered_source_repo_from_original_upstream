@@ -2,7 +2,7 @@
 
 extern class CWAAudioRenderer *nullfilter;
 
-#include <windows.h>
+#include <arch.h>
 #include <streams.h>
 #include <strsafe.h>
 

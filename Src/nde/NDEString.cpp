@@ -1,7 +1,7 @@
 #include "NDEString.h"
 #include "foundation/error.h"
 
-#include <windows.h>
+#include <arch.h>
 
 typedef BOOL (WINAPI *HEAPSETINFORMATION)(HANDLE HeapHandle, HEAP_INFORMATION_CLASS HeapInformationClass,  PVOID HeapInformation, SIZE_T HeapInformationLength);
 

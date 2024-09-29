@@ -2,7 +2,7 @@
 #define NULLSOFT_IN_FLAC_STREAMFILEWIN32_H
 
 #include <FLAC/all.h>
-#include <windows.h>
+#include <arch.h>
 
 struct Win32_State
 {

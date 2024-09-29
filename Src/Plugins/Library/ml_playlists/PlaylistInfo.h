@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_ML_PLAYLISTS_PLAYLIST_INFO_H
 #define NULLSOFT_ML_PLAYLISTS_PLAYLIST_INFO_H
 
-#include <windows.h> // for MAX_PATH
+#include <arch.h> // for MAX_PATH
 #include <iostream>  // for std::wstring
 
 // REVIEW: what if we want this to be an ifc_playlist * from elsewhere instead of a physical m3u file

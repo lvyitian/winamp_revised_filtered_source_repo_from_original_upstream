@@ -6,7 +6,7 @@
 #include "./ifc_omconfig.h"
 #include "./ifc_omdebugconfig.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <shlwapi.h>
 #include <strsafe.h>

@@ -6,7 +6,7 @@
 #endif
 
 
-#include <windows.h>
+#include <arch.h>
 
 #define CDS_USEUSERNAME		0x0001	// szUser will be used to prepopulate user name field
 #define CDS_USEPASSWORD		0x0002	// szPassword will be used to prepopulate user name field

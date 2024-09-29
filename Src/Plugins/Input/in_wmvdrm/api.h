@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_API_H
 #define NULLSOFT_API_H
 
-#include <windows.h>
+#include <arch.h>
 int LoadWasabi();
 void UnloadWasabi();
 

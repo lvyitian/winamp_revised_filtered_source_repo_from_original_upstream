@@ -639,19 +639,19 @@ void MenuActions::installSkinWindowOptions()
 	mii.wID = 42000;
 	mii.dwItemData = 0xD02;	// use this as a check so we're only removing the correct items!!
 
-	if (menu && windowsmenuitems)
+	if (menu && archmenuitems)
 	{
-		int n = MIN(windowsmenuitems->getNumAttributes(), 500);
+		int n = MIN(archmenuitems->getNumAttributes(), 500);
 		int cmdoffset = 0;
 		for (int i = 0;i < n;i++)
 		{
-			const wchar_t *attr = windowsmenuitems->enumAttribute(i);
+			const wchar_t *attr = archmenuitems->enumAttribute(i);
 
 			if (attr && *attr)
 			{
 				HMENU submenu = NULL;
 				wchar_t txt[256] = {0};
-				windowsmenuitems->getData(attr, txt, 256);
+				archmenuitems->getData(attr, txt, 256);
 				GUID g = nsGUID::fromCharW(txt);
 				if (g != INVALID_GUID)
 				{ // submenu !
@@ -659,7 +659,7 @@ void MenuActions::installSkinWindowOptions()
 					if (submenu)
 						wmenulist.addItem(submenu);
 				}
-				int v = windowsmenuitems->getDataAsInt(attr, 0);
+				int v = archmenuitems->getDataAsInt(attr, 0);
 				wa2.adjustFFWindowsMenu(1);
 				wa2.adjustOptionsPopupMenu(1);
 
@@ -698,7 +698,7 @@ void MenuActions::removeSkinWindowOptions()
 
 	HMENU menu = wa2.getMenuBarMenu(Winamp2FrontEnd::WA2_MAINMENUBAR_WINDOWS);
 	HMENU omenu = wa2.getPopupMenu();
-	if (menu && windowsmenuitems)
+	if (menu && archmenuitems)
 	{
 		for(int i = GetMenuItemCount(menu)-1; i != 0; i--)
 		{
@@ -758,7 +758,7 @@ int MenuActions::toggleWindowOption(int n, GUID guid, int *cmdoffset)
 	if (!cmdoffset) cmdoffset = &_cmdoffset;
 	CfgItem *item = NULL;
 	if (guid == INVALID_GUID)
-		item = windowsmenuitems;
+		item = archmenuitems;
 	else
 		item = WASABI_API_CONFIG->config_getCfgItemByGuid(guid);
 

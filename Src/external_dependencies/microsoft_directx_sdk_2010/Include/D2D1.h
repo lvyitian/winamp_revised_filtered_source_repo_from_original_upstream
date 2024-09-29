@@ -12,7 +12,7 @@
 #define _D2D1_H_
 
 #ifndef COM_NO_WINDOWS_H
-#include <windows.h>
+#include <arch.h>
 #endif // #ifndef COM_NO_WINDOWS_H
 #include <unknwn.h>
 #include <dcommon.h>

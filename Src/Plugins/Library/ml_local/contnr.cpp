@@ -21,7 +21,7 @@
    #include statements
 **************************************************************************/
 #include "main.h"
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include "contnr.h"
 

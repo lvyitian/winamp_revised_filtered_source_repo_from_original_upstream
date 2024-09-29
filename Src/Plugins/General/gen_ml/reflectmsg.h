@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 
 // reflected messages will pass this as lParam
 typedef struct _REFLECTPARAM

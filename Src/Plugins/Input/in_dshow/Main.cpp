@@ -2,7 +2,7 @@
 #define PLUGIN_VERSION L"1.15"
 
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include <arch.h>
 #include <math.h>
 #include <assert.h>
 #include "../Agave/Language/api_language.h"

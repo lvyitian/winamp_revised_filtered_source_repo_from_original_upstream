@@ -8,11 +8,11 @@
 #include "./common.h"
 #include "../api.h"
 
-#include "../../nu/windowsTheme.h"
+#include "../../nu/archTheme.h"
 
 #include <vssym32.h>
 #include <vsstyle.h>
-#include <windows.h>
+#include <arch.h>
 
 #define IDC_TITLE			9999
 #define IDC_HELPLINK		9998

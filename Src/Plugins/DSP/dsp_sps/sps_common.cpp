@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "resource.h"
 #include "..\..\..\winamp\dsp.h"
 #include "sps_common.h"

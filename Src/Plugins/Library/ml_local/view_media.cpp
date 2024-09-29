@@ -1,6 +1,6 @@
 #include "main.h"
 #include "ml_local.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "../nu/listview.h"
 #include "..\..\General\gen_ml/config.h"
 #include "resource.h"

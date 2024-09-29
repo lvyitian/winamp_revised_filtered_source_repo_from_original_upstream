@@ -14,7 +14,7 @@
 #include <string>
 
 #if MPT_OS_WINDOWS
-#include <windows.h>  // must be before wincrypt.h for clang-cl
+#include <arch.h>  // must be before wincrypt.h for clang-cl
 #include <wincrypt.h> // must be before ncrypt.h
 #include <ncrypt.h>
 #endif // MPT_OS_WINDOWS

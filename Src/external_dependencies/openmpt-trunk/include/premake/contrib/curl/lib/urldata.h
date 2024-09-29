@@ -353,7 +353,7 @@ struct ssl_primary_config {
   bool verifypeer;       /* set TRUE if this is desired */
   bool verifyhost;       /* set TRUE if CN/SAN must match hostname */
   bool verifystatus;     /* set TRUE if certificate status must be checked */
-  char *CApath;          /* certificate dir (doesn't work on windows) */
+  char *CApath;          /* certificate dir (doesn't work on arch) */
   char *CAfile;          /* certificate to verify peer against */
   char *clientcert;
   char *random_file;     /* path to file containing "random" data */
@@ -1480,8 +1480,8 @@ enum dupstring {
   STRING_SET_RANGE,       /* range, if used */
   STRING_SET_REFERER,     /* custom string for the HTTP referer field */
   STRING_SET_URL,         /* what original URL to work on */
-  STRING_SSL_CAPATH_ORIG, /* CA directory name (doesn't work on windows) */
-  STRING_SSL_CAPATH_PROXY, /* CA directory name (doesn't work on windows) */
+  STRING_SSL_CAPATH_ORIG, /* CA directory name (doesn't work on arch) */
+  STRING_SSL_CAPATH_PROXY, /* CA directory name (doesn't work on arch) */
   STRING_SSL_CAFILE_ORIG, /* certificate file to verify peer against */
   STRING_SSL_CAFILE_PROXY, /* certificate file to verify peer against */
   STRING_SSL_PINNEDPUBLICKEY_ORIG, /* public key file to verify peer against */

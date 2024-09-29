@@ -55,7 +55,7 @@
 #define _WIN32_WINNT 0x0400 /* required to get waitable timer APIs */
 #endif // OpenMPT
 #include <initguid.h> /* make sure ds guids get defined */
-#include <windows.h>
+#include <arch.h>
 #include <objbase.h>
 
 
@@ -325,7 +325,7 @@ NOTE: GetVersionEx() is deprecated as of Windows 8.1 and can not be used to reli
 versions of Windows higher than Windows 8 (due to manifest requirements for reporting higher versions).
 Microsoft recommends switching to VerifyVersionInfo (available on Win 2k and later), however GetVersionEx
 is faster, for now we just disable the deprecation warning.
-See: https://msdn.microsoft.com/en-us/library/windows/desktop/ms724451(v=vs.85).aspx
+See: https://msdn.microsoft.com/en-us/library/arch/desktop/ms724451(v=vs.85).aspx
 See: http://www.codeproject.com/Articles/678606/Part-Overcoming-Windows-s-deprecation-of-GetVe
 */
 #pragma warning (disable : 4996) /* use of GetVersionEx */
@@ -787,7 +787,7 @@ static PaError AddOutputDeviceInfoFromDirectSound(
     }
 
     /* Create a DirectSound object for the specified GUID
-        Note that using CoCreateInstance doesn't work on windows CE.
+        Note that using CoCreateInstance doesn't work on arch CE.
     */
     hr = paWinDsDSoundEntryPoints.DirectSoundCreate( lpGUID, &lpDirectSound, NULL );
 
@@ -2990,7 +2990,7 @@ static PaError StartStream( PaStream *s )
         if( timerPeriodMs < 1 )
             timerPeriodMs = 1;
 
-        /* set windows scheduler granularity only as fine as needed, no finer */
+        /* set arch scheduler granularity only as fine as needed, no finer */
         /* Although this is not fully documented by MS, it appears that
            timeBeginPeriod() affects the scheduling granulatity of all timers
            including Waitable Timer Objects. So we always call timeBeginPeriod, whether

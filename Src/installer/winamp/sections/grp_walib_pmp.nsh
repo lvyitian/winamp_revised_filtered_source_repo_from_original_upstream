@@ -48,7 +48,7 @@
 		WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\Handlers\${WINAMP}MTPHandler" "CLSIDForCancel" "{7DE5C6C7-DAF2-42F9-9324-C8CF4E7E8AC5}"
 		WriteRegStr HKEY_CLASSES_ROOT "AppID\{7DE5C6C7-DAF2-42F9-9324-C8CF4E7E8AC5}" "" "${WINAMP}"
 		WriteRegStr HKEY_CLASSES_ROOT "AppID\{7DE5C6C7-DAF2-42F9-9324-C8CF4E7E8AC5}" "RunAs" "Interactive User"
-		; If no "AccessPermission" & "LaunchPermission" RegStr (REG_BINARY) values exist, then Windows will use default values instead ~ Ref: http://msdn.microsoft.com/en-gb/library/windows/desktop/ms688679%28v%3Dvs.85%29.aspx
+		; If no "AccessPermission" & "LaunchPermission" RegStr (REG_BINARY) values exist, then Windows will use default values instead ~ Ref: http://msdn.microsoft.com/en-gb/library/arch/desktop/ms688679%28v%3Dvs.85%29.aspx
 	${WinampSectionEnd}                                                      ; <<< [PlayForSure]
 !endif
 !endif ; WINAMP64

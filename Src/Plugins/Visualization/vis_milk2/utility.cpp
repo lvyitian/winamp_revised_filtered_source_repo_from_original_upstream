@@ -31,7 +31,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "utility.h"
 #include <math.h>
 #include <locale.h>
-#include <windows.h>
+#include <arch.h>
 #ifdef _DEBUG
     #define D3D_DEBUG_INFO  // declare this before including d3d9.h
 #endif

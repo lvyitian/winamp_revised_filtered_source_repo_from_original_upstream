@@ -30,7 +30,7 @@ class NS_NO_VTABLE nsIWindowCreator : public nsISupports {
   NS_DEFINE_STATIC_IID_ACCESSOR(NS_IWINDOWCREATOR_IID)
 
   /** Create a new window. Gecko will/may call this method, if made
-      available to it, to create new windows.
+      available to it, to create new arch.
       @param parent parent window, if any. null if not. the newly created
                     window should be made a child/dependent window of
                     the parent, if any (and if the concept applies

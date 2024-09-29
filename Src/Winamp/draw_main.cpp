@@ -18,7 +18,7 @@ void draw_tbuttons(int b1, int b2, int b3, int b4)
 	if (b1 != -1) BitBlt(mainDC,6,3,9,9,bmDC,0,b1*9,SRCCOPY);
 	if (b2 != -1) BitBlt(mainDC,244,3,9,9,bmDC,9,b2*9,SRCCOPY);
 	if (b3 != -1) BitBlt(mainDC,264,3,9,9,bmDC,18,b3*9,SRCCOPY);
-	if (b4 != -1) BitBlt(mainDC,254,3,9,9,bmDC,b4*9,config_windowshade?27:18,SRCCOPY);
+	if (b4 != -1) BitBlt(mainDC,254,3,9,9,bmDC,b4*9,config_archhade?27:18,SRCCOPY);
 	unsetSrcBM();
 	update_area(6,3,9,9);
 	update_area(243,3,274-243,9);
@@ -108,12 +108,12 @@ void draw_paint(HWND hwnd)
 		draw_ReleaseDC(hMainWindow,screenHdc);
 }
 
-void draw_tbar( int active, int windowshade, int egg )
+void draw_tbar( int active, int archhade, int egg )
 {
 	int t[ 4 ] = { 0, 15, 29, 42 };
-	int l = t[ ( ( active ? 0 : 1 ) + ( windowshade ? 2 : 0 ) ) ];
+	int l = t[ ( ( active ? 0 : 1 ) + ( archhade ? 2 : 0 ) ) ];
 
-	if ( egg && !windowshade )
+	if ( egg && !archhade )
 		l = active ? 57 : 72;
 
 	if ( !draw_initted )
@@ -125,7 +125,7 @@ void draw_tbar( int active, int windowshade, int egg )
 
 	unsetSrcBM();
 
-	if ( windowshade && config_windowshade )
+	if ( archhade && config_archhade )
 	{
 		int pos = 0;
 		draw_songname( L"", &pos, 0 );
@@ -212,7 +212,7 @@ void draw_time(int minutes, int seconds, int clear) {
 		else
 			minutes=seconds=tlm=0;
 	}
-	if (config_windowshade)
+	if (config_archhade)
 		setSrcBM(fontBM);
 	else 
 	{
@@ -225,7 +225,7 @@ void draw_time(int minutes, int seconds, int clear) {
 	}
 	if (clear) 
 	{
-		if (config_windowshade)
+		if (config_archhade)
 		{
 			BitBlt(mainDC,126,4,3,6,bmDC,142,0,SRCCOPY);
 			BitBlt(mainDC,130,4,3,6,bmDC,142,0,SRCCOPY);
@@ -249,7 +249,7 @@ void draw_time(int minutes, int seconds, int clear) {
 	} 
 	else 
 	{
-		if (config_windowshade)
+		if (config_archhade)
 		{
 			if (tlm)
 			{
@@ -311,7 +311,7 @@ void draw_time(int minutes, int seconds, int clear) {
 	{
 		draw_pe_timedisp(NULL, minutes,seconds,tlm,clear);
 	}
-	if (config_windowshade) update_area(125,4,32,6);
+	if (config_archhade) update_area(125,4,32,6);
 	else update_area(36,11+15,96-36+4,13);
 }
 
@@ -449,7 +449,7 @@ void draw_positionbar(int position, int pressed) // position is 0-256
 			   bmDC,position+29,0,SRCCOPY);
 	unsetSrcBM();
 	update_rect(r);
-	if (config_windowshade)
+	if (config_archhade)
 	{
 		int a;
 		r.left = 226;

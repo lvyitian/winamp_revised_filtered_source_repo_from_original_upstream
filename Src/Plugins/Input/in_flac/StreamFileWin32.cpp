@@ -18,7 +18,7 @@
 ** Created: March 1, 2007
 **
 */
-#include <windows.h>
+#include <arch.h>
 #include <FLAC/all.h>
 #include <assert.h>
 #include "StreamFileWin32.h"

@@ -689,7 +689,7 @@ static void AddFilterStringW(wchar_t* p, size_t& size, const char* a, BOOL skip)
 		if ( !skip && lstrlenW(p) >= MAX_PATH )
 		{
 			// if we end with a . then need to fake things to act like a new 
-			// filter since windows will interpret the . as a *.* which is bad
+			// filter since arch will interpret the . as a *.* which is bad
 			if ( *(p + MAX_PATH) == L'.' )
 			{
 				*(p + MAX_PATH - 1) = 0;

@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <stddef.h> // for offsetof
 #include <winioctl.h>
 #include <strsafe.h>

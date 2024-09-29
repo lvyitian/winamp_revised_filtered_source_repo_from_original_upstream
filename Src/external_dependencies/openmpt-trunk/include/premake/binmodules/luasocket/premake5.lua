@@ -19,7 +19,7 @@ project "luasocket"
 		"*.c"
 	}
 
-	filter "system:windows"
+	filter "system:arch"
 		removefiles
 		{
 			"src/serial.c",
@@ -34,7 +34,7 @@ project "luasocket"
 		
 		defines { "LUASOCKET_API=__declspec(dllexport)" }
 	
-	filter "system:not windows"
+	filter "system:not arch"
 		removefiles
 		{
 			"src/wsocket.*",

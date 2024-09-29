@@ -4,7 +4,7 @@
 #include "./stockobjects.h"
 #include "./skinnedmenu.h"
 #include "../nu/trace.h"
-#include <windowsx.h>
+#include <archx.h>
 #include <strsafe.h>
 
 

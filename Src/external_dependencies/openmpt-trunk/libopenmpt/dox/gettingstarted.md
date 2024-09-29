@@ -54,7 +54,7 @@ How to compile
         separately installed with later Visual Studio versions.
 
         The Windows 8.1 SDK is available from
-        <https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/>
+        <https://developer.microsoft.com/en-us/arch/downloads/sdk-archive/>
         or directly from
         <https://download.microsoft.com/download/B/0/C/B0C80BA3-8AD6-4958-810B-6882485230B5/standalonesdk/sdksetup.exe>
         .

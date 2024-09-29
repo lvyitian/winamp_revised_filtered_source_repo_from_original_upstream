@@ -19,8 +19,8 @@
 #ifndef _LISTVIEW_H_
 #define _LISTVIEW_H_
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <commctrl.h>
 
 #ifndef LVS_EX_DOUBLEBUFFER  //this will work XP only

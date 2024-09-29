@@ -11,13 +11,13 @@
   
    <bitmap id="studio.BaseTexture" file="window/background.png" gammagroup="Backgrounds"/>
   
-   <!-- Frame windows -->
+   <!-- Frame arch -->
    <bitmap id="studio.framewnd.verticaldivider" file="window/window-elements.png" x="124" y="53" h="65" w="8" gammagroup="Backgrounds"/>
    <bitmap id="studio.framewnd.verticalgrabber" file="window/window-elements.png" x="115" y="53" h="65" w="8" gammagroup="Backgrounds"/>
    <bitmap id="studio.framewnd.horizontaldivider" file="window/window-elements.png" x="40" y="97" h="8" w="65" gammagroup="Backgrounds"/>
    <bitmap id="studio.framewnd.horizontalgrabber" file="window/window-elements.png" x="40" y="106" h="8" w="65" gammagroup="Backgrounds"/>
 <!--
-   <bitmap id="studio.framewnd.windowshade" file="window/framewnd-windowshade.png" gammagroup="Backgrounds"/>
+   <bitmap id="studio.framewnd.archhade" file="window/framewnd-archhade.png" gammagroup="Backgrounds"/>
 -->
 
    <bitmap id="wasabi.frame.divider.arrow.left" file="window/window-elements.png" x="56" y="124" h="7" w="4"/>

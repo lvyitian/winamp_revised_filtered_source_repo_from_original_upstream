@@ -65,7 +65,7 @@ extern "C" {
 /* Timer Info */
 #if defined(_WIN32) || defined(_WIN64) || defined(WIN32) || defined(WIN64)
 
-#include <windows.h>
+#include <arch.h>
 
     typedef struct _mp4_Timer {
         LARGE_INTEGER  count;

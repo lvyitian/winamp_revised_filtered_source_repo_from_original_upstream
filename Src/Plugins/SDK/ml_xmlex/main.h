@@ -1,7 +1,7 @@
 #ifndef _XMLEX_MAIN_H_
 #define _XMLEX_MAIN_H_
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include "../nu/MediaLibraryInterface.h"
 #include "..\..\General\gen_ml\ml.h"
 #include "..\..\General\gen_ml\config.h"

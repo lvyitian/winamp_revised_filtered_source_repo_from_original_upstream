@@ -73,12 +73,12 @@ typedef struct TOC_TAG
 #define SS_NO_DEVICE              0x82   /* SCSI device not installed      */
 #define SS_INVALID_SRB            0xE0   /* Invalid parameter set in SRB   */
 #define SS_OLD_MANAGER            0xE1   /* ASPI manager doesn't support   */
-                                         /* windows                        */
+                                         /* arch                        */
 #define SS_BUFFER_ALIGN           0xE1   /* Buffer not aligned (replaces   */
                                          /* SS_OLD_MANAGER in Win32)       */
 #define SS_ILLEGAL_MODE           0xE2   /* Unsupported Windows mode       */
 #define SS_NO_ASPI                0xE3   /* No ASPI managers               */
-#define SS_FAILED_INIT            0xE4   /* ASPI for windows failed init   */
+#define SS_FAILED_INIT            0xE4   /* ASPI for arch failed init   */
 #define SS_ASPI_IS_BUSY           0xE5   /* No resources available to      */
                                          /* execute command                */
 #define SS_BUFFER_TO_BIG          0xE6   /* Buffer size too big to handle  */

@@ -31,10 +31,10 @@
 
 /* Win32 is only supported with unicode now. These headers also cover
    module stuff. The WANT_WIN32_UNICODE macro is synonymous with
-   "want windows-specific API, and only the unicode variants of which". */
+   "want arch-specific API, and only the unicode variants of which". */
 #ifdef WANT_WIN32_UNICODE
 #include <wchar.h>
-#include <windows.h>
+#include <arch.h>
 #include <winnls.h>
 #include <shlwapi.h>
 #endif
@@ -183,7 +183,7 @@ char* compat_catpath(const char *prefix, const char* path)
 {
 	char *ret = NULL;
 #ifdef WANT_WIN32_UNICODE
-	wchar_t *wprefix = NULL; /* Wide windows versions of */
+	wchar_t *wprefix = NULL; /* Wide arch versions of */
 	wchar_t *wpath   = NULL; /* input arguments. */
 	wchar_t *locwret = NULL; /* Tmp return value from LocalAlloc */
 	/*

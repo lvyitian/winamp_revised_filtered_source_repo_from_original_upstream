@@ -12,7 +12,7 @@
 #define _D2DBASETYPES_INCLUDED
 
 #ifndef COM_NO_WINDOWS_H
-#include <windows.h>
+#include <arch.h>
 #endif // #ifndef COM_NO_WINDOWS_H
 
 #ifndef D3DCOLORVALUE_DEFINED

@@ -15,7 +15,7 @@
 #ifndef RAPI_H
 #define RAPI_H
 
-#include <windows.h>
+#include <arch.h>
 
 #include "rapitypes.h"
 #include "irapistream.h"

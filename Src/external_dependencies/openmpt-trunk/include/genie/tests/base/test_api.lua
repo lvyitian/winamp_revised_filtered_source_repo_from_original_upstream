@@ -219,14 +219,14 @@
 	end
 
 	function suite.solution_LeavesConfigActive_OnActiveSolutionAndNoName()
-		local cfg = configuration "windows"
+		local cfg = configuration "arch"
 		solution()
 		test.istrue(cfg == premake.CurrentConfiguration)
 	end	
 
 	function suite.solution_LeavesConfigActive_OnActiveProjectAndNoName()
 		project "MyProject"
-		local cfg = configuration "windows"
+		local cfg = configuration "arch"
 		solution()
 		test.istrue(cfg == premake.CurrentConfiguration)
 	end	

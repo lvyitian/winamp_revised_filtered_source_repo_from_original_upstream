@@ -45,7 +45,7 @@
 
 #include "pbdll.h" 
 #pragma warning(disable:4115)
-#include <windows.h>
+#include <arch.h>
 
 extern void GetProcessorFlags(INT32 *MmxEnabled, INT32 *XmmEnabled, INT32 *WmtEnabled);
 

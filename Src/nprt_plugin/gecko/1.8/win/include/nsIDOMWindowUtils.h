@@ -46,7 +46,7 @@ class NS_NO_VTABLE nsIDOMWindowUtils : public nsISupports {
    *       for example continue to report kDontAnimMode after all images
    *       have subsequently been individually animated.
    * @note Only images immediately in this window are affected;
-   *       this is not recursive to subwindows.
+   *       this is not recursive to subarch.
    * @see imgIContainer
    */
   /* attribute unsigned short imageAnimationMode; */

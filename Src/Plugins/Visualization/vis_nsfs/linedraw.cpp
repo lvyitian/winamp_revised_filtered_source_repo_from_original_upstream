@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 
 static void __inline DrawPixel(int color, unsigned char *fb)
 {

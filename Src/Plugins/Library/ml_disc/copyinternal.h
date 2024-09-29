@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 #include "../Agave/Metadata/api_metadata.h"
 #include "../ml_local/api_mldb.h"
 

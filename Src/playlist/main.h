@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_PLAYLIST_MAIN_H
 #define NULLSOFT_PLAYLIST_MAIN_H
 
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 #include "..\Components\wac_network\wac_network_http_receiver_api.h"
 

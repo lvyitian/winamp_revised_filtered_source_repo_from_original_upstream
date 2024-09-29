@@ -2,7 +2,7 @@
 #define NULLSOFT_WINAMP_GEN_H
 // General Purpose plugin interface
 
-#include <windows.h>
+#include <arch.h>
 
 typedef struct {
 	int version;

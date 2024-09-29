@@ -30,7 +30,7 @@ my $supressed; # whitelisted problems
 my $file;
 my $dir=".";
 my $wlist;
-my $windows_os = $^O eq 'MSWin32' || $^O eq 'msys' || $^O eq 'cygwin';
+my $arch_os = $^O eq 'MSWin32' || $^O eq 'msys' || $^O eq 'cygwin';
 my $verbose;
 my %whitelist;
 
@@ -65,7 +65,7 @@ sub readwhitelist {
     open(W, "<$dir/checksrc.whitelist");
     my @all=<W>;
     for(@all) {
-        $windows_os ? $_ =~ s/\r?\n$// : chomp;
+        $arch_os ? $_ =~ s/\r?\n$// : chomp;
         $whitelist{$_}=1;
     }
     close(W);
@@ -263,7 +263,7 @@ sub scanfile {
     checksrc_clear(); # for file based ignores
 
     while(<R>) {
-        $windows_os ? $_ =~ s/\r?\n$// : chomp;
+        $arch_os ? $_ =~ s/\r?\n$// : chomp;
         my $l = $_;
         my $ol = $l; # keep the unmodified line for error reporting
         my $column = 0;

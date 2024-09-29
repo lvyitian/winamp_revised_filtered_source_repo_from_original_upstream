@@ -451,7 +451,7 @@ typedef struct {
   /* decoded from the above info */
   int numWinGrp;          /* window group number                  */
   int pWinGrpLen[IPP_AAC_GROUP_NUM_MAX]; /* buffer for number of
-                                            windows in each group */
+                                            arch in each group */
 } IppAACIcsInfo;
 
 /*
@@ -555,7 +555,7 @@ typedef struct{
 */
 
 typedef struct {
-  int windowSequence;  /* the windows is short or long type       */
+  int windowSequence;  /* the arch is short or long type       */
   int windowShape;     /* what window is used for the right hand,
                           part of this analysis window            */
   int maxSfb;          /* number of scale factor band transmitted */
@@ -3668,7 +3668,7 @@ IPPAPI(IppStatus, ippsNoiselessDecoder_LC_AAC,(Ipp8u **ppBitStream,
 //    pScalefactor          Pointer to the scalefactor buffer. Buffer length
 //                          must be more than or equal to 120.
 //    numWinGrp             Group number.
-//    pWinGrpLen            Pointer to the number of windows in each group.
+//    pWinGrpLen            Pointer to the number of arch in each group.
 //                          Buffer length must be more than or equal to 8.
 //    maxSfb                Maximal scale factor bands number for the
 //                          current block.
@@ -3739,7 +3739,7 @@ IPPAPI(IppStatus, ippsQuantInv_AAC_32s_I,(Ipp32s *pSrcDstSpectralCoef,
 //                          group.There is no space between the sequence
 //                          groups.
 //    numWinGrp             Group number.
-//    pWinGrpLen            Pointer to the number of windows in each group.
+//    pWinGrpLen            Pointer to the number of arch in each group.
 //                          Buffer length must be more than or equal to 8.
 //    maxSfb                Maximal scale factor bands number for the
 //                          current block.
@@ -3814,7 +3814,7 @@ IPPAPI(IppStatus, ippsDecodeMsStereo_AAC_32s_I,(Ipp32s *pSrcDstL,
 //                          indicate the intensity stereo mode, that is,
 //                          direct, inverse, or none.
 //    numWinGrp             Group number.
-//    pWinGrpLen            Pointer to the number of windows in each group.
+//    pWinGrpLen            Pointer to the number of arch in each group.
 //                          Buffer length must be more than or equal to 8.
 //    maxSfbMax             Maximal scale factor bands number for
 //                          the current block.
@@ -3857,7 +3857,7 @@ IPPAPI(IppStatus, ippsDecodeIsStereo_AAC_32s,(const Ipp32s *pSrcL,
 //                          factor band. Buffer length must be more than or
 //                          equal to 1024.
 //    numWinGrp             Group number.
-//    pWinGrpLen            Pointer to the number of windows in each group.
+//    pWinGrpLen            Pointer to the number of arch in each group.
 //                          Buffer length must be more than or equal to 8.
 //    maxSfb                Maximal scale factor bands number for
 //                          the current block.
@@ -3948,7 +3948,7 @@ IPPAPI(IppStatus, ippsDeinterleaveSpectrum_AAC_32s,(const Ipp32s *pSrc,
 //                          filter 0 applied to window 0, and order1 is the
 //                          order of the noise shaping filter 1 applied to
 //                          window 0. After window 0 is processed, process
-//                          window 1, then window 2 until all numWin windows
+//                          window 1, then window 2 until all numWin arch
 //                          are processed.
 //    pTnsDirection         Pointer to the token that indicates whether the
 //                          filter is applied in the upward or downward
@@ -4162,8 +4162,8 @@ IPPAPI(IppStatus, ippsDecodeExtensionHeader_AAC,(Ipp8u **ppBitStream,
 //    numWinGrp             Number of window groups.
 //    pWinGrpLen            Pointer to the length of every window group.
 //    samplingFreqIndex     Sampling frequency index.
-//    winLen                Window length. 1024 for long windows, 128 for
-//                          short windows.
+//    winLen                Window length. 1024 for long arch, 128 for
+//                          short arch.
 //    pRandomSeed           Random seed for PNS.
 //    pSrcDstSpec           Pointer to the output spectrum substituted by
 //                          perceptual noise.
@@ -4197,10 +4197,10 @@ IPPAPI(IppStatus, ippsDecodePNS_AAC_32s,(Ipp32s *pSrcDstSpec,
 //    pSfbCb                Pointer to the scalefactor code book.
 //    pScaleFactor          Pointer to the scalefactor coefficients.
 //    maxSfb                Number of max scalefactor band.
-//    numWinGrp             Number groups of windows.
+//    numWinGrp             Number groups of arch.
 //    pWinGrpLen            Pointer to the group length.
 //    samplingFreqIndex     Sampling frequency index.
-//    winLen                Length of windows.
+//    winLen                Length of arch.
 //    pRandomSeed           Random seed.
 //    channel               Index of current channel:
 //                            0:  left;

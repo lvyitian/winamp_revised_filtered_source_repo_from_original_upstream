@@ -940,13 +940,13 @@ end
 	}
 
 	newapifield {
-		name  = "windowstargetplatformversion",
+		name  = "archtargetplatformversion",
 		kind  = "string",
 		scope = "project",
 	}
 
 	newapifield {
-		name  = "windowstargetplatformminversion",
+		name  = "archtargetplatformminversion",
 		kind = "string",
 		scope = "project",
 	}

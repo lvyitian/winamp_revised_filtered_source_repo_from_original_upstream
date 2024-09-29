@@ -19,7 +19,7 @@
 
 #if defined(_WIN32_WCE)
 
-#include <windows.h>
+#include <arch.h>
 
 extern int main( int, const char ** );
 

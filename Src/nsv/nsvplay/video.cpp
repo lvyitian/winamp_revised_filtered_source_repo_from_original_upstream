@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <ddraw.h>
 #include "main.h"
 #include "video.h"
@@ -723,7 +723,7 @@ void VideoOutput::drawOSD(HDC hdc, RECT *rg) {
     GetClientRect(video_hwnd,&fullr);
     ClientToScreen(video_hwnd,(LPPOINT)&fullr);
     ClientToScreen(video_hwnd,((LPPOINT)&fullr) + 1);
-    // transform coords from windows desktop coords (where 0,0==upper-left corner of the primary monitor)
+    // transform coords from arch desktop coords (where 0,0==upper-left corner of the primary monitor)
     // to the coords for the monitor we're displaying on:
     fullr.top -= m_video_output->m_mon_y;
     fullr.left -= m_video_output->m_mon_x;

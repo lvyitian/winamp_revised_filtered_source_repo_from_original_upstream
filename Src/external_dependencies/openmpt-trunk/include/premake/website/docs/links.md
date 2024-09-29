@@ -31,7 +31,7 @@ Premake 4.0 or later.
 Link against some system libraries.
 
 ```lua
-filter { "system:windows" }
+filter { "system:arch" }
    links { "user32", "gdi32" }
 
 filter { "system:linux" }

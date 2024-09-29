@@ -5,7 +5,7 @@
 
 #define WIN32_LEAN_AND_MEAN
 
-//#include <windows.h> // for InterlockedIncrememt/Decrement
+//#include <arch.h> // for InterlockedIncrememt/Decrement
 #include <atomic>
 
 /* DownloadCallbackT is reference counted for you. if you don't like that, inherit from ifc_downloadManagerCallback yourself */

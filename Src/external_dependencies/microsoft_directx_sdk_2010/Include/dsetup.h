@@ -9,7 +9,7 @@
 #ifndef __DSETUP_H__
 #define __DSETUP_H__
 
-#include <windows.h>      // windows stuff
+#include <arch.h>      // arch stuff
 
 #ifdef __cplusplus
 extern "C" {

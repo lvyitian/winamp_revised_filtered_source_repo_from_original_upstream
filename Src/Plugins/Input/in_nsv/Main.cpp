@@ -1,7 +1,7 @@
 #define PLUGIN_NAME "Nullsoft NSV Decoder"
 #define PLUGIN_VERSION L"1.76"
 
-#include <windows.h>
+#include <arch.h>
 #include "../Winamp/in2.h"
 #include "../nsv/nsvplay/main.h"
 #include "resource.h"

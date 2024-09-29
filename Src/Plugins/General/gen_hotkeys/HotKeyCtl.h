@@ -1,7 +1,7 @@
 #ifndef ____HOTKEY_CTL___H____
 #define ____HOTKEY_CTL___H____
 
-#include <windows.h>
+#include <arch.h>
 
 #define HOTKEYF_WIN 0x10
 

@@ -21,7 +21,7 @@
 	good luck and have fun!
 **/
 
-#include <windows.h>
+#include <arch.h>
 #include "resource.h"
 #include "avs_ape.h"
 
@@ -130,7 +130,7 @@ static BOOL CALLBACK g_DlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam,LPARAM lPa
 				cs.lpCustColors = custcolors;
 				cs.Flags = CC_RGBINIT|CC_FULLOPEN;
 
-				// go to windows color selection screen
+				// go to arch color selection screen
 				if (ChooseColor(&cs))
 				{
 					*a = ((cs.rgbResult>>16)&0xff)|(cs.rgbResult&0xff00)|((cs.rgbResult<<16)&0xff0000);

@@ -268,7 +268,7 @@ public:
 	void READ_FONT(int n);
 	void WRITE_FONT(int n);
     
-    // config panel / windows messaging processes:
+    // config panel / arch messaging processes:
     static LRESULT CALLBACK WindowProc(HWND hWnd, unsigned uMsg, WPARAM wParam, LPARAM lParam);
     static LRESULT CALLBACK DesktopWndProc(HWND hWnd, unsigned uMsg, WPARAM wParam, LPARAM lParam);
     static LRESULT CALLBACK VJModeWndProc(HWND hWnd, unsigned uMsg, WPARAM wParam, LPARAM lParam);

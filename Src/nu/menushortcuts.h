@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 
 #define MSF_REPLACE			0x0000
 #define MSF_APPEND			0x0001

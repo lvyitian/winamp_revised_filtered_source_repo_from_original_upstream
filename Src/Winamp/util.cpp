@@ -7,7 +7,7 @@
  **/
 
 #include "main.h"
-#include <windows.h>
+#include <arch.h>
 #include "strutil.h"
 #include "../nu/ns_wc.h"
 #include "plush/plush.h"

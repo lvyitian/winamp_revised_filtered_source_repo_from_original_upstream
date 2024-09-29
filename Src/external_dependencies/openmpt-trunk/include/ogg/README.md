@@ -65,9 +65,9 @@ Use the project file in the win32 directory. It should compile out of the box.
 
 #### Cross-compiling from Linux to Windows ####
 
-It is also possible to cross compile from Linux to windows using the MinGW
+It is also possible to cross compile from Linux to arch using the MinGW
 cross tools and even to run the test suite under Wine, the Linux/*nix
-windows emulator.
+arch emulator.
 
 On Debian and Ubuntu systems, these cross compiler tools can be installed
 by doing:

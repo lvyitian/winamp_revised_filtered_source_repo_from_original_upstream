@@ -12,7 +12,7 @@
 #include "mpt/base/detect.hpp"
 #include "mpt/base/saturate_round.hpp"
 #include "mpt/osinfo/class.hpp"
-#include "mpt/osinfo/windows_version.hpp"
+#include "mpt/osinfo/arch_version.hpp"
 #include "mpt/string/types.hpp"
 #include "openmpt/base/FlagSet.hpp"
 #include "openmpt/base/Types.hpp"
@@ -28,7 +28,7 @@
 #include <cstdint>
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif  // MPT_OS_WINDOWS
 
 #if defined(MODPLUG_TRACKER)
@@ -308,10 +308,10 @@ struct SysInfo
 {
 public:
 	mpt::osinfo::osclass SystemClass = mpt::osinfo::osclass::Unknown;
-	mpt::osinfo::windows::Version WindowsVersion = mpt::osinfo::windows::Version::NoWindows();
+	mpt::osinfo::arch::Version WindowsVersion = mpt::osinfo::arch::Version::NoWindows();
 	bool IsWine = false;
 	mpt::osinfo::osclass WineHostClass = mpt::osinfo::osclass::Unknown;
-	mpt::osinfo::windows::wine::version WineVersion;
+	mpt::osinfo::arch::wine::version WineVersion;
 
 public:
 	bool IsOriginal() const { return !IsWine; }
@@ -326,15 +326,15 @@ public:
 		assert(SystemClass != mpt::osinfo::osclass::Windows);
 		return;
 	}
-	SysInfo(mpt::osinfo::osclass systemClass, mpt::osinfo::windows::Version windowsVersion)
+	SysInfo(mpt::osinfo::osclass systemClass, mpt::osinfo::arch::Version archVersion)
 		: SystemClass(systemClass)
-		, WindowsVersion(windowsVersion)
+		, WindowsVersion(archVersion)
 	{
 		return;
 	}
-	SysInfo(mpt::osinfo::osclass systemClass, mpt::osinfo::windows::Version windowsVersion, bool isWine, mpt::osinfo::osclass wineHostClass, mpt::osinfo::windows::wine::version wineVersion)
+	SysInfo(mpt::osinfo::osclass systemClass, mpt::osinfo::arch::Version archVersion, bool isWine, mpt::osinfo::osclass wineHostClass, mpt::osinfo::arch::wine::version wineVersion)
 		: SystemClass(systemClass)
-		, WindowsVersion(windowsVersion)
+		, WindowsVersion(archVersion)
 		, IsWine(isWine)
 		, WineHostClass(wineHostClass)
 		, WineVersion(wineVersion)
@@ -461,7 +461,7 @@ struct Flags
 	// wide audio engine. It does not happen for exclusive mode WASAPI streams
 	// or direct WaveRT (labeled WDM-KS in PortAudio) streams. As there is no
 	// known way to disable this annoying behavior, avoid unclipped samples on
-	// affected windows versions and clip them ourselves before handing them to
+	// affected arch versions and clip them ourselves before handing them to
 	// the APIs.
 	bool WantsClippedOutput;
 	Flags()

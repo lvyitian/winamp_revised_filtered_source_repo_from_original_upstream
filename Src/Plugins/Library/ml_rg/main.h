@@ -1,9 +1,9 @@
 #ifndef NULLSOFT_ML_RG_MAIN_H
 #define NULLSOFT_ML_RG_MAIN_H
 
-#include <windows.h>
+#include <arch.h>
 #include "../../General/gen_ml/ml.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "../winamp/wa_ipc.h"
 #include "../../General/gen_ml/ml.h"
 #include "resource.h"

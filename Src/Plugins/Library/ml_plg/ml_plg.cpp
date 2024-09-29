@@ -112,7 +112,7 @@ void WriteIntToIni(const char *key, const int value)
 	WritePrivateProfileStringA("ml_plg", key, buf, mediaLibrary.GetWinampIni());
 }
 
-// BE CAREFULL! Using this could potentially internationalize floats on some versions of windows eg. '1,6' instead of '1.6'
+// BE CAREFULL! Using this could potentially internationalize floats on some versions of arch eg. '1,6' instead of '1.6'
 void WriteFloatToIni(const char *key, const float value)
 {
 	char buf[32] = {0};

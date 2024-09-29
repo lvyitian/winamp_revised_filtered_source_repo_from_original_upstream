@@ -1,7 +1,7 @@
 #ifndef STRICT
 #define STRICT 1
 #endif
-#include <windows.h>
+#include <arch.h>
 #include <math.h>
 
 #include <malloc.h>

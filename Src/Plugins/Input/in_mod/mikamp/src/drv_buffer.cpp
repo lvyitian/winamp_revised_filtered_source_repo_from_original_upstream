@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <malloc.h>
 #include "mikmod.h"
 #include "virtch.h"

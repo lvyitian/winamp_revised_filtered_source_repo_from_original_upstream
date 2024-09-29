@@ -22,7 +22,7 @@
 */
 
 
-#include <windows.h>
+#include <arch.h>
 #include "ns-eel-int.h"
 
 #ifdef NSEEL_REENTRANT_EXECUTION

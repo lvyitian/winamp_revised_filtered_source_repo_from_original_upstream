@@ -40,7 +40,7 @@
 
 //-----------------------------------------------------------------------------------------------
 
-#include <windows.h>
+#include <arch.h>
 #include "../gen_ml/ml.h"
 #include "../winamp/wa_ipc.h"
 #include "../winamp/ipc_pe.h"

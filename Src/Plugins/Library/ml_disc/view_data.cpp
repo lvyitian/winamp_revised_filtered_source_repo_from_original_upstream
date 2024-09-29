@@ -1,5 +1,5 @@
 #include "main.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "resource.h"
 #include "../winamp/wa_ipc.h"
 #include "../nu/DialogSkinner.h"

@@ -125,7 +125,7 @@
 				_p(2,'<subsystem>0</subsystem>')
 			elseif cfg.kind == p.SHAREDLIB then
 				_p(2,'<lib>2</lib>')
-				_p(2,'<subsystem>0</subsystem>') -- SHOULD THIS BE '2' (windows)??
+				_p(2,'<subsystem>0</subsystem>') -- SHOULD THIS BE '2' (arch)??
 			else
 				_p(2,'<lib>0</lib>')
 				_p(2,'<subsystem>2</subsystem>')
@@ -183,7 +183,7 @@
 			m.visuald.element(2, "compiler", compiler[compilerName])
 
 			m.visuald.element(2, "otherDMD", '0')
-			m.visuald.element(2, "program", '$(DMDInstallDir)windows\\bin\\dmd.exe')
+			m.visuald.element(2, "program", '$(DMDInstallDir)arch\\bin\\dmd.exe')
 
 			local impdirs
 			if #cfg.importdirs > 0 then

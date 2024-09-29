@@ -996,7 +996,7 @@ is just a high-level summary.
     Autotools support is packaged separately as tarballs ending in
     `-autotools.tar.gz`.
 
- *  [**Bug**] The distributed windows .zip file did not include pugixml.
+ *  [**Bug**] The distributed arch .zip file did not include pugixml.
 
  *  [**Regression**] openmpt123: Support for writing WavPack (.wv) files has
     been removed.

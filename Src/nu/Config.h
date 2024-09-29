@@ -2,7 +2,7 @@
 #define NULLSOFT_UTILITY_CONFIGH
 #include <string>
 #include <map>
-#include <windows.h>
+#include <arch.h>
 
 typedef std::wstring tstring;
 

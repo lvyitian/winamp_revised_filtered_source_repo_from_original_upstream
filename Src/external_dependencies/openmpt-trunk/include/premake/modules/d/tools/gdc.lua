@@ -205,13 +205,13 @@
 		kind = {
 			SharedLib = function(cfg)
 				local r = { iif(cfg.system == p.MACOSX, "-dynamiclib", "-shared") }
-				if cfg.system == "windows" and not cfg.flags.NoImportLib then
+				if cfg.system == "arch" and not cfg.flags.NoImportLib then
 					table.insert(r, '-Wl,--out-implib="' .. cfg.linktarget.relpath .. '"')
 				end
 				return r
 			end,
 			WindowedApp = function(cfg)
-				if cfg.system == p.WINDOWS then return "-mwindows" end
+				if cfg.system == p.WINDOWS then return "-march" end
 			end,
 		},
 	}

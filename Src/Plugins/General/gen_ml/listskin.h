@@ -1,7 +1,7 @@
 #ifndef _LISTSKIN_H
 #define _LISTSKIN_H
 
-#include <windows.h>
+#include <arch.h>
 
 class ScrollWnd;
 

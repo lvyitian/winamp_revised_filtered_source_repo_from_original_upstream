@@ -18,7 +18,7 @@ The available sources for keywords. Keywords are not case-sensitive.
 
 * **Command line options**.
 
-* **System names** such as **windows**, **macosx**, or **xbox360**.
+* **System names** such as **arch**, **macosx**, or **xbox360**.
 
 * **Architectures** such as **x32** or **x64**.
 
@@ -111,7 +111,7 @@ configuration "linux or macosx"
 You can also use **not** to apply the settings to all environments where the identifier is not set.
 
 ```lua
-configuration "not windows"
+configuration "not arch"
   defines { "NOT_WINDOWS" }
 ```
 

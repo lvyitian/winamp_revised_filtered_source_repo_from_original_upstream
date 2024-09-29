@@ -2,7 +2,7 @@
 #define __WASABI_IFC_MESSAGEPROCESSOR_H
 
 #include <bfc/dispatch.h>
-#include <windows.h>
+#include <arch.h>
 class ifc_messageprocessor : public Dispatchable
 {
 protected:

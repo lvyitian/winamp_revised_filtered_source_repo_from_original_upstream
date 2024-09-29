@@ -30,7 +30,7 @@
 #include <bfc/wasabi_std_wnd.h>
 #include <api/wnd/PaintCanvas.h>
 #ifdef _WIN32
-#include <windowsx.h> // for SetWindowRedraw
+#include <archx.h> // for SetWindowRedraw
 #endif
 
 #ifdef WASABINOMAINAPI
@@ -657,7 +657,7 @@ void Layout::fixPosition()
 void Layout::saveAllPositions()
 {
 	// The positions are saved from the lastest to the first one
-	// The 'Player' windows and the 'Main' windows are using the same prefix
+	// The 'Player' arch and the 'Main' arch are using the same prefix
 	// In saving in decreasing order we are sure the lastest saved is the one for the Player
 
 	for (int i = 0;i < SkinParser::script_getNumContainers();i++)

@@ -93,7 +93,7 @@ of a device for the duration of active stream using those devices
 #define DRV_QUERYDEVICEINTERFACESIZE (DRV_RESERVED + 13)
 #endif
 
-#include <windows.h>
+#include <arch.h>
 #ifndef __GNUC__ /* Fix for ticket #257: MinGW-w64: Inclusion of <winioctl.h> triggers multiple redefinition errors. */
 #include <winioctl.h>
 #endif
@@ -665,7 +665,7 @@ NOTE: GetVersionEx() is deprecated as of Windows 8.1 and can not be used to reli
 versions of Windows higher than Windows 8 (due to manifest requirements for reporting higher versions).
 Microsoft recommends switching to VerifyVersionInfo (available on Win 2k and later), however GetVersionEx
 is faster, for now we just disable the deprecation warning.
-See: https://msdn.microsoft.com/en-us/library/windows/desktop/ms724451(v=vs.85).aspx
+See: https://msdn.microsoft.com/en-us/library/arch/desktop/ms724451(v=vs.85).aspx
 See: http://www.codeproject.com/Articles/678606/Part-Overcoming-Windows-s-deprecation-of-GetVe
 */
 #pragma warning (disable : 4996) /* use of GetVersionEx */
@@ -1811,7 +1811,7 @@ static PaWinWdmPin* PinNew(PaWinWdmFilter* parentFilter, unsigned long pinId, Pa
 #endif
 
                         /* Set endpoint pin ID (this is the topology INPUT pin, since portmixer will always traverse the
-                        filter in audio streaming direction, see http://msdn.microsoft.com/en-us/library/windows/hardware/ff536331(v=vs.85).aspx
+                        filter in audio streaming direction, see http://msdn.microsoft.com/en-us/library/arch/hardware/ff536331(v=vs.85).aspx
                         for more information)
                         */
                         pin->endpointPinId = pcPin;

@@ -123,45 +123,45 @@ int Main_OnRButtonUp(HWND hwnd, int x, int y, UINT flags)
 		if (ret) SendMessageW(hwnd, WM_COMMAND, ret, 0);
 		return 1;
 	}
-	else if ((!config_windowshade && x >= 36 && y >= 26 && x < 96 && y < 39) || 
-		(config_windowshade && x >= 129 && y >= 3 && x < 129+28 && y < 3+6))
+	else if ((!config_archhade && x >= 36 && y >= 26 && x < 96 && y < 39) || 
+		(config_archhade && x >= 129 && y >= 3 && x < 129+28 && y < 3+6))
 	{
 		hmenu = GetSubMenu(GetSubMenu(top_menu,3),1);
 		CheckMenuItem(hmenu,WINAMP_OPTIONS_ELAPSED,config_timeleftmode?MF_UNCHECKED:MF_CHECKED);
 		CheckMenuItem(hmenu,WINAMP_OPTIONS_REMAINING,config_timeleftmode?MF_CHECKED:MF_UNCHECKED);		
 	}
 	else if ((x >= 27 && y >= 40 && x < 99 && y < 61) ||
-		(config_windowshade && x >= 78 && y >= 4 && x < 116 && y < 11))
+		(config_archhade && x >= 78 && y >= 4 && x < 116 && y < 11))
 	{
 		hmenu=g_submenus_vis;
 	}
 	else if ((x >= 16 && y >= 88 && x < 37 && y < 106) ||				/// button 1
-		(config_windowshade && x >= 167 && y >= 3 && x < 176 && y < 12))
+		(config_archhade && x >= 167 && y >= 3 && x < 176 && y < 12))
 	{
 		hmenu = GetSubMenu(GetSubMenu(top_menu,3),2);
 	}
 	else if ((x >= 37 && y >= 88 && x < 62 && y < 106) ||				/// button 2
-		(config_windowshade && x >= 176 && y >= 3 && x < 186 && y < 12))
+		(config_archhade && x >= 176 && y >= 3 && x < 186 && y < 12))
 	{
 		hmenu = GetSubMenu(GetSubMenu(top_menu,3),3);
 	}
 	else if ((x >= 62 && y >= 88 && x < 89 && y < 106) ||				/// button 3
-		(config_windowshade && x >= 186 && y >= 3 && x < 196 && y < 12))
+		(config_archhade && x >= 186 && y >= 3 && x < 196 && y < 12))
 	{
 		hmenu = GetSubMenu(GetSubMenu(top_menu,3),4);
 	}
 	else if ((x >= 89 && y >= 88 && x < 107 && y < 106) ||				/// button 4
-		(config_windowshade && x >= 196 && y >= 3 && x < 206 && y < 12))
+		(config_archhade && x >= 196 && y >= 3 && x < 206 && y < 12))
 	{
 		hmenu = GetSubMenu(GetSubMenu(top_menu,3),5);
 	}
 	else if ((x >= 107 && y >= 88 && x < 130 && y < 106) ||				/// button 5
-		(config_windowshade && x >= 206 && y >= 3 && x < 216 && y < 12))
+		(config_archhade && x >= 206 && y >= 3 && x < 216 && y < 12))
 	{
 		hmenu = GetSubMenu(GetSubMenu(top_menu,3),6);
 	}
 	else if ((x >= 136 && y >= 89 && x < 158 && y < 105) ||				/// eject
-		(config_windowshade && x >= 215 && y >= 3 && x < 225 && y < 12))
+		(config_archhade && x >= 215 && y >= 3 && x < 225 && y < 12))
 	{
 		hmenu = GetSubMenu(GetSubMenu(top_menu,3),7);
 		UpdateAudioCDMenus(hmenu);
@@ -208,10 +208,10 @@ int Main_OnLButtonDblClk(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFla
 		KillTimer(hwnd,666);
 		SendMessageW(hwnd,WM_CLOSE,0xDEADBEEF,0xDEADF00D);
 	}
-	else if (config_windowshade && nx <= 158 && nx >= 129 &&
+	else if (config_archhade && nx <= 158 && nx >= 129 &&
 		ny <= 10 && ny >= 5)
 		Main_OnLButtonDown(hwnd,0,x,y,keyFlags);
-	else if (config_windowshade && nx <= 213 && nx >= 168 &&
+	else if (config_archhade && nx <= 213 && nx >= 168 &&
 		ny <= 11 && ny >= 2)
 		Main_OnLButtonDown(hwnd,0,x,y,keyFlags);
 	else if (nx < 266 && nx > 117 && ny < 35 && ny > 24)
@@ -219,9 +219,9 @@ int Main_OnLButtonDblClk(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFla
 		SendMessageW(hwnd,WM_COMMAND,WINAMP_EDIT_ID3,0);
 	}
 	else if ((nx >= 24 && ny >= 43 && nx < 24+76 && ny < 43+16) || 
-		(config_windowshade && nx >= 79 && ny >= 5 && nx < 79+38 && ny < 5+5))
+		(config_archhade && nx >= 79 && ny >= 5 && nx < 79+38 && ny < 5+5))
 	{
-		if (config_windowshade) config_sa = !config_sa;
+		if (config_archhade) config_sa = !config_sa;
 		else
 		{
 			config_sa+=2;

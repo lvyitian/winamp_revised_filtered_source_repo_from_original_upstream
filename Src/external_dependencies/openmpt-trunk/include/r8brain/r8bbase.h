@@ -64,7 +64,7 @@
 #include "r8bconf.h"
 
 #if defined( _WIN32 )
-	#include <windows.h>
+	#include <arch.h>
 #else // defined( _WIN32 )
 	#include <pthread.h>
 #endif // defined( _WIN32 )

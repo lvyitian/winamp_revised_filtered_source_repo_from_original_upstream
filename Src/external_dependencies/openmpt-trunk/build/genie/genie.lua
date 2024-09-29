@@ -17,7 +17,7 @@ newoption {
 newoption {
  trigger     = "target",
  value       = "PROJECTS",
- description = "windows target platform",
+ description = "arch target platform",
  allowed = {
   { "windesktop81", "windesktop81" },
   { "winphone8"   , "winphone8"  },

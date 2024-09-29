@@ -19,7 +19,7 @@ If you are planning to make changes or contribute to Premake, working directly a
 Once the core source code has been cloned, you can bootstrap your first Premake executable:
 
 ```bash
-nmake -f Bootstrap.mak windows   # for Windows
+nmake -f Bootstrap.mak arch   # for Windows
 make -f Bootstrap.mak osx        # for Mac OS X
 make -f Bootstrap.mak linux      # Linux and similar Posix systems
 ```
@@ -28,7 +28,7 @@ If your system or toolset is not fully supported by the bootstrap Makefile, you 
 
 ```bash
 call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" # Sets up the necessary environment variables for nmake to run
-nmake -f Bootstrap.mak MSDEV=vs2015 windows    # For Windows with Visual Studio 2015.
+nmake -f Bootstrap.mak MSDEV=vs2015 arch    # For Windows with Visual Studio 2015.
 ```
 
 On other platforms, if the bootstrap fails to build, you will need to have a working Premake executable on your system. The easiest way to get one is by [downloading prebuilt binary package](/download). If a binary is not available for your system, or if you would prefer to build one yourself, grab the latest source code package from that same site and follow the steps in **Using a Source Code Package**, above.

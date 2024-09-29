@@ -6,7 +6,7 @@
 #include <string.h>
 #include <io.h>
 #include <fcntl.h>
-#include <windows.h>
+#include <arch.h>
 
 #include "duck_io.h"
 

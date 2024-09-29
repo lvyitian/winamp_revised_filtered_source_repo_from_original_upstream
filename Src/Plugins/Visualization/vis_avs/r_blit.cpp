@@ -30,7 +30,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // alphachannel safe 11/21/99
 // highly optimized on 10/10/00 JF. MMX.
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include "r_defs.h"
 #include "resource.h"

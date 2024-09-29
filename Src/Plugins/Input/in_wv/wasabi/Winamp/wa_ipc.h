@@ -19,7 +19,7 @@
 #ifndef _WA_IPC_H_
 #define _WA_IPC_H_
 
-#include <windows.h>
+#include <arch.h>
 #include <stddef.h>
 #if (_MSC_VER <= 1200)
 typedef int intptr_t;
@@ -440,9 +440,9 @@ typedef struct {
 #define IPC_ENABLEDISABLE_ALL_WINDOWS 259 // 0xdeadbeef to disable
 /* (requires Winamp 2.9+)
 ** SendMessage(hwnd_winamp,WM_WA_IPC,(enable?0:0xdeadbeef),IPC_ENABLEDISABLE_ALL_WINDOWS);
-** Sending this message with 0xdeadbeef as the param will disable all winamp windows and
-** any other values will enable all of the Winamp windows again. When disabled you won't
-** get any response on clicking or trying to do anything to the Winamp windows. If the
+** Sending this message with 0xdeadbeef as the param will disable all winamp arch and
+** any other values will enable all of the Winamp arch again. When disabled you won't
+** get any response on clicking or trying to do anything to the Winamp arch. If the
 ** taskbar icon is shown then you may still have control ;)
 */
 
@@ -593,7 +593,7 @@ typedef struct {
 ** 0 : main popup menu 
 ** 1 : main menubar file menu
 ** 2 : main menubar options menu
-** 3 : main menubar windows menu
+** 3 : main menubar arch menu
 ** 4 : main menubar help menu
 ** other values will return NULL.
 */
@@ -1480,8 +1480,8 @@ class ITrackSelector
 #define IPC_ADJUST_FFWINDOWSMENUPOS 606
 /* (requires Winamp 2.9+)
 ** int newpos=SendMessage(hwnd_winamp,WM_WA_IPC,(WPARAM)adjust_offset,IPC_ADJUST_FFWINDOWSMENUPOS);
-** This will move where Winamp expects the freeform windows in the menubar windows main
-** menu. This is useful if you wish to insert a menu item above extra freeform windows.
+** This will move where Winamp expects the freeform arch in the menubar arch main
+** menu. This is useful if you wish to insert a menu item above extra freeform arch.
 */
 
 
@@ -1496,7 +1496,7 @@ class ITrackSelector
 #define IPC_ADJUST_FFOPTIONSMENUPOS 609
 /* (requires Winamp 2.9+)
 ** int newpos=SendMessage(hwnd_winamp,WM_WA_IPC,(WPARAM)adjust_offset,IPC_ADJUST_FFOPTIONSMENUPOS);
-** moves where winamp expects the freeform preferences item in the menubar windows main
+** moves where winamp expects the freeform preferences item in the menubar arch main
 ** menu. This is useful if you wish to insert a menu item above the preferences item.
 **
 ** Note: This setting was ignored by gen_ff until it was fixed in 5.1
@@ -1705,7 +1705,7 @@ typedef struct {
 /* (requires Winamp 5.0+)
 ** SendMessage(hwnd_winamp,WM_WA_IPC,enabled,IPC_SETDRAWBORDERS);
 ** Set enabled to 1 to enable and 0 to disable drawing of the playlist editor and winamp
-** gen class windows (used by gen_ff to allow it to draw its own window borders).
+** gen class arch (used by gen_ff to allow it to draw its own window borders).
 */
 
 
@@ -2040,7 +2040,7 @@ typedef struct {
 ** int ismainwnd = (HWND)SendMessage(hwnd_winamp,WM_WA_IPC,(WPARAM)(HWND)test_wnd,IPC_FF_ISMAINWND);
 **
 ** This allows you to determine if the window handle passed to it is a modern skin main
-** window or not. If it is a main window or any of its windowshade variants then it will
+** window or not. If it is a main window or any of its archhade variants then it will
 ** return 1.
 **
 ** Because of the way modern skins are implemented, it is possible for this message to
@@ -2049,7 +2049,7 @@ typedef struct {
 ** window and also a winshaded version.
 **
 ** The following code example below is one way of seeing how this api works since it will
-** enumerate all windows related to Winamp at the time and allows you to process as
+** enumerate all arch related to Winamp at the time and allows you to process as
 ** required when a detection happens.
 **
 **
@@ -2059,7 +2059,7 @@ typedef struct {
 **
 **   if(SendMessage(hwnd_winamp,WM_WA_IPC,(WPARAM)hwnd,IPC_FF_ISMAINWND)){
 **     // do processing in here 
-**     // or continue the enum for other main windows (if they exist)
+**     // or continue the enum for other main arch (if they exist)
 **     // and just comment out the line below
 **     return 0;
 **   }
@@ -2073,7 +2073,7 @@ typedef struct {
 ** HWND wa2embed = (HWND)SendMessage(hwnd_winamp,WM_WA_IPC,(WPARAM)(HWND)test_wnd,IPC_FF_GETCONTENTWND);
 **
 ** This will return the Winamp 2 window that is embedded in the window's container
-** i.e. if hwnd is the playlist editor windowshade hwnd then it will return the Winamp 2
+** i.e. if hwnd is the playlist editor archhade hwnd then it will return the Winamp 2
 **      playlist editor hwnd.
 **
 ** If no content is found such as the window has nothing embedded then this will return

@@ -14,7 +14,7 @@
 //
 //--------------------------------------------------------------------------/
 
-#include <windows.h>
+#include <arch.h>
 
 #include "CVbriHeader.h"
 #include "LAMEInfo.h"

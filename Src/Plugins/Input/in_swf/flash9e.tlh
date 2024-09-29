@@ -2,7 +2,7 @@
 //
 // e:\nullsoft\in_swf\release\flash9e.tlh
 //
-// C++ source equivalent of Win32 type library C:/windows/system32/macromed/Flash/Flash9e.ocx
+// C++ source equivalent of Win32 type library C:/arch/system32/macromed/Flash/Flash9e.ocx
 // compiler-generated file created 04/17/08 at 15:29:08 - DO NOT EDIT!
 
 #pragma once

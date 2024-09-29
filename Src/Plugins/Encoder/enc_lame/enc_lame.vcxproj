@@ -96,31 +96,31 @@
     <VcpkgInstalledDir>
     </VcpkgInstalledDir>
     <VcpkgConfiguration>Debug</VcpkgConfiguration>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <VcpkgUseStatic>false</VcpkgUseStatic>
     <VcpkgInstalledDir>
     </VcpkgInstalledDir>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgUseStatic>false</VcpkgUseStatic>
     <VcpkgInstalledDir>
     </VcpkgInstalledDir>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
     <VcpkgConfiguration>Debug</VcpkgConfiguration>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgUseStatic>false</VcpkgUseStatic>
     <VcpkgInstalledDir>
     </VcpkgInstalledDir>
-    <VcpkgTriplet>x86-windows-static-md</VcpkgTriplet>
+    <VcpkgTriplet>x86-arch-static-md</VcpkgTriplet>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\Wasabi;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-windows-static\include\lame</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Wasabi;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-arch-static\include\lame</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDOWS;_USRDLL;_BLADEDLL;NSV_CODER_MP3_EXPORTS;WINDOWS_IGNORE_PACKING_MISMATCH;WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -144,7 +144,7 @@
       <ImportLibrary>$(IntDir)$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-windows-static\debug\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-arch-static\debug\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y /D $(OutDir)$(TargetName)$(TargetExt) ..\..\..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\Plugins\ 
@@ -156,7 +156,7 @@ if exist ..\..\..\resources\libraries\lame_enc.dll xcopy /Y /D ..\..\..\resource
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\Wasabi;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-windows-static\include\lame</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Wasabi;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-arch-static\include\lame</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;_BLADEDLL;NSV_CODER_MP3_EXPORTS;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -171,14 +171,14 @@ if exist ..\..\..\resources\libraries\lame_enc.dll xcopy /Y /D ..\..\..\resource
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>shlwapi.lib;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-windows-static\debug\lib\libmp3lame-static.lib</AdditionalDependencies>
+      <AdditionalDependencies>shlwapi.lib;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-arch-static\debug\lib\libmp3lame-static.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <ImportLibrary>$(IntDir)$(TargetName).lib</ImportLibrary>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-windows-static\debug\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-arch-static\debug\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y /D $(OutDir)$(TargetName)$(TargetExt) ..\..\..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\Plugins\ 
@@ -192,7 +192,7 @@ if exist ..\..\..\resources\libraries\lame_enc.dll xcopy /Y /D ..\..\..\resource
       <Optimization>MinSpace</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>..\..\..\Wasabi;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-windows-static\include\lame</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Wasabi;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-arch-static\include\lame</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDOWS;_USRDLL;_BLADEDLL;NSV_CODER_MP3_EXPORTS;WINDOWS_IGNORE_PACKING_MISMATCH;NDEBUG;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -218,7 +218,7 @@ if exist ..\..\..\resources\libraries\lame_enc.dll xcopy /Y /D ..\..\..\resource
       <ImportLibrary>$(IntDir)$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-windows-static\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-arch-static\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y /D $(OutDir)$(TargetName)$(TargetExt) ..\..\..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\Plugins\ 
@@ -231,7 +231,7 @@ if exist ..\..\..\resources\libraries\lame_enc.dll xcopy /Y /D ..\..\..\resource
       <Optimization>MinSpace</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>..\..\..\Wasabi;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-windows-static\include\lame</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Wasabi;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-arch-static\include\lame</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;NSV_CODER_MP3_EXPORTS;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -246,7 +246,7 @@ if exist ..\..\..\resources\libraries\lame_enc.dll xcopy /Y /D ..\..\..\resource
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>shlwapi.lib;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-windows-static\lib\libmp3lame-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>shlwapi.lib;..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-arch-static\lib\libmp3lame-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
@@ -255,7 +255,7 @@ if exist ..\..\..\resources\libraries\lame_enc.dll xcopy /Y /D ..\..\..\resource
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <ImportLibrary>$(IntDir)$(TargetName).lib</ImportLibrary>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-windows-static\debug\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\external_dependencies\vcpkg\$(PlatformShortName)-arch-static\debug\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y /D $(OutDir)$(TargetName)$(TargetExt) ..\..\..\..\Build\Winamp_$(PlatformShortName)_$(Configuration)\Plugins\ 

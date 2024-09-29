@@ -1,6 +1,6 @@
 #ifndef NULLSOFT_DEFAULTSH
 #define NULLSOFT_DEFAULTSH
-#include <windows.h>
+#include <arch.h>
 
 extern wchar_t defaultDownloadPath[MAX_PATH];
 

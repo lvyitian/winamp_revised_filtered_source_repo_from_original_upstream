@@ -17,7 +17,7 @@
 #define _GIOFILE_H
 
 /* ------------------------ includes --------------------------------------*/
-#include <windows.h>
+#include <arch.h>
 
 #include "CVbriHeader.h"
 #include "jnetlib/jnetlib.h"

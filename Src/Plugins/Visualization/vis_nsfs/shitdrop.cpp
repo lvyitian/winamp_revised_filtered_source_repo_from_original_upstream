@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <ddraw.h>
 #include <math.h>

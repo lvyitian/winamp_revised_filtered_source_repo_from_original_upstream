@@ -246,7 +246,7 @@ HRESULT LoginResultWebAuth::Finish()
 		external = NULL;
 	}
 	
-	// try to destroy windows before browserMngr->Finish() (this will let them to lock less)
+	// try to destroy arch before browserMngr->Finish() (this will let them to lock less)
 
 	if (NULL != hView)
 	{

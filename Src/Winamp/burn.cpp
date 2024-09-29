@@ -7,7 +7,7 @@
  **/
 #include "main.h"
 #include "resource.h"
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 #include <time.h>
 #include <math.h>

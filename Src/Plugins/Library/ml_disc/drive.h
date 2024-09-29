@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 
 LPCWSTR Drive_GetTypeString(DWORD nType);
 LPCWSTR Drive_GetBusTypeString(DWORD nBusType);

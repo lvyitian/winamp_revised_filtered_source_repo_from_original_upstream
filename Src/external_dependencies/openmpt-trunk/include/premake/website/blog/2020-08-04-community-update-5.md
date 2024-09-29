@@ -20,7 +20,7 @@ Learning my lesson from past development, I did my best to make this new version
 ```lua
 -- create a new query, targeting a particular "environment";
 -- returns the global configuration for that environment
-local global = store:query({ system='windows', action='vs2019' })
+local global = store:query({ system='arch', action='vs2019' })
 
 -- from the global scope, get the configuration for a specific workspace
 local wks = global:select({ workspaces='Workspace1' })

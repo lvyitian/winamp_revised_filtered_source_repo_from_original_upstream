@@ -2,7 +2,7 @@
 #ifndef MEDIALIBRARYINTERFACEH
 #define MEDIALIBRARYINTERFACEH
 
-#include <windows.h>
+#include <arch.h>
 #include <tchar.h>
 
 #include "..\Plugins\General\gen_ml/ml.h"

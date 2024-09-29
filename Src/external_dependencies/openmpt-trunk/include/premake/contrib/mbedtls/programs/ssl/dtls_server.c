@@ -65,7 +65,7 @@ int main( void )
 #else
 
 #if defined(_WIN32)
-#include <windows.h>
+#include <arch.h>
 #endif
 
 #include <string.h>

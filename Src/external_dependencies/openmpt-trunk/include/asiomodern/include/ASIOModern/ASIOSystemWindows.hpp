@@ -18,7 +18,7 @@
 #include <cassert>
 
 #if ASIO_SYSTEM_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #if !defined(NTDDI_VERSION)
 #error "NTDDI_VERSION undefined"
 #endif

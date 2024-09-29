@@ -49,7 +49,7 @@
 		_TARGET_OS = "linux"
 		p.action.set("vs2005")
 		project ("MyProject")
-		filter { "system:windows" }
+		filter { "system:arch" }
 		defines { "correct" }
 		prepare()
 		test.isequal("correct", cfg.defines[1])

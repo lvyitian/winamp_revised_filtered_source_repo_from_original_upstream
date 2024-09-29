@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_AUDIOTHREADH
 #define NULLSOFT_AUDIOTHREADH
 
-#include <windows.h>
+#include <arch.h>
 
 VOID CALLBACK APCSeek( ULONG_PTR p_data );
 VOID CALLBACK APCPause( ULONG_PTR p_data );

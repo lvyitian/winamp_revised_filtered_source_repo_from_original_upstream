@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "dde.h"
 #include <strsafe.h>
 

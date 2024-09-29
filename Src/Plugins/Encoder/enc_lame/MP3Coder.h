@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_MP3_CODER_H
 #define NULLSOFT_MP3_CODER_H
 
-#include <windows.h>
+#include <arch.h>
 #include "../nsv/enc_if.h"
 #include "BladeMP3EncDLL.h"
 #ifndef _BLADEDLL

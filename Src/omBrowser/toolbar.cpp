@@ -20,7 +20,7 @@
 #include "./browserUiCommon.h"
 
 
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 #include <commctrl.h>
 #include <strsafe.h>

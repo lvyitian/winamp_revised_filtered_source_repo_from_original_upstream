@@ -3,7 +3,7 @@
 #include "api__in_flv.h"
 #include "FLVVideoHeader.h"
 #include <shlwapi.h>
-#include <windows.h>
+#include <arch.h>
 #include "../nu/threadname.h"
 #include <api/service/waservicefactory.h>
 #include "../nu/AutoLock.h"

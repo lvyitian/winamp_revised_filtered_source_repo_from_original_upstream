@@ -83,7 +83,7 @@ System.onScriptLoaded() {
 }
 
 //------------------------------------------------------------------------
-// grab a handle to the windowshade layout, can't get it in onScriptLoaded since it doesn't exists yet
+// grab a handle to the archhade layout, can't get it in onScriptLoaded since it doesn't exists yet
 // also, first time we are shown, we update the viscmd button's action
 //------------------------------------------------------------------------
 main.onSetVisible(int show) {

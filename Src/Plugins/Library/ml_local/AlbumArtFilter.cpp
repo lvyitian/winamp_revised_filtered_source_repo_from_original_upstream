@@ -833,7 +833,7 @@ INT_PTR AlbumArtFilter::DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam,LPARAM
 					if((ListView_GetItemState(list->getwnd(), x, LVIS_FOCUSED)&LVIS_FOCUSED) && albumList.Items[x+1].art)
 					{
 						// TODO change to use the explorer api
-						if(opened++ >= 10) break; // that's enough! Opening 400 exploerer windows may seem like fun, but windows _hates_ it.
+						if(opened++ >= 10) break; // that's enough! Opening 400 exploerer arch may seem like fun, but arch _hates_ it.
 						wchar_t fn[MAX_PATH] = {0};
 						lstrcpynW(fn,albumList.Items[x+1].art->filename,MAX_PATH);
 						PathRemoveFileSpecW(fn);

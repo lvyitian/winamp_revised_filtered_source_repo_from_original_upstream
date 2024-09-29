@@ -2,7 +2,7 @@
 #include "./api__ml_online.h"
 #include "./resource.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 
 typedef struct __MESSAGEBOX

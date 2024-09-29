@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <mmreg.h>
 #include <msacm.h>
 #include "../nu/ns_wc.h"

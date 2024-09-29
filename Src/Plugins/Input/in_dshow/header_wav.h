@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_IN_DSHOW_HEADER_WAV_H
 #define NULLSOFT_IN_DSHOW_HEADER_WAV_H
 
-#include <windows.h>
+#include <arch.h>
 
 #include "Header.h"
 

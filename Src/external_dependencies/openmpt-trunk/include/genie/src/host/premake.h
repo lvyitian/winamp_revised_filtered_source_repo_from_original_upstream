@@ -29,14 +29,14 @@
 #define PLATFORM_STRING   "os2"
 #else
 #define PLATFORM_WINDOWS  (1)
-#define PLATFORM_STRING   "windows"
+#define PLATFORM_STRING   "arch"
 #endif
 
 
 /* Pull in platform-specific headers required by built-in functions */
 #if PLATFORM_WINDOWS
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include <arch.h>
 #else
 #include <unistd.h>
 #include <sys/time.h>

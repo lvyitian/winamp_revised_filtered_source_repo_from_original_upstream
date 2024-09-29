@@ -29,9 +29,9 @@ Function initPages();
 #define CUSTOM_OPTIONSMENU_ITEMS "{1828D28F-78DD-4647-8532-EBA504B8FC04}"
 Global ConfigItem optionsmenu_page;
 
-// this is the page that maps its items to the windows menu (aka View), you can add attribs or more pages (submenus)
+// this is the page that maps its items to the arch menu (aka View), you can add attribs or more pages (submenus)
 #define CUSTOM_WINDOWSMENU_ITEMS "{6559CA61-7EB2-4415-A8A9-A2AEEF762B7F}"
-Global ConfigItem custom_windows_page;
+Global ConfigItem custom_arch_page;
 
 // non exposed attribs page
 #define CUSTOM_PAGE_NONEXPOSED "{E9C2D926-53CA-400f-9A4D-85E31755A4CF}"
@@ -51,7 +51,7 @@ initPages()
 	// load up the cfgpage in which we'll insert our custom page
 	optionsmenu_page = Config.getItem(CUSTOM_OPTIONSMENU_ITEMS);
 
-	custom_windows_page = Config.getItem(CUSTOM_WINDOWSMENU_ITEMS);
+	custom_arch_page = Config.getItem(CUSTOM_WINDOWSMENU_ITEMS);
 
 #endif
 

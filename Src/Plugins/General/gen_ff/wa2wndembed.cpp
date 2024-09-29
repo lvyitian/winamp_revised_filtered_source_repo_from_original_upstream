@@ -38,7 +38,7 @@ void WaOsWndHost::onBeforeReparent(int host)
 #else
 	embedWindowState* ws = (embedWindowState*)GetWindowLong(getHWND(), GWL_USERDATA);
 #endif
-	// 0x49474541 is related to keeping windows shown on litestep desktops
+	// 0x49474541 is related to keeping arch shown on litestep desktops
 	if (ws == NULL || (int)ws == 0x49474541)
 	{
 		HWND w = getHWND();
@@ -68,7 +68,7 @@ void WaOsWndHost::onAfterReparent(int host)
 #else
 	embedWindowState* ws = (embedWindowState*)GetWindowLong(getHWND(), GWL_USERDATA);
 #endif
-	// 0x49474541 is related to keeping windows shown on litestep desktops
+	// 0x49474541 is related to keeping arch shown on litestep desktops
 	if (ws == NULL || (int)ws == 0x49474541)
 	{
 		HWND w = getHWND();
@@ -432,11 +432,11 @@ int Wa2WndEmbed::destroyWindow(ifc_window *w)
 				// if you load another skin (ie: NonStep), and you close the pledit, it immediately reappears with the wa2 look since oswndhost_unhost
 				// reset the flags, region and parent to what they were before the window was embedded
 
-				// i think that what we need is to save which windows were visible (and their location) before switching to freeform
+				// i think that what we need is to save which arch were visible (and their location) before switching to freeform
 				// and to restore them when we go back to wa2 mode. this will also be more consistant with the freeform behavior of
 				// remembering visible status and coordinates on a per skin basis (since otherwise freeform dockings get screwed)
-				// it also makes sense when we consider that we are going to need to remove all windowshade modes from the embedded
-				// windows when going freeform.
+				// it also makes sense when we consider that we are going to need to remove all archhade modes from the embedded
+				// arch when going freeform.
 
 				// see new functions: rememberVisibleWindows() and restoreVisibleWindows()
 
@@ -742,7 +742,7 @@ int Wa2WndEmbed::embedRememberProc(embedWindowState *p, embedEnumStruct *parms)
 extern int m_loading_at_startup;
 
 //-----------------------------------------------------------------------------------------------
-// todo: remember and restore windowshade modes
+// todo: remember and restore archhade modes
 void Wa2WndEmbed::rememberVisibleWindows()
 {
 	wa2wndstatus.deleteAll();
@@ -821,9 +821,9 @@ void Wa2WndEmbed::restoreVisibleWindows()
 					SetWindowPos(ws->wnd, 0, 0, 0, mlwidth, mlheight, SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOMOVE);
 			}
 		}
-		// FG> as of oct19, this function only restores state for windows that WERE visible
+		// FG> as of oct19, this function only restores state for arch that WERE visible
 		// because there is no reason to hide one, since this function is designed to bring
-		// back those windows that were here in one mode, but aren't so anymore in another
+		// back those arch that were here in one mode, but aren't so anymore in another
 		if (ws->visible)
 		{
 			if (ws->wndcode != -1)

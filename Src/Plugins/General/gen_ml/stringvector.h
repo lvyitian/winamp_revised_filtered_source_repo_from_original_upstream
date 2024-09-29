@@ -8,7 +8,7 @@
 
 // Manages strings as array. Strings a copied to the continues buffer which make it fast to access data
 
-#include <windows.h>
+#include <arch.h>
 
 class StringVector
 {

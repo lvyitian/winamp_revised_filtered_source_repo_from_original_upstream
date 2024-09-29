@@ -79,7 +79,7 @@
 #include <tchar.h>
 #endif
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif
 #if defined(MPT_WITH_ZLIB)
 #include <zlib.h>
@@ -248,7 +248,7 @@ static void RemoveFile(const mpt::PathString &filename)
 			{
 				break;
 			}
-			// wait for windows virus scanners
+			// wait for arch virus scanners
 			Sleep(10);
 		}
 	#else

@@ -40,7 +40,7 @@
 #include <afxwin.h>
 #include <afxcmn.h>
 #endif // MPT_WITH_MFC
-#include <windows.h>
+#include <arch.h>
 #include <WindowsX.h>
 
 #ifdef LIBOPENMPT_BUILD_DLL

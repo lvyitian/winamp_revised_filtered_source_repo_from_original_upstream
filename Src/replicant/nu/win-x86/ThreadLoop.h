@@ -1,7 +1,7 @@
 #pragma once
 #include "nu/lfmpscq.h"
 #include "nu/LockFreeLIFO.h"
-#include <windows.h>
+#include <arch.h>
 
 struct threadloop_node_t : public queue_node_t
 {

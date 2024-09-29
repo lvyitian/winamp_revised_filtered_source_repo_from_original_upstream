@@ -42,8 +42,8 @@ typedef enum {
   PLATFORM_WINNT
 } PlatformIdentifier;
 
-/* This is used to verify if we are running on a specific windows version */
-bool Curl_verify_windows_version(const unsigned int majorVersion,
+/* This is used to verify if we are running on a specific arch version */
+bool Curl_verify_arch_version(const unsigned int majorVersion,
                                  const unsigned int minorVersion,
                                  const PlatformIdentifier platform,
                                  const VersionCondition condition);

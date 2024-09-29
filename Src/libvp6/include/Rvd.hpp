@@ -5,7 +5,7 @@
 
 #include "FourCC.hpp"
 //#include <io.h>
-#include <windows.h>
+#include <arch.h>
 #include <exception>
 #include <cstdlib>
 #include <cstddef>

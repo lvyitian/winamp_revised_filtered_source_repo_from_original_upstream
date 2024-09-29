@@ -97,8 +97,8 @@ typedef struct {
 // -----------------------------------------------------------------------------------------------
 
 #define IPC_FF_ONCOLORTHEMECHANGED IPC_FF_FIRST + 3 // data = name of the new color theme (const char *)
-#define IPC_FF_ISMAINWND IPC_FF_FIRST + 4 // data = hwnd, returns 1 if hwnd is main window or any of its windowshade
-#define IPC_FF_GETCONTENTWND IPC_FF_FIRST + 5 // data = HWND, returns the wa2 window that is embedded in the window's container (ie if hwnd is the pledit windowshade hwnd, it returns the wa2 pledit hwnd). if no content is found (ie, the window has nothing embedded) it returns the parameter you gave it
+#define IPC_FF_ISMAINWND IPC_FF_FIRST + 4 // data = hwnd, returns 1 if hwnd is main window or any of its archhade
+#define IPC_FF_GETCONTENTWND IPC_FF_FIRST + 5 // data = HWND, returns the wa2 window that is embedded in the window's container (ie if hwnd is the pledit archhade hwnd, it returns the wa2 pledit hwnd). if no content is found (ie, the window has nothing embedded) it returns the parameter you gave it
 #define IPC_FF_NOTIFYHOTKEY IPC_FF_FIRST + 6 // data = const char * to hotkey description
 
 #endif

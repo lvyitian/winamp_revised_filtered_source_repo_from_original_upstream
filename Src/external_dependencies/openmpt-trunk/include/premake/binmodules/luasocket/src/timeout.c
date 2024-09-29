@@ -14,7 +14,7 @@
 #include "timeout.h"
 
 #ifdef _WIN32
-#include <windows.h>
+#include <arch.h>
 #else
 #include <time.h>
 #include <sys/time.h>

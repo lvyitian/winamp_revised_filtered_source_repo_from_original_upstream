@@ -239,7 +239,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\nu\PtrList.cpp" />
-    <ClCompile Include="..\nu\windowsTheme.cpp" />
+    <ClCompile Include="..\nu\archTheme.cpp" />
     <ClCompile Include="..\Winamp\JSAPI_CallbackParameters.cpp" />
     <ClCompile Include="auth.cpp" />
     <ClCompile Include="b64.c" />
@@ -305,7 +305,7 @@
     <ClCompile Include="XMLString.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\nu\windowsTheme.h" />
+    <ClInclude Include="..\nu\archTheme.h" />
     <ClInclude Include="..\Wasabi\api\syscb\callbacks\authcb.h" />
     <ClInclude Include="..\Wasabi\api\syscb\callbacks\authcbi.h" />
     <ClInclude Include="api.h" />

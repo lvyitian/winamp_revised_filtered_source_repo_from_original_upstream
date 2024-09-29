@@ -40,7 +40,7 @@
 #include <string.h> /* for memcpy() */
 #include <sys/types.h> /* for off_t */
 #ifdef _WIN32
-#include <windows.h> /* for GetFileType() */
+#include <arch.h> /* for GetFileType() */
 #include <io.h> /* for _get_osfhandle() */
 #endif
 #include "share/compat.h"
@@ -2633,7 +2633,7 @@ FLAC__bool resize_buffers_(FLAC__StreamEncoder *encoder, uint32_t new_blocksize)
 	if(encoder->protected_->do_escape_coding)
 		ok = ok && FLAC__memory_alloc_aligned_unsigned_array(new_blocksize * 2, &encoder->private_->raw_bits_per_partition_unaligned, &encoder->private_->raw_bits_per_partition);
 
-	/* now adjust the windows if the blocksize has changed */
+	/* now adjust the arch if the blocksize has changed */
 #ifndef FLAC__INTEGER_ONLY_LIBRARY
 	if(ok && new_blocksize != encoder->private_->input_capacity && encoder->protected_->max_lpc_order > 0) {
 		for(i = 0; ok && i < encoder->protected_->num_apodizations; i++) {

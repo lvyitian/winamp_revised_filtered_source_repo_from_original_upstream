@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 #include "./config.h"
 #include "./ml_imagelist.h"
 

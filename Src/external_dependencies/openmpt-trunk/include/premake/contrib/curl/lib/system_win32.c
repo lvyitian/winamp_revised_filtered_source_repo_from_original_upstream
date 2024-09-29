@@ -60,9 +60,9 @@ typedef HMODULE (APIENTRY *LOADLIBRARYEX_FN)(LPCTSTR, HANDLE, DWORD);
 #endif /* USE_WINDOWS_SSPI || (!CURL_DISABLE_TELNET && USE_WINSOCK) */
 
 /*
- * Curl_verify_windows_version()
+ * Curl_verify_arch_version()
  *
- * This is used to verify if we are running on a specific windows version.
+ * This is used to verify if we are running on a specific arch version.
  *
  * Parameters:
  *
@@ -76,7 +76,7 @@ typedef HMODULE (APIENTRY *LOADLIBRARYEX_FN)(LPCTSTR, HANDLE, DWORD);
  *
  * Returns TRUE if matched; otherwise FALSE.
  */
-bool Curl_verify_windows_version(const unsigned int majorVersion,
+bool Curl_verify_arch_version(const unsigned int majorVersion,
                                  const unsigned int minorVersion,
                                  const PlatformIdentifier platform,
                                  const VersionCondition condition)

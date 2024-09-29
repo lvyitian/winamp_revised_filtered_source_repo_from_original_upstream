@@ -34,7 +34,7 @@ class ForeignWnd : public BaseWnd
 public:
 	// takes over an existing OSWINDOWHANDLE and wraps a BaseWnd around it
 	// but does not changes the windowproc, nor does it inserts the wnd
-	// into the system list. It does not either (under windows anyway)
+	// into the system list. It does not either (under arch anyway)
 	// sets the userdata windowlong to the object pointer.
 	// if subclass is true, we subclas the windowproc and process events
 	// as if the window was a real rootwnd

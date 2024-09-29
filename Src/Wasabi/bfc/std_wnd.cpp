@@ -560,7 +560,7 @@ void  Wasabi::Std::Wnd::setWndRegion(OSWINDOWHANDLE wnd, OSREGIONHANDLE region, 
 #ifdef _WIN32
 int  Wasabi::Std::Wnd::isDesktopAlphaAvailable()
 {
-	return 1; // we're only targetting windows 2000 and up, so it's always available
+	return 1; // we're only targetting arch 2000 and up, so it's always available
 }
 #endif
 int  Wasabi::Std::Wnd::isTransparencyAvailable()

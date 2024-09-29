@@ -8,7 +8,7 @@
 #include "./skinHelper.h"
 #include "./ratingMenuCustomizer.h"
 #include "./ifc_menucustomizer.h"
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 #include <strsafe.h>
 

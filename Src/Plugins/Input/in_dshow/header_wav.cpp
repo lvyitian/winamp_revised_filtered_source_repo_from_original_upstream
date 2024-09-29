@@ -1,5 +1,5 @@
 #include "header_wav.h"
-#include <windows.h>
+#include <arch.h>
 #include "header_avi.h"
 #include <mmsystem.h>
 #include <bfc/platform/types.h>

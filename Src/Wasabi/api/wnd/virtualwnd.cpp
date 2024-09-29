@@ -269,7 +269,7 @@ void VirtualWnd::getClientRect(RECT *rect)
 {
 	if (!bypassvirtual)
 	{
-		// CT:getClientRect behaves differently here for virtual windows
+		// CT:getClientRect behaves differently here for virtual arch
 		//    so we can use onPaint directly on the destination canvas
 		//    without using another temporary canvas.
 		Wasabi::Std::setRect(rect, virtualX, virtualY, virtualX + virtualW, virtualY + virtualH);

@@ -27,7 +27,7 @@ void EstMainWindowRect( RECT *r )
 	r->left   = config_wx;
 	r->top    = config_wy;
 	r->right  = config_wx + ( WINDOW_WIDTH << ( config_dsize ? 1 : 0 ) );
-	r->bottom = config_wy + ( ( config_windowshade ? 14 : WINDOW_HEIGHT ) << ( config_dsize ? 1 : 0 ) );
+	r->bottom = config_wy + ( ( config_archhade ? 14 : WINDOW_HEIGHT ) << ( config_dsize ? 1 : 0 ) );
 }
 
 void EstEQWindowRect( RECT *r )

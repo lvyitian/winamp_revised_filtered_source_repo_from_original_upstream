@@ -6,7 +6,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 
 typedef void (CALLBACK *GRABCB)(HWND /*hwnd*/, CREATESTRUCT* /*lpcs*/, HWND* /*phwndInsertAfter*/, ULONG_PTR /*user*/);
 

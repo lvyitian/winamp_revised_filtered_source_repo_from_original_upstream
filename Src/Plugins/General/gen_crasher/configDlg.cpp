@@ -22,7 +22,7 @@ BOOL CALLBACK ConfigDlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPara
 			{
 			HWND hwCombo = GetDlgItem(hwndDlg, IDC_CMB_DMPTYPE);
    
-			// detect windows version
+			// detect arch version
 			wchar_t strBuff[2048] = {0}, winVer[32] = {0}, build[32] = {0};
 			int nWinVer = 0;
 			GetWinVer(winVer, &nWinVer, build);

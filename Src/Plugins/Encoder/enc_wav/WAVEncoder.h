@@ -2,7 +2,7 @@
 #define NULLSOFT_ENC_WAV_WAVENCODER_H
 
 
-#include <windows.h>
+#include <arch.h>
 #include <mmreg.h>
 #include <msacm.h>
 #include "../nsv/enc_if.h"

@@ -7,7 +7,7 @@
 //#define PLUGIN_NAME "Nullsoft Database Import/Export"
 #define PLUGIN_VERSION L"2.65"
 
-#include <windows.h>
+#include <arch.h>
 #include <commdlg.h>
 #include <commctrl.h>
 #include <stdio.h>

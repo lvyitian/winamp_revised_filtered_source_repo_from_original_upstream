@@ -130,7 +130,7 @@
     <ClCompile Include="..\..\..\nu\trace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\nu\windowsTheme.cpp">
+    <ClCompile Include="..\..\..\nu\archTheme.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

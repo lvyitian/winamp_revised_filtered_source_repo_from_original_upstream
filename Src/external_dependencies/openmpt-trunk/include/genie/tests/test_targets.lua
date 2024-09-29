@@ -23,10 +23,10 @@
 --
 --  Path Style   Name Style    Example Environment
 --  ----------   ----------    -------------------
---   windows      windows       VStudio with MSC
+--   arch      arch       VStudio with MSC
 --   posix        posix         GMake with GCC
---   windows      posix         VStudio for PS3
---   posix        windows       GMake for .NET
+--   arch      posix         VStudio for PS3
+--   posix        arch       GMake for .NET
 --
 
 
@@ -38,13 +38,13 @@
 
 	function T.targets.ConsoleApp_Build_WindowsNames()
 		cfg.kind = "ConsoleApp"
-		result = premake.gettarget(cfg, "build", "posix", "windows", "macosx")
+		result = premake.gettarget(cfg, "build", "posix", "arch", "macosx")
 		test.isequal([[../bin/MyProject.exe]], result.fullpath)
 	end
 
 	function T.targets.ConsoleApp_Build_PosixNames_OnWindows()
 		cfg.kind = "ConsoleApp"
-		result = premake.gettarget(cfg, "build", "posix", "posix", "windows")
+		result = premake.gettarget(cfg, "build", "posix", "posix", "arch")
 		test.isequal([[../bin/MyProject.exe]], result.fullpath)
 	end
 
@@ -74,13 +74,13 @@
 
 	function T.targets.WindowedApp_Build_WindowsNames()
 		cfg.kind = "WindowedApp"
-		result = premake.gettarget(cfg, "build", "posix", "windows", "macosx")
+		result = premake.gettarget(cfg, "build", "posix", "arch", "macosx")
 		test.isequal([[../bin/MyProject.exe]], result.fullpath)
 	end
 
 	function T.targets.WindowedApp_Build_PosixNames_OnWindows()
 		cfg.kind = "WindowedApp"
-		result = premake.gettarget(cfg, "build", "posix", "posix", "windows")
+		result = premake.gettarget(cfg, "build", "posix", "posix", "arch")
 		test.isequal([[../bin/MyProject.exe]], result.fullpath)
 	end
 
@@ -109,25 +109,25 @@
 
 	function T.targets.SharedLib_Build_WindowsNames()
 		cfg.kind = "SharedLib"
-		result = premake.gettarget(cfg, "build", "posix", "windows", "macosx")
+		result = premake.gettarget(cfg, "build", "posix", "arch", "macosx")
 		test.isequal([[../bin/MyProject.dll]], result.fullpath)
 	end
 
 	function T.targets.SharedLib_Link_WindowsNames()
 		cfg.kind = "SharedLib"
-		result = premake.gettarget(cfg, "link", "posix", "windows", "macosx")
+		result = premake.gettarget(cfg, "link", "posix", "arch", "macosx")
 		test.isequal([[../bin/MyProject.lib]], result.fullpath)
 	end
 
 	function T.targets.SharedLib_Build_PosixNames_OnWindows()
 		cfg.kind = "SharedLib"
-		result = premake.gettarget(cfg, "build", "posix", "posix", "windows")
+		result = premake.gettarget(cfg, "build", "posix", "posix", "arch")
 		test.isequal([[../bin/MyProject.dll]], result.fullpath)
 	end
 
 	function T.targets.SharedLib_Link_PosixNames_OnWindows()
 		cfg.kind = "SharedLib"
-		result = premake.gettarget(cfg, "link", "posix", "posix", "windows")
+		result = premake.gettarget(cfg, "link", "posix", "posix", "arch")
 		test.isequal([[../bin/libMyProject.a]], result.fullpath)
 	end
 
@@ -162,25 +162,25 @@
 
 	function T.targets.Bundle_Build_WindowsNames()
 		cfg.kind = "Bundle"
-		result = premake.gettarget(cfg, "build", "posix", "windows", "macosx")
+		result = premake.gettarget(cfg, "build", "posix", "arch", "macosx")
 		test.isequal([[../bin/MyProject.dll]], result.fullpath)
 	end
 
 	function T.targets.Bundle_Link_WindowsNames()
 		cfg.kind = "Bundle"
-		result = premake.gettarget(cfg, "link", "posix", "windows", "macosx")
+		result = premake.gettarget(cfg, "link", "posix", "arch", "macosx")
 		test.isequal([[../bin/MyProject.lib]], result.fullpath)
 	end
 
 	function T.targets.Bundle_Build_PosixNames_OnWindows()
 		cfg.kind = "Bundle"
-		result = premake.gettarget(cfg, "build", "posix", "posix", "windows")
+		result = premake.gettarget(cfg, "build", "posix", "posix", "arch")
 		test.isequal([[../bin/MyProject.dll]], result.fullpath)
 	end
 
 	function T.targets.Bundle_Link_PosixNames_OnWindows()
 		cfg.kind = "Bundle"
-		result = premake.gettarget(cfg, "link", "posix", "posix", "windows")
+		result = premake.gettarget(cfg, "link", "posix", "posix", "arch")
 		test.isequal([[../bin/libMyProject.a]], result.fullpath)
 	end
 
@@ -215,25 +215,25 @@
 
 	function T.targets.StaticLib_Build_WindowsNames()
 		cfg.kind = "StaticLib"
-		result = premake.gettarget(cfg, "build", "posix", "windows", "macosx")
+		result = premake.gettarget(cfg, "build", "posix", "arch", "macosx")
 		test.isequal([[../bin/MyProject.lib]], result.fullpath)
 	end
 
 	function T.targets.StaticLib_Link_WindowsNames()
 		cfg.kind = "StaticLib"
-		result = premake.gettarget(cfg, "link", "posix", "windows", "macosx")
+		result = premake.gettarget(cfg, "link", "posix", "arch", "macosx")
 		test.isequal([[../bin/MyProject.lib]], result.fullpath)
 	end
 
 	function T.targets.StaticLib_Build_PosixNames_OnWindows()
 		cfg.kind = "StaticLib"
-		result = premake.gettarget(cfg, "build", "posix", "posix", "windows")
+		result = premake.gettarget(cfg, "build", "posix", "posix", "arch")
 		test.isequal([[../bin/libMyProject.a]], result.fullpath)
 	end
 
 	function T.targets.StaticLib_Link_PosixNames_OnWindows()
 		cfg.kind = "StaticLib"
-		result = premake.gettarget(cfg, "link", "posix", "posix", "windows")
+		result = premake.gettarget(cfg, "link", "posix", "posix", "arch")
 		test.isequal([[../bin/libMyProject.a]], result.fullpath)
 	end
 
@@ -288,7 +288,7 @@
 
 	function T.targets.WindowsPaths()
 		cfg.kind = "ConsoleApp"
-		result = premake.gettarget(cfg, "build", "windows", "windows", "linux")
+		result = premake.gettarget(cfg, "build", "arch", "arch", "linux")
 		test.isequal([[..\bin]], result.directory)
 		test.isequal([[..\bin\MyProject.exe]], result.fullpath)
 	end

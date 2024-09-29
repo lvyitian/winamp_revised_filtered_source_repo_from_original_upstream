@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_CRASHER_MAIN_H
 #define NULLSOFT_CRASHER_MAIN_H
 
-#include <windows.h>
+#include <arch.h>
 #include <dbghelp.h>
 #include "resource.h"
 #define NO_IVIDEO_DECLARE

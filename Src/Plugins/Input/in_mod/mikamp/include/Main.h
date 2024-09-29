@@ -1,7 +1,7 @@
 #ifndef __MIKAMP_MAIN_H__
 #define __MIKAMP_MAIN_H__
 
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include "mikmod.h"
 #include "mplayer.h"

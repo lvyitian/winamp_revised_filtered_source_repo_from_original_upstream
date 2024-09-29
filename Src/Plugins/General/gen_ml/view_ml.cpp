@@ -1,6 +1,6 @@
 #include "main.h"
 #include "api__gen_ml.h"
-#include <windowsx.h>
+#include <archx.h>
 #include <time.h>
 #include <rpc.h>
 #include "../winamp/gen.h"

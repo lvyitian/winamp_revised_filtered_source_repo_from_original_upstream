@@ -65,7 +65,7 @@ public:
 	static void removeRootWnd(ifc_window *wnd);
 	static ifc_window *rootWndFromPoint(POINT *pt);
   static ifc_window *rootWndFromHwnd(OSWINDOWHANDLE h);
-  static void layoutChanged(Layout *previouswnd, Layout *newwnd); // re-dock windows when changing layout
+  static void layoutChanged(Layout *previouswnd, Layout *newwnd); // re-dock arch when changing layout
 
   static void beforeRedock(Layout *l, redock_struct *rs);
   static void afterRedock(Layout *l, redock_struct *rs);

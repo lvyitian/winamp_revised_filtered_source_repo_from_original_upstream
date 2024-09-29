@@ -58,9 +58,9 @@ initAttribs_windowpage()
 {
 	initPages();
 
-	sui_eq_attrib = custom_windows_page.newAttribute("Equalizer\tAlt+G", "0");
-	// sui_browser_attrib = custom_windows_page.newAttribute("Web Browser\tAlt+X", "0");
-	sui_config_attrib = custom_windows_page.newAttribute("Skin Settings\tAlt+C", "0");
+	sui_eq_attrib = custom_arch_page.newAttribute("Equalizer\tAlt+G", "0");
+	// sui_browser_attrib = custom_arch_page.newAttribute("Web Browser\tAlt+X", "0");
+	sui_config_attrib = custom_arch_page.newAttribute("Skin Settings\tAlt+C", "0");
 
 	custom_page_fileinfo = addConfigSubMenu(optionsmenu_page, "Multi Content View", CUSTOM_PAGE_FILEINFO);
 

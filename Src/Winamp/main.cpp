@@ -7,7 +7,7 @@
  **/
 
 #include "main.h"
-#include <windowsx.h>
+#include <archx.h>
 
 #include "../Agave/Language/lang.h"
 #include <stdarg.h>
@@ -101,7 +101,7 @@ int     g_need_titleupd = 0;
 int     g_need_infoupd = 0;
 int     g_SkinTop, g_BookmarkTop, g_LangTop;
 int     g_mm_optionsbase_adj = 0;       //used by IPC_ADJUST_OPTIONSMENUPOS
-int     g_mm_ffwindowsbase_adj = 0;       //used by IPC_ADJUST_FFWINDOWSMENUPOS
+int     g_mm_ffarchbase_adj = 0;       //used by IPC_ADJUST_FFWINDOWSMENUPOS
 int     g_mm_ffoptionsbase_adj = 0;       //used by IPC_ADJUST_FFOPTIONSMENUPOS
 int     g_has_video_plugin = 0;
 int     g_no_video_loaded = 0;       //filled in by in_init
@@ -1485,7 +1485,7 @@ LRESULT CALLBACK Main_WndProc( HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPara
 					eggTyping = FALSE;
 					eggstat = !eggstat;
 					pos = 0;
-					draw_tbar( 1, config_windowshade, eggstat );
+					draw_tbar( 1, config_archhade, eggstat );
 				}
 			}
 			else
@@ -1845,7 +1845,7 @@ again:
 				}
 				else if ( vn == APP_VERSION_NUM ) return lhwnd;
 			}
-			if ( failed ) return NULL; // no valid winamp windows, but one that fucked up
+			if ( failed ) return NULL; // no valid winamp arch, but one that fucked up
 
 			Sleep( 100 );
 		}

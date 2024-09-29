@@ -37,7 +37,7 @@
 
    <!-- Buttons -->
    <color id="studio.button.text" value="0,0,0"/> <!-- Buttons text color -->
-   <color id="studio.button.hiliteText" value="0,240,0"/> <!-- Buttons hilite text color, used by tab windows-->
+   <color id="studio.button.hiliteText" value="0,240,0"/> <!-- Buttons hilite text color, used by tab arch-->
    <color id="studio.button.dimmedText" value="64,64,64"/> <!-- Buttons dimmed text color, when disabled -->
 
    <!-- Popup menus -->
@@ -49,7 +49,7 @@
    <color id="studio.component.title.foreground" value="255,255,255"/> <!-- Old title bar text color when using TTF -->
    <color id="studio.component.title.border" value="1,1,1"/> <!-- Old title bar text outline when using TTF -->
 
-   <!-- labeled windows -->
+   <!-- labeled arch -->
    <color id="common.labelwnd.foreground" value="220,220,220"/> <!-- Text foreground color -->
    <color id="common.labelwnd.background" value="0,0,0"/> <!-- Text drop shadow color -->
 

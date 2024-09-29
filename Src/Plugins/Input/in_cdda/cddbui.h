@@ -6,7 +6,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 
 #define AUTOCLOSE_NOW		0x00000000
 #define AUTOCLOSE_NEVER		0xFFFFFFFF

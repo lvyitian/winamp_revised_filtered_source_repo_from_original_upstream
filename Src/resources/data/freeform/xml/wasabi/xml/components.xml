@@ -31,7 +31,7 @@
   </groupdef>
  
 <!-- =================================================================================================== -->
-     Resizable windows with a status bar, ie: playlist editor, media library 
+     Resizable arch with a status bar, ie: playlist editor, media library 
 <!-- =================================================================================================== -->
 
   <container id="resizable_status" name=":componenttitle" dynamic="1" hold="@all@" default_x="275" default_y="0">
@@ -50,7 +50,7 @@
 
 
 <!-- =================================================================================================== -->
-     Resizable windows without a status bar
+     Resizable arch without a status bar
 <!-- =================================================================================================== -->
 
   <container id="resizable_nostatus" name=":componenttitle" dynamic="1" hold="@all@" default_x="275" default_y="0">
@@ -69,7 +69,7 @@
 
 
 <!-- =================================================================================================== -->
-     modal windows, window intended to look like dialog boxes or messageboxes 
+     modal arch, window intended to look like dialog boxes or messageboxes 
 <!-- =================================================================================================== -->
   <container id="modal" name=":componenttitle" dynamic="1" hold="@all@" default_x="275" default_y="0">
  
@@ -87,7 +87,7 @@
 
 
 <!-- =================================================================================================== -->
-     static windows, ie: preferences
+     static arch, ie: preferences
 <!-- =================================================================================================== -->
   <container id="static" name=":componenttitle" dynamic="1" hold="@all@" default_x="275" default_y="0">
 

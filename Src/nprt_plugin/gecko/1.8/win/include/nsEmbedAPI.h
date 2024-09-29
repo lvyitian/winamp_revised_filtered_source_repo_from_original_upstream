@@ -116,7 +116,7 @@ NS_TermEmbedding();
 
 /* Win32 specific stuff */
 #if defined (WIN32) || defined (WINCE)
-#include "windows.h"
+#include "arch.h"
 /**
  * @var typedef MSG nsEmbedNativeEvent
  * 

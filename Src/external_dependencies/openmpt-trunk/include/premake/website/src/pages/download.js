@@ -27,10 +27,10 @@ const DownloadLink = ({ arch }) => {
 		label = 'Source Code';
 		icon = 'fa-code';
 		break;
-	case 'windows':
-		filename = 'windows.zip';
+	case 'arch':
+		filename = 'arch.zip';
 		label = 'Windows';
-		icon = 'fa-windows';
+		icon = 'fa-arch';
 		break;
 	}
 	return (
@@ -67,7 +67,7 @@ const Download = () =>
 						<h3>Pre-Built Binaries</h3>
 						<p>Binaries simply need to be unpacked and placed somewhere on the system search path or any other convenient location.</p>
 						<ul className="download-links">
-							<DownloadLink arch="windows" />
+							<DownloadLink arch="arch" />
 							<DownloadLink arch="linux" />
 							<DownloadLink arch="macos" />
 						</ul>

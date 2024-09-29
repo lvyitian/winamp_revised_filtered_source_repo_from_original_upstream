@@ -13,7 +13,7 @@ If no toolset is specified for a configuration, the system or IDE default will b
 | **Toolset identifier**   |  **Description**                                |
 |------------|---------------------------------------------------------------|
 | `clang`    | [Clang](http://clang.llvm.org)                                |
-| `dmd`      | [Reference D Compiler](https://dlang.org/dmd-windows.html)    |
+| `dmd`      | [Reference D Compiler](https://dlang.org/dmd-arch.html)    |
 | `dotnet`   | The system's default C# compiler                              |
 | `gcc`      | [GNU Compiler Collection](https://gcc.gnu.org)                |
 | `gdc`      | [GNU Compiler Collection D Compiler](https://gdcproject.org/) |

@@ -14,7 +14,7 @@
 
 #include "mpt/library/library.hpp"
 #include "mpt/osinfo/class.hpp"
-#include "mpt/osinfo/windows_version.hpp"
+#include "mpt/osinfo/arch_version.hpp"
 
 
 OPENMPT_NAMESPACE_BEGIN
@@ -30,24 +30,24 @@ namespace Windows
 namespace Version
 {
 
-	inline constexpr auto WinNT4 = mpt::osinfo::windows::Version::WinNT4;
-	inline constexpr auto Win2000 = mpt::osinfo::windows::Version::Win2000;
-	inline constexpr auto WinXP = mpt::osinfo::windows::Version::WinXP;
-	inline constexpr auto WinXP64 = mpt::osinfo::windows::Version::WinXP64;
-	inline constexpr auto WinVista = mpt::osinfo::windows::Version::WinVista;
-	inline constexpr auto Win7 = mpt::osinfo::windows::Version::Win7;
-	inline constexpr auto Win8 = mpt::osinfo::windows::Version::Win8;
-	inline constexpr auto Win81 = mpt::osinfo::windows::Version::Win81;
-	inline constexpr auto Win10 = mpt::osinfo::windows::Version::Win10;
-	inline constexpr auto WinNewer = mpt::osinfo::windows::Version::WinNewer;
+	inline constexpr auto WinNT4 = mpt::osinfo::arch::Version::WinNT4;
+	inline constexpr auto Win2000 = mpt::osinfo::arch::Version::Win2000;
+	inline constexpr auto WinXP = mpt::osinfo::arch::Version::WinXP;
+	inline constexpr auto WinXP64 = mpt::osinfo::arch::Version::WinXP64;
+	inline constexpr auto WinVista = mpt::osinfo::arch::Version::WinVista;
+	inline constexpr auto Win7 = mpt::osinfo::arch::Version::Win7;
+	inline constexpr auto Win8 = mpt::osinfo::arch::Version::Win8;
+	inline constexpr auto Win81 = mpt::osinfo::arch::Version::Win81;
+	inline constexpr auto Win10 = mpt::osinfo::arch::Version::Win10;
+	inline constexpr auto WinNewer = mpt::osinfo::arch::Version::WinNewer;
 
-	mpt::osinfo::windows::Version Current() noexcept;
+	mpt::osinfo::arch::Version Current() noexcept;
 
-	mpt::ustring GetName(mpt::osinfo::windows::Version version);
-	mpt::ustring GetNameShort(mpt::osinfo::windows::Version version);
+	mpt::ustring GetName(mpt::osinfo::arch::Version version);
+	mpt::ustring GetNameShort(mpt::osinfo::arch::Version version);
 
-	mpt::osinfo::windows::Version GetMinimumKernelLevel() noexcept;
-	mpt::osinfo::windows::Version GetMinimumAPILevel() noexcept;
+	mpt::osinfo::arch::Version GetMinimumKernelLevel() noexcept;
+	mpt::osinfo::arch::Version GetMinimumAPILevel() noexcept;
 
 } // namespace Version
 
@@ -119,7 +119,7 @@ namespace Wine
 {
 
 class Version
-	: public mpt::osinfo::windows::wine::version
+	: public mpt::osinfo::arch::wine::version
 {
 public:
 	Version();

@@ -1,7 +1,7 @@
 #ifndef __PMP_H_
 #define __PMP_H_
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h> // needed for HDC and stuff
+#include <arch.h> // needed for HDC and stuff
 #include <stddef.h>
 #include "..\..\General\gen_ml/ml.h" // for itemRecordW
 // make sure you include ml.h before you include this, wherever you include it.

@@ -3,7 +3,7 @@
 
 #pragma warning (disable:4786)
 
-#include <windows.h>
+#include <arch.h>
 #include <cstdlib>
 #include <string>
 #include <map>

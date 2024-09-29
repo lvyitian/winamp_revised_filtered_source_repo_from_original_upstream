@@ -3,7 +3,7 @@
  */
 
 #include <stdio.h>
-#include <windows.h>
+#include <arch.h>
 
 #include "dkpltfrm.h"
 #include "duck_mem.h"

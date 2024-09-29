@@ -1,7 +1,7 @@
 #ifndef _VIDEO_H
 #define _VIDEO_H
 
-#include <windows.h>
+#include <arch.h>
 #include <ddraw.h>
 #include <multimon.h>
 

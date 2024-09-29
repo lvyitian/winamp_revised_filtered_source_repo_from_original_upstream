@@ -32,7 +32,7 @@ class nsIURI; /* forward declaration */
  * nsIURIContentListener is an interface used by components which
  * want to know (and have a chance to handle) a particular content type.
  * Typical usage scenarios will include running applications which register
- * a nsIURIContentListener for each of its content windows with the uri
+ * a nsIURIContentListener for each of its content arch with the uri
  * dispatcher service. 
  *
  * @status FROZEN

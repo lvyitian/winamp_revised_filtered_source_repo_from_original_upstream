@@ -60,8 +60,8 @@
 		configuration "vs*"
 			defines     { "_CRT_SECURE_NO_WARNINGS" }
 
-		configuration "windows"
-			targetdir   "../bin/windows"
+		configuration "arch"
+			targetdir   "../bin/arch"
 			links { "ole32" }
 
 		configuration "linux"

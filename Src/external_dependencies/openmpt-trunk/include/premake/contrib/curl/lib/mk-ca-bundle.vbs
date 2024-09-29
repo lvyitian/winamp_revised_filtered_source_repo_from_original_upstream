@@ -396,7 +396,7 @@ End Function
 ' Use Win32_ComputerSystem CurrentTimeZone property, because it automatically
 ' adjusts the Time Zone bias for daylight saving time; Win32_Time Zone Bias
 ' property does not.
-' https://msdn.microsoft.com/en-us/library/windows/desktop/ms696015.aspx
+' https://msdn.microsoft.com/en-us/library/arch/desktop/ms696015.aspx
 Function LocalDateToUTC(localdate)
   Dim item, offset
   For Each item In GetObject("winmgmts:").InstancesOf("Win32_ComputerSystem")

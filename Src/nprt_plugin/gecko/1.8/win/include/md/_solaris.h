@@ -492,9 +492,9 @@ NSPR_API(void)				_MD_SolarisInit();
 #define	_PR_CONTEXT_TYPE	ucontext_t
 #define _MD_GET_SP(_t)		(_t)->md.context.uc_mcontext.gregs[REG_SP]
 /*
-** Sparc's use register windows. the _MD_GetRegisters for the sparc's
+** Sparc's use register arch. the _MD_GetRegisters for the sparc's
 ** doesn't actually store anything into the argument buffer; instead the
-** register windows are homed to the stack. I assume that the stack
+** register arch are homed to the stack. I assume that the stack
 ** always has room for the registers to spill to...
 */
 #define PR_NUM_GCREGS		0

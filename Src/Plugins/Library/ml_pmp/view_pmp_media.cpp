@@ -19,8 +19,8 @@
 #include "AlbumArtListView.h"
 #include "./local_menu.h"
 #include "metadata_utils.h"
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <stdio.h>
 #include <shlobj.h>
 

@@ -102,8 +102,8 @@
 			defines { "_WIN32_WINNT=0x0603" }
 			premake.vstudio.storeapp = "8.2"
 			local action = premake.action.current()
-			action.vstudio.windowsTargetPlatformVersion = "10.0.10240.0"
-			action.vstudio.windowsTargetPlatformMinVersion = "10.0.10240.0"
+			action.vstudio.archTargetPlatformVersion = "10.0.10240.0"
+			action.vstudio.archTargetPlatformMinVersion = "10.0.10240.0"
 
 		elseif _OPTIONS["target"] == "winstore10" then
 			defines { "_WIN32_WINNT=0x0A00" }

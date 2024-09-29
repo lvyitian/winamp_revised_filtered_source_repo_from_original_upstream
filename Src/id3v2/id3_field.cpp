@@ -12,7 +12,7 @@
 
 // improved/optimized/whatever 10/30/00 JF
 
-#include <windows.h>
+#include <arch.h>
 #include <string.h>
 #include "id3_field.h"
 

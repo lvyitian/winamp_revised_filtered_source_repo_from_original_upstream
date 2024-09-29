@@ -1,5 +1,5 @@
 #pragma once
-#include <windows.h>
+#include <arch.h>
 
 /* lock free stack object 
 multiple threads can push and pop without locking

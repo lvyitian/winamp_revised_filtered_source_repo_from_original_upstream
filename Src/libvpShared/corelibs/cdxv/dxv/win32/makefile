@@ -157,7 +157,7 @@ C_FLAGS = $(C_FLAGS) -Gy -W3 -nologo -DWIN32 -D_MBCS -D_AFXDLL -D_WINDOWS -DHIRE
  -DDOS32 -c  $(M_INCLUDES:/=\) 
 #-WX
 
-L_FLAGS = $(L_FLAGS) /SUBSYSTEM:windows /INCREMENTAL:no /MACHINE:I386 
+L_FLAGS = $(L_FLAGS) /SUBSYSTEM:arch /INCREMENTAL:no /MACHINE:I386 
 
 ############################################################
 # Locally Overridable Flags

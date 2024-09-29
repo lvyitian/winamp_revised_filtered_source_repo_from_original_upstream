@@ -12,7 +12,7 @@
 #define APP_VersionW L"2.4.2"
 #define APP_Build "449"
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <stdio.h>
 #include <shlobj.h>
@@ -2277,7 +2277,7 @@ public:
 					size--;
 				}
 
-				// e.g. dsp_sc,2.3.4.210,http://download.nullsoft.com/shoutcast/tools/shoutcast-dsp-2-3-4-windows.exe
+				// e.g. dsp_sc,2.3.4.210,http://download.nullsoft.com/shoutcast/tools/shoutcast-dsp-2-3-4-arch.exe
 				if ( p && *p )
 				{
 					char *tok = strtok( p, "," );

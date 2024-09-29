@@ -4,7 +4,7 @@
 #if defined(_MSC_VER) && (_MSC_VER >= 1020)
 #pragma once
 #endif
-#include <windows.h>
+#include <arch.h>
 
 typedef struct _CLOUDCOLUMNPAINT_I
 {

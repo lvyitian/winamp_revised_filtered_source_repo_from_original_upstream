@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "main.h"
 #include "../Winamp/wa_ipc.h"
 #include "config.h"

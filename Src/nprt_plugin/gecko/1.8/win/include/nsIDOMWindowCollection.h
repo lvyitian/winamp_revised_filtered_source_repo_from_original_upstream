@@ -34,7 +34,7 @@ class NS_NO_VTABLE nsIDOMWindowCollection : public nsISupports {
  * @status FROZEN
  */
 /**
-   * Accessor for the number of windows in this collection.
+   * Accessor for the number of arch in this collection.
    */
   /* readonly attribute unsigned long length; */
   NS_IMETHOD GetLength(PRUint32 *aLength) = 0;

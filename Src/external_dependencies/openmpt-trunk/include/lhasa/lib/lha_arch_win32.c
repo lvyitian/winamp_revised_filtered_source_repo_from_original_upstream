@@ -28,7 +28,7 @@ CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #if LHA_ARCH == LHA_ARCH_WINDOWS
 
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include <arch.h>
 #include <fcntl.h>
 #include <io.h>
 
@@ -106,7 +106,7 @@ static int set_timestamps(char *filename,
 	return result != 0;
 }
 
-int lha_arch_set_windows_timestamps(char *filename,
+int lha_arch_set_arch_timestamps(char *filename,
                                     uint64_t creation_time,
                                     uint64_t modification_time,
                                     uint64_t access_time)

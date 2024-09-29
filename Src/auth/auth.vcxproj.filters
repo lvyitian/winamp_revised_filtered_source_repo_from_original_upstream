@@ -187,7 +187,7 @@
     <ClCompile Include="Loginbox\update.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\nu\windowsTheme.cpp">
+    <ClCompile Include="..\nu\archTheme.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Loginbox\xmlInt32Parser.cpp">
@@ -399,7 +399,7 @@
     <ClInclude Include="Loginbox\update.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\nu\windowsTheme.h">
+    <ClInclude Include="..\nu\archTheme.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Loginbox\xmlInt32Parser.h">

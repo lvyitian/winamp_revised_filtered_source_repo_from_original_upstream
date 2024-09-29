@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 
 //******************************* Window
 #define MLSO_WINDOW			0

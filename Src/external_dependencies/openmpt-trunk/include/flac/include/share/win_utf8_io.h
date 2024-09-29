@@ -60,7 +60,7 @@ int utime_utf8(const char *filename, struct utimbuf *times);
 int unlink_utf8(const char *filename);
 int rename_utf8(const char *oldname, const char *newname);
 
-#include <windows.h>
+#include <arch.h>
 HANDLE WINAPI CreateFile_utf8(const char *lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile);
 
 #ifdef __cplusplus

@@ -30,8 +30,8 @@
 #endif
 
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <mmsystem.h>
 #include <stdio.h>
 #include <malloc.h>
@@ -126,12 +126,12 @@ inline void ProcessPlugins(int /* n */ ) {}
 #endif // _WIN32
 
 #if defined(_WIN32) || defined(__CYGWIN__)
-# if defined(MODPLUG_BUILD) && defined(DLL_EXPORT)	/* building libmodplug as a dll for windows */
+# if defined(MODPLUG_BUILD) && defined(DLL_EXPORT)	/* building libmodplug as a dll for arch */
 #   define MODPLUG_EXPORT __declspec(dllexport)
-# elif defined(MODPLUG_BUILD) || defined(MODPLUG_STATIC)	/* building or using static libmodplug for windows */
+# elif defined(MODPLUG_BUILD) || defined(MODPLUG_STATIC)	/* building or using static libmodplug for arch */
 #   define MODPLUG_EXPORT
 # else
-#   define MODPLUG_EXPORT __declspec(dllimport)			/* using libmodplug dll for windows */
+#   define MODPLUG_EXPORT __declspec(dllimport)			/* using libmodplug dll for arch */
 # endif
 /* FIXME: USE VISIBILITY ATTRIBUTES HERE */
 #elif defined(MODPLUG_BUILD)

@@ -1,7 +1,7 @@
 #include "precomp__gen_ff.h"
 #include <commctrl.h>
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include "resource.h"
 #include <api/font/font.h>
 #include <bfc/parse/paramparser.h>

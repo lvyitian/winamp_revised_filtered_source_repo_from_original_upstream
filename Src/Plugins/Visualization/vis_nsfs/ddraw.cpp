@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include <ddraw.h>
 #include "dd.h"
 #include "../Agave/Language/api_language.h"

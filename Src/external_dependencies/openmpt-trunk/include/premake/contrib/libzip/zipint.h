@@ -54,7 +54,7 @@
 #include "config.h"
 
 #ifdef HAVE_MOVEFILEEXA
-#include <windows.h>
+#include <arch.h>
 #define _zip_rename(s, t)	(!MoveFileExA((s), (t), MOVEFILE_COPY_ALLOWED|MOVEFILE_REPLACE_EXISTING))
 #else
 #define _zip_rename	rename

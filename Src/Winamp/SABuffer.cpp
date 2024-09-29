@@ -1,7 +1,7 @@
 #include "SABuffer.h"
 #include "fft.h"
 #include "../nsutil/window.h"
-#include <windows.h>
+#include <arch.h>
 
 static const float const_1_div_128_ = 1.0f / 128.0f;  /* 8 bit multiplier */
 static const float const_1_div_32768_ = 1.0f / 32768.f; /* 16 bit multiplier */

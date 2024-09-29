@@ -64,7 +64,7 @@
 
 	local function get_library_search_path()
 		local path
-		if os.istarget("windows") then
+		if os.istarget("arch") then
 			path = os.getenv("PATH") or ""
 		elseif os.istarget("haiku") then
 			path = os.getenv("LIBRARY_PATH") or ""
@@ -127,7 +127,7 @@
 		local formats
 
 		-- assemble a search path, depending on the platform
-		if os.istarget("windows") then
+		if os.istarget("arch") then
 			formats = { "%s.dll", "%s" }
 		elseif os.istarget("haiku") then
 			formats = { "lib%s.so", "%s.so" }
@@ -323,7 +323,7 @@
 		else
 			-- Identify the system
 			local arch
-			if os.ishost("windows") then
+			if os.ishost("arch") then
 				arch = os.getenv("PROCESSOR_ARCHITECTURE")
 			elseif os.ishost("macosx") then
 				arch = os.outputof("echo $HOSTTYPE")
@@ -631,7 +631,7 @@
 				return "touch " .. path.normalize(v)
 			end,
 		},
-		windows = {
+		arch = {
 			chdir = function(v)
 				return "chdir " .. path.translate(path.normalize(v))
 			end,
@@ -725,7 +725,7 @@
 -- Apply os slashes for decorated command paths.
 ---
 	function os.translateCommandAndPath(dir, map)
-		if map == 'windows' then
+		if map == 'arch' then
 			return path.translate(dir)
 		end
 		return dir
@@ -801,7 +801,7 @@
 		["linux"]    = { "linux",   "posix" },
 		["macosx"]   = { "macosx",  "darwin", "posix" },
 		["solaris"]  = { "solaris", "posix" },
-		["windows"]  = { "windows", "win32" },
+		["arch"]  = { "arch", "win32" },
 	}
 
 	function os.getSystemTags(name)

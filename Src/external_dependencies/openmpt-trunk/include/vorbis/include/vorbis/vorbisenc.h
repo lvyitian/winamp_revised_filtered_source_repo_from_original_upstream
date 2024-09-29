@@ -249,7 +249,7 @@ struct ovectl_ratemanage_arg {
 /** the window period (in seconds) used to regulate the average bitrate
     minimum and maximum.*/
   double bitrate_av_window;
-/** Regulates the relative centering of the average and hard windows; in
+/** Regulates the relative centering of the average and hard arch; in
     libvorbis 1.0 and 1.0.1, the hard window regulation overlapped but
     followed the average window regulation. In libvorbis 1.1 a bit-reservoir
     interface replaces the old windowing interface; the older windowing

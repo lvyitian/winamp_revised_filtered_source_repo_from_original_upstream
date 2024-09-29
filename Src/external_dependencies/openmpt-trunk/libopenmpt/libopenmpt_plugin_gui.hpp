@@ -12,7 +12,7 @@
 
 #include "libopenmpt_plugin_settings.hpp"
 
-#include <windows.h>
+#include <arch.h>
 
 #include <string>
 

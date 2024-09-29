@@ -10,7 +10,7 @@ extern In_Module plugin;
 
 extern int pan, volume;
 
-#include <windows.h>
+#include <arch.h>
 BOOL CALLBACK PreferencesDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
 int ExtensionExists(const char *ext, const char *extensionList);
 

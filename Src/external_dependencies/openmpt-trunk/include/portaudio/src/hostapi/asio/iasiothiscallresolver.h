@@ -19,7 +19,7 @@
 //					Note that this #include must come after the other ASIO SDK
 //                  #includes, for example:
 //
-//					#include <windows.h>
+//					#include <arch.h>
 //					#include <asiosys.h>
 //					#include <asio.h>
 //					#include <asiodrivers.h>
@@ -129,7 +129,7 @@
 	#endif
 #endif
 
-#include <windows.h>
+#include <arch.h>
 #include <asiodrvr.h> /* From ASIO SDK */
 
 

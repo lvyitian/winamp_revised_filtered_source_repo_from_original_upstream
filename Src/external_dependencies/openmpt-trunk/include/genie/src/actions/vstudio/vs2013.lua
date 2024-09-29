@@ -18,7 +18,7 @@
 		trigger         = "vs2013",
 		shortname       = "Visual Studio 2013",
 		description     = "Generate Microsoft Visual Studio 2013 project files",
-		os              = "windows",
+		os              = "arch",
 
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "StaticLib", "SharedLib", "Bundle" },
 

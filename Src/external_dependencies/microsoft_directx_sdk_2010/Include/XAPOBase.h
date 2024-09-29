@@ -123,7 +123,7 @@ protected:
       //
       // REMARKS:
       //  However, this method is capable of channel upmix/downmix and uses
-      //  the same matrix coefficient table used by windows Vista to do so.
+      //  the same matrix coefficient table used by arch Vista to do so.
       //
       //  For in-place processing (input buffer == output buffer)
       //  this method does nothing.

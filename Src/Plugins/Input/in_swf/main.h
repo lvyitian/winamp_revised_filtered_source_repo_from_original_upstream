@@ -3,7 +3,7 @@
 #include "../Winamp/in2.h"
 extern In_Module plugin;
 
-#include <windows.h>
+#include <arch.h>
 
 #include "../Winamp/wa_ipc.h"
 extern IVideoOutput *videoOutput;

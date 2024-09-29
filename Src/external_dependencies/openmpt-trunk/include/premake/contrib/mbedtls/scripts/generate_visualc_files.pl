@@ -78,7 +78,7 @@ my @excluded_files = qw(
 my %excluded_files = ();
 foreach (@excluded_files) { $excluded_files{$_} = 1 }
 
-# Need windows line endings!
+# Need arch line endings!
 my $vsx_hdr_tpl = <<EOT;
     <ClInclude Include="..\\..\\{NAME}" />\r
 EOT

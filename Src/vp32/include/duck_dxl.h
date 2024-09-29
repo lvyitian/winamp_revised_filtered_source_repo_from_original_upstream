@@ -408,7 +408,7 @@ int DXL_dxAudio(
 	int maxSamplesToDecompress
 	);
 
-/* windows 95 dll system abstraction functions */
+/* arch 95 dll system abstraction functions */
 
 /* set memory allocator function */
 void DXV_Setmalloc(

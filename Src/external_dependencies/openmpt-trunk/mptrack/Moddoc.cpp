@@ -3318,7 +3318,7 @@ void CModDoc::DeserializeViews()
 					wnd.showCmd = SW_SHOWNOACTIVATE;
 					if(windowState == 1 || anyMaximized)
 					{
-						// Once a window has been maximized, all following windows have to be marked as maximized as well.
+						// Once a window has been maximized, all following arch have to be marked as maximized as well.
 						wnd.showCmd = SW_MAXIMIZE;
 						anyMaximized = true;
 					} else if(windowState == 2)

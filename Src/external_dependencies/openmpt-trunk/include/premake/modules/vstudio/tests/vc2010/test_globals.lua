@@ -199,7 +199,7 @@
 -- to target different versions of the Windows SDK.
 --
 
-	function suite.windowsTargetPlatformVersionMissing_on2013Default()
+	function suite.archTargetPlatformVersionMissing_on2013Default()
 		p.action.set("vs2013")
 		prepare()
 		test.capture [[
@@ -212,7 +212,7 @@
 		]]
 	end
 
-	function suite.windowsTargetPlatformVersionMissing_on2013()
+	function suite.archTargetPlatformVersionMissing_on2013()
 		p.action.set("vs2013")
 		systemversion "10.0.10240.0"
 		prepare()
@@ -226,7 +226,7 @@
 		]]
 	end
 
-	function suite.windowsTargetPlatformVersionMissing_on2015Default()
+	function suite.archTargetPlatformVersionMissing_on2015Default()
 		p.action.set("vs2015")
 		prepare()
 		test.capture [[
@@ -239,7 +239,7 @@
 		]]
 	end
 
-	function suite.windowsTargetPlatformVersion_on2015()
+	function suite.archTargetPlatformVersion_on2015()
 		p.action.set("vs2015")
 		systemversion "10.0.10240.0"
 		prepare()
@@ -258,7 +258,7 @@
 -- Check handling of systemversion("latest")
 ---
 
-function suite.windowsTargetPlatformVersion_latest_on2015()
+function suite.archTargetPlatformVersion_latest_on2015()
 	p.action.set("vs2015")
 	systemversion "latest"
 	prepare()
@@ -273,7 +273,7 @@ function suite.windowsTargetPlatformVersion_latest_on2015()
 end
 
 
-	function suite.windowsTargetPlatformVersion_latest_on2017()
+	function suite.archTargetPlatformVersion_latest_on2017()
 		p.action.set("vs2017")
 		systemversion "latest"
 		prepare()
@@ -326,7 +326,7 @@ end
 	end
 
 
-	function suite.windowsTargetPlatformVersion_latest_on2019()
+	function suite.archTargetPlatformVersion_latest_on2019()
 		p.action.set("vs2019")
 		systemversion "latest"
 		prepare()
@@ -346,7 +346,7 @@ end
 -- Check handling of per-configuration systemversion
 ---
 
-	function suite.windowsTargetPlatformVersion_perConfig_on2015()
+	function suite.archTargetPlatformVersion_perConfig_on2015()
 		p.action.set("vs2015")
 		systemversion "8.1"
 		filter "Debug"
@@ -372,7 +372,7 @@ end
 	end
 
 
-	function suite.windowsTargetPlatformVersion_perConfig_on2017()
+	function suite.archTargetPlatformVersion_perConfig_on2017()
 		p.action.set("vs2017")
 		systemversion "8.1"
 		filter "Debug"

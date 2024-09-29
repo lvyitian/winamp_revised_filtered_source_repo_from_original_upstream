@@ -7,7 +7,7 @@
 #define BLANKWND_PARENT VirtualWnd
 
 /**
-  Class BlankWnd provides blank windows. The initial color can be set in the 
+  Class BlankWnd provides blank arch. The initial color can be set in the 
 	constructor, with a default of black. There is a method for painting the window from a Canvas.
 
   @short Blank Window with background color.

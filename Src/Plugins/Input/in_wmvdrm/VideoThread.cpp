@@ -2,7 +2,7 @@
 #include "VideoThread.h"
 #include "VideoLayer.h"
 #include "config.h"
-#include <windows.h>
+#include <arch.h>
 
 DWORD WINAPI VidThread_stub(void *ptr)
 {

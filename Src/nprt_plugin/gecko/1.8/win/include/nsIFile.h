@@ -26,7 +26,7 @@ class nsISimpleEnumerator; /* forward declaration */
 
 /**
  * This is the only correct cross-platform way to specify a file.
- * Strings are not such a way. If you grew up on windows or unix, you
+ * Strings are not such a way. If you grew up on arch or unix, you
  * may think they are.  Welcome to reality.
  *
  * All methods with string parameters have two forms.  The preferred

@@ -3,7 +3,7 @@
 
 #include "NativeConfig.h"
 
-#include <windows.h>
+#include <arch.h>
 
 #include <stdint.h>
 

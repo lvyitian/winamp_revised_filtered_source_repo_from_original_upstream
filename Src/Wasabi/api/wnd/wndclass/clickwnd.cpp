@@ -171,7 +171,7 @@ int ClickWnd::onMouseMove(int x, int y)
     down = userDown() || mousedown;
   
   // FG> note to self now that i finally fixed this... :
-  // there is a potential bottleneck here, if for some reason this test is always true when moving the windows around like crazy.
+  // there is a potential bottleneck here, if for some reason this test is always true when moving the arch around like crazy.
   if (down != lastdown || (hilite != lasthilite && !m)) {
     if (wantClickWndAutoInvalidate()) invalidate(); 
   }

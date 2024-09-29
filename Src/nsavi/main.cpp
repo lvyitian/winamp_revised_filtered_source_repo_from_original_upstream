@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h> // evil, i know
+#include <arch.h> // evil, i know
 #include <bfc/platform/types.h>
 #include "avi_header.h"
 #include "file_avi_reader.h"

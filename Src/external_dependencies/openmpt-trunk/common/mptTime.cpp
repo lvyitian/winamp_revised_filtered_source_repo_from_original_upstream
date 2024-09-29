@@ -16,7 +16,7 @@
 #include <time.h>
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #if defined(MODPLUG_TRACKER)
 #include <mmsystem.h>
 #endif

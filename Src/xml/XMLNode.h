@@ -1,6 +1,6 @@
 #pragma once
 
-#include <windows.h>
+#include <arch.h>
 #include "../nu/Alias.h"
 #include <vector>
 #include <map>

@@ -40,7 +40,7 @@
 #define PLATFORM_STRING  "hurd"
 #else
 #define PLATFORM_WINDOWS  (1)
-#define PLATFORM_STRING   "windows"
+#define PLATFORM_STRING   "arch"
 #endif
 
 #define PLATFORM_POSIX  (PLATFORM_LINUX || PLATFORM_BSD || PLATFORM_MACOSX || PLATFORM_SOLARIS || PLATFORM_HAIKU)
@@ -49,7 +49,7 @@
 /* Pull in platform-specific headers required by built-in functions */
 #if PLATFORM_WINDOWS
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include <arch.h>
 #else
 #include <unistd.h>
 #endif

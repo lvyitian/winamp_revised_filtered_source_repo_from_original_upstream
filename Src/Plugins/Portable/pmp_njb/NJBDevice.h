@@ -9,8 +9,8 @@
 #define UNICODE
 #endif
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <Objbase.h>
 #include <initguid.h>
 #include <stdio.h>

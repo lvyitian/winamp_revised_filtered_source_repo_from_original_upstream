@@ -311,7 +311,7 @@
 			return result
 		else
 			if (not sep) then
-				if (os.is("windows")) then
+				if (os.is("arch")) then
 					sep = "\\"
 				else
 					sep = "/"

@@ -16,7 +16,7 @@
 #if defined(LINUX)
 #include <pthread.h>
 #elif defined(WIN32) || defined(_WIN32_WCE)
-#include <windows.h>
+#include <arch.h>
 #include <winbase.h>
 #elif defined(VXWORKS)
 #include <semLib.h>

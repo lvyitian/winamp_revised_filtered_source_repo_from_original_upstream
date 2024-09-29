@@ -1,6 +1,6 @@
 /* Utility library for C strings */
 
-#include <windows.h>
+#include <arch.h>
 
 extern "C" 
 char *scanstr_back(char *str, char *toscan, char *defval)

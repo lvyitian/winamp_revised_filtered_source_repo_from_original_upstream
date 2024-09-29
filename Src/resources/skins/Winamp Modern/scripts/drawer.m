@@ -166,8 +166,8 @@ Global Layout __main;
 Global Container __maincontainer;
 
 Global String __myname;
-Global Int __windowshade_openvid;
-Global Int __windowshade_openvis;
+Global Int __archhade_openvid;
+Global Int __archhade_openvis;
 
 Global int __maximized;
 Global int __oldx,__oldy,__oldw,__oldh;
@@ -963,22 +963,22 @@ __maincontainer.onBeforeSwitchToLayout(Layout oldl, Layout newl) {
     int window_content=getPrivateInt("winamp5", __myname+"State", 2);
     if (oldl == __main && window_status == OPEN && window_content == CONTENT_VIDEO && getStatus() == STATUS_PLAYING && isVideo()) {
         drawer_disablePSOVC();
-        __windowshade_openvid = 1;
+        __archhade_openvid = 1;
     }
     if (oldl == __main && window_status == OPEN && window_content == CONTENT_VIS) {
-        __windowshade_openvis = 1;
+        __archhade_openvis = 1;
     }
 }
 
 // -----------------------------------------------------------------------
 __maincontainer.onSwitchToLayout(Layout newl) {
     // these do not call drawer_doDetachVis or drawer_doDetachVideo but showDetachVis and showDetachVideo so that the change is temporary
-    if (__windowshade_openvid) {
-        __windowshade_openvid = 0;
+    if (__archhade_openvid) {
+        __archhade_openvid = 0;
         drawer_linkup_showVideo(); 
     }
-    if (__windowshade_openvis) {
-        __windowshade_openvis = 0;
+    if (__archhade_openvis) {
+        __archhade_openvis = 0;
         drawer_linkup_showVis(); 
     }
 }

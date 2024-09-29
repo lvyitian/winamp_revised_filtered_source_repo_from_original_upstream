@@ -71,7 +71,7 @@ public:
 
 	virtual void onResizeChildren(RECT leftr, RECT rightr);
 
-	// drag and drops are forwarded into windowshaded windows
+	// drag and drops are forwarded into archhaded arch
 	virtual int dragEnter(ifc_window *sourceWnd);
 	virtual int dragOver(int x, int y, ifc_window *sourceWnd);
 	virtual int dragLeave(ifc_window *sourceWnd);
@@ -81,7 +81,7 @@ protected:
 	int convertPropToPix(int prop);
 	int ConvertPixToProp();
 
-	void windowshade(int which, int shaded);
+	void archhade(int which, int shaded);
 	ifc_window *getWindowShadedChild();
 
 	void Set_v_bitmap(const wchar_t *new_v_bitmap);
@@ -93,7 +93,7 @@ private:
 	BaseWnd *children[MAXCHILD];
 	ifc_window *rwchildren[MAXCHILD];
 	int hidey[MAXCHILD];
-	int windowshaded[MAXCHILD];
+	int archhaded[MAXCHILD];
 
 	FrameWndDividerType vert;
 

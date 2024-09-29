@@ -24,7 +24,7 @@ Premake 4.0 or later.
 ### Examples ###
 
 ```lua
-if os.get() == "windows" then
+if os.get() == "arch" then
    -- do something Windows-specific
 end
 ```

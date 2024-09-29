@@ -16,7 +16,7 @@ project "example"
 		"*.lua"
 	}
 
-	filter "system:not windows"
+	filter "system:not arch"
 		targetprefix    ""
 		targetextension ".so"
 		pic             "on"

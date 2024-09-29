@@ -282,7 +282,7 @@ bool CRtAudioDevice::InternalOpen()
 			m_Flags.WantsClippedOutput = true;
 		} else if(m_RtAudio->getCurrentApi() == RtAudio::Api::WINDOWS_DS)
 		{
-			m_Flags.WantsClippedOutput = (GetSysInfo().IsOriginal() && GetSysInfo().WindowsVersion.IsAtLeast(mpt::osinfo::windows::Version::WinVista));
+			m_Flags.WantsClippedOutput = (GetSysInfo().IsOriginal() && GetSysInfo().WindowsVersion.IsAtLeast(mpt::osinfo::arch::Version::WinVista));
 		}
 		m_RtAudio->openStream((m_OutputStreamParameters.nChannels > 0) ? &m_OutputStreamParameters : nullptr, (m_InputStreamParameters.nChannels > 0) ? &m_InputStreamParameters : nullptr, SampleFormatToRtAudioFormat(m_Settings.sampleFormat), m_Settings.Samplerate, &m_FramesPerChunk, &RtAudioCallback, this, &m_StreamOptions, nullptr);
 	} catch(const RtAudioError &e)
@@ -708,10 +708,10 @@ std::vector<SoundDevice::Info> CRtAudioDevice::EnumerateDevices(ILogger &logger,
 					info.flags = {
 						sysInfo.SystemClass == mpt::osinfo::osclass::Windows ?
 							sysInfo.IsWindowsOriginal() ?
-								sysInfo.WindowsVersion.IsAtLeast(mpt::osinfo::windows::Version::Win7) ?
+								sysInfo.WindowsVersion.IsAtLeast(mpt::osinfo::arch::Version::Win7) ?
 									Info::Usability::Usable
 								:
-									sysInfo.WindowsVersion.IsAtLeast(mpt::osinfo::windows::Version::WinVista) ?
+									sysInfo.WindowsVersion.IsAtLeast(mpt::osinfo::arch::Version::WinVista) ?
 										Info::Usability::Experimental
 									:
 										Info::Usability::NotAvailable
@@ -747,7 +747,7 @@ std::vector<SoundDevice::Info> CRtAudioDevice::EnumerateDevices(ILogger &logger,
 						Info::Usability::Broken, // sysInfo.SystemClass == mpt::osinfo::osclass::Windows ? sysInfo.IsWindowsOriginal() && sysInfo.WindowsVersion.IsBefore(mpt::Windows::Version::Win7) ? Info::Usability:Usable : Info::Usability::Deprecated : Info::Usability::NotAvailable,
 						Info::Level::Secondary,
 						Info::Compatible::No,
-						sysInfo.SystemClass == mpt::osinfo::osclass::Windows ? sysInfo.IsWindowsWine() ? Info::Api::Emulated : sysInfo.WindowsVersion.IsAtLeast(mpt::osinfo::windows::Version::WinVista) ? Info::Api::Emulated : Info::Api::Native : Info::Api::Emulated,
+						sysInfo.SystemClass == mpt::osinfo::osclass::Windows ? sysInfo.IsWindowsWine() ? Info::Api::Emulated : sysInfo.WindowsVersion.IsAtLeast(mpt::osinfo::arch::Version::WinVista) ? Info::Api::Emulated : Info::Api::Native : Info::Api::Emulated,
 						Info::Io::FullDuplex,
 						Info::Mixing::Software,
 						Info::Implementor::External

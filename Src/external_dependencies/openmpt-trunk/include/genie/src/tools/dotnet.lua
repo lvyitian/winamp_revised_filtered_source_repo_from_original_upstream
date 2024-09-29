@@ -6,7 +6,7 @@
 
 
 	premake.dotnet = { }
-	premake.dotnet.namestyle = "windows"
+	premake.dotnet.namestyle = "arch"
 
 
 --

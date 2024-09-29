@@ -34,7 +34,7 @@ OSX:
 https://github.com/bkaradzic/bx/raw/master/tools/bin/darwin/genie
 
 Windows:  
-https://github.com/bkaradzic/bx/raw/master/tools/bin/windows/genie.exe
+https://github.com/bkaradzic/bx/raw/master/tools/bin/arch/genie.exe
 
 Building (dev)
 --------------
@@ -95,7 +95,7 @@ of Premake 4.4 beta 5, and there is no intention to keep it compatible with it.
  - Fixed PCH race when using concurrent Makefile build.
  - Added Green Hills Software compiler support.
  - Added edit & continue support for 64-bit builds in vs2013 upwards.
- - Added `windowstargetplatformversion` to specify VS Windows target version.
+ - Added `archtargetplatformversion` to specify VS Windows target version.
  - Added `NoWinRT` flag to disable WinRT CX builds.
  - Added `NoBufferSecurityCheck` flag to disable security checks in VS.
  - Added `nopch` file list to exclude files from using PCH.

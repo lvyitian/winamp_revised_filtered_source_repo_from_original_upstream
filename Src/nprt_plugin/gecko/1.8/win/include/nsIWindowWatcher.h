@@ -63,7 +63,7 @@ class NS_NO_VTABLE nsIWindowWatcher : public nsISupports {
       when a window is opened or closed (added to or removed from this
       service). This method adds an aObserver to the list of objects
       to be notified.
-      @param aObserver the object to be notified when windows are
+      @param aObserver the object to be notified when arch are
                        opened or closed. Its Observe method will be
                        called with the following parameters:
 
@@ -85,7 +85,7 @@ class NS_NO_VTABLE nsIWindowWatcher : public nsISupports {
   /* void unregisterNotification (in nsIObserver aObserver); */
   NS_IMETHOD UnregisterNotification(nsIObserver *aObserver) = 0;
 
-  /** Get an iterator for currently open windows in the order they were opened,
+  /** Get an iterator for currently open arch in the order they were opened,
       guaranteeing that each will be visited exactly once.
       @return an enumerator which will itself return nsISupports objects which
               can be QIed to an nsIDOMWindow
@@ -108,7 +108,7 @@ class NS_NO_VTABLE nsIWindowWatcher : public nsISupports {
   NS_IMETHOD GetNewAuthPrompter(nsIDOMWindow *aParent, nsIAuthPrompt **_retval) = 0;
 
   /** Set the window creator callback. It must be filled in by the app.
-      openWindow will use it to create new windows.
+      openWindow will use it to create new arch.
       @param creator the callback. if null, the callback will be cleared
                      and window creation capabilities lost.
   */
@@ -116,7 +116,7 @@ class NS_NO_VTABLE nsIWindowWatcher : public nsISupports {
   NS_IMETHOD SetWindowCreator(nsIWindowCreator *creator) = 0;
 
   /** Retrieve the chrome window mapped to the given DOM window. Window
-      Watcher keeps a list of all top-level DOM windows currently open,
+      Watcher keeps a list of all top-level DOM arch currently open,
       along with their corresponding chrome interfaces. Since DOM Windows
       lack a (public) means of retrieving their corresponding chrome,
       this method will do that.
@@ -133,7 +133,7 @@ class NS_NO_VTABLE nsIWindowWatcher : public nsISupports {
                             begin the search.  If null, each toplevel window
                             will be searched.
 
-      Note: This method will search all open windows for any window or
+      Note: This method will search all open arch for any window or
       frame with the given window name. Make sure you understand the
       security implications of this before using this method!
   */
@@ -144,7 +144,7 @@ class NS_NO_VTABLE nsIWindowWatcher : public nsISupports {
       (frontmost non-floating-palette-type) window, storing and returning
       it on demand. Users must keep this attribute current, including after
       the topmost window is closed. This attribute obviously can return null
-      if no windows are open, but should otherwise always return a valid
+      if no arch are open, but should otherwise always return a valid
       window.
   */
   /* attribute nsIDOMWindow activeWindow; */

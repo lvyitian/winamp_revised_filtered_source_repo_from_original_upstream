@@ -305,7 +305,7 @@ static BOOL FANZONE_OnDisplayChange()
 	
 	LayoutWindows( m_hwnd, TRUE );
 
-	// Display the modal windows
+	// Display the modal arch
 	ShowWindow( m_fanzone_node.getwnd(), SW_SHOW );
 	UpdateWindow( m_fanzone_node.getwnd() );
 

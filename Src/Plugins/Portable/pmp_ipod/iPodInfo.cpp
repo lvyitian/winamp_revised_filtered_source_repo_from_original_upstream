@@ -10,7 +10,7 @@
 #include <api/service/waservicefactory.h>
 
 #include <stdio.h>
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 
 extern PMPDevicePlugin plugin;

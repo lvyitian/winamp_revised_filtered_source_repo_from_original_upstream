@@ -9,7 +9,7 @@
 #include "duck_mem.h" /* interface to memory manager */
 #include "dxl_main.h" /* interface to dxv */
 
-#include <windows.h>
+#include <arch.h>
 #include <mmsystem.h>
 #include <vfw.h>
 

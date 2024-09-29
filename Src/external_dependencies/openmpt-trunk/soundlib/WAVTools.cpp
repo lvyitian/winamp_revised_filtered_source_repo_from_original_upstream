@@ -168,7 +168,7 @@ uint16 WAVReader::GetFileCodePage(FileReader::ChunkList<RIFFChunk> &chunks)
 			Version version = Version::Parse(mpt::ToUnicode(mpt::Charset::ISO8859_1, versionString));
 			if(version && version < MPT_V("1.28.00.02"))
 			{
-				return 1252; // mpt::Charset::Windows1252; // OpenMPT up to and including 1.28.00.01 wrote metadata in windows-1252 encoding
+				return 1252; // mpt::Charset::Windows1252; // OpenMPT up to and including 1.28.00.01 wrote metadata in arch-1252 encoding
 			} else
 			{
 				return 28591; // mpt::Charset::ISO8859_1; // as per spec

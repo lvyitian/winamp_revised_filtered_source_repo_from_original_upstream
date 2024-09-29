@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_WINAMP_GEN_H
 #define NULLSOFT_WINAMP_GEN_H
 
-#include <windows.h>
+#include <arch.h>
 
 #define GEN_INIT_SUCCESS 0
 

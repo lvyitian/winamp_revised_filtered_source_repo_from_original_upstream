@@ -20,7 +20,7 @@ BOOL CreateLog(PEXCEPTION_POINTERS pExceptPtrs, LPCWSTR lpszMessage);
 BOOL CreateDump(PEXCEPTION_POINTERS pExceptPtrs);
 
 // We forward declare PEXCEPTION_POINTERS so that the function
-// prototype doesn't needlessly require windows.h.
+// prototype doesn't needlessly require arch.h.
 #ifdef __cplusplus
 extern "C"
 {

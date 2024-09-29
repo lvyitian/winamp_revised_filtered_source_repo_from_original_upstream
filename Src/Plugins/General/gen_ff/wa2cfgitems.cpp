@@ -121,7 +121,7 @@ void AvsCfg::onVisRandomChanged(BOOL set) {
 //---------------------------------------------------------
 Options *options;
 CustomOptionsMenuItems *optionsmenuitems;
-CustomWindowsMenuItems *windowsmenuitems;
+CustomWindowsMenuItems *archmenuitems;
 SkinTweaks *skintweaks;
 Crossfader *crossfader;
 AvsCfg *avscfg;
@@ -134,8 +134,8 @@ Wa2CfgItems::Wa2CfgItems() {
   // set up custom options menu items
   WASABI_API_CONFIG->config_registerCfgItem((optionsmenuitems = new CustomOptionsMenuItems()));
 
-  // set up custom windows menu items
-  WASABI_API_CONFIG->config_registerCfgItem((windowsmenuitems = new CustomWindowsMenuItems()));
+  // set up custom arch menu items
+  WASABI_API_CONFIG->config_registerCfgItem((archmenuitems = new CustomWindowsMenuItems()));
 
   // set up skintweaks options menu items
   WASABI_API_CONFIG->config_registerCfgItem((skintweaks = new SkinTweaks()));
@@ -150,7 +150,7 @@ Wa2CfgItems::Wa2CfgItems() {
 Wa2CfgItems::~Wa2CfgItems() {
   WASABI_API_CONFIG->config_deregisterCfgItem(options);
   WASABI_API_CONFIG->config_deregisterCfgItem(optionsmenuitems);
-  WASABI_API_CONFIG->config_deregisterCfgItem(windowsmenuitems);
+  WASABI_API_CONFIG->config_deregisterCfgItem(archmenuitems);
   WASABI_API_CONFIG->config_deregisterCfgItem(skintweaks);
   WASABI_API_CONFIG->config_deregisterCfgItem(crossfader);
   WASABI_API_CONFIG->config_deregisterCfgItem(avscfg);
@@ -158,8 +158,8 @@ Wa2CfgItems::~Wa2CfgItems() {
   options = NULL;
   delete optionsmenuitems;
   optionsmenuitems = NULL;
-  delete windowsmenuitems;
-  windowsmenuitems = NULL;
+  delete archmenuitems;
+  archmenuitems = NULL;
   delete skintweaks;
   skintweaks = NULL;
   delete crossfader;

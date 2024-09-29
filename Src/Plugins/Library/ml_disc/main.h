@@ -15,7 +15,7 @@
 #include "./copyinternal.h"
 
 #include <shlobj.h>
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 
 #ifndef LONGX86

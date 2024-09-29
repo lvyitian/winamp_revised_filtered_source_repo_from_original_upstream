@@ -1796,7 +1796,7 @@ MPG123_EXPORT int mpg123_id3_raw( mpg123_handle *mh
  */
 MPG123_EXPORT int mpg123_icy(mpg123_handle *mh, char **icy_meta);
 
-/** Decode from windows-1252 (the encoding ICY metainfo used) to UTF-8.
+/** Decode from arch-1252 (the encoding ICY metainfo used) to UTF-8.
  *  Note that this is very similar to mpg123_store_utf8(&sb, mpg123_text_icy, icy_text, strlen(icy_text+1)) .
  *  \param icy_text The input data in ICY encoding
  *  \return pointer to newly allocated buffer with UTF-8 data (You free() it!) */

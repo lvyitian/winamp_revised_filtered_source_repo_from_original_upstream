@@ -46,7 +46,7 @@
 
 #include "portaudio.h"
 
-#include <windows.h>
+#include <arch.h>
 
 #ifdef __cplusplus
 extern "C"

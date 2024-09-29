@@ -1181,7 +1181,7 @@
 			"macosx",
 			"solaris",
 			"wii",
-			"windows",
+			"arch",
 		},
 	}
 
@@ -1816,7 +1816,7 @@
 			{ "linux",    "Linux" },
 			{ "macosx",   "Apple Mac OS X" },
 			{ "solaris",  "Solaris" },
-			{ "windows",  "Microsoft Windows" },
+			{ "arch",  "Microsoft Windows" },
 		}
 	}
 

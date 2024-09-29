@@ -8,7 +8,7 @@
 //   sytactically the same (usage-wise) as std::string.
 // Written by Ryan Geiss.
 
-#include <windows.h>
+#include <arch.h>
 
 class GString 
 {

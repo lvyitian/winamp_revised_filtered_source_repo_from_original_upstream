@@ -5,7 +5,7 @@
 #include "./ifc_setuppage.h"
 #include "./ifc_setupjob.h"
 
-#include <windows.h>
+#include <arch.h>
 
 #ifdef __cplusplus
 extern "C" {

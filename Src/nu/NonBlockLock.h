@@ -1,7 +1,7 @@
 #pragma warning (disable:4786)
 #ifndef NONBLOCKLOCKH
 #define NONBLOCKLOCKH
-#include <windows.h>
+#include <arch.h>
 
 
 /*
@@ -20,7 +20,7 @@ any threads using the mutex, and their function stack
 #include <deque> // we make a list of the recursive function stack for each thread
 #include <map> // and map
 #include <iostream> // we output to std::cerr
-#include <windows.h>
+#include <arch.h>
 #endif
 
 /*****

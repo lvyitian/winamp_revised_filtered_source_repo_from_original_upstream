@@ -4,7 +4,7 @@
 #if defined(_MSC_VER) && (_MSC_VER >= 1020)
 #pragma once
 #endif
-#include <windows.h>
+#include <arch.h>
 
 // Styles
 #define RCS_DEFAULT_I				0xFFFFFFFF		// use default gen_ml style

@@ -13,7 +13,7 @@
 #include "WADrawDC.h"
 
 HDC eqMainDC, eqMainDC2;
-int enable_eq_windowshade_button;
+int enable_eq_archhade_button;
 HBITMAP eqMainBM = NULL, eqMainBM2 = NULL, eqExBM = NULL, eqOldmainBM2 = NULL, eqOldmainBM = NULL;
 
 extern "C" int eq_init = 0;
@@ -29,7 +29,7 @@ void draw_eq_init()
 	eqMainDC = CreateCompatibleDC(screenHdc);
 	eqMainDC2 = CreateCompatibleDC(screenHdc);
 
-	enable_eq_windowshade_button = 2;
+	enable_eq_archhade_button = 2;
 
 	// attempt to use the ISO eq image (if present)
 	if(config_eq_frequencies!=EQ_FREQUENCIES_WINAMP)
@@ -38,7 +38,7 @@ void draw_eq_init()
 	if (!eqMainBM)
 		eqMainBM = draw_LBitmap(NULL, L"eqmain.bmp");
 	if (eqMainBM)
-		enable_eq_windowshade_button = 0;
+		enable_eq_archhade_button = 0;
 	// and if that fails then we revert to the built in classic skin resources
 	else
 		eqMainBM = draw_LBitmap(MAKEINTRESOURCE((config_eq_frequencies==EQ_FREQUENCIES_WINAMP)?IDB_EQMAIN:IDB_EQMAIN_ISO), NULL);
@@ -48,11 +48,11 @@ void draw_eq_init()
 	if (!eqExBM)
 	{
 		if (!skin_directory[0]) 
-			enable_eq_windowshade_button = 1;
+			enable_eq_archhade_button = 1;
 		eqExBM = draw_LBitmap(MAKEINTRESOURCE(IDB_EQEX), NULL);
 	}
 	else 
-		enable_eq_windowshade_button = 1;
+		enable_eq_archhade_button = 1;
 
 	draw_ReleaseDC(hMainWindow, screenHdc);
 		
@@ -247,7 +247,7 @@ void draw_eq_tbutton(int b3, int wsb)
 	}
 	else
 	{
-		if (wsb && enable_eq_windowshade_button)
+		if (wsb && enable_eq_archhade_button)
 			BitBlt(eqMainDC, 254, 3, 9, 9, bmDC, 1, 38, SRCCOPY);
 		else
 			BitBlt(eqMainDC, 254, 3, 9, 9, eqMainDC, 254, 137, SRCCOPY);

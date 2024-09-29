@@ -9,7 +9,7 @@
 #endif
 
 #ifndef COM_NO_WINDOWS_H
-#include <windows.h>
+#include <arch.h>
 #include <ole2.h>
 #endif
 

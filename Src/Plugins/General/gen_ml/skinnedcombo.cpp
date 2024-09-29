@@ -3,7 +3,7 @@
 #include "../winamp/wa_dlg.h"
 #include "./skinning.h"
 #include "../nu/trace.h"
-#include <windowsx.h>
+#include <archx.h>
 #include <strsafe.h>
 
 #define COMBO_TEXT_MAX	512

@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "audiostub.h"
 
 #define CAPTION "NSV Player Sound Output Error"

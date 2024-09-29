@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_AUTOURLH
 #define NULLSOFT_AUTOURLH
 
-#include <windows.h>
+#include <arch.h>
 #include "AutoChar.h"
 
 /* benski> i'm sure there's a nice optimized way of doing this, but I need to implement it _right now_ */

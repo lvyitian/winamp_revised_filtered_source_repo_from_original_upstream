@@ -1,5 +1,5 @@
 #include <bfc/platform/types.h>
-#include <windows.h>
+#include <arch.h>
 #include "api__in_mkv.h"
 #include "MKVInfo.h"
 #include <strsafe.h>

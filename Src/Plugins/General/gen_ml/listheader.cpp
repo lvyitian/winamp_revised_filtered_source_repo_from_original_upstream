@@ -1,5 +1,5 @@
 #include "main.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "config.h"
 #include "../winamp/wa_dlg.h"
 
@@ -110,7 +110,7 @@ INT_PTR handleListViewHeaderMsgs(HWND hwndDlg,
       switch (lpnmcd->dwDrawStage) { 
         // prior to painting 
         case CDDS_PREPAINT: 
-          return CDRF_NOTIFYITEMDRAW; // tell windows we want individual notification of each item being drawn 
+          return CDRF_NOTIFYITEMDRAW; // tell arch we want individual notification of each item being drawn 
         // notification of each item being drawn 
         case CDDS_ITEMPREPAINT: 
           {

@@ -309,8 +309,8 @@ do not use :)
 #define IPC_ENABLEDISABLE_ALL_WINDOWS 259 // 0xdeadbeef to disable
 /* (requires Winamp 2.9+)
 ** SendMessage(hwnd_winamp,WM_WA_IPC,enable?0:0xdeadbeef,IPC_MBOPENREAL);
-** sending with 0xdeadbeef as the param disables all winamp windows, 
-** any other values will enable all winamp windows.
+** sending with 0xdeadbeef as the param disables all winamp arch, 
+** any other values will enable all winamp arch.
 */
 
 
@@ -446,7 +446,7 @@ do not use :)
 ** 0 : main popup menu 
 ** 1 : main menubar file menu
 ** 2 : main menubar options menu
-** 3 : main menubar windows menu
+** 3 : main menubar arch menu
 ** 4 : main menubar help menu
 ** other values will return NULL.
 */
@@ -861,8 +861,8 @@ class ITrackSelector
 #define IPC_ADJUST_FFWINDOWSMENUPOS 606
 /* (requires Winamp 2.9+)
 ** int newpos=SendMessage(hwnd_winamp,WM_WA_IPC,(WPARAM)adjust_offset,IPC_ADJUST_FFWINDOWSMENUPOS);
-** moves where winamp expects the freeform windows in the menubar windows main menu. Useful if you wish to insert a
-** menu item above extra freeform windows.
+** moves where winamp expects the freeform arch in the menubar arch main menu. Useful if you wish to insert a
+** menu item above extra freeform arch.
 */
 
 #define IPC_ISDOUBLESIZE 608
@@ -870,7 +870,7 @@ class ITrackSelector
 #define IPC_ADJUST_FFOPTIONSMENUPOS 609
 /* (requires Winamp 2.9+)
 ** int newpos=SendMessage(hwnd_winamp,WM_WA_IPC,(WPARAM)adjust_offset,IPC_ADJUST_FFOPTIONSMENUPOS);
-** moves where winamp expects the freeform preferences item in the menubar windows main menu. Useful if you wish to insert a
+** moves where winamp expects the freeform preferences item in the menubar arch main menu. Useful if you wish to insert a
 ** menu item above preferences item.
 */
 

@@ -34,7 +34,7 @@ mantissa) support.  No explicit code for the "float" type is present in this
 library, because as practice has shown the "float"-based code performs
 considerably slower on a modern processor, at least in this library.  This
 library does not have dependencies beside the standard C library, the
-"windows.h" on Windows and the "pthread.h" on macOS and Linux.
+"arch.h" on Windows and the "pthread.h" on macOS and Linux.
 
 ## Links ##
 

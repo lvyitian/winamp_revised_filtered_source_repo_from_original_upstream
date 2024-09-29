@@ -19,10 +19,10 @@ Premake 4.4 or later.
 ### Examples ###
 
 ```lua
-filter { "system:windows" }
+filter { "system:arch" }
    prelinkcommands { "copy default.config bin\\project.config" }
 
-filter { "not system:windows" }
+filter { "not system:arch" }
    prelinkcommands { "cp default.config bin/project.config" }
 ```
 

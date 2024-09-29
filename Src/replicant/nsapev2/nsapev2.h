@@ -6,7 +6,7 @@
 #ifdef __ANDROID__
 #include "android/nsapev2.h"
 #elif defined(_WIN32)
-#include "windows/nsapev2.h"
+#include "arch/nsapev2.h"
 #elif defined(__linux__)
 #include "linux/nsapev2.h"
 #elif defined (__APPLE__)

@@ -1,8 +1,8 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <commctrl.h>
 
 #include "../winamp/wa_dlg.h"

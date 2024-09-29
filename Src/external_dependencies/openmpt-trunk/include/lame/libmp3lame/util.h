@@ -250,7 +250,7 @@ extern  "C" {
         FLOAT   amp_filter[32];
 
         /* variables used by util.c */
-        /* BPC = maximum number of filter convolution windows to precompute */
+        /* BPC = maximum number of filter convolution arch to precompute */
 #define BPC 320
         double  itime[2]; /* float precision seems to be not enough */
         sample_t *inbuf_old[2];

@@ -141,7 +141,7 @@ Int checkPref(int bypassfs) {
 	if (!bypassfs && notifier_disablefullscreen_attrib.getData() == "1" && isVideoFullscreen()) return 1;
 	if (notifier_never_attrib.getData() == "1") return 1;
 	if (notifier_minimized_attrib.getData() == "1" && !isMinimized()) return 1;
-	if (notifier_windowshade_attrib.getData() == "1") {
+	if (notifier_archhade_attrib.getData() == "1") {
 		if (isMinimized()) return 0;
 		Container c = getContainer("main");
 		if (!c) return 1;

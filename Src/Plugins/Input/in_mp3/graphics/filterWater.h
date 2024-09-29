@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_ML_IMAGE_FILTERWATER_HEADER
 #define NULLSOFT_ML_IMAGE_FILTERWATER_HEADER
 
-#include <windows.h>
+#include <arch.h>
 #include ".\image.h"
 
 class MLImageFilterWater

@@ -5,7 +5,7 @@
 #ifndef NTSCSI_H_INCLUDED
 #define NTSCSI_H_INCLUDED
 
-#include <windows.h>
+#include <arch.h>
 #include "Aspi.h"
 
 typedef struct {

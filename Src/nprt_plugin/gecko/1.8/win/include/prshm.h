@@ -119,7 +119,7 @@
 **   system. Set permissions and or access controls at create and attach
 **   time to ensure you get the desired security.
 **
-**   On windows platforms, no special security measures are provided.
+**   On arch platforms, no special security measures are provided.
 **
 ** Example:
 **   The test case pr/tests/nameshm1.c provides an example of use as

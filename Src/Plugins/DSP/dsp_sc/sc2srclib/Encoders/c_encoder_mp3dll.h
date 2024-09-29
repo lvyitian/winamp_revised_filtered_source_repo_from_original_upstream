@@ -5,7 +5,7 @@
 #include "c_encoder.h"
 #include "../lame/include/lame.h"
 #include "../lame/libmp3lame/lame_global_flags.h"
-#include <windows.h>
+#include <arch.h>
 
 // Defaults for this encoder
 #define MP3_DEFAULT_INPUTSAMPLERATE 44100

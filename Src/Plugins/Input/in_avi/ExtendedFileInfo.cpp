@@ -1,5 +1,5 @@
 #include <bfc/platform/types.h>
-#include <windows.h>
+#include <arch.h>
 #include "api__in_avi.h"
 #include "win32_avi_reader.h"
 #include "../nsavi/metadata.h"

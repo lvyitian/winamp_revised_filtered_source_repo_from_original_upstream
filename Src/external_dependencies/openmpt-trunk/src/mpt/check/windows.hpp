@@ -10,13 +10,13 @@
 
 #ifndef UNICODE
 #ifndef MPT_CHECK_WINDOWS_IGNORE_WARNING_NO_UNICODE
-MPT_WARNING("windows.h uses MBCS TCHAR. Please #define UNICODE.")
+MPT_WARNING("arch.h uses MBCS TCHAR. Please #define UNICODE.")
 #endif
 #endif
 
 #ifndef NOMINMAX
 #ifndef MPT_CHECK_WINDOWS_IGNORE_WARNING_NO_NOMINMAX
-MPT_WARNING("windows.h defines min and max which conflicts with C++. Please #define NOMINMAX.")
+MPT_WARNING("arch.h defines min and max which conflicts with C++. Please #define NOMINMAX.")
 #endif
 #endif
 

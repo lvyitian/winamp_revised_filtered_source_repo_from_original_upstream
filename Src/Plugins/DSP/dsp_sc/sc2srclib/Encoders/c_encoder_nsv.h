@@ -6,7 +6,7 @@
 
 #include "c_encoder.h"
 #include "enc_if.h"
-#include <windows.h>
+#include <arch.h>
 #include <Shlobj.h>
 #include "../../Resource/resource.h"
 

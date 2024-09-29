@@ -555,12 +555,12 @@ BEGIN
     GROUPBOX        "General Options",IDC_STATIC,4,3,256,79
     CONTROL         "Dim window titlebars when not in focus",IDC_HIGHLIGHT,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,138,10
-    CONTROL         "Dock skinned windows at",IDC_SNAP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,28,95,10
+    CONTROL         "Dock skinned arch at",IDC_SNAP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,28,95,10
     EDITTEXT        IDC_SNAPW,105,27,17,12,ES_AUTOHSCROLL | ES_NUMBER
     LTEXT           "pixels",IDC_STATIC,127,28,18,10,SS_CENTERIMAGE
-    CONTROL         "Enable smooth window resizing for resizeable skinned windows",IDC_CHECK2,
+    CONTROL         "Enable smooth window resizing for resizeable skinned arch",IDC_CHECK2,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,41,230,10
-    CONTROL         "Display tooltips in Winamp's windows",IDC_TTIPS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,54,133,10
+    CONTROL         "Display tooltips in Winamp's arch",IDC_TTIPS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,54,133,10
     CONTROL         "Use skinned mouse cursors",IDC_WA_CURSORS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,67,103,10
     GROUPBOX        "Main Window Options",IDC_STATIC,4,85,256,86
     CONTROL         "Display playlist position in the song scroller",IDC_POS_IN_SONGTICKER,
@@ -2493,7 +2493,7 @@ BEGIN
     IDS_P_SETUP_START2      "Removes Winamp items (added from the 'Add' button) from the Start Menu."
     IDS_P_SETUP_LANG        "This lets you change the current language pack for Winamp. The default is English."
     IDS_P_FT_DIRCONTEXT     "Checking this option makes Winamp add a 'play' and 'enqueue' option to directories in explorer."
-    IDS_P_DISP_SNAPW        "This value controls at what distance (in pixels) Winamp windows snap to each other and to the viewport."
+    IDS_P_DISP_SNAPW        "This value controls at what distance (in pixels) Winamp arch snap to each other and to the viewport."
     IDS_P_PLUG_VISDIR       "This button lets you select the directory for Winamp visualization plug-ins. The default is <yourwinampdirectory>\\Plugins"
     IDS_P_PLUG_DSPDIR       "This button lets you select the directory for Winamp DSP/effect plug-ins. The default is <yourwinampdirectory>\\Plugins"
     IDS_SELVISDIR           "Select visualization plug-in directory"
@@ -2553,7 +2553,7 @@ BEGIN
     IDS_P_DISP_SYSTRAY      "Changes the icon that Winamp puts in the notification area."
     IDS_P_DISP_TASKBAR      "This check toggles whether Winamp is shown on the Windows Taskbar, like normal programs."
     IDS_P_DISP_SYSTRAYICON  "This check toggles whether Winamp has an icon in the notification area (near the clock)."
-    IDS_P_DISP_FREESIZE     "Allows Winamp Classic skinned resizable windows to be freely sized, instead of kept at 25x29 blocks"
+    IDS_P_DISP_FREESIZE     "Allows Winamp Classic skinned resizable arch to be freely sized, instead of kept at 25x29 blocks"
     IDS_P_CLASSICUI         "Classic Skin Options"
     IDS_P_DISP_HILITE       "If enabled this option lets Winamp dim its titlebar when inactive (normally enabled)"
     IDS_P_DISP_SNAP         "If enabled this option makes Winamp snap when you move it. You can temporarily toggle this option by holding down Shift while moving Winamp."

@@ -22,7 +22,7 @@
 **
 */
 #ifdef _WIN32
-#include <windows.h>
+#include <arch.h>
 #endif
 #include <bfc/platform/export.h>
 #include "../nsv/nsvlib.h"

@@ -1,7 +1,7 @@
 #ifndef NULLOSFT_MLSTRING_HEADER
 #define NULLOSFT_MLSTRING_HEADER
 
-#include <windows.h>
+#include <arch.h>
 
 class MLString
 {

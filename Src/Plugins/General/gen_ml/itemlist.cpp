@@ -16,7 +16,7 @@
 **
 */
 
-#include <windows.h>
+#include <arch.h>
 #include "itemlist.h"
 
 C_ItemList::C_ItemList()

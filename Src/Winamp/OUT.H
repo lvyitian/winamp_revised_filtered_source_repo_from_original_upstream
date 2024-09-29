@@ -2,7 +2,7 @@
 #define NULLSOFT_OUTH
 // Output plugin interface
 
-#include <windows.h>
+#include <arch.h>
 #include <stddef.h>
 
 #define OUT_VER 0x10

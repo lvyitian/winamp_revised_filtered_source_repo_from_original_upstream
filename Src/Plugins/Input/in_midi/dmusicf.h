@@ -10,7 +10,7 @@
 #define _DMUSICF_
 
 
-#include <windows.h>
+#include <arch.h>
 
 #define COM_NO_WINDOWS_H
 #include <objbase.h>

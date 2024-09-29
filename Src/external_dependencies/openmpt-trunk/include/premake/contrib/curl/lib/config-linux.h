@@ -698,7 +698,7 @@
 /* Define to 1 if you have the winber.h header file. */
 /* #undef HAVE_WINBER_H */
 
-/* Define to 1 if you have the windows.h header file. */
+/* Define to 1 if you have the arch.h header file. */
 /* #undef HAVE_WINDOWS_H */
 
 /* Define to 1 if you have the winldap.h header file. */

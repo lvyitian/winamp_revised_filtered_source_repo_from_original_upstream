@@ -1,5 +1,5 @@
 #include "varlist.h"
-#include <windows.h>
+#include <arch.h>
 
 VarList::VarList()
 {

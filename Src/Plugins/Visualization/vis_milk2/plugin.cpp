@@ -119,7 +119,7 @@ Order of Function Calls
                 (i.e. for wave's y position, 0=bottom and 1=top, which is opposite
                 to the convention in the rest of milkdrop.  decided to keep the
                 'bug' so presets don't need modified.)
-        d   -fixed: Krash: Inconsistency bug - pressing Escape while in the code windows 
+        d   -fixed: Krash: Inconsistency bug - pressing Escape while in the code arch 
                 for custom waves completely takes you out of the editing menus, 
                 rather than back to the custom wave menu 
         d   -when editing code: fix display of '&' character 
@@ -399,7 +399,7 @@ Order of Function Calls
                 (was 24x18, now 32x24)
             -fixed aspect ratio for final display
             -auto-texsize is now computed slightly differently; for vertically or horizontally-stretched
-                windows, the texsize is now biased more toward the larger dimension (vs. just the
+                arch, the texsize is now biased more toward the larger dimension (vs. just the
                 average).
             -added anisotropic filtering (for machines that support it)
             -fixed bug where the values of many variables in the preset init code were not set prior 
@@ -6771,7 +6771,7 @@ BOOL CPlugin::MyConfigTabProc(int nPage, HWND hwnd,UINT msg,WPARAM wParam,LPARAM
     //   'nPage' indicates which tab (aka 'property page') is currently showing: 2 through 5.
     //   'hwnd' is the window handle of the property page (which is a dialog of its own,
     //         embedded in the config dialog).
-    //   'msg' is the windows message being sent.  The main ones are:
+    //   'msg' is the arch message being sent.  The main ones are:
     //
     //      1) WM_INITDIALOG: This means the page is being initialized, because the
     //          user clicked on it.  When you get this message, you should initialize

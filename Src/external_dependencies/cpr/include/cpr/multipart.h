@@ -20,7 +20,7 @@ struct Part {
     Part(const std::string& p_name, const Buffer& buffer, const std::string& p_content_type = {}) : name{p_name}, value{buffer.filename.string()}, content_type{p_content_type}, data{buffer.data}, datalen{buffer.datalen}, is_file{false}, is_buffer{true} {}
 
     std::string name;
-    // We don't use fs::path here, as this leads to problems using windows
+    // We don't use fs::path here, as this leads to problems using arch
     std::string value;
     std::string content_type;
     Buffer::data_t data{nullptr};

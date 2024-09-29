@@ -35,12 +35,12 @@
 			_p(2, '<ProjectGuid>{%s}</ProjectGuid>',prj.uuid)
 			_p(2, '<RootNamespace>%s</RootNamespace>',prj.name)
 			if vstudio.storeapp ~= "durango" then
-				local windowsTargetPlatformVersion = prj.windowstargetplatformversion or action.vstudio.windowsTargetPlatformVersion
-				if windowsTargetPlatformVersion ~= nil then
-					_p(2,'<WindowsTargetPlatformVersion>%s</WindowsTargetPlatformVersion>',windowsTargetPlatformVersion)
+				local archTargetPlatformVersion = prj.archtargetplatformversion or action.vstudio.archTargetPlatformVersion
+				if archTargetPlatformVersion ~= nil then
+					_p(2,'<WindowsTargetPlatformVersion>%s</WindowsTargetPlatformVersion>',archTargetPlatformVersion)
 
-					if windowsTargetPlatformVersion and string.startswith(windowsTargetPlatformVersion, "10.") then
-						_p(2,'<WindowsTargetPlatformMinVersion>%s</WindowsTargetPlatformMinVersion>', prj.windowstargetplatformminversion or "10.0.10240.0")
+					if archTargetPlatformVersion and string.startswith(archTargetPlatformVersion, "10.") then
+						_p(2,'<WindowsTargetPlatformMinVersion>%s</WindowsTargetPlatformMinVersion>', prj.archtargetplatformminversion or "10.0.10240.0")
 					end
 				end
 			end
@@ -789,7 +789,7 @@
 
 	local function getcfglinks(cfg)
 		local haswholearchive = #cfg.wholearchive > 0
-		local msvcnaming 	  = premake.getnamestyle(cfg) == "windows"
+		local msvcnaming 	  = premake.getnamestyle(cfg) == "arch"
 		local iscppprj   	  = premake.iscppproject(cfg)
 		local isnetprj   	  = premake.isdotnetproject(cfg)
 		local linkobjs   	  = {}
@@ -1734,9 +1734,9 @@
 		_p('<?xml version="1.0" encoding="utf-8"?>')
 		if vstudio.storeapp == "10.0" then
 			_p('<Package')
-			_p(1, 'xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"')
+			_p(1, 'xmlns="http://schemas.microsoft.com/appx/manifest/foundation/arch10"')
 			_p(1, 'xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"')
-			_p(1, 'xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"')
+			_p(1, 'xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/arch10"')
 			_p(1, 'IgnorableNamespaces="uap mp">')
 		elseif vstudio.storeapp == "durango" then
 			_p('<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:mx="http://schemas.microsoft.com/appx/2013/xbox/manifest" IgnorableNamespaces="mx">')

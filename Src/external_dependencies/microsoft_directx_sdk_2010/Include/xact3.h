@@ -36,7 +36,7 @@
 //------------------------------------------------------------------------------
 
 #ifndef _XBOX
-    #include <windows.h>
+    #include <arch.h>
     #include <objbase.h>
     #include <float.h>
 #endif

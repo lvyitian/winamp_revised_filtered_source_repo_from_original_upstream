@@ -1,4 +1,4 @@
-#include <windowsx.h>
+#include <archx.h>
 
 #include "Main.h"
 #include "ipc_pe.h"

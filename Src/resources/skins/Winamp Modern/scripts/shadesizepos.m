@@ -5,20 +5,20 @@ Function updateLinkage(int type);
 
 System.onScriptLoaded() {
   initAttribs();
-  if (windowshade_linkall_attrib.getData() == "1") windowshade_linkall_attrib.onDataChanged();
-  if (windowshade_linkposition_attrib.getData() == "1") windowshade_linkposition_attrib.onDataChanged();
-  if (windowshade_linknone_attrib.getData() == "1") windowshade_linknone_attrib.onDataChanged();
+  if (archhade_linkall_attrib.getData() == "1") archhade_linkall_attrib.onDataChanged();
+  if (archhade_linkposition_attrib.getData() == "1") archhade_linkposition_attrib.onDataChanged();
+  if (archhade_linknone_attrib.getData() == "1") archhade_linknone_attrib.onDataChanged();
 }
 
-windowshade_linkall_attrib.onDataChanged() {
+archhade_linkall_attrib.onDataChanged() {
   if (getData() == "1") updateLinkage(2);
 }
 
-windowshade_linkposition_attrib.onDataChanged() {
+archhade_linkposition_attrib.onDataChanged() {
   if (getData() == "1") updateLinkage(1);
 }
 
-windowshade_linknone_attrib.onDataChanged() {
+archhade_linknone_attrib.onDataChanged() {
   if (getData() == "1") updateLinkage(0);
 }
 

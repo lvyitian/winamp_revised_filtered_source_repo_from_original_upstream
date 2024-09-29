@@ -54,7 +54,7 @@
 
 	<!-- edit wnds -->
 	<color id="wasabi.window.background" value="color.window.bg" gammagroup="ComponentFrame"/> <!--window background. -	If this color is not defined, a whole container is created in memory to extract a pixel, so specifying it makes skin loading faster -->
-	<color id="wasabi.window.text" value="color.window.txt" gammagroup="WindowText"/> <!--text color within windows -->
+	<color id="wasabi.window.text" value="color.window.txt" gammagroup="WindowText"/> <!--text color within arch -->
 	<color id="wasabi.border.sunken" value="73,76,77" gammagroup="ComponentFrame"/> <!-- color of dividers and sunken borders -->
 
 	<color id="wasabi.scrollbar.foreground" value="20,21,22" gammagroup="ScrollBarTrack"/> <!-- scrollbar foreground color -->
@@ -63,7 +63,7 @@
 	<color id="wasabi.scrollbar.background.inverted" value="20,21,22" gammagroup="ScrollBarTrack"/> <!-- inverse scrollbar background color -->
 
 	<color id="wasabi.button.text" value="color.window.txt" gammagroup="Column Text"/> <!-- Buttons text color -->
-	<color id="wasabi.button.hiliteText" value="color.display" gammagroup="DisplayText"/> <!-- Buttons hilite text color, used by tab windows-->
+	<color id="wasabi.button.hiliteText" value="color.display" gammagroup="DisplayText"/> <!-- Buttons hilite text color, used by tab arch-->
 	<color id="wasabi.button.dimmedText" value="149,156,169" gammagroup="PlayerButton"/> <!-- Buttons dimmed text color, when disabled -->
 
 	<bitmap id="wasabi.tree.background" file="$solid" h="64" w="64" color="8,9,10" gammagroup="PlayerDisplay"/><!-- Tree background bitmap (tile) -->

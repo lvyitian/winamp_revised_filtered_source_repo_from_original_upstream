@@ -189,9 +189,9 @@ ${WinampSection} "winampApplication" $(secWinamp) IDX_SEC_WINAMP           ; <<<
 	; delete the Qt5 engine files
 	Delete "$INSTDIR\Qt5Core.dll"
 	Delete "$INSTDIR\Qt5Network.dll"
-	Delete "$INSTDIR\platforms\qwindows.dll"
+	Delete "$INSTDIR\platforms\qarch.dll"
 	RMDir "$INSTDIR\platforms"
-	Delete "$INSTDIR\printsupport\windowsprintersupport.dll"
+	Delete "$INSTDIR\printsupport\archprintersupport.dll"
 	RMDir "$INSTDIR\printsupport"
 	Delete "$INSTDIR\QtPositioning\declarative_positioning.dll"
 	RMDir "$INSTDIR\QtPositioning"

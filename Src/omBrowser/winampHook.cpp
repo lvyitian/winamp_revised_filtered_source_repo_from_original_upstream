@@ -3,7 +3,7 @@
 #include "./ifc_winamphook.h"
 #include "../winamp/wa_ipc.h"
 
-#include <windows.h>
+#include <arch.h>
 
 #define WINAMP_REFRESHSKIN              40291
 #define WHPROCRECOVERY					L"WaHookProcRecovery"

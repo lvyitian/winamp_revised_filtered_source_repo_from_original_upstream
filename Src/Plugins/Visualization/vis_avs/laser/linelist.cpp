@@ -28,7 +28,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 #ifdef LASER
-#include <windows.h>
+#include <arch.h>
 #include "linelist.h"
 
 class C_LineList : public C_LineListBase 

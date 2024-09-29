@@ -8,7 +8,7 @@
 #include "./ifc_skinhelper.h"
 #include "./ifc_wasabihelper.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 #include <strsafe.h>
 

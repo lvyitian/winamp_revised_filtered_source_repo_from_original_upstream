@@ -2,7 +2,7 @@
 #define WINAMP_IFC_SETUP_JOB_HEADER
 
 #include <bfc/dispatch.h>
-#include <windows.h>
+#include <arch.h>
 
 class NOVTABLE ifc_setupjob : public Dispatchable
 {

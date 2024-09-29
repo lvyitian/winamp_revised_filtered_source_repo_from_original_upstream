@@ -31,8 +31,8 @@
 
 #ifdef _WIN32
 
-#ifndef flac__windows_unicode_filenames_h
-#define flac__windows_unicode_filenames_h
+#ifndef flac__arch_unicode_filenames_h
+#define flac__arch_unicode_filenames_h
 
 #include <stdio.h>
 #include <sys/stat.h>

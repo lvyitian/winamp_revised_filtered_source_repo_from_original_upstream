@@ -70,7 +70,7 @@
 		local f = field.get("targetextension")
 		configset.addblock(cset, { "Windows" })
 		configset.store(cset, f, ".dll")
-		test.isequal(".dll", configset.fetch(cset, f, { "windows" }))
+		test.isequal(".dll", configset.fetch(cset, f, { "arch" }))
 	end
 
 
@@ -140,9 +140,9 @@
 	function suite.lists_mergeValues_onFetch()
 		local f = field.get("buildoptions")
 		configset.store(cset, f, "v1")
-		configset.addblock(cset, { "windows" })
+		configset.addblock(cset, { "arch" })
 		configset.store(cset, f, "v2")
-		test.isequal({"v1", "v2"}, configset.fetch(cset, f, {"windows"}))
+		test.isequal({"v1", "v2"}, configset.fetch(cset, f, {"arch"}))
 	end
 
 
@@ -154,7 +154,7 @@
 		local f = field.get("buildoptions")
 		configset.store(cset, f, "v1")
 		configset.store(cset, f, "v2")
-		test.isequal({"v1", "v2"}, configset.fetch(cset, f, {"windows"}))
+		test.isequal({"v1", "v2"}, configset.fetch(cset, f, {"arch"}))
 	end
 
 
@@ -219,9 +219,9 @@
 	function suite.keyed_mergesKeys_onFetch()
 		local f = field.get("configmap")
 		configset.store(cset, f, { Debug="Debug", Release="Release" })
-		configset.addblock(cset, { "windows" })
+		configset.addblock(cset, { "arch" })
 		configset.store(cset, f, { Profile="Profile" })
-		local x = configset.fetch(cset, f, {"windows"})
+		local x = configset.fetch(cset, f, {"arch"})
 		test.istrue(x[1].Debug and x[1].Release and x[2].Profile)
 	end
 
@@ -234,7 +234,7 @@
 		local f = field.get("configmap")
 		configset.store(cset, f, { Debug="Debug", Release="Release" })
 		configset.store(cset, f, { Profile="Profile" })
-		local x = configset.fetch(cset, f, {"windows"})
+		local x = configset.fetch(cset, f, {"arch"})
 		test.istrue(x[1].Debug and x[1].Release and x[2].Profile)
 	end
 
@@ -246,9 +246,9 @@
 	function suite.keyed_overwritesValues_onNonMergeFetch()
 		local f = field.get("configmap")
 		configset.store(cset, f, { Debug="Debug" })
-		configset.addblock(cset, { "windows" })
+		configset.addblock(cset, { "arch" })
 		configset.store(cset, f, { Debug="Development" })
-		local x = configset.fetch(cset, f, {"windows"})
+		local x = configset.fetch(cset, f, {"arch"})
 		test.isequal({"Development"}, x[2].Debug)
 	end
 
@@ -256,6 +256,6 @@
 		local f = field.get("configmap")
 		configset.store(cset, f, { Debug="Debug" })
 		configset.store(cset, f, { Debug="Development" })
-		local x = configset.fetch(cset, f, {"windows"})
+		local x = configset.fetch(cset, f, {"arch"})
 		test.isequal({"Development"}, x[2].Debug)
 	end

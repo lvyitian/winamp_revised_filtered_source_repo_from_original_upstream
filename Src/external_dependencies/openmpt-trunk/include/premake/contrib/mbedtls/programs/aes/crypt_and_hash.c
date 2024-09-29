@@ -53,7 +53,7 @@
 #endif
 
 #if defined(_WIN32)
-#include <windows.h>
+#include <arch.h>
 #if !defined(_WIN32_WCE)
 #include <io.h>
 #endif

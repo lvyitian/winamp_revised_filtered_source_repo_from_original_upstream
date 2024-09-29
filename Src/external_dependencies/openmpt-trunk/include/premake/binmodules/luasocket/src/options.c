@@ -291,7 +291,7 @@ static int opt_ip6_setmembership(lua_State *L, p_socket ps, int level, int name)
     /* By default we listen to interface on default route
      * (sigh). However, interface= can override it. We should
      * support either number, or name for it. Waiting for
-     * windows port of if_nametoindex */
+     * arch port of if_nametoindex */
     if (!lua_isnil(L, -1)) {
         if (lua_isnumber(L, -1)) {
             val.ipv6mr_interface = (unsigned int) lua_tonumber(L, -1);

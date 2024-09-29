@@ -12,7 +12,7 @@ if exist "include\premake\premake5.exe" set PREMAKE=include\premake\premake5.exe
 if exist "include\premake\bin\release\premake5.exe" set PREMAKE=include\premake\bin\release\premake5.exe
 
 set GENIE=
-set GENIE=include\genie\bin\windows\genie.exe
+set GENIE=include\genie\bin\arch\genie.exe
 
 
 

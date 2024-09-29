@@ -132,7 +132,7 @@ int socket_connect(p_socket ps, SA *addr, socklen_t len, p_timeout tm) {
     err = socket_waitfd(ps, WAITFD_C, tm);
     if (err == IO_CLOSED) {
         int err_len = sizeof(err);
-        /* give windows time to set the error (yes, disgusting) */
+        /* give arch time to set the error (yes, disgusting) */
         Sleep(10);
         /* find out why we failed */
         getsockopt(*ps, SOL_SOCKET, SO_ERROR, (char *)&err, &err_len);
@@ -186,7 +186,7 @@ int socket_accept(p_socket ps, p_socket pa, SA *addr, socklen_t *len,
 
 /*-------------------------------------------------------------------------*\
 * Send with timeout
-* On windows, if you try to send 10MB, the OS will buffer EVERYTHING
+* On arch, if you try to send 10MB, the OS will buffer EVERYTHING
 * this can take an awful lot of time and we will end up blocked.
 * Therefore, whoever calls this function should not pass a huge buffer.
 \*-------------------------------------------------------------------------*/

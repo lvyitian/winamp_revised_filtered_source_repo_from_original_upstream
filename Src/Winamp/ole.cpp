@@ -119,7 +119,7 @@ public:
 			{
 				is_pe = 1;
 				if (pledit_poopie) pl_forceappend = 1; // if we got here because we're hosting the pledit, but not actually
-				// parenting it (meaning we are windowshaded playlist)
+				// parenting it (meaning we are archhaded playlist)
 			}
 			else
 			{

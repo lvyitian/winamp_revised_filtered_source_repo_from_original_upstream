@@ -12,7 +12,7 @@ newoption {
 newoption {
  trigger     = "target",
  value       = "PROJECTS",
- description = "windows target platform",
+ description = "arch target platform",
  allowed = {
   { "macosx"  , "macosx"   },
   { "iphoneos", "iphoneos" },

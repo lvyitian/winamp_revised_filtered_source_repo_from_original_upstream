@@ -1048,7 +1048,7 @@ sm_edit_ok.onLeftClick ()
 }
 
 
-// Is one of the edit windows closed?
+// Is one of the edit arch closed?
 system.onHideLayout (Layout _layout)
 {
 	if (_layout == quicklink_name_layout) 

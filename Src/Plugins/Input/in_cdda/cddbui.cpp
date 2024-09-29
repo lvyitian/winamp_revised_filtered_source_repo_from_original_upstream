@@ -643,7 +643,7 @@ static BOOL EnableWindowTheme(HWND hwnd, BOOL bEnable)
 static HRESULT InitializeProgressIcon(PROGRESSICON *pIcon)
 {
 	HRESULT hr;
-	LONG/*_PTR*/ lVal; // benski> windows 64 isn't supported by gracenote
+	LONG/*_PTR*/ lVal; // benski> arch 64 isn't supported by gracenote
 
 	ICddbUIOptions *pUIOptions;
 

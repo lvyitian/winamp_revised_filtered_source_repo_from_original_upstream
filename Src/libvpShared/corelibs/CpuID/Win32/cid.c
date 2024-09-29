@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------
 
 
-#include <windows.h>
+#include <arch.h>
 #include <stdarg.h>
 #include "cpuidlib.h"
 #include "cidasm.h"
@@ -57,7 +57,7 @@ int DoesOSSupportXMM( void )
    //   if( 1 )
    {
       /*
-       * If we are on a windows NT system we cannot directly
+       * If we are on a arch NT system we cannot directly
        * read the control registers to see if the OS supports
        * the XMM instructions.  We will just check to see if
        * service pack 4 is installed.

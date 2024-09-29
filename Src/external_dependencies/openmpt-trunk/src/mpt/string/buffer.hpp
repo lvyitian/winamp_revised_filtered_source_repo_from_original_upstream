@@ -160,28 +160,28 @@ inline StringBufRefImpl<typename std::basic_string<typename std::remove_const<Tc
 #if MPT_OS_WINDOWS
 
 template <typename Tchar, std::size_t size>
-inline StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type> ReadWinBuf(const std::array<Tchar, size> & buf) {
-	return StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type>(buf.data(), size);
+inline StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type> ReadWinBuf(const std::array<Tchar, size> & buf) {
+	return StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type>(buf.data(), size);
 }
 template <typename Tchar, std::size_t size>
-inline StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type> ReadWinBuf(const Tchar (&buf)[size]) {
-	return StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type>(buf, size);
+inline StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type> ReadWinBuf(const Tchar (&buf)[size]) {
+	return StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type>(buf, size);
 }
 template <typename Tchar>
-inline StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type> ReadWinBuf(const Tchar * buf, std::size_t size) {
-	return StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type>(buf, size);
+inline StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type> ReadWinBuf(const Tchar * buf, std::size_t size) {
+	return StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, typename std::add_const<Tchar>::type>(buf, size);
 }
 template <typename Tchar, std::size_t size>
-inline StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar> WriteWinBuf(std::array<Tchar, size> & buf) {
-	return StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar>(buf.data(), size);
+inline StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar> WriteWinBuf(std::array<Tchar, size> & buf) {
+	return StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar>(buf.data(), size);
 }
 template <typename Tchar, std::size_t size>
-inline StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar> WriteWinBuf(Tchar (&buf)[size]) {
-	return StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar>(buf, size);
+inline StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar> WriteWinBuf(Tchar (&buf)[size]) {
+	return StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar>(buf, size);
 }
 template <typename Tchar>
-inline StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar> WriteWinBuf(Tchar * buf, std::size_t size) {
-	return StringBufRefImpl<typename mpt::windows_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar>(buf, size);
+inline StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar> WriteWinBuf(Tchar * buf, std::size_t size) {
+	return StringBufRefImpl<typename mpt::arch_char_traits<typename std::remove_const<Tchar>::type>::string_type, Tchar>(buf, size);
 }
 
 #endif // MPT_OS_WINDOWS

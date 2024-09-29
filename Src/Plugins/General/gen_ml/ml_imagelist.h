@@ -6,7 +6,7 @@
 #endif
 
 
-#include <windows.h>		
+#include <arch.h>		
 #include <commctrl.h>	
 #include "./ml_imageloader.h"		// image loading
 #include "./ml_imagefilter.h"		// image loading

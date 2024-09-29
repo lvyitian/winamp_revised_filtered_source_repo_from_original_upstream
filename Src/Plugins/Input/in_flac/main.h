@@ -3,7 +3,7 @@
 
 #define PLUGIN_VER L"3.2"
 
-#include <windows.h>
+#include <arch.h>
 extern HANDLE killswitch;
 
 #include "../Winamp/in2.h"

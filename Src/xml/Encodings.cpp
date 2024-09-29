@@ -1,6 +1,6 @@
 #include "expat.h"
 #include <wchar.h>
-#include <windows.h>
+#include <arch.h>
 #include "../WAT/WAT.h"
 
 struct WindowsEncodings
@@ -20,14 +20,14 @@ static const WindowsEncodings encodings[] =
 	{L"iso-8859-8", 28598},
 	{L"iso-8859-9", 28599},
 	{L"iso-8859-15", 28605},
-	{L"windows-1251", 1251},
-	{L"windows-1252", 1252},
-	{L"windows-1253", 1253},
-	{L"windows-1254", 1254},
-	{L"windows-1255", 1255},
-	{L"windows-1256", 1256},
-	{L"windows-1257", 1257},
-	{L"windows-1258", 1258},
+	{L"arch-1251", 1251},
+	{L"arch-1252", 1252},
+	{L"arch-1253", 1253},
+	{L"arch-1254", 1254},
+	{L"arch-1255", 1255},
+	{L"arch-1256", 1256},
+	{L"arch-1257", 1257},
+	{L"arch-1258", 1258},
 
 };
 

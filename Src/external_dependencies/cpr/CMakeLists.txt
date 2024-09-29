@@ -18,7 +18,7 @@ else()
     endif()
 endif()
 
-# Avoid the dll boilerplate code for windows
+# Avoid the dll boilerplate code for arch
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 if (PARENT_CXX_STANDARD)

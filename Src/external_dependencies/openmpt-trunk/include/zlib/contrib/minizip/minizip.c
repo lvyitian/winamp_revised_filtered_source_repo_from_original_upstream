@@ -423,7 +423,7 @@ int main(argc,argv)
                 zip64 = isLargeFile(filenameinzip);
 
                                                          /* The path name saved, should not include a leading slash. */
-               /*if it did, windows/xp and dynazip couldn't read the zip file. */
+               /*if it did, arch/xp and dynazip couldn't read the zip file. */
                  savefilenameinzip = filenameinzip;
                  while( savefilenameinzip[0] == '\\' || savefilenameinzip[0] == '/' )
                  {

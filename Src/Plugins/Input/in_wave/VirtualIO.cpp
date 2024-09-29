@@ -3,7 +3,7 @@
 #include <api/service/waservicefactory.h>
 #include "../nu/AutoWide.h"
 #include <assert.h>
-#include <windows.h>
+#include <arch.h>
 
 // TODO: extend this to use api_filereader
 // instead of just the HTTP reader directly

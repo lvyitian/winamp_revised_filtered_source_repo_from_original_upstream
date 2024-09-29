@@ -97,7 +97,7 @@ BSC32_FLAGS=/nologo /o"$(OUTDIR)\AudioPlugIn.bsc"
 BSC32_SBRS= \
 	
 LINK32=link.exe
-LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib advapi32.lib ole32.lib oleaut32.lib \build\sdks\dxmedia\lib\DMOGUIDS.LIB winmm.lib /nologo /entry:"DllEntryPoint@12" /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)\AudioPlugIn.pdb" /machine:I386 /nodefaultlib:"libcmt" /nodefaultlib:"libcmtd" /def:".\AudioPlugIn.def" /out:"$(OUTDIR)\AudioPlugIn.dll" /implib:"$(OUTDIR)\AudioPlugIn.lib" 
+LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib advapi32.lib ole32.lib oleaut32.lib \build\sdks\dxmedia\lib\DMOGUIDS.LIB winmm.lib /nologo /entry:"DllEntryPoint@12" /subsystem:arch /dll /incremental:no /pdb:"$(OUTDIR)\AudioPlugIn.pdb" /machine:I386 /nodefaultlib:"libcmt" /nodefaultlib:"libcmtd" /def:".\AudioPlugIn.def" /out:"$(OUTDIR)\AudioPlugIn.dll" /implib:"$(OUTDIR)\AudioPlugIn.lib" 
 DEF_FILE= \
 	".\AudioPlugIn.def"
 LINK32_OBJS= \
@@ -203,7 +203,7 @@ BSC32_FLAGS=/nologo /o"$(OUTDIR)\AudioPlugIn.bsc"
 BSC32_SBRS= \
 	
 LINK32=link.exe
-LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib advapi32.lib ole32.lib oleaut32.lib \build\sdks\dxmedia\lib\DMOGUIDS.LIB winmm.lib /nologo /entry:"DllEntryPoint@12" /subsystem:windows /dll /incremental:yes /pdb:"$(OUTDIR)\AudioPlugIn.pdb" /debug /machine:I386 /nodefaultlib:"libcmt" /nodefaultlib:"libcmtd" /def:".\AudioPlugIn.def" /out:"$(OUTDIR)\AudioPlugIn.dll" /implib:"$(OUTDIR)\AudioPlugIn.lib" /pdbtype:sept 
+LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib advapi32.lib ole32.lib oleaut32.lib \build\sdks\dxmedia\lib\DMOGUIDS.LIB winmm.lib /nologo /entry:"DllEntryPoint@12" /subsystem:arch /dll /incremental:yes /pdb:"$(OUTDIR)\AudioPlugIn.pdb" /debug /machine:I386 /nodefaultlib:"libcmt" /nodefaultlib:"libcmtd" /def:".\AudioPlugIn.def" /out:"$(OUTDIR)\AudioPlugIn.dll" /implib:"$(OUTDIR)\AudioPlugIn.lib" /pdbtype:sept 
 DEF_FILE= \
 	".\AudioPlugIn.def"
 LINK32_OBJS= \

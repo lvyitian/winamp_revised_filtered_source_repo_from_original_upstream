@@ -5582,7 +5582,7 @@ Exit:
 // Various revisions for RtAudio 4.0 by Gary Scavone, April 2007
 // Changed device query structure for RtAudio 4.0.7, January 2010
 
-#include <windows.h>
+#include <arch.h>
 #include <process.h>
 #include <mmsystem.h>
 #include <mmreg.h>
@@ -6469,8 +6469,8 @@ void RtApiDs :: startStream()
 
   DsHandle *handle = (DsHandle *) stream_.apiHandle;
 
-  // Increase scheduler frequency on lesser windows (a side-effect of
-  // increasing timer accuracy).  On greater windows (Win2K or later),
+  // Increase scheduler frequency on lesser arch (a side-effect of
+  // increasing timer accuracy).  On greater arch (Win2K or later),
   // this is already in effect.
   timeBeginPeriod( 1 ); 
 
@@ -6612,7 +6612,7 @@ void RtApiDs :: stopStream()
   }
 
  unlock:
-  timeEndPeriod( 1 ); // revert to normal scheduler frequency on lesser windows.
+  timeEndPeriod( 1 ); // revert to normal scheduler frequency on lesser arch.
   MUTEX_UNLOCK( &stream_.mutex );
 
   if ( FAILED( result ) ) error( RtAudioError::SYSTEM_ERROR );

@@ -1,7 +1,7 @@
 #ifndef WINAMP_SKININFO_HEADER
 #define WINAMP_SKININFO_HEADER
 
-#include <windows.h>
+#include <arch.h>
 
 #define SIF_COMMENT			0x01
 #define SIF_PREVIEW			0x02

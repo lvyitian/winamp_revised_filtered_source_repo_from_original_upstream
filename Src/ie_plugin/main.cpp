@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <arch.h>
 #include "Winamp.h"
 #include "resource.h"
 #include "WinampFactory.h"

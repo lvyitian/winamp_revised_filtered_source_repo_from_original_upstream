@@ -98,7 +98,7 @@ public:
   static GenWnd *genericwnd;
   static int shuting_down;
 
-  // maintains a stack of modal windows so basewnds can discard messages in WM_MOUSEACTIVATE, should only be used by MsgboxWnd & ModalWnd when we write it ;)
+  // maintains a stack of modal arch so basewnds can discard messages in WM_MOUSEACTIVATE, should only be used by MsgboxWnd & ModalWnd when we write it ;)
   static api_window *getModalWnd();
   static void pushModalWnd(api_window *wnd);
   static int popModalWnd(api_window *wnd);

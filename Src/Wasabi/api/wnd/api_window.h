@@ -59,7 +59,7 @@ public:
 		return &ret;
 	}
 
-	// this passes thru to the windows WndProc, if there is one -- NONPORTABLE
+	// this passes thru to the arch WndProc, if there is one -- NONPORTABLE
 #if defined (_WIN32) || defined (_WIN64)
 	virtual LRESULT wndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)=0;
 #elif defined(__APPLE__)

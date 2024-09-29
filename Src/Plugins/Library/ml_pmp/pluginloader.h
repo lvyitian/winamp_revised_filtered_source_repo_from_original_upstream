@@ -1,7 +1,7 @@
 #ifndef __PLUGINLOADER_H_
 #define __PLUGINLOADER_H_
 
-#include <windows.h>
+#include <arch.h>
 #include "..\..\General\gen_ml/ml.h"
 #include "pmp.h"
 #include "..\..\General\gen_ml/itemlist.h"

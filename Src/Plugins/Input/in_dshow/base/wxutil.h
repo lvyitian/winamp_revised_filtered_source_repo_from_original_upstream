@@ -457,7 +457,7 @@ STDAPI FreeBSTR(__deref_in BSTR* pstr);
 //    E_OUTOFMEMORY - can't allocate memory for returned string
 STDAPI AMGetWideString(LPCWSTR pszString, __deref_out LPWSTR *ppszReturn);
 
-// Special wait for objects owning windows
+// Special wait for objects owning arch
 DWORD WINAPI WaitDispatchingMessages(
     HANDLE hObject,
     DWORD dwWait,

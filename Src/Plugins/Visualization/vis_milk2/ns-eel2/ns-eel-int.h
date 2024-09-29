@@ -25,7 +25,7 @@
 #define __NS_EELINT_H__
 
 #ifdef _WIN32
-#include <windows.h>
+#include <arch.h>
 #else
 #include "../wdltypes.h"
 #endif

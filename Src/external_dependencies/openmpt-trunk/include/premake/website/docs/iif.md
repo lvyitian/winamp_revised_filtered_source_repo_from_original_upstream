@@ -15,7 +15,7 @@ result = iif(condition, trueval, falseval)
 ## Examples ##
 
 ```lua
-result = iif(os.is("windows"), "is windows", "is not windows")
+result = iif(os.is("arch"), "is arch", "is not arch")
 ```
 
 Note that all expressions are evaluated before the condition is checked; the following expression can not be implemented with an immediate if because it may try to concatenate a string value.

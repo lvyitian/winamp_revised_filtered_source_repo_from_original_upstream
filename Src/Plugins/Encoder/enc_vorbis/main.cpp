@@ -18,7 +18,7 @@
 
 #define ENC_VERSION "v1.58"
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <uxtheme.h>
 #include <strsafe.h>

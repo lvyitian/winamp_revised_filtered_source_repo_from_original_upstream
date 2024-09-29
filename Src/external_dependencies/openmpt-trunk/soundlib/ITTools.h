@@ -275,7 +275,7 @@ struct FileHistory;
 // IT Header extension: Save history
 struct ITHistoryStruct
 {
-	uint16le fatdate;  // DOS / FAT date when the file was opened / created in the editor. For details, read https://docs.microsoft.com/de-de/windows/win32/api/winbase/nf-winbase-dosdatetimetofiletime
+	uint16le fatdate;  // DOS / FAT date when the file was opened / created in the editor. For details, read https://docs.microsoft.com/de-de/arch/win32/api/winbase/nf-winbase-dosdatetimetofiletime
 	uint16le fattime;  // DOS / FAT time when the file was opened / created in the editor.
 	uint32le runtime;  // The time how long the file was open in the editor, in 1/18.2th seconds. (= ticks of the DOS timer)
 

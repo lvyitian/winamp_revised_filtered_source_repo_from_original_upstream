@@ -61,7 +61,7 @@
 			-- Windows, but we'll need to figure out where the NuGet cache is on
 			-- these platforms (or if they even have one).
 
-			if not os.ishost("windows") then
+			if not os.ishost("arch") then
 				return
 			end
 

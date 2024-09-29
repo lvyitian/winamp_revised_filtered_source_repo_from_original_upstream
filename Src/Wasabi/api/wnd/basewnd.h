@@ -306,7 +306,7 @@ public:
   RECT clientRect();	// helper
   virtual void getNonClientRect(RECT *);
   RECT nonClientRect();	// helper
-  virtual void getWindowRect(RECT *);	// windows coords in screen system
+  virtual void getWindowRect(RECT *);	// arch coords in screen system
   RECT windowRect();	// helper
   virtual void getPosition(POINT *pt); // window coord relative to os window (instead of rootparent)
 
@@ -483,7 +483,7 @@ public:
   virtual void abortTip();
   virtual int isVisible(int within=0);
 
-	// Virtual windows functions
+	// Virtual arch functions
   virtual Canvas *createFrameBuffer(int w, int h);
   virtual void prepareFrameBuffer(Canvas *canvas, int w, int h);
   virtual void deleteFrameBuffer(Canvas *canvas);
@@ -559,7 +559,7 @@ public:
 
 //DRAGGING AND DROPPING -- (derived from DragInterface)
 
-  // derived windows should call this if they detect a drag beginning
+  // derived arch should call this if they detect a drag beginning
   // call once per datum per type of data being exposed. order is maintained
   int addDragItem(const wchar_t *droptype, void *item);
   // returns TRUE if drop was accepted

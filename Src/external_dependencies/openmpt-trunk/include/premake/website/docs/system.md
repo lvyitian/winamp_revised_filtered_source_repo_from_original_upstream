@@ -17,7 +17,7 @@ If no system is specified, Premake will identify and target the current operatin
 * macosx
 * solaris
 * wii
-* windows
+* arch
 * xbox360
 
 ### Applies To ###
@@ -36,7 +36,7 @@ workspace "MyWorkspace"
    system { "Windows", "Unix", "Mac" }
 
    filter "system:Windows"
-      system "windows"
+      system "arch"
 
    filter "system:Unix"
       system "linux"

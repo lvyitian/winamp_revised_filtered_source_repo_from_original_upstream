@@ -48,9 +48,9 @@ static void ToggleWindowShade_EQ()
 
 static void ToggleWindowShade_Main()
 {
-	config_windowshade = !config_windowshade;
+	config_archhade = !config_archhade;
 	set_aot(1);
-	draw_tbar(1, config_windowshade, eggstat);
+	draw_tbar(1, config_archhade, eggstat);
 	SendMessageW(hMainWindow, WM_TIMER, UPDATE_DISPLAY_TIMER + 4, 0);
 	sa_setthread(config_sa);
 }
@@ -390,16 +390,16 @@ LRESULT Main_OnCommand(HWND hwnd, int wID, HWND hwndCtl, UINT codeNotify)
 	case WINAMP_EDIT_ID3:
 		if (FileName[0]) in_infobox(DIALOG_PARENT(hMainWindow), FileName);
 		return 1;
-	case WINAMP_OPTIONS_WINDOWSHADE_PL:         // toggle windowshade
+	case WINAMP_OPTIONS_WINDOWSHADE_PL:         // toggle archhade
 		ToggleWindowShade_PL();
 		return 1;
 	case WINAMP_OPTIONS_WINDOWSHADE_EQ:
 		ToggleWindowShade_EQ();
 		return 1;
-	case WINAMP_OPTIONS_WINDOWSHADE:         // toggle windowshade
+	case WINAMP_OPTIONS_WINDOWSHADE:         // toggle archhade
 		ToggleWindowShade_Main();
 		return 1;
-	case WINAMP_OPTIONS_WINDOWSHADE_GLOBAL:         // toggle windowshade
+	case WINAMP_OPTIONS_WINDOWSHADE_GLOBAL:         // toggle archhade
 		{
 			HWND hFocus = GetForegroundWindow();
 			if (hFocus == hPLWindow || IsChild(hFocus, hPLWindow))
@@ -585,7 +585,7 @@ LRESULT Main_OnCommand(HWND hwnd, int wID, HWND hwndCtl, UINT codeNotify)
 			}
 		}
 		return 0;
-	case WINAMP_BUTTON1_SHIFT:         // button 1 (previous), sent from either windowshade,
+	case WINAMP_BUTTON1_SHIFT:         // button 1 (previous), sent from either archhade,
 	case WINAMP_BUTTON1_CTRL:          // keyboard shortcut, or normal buttons (ui.c)
 	case WINAMP_BUTTON1:
 		return (Main_OnButton1(hwnd, LOWORD(wID), hwndCtl, codeNotify));

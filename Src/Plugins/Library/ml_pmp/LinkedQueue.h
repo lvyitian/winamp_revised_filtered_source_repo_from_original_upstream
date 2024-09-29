@@ -1,7 +1,7 @@
 #ifndef _LINKEDQUEUE_H_
 #define _LINKEDQUEUE_H_
 
-#include <windows.h>
+#include <arch.h>
 
 class LinkedQueue;
 class QueueElement;

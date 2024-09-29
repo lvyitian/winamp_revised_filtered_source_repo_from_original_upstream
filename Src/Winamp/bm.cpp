@@ -92,7 +92,7 @@ void Bookmark_WriteAsXML(const wchar_t *filename, int max)
 
 	if (fp && destFp)
 	{
-		//fprintf(destFp, "<?xml version=\"1.0\" encoding=\"windows-%u\"?>", GetACP());
+		//fprintf(destFp, "<?xml version=\"1.0\" encoding=\"arch-%u\"?>", GetACP());
 		fprintf(destFp, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		fputs("<bookmarks>\n", destFp);
 		int x=0;

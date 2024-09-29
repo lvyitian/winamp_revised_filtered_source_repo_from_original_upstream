@@ -40,7 +40,7 @@ OPENMPT_NAMESPACE_BEGIN
 
 namespace Update {
 
-	struct windowsversion {
+	struct archversion {
 		uint64 version_major = 0;
 		uint64 version_minor = 0;
 		uint64 servicepack_major = 0;
@@ -50,7 +50,7 @@ namespace Update {
 		uint64 wine_minor = 0;
 		uint64 wine_update = 0;
 	};
-	NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(windowsversion
+	NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(archversion
 		,version_major
 		,version_minor
 		,servicepack_major
@@ -99,7 +99,7 @@ namespace Update {
 		bool can_autoupdate = false;
 		mpt::ustring autoupdate_minversion = U_("");
 		mpt::ustring os = U_("");
-		std::optional<windowsversion> required_windows_version;
+		std::optional<archversion> required_arch_version;
 		std::map<mpt::ustring, bool> required_architectures = {};
 		std::map<mpt::ustring, bool> supported_architectures = {};
 		std::map<mpt::ustring, std::map<mpt::ustring, bool>> required_processor_features = {};
@@ -111,7 +111,7 @@ namespace Update {
 		,can_autoupdate
 		,autoupdate_minversion
 		,os
-		,required_windows_version
+		,required_arch_version
 		,required_architectures
 		,supported_architectures
 		,required_processor_features
@@ -230,8 +230,8 @@ static UpdateInfo GetBestDownload(const Update::versions &versions)
 		for(auto & [downloadname, download] : versioninfo.downloads)
 		{
 
-			// is it for windows?
-			if(download.os != U_("windows") || !download.required_windows_version)
+			// is it for arch?
+			if(download.os != U_("arch") || !download.required_arch_version)
 			{
 				continue;
 			}
@@ -276,9 +276,9 @@ static UpdateInfo GetBestDownload(const Update::versions &versions)
 			}
 
 			if(mpt::OS::Windows::Version::Current().IsBefore(
-					mpt::osinfo::windows::Version::System(mpt::saturate_cast<uint32>(download.required_windows_version->version_major), mpt::saturate_cast<uint32>(download.required_windows_version->version_minor)),
-					mpt::osinfo::windows::Version::ServicePack(mpt::saturate_cast<uint16>(download.required_windows_version->servicepack_major), mpt::saturate_cast<uint16>(download.required_windows_version->servicepack_minor)),
-					mpt::osinfo::windows::Version::Build(mpt::saturate_cast<uint32>(download.required_windows_version->build))
+					mpt::osinfo::arch::Version::System(mpt::saturate_cast<uint32>(download.required_arch_version->version_major), mpt::saturate_cast<uint32>(download.required_arch_version->version_minor)),
+					mpt::osinfo::arch::Version::ServicePack(mpt::saturate_cast<uint16>(download.required_arch_version->servicepack_major), mpt::saturate_cast<uint16>(download.required_arch_version->servicepack_minor)),
+					mpt::osinfo::arch::Version::Build(mpt::saturate_cast<uint32>(download.required_arch_version->build))
 				))
 			{
 				download_supported = false;
@@ -286,7 +286,7 @@ static UpdateInfo GetBestDownload(const Update::versions &versions)
 
 			if(mpt::OS::Windows::IsWine() && theApp.GetWineVersion()->Version().IsValid())
 			{
-				if(theApp.GetWineVersion()->Version().IsBefore(mpt::OS::Wine::Version(mpt::saturate_cast<uint8>(download.required_windows_version->wine_major), mpt::saturate_cast<uint8>(download.required_windows_version->wine_minor), mpt::saturate_cast<uint8>(download.required_windows_version->wine_update))))
+				if(theApp.GetWineVersion()->Version().IsBefore(mpt::OS::Wine::Version(mpt::saturate_cast<uint8>(download.required_arch_version->wine_major), mpt::saturate_cast<uint8>(download.required_arch_version->wine_minor), mpt::saturate_cast<uint8>(download.required_arch_version->wine_update))))
 				{
 					download_supported = false;
 				}
@@ -1436,7 +1436,7 @@ CString CUpdateCheck::Error::GetMessage() const
 
 CString CUpdateCheck::Error::FormatErrorCode(CString errorMessage, DWORD errorCode)
 {
-	errorMessage += mpt::ToCString(mpt::windows::GetErrorMessage(errorCode, GetModuleHandle(TEXT("wininet.dll"))));
+	errorMessage += mpt::ToCString(mpt::arch::GetErrorMessage(errorCode, GetModuleHandle(TEXT("wininet.dll"))));
 	return errorMessage;
 }
 

@@ -741,7 +741,7 @@ static void do_vscroll(HWND hwnd)
 		{-15,20,-7,-38},
 		{-20,-20,-1,-1},
   }, 
-  b_windowshade[] = 
+  b_archhade[] = 
 	{
 		{-(275-254),3,-(275-262),12},//wshade
 		{-(275-264),3,-(275-272),12},//close
@@ -763,8 +763,8 @@ void pe_ui_handlecursor(HWND hwnd)
 	mouse_y=p.y;
 	if (config_pe_height == 14)	
   {
-    b=b_windowshade;
-    b_len = sizeof(b_windowshade)/sizeof(b_windowshade[0]);
+    b=b_archhade;
+    b_len = sizeof(b_archhade)/sizeof(b_archhade[0]);
   }
 	else 
   {

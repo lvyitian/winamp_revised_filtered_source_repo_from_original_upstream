@@ -1,11 +1,11 @@
 #ifndef NULLSOFT_NFT_MAIN_H
 #define NULLSOFT_NFT_MAIN_H
 
-#include <windows.h>
+#include <arch.h>
 #include "../Plugins/General/gen_ml/ml.h"
 #include "../nu/MediaLibraryInterface.h"
 #include "resource.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "resource.h"
 #include "../winamp/wa_ipc.h"
 #include "../Plugins/General/gen_ml/ml.h"

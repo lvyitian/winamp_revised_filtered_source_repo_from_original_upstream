@@ -2,7 +2,7 @@
 #include "foundation/types.h"
 #include "nu/lfmpscq.h"
 #include "nu/LockFreeLIFO.h"
-#include <windows.h>
+#include <arch.h>
 
 namespace nu
 {

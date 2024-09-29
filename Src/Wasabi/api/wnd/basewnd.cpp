@@ -4168,7 +4168,7 @@ api_region *BaseWnd::getRegion()
 
 int BaseWnd::handleTransparency()
 {
-	return 1; // by default all windows handle transparency, only windows blitting directly on the SCREEN (if you blit directly on the DC it's still ok),
+	return 1; // by default all arch handle transparency, only arch blitting directly on the SCREEN (if you blit directly on the DC it's still ok),
 }           // for instance, a vis or a video using overlay should return 0, this will let the layout auto manage its alpha as that window is shown/hiden
 
 void BaseWnd::setAlpha(int active, int inactive)
@@ -5564,7 +5564,7 @@ void BaseWnd::unparentHWNDChildren()
 	reparentwnds.deleteAll();
 
 #ifndef WIN32
-#error port me ! // make a list of all the children oswindows and reparent them to the desktop somewhere we can't see
+#error port me ! // make a list of all the children osarch and reparent them to the desktop somewhere we can't see
 #endif
 
 	OSWINDOWHANDLE wnd = GetWindow(getOsWindowHandle(), GW_CHILD);

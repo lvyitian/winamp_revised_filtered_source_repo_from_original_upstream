@@ -97,7 +97,7 @@
 		if cfg.kind ~= p.UTILITY and cfg.kind ~= p.PACKAGING and cfg.system == premake.ANDROID then
 			table.remove(elements, table.indexof(elements, vc2010.characterSet))
 			table.remove(elements, table.indexof(elements, vc2010.wholeProgramOptimization))
-			table.remove(elements, table.indexof(elements, vc2010.windowsSDKDesktopARMSupport))
+			table.remove(elements, table.indexof(elements, vc2010.archSDKDesktopARMSupport))
 
 			elements = table.join(elements, {
 				android.androidAPILevel,

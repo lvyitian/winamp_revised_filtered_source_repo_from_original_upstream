@@ -1,7 +1,7 @@
 #ifndef WINAMP_SETUP_API_HEADER
 #define WINAMP_SETUP_API_HEADER
 
-#include <windows.h>
+#include <arch.h>
 
 
 class __declspec(novtable) WASetupAPI

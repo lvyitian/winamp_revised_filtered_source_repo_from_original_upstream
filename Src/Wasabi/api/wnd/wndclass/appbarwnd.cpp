@@ -15,8 +15,8 @@
 #error port me or remove me from the inheritance on this platform !
 #endif
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <shlobj.h>
 #include "../../../../Plugins/General/gen_ff/main.h"
 #include "appbarwnd.h"

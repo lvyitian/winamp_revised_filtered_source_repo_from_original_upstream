@@ -608,7 +608,7 @@ class RTAUDIO_DLL_PUBLIC RtAudio
   #ifndef NOMINMAX
     #define NOMINMAX
   #endif
-  #include <windows.h>
+  #include <arch.h>
   #include <process.h>
   #include <stdint.h>
 

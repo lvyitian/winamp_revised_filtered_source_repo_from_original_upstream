@@ -132,7 +132,7 @@
 	end
 
 	function suite.onFilterWindowsIsNotPosix()
-		system "windows"
+		system "arch"
 		filter { "system:posix" }
 			defines { "POSIX" }
 		filter { "system:not posix" }

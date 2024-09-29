@@ -2,7 +2,7 @@
 
 
 #include "nu/queue_node.h"
-#include <windows.h>
+#include <arch.h>
 #include <malloc.h>
 
 /* lock free stack object 

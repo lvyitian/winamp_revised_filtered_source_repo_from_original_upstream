@@ -1074,7 +1074,7 @@ typedef struct _MLSKINWINDOW
 
 #define ML_IPC_SKINWINDOW		0x1400L		// param = (WPARAM)(MLSKINWINDOW)pmlSkinWnd. Return TRUE if ok. 
 											// Note: If window already skinned you will get error. 
-											//		 Some controls require they parent to support reflection which provided by all skinned windows. 
+											//		 Some controls require they parent to support reflection which provided by all skinned arch. 
 											//	 	 In case parent not skined it will be skinned automaticly as SKINNEDWND_TYPE_WINDOW.
 											//		 You can always reskin parent window later with desired type.
 											//		 Skinned window will unskin itself on WM_NCDESTROY.

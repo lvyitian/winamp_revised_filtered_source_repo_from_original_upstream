@@ -2,7 +2,7 @@
 #define NULLSOFT_ML_PLAYLISTS_PL_ENTRY_H
 
 #include "ifc_plentryinfo.h"
-#include <windows.h>
+#include <arch.h>
 #include <map>
 #include <iostream>
 

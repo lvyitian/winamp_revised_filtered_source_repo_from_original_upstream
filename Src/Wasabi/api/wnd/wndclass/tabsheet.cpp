@@ -131,7 +131,7 @@ int TabSheet::onInit() {
     rightscroll->setParent(this);
   }
 
-  // init the windows
+  // init the arch
   foreach(tabs)
     if (foreach_index != 0) tabs.getfor()->getBaseWnd()->setStartHidden(TRUE);
     tabs.getfor()->getBaseWnd()->init(this);

@@ -8,7 +8,7 @@
 #include "../api.h"
 #include "../api_auth.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <strsafe.h>
 

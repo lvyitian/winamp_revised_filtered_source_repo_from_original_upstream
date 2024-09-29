@@ -4,7 +4,7 @@
 
 #include "../api.h"
 
-#include <windows.h>
+#include <arch.h>
 
 typedef struct __TOSREMINDERCREATEPARAM
 {

@@ -5,7 +5,7 @@
 
 #define TIMER_QUICKPAINT 0x650
 
-// thread context, this is here so we can avoid the windows types in quickpaintwnd.h
+// thread context, this is here so we can avoid the arch types in quickpaintwnd.h
 class QuickPaintContext
 {
 public:

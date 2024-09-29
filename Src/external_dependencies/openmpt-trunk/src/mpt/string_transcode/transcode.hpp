@@ -29,7 +29,7 @@
 #endif // MPT_OS_DJGPP
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif // MPT_OS_WINDOWS
 
 #if MPT_OS_DJGPP
@@ -538,7 +538,7 @@ inline bool has_codepage(UINT cp) {
 	return IsValidCodePage(cp) ? true : false;
 }
 
-inline bool windows_has_encoding(common_encoding encoding) {
+inline bool arch_has_encoding(common_encoding encoding) {
 	bool result = false;
 	switch (encoding) {
 		case common_encoding::utf8:
@@ -559,7 +559,7 @@ inline bool windows_has_encoding(common_encoding encoding) {
 		case common_encoding::cp437:
 			result = has_codepage(437);
 			break;
-		case common_encoding::windows1252:
+		case common_encoding::arch1252:
 			result = has_codepage(1252);
 			break;
 		case common_encoding::amiga:
@@ -581,7 +581,7 @@ inline bool windows_has_encoding(common_encoding encoding) {
 	return result;
 }
 
-inline bool windows_has_encoding(logical_encoding encoding) {
+inline bool arch_has_encoding(logical_encoding encoding) {
 	bool result = false;
 	switch (encoding) {
 		case logical_encoding::locale:
@@ -628,7 +628,7 @@ inline UINT codepage_from_encoding(common_encoding encoding) {
 		case common_encoding::cp437:
 			result = 437;
 			break;
-		case common_encoding::windows1252:
+		case common_encoding::arch1252:
 			result = 1252;
 			break;
 		case common_encoding::amiga:
@@ -923,7 +923,7 @@ inline Tdststring encode(common_encoding encoding, const mpt::widestring & src) 
 	static_assert(sizeof(typename Tdststring::value_type) == sizeof(char));
 	static_assert(mpt::is_character<typename Tdststring::value_type>::value);
 #if MPT_OS_WINDOWS
-	if (windows_has_encoding(encoding)) {
+	if (arch_has_encoding(encoding)) {
 		return encode_codepage<Tdststring>(codepage_from_encoding(encoding), src);
 	}
 #endif
@@ -946,7 +946,7 @@ inline Tdststring encode(common_encoding encoding, const mpt::widestring & src) 
 		case common_encoding::cp850:
 			return encode_8bit<Tdststring>(src, CharsetTableCP850);
 			break;
-		case common_encoding::windows1252:
+		case common_encoding::arch1252:
 			return encode_8bit<Tdststring>(src, CharsetTableWindows1252);
 			break;
 		case common_encoding::amiga:
@@ -973,7 +973,7 @@ inline Tdststring encode(logical_encoding encoding, const mpt::widestring & src)
 	static_assert(sizeof(typename Tdststring::value_type) == sizeof(char));
 	static_assert(mpt::is_character<typename Tdststring::value_type>::value);
 #if MPT_OS_WINDOWS
-	if (windows_has_encoding(encoding)) {
+	if (arch_has_encoding(encoding)) {
 		return encode_codepage<Tdststring>(codepage_from_encoding(encoding), src);
 	}
 #endif
@@ -1032,7 +1032,7 @@ inline mpt::widestring decode(common_encoding encoding, const Tsrcstring & src) 
 	static_assert(sizeof(typename Tsrcstring::value_type) == sizeof(char));
 	static_assert(mpt::is_character<typename Tsrcstring::value_type>::value);
 #if MPT_OS_WINDOWS
-	if (windows_has_encoding(encoding)) {
+	if (arch_has_encoding(encoding)) {
 		return decode_codepage(codepage_from_encoding(encoding), src);
 	}
 #endif
@@ -1055,7 +1055,7 @@ inline mpt::widestring decode(common_encoding encoding, const Tsrcstring & src) 
 		case common_encoding::cp850:
 			return decode_8bit(src, CharsetTableCP850);
 			break;
-		case common_encoding::windows1252:
+		case common_encoding::arch1252:
 			return decode_8bit(src, CharsetTableWindows1252);
 			break;
 		case common_encoding::amiga:
@@ -1082,7 +1082,7 @@ inline mpt::widestring decode(logical_encoding encoding, const Tsrcstring & src)
 	static_assert(sizeof(typename Tsrcstring::value_type) == sizeof(char));
 	static_assert(mpt::is_character<typename Tsrcstring::value_type>::value);
 #if MPT_OS_WINDOWS
-	if (windows_has_encoding(encoding)) {
+	if (arch_has_encoding(encoding)) {
 		return decode_codepage(codepage_from_encoding(encoding), src);
 	}
 #endif

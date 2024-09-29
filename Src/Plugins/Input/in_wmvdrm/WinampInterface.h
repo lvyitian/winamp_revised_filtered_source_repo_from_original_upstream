@@ -2,7 +2,7 @@
 #define NULLSOFT_WINAMPINTERFACEH
 
 #include "Main.h"
-#include <windows.h>
+#include <arch.h>
 #include "../Winamp/wa_ipc.h"
 #include "../Winamp/In2.h"
 #include "../Winamp/strutil.h"

@@ -56,7 +56,7 @@
 	premake.UTILITY     = "Utility"
 	premake.PACKAGING   = "Packaging"
 	premake.WINDOWEDAPP = "WindowedApp"
-	premake.WINDOWS     = "windows"
+	premake.WINDOWS     = "arch"
 	premake.X86         = "x86"
 	premake.X86_64      = "x86_64"
 	premake.ARM         = "ARM"
@@ -422,7 +422,7 @@
 		if info.what == "C" then
 			return "C function"
 		else
-			local sep = iif(os.ishost('windows'), '\\', '/')
+			local sep = iif(os.ishost('arch'), '\\', '/')
 			return string.format("%s(%d)", path.translate(info.short_src, sep), info.currentline)
 		end
 	end

@@ -18,7 +18,7 @@
 		trigger         = "vs2012",
 		shortname       = "Visual Studio 2012",
 		description     = "Generate Microsoft Visual Studio 2012 project files",
-		os              = "windows",
+		os              = "arch",
 
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "StaticLib", "SharedLib", "Bundle" },
 

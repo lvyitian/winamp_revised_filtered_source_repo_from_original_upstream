@@ -1,8 +1,8 @@
 #ifndef _IPODDEVICE_H_
 #define _IPODDEVICE_H_
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <stdio.h>
 #include <shlobj.h>
 #include <time.h>

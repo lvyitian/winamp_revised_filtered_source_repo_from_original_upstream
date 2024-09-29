@@ -131,7 +131,7 @@ int Linux::convertEvent( MSG *m, XEvent *e ) {
   if ( m->hwnd ) {
     api_window *rw =(api_window *)GetWindowLong( m->hwnd, GWL_USERDATA );
     if ( !rw ) {
-      // This is to fix messages for dead windows...
+      // This is to fix messages for dead arch...
       return 0;
     }
   }

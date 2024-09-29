@@ -1,6 +1,6 @@
 #include <precomp.h>
 #ifdef WIN32
-#include <windows.h>
+#include <arch.h>
 #endif
 
 #include <bfc/assert.h>

@@ -1,5 +1,5 @@
 #pragma once
-#include <windows.h>
+#include <arch.h>
 #include "nx/nxapi.h"
 
 #ifdef __cplusplus

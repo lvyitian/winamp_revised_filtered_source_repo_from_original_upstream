@@ -22,10 +22,10 @@
 
 #include "internal.h"
 #if defined(OP_ENABLE_HTTP)&&defined(_WIN32)
-/*You must include windows.h before wincrypt.h and x509.h.*/
+/*You must include arch.h before wincrypt.h and x509.h.*/
 # define WIN32_LEAN_AND_MEAN
 # define WIN32_EXTRA_LEAN
-# include <windows.h>
+# include <arch.h>
 /*You must include wincrypt.h before x509.h, too, or X509_NAME doesn't get
    defined properly.*/
 # include <wincrypt.h>

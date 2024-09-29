@@ -5,7 +5,7 @@
 
 class api_service;
 #ifdef WIN32
-#include <windows.h>
+#include <arch.h>
 #endif
 
 class NOVTABLE ifc_wa5component : public Dispatchable

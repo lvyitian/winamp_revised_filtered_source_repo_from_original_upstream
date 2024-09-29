@@ -255,7 +255,7 @@ lame_encode_frame()
 inbuf:           |--------------|--------------|--------------|
 
 
-Polyphase (18 windows, each shifted 32)
+Polyphase (18 arch, each shifted 32)
 gr 0:
 window1          <----512---->
 window18                 <----512---->

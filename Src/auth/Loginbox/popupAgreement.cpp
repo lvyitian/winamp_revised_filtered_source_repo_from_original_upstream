@@ -8,7 +8,7 @@
 
 #include "../../winamp/commandLink.h"
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <strsafe.h>
 

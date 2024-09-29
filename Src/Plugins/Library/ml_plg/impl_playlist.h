@@ -3,7 +3,7 @@
 
 #include "../playlist/ifc_playlist.h"
 #include <vector>
-#include <windows.h> // for MAX_PATH
+#include <arch.h> // for MAX_PATH
 #include "../playlist/pl_entry.h"
 #include <bfc/multipatch.h>
 #include <bfc/platform/types.h>

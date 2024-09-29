@@ -2,7 +2,7 @@
 #define _CRITSEC_H
 
 #ifdef _WIN32
-#include <windows.h>
+#include <arch.h>
 #elif defined(__APPLE__)
 #include <CoreServices/CoreServices.h>
 #endif

@@ -18,7 +18,7 @@
 #define MOZILLA_VERSION "1.8"
 #define MOZILLA_VERSION_U 1.8
 #define MOZ_BUILD_APP browser
-#define MOZ_DEFAULT_TOOLKIT "windows"
+#define MOZ_DEFAULT_TOOLKIT "arch"
 #define MOZ_DISTRIBUTION_ID "org.mozilla"
 #define MOZ_DLL_SUFFIX ".dll"
 #define MOZ_JSLOADER 1

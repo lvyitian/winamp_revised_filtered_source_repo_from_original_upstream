@@ -154,16 +154,16 @@
 			buildoptions { "-arch arm64", "-arch x86_64" }
 			linkoptions { "-arch arm64", "-arch x86_64" }
 
-		filter { "system:windows", "options:arch=ARM" }
+		filter { "system:arch", "options:arch=ARM" }
 			platforms { "ARM" }
 
-		filter { "system:windows", "options:arch=ARM64" }
+		filter { "system:arch", "options:arch=ARM64" }
 			platforms { "ARM64" }
 
-		filter { "system:windows", "options:arch=x86 or arch=Win32" }
+		filter { "system:arch", "options:arch=x86 or arch=Win32" }
 			platforms { "Win32" }
 
-		filter { "system:windows", "options:arch=x86_64 or arch=x64" }
+		filter { "system:arch", "options:arch=x86_64 or arch=x64" }
 			platforms { "x64" }
 
 		filter "configurations:Debug"
@@ -178,11 +178,11 @@
 		filter "action:vs*"
 			defines     { "_CRT_SECURE_NO_DEPRECATE", "_CRT_SECURE_NO_WARNINGS", "_CRT_NONSTDC_NO_WARNINGS" }
 
-		filter { "system:windows", "configurations:Release" }
+		filter { "system:arch", "configurations:Release" }
 			flags       { "NoIncrementalLink" }
 
 		-- MinGW AR does not handle LTO out of the box and need a plugin to be setup
-		filter { "system:windows", "configurations:Release", "toolset:not mingw" }
+		filter { "system:arch", "configurations:Release", "toolset:not mingw" }
 			flags		{ "LinkTimeOptimization" }
 
 	project "Premake5"
@@ -224,7 +224,7 @@
 		filter "configurations:Release"
 			targetdir   "bin/release"
 
-		filter "system:windows"
+		filter "system:arch"
 			links       { "ole32", "ws2_32", "advapi32", "version" }
 			files { "src/**.rc" }
 
@@ -239,7 +239,7 @@
 		filter "system:linux or hurd"
 			links       { "dl", "rt" }
 
-		filter { "system:not windows", "system:not macosx" }
+		filter { "system:not arch", "system:not macosx" }
 			if not _OPTIONS["no-curl"] then
 				links   { "mbedtls-lib" }
 			end

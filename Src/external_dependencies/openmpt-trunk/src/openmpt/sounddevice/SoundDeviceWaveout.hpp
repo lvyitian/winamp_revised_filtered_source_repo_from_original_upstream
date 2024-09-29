@@ -22,7 +22,7 @@
 
 #if MPT_OS_WINDOWS
 #include <MMSystem.h>
-#include <windows.h>
+#include <arch.h>
 #endif  // MPT_OS_WINDOWS
 
 

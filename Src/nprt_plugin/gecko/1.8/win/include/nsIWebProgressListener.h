@@ -131,7 +131,7 @@ class NS_NO_VTABLE nsIWebProgressListener : public nsISupports {
    *   with the STATE_IS_NETWORK flag set to indicate the start and stop of
    *   said navigation.  In other words, an observer of an outer window can
    *   determine when activity, that may be constrained to a child window or
-   *   set of child windows, starts and stops.
+   *   set of child arch, starts and stops.
    *
    * STATE_IS_WINDOW
    *   This flag indicates that the state transition corresponds to the start

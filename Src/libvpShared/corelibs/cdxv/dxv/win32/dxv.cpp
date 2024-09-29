@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 
 
 // ************************************************************************

@@ -1,6 +1,6 @@
 #ifndef NULLSOFT_MAINTHREADH
 #define NULLSOFT_MAINTHREADH
-#include <windows.h>
+#include <arch.h>
 class Lambda
 {
 public:

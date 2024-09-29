@@ -1,6 +1,6 @@
 #define STRICT
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <commctrl.h>
 #include <shlobj.h>
 #include <mmreg.h>

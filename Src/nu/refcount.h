@@ -1,6 +1,6 @@
 #pragma once
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include <arch.h>
 template <class ifc_t>
 class Countable : public ifc_t
 {

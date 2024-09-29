@@ -24,14 +24,14 @@ static const AppleEncodings encodings[] =
 	{L"iso-8859-13", kCFStringEncodingISOLatin7},
 	{L"iso-8859-14", kCFStringEncodingISOLatin8},
 	{L"iso-8859-15", kCFStringEncodingISOLatin9},
-	{L"windows-1251", kCFStringEncodingWindowsCyrillic},
-	{L"windows-1252", kCFStringEncodingWindowsLatin1},
-	{L"windows-1253", kCFStringEncodingWindowsGreek},
-	{L"windows-1254", kCFStringEncodingWindowsLatin5},
-	{L"windows-1255", kCFStringEncodingWindowsHebrew},
-	{L"windows-1256", kCFStringEncodingWindowsArabic},
-	{L"windows-1257", kCFStringEncodingWindowsBalticRim},
-	{L"windows-1258", kCFStringEncodingWindowsVietnamese},
+	{L"arch-1251", kCFStringEncodingWindowsCyrillic},
+	{L"arch-1252", kCFStringEncodingWindowsLatin1},
+	{L"arch-1253", kCFStringEncodingWindowsGreek},
+	{L"arch-1254", kCFStringEncodingWindowsLatin5},
+	{L"arch-1255", kCFStringEncodingWindowsHebrew},
+	{L"arch-1256", kCFStringEncodingWindowsArabic},
+	{L"arch-1257", kCFStringEncodingWindowsBalticRim},
+	{L"arch-1258", kCFStringEncodingWindowsVietnamese},
 
 };
 

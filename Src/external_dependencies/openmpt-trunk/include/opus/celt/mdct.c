@@ -300,7 +300,7 @@ void clt_mdct_backward_c(const mdct_lookup *l, kiss_fft_scalar *in, kiss_fft_sca
          im = yp0[0];
          t0 = t[i];
          t1 = t[N4+i];
-         /* We'd scale up by 2 here, but instead it's done when mixing the windows */
+         /* We'd scale up by 2 here, but instead it's done when mixing the arch */
          yr = ADD32_ovflw(S_MUL(re,t0), S_MUL(im,t1));
          yi = SUB32_ovflw(S_MUL(re,t1), S_MUL(im,t0));
          /* We swap real and imag because we're using an FFT instead of an IFFT. */
@@ -311,7 +311,7 @@ void clt_mdct_backward_c(const mdct_lookup *l, kiss_fft_scalar *in, kiss_fft_sca
 
          t0 = t[(N4-i-1)];
          t1 = t[(N2-i-1)];
-         /* We'd scale up by 2 here, but instead it's done when mixing the windows */
+         /* We'd scale up by 2 here, but instead it's done when mixing the arch */
          yr = ADD32_ovflw(S_MUL(re,t0), S_MUL(im,t1));
          yi = SUB32_ovflw(S_MUL(re,t1), S_MUL(im,t0));
          yp1[0] = yr;

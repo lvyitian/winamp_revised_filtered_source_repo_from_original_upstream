@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_TAGZ_STRINGH
 #define NULLSOFT_TAGZ_STRINGH
 
-#include <windows.h>
+#include <arch.h>
 
 namespace tagz_
 {

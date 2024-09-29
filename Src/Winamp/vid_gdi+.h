@@ -1,7 +1,7 @@
 #ifndef _VID_GDIPLUS_H_
 #define _VID_GDIPLUS_H_
 
-#include <windows.h>
+#include <arch.h>
 #include <gdiplus.h>
 #include "VideoOutputChild.h"
 

@@ -1053,7 +1053,7 @@
     <ClInclude Include="..\..\src\mpt\check\mfc.hpp">
       <Filter>src\mpt\check</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\mpt\check\windows.hpp">
+    <ClInclude Include="..\..\src\mpt\check\arch.hpp">
       <Filter>src\mpt\check</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\mpt\crc\crc.hpp">
@@ -1233,7 +1233,7 @@
     <ClInclude Include="..\..\src\mpt\osinfo\class.hpp">
       <Filter>src\mpt\osinfo</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\mpt\osinfo\windows_version.hpp">
+    <ClInclude Include="..\..\src\mpt\osinfo\arch_version.hpp">
       <Filter>src\mpt\osinfo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\mpt\out_of_memory\out_of_memory.hpp">

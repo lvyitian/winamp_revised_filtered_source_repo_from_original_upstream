@@ -6,7 +6,7 @@
 #pragma once
 #endif
 
-#include <windows.h>
+#include <arch.h>
 
 // callbacks
 typedef void (CALLBACK *CDDB_CMDCOMPLETED)(LONG /*lCommandCode*/, HRESULT /*hCommandResult*/, VARIANT* /*pCommandData*/, ULONG_PTR /*user*/);

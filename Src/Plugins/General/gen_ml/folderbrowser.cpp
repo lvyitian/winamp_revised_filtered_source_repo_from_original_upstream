@@ -6,7 +6,7 @@
 #include "./skinnedlistbox.h"
 #include "./colors.h"
 
-#include <windowsx.h>
+#include <archx.h>
 #include <strsafe.h>
 
 

@@ -7,7 +7,7 @@
  **/
 
 #include "Main.h"
-#include <windows.h>
+#include <arch.h>
 #include "../nu/AutoUrl.h"
 #include <io.h>
 

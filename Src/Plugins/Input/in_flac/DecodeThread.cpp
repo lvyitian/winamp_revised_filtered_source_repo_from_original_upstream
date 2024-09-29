@@ -22,7 +22,7 @@
 #define WIN32_LEAN_AND_MEAN
 #endif
 #include "main.h"
-#include <windows.h>
+#include <arch.h>
 #include <math.h>
 #include <assert.h>
 #include <locale.h>

@@ -17,7 +17,7 @@
 #define SENDEMAIL_H
 
 #include <tchar.h>
-#include <windows.h>
+#include <arch.h>
 
 const wchar_t* GetFilePart(LPCWSTR lpszFile);
 

@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_VIDEOASPECTADJUSTERH
 #define NULLSOFT_VIDEOASPECTADJUSTERH
 
-#include <windows.h>
+#include <arch.h>
 
 class VideoAspectAdjuster
 {

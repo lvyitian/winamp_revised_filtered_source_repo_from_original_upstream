@@ -29,7 +29,7 @@
 --
 
 	function suite.defaultCompiler_onWindows()
-		_TARGET_OS = "windows"
+		_TARGET_OS = "arch"
 		prepare()
 		test.isequal("csc", dotnet.gettoolname(cfg, "csc"))
 	end

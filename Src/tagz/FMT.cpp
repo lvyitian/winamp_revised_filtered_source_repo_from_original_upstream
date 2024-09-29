@@ -1,6 +1,6 @@
 #include "tagz.h"
 #include "functions.h"
-#include <windows.h>
+#include <arch.h>
 #include <shlwapi.h>
 #include "api__tagz.h"
 #include "resource.h"

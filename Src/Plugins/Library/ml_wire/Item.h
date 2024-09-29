@@ -1,7 +1,7 @@
 #pragma once
 #include <bfc/platform/types.h>
 #include <time.h>
-#include <windows.h>
+#include <arch.h>
 
 namespace RSS
 {

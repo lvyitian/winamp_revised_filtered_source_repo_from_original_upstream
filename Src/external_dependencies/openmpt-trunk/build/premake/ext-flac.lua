@@ -54,7 +54,7 @@
    "../../include/flac/src/libFLAC/stream_encoder_intrin_ssse3.c",
    "../../include/flac/src/libFLAC/stream_encoder_framing.c",
    "../../include/flac/src/libFLAC/window.c",
-   "../../include/flac/src/libFLAC/windows_unicode_filenames.c",
+   "../../include/flac/src/libFLAC/arch_unicode_filenames.c",
   }
   files {
    "../../include/flac/src/libFLAC/include/private/all.h",
@@ -108,7 +108,7 @@
   filter { "action:vs*" }
     files {
      "../../include/flac/include/share/win_utf8_io.h",
-     "../../include/flac/include/share/windows_unicode_filenames.h",
+     "../../include/flac/include/share/arch_unicode_filenames.h",
     }
   filter {}
   filter { "action:vs*" }

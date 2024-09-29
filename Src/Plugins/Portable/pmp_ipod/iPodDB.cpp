@@ -46,7 +46,7 @@
 #include <bfc/platform/types.h>
 #include <assert.h>
 #include <time.h>
-#include <windows.h>
+#include <arch.h>
 #include <tchar.h>
 #include <math.h>
 #include <vector>
@@ -166,14 +166,14 @@ int STRCMP_NULLOK(const wchar_t *pa, const wchar_t *pb) {
 }
 #undef SKIP_THE_AND_WHITESPACE
 
-// convert Macintosh timestamp to windows timestamp
+// convert Macintosh timestamp to arch timestamp
 time_t mactime_to_wintime (const unsigned long mactime)
 {
 	if (mactime != 0) return (time_t)(mactime - 2082844800);
 	else return (time_t)mactime;
 }
 
-// convert windows timestamp to Macintosh timestamp
+// convert arch timestamp to Macintosh timestamp
 unsigned long wintime_to_mactime (const __time64_t time)
 {
 	return (unsigned long)(time + 2082844800);

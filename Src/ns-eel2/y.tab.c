@@ -136,7 +136,7 @@ extern void nseelerror(YYLTYPE* pos, compileContext* ctx, const char* str);
 #line 13 "eel2.y"
 
 #ifdef _WIN32
-#include <windows.h>
+#include <arch.h>
 #endif
 #include <stdlib.h>
 #include <stdio.h>

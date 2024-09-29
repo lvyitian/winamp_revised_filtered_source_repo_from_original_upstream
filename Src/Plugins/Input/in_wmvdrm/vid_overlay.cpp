@@ -1,5 +1,5 @@
 #include "main.h"
-#include <windows.h>
+#include <arch.h>
 #include <multimon.h>
 #include "vid_overlay.h"
 #include "directdraw.h"

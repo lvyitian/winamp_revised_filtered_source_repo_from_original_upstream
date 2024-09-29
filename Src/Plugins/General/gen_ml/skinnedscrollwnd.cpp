@@ -2,7 +2,7 @@
 #include "./skinnedscrollwnd.h"
 #include "main.h"
 #include <commctrl.h>
-#include <windowsx.h>
+#include <archx.h>
 #include "../winamp/wa_dlg.h"
 #include "api__gen_ml.h"
 #include "./colors.h"

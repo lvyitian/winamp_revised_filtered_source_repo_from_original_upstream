@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_MAINH
 #define NULLSOFT_MAINH
 
-#include <windows.h>
+#include <arch.h>
 #include "..\..\General\gen_ml/ml.h"
 #include "resource.h"
 #include "../nu/MediaLibraryInterface.h"
@@ -9,7 +9,7 @@
 #include <commctrl.h>
 #include <shlwapi.h>
 #include "ml_history.h"
-#include <windowsx.h>
+#include <archx.h>
 #include "..\..\General\gen_ml/ml.h"
 #include "..\..\General\gen_ml/ml_ipc.h"
 #include "../nde/nde_c.h"

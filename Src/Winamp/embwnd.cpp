@@ -6,7 +6,7 @@
  ** Created:
  **/
 
-#include <windowsx.h>
+#include <archx.h>
 
 #include "main.h"
 #include "api.h"
@@ -195,14 +195,14 @@ static void do_size( HWND hwnd, embedWindowState *state )
 			{
 				// TODO need to ensure this isn't used when freesize is disabled
 				//		isn't keeping track of the positions correctly on change
-				//		as some windows only part snap e.g. ml won't dock to edges or to bottom of main window
+				//		as some arch only part snap e.g. ml won't dock to edges or to bottom of main window
 				RECT rw = { 0 }, r = { 0 };
 				POINT pt = { x, y };
 				SendMessageW( hwnd, WM_USER + 0x101, 1, (LPARAM) &pt );
 
 				GetWindowRect( hwnd, &rw );
 
-				// trying to get classic skins to dock to other windows on resizing
+				// trying to get classic skins to dock to other arch on resizing
 				/*rw.left = state->r.left;
 				rw.top = state->r.top;
 				rw.right = state->r.left + x;

@@ -922,7 +922,7 @@ void CTrackApp::SetupPaths(bool overridePortable)
 	m_szConfigFileName = m_ConfigPath + P_("mptrack.ini"); // config file
 	m_szPluginCacheFileName = m_ConfigPath + P_("plugin.cache"); // plugin cache
 
-	// Force use of custom ini file rather than windowsDir\executableName.ini
+	// Force use of custom ini file rather than archDir\executableName.ini
 	if(m_pszProfileName)
 	{
 		free((void *)m_pszProfileName);
@@ -1310,7 +1310,7 @@ BOOL CTrackApp::InitInstanceImpl(CMPTCommandLineInfo &cmdInfo)
 		{
 			return SoundDevice::SysInfo(mpt::osinfo::get_class(), mpt::OS::Windows::Version::Current(), mpt::OS::Windows::IsWine(), GetWineVersion()->HostClass(), GetWineVersion()->Version());
 		}
-		return SoundDevice::SysInfo(mpt::osinfo::get_class(), mpt::OS::Windows::Version::Current(), mpt::OS::Windows::IsWine(), mpt::osinfo::osclass::Unknown, mpt::osinfo::windows::wine::version());
+		return SoundDevice::SysInfo(mpt::osinfo::get_class(), mpt::OS::Windows::Version::Current(), mpt::OS::Windows::IsWine(), mpt::osinfo::osclass::Unknown, mpt::osinfo::arch::wine::version());
 	};
 	SoundDevice::SysInfo sysInfo = GetSysInfo();
 	SoundDevice::AppInfo appInfo;

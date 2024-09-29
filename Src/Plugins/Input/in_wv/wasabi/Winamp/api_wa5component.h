@@ -4,7 +4,7 @@
 #include <bfc/dispatch.h>
 class api_service;
 #ifdef WIN32
-#include <windows.h>
+#include <arch.h>
 #endif
 
 class NOVTABLE api_wa5component : public Dispatchable

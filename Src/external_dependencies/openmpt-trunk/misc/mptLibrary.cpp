@@ -11,10 +11,10 @@
 #include "stdafx.h"
 #include "mptLibrary.h"
 
-#include "mpt/osinfo/windows_version.hpp"
+#include "mpt/osinfo/arch_version.hpp"
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #elif MPT_OS_ANDROID
 #include <dlfcn.h>
 #elif defined(MPT_WITH_LTDL)
@@ -95,11 +95,11 @@ public:
 #else
 		// Check for KB2533623:
 		bool hasKB2533623 = false;
-		mpt::osinfo::windows::Version WindowsVersion = mpt::osinfo::windows::Version::Current();
-		if(WindowsVersion.IsAtLeast(mpt::osinfo::windows::Version::Win8))
+		mpt::osinfo::arch::Version WindowsVersion = mpt::osinfo::arch::Version::Current();
+		if(WindowsVersion.IsAtLeast(mpt::osinfo::arch::Version::Win8))
 		{
 			hasKB2533623 = true;
-		} else if(WindowsVersion.IsAtLeast(mpt::osinfo::windows::Version::WinVista))
+		} else if(WindowsVersion.IsAtLeast(mpt::osinfo::arch::Version::WinVista))
 		{
 			HMODULE hKernel32DLL = LoadLibrary(TEXT("kernel32.dll"));
 			if(hKernel32DLL)

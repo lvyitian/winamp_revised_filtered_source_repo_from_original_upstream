@@ -1,5 +1,5 @@
 #include "string.h"
-#include <windows.h>
+#include <arch.h>
 #include <strsafe.h>
 using namespace tagz_;
 

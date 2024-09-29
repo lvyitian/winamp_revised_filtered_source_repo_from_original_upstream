@@ -14,9 +14,9 @@ project "zip-lib"
 	filter "system:linux or bsd or solaris or haiku"
 		defines { "HAVE_SSIZE_T_LIBZIP", "HAVE_CONFIG_H" }
 
-	filter "system:windows"
+	filter "system:arch"
 		defines { "_WINDOWS" }
-	filter { "system:windows", "toolset:mingw" }
+	filter { "system:arch", "toolset:mingw" }
 		defines { "HAVE_SSIZE_T_LIBZIP" }
 
 	filter "system:macosx"

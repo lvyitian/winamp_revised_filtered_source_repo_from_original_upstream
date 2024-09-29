@@ -32,7 +32,7 @@ class NS_NO_VTABLE nsIDOMWindow : public nsISupports {
   /**
  * The nsIDOMWindow interface is the primary interface for a DOM
  * window object. It represents a single window object that may
- * contain child windows if the document in the window contains a
+ * contain child arch if the document in the window contains a
  * HTML frameset document or if the document contains iframe elements.
  *
  * This interface is not officially defined by any standard bodies, it
@@ -55,7 +55,7 @@ class NS_NO_VTABLE nsIDOMWindow : public nsISupports {
   NS_IMETHOD GetParent(nsIDOMWindow * *aParent) = 0;
 
   /**
-   * Accessor for the root of this hierarchy of windows. This root may
+   * Accessor for the root of this hierarchy of arch. This root may
    * be the window itself if there is no parent, or if the parent is
    * of different type (i.e. this does not cross chrome-content
    * boundaries).
@@ -74,7 +74,7 @@ class NS_NO_VTABLE nsIDOMWindow : public nsISupports {
   NS_IMETHOD GetScrollbars(nsIDOMBarProp * *aScrollbars) = 0;
 
   /**
-   * Accessor for the child windows in this window.
+   * Accessor for the child arch in this window.
    */
   /* [noscript] readonly attribute nsIDOMWindowCollection frames; */
   NS_IMETHOD GetFrames(nsIDOMWindowCollection * *aFrames) = 0;

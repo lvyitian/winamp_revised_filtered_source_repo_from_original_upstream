@@ -10,7 +10,7 @@
 //
 //  Mon Nov 23 18:34:01 1998
 
-#include <windows.h>
+#include <arch.h>
 
 #include <string.h>
 #include "id3_tag.h"

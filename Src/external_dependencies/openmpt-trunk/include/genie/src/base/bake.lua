@@ -430,7 +430,7 @@
 					-- build the targets
 					cfg.buildtarget = premake.gettarget(cfg, "build", pathstyle, namestyle, cfg.system)
 					cfg.linktarget  = premake.gettarget(cfg, "link",  pathstyle, namestyle, cfg.system)
-					if pathstyle == "windows" then
+					if pathstyle == "arch" then
 						cfg.objectsdir = path.translate(cfg.objectsdir, "\\")
 					end
 

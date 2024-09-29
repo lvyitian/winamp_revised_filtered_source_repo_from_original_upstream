@@ -123,7 +123,7 @@ NDE_API int NDE_IntegerField_GetValue(nde_field_t field);
 NDE_API nde_field_t NDE_IntegerField_Create(int value); /* mainly used for NDE_Scanner_AddFilterByID */
 
 /* BinaryField functions */
-// on windows, the data pointer is optionally reference counted via ndestring (ndestring_retain if you plan on keeping it)
+// on arch, the data pointer is optionally reference counted via ndestring (ndestring_retain if you plan on keeping it)
 NDE_API void *NDE_BinaryField_GetData(nde_field_t field, size_t *length); 
 NDE_API void NDE_BinaryField_SetData(nde_field_t field, const void *data, size_t length);
 

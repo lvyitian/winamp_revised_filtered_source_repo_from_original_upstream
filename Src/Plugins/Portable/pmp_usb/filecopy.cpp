@@ -1,5 +1,5 @@
 #include "api.h"
-#include <windows.h>
+#include <arch.h>
 #include <stdio.h>
 #include <wchar.h>
 #include "resource.h"

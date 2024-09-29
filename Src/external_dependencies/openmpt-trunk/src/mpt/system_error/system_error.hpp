@@ -22,7 +22,7 @@
 #endif // MPT_OS_WINDOWS
 
 #if MPT_OS_WINDOWS
-#include <windows.h>
+#include <arch.h>
 #endif // MPT_OS_WINDOWS
 
 
@@ -36,7 +36,7 @@ inline namespace MPT_INLINE_NS {
 
 
 
-namespace windows {
+namespace arch {
 
 
 
@@ -113,7 +113,7 @@ inline HANDLE CheckFileHANDLE(HANDLE handle) {
 		if ((err == ERROR_NOT_ENOUGH_MEMORY) || (err == ERROR_OUTOFMEMORY)) {
 			mpt::throw_out_of_memory();
 		}
-		throw windows::error(err);
+		throw arch::error(err);
 	}
 	return handle;
 }
@@ -125,7 +125,7 @@ inline HANDLE CheckHANDLE(HANDLE handle) {
 		if ((err == ERROR_NOT_ENOUGH_MEMORY) || (err == ERROR_OUTOFMEMORY)) {
 			mpt::throw_out_of_memory();
 		}
-		throw windows::error(err);
+		throw arch::error(err);
 	}
 	return handle;
 }
@@ -137,7 +137,7 @@ inline void CheckBOOL(BOOL result) {
 		if ((err == ERROR_NOT_ENOUGH_MEMORY) || (err == ERROR_OUTOFMEMORY)) {
 			mpt::throw_out_of_memory();
 		}
-		throw windows::error(err);
+		throw arch::error(err);
 	}
 }
 
@@ -148,13 +148,13 @@ inline void ExpectError(DWORD expected) {
 		if ((err == ERROR_NOT_ENOUGH_MEMORY) || (err == ERROR_OUTOFMEMORY)) {
 			mpt::throw_out_of_memory();
 		}
-		throw windows::error(err);
+		throw arch::error(err);
 	}
 }
 
 
 
-} // namespace windows
+} // namespace arch
 
 
 

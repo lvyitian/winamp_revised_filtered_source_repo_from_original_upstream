@@ -1,7 +1,7 @@
 #ifndef FEEDBACK_H
 #define FEEDBACK_H
 
-#include <windows.h>
+#include <arch.h>
 #include "resource.h"
 
 #include "..\settings.h"

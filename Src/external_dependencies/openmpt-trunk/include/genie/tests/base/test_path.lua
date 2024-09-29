@@ -242,7 +242,7 @@
 
 	function suite.translate_ReturnsCorrectSeparator_OnMixedPath()
 		local actual = path.translate("dir\\dir/file")
-		if (os.is("windows")) then
+		if (os.is("arch")) then
 			test.isequal("dir\\dir\\file", actual)
 		else
 			test.isequal("dir/dir/file", actual)

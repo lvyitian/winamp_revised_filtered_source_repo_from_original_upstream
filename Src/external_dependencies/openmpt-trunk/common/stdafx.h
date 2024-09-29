@@ -43,8 +43,8 @@
 
 #if MPT_OS_WINDOWS
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include <shlwapi.h>
 #include <mmsystem.h>
 
@@ -64,7 +64,7 @@
 #include "mpt/check/mfc.hpp"
 #endif
 #if MPT_OS_WINDOWS
-#include "mpt/check/windows.hpp"
+#include "mpt/check/arch.hpp"
 #endif
 #include "mpt/exception_text/exception_text.hpp"
 #include "mpt/out_of_memory/out_of_memory.hpp"

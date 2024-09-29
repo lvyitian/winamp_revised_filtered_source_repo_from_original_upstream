@@ -16,7 +16,7 @@
 		trigger         = "vs2010",
 		shortname       = "Visual Studio 2010",
 		description     = "Generate Microsoft Visual Studio 2010 project files",
-		os              = "windows",
+		os              = "arch",
 
 		valid_kinds     = { "ConsoleApp", "WindowedApp", "StaticLib", "SharedLib", "Bundle" },
 

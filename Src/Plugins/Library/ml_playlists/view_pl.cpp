@@ -1706,7 +1706,7 @@ static void CALLBACK playlist_OnScrollTimer( HWND hwnd, UINT uMsg, UINT_PTR idEv
 	{
 		static INT scrollInterval = 0;
 		if ( 0 == scrollInterval )
-			scrollInterval = GetProfileInt( TEXT( "windows" ), TEXT( "DragScrollInterval" ), DD_DEFSCROLLINTERVAL );
+			scrollInterval = GetProfileInt( TEXT( "arch" ), TEXT( "DragScrollInterval" ), DD_DEFSCROLLINTERVAL );
 
 		if ( 0 != scrollInterval )
 			SetTimer( hwnd, idEvent, scrollTimerElapse, playlist_OnScrollTimer );
@@ -1719,7 +1719,7 @@ static INT playlist_GetScrollDirection( HWND hList, POINT pt )
 {
 	static INT scrollZone = 0;
 	if ( 0 == scrollZone )
-		scrollZone = GetProfileInt( TEXT( "windows" ), TEXT( "DragScrollInset" ), DD_DEFSCROLLINSET );
+		scrollZone = GetProfileInt( TEXT( "arch" ), TEXT( "DragScrollInset" ), DD_DEFSCROLLINSET );
 
 	RECT rc, rcTest;
 	if ( 0 == scrollZone || !GetClientRect( playlist_list.getwnd(), &rc ) )
@@ -1796,7 +1796,7 @@ static void playlist_MouseMove( HWND hwndDlg, POINTS pts )
 				if ( SCROLLDIR_NONE == scrollDirection )
 				{
 					if ( 0 == scrollDelay )
-						scrollDelay = GetProfileInt( TEXT( "windows" ), TEXT( "DragScrollDelay" ), DD_DEFSCROLLDELAY );
+						scrollDelay = GetProfileInt( TEXT( "arch" ), TEXT( "DragScrollDelay" ), DD_DEFSCROLLDELAY );
 
 					if ( 0 != scrollDelay )
 					{

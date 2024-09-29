@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_AUTOHEADERH
 #define NULLSOFT_AUTOHEADERH
 
-#include <windows.h>
+#include <arch.h>
 #include "AutoChar.h"
 
 

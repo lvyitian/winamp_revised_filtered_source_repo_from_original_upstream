@@ -341,7 +341,7 @@
  * Object events
  *
  * The system AND apps generate these.  The system generates these for
- * real windows.  Apps generate these for objects within their window which
+ * real arch.  Apps generate these for objects within their window which
  * act like a separate control, e.g. an item in a list view.
  *
  * When the system generate them, dwParam2 is always WMOBJID_SELF.  When
@@ -476,7 +476,7 @@
 #define EVENT_OBJECT_STATECHANGE            0x800A  // hwnd + ID + idChild is item w/ state change
 /*
  * Examples of when to send an EVENT_OBJECT_STATECHANGE include
- *      * It is being enabled/disabled (USER does for windows)
+ *      * It is being enabled/disabled (USER does for arch)
  *      * It is being pressed/released (USER does for buttons)
  *      * It is being checked/unchecked (USER does for radio/check buttons)
  */
@@ -491,11 +491,11 @@
  * title bar, scrollbars, etc.  that are also changing shape/moving.
  *
  * In other words, it only generates LOCATIONCHANGE notifications for
- * real windows that are moving/sizing.  It will not generate a LOCATIONCHANGE
+ * real arch that are moving/sizing.  It will not generate a LOCATIONCHANGE
  * for every non-floating child window when the parent moves (the children are
  * logically moving also on screen, but not relative to the parent).
  *
- * Now, if the app itself resizes child windows as a result of being
+ * Now, if the app itself resizes child arch as a result of being
  * sized, USER will generate LOCATIONCHANGEs for those dudes also because
  * it doesn't know better.
  *

@@ -130,7 +130,7 @@ schannel_connect_step1(struct connectdata *conn, int sockindex)
   infof(data, "schannel: SSL/TLS connection with %s port %hu (step 1/3)\n",
         hostname, conn->remote_port);
 
-  if(Curl_verify_windows_version(5, 1, PLATFORM_WINNT,
+  if(Curl_verify_arch_version(5, 1, PLATFORM_WINNT,
                                  VERSION_LESS_THAN_EQUAL)) {
      /* SChannel in Windows XP (OS version 5.1) uses legacy handshakes and
         algorithms that may not be supported by all servers. */
@@ -144,7 +144,7 @@ schannel_connect_step1(struct connectdata *conn, int sockindex)
   connssl->use_alpn = conn->bits.tls_enable_alpn &&
                       !GetProcAddress(GetModuleHandleA("ntdll"),
                                       "wine_get_version") &&
-                      Curl_verify_windows_version(6, 3, PLATFORM_WINNT,
+                      Curl_verify_arch_version(6, 3, PLATFORM_WINNT,
                                                   VERSION_GREATER_THAN_EQUAL);
 #else
   connssl->use_alpn = false;
@@ -248,7 +248,7 @@ schannel_connect_step1(struct connectdata *conn, int sockindex)
     memset(connssl->cred, 0, sizeof(struct curl_schannel_cred));
     connssl->cred->refcount = 1;
 
-    /* https://msdn.microsoft.com/en-us/library/windows/desktop/aa374716.aspx
+    /* https://msdn.microsoft.com/en-us/library/arch/desktop/aa374716.aspx
        */
     sspi_status =
       s_pSecFn->AcquireCredentialsHandle(NULL, (TCHAR *)UNISP_NAME,
@@ -355,7 +355,7 @@ schannel_connect_step1(struct connectdata *conn, int sockindex)
     return CURLE_OUT_OF_MEMORY;
 
   /* Schannel InitializeSecurityContext:
-     https://msdn.microsoft.com/en-us/library/windows/desktop/aa375924.aspx
+     https://msdn.microsoft.com/en-us/library/arch/desktop/aa375924.aspx
 
      At the moment we don't pass inbuf unless we're using ALPN since we only
      use it for that, and Wine (for which we currently disable ALPN) is giving
@@ -529,7 +529,7 @@ schannel_connect_step2(struct connectdata *conn, int sockindex)
     if(!host_name)
       return CURLE_OUT_OF_MEMORY;
 
-    /* https://msdn.microsoft.com/en-us/library/windows/desktop/aa375924.aspx
+    /* https://msdn.microsoft.com/en-us/library/arch/desktop/aa375924.aspx
        */
     sspi_status = s_pSecFn->InitializeSecurityContext(
       &connssl->cred->cred_handle, &connssl->ctxt->ctxt_handle,
@@ -950,7 +950,7 @@ schannel_send(struct connectdata *conn, int sockindex,
   /* copy data into output buffer */
   memcpy(outbuf[1].pvBuffer, buf, len);
 
-  /* https://msdn.microsoft.com/en-us/library/windows/desktop/aa375390.aspx */
+  /* https://msdn.microsoft.com/en-us/library/arch/desktop/aa375390.aspx */
   sspi_status = s_pSecFn->EncryptMessage(&connssl->ctxt->ctxt_handle, 0,
                                          &outbuf_desc, 0);
 
@@ -1163,7 +1163,7 @@ schannel_recv(struct connectdata *conn, int sockindex,
     InitSecBuffer(&inbuf[3], SECBUFFER_EMPTY, NULL, 0);
     InitSecBufferDesc(&inbuf_desc, inbuf, 4);
 
-    /* https://msdn.microsoft.com/en-us/library/windows/desktop/aa375348.aspx
+    /* https://msdn.microsoft.com/en-us/library/arch/desktop/aa375348.aspx
        */
     sspi_status = s_pSecFn->DecryptMessage(&connssl->ctxt->ctxt_handle,
                                            &inbuf_desc, 0, NULL);
@@ -1311,7 +1311,7 @@ cleanup:
   */
   if(len && !connssl->decdata_offset && connssl->recv_connection_closed &&
      !connssl->recv_sspi_close_notify) {
-    bool isWin2k = Curl_verify_windows_version(5, 0, PLATFORM_WINNT,
+    bool isWin2k = Curl_verify_arch_version(5, 0, PLATFORM_WINNT,
                                                VERSION_EQUAL);
 
     if(isWin2k && sspi_status == SEC_E_OK)
@@ -1394,7 +1394,7 @@ void Curl_schannel_close(struct connectdata *conn, int sockindex)
 
 int Curl_schannel_shutdown(struct connectdata *conn, int sockindex)
 {
-  /* See https://msdn.microsoft.com/en-us/library/windows/desktop/aa380138.aspx
+  /* See https://msdn.microsoft.com/en-us/library/arch/desktop/aa380138.aspx
    * Shutting Down an Schannel Connection
    */
   struct Curl_easy *data = conn->data;
@@ -1618,7 +1618,7 @@ static CURLcode verify_certificate(struct connectdata *conn, int sockindex)
       Right now we're only asking for the first preferred alternative name.
       Instead we'd need to do all via CERT_NAME_SEARCH_ALL_NAMES_FLAG
       (if WinCE supports that?) and run this section in a loop for each.
-      https://msdn.microsoft.com/en-us/library/windows/desktop/aa376086.aspx
+      https://msdn.microsoft.com/en-us/library/arch/desktop/aa376086.aspx
       curl: (51) schannel: CertGetNameString() certificate hostname
       (.google.com) did not match connection (google.com)
       */

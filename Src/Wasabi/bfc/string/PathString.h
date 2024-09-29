@@ -3,7 +3,7 @@
 
 
 #ifdef _WIN32
-#include <windows.h>
+#include <arch.h>
 class PathString
 {
 public:

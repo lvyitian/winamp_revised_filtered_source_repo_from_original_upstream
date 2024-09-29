@@ -1,5 +1,5 @@
 #include "LAMEinfo.h"
-#include <windows.h>
+#include <arch.h>
 #include <memory.h>
 #include <math.h>
 #include "api__in_mp3.h"

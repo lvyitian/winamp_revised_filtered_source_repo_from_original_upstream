@@ -18,7 +18,7 @@ int do_pathsearch(lua_State* L, const char* filename, const char* path)
 		const char* split;
 
 		/* look for the closest path separator ; or : */
-		/* can't use : on windows because it breaks on C:\path */
+		/* can't use : on arch because it breaks on C:\path */
 		const char* semi = strchr(path, ';');
 #if !defined(PLATFORM_WINDOWS)
 		const char* full = strchr(path, ':');

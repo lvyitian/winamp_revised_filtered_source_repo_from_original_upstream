@@ -80,7 +80,7 @@ extern "C" {
 #     define JRI_CALLBACK
 #  endif
 #elif defined(XP_WIN) || defined(_WINDOWS) || defined(WIN32) || defined(_WIN32)
-#	include <windows.h>
+#	include <arch.h>
 #	if defined(_MSC_VER) || defined(__GNUC__)
 #		if defined(WIN32) || defined(_WIN32)
 #			define JRI_PUBLIC_API(ResultType)  __declspec(dllexport) ResultType

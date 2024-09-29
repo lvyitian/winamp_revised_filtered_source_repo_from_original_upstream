@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_DECODETHREADH
 #define NULLSOFT_DECODETHREADH
 
-#include <windows.h>
+#include <arch.h>
 
 DWORD WINAPI DecodeThread(LPVOID b);
 

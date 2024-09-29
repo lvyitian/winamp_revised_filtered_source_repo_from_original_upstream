@@ -43,7 +43,7 @@ Global ConfigAttribute notifier_fadeintime_attrib;
 Global ConfigAttribute notifier_fadeouttime_attrib;
 Global ConfigAttribute notifier_holdtime_attrib;
 Global ConfigAttribute notifier_hideinfullscreen_attrib;
-Global ConfigAttribute notifier_windowshade_attrib;
+Global ConfigAttribute notifier_archhade_attrib;
 
 //Global ConfigAttribute notifier_opennowplaying_attrib;
 Global ConfigAttribute notifier_artworkinnotification_attrib;
@@ -74,7 +74,7 @@ initAttribs_notifier()
 	ConfigItem custom_page_notifier = addConfigSubMenu(optionsmenu_page, "Notifications", CUSTOM_PAGE_NOTIFIER);
 
 	notifier_always_attrib = custom_page_notifier.newAttribute("Show always", "1");
-	notifier_windowshade_attrib = custom_page_notifier.newAttribute("Show with windowshade and when minimized", "0");
+	notifier_archhade_attrib = custom_page_notifier.newAttribute("Show with archhade and when minimized", "0");
 	notifier_minimized_attrib = custom_page_notifier.newAttribute("Show only when minimized", "0");
 	notifier_minimized_attrib = custom_page_notifier.newAttribute("Show only when minimized", "0");
 	notifier_never_attrib = custom_page_notifier.newAttribute("Never show", "0");
@@ -131,7 +131,7 @@ notifier_always_attrib.onDataChanged()
 	attribs_mychange = 1;
 	notifier_never_attrib.setData("0");
 	notifier_minimized_attrib.setData("0");
-	notifier_windowshade_attrib.setData("0");
+	notifier_archhade_attrib.setData("0");
 	attribs_mychange = 0;
 }
 
@@ -142,7 +142,7 @@ notifier_never_attrib.onDataChanged()
 	attribs_mychange = 1;
 	notifier_always_attrib.setData("0");
 	notifier_minimized_attrib.setData("0");
-	notifier_windowshade_attrib.setData("0");
+	notifier_archhade_attrib.setData("0");
 	attribs_mychange = 0;
 }
 
@@ -153,11 +153,11 @@ notifier_minimized_attrib.onDataChanged()
 	attribs_mychange = 1;
 	notifier_never_attrib.setData("0");
 	notifier_always_attrib.setData("0");
-	notifier_windowshade_attrib.setData("0");
+	notifier_archhade_attrib.setData("0");
 	attribs_mychange = 0;
 }
 
-notifier_windowshade_attrib.onDataChanged()
+notifier_archhade_attrib.onDataChanged()
 {
 	if (attribs_mychange) return;
 	NOOFF

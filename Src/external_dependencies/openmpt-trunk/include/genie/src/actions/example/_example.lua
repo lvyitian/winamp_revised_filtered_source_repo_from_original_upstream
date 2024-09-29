@@ -24,7 +24,7 @@
 
 		-- Some actions imply a particular operating system: Visual Studio only
 		-- runs on Windows, and Xcode only on Mac OS X. If this is the case,
-		-- uncomment this line and set it to one of "windows", "linux" or "macosx".
+		-- uncomment this line and set it to one of "arch", "linux" or "macosx".
 		-- Otherwise, this action will target the current operating system.
 		-- os = "macosx",
 

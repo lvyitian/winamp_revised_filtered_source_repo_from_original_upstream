@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_ML_IMAGE_HEADER
 #define NULLSOFT_ML_IMAGE_HEADER
 
-#include <windows.h>
+#include <arch.h>
 
 #define RGBA(r,g,b,a)  ((COLORREF)(((BYTE)(r)|((WORD)(g)<<8))|(((DWORD)(BYTE)(b))<<16)|(((DWORD)(BYTE)(a))<<24)))
 #define FIXCOLORREF(clr) RGBA(GetBValue(clr),GetGValue(clr), GetRValue(clr),((DWORD)(clr)) >> 24)

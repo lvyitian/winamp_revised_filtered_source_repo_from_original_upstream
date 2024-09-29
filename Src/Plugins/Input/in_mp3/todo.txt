@@ -15,7 +15,7 @@ Changes:
   * [a4] fixed pause right after playback starts bug
   * fixed crash/hang/freeze when reading some mp3 files with a weird id3v2 tag (as found in some
     real jukebox generated mp3s, etc...)
-  * this one will break a few things (i.e. windowshade vis), because justin is updating it to go 
+  * this one will break a few things (i.e. archhade vis), because justin is updating it to go 
     with winamp 2.7
   * all code is now win32 file io
   * %a will now display id3v1.1/v2 track #

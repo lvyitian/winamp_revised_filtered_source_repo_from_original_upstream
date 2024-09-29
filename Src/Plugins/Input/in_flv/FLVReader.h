@@ -1,7 +1,7 @@
 #ifndef NULLSOFT_IN_FLV_FLVREADER_H
 #define NULLSOFT_IN_FLV_FLVREADER_H
 
-#include <windows.h>
+#include <arch.h>
 #include <bfc/platform/types.h>
 #include "FLVStreamheader.h"
 #include "../nu/AutoLock.h"

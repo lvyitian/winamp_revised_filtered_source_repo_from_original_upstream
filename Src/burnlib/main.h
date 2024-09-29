@@ -1,6 +1,6 @@
 #pragma once
 
-#include <windows.h>
+#include <arch.h>
 
 #ifdef BURNLIB_EXPORTS
  #define BURNLIB_API //__declspec(dllexport)

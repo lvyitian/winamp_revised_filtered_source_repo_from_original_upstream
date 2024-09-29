@@ -48,7 +48,7 @@
 /*For GetExceptionCode() and EXCEPTION_ILLEGAL_INSTRUCTION.*/
 # define WIN32_LEAN_AND_MEAN
 # define WIN32_EXTRA_LEAN
-# include <windows.h>
+# include <arch.h>
 
 static OPUS_INLINE opus_uint32 opus_cpu_capabilities(void){
   opus_uint32 flags;

@@ -1,6 +1,6 @@
 #include "main.h"
 #include <bfc/dispatch.h>
-#include <windowsx.h>
+#include <archx.h>
 #include "shlobj.h"
 #include "..\..\General\gen_ml\ml_ipc_0313.h"
 #include "..\..\General\gen_ml\childwnd.h"
@@ -245,8 +245,8 @@ static BOOL xmlex_OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
 	case IDC_LOAD: 
 		{
 			wchar_t filename[256] = L"";
-			//browse box supported in windows 2000+
-			//if this doesnt work for you (old versions of windows) just know that the file name is set in ofn.lpstrFile which is then moved to filename variable
+			//browse box supported in arch 2000+
+			//if this doesnt work for you (old versions of arch) just know that the file name is set in ofn.lpstrFile which is then moved to filename variable
 			OPENFILENAME ofn = {0};
 			ofn.lStructSize = sizeof (OPENFILENAME);
 			ofn.hwndOwner=hwnd;

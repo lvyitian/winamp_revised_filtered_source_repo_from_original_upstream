@@ -1,7 +1,7 @@
 #include "precomp.h"
 //NONPORTABLE
 
-#include <windows.h>
+#include <arch.h>
 #include <commdlg.h>
 #include "savefile.h"
 

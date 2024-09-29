@@ -147,7 +147,7 @@ void RegionI::disposeClone(api_region *r)
 	clonecount--;
 }
 
-// returns a handle that SetWindowRgn understands (non portable). We should NOT delete this handle, windows will delete
+// returns a handle that SetWindowRgn understands (non portable). We should NOT delete this handle, arch will delete
 // it by itself upon setting a new region of destroying the window
 OSREGIONHANDLE RegionI::makeWindowRegion()
 {

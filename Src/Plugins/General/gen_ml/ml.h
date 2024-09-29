@@ -23,7 +23,7 @@
 #define MLHDR_VER_U   0x16		// used from Winamp v5.64 to v5.65 (is loaded by v5.66+)
 #define MLHDR_VER_OLD 0x15	    // used up to Winamp v5.63 (is loaded by v5.64+)
 
-#include <windows.h>
+#include <arch.h>
 #include <commctrl.h>
 #include <stddef.h>
 #include <api/service/api_service.h>
@@ -42,7 +42,7 @@ typedef struct
 	// return NONZERO if you accept this message as yours, otherwise 0 to pass it to other plugins
 	INT_PTR (__cdecl *MessageProc)(int message_type, INT_PTR param1, INT_PTR param2, INT_PTR param3); 
 	// Note: INT_PTR becomes 64bit on 64bit compiles...
-	//       if you don't like windows types or caps, you can #include <stddef.h> and use intptr_t
+	//       if you don't like arch types or caps, you can #include <stddef.h> and use intptr_t
 
 	// all the following data is filled in by the library
 	HWND hwndWinampParent;
@@ -74,7 +74,7 @@ typedef struct
 //
 // Uninstall support was added from 5.0+ and uninstall now support from 5.5+ though note
 // that it is down to you to ensure that if uninstall now is returned that it will not
-// cause a crash i.e. don't use if you've been subclassing the main or library windows.
+// cause a crash i.e. don't use if you've been subclassing the main or library arch.
 //
 // The HWND passed in the calling of winampUninstallPlugin(..) is the preference page HWND.
 //
@@ -758,8 +758,8 @@ typedef struct {
 
 /* start of ML_CHILDIPC_* section */
 
-// this gets sent to any child windows of the library windows, and then (if not handled) the library window itself
-#define WM_ML_CHILDIPC WM_APP+       0x800 // avoids conflicts with any windows controls
+// this gets sent to any child arch of the library arch, and then (if not handled) the library window itself
+#define WM_ML_CHILDIPC WM_APP+       0x800 // avoids conflicts with any arch controls
 
 // lParam = 0x100, wParam = &mlDropItemStruct
 #define ML_CHILDIPC_DROPITEM         0x100

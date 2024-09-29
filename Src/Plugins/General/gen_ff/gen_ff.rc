@@ -74,7 +74,7 @@ BEGIN
     LTEXT           "pixels",IDC_STATIC,225,106,19,8
     GROUPBOX        "Miscellaneous",IDC_STATIC,4,131,256,86
     CONTROL         "Enable tooltips",IDC_CHECK_TOOLTIPS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,144,65,10
-    CONTROL         "Dock windows at ",IDC_CHECK_DOCKING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,156,67,11
+    CONTROL         "Dock arch at ",IDC_CHECK_DOCKING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,156,67,11
     EDITTEXT        IDC_EDIT_DOCKDISTANCE,79,155,30,12,ES_AUTOHSCROLL | ES_NUMBER
     CONTROL         "",IDC_SPIN_DOCKDISTANCE,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,97,154,10,14
     LTEXT           "pixels",IDC_STATIC,111,157,18,8
@@ -182,7 +182,7 @@ STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     GROUPBOX        "Scaling",IDC_STATIC,4,3,256,76
-    CONTROL         "Link all windows in all skins:",IDC_CHECK_LINKALLRATIO,
+    CONTROL         "Link all arch in all skins:",IDC_CHECK_LINKALLRATIO,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,15,103,10
     CTEXT           "100%",IDC_STATIC_SCALE,159,10,51,8
     LTEXT           "10%",IDC_STATIC_SCALE11,124,17,16,8
@@ -193,7 +193,7 @@ BEGIN
     GROUPBOX        "On Window Close/Reopen",IDC_STATIC,10,41,244,32
     COMBOBOX        IDC_COMBO_SCALE,16,54,232,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     GROUPBOX        "Opacity",IDC_STATIC_OPACITY,4,81,256,138
-    CONTROL         "Link all windows in all skins:",IDC_CHECK_LINKALLALPHA,
+    CONTROL         "Link all arch in all skins:",IDC_CHECK_LINKALLALPHA,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,92,102,10
     COMBOBOX        IDC_COMBO_OPACITY,11,106,98,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     CONTROL         "Slider1",IDC_SLIDER_CUSTOMALPHA,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,114,106,140,10
@@ -520,7 +520,7 @@ BEGIN
     IDS_KHZ                 "kHz"
     IDS_KBPS                "kbps"
     IDS_USELOCK             "Reset window scale to global 'double size' except if it is locked"
-    IDS_ALLLOCKED           "All windows remember their scale, disregard global 'double size'"
+    IDS_ALLLOCKED           "All arch remember their scale, disregard global 'double size'"
     IDS_OPAQUE_FOCUS        "Auto opaque on focus"
     IDS_OPAQUE_HOVER        "Auto opaque on hover"
     IDS_NO_OPACITY          "No auto opacity"

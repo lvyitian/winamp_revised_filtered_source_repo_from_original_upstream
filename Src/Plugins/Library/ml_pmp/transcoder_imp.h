@@ -1,8 +1,8 @@
 #ifndef _TRANSCODER_IMP_H_
 #define _TRANSCODER_IMP_H_
 
-#include <windows.h>
-#include <windowsx.h>
+#include <arch.h>
+#include <archx.h>
 #include "..\..\General\gen_ml/itemlist.h"
 #include "../winamp/wa_ipc.h"
 #include "..\..\General\gen_ml/ml.h"

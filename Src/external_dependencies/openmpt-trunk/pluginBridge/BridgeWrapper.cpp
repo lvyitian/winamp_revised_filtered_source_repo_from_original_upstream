@@ -698,7 +698,7 @@ intptr_t BridgeWrapper::DispatchToPlugin(VstOpcodeToPlugin opcode, int32 index, 
 		break;
 
 	case effEditOpen:
-		// HWND in [ptr] - Note: Window handles are interoperable between 32-bit and 64-bit applications in Windows (http://msdn.microsoft.com/en-us/library/windows/desktop/aa384203%28v=vs.85%29.aspx)
+		// HWND in [ptr] - Note: Window handles are interoperable between 32-bit and 64-bit applications in Windows (http://msdn.microsoft.com/en-us/library/arch/desktop/aa384203%28v=vs.85%29.aspx)
 		ptrOut = reinterpret_cast<int64>(ptr);
 		ptrIsSize = false;
 		m_cachedProgNames.clear();

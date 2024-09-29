@@ -50,7 +50,7 @@
 
 <!-- Buttons -->
   <color id="wasabi.button.text" value="0,0,0" gammagroup="Text"/> <!-- Buttons text color -->
-  <color id="wasabi.button.hiliteText" value="0,240,0" gammagroup="Text"/> <!-- Buttons hilite text color, used by tab windows-->
+  <color id="wasabi.button.hiliteText" value="0,240,0" gammagroup="Text"/> <!-- Buttons hilite text color, used by tab arch-->
   <color id="wasabi.button.dimmedText" value="64,64,64" gammagroup="Text"/> <!-- Buttons dimmed text color, when disabled -->
 
 
@@ -65,7 +65,7 @@
   <color id="wasabi.component.title.border" value="1,1,1" gammagroup="Text Backgrounds"/> <!-- Old title bar text outline when using TTF -->
 
 
-<!-- labeled windows -->
+<!-- labeled arch -->
   <color id="wasabi.labelwnd.foreground" value="220,220,220" gammagroup="Text"/> <!-- Text foreground color -->
   <color id="wasabi.labelwnd.background" value="0,0,0" gammagroup="Text Backgrounds"/> <!-- Text drop shadow color -->
 

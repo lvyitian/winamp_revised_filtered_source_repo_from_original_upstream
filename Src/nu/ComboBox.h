@@ -1,6 +1,6 @@
 #ifndef NULLSOFT_UTILITY_COMBOBOX_H
 #define NULLSOFT_UTILITY_COMBOBOX_H
-#include <windows.h>
+#include <arch.h>
 class ComboBox
 {
 public:
