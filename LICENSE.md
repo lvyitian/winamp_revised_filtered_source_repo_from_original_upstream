@@ -1,79 +1,72 @@
-# Winamp Collaborative License (WCL) Version 1.0.1
+# Winamp Collaborative License (WCL) Version 1.0.1 ✨💖
 
-This License governs the use, modification, and distribution of the Winamp software. 
-By using, Modifying, or distributing this software, you agree to the following terms:
+This License governs the use, modification, and distribution of the Winamp software, uwu 🌟. By using, modifying, or sharing this software, you agree to these super fun terms, uwu 🎉:
 
-## Preamble
-The Winamp Collaborative License is a free, copyleft license for software and other kinds of works. It is designed to ensure that you have the freedom to use, Modify, and study the software, but with certain restrictions on the distribution of modifications to maintain the integrity and collaboration of the project.
+## Preamble 🌈
+The Winamp Collaborative License is a free, copyleft license for software and other creative works, uwu 🎨! It’s designed to give you the freedom to use, modify, and study the software, but with some cuddly restrictions to keep our project happy and collaborative, uwu 🥰! 
 
-## TERMS AND CONDITIONS
+## TERMS AND CONDITIONS 🌼
 
-### 1. Definitions
-- "This License" refers to version 1.0.1 of the Winamp Collaborative License.
-- "The Program" refers to any copyrightable work Licensed under this License.
-- "You" refers to each Licensee, whether an individual or organization.
-- "Modify" means to copy from or adapt all or part of the work in a fashion requiring copyright permission, other than the making of an exact copy.
-- "Covered Work" means either the unmodified Program or a work based on the Program.
-- "Convey" means any kind of propagation that enables other parties to make or receive copies.
+### 1. Definitions 💖
+- "This License" means version 1.0.1 of the Winamp Collaborative License, uwu 📜!
+- "The Program" refers to any copyrightable work licensed under this License, yay, uwu 🎊!
+- "You" is every lovely Licensee, whether you're an individual or an organization, uwu 🥳!
+- "Modify" means to copy or adapt parts of the work in a way that needs copyright permission, other than making an exact copy, uwu 📚! 
+- "Covered Work" means either the unmodified Program or a work based on the Program, so much fun, uwu 🎉!
+- "Convey" means any kind of sharing that lets others make or receive copies, uwu 💌! 
 
-### 2. Basic Permissions
-All rights granted under this License are granted for the term of copyright on the Program and are irrevocable provided the stated conditions are met. This License explicitly affirms your unlimited permission to run the unmodified Program. The output from running a Covered work is covered by this License only if its contents constitute a Covered work. This License acknowledges your rights of fair use or other equivalent, as provided by copyright law.
+### 2. Basic Permissions 🌸
+All the rights granted here are yours as long as you follow the rules, uwu ✨! You have unlimited permission to run the unmodified Program, uwu 🚀! The output from running a Covered work is covered by this License only if it counts as a Covered work, uwu 🌼! Don’t forget, fair use rights are still super important, uwu 💖!
 
-### 3. Grant of License
-You are granted the right to view, access, and study the source code of the software.
-You are granted the right to Modify the software for private use only. You may make, run, and propagate Covered works that you do not Convey, without conditions, so long as your License otherwise remains in force.
+### 3. Grant of License 💌
+You’re allowed to peek at, access, and study the source code of the software, uwu 🔍! You can also modify it for your own private adventures, uwu 🏞️! Feel free to run and enjoy Covered works that you don’t share, with no extra conditions, as long as you follow the License, uwu 🎈!
 
-### 4. Contributions
-- Contribution to Project: You are encouraged to contribute improvements, enhancements, and bug fixes back to the project. Contributions must be submitted to the official repository and will be reviewed and incorporated at the discretion of the maintainers.
-- Assignment of Rights: By submitting contributions, you agree that all intellectual property rights, including copyright, in your contributions are assigned to Winamp. You hereby grant Winamp a perpetual, worldwide, non-exclusive, royalty-free license to use, copy, modify, and distribute your contributions as part of the software, without any compensation to you.
-- Waiver of Rights: You waive any rights to claim authorship of the contributions or to object to any distortion, mutilation, or other modifications of the contributions.
+### 4. Contributions 🌟
+- **Join the Fun**: We’d love for you to contribute improvements and fixes, uwu 🎉! Just send them to the official repository and we’ll review and maybe include them, yay, uwu 😄!
+- **Sharing is Caring**: By submitting contributions, you agree to give all your intellectual property rights to Winamp, uwu 💖! You grant us a forever, worldwide, non-exclusive, royalty-free license to use and share your contributions, without any need for payment, uwu 🌍!
+- **No Ownership Claims**: You won’t claim authorship of your contributions or object to any changes made to them, because we’re all in this together, uwu 🤝!
 
-### 5. Restrictions
-- No Distribution of Modified Versions: You may not distribute modified versions of the software, whether in source or binary form.
-- Official Distribution: Only the maintainers of the official repository are allowed to distribute the software and its modifications.
+### 5. Restrictions 🚫
+- **No Modified Versions**: You can’t share modified versions of the software, whether in source or binary form, uwu 🛑! 
+- **Official Distribution Only**: Only the lovely maintainers of the official repository can share the software and its modifications, uwu 🌟! 
 
-### 6. No Sublicensing
-Sublicensing is not allowed; section 5 makes it unnecessary.
+### 6. No Sublicensing ❌
+Sublicensing isn’t allowed; section 5 makes it unnecessary, uwu 🙅!
 
-### 7. Protecting Users' Legal Rights From Anti-Circumvention Law
+### 7. Protecting Users' Legal Rights 🌈
+No Covered work will be considered part of any technological measure under any laws about circumvention, so no worries, uwu 😊!
 
-No Covered work shall be deemed part of an effective technological measure under any applicable law fulfilling obligations under article 11 of the WIPO copyright treaty adopted on 20 December 1996, or similar laws prohibiting or restricting circumvention of such measures.
+### 8. Disclaimer of Warranty 🌟
+The software is provided "as is," with no promises or guarantees, uwu 🌈! The authors and copyright holders aren’t responsible for any claims or damages from using the software, uwu 💔!
 
-### 8. Disclaimer of Warranty
-The software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+### 9. Limitation of Liability 💔
+The authors and copyright holders won’t be liable for any special or consequential damages related to the software, even if they knew it could happen, uwu 😢! 
 
-### 9. Limitation of Liability
-In no event will the authors or copyright holders be liable for any special, incidental, indirect, or consequential damages whatsoever (including, without limitation, damages for loss of business profits, business interruption, loss of business information, or any other pecuniary loss) arising out of the use of or inability to use the software, even if the authors or copyright holders have been advised of the possibility of such damages.
+### 10. Termination 🚫
+This License will end automatically if you don’t follow the terms, uwu ⚠️! If it does, you must stop using the software and delete all copies, full or partial, like a responsible friend, uwu 👋!
 
-### 10. Termination
-This License and the rights granted hereunder will terminate automatically if you fail to comply with the terms and conditions herein. Upon termination, you must cease all use of the software and destroy all copies, full or partial, of the software.
+### 11. Protection of Copyright 💖
+The original authors keep all their rights to the software, uwu 🛡️! You must keep all copyright, patent, trademark, and attribution notices in the code and documentation, uwu 📄! By sharing contributions, you promise they’re your own original work, uwu ✨!
 
-### 11. Protection of Copyright
-The original authors or copyright holders of the software retain all rights, title, and interest in the software. This license does not transfer any ownership rights.
-You must retain all copyright, patent, trademark, and attribution notices in the source code and documentation of the software.
-By submitting contributions, you agree that the contributions are your original work and you grant the project a perpetual, worldwide, non-exclusive, royalty-free license to use, copy, modify, and distribute your contributions as part of the software.
-Any unauthorized use, reproduction, or distribution of the software, or any portion thereof, may result in civil and criminal penalties.
+### 12. Patent Rights 💫
+Every contributor gives you a non-exclusive, worldwide, royalty-free patent license to make, use, and share their contributions, uwu 🌍! But if you start legal action claiming patent infringement against us, the patent rights will end, uwu ⚖️.
 
-### 12. Patent Rights
-Each contributor grants you a non-exclusive, worldwide, royalty-free patent license under the contributor's essential patent claims to make, use, sell, offer for sale, import, and otherwise run, modify and propagate the contents of its contributor version.
-If you initiate litigation (including a cross-claim or counterclaim) against any party alleging that the Program or a contribution incorporated within the Program constitutes direct or contributory patent infringement, then any patent licenses granted to you under this License for that Program shall terminate as of the date such litigation is filed.
+### 13. Trademark Usage 🌼
+This License doesn’t let you use our trade names or trademarks, except to describe where the Program comes from, uwu 🏷️!
 
-### 13. Trademark Usage
-This License does not grant permission to use the trade names, trademarks, service marks, or product names of the Licensor, except as required for describing the origin of the Program and reproducing the content of the copyright notice.
+### 14. Privacy and Data Protection 🌈
+You must follow all the rules about privacy and data protection while using the Program, uwu 📋! If the Program collects user data, make sure to give clear notice and get any needed consents, uwu ✔️!
 
-### 14. Privacy and Data Protection
-You must comply with all applicable privacy and data protection laws in connection with your use of the Program.
-If the Program collects user data, you must provide clear notice and obtain any necessary consents for such collection.
+### 15. Support and Updates 💖
+We’re not obligated to provide support or updates for the Program, uwu 🌟! Any help we give is totally at our discretion, uwu 🎈!
 
-### 15. Support and Updates
-The Licensor has no obligation to provide support, updates, or maintenance for the Program. Any such support, updates, or maintenance will be provided at the sole discretion of the Licensor.
+### 16. Compliance 🌸
+You must follow all the applicable laws and regulations while using the Program, uwu 📝!
 
-### 16. Compliance 
-You must comply with all applicable laws and regulations in connection with your use of the Program.
+### 17. Miscellaneous ✨
+- **Governing Law and Jurisdiction**: This License follows the laws of Belgium, uwu 🇧🇪! Any disagreements will be handled in Brussels, Belgium, uwu 🏛️!
+- **Severability**: If any part of this License is found unenforceable, we’ll just fix it enough to make it work, uwu 🔧!
 
-### 17. Miscellaneous
-- Governing Law and Jurisdiction: This License shall be governed by and construed in accordance with the laws of Belgium. Any disputes arising out of or in connection with this License shall be subject to the exclusive jurisdiction of the courts located in Brussels, Belgium.
-- Severability: If any provision of this License is held to be unenforceable, such provision shall be reformed only to the extent necessary to make it enforceable.
-By using, Modifying, or contributing to the software, you acknowledge that you have read, understood, and agree to be bound by these terms and conditions.
- 
-This custom License aims to maintain the collaborative nature of the project while restricting the distribution of modified versions.
+By using, modifying, or contributing to the software, you acknowledge that you’ve read, understood, and agree to be bound by these terms, uwu 📖! 
+
+This fun License is here to keep our collaborative spirit alive while keeping modifications cozy and secure, uwu 💖✨!
